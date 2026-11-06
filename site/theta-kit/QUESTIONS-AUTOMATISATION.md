@@ -88,14 +88,14 @@ Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l
 **Q19.** Quel CV publier sur le site ? Le plus récent dit « Développeur web et mobile » et ne mentionne plus les 88 % ni XGBoost ; l'ancien dit « Stagiaire Machine Learning ». Le site met en avant le ML : garder les 88 % (et dire s'il s'agit de précision ou d'exactitude, *precision* ou *accuracy* en anglais) ou les retirer ?
 Réponse : 👤 **Proposition tirée de `serie-ml`, à confirmer par l'auteur.** Le téléphone reste hors du public. Le CV du kit l'affiche ; il a été exclu du dépôt public (`.gitignore` à la racine).
 - **Profil** : la série présente l'auteur comme étudiant en 3e année de licence SRIT à l'ESATIC, qui travaille sur le NLP, les agents conversationnels et le développement logiciel (`theta-post/editorial/ligne_editoriale.md`, section 6). Ni « Développeur web et mobile » ni les textes de `data/` du kit ne font foi : le CV et le profil sont à aligner sur cette section.
-- **Mise en avant** : la même section donne des faits précis sur le mémoire NGONI (19 intentions, corpus de 1 919 exemples, jeu de test final de 2 041 requêtes, BGE-M3). Elle les marque « à confirmer avant chaque usage ».
+- **Mémoire NGONI** : décision de l'auteur du 2026-11-06, ses chiffres ne sont pas utilisés sur le site ni dans le CV.
 - **88 %** : à retirer. La série n'en parle pas (`theta-post/editorial/`), et ses règles exigent un chiffre daté et sourcé (`serie-ml/CLAUDE.md`). Précision ou exactitude : inconnu, à demander à l'auteur.
 
 **Q20.** Ajout de nouveaux certificats : simple (tu me les envoies, je les ajoute dans `data/certificats.json` via Git) ou page `/admin` protégée sur le site ?
 Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Simple, par Git : ajout dans `data/certificats.json`. Le site est statique et sans base de données ; une page `/admin` ajouterait une authentification à maintenir pour un ajout rare.
 
 **Q21.** Anglais britannique ou américain pour la version EN ?
-Réponse : 👤 **`serie-ml` ne tranche pas : à décider par l'auteur.** La série est uniquement en français (`serie-ml/CLAUDE.md`) et n'a aucune version anglaise. L'orthographe britannique n'est qu'un choix du kit (`docs/04-i18n.md`). Tout texte anglais serait un texte nouveau, à faire valider, et non une reprise de la série.
+Réponse : 👤 **Décidé par l'auteur le 2026-11-06 : le site existe aussi en anglais**, mais pas forcément le contenu des documents. L'interface, le profil et les pages sont traduits ; les PDF restent en français, comme sur LinkedIn (`docs/04-i18n.md`), et un texte d'épisode non traduit passe par le repli « Available in French only for now » (`docs/03-contenu.md`). Orthographe britannique ou américaine : à décider par l'auteur, la série ne tranche pas.
 
 **Q22.** Que faire de l'ancien portfolio `lama-portofolio.vercel.app` : redirection vers `/profil`, ou on le garde ?
 Réponse : 👤 **`serie-ml` ne tranche pas : à décider par l'auteur.** L'ancien portfolio répond encore (HTTP 200), mais la série n'en dit rien.
