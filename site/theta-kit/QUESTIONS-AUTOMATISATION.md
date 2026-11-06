@@ -95,10 +95,10 @@ Réponse : 👤 **Proposition tirée de `serie-ml`, à confirmer par l'auteur.**
 Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Simple, par Git : ajout dans `data/certificats.json`. Le site est statique et sans base de données ; une page `/admin` ajouterait une authentification à maintenir pour un ajout rare.
 
 **Q21.** Anglais britannique ou américain pour la version EN ?
-Réponse : 👤 **Décidé par l'auteur le 2026-11-06 : le site existe aussi en anglais**, mais pas forcément le contenu des documents. L'interface, le profil et les pages sont traduits ; les PDF restent en français, comme sur LinkedIn (`docs/04-i18n.md`), et un texte d'épisode non traduit passe par le repli « Available in French only for now » (`docs/03-contenu.md`). Orthographe britannique ou américaine : à décider par l'auteur, la série ne tranche pas.
+Réponse : 👤 **Décidé par l'auteur le 2026-11-06 : le site existe aussi en anglais**, mais pas forcément le contenu des documents. L'interface, le profil et les pages sont traduits ; les PDF restent en français, comme sur LinkedIn (`docs/04-i18n.md`), et un texte d'épisode non traduit passe par le repli « Available in French only for now » (`docs/03-contenu.md`). Orthographe : **américaine**, choix délégué par l'auteur le 2026-11-07. C'est celle des références de la série (Google MLCC, *Deep Learning*, scikit-learn : optimization, regularization). L'anglais britannique de `messages/en.json` et `data/` est à convertir.
 
 **Q22.** Que faire de l'ancien portfolio `lama-portofolio.vercel.app` : redirection vers `/profil`, ou on le garde ?
-Réponse : 👤 **`serie-ml` ne tranche pas : à décider par l'auteur.** L'ancien portfolio répond encore (HTTP 200), mais la série n'en dit rien.
+Réponse : 👤 **Décidé par l'auteur le 2026-11-07 : redirection vers le nouveau profil** (`/fr/profil`), une fois le nouveau site en ligne. À faire depuis le compte Vercel de l'auteur. Les liens vers l'ancien portfolio (`data/profil.json`, prototypes) seront retirés.
 
 **Q23.** Pour l'AI for Good Bronze Award : nom exact de l'équipe (HeriTech) et ton rôle dans l'équipe, à afficher ?
 Réponse : Nom de l'équipe : **HeriTech**, confirmé par le certificat (`public/certificats/ai-for-good-bronze-2026.jpg`). Il cite trois membres, dont l'auteur, et deux tuteurs. Rôle dans l'équipe : inconnu, à demander à l'auteur ; ni le certificat ni `data/` ne le disent.
