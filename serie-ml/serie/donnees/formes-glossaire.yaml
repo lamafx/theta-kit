@@ -1,0 +1,85 @@
+# Formes ajoutées aux termes de charte/glossaire.yaml, pour le contrôle des termes (serie verifier).
+# charte/ est verrouillé pendant la construction (NUIT.md) : les formes complétées vivent ici (AMBIGUITES.md, A28).
+#
+# Le code dérive déjà de chaque forme du glossaire : la forme sans symbole final (« paramètre θ » → « paramètre »),
+# sans parenthèse (« erreur (résidu) » → « erreur », « résidu »), et le pluriel régulier (« minimums locaux »).
+# Ce fichier ajoute ce que le code ne peut pas deviner : verbes, adjectifs, synonymes, pluriels irréguliers.
+#
+# `courants` : termes qui sont aussi des mots de la langue courante (« la valeur de η », « le contexte
+# historique ») ; leur emploi avant l'épisode qui les introduit est un avertissement à relire, pas une erreur.
+
+formes:
+  apprentissage: [apprend, apprendre, apprennent, appris]
+  supervisé: [supervisée, supervisés, supervisées]
+  non supervisé: [non supervisée, non supervisés, non supervisées]
+  classification: [classifications]
+  régression: [régressions]
+  modèle: [modèles]
+  entraînement: [entraîner, entraîne, entraînent, entraîné, entraînée, entraînés, entraînées, entraînements]
+  erreur (résidu): [résidus]
+  fonction de coût J: [coût]
+  erreur quadratique moyenne (MSE): [erreur quadratique]
+  dérivée: [dériver, dérivées]
+  tangente: [tangentes]
+  pente: [pentes]
+  dérivée partielle: [dérivées partielles]
+  gradient ∇J: [gradients]
+  taux d'apprentissage η: [taux d’apprentissage]
+  itération: [itérations, itérer]
+  convergence: [converge, convergent, converger, convergé]
+  oscillation: [oscille, oscillent, osciller, oscillations]
+  divergence: [diverge, divergent, diverger, divergé, divergences]
+  descente stochastique (SGD): [stochastique]
+  mini-lot: [mini-lots]
+  époque: [époques]
+  fonction convexe: [convexe, convexes]
+  normalisation: [normaliser, normalisé, normalisées, normalisés]
+  standardisation: [standardiser, standardisé]
+  polynôme: [polynomiale, polynomial]
+  sigmoïde σ: [sigmoïdes]
+  surapprentissage: [sur-apprentissage, surapprend]
+  régularisation: [régulariser, régularisé]
+  neurone: [neurones]
+  rétropropagation: [rétro-propagation]
+  embedding: [embeddings, plongement, plongements]
+  token: [tokens, jeton, jetons]
+  convolution: [convolutions, convolutif]
+
+courants:
+  - erreur (résidu)
+  - pente
+  - tangente
+  - moyenne μ
+  - poids w
+  - degré
+  - classe
+  - probabilité
+  - précision
+  - rappel
+  - exactitude
+  - pli
+  - capacité
+  - biais
+  - bruit
+  - pénalité
+  - patience
+  - distance
+  - nœud
+  - feuille
+  - profondeur
+  - marge
+  - noyau
+  - inertie
+  - séquence
+  - contexte
+  - fenêtre
+  - attention
+  - requête
+  - clé
+  - valeur
+  - génération
+  - température
+  - intention
+  - vocabulaire
+  - ajustement
+  - filtre (noyau)

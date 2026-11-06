@@ -1,0 +1,55 @@
+numero: 31
+titre: Les arbres de décision
+format: long
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: Une suite de questions, oui ou non.
+couverture:
+  famille: arbre
+  description: un arbre qui se ramifie
+  verbe: se demander
+  geste: menton
+prerequis_explicites: []
+termes_introduits:
+- terme: nœud
+  formes:
+  - nœud
+- terme: feuille
+  formes:
+  - feuille
+- terme: profondeur
+  formes:
+  - profondeur
+- terme: impureté de Gini
+  formes:
+  - impureté de Gini
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Un arbre qui décide d'accorder un prêt.
+- page: 3
+  type: Mécanisme
+  message: Chaque question découpe l'espace en rectangles.
+- page: 4
+  type: Mécanisme
+  message: La meilleure question est celle qui rend les groupes les plus purs.
+- page: 5
+  type: Comparaison
+  message: Profondeur 2, 5, puis illimitée.
+- page: 6
+  type: Piège
+  message: Un arbre trop profond apprend par cœur (25).
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 32
+  transition: Un arbre seul est nerveux. Et une forêt ?
+references:
+  cours:
+  - titre: SKL · Decision trees
+    url: https://scikit-learn.org/stable/modules/tree.html
+  sources_originales: []

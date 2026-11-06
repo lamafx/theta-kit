@@ -1,0 +1,48 @@
+numero: 45
+titre: Le dropout
+format: court
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Éteindre des neurones au hasard pour mieux apprendre.
+couverture:
+  famille: reseau
+  description: réseau dont certains nœuds sont grisés
+  verbe: régler
+  geste: regler
+prerequis_explicites:
+- 25
+termes_introduits:
+- terme: dropout
+  formes:
+  - dropout
+- terme: taux de dropout
+  formes:
+  - taux de dropout
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: À chaque pas, 20 à 50 % des neurones sont éteints.
+- page: 3
+  type: Mécanisme
+  message: 'Aucun neurone ne peut compter sur un autre : le réseau devient plus robuste.'
+- page: 4
+  type: Piège
+  message: On ne l'applique qu'à l'entraînement, jamais en prédiction.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 46
+  transition: 'Dernière astuce : garder les valeurs internes sous contrôle.'
+references:
+  cours:
+  - titre: D2L 5.6
+    url: https://d2l.ai/chapter_multilayer-perceptrons/dropout.html
+  sources_originales:
+  - citation: Srivastava et al. (2014), Dropout, JMLR
+    liens:
+    - titre: Dropout
+      url: https://jmlr.org/papers/v15/srivastava14a.html

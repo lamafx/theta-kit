@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Nº 07 · Le gradient</title>
+<style>
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-cyrillic-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-cyrillic-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-cyrillic-ext-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-cyrillic-ext-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-symbols2-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-symbols2-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-vietnamese-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-vietnamese-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-ext-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-ext-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-ext-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-cyrillic-ext-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-vietnamese-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-vietnamese-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-vietnamese-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-vietnamese-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-latin-ext-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-mono-latin-ext-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-sans-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-sans-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-sans-latin-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/geist-sans-latin-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-ext-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-ext-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-ext-500-italic.woff2') format('woff2');font-weight:500;font-style:italic;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-latin-ext-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:italic;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:500;font-style:italic;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'STIX Two Text';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-math-latin-400-normal.woff2') format('woff2');font-weight:700;font-style:normal;unicode-range:U+2207, U+202F;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0370-03FF;font-display:block}
+@font-face{font-family:'Geist Mono';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0370-03FF;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;unicode-range:U+0370-03FF;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:500;font-style:normal;unicode-range:U+0370-03FF;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:600;font-style:normal;unicode-range:U+0370-03FF;font-display:block}
+@font-face{font-family:'Geist';src:url('file:///C:/DEV/theta-kit/serie-ml/design/fonts/stix-two-text-greek-400-normal.woff2') format('woff2');font-weight:700;font-style:normal;unicode-range:U+0370-03FF;font-display:block}
+@page{size:1080px 1350px;margin:0}
+body{margin:0;background:#FFFFFF}
+.page{--accent:#2D5BFF;width:1080px;height:1350px;box-sizing:border-box;padding:72px 80px 56px;background:#FFFFFF;color:#0E1116;font-family:'Geist',sans-serif;display:flex;flex-direction:column;overflow:hidden}
+/* Un bloc trop haut ne rétrécit pas les autres (un visuel serait écrasé) : il pousse le pied, que le contrôle de débordement voit. */
+.page > *{flex-shrink:0}
+.accent{color:var(--accent)}
+.m{font-family:'STIX Two Text',serif}
+.it{font-style:italic}
+strong{font-weight:600}
+
+/* En-tête et pied de page */
+.entete{display:flex;justify-content:space-between;align-items:center;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase}
+.entete .gauche{display:flex;gap:14px}
+.entete .numero{color:var(--accent)}
+.entete .chapitre,.entete .pagination{color:#5F6673}
+.pied{margin-top:auto;padding-top:22px;border-top:1px solid #E4E6EA;display:flex;justify-content:space-between;align-items:center}
+.pied .signature{font-size:24px;font-weight:500;color:#0E1116}
+.glissez{display:flex;align-items:center;gap:12px}
+.glissez span{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#5F6673}
+
+/* Pages de contenu */
+.role{margin-top:64px;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+.titre-page{margin:16px 0 0;font-size:60px;line-height:1.06;font-weight:600;letter-spacing:-0.03em;color:#0E1116}
+.texte{margin:24px 0 0;max-width:880px;font-size:30px;line-height:1.45;color:#3E4450}
+
+/* Couverture et couverture de bilan */
+.page.sombre{--accent:#4C8DFF;background:#0A0F17;color:#F5F8FC}
+.sombre .entete{position:relative;z-index:2}
+.sombre .entete .chapitre{color:#8A97A8}
+.serie{display:flex;align-items:baseline;gap:10px;color:#8A97A8}
+.serie .theta{font-family:'STIX Two Text',serif;font-style:italic;font-size:24px;letter-spacing:0;text-transform:none;color:var(--accent)}
+.scene{position:relative;width:920px;height:700px;flex-shrink:0}
+.robot-couverture{position:absolute;left:160px;top:60px;display:block}
+.titre-couverture{position:relative;z-index:2;margin:8px 0 0;font-size:108px;line-height:0.95;font-weight:600;letter-spacing:-0.035em;color:#F5F8FC}
+.accroche{margin:26px 0 0;max-width:780px;font-size:30px;line-height:1.38;color:#A7B3C2}
+/* Couverture d'épisode (2026-10-26, design/propositions/couverture-n01.html) : scène plus basse, robot réduit à 95 %, titre 92 px */
+.scene-couverture-ep{height:640px}
+.scene-couverture-ep .robot-couverture{left:175px;top:32px;width:570px;height:608px}
+.titre-couverture-ep{margin-top:12px;font-size:92px;line-height:0.98}
+.accroche-couverture-ep{margin-top:28px;max-width:820px}
+/* Couverture A (session de design n° 2, 2026-11-01, theta-maj-visuels) : robot en buste qui joue le sujet ; le motif
+   de la famille dans la zone que son bras atteint ; titre en bas, ou en haut quand le robot occupe le bas. */
+.page-couverture-a{position:relative}
+.scene-a{position:absolute;left:0;top:0;width:1080px;height:1350px;z-index:0}
+.motif-a{position:absolute;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent),linear-gradient(to right,transparent,#000 10%,#000 90%,transparent);-webkit-mask-composite:source-in;mask-composite:intersect}
+.motif-a > svg{position:absolute !important;left:50% !important;top:50% !important;transform:translate(-50%,-50%)}
+.robot-a{position:absolute;left:0;top:0;display:block}
+.bloc-titre-a{position:relative;z-index:2;margin-top:auto;display:flex;flex-direction:column}
+.bloc-titre-a.en-haut{margin-top:64px}
+.titre-couverture-a{margin:0;font-size:124px;line-height:0.93;font-weight:600;letter-spacing:-0.04em;color:#F5F8FC;max-width:760px}
+.titre-couverture-a.long{font-size:96px;line-height:0.96}
+.accroche-a{margin:28px 0 0;max-width:720px;font-size:32px;line-height:1.35;color:#A7B3C2}
+.pied-a{position:relative;z-index:2;margin-top:48px}
+.pied-a.en-bas{margin-top:auto}
+.pied-a.etroit{width:420px}
+.pied-a .pied{margin-top:0}
+.sombre .pied{border-top-color:#1E2938}
+.sombre .pied .signature{color:#F5F8FC}
+.sombre .glissez span{color:#8A97A8}
+
+/* Ouverture */
+.rappel{margin-top:52px;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.08em;color:#5F6673}
+.grand-titre{margin:22px 0 0;font-size:108px;line-height:0.95;font-weight:600;letter-spacing:-0.035em;color:#0E1116}
+.intuition{margin:28px 0 0;max-width:820px;font-size:30px;line-height:1.42;font-weight:400;color:#3E4450}
+.visuel-ouverture{margin-top:40px;display:flex;flex-direction:column;gap:6px}
+.legende{font-family:'Geist Mono',monospace;font-size:22px;letter-spacing:0.04em;color:#5F6673;padding-left:40px}
+
+/* Mécanisme */
+.encadres{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;border-top:1px solid #E4E6EA;padding-top:28px}
+.encadre{display:flex;flex-direction:column;gap:8px}
+.encadre .titre-encadre{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#5F6673}
+.encadre .texte-encadre{font-size:24px;line-height:1.35;color:#0E1116}
+
+/* Comparaison */
+.cas-grille{margin-top:48px;display:grid;grid-template-columns:repeat(var(--nb-cas),minmax(0,1fr));gap:40px}
+.cas{display:flex;flex-direction:column;gap:14px;border-top:2px solid #E4E6EA;padding-top:18px}
+.cas .cas-etiquette{font-family:'STIX Two Text',serif;font-size:26px;color:#0E1116}
+.cas .cas-titre{font-size:26px;font-weight:600;color:#5F6673}
+.cas .cas-texte{font-size:22px;line-height:1.4;color:#3E4450}
+.cas.retenu{border-top-color:var(--accent)}
+.cas.retenu .cas-titre{color:var(--accent)}
+.cas.alerte{border-top-color:#C2410C}
+.cas.alerte .cas-titre{color:#C2410C}
+.pratique{margin-top:auto;margin-bottom:28px;background:#F4F6FA;border-radius:20px;padding:26px 32px;display:flex;flex-direction:column;gap:8px}
+.pratique span.titre-encadre{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+.pratique p{margin:0;font-size:24px;line-height:1.4;color:#0E1116}
+.pratique + .pied{margin-top:0}
+
+/* Formule */
+.panneau{margin-top:52px;background:#F4F6FA;border-radius:24px;padding:64px 40px;display:flex;justify-content:center}
+.panneau .formule{font-family:'STIX Two Text','Times New Roman',serif;font-size:76px;line-height:1;color:#0E1116;white-space:nowrap}
+.panneau .formule sub{font-size:0.58em;vertical-align:-0.34em;line-height:0}
+.panneau .formule .op{padding:0 0.26em}
+.panneau .formule .nabla{padding-left:0.1em}
+/* Fraction empilée et grands opérateurs (Σ, Π), comme dans un texte de mathématiques */
+.frac{display:inline-flex;flex-direction:column;align-items:stretch;vertical-align:middle;text-align:center;font-size:0.74em;line-height:1.05;margin:0 0.14em}
+.frac .num{padding:0 0.18em 0.08em;border-bottom:0.055em solid currentColor}
+.frac .den{padding:0.08em 0.18em 0}
+.grand{font-style:normal;font-size:1.25em;vertical-align:-0.06em;padding:0 0.06em}
+.panneau .phrase{font-size:38px;line-height:1.25;font-weight:500;letter-spacing:-0.015em;color:#0E1116;text-align:center}
+.lignes{margin-top:44px;display:flex;flex-direction:column}
+.ligne{display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;align-items:baseline;padding:22px 0;border-top:1px solid #E4E6EA}
+.ligne:last-child{border-bottom:1px solid #E4E6EA}
+.ligne .symbole{font-family:'STIX Two Text',serif;font-size:36px;color:#0E1116}
+.ligne .symbole.accent{color:var(--accent)}
+.ligne .symbole sub{font-size:0.62em;vertical-align:-0.3em;line-height:0}
+.ligne .numero-ligne{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;color:var(--accent)}
+.ligne .sens{font-size:24px;line-height:1.4;color:#3E4450}
+
+/* Exemple chiffré */
+.tableau{margin-top:40px;width:100%;border-collapse:collapse;font-size:24px;font-variant-numeric:tabular-nums}
+.tableau thead tr{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.06em;text-transform:none;color:#5F6673}
+.tableau th{text-align:right;padding:0 0 14px;font-weight:500}
+.tableau th:first-child{text-align:left}
+.tableau tbody tr{border-top:1px solid #E4E6EA}
+.tableau tbody tr:last-child{border-bottom:1px solid #E4E6EA}
+.tableau td{padding:18px 0;text-align:right}
+.tableau td:first-child{text-align:left;color:#5F6673}
+.tableau td.accent{color:var(--accent)}
+.tableau td.gras{font-weight:600}
+.conclusion{margin:28px 0 0;font-size:24px;line-height:1.4;color:#0E1116}
+
+/* Piège */
+.page-piege .role{color:#C2410C}
+.alerte-encadre{margin-top:40px;border-top:2px solid #C2410C;padding-top:24px;display:flex;flex-direction:column;gap:10px}
+.alerte-encadre span{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C2410C}
+.alerte-encadre p{margin:0;font-size:26px;line-height:1.4;color:#0E1116}
+
+/* Images réelles : contexte et capture */
+.figure{margin:40px 0 0;display:flex;flex-direction:column;gap:14px}
+.photo{position:relative;width:920px;height:430px;border-radius:20px;overflow:hidden;border:1px solid #E4E6EA;background:#EEF1F5}
+/* Traitement de la charte (regles-redaction.md) : noir et blanc, contraste, recadrage au centre. */
+.image-reelle{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(1) contrast(1.08)}
+.capture .image-reelle{object-position:top left;filter:grayscale(1) contrast(1.04)}
+.voile{position:absolute;inset:0;background:var(--accent);opacity:0.08;mix-blend-mode:multiply;pointer-events:none}
+.figure figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:24px}
+.legende-image{font-size:22px;line-height:1.4;color:#3E4450}
+/* Crédit sur une ligne s'il tient (comme le canevas), sinon sur plusieurs, aligné à droite. */
+.credit{flex-shrink:0;max-width:500px;text-align:right;font-family:'Geist Mono',monospace;font-size:22px;letter-spacing:0.06em;color:#5F6673}
+/* Contexte sans image : le texte prend la place de la photo, dans le même cadre ; la frise des repères s'agrandit. */
+.a-la-place{margin-top:40px;width:920px;height:430px;box-sizing:border-box;border-radius:20px;background:#F4F6FA;padding:48px 64px;display:flex;align-items:center}
+.a-la-place p{margin:0;font-size:34px;line-height:1.42;color:#0E1116}
+.frise{margin-top:56px;position:relative;display:grid;grid-template-columns:repeat(var(--nb-reperes),minmax(0,1fr));gap:40px;padding-top:44px}
+.frise::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:#E4E6EA}
+.jalon{position:relative;display:flex;flex-direction:column;gap:10px}
+.jalon::before{content:"";position:absolute;left:0;top:-44px;width:20px;height:20px;box-sizing:border-box;border-radius:50%;border:3px solid var(--accent);background:#FFFFFF}
+.jalon .date{font-family:'Geist Mono',monospace;font-size:40px;font-weight:500;line-height:1;color:var(--accent)}
+.jalon .fait{font-size:26px;line-height:1.35;color:#0E1116}
+.reperes{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;border-top:1px solid #E4E6EA;padding-top:24px}
+.repere{display:flex;flex-direction:column;gap:6px}
+.repere .date{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;color:var(--accent)}
+.repere .fait{font-size:22px;line-height:1.35;color:#0E1116}
+.schema{width:920px;box-sizing:border-box;border-radius:20px;border:1px solid #E4E6EA;background:#F4F6FA;padding:36px 0;display:flex;justify-content:center}
+.page-capture .avec-capture{flex:1 1 auto;margin-bottom:48px}
+.avec-capture .capture{flex:1 1 auto;display:flex;flex-direction:column}
+.capture{width:920px;border-radius:20px;overflow:hidden;border:1px solid #E4E6EA;background:#FFFFFF}
+.capture .barre{height:44px;box-sizing:border-box;padding:0 20px;display:flex;align-items:center;gap:8px;background:#F4F6FA;border-bottom:1px solid #E4E6EA}
+.capture .barre .point{width:10px;height:10px;border-radius:5px;background:#D5DCE6}
+.capture .barre .fenetre{margin-left:14px;font-family:'Geist Mono',monospace;font-size:22px;letter-spacing:0.06em;color:#5F6673}
+.capture .ecran{position:relative;flex:1 1 auto;min-height:430px;background:#EEF1F5}
+.capture .surlignage{position:absolute;left:24px;right:24px;box-sizing:border-box;border:2.5px solid var(--accent);border-radius:12px;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;pointer-events:none}
+.capture .badge{background:var(--accent);color:#FFFFFF;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;border-radius:8px}
+
+/* Fin */
+.page.page-fin{--accent:#2D5BFF;background:#EEF2F8;color:#0E1116;position:relative}
+.page-fin .entete .chapitre,.page-fin .entete .pagination{color:#5F6673}
+.a-retenir{margin-top:72px;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+.points{margin:36px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:40px;max-width:900px}
+.points li{display:flex;gap:28px;align-items:baseline}
+.points .numero-point{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;color:var(--accent);min-width:36px}
+.points .point{font-size:38px;line-height:1.25;font-weight:500;letter-spacing:-0.015em;color:#0E1116}
+.verifiez{margin-top:auto;max-width:380px;box-sizing:border-box;background:#FFFFFF;border-radius:20px;padding:24px 28px;display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+.verifiez .etiquette-verifiez{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+.verifiez .question{font-size:24px;line-height:1.35;font-weight:500;color:#0E1116}
+.verifiez .reponse{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5F6673}
+.suivant{margin-top:auto;margin-bottom:40px;max-width:380px;display:flex;flex-direction:column;gap:10px}
+.suivant .etiquette-suivant{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#5F6673}
+.suivant .titre-suivant{font-size:30px;line-height:1.15;font-weight:600;letter-spacing:-0.02em;color:#0E1116}
+.suivant .transition{font-size:22px;line-height:1.35;font-weight:500;color:#0E1116}
+.verifiez + .suivant{margin-top:36px}
+.suivant .saisons{margin:6px 0 4px;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.suivant .saisons li{display:flex;gap:16px;align-items:baseline;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.06em}
+.suivant .saisons .saison{min-width:96px;color:var(--accent)}
+.suivant .saisons .episodes{color:#3E4450}
+.reprise{margin:28px 0 0;max-width:900px;font-size:52px;line-height:1.1;font-weight:600;letter-spacing:-0.03em;color:#0E1116}
+.lignes-reprise{margin-top:40px;gap:22px}
+.lignes-reprise .point{font-size:32px}
+.suivant .invitation{font-size:22px;line-height:1.4;color:#3E4450}
+.page-fin .pied{position:relative;z-index:2;margin-top:0;border-top-color:#D5DCE6;justify-content:flex-start}
+.page-fin .pied .signature{color:#0E1116}
+.robot-baguette{position:absolute;left:380px;top:726px;display:block}
+
+/* Bilan de saison : sommaire */
+.texte-sommaire{margin:22px 0 0;max-width:880px;font-size:24px;line-height:1.45;color:#3E4450}
+.sommaire{margin-top:44px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
+.colonne{display:flex;flex-direction:column;gap:32px}
+.chapitre-bilan{display:flex;flex-direction:column}
+.chapitre-bilan .nom-chapitre{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#5F6673;padding-bottom:10px;border-bottom:2px solid #0E1116}
+.chapitre-bilan .episode{display:flex;gap:16px;align-items:baseline;padding:10px 0;border-bottom:1px solid #E4E6EA}
+.chapitre-bilan .numero-episode{font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;color:var(--accent);min-width:28px}
+.chapitre-bilan .titre-episode{font-size:22px;line-height:1.3}
+
+</style>
+</head>
+<body>
+<div class="page sombre page-couverture page-couverture-a">
+<div class="scene-a" aria-hidden="false">
+<div class="motif-a" style="left:40px;top:180px;width:520px;height:460px"><svg viewBox="0 0 1080 780" width="1080" height="780" aria-hidden="true" style="position: absolute; left: -80px; top: -60px; display: block">
+<defs>
+<marker id="kc-step" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4C8DFF"></path></marker>
+</defs>
+<g fill="none" stroke="#4C8DFF" stroke-width="1.5">
+<ellipse cx="540" cy="400" rx="270" ry="135" stroke-opacity="0.12"></ellipse>
+<ellipse cx="540" cy="400" rx="225" ry="112" stroke-opacity="0.17"></ellipse>
+<ellipse cx="540" cy="400" rx="185" ry="92" stroke-opacity="0.24"></ellipse>
+<ellipse cx="540" cy="400" rx="148" ry="74" stroke-opacity="0.32"></ellipse>
+<ellipse cx="540" cy="400" rx="114" ry="57" stroke-opacity="0.42"></ellipse>
+<ellipse cx="540" cy="400" rx="82" ry="41" stroke-opacity="0.55"></ellipse>
+</g>
+<line x1="724.3" y1="335.8" x2="764.9" y2="278.7" stroke="#4C8DFF" stroke-width="2.5" marker-end="url(#kc-step)"></line>
+<circle cx="724.3" cy="335.8" r="4.5" fill="#4C8DFF"></circle>
+<line x1="405.9" y1="368.7" x2="354.7" y2="321" stroke="#4C8DFF" stroke-width="2.5" marker-end="url(#kc-step)"></line>
+<circle cx="405.9" cy="368.7" r="4.5" fill="#4C8DFF"></circle>
+<line x1="447.5" y1="479.7" x2="428.2" y2="547" stroke="#4C8DFF" stroke-width="2.5" marker-end="url(#kc-step)"></line>
+<circle cx="447.5" cy="479.7" r="4.5" fill="#4C8DFF"></circle>
+<line x1="501" y1="346.4" x2="488.5" y2="277.6" stroke="#4C8DFF" stroke-width="2.5" marker-end="url(#kc-step)"></line>
+<circle cx="501" cy="346.4" r="4.5" fill="#4C8DFF"></circle>
+</svg></div>
+<svg class="robot-a" viewBox="0 0 1080 1350" width="1080" height="1350" xmlns="http://www.w3.org/2000/svg"><g transform="translate(405 110) scale(1.45 1.45)"><g role="img" aria-label="Le robot de la série : régler."><defs>
+<radialGradient id="r07-shell" cx="38%" cy="28%" r="80%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#E4E9EF"/><stop offset="1" stop-color="#97A3B2"/></radialGradient>
+<linearGradient id="r07-visor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C2735"/><stop offset="1" stop-color="#04070B"/></linearGradient>
+<linearGradient id="r07-bronze" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D3A1"/><stop offset="0.5" stop-color="#C08A52"/><stop offset="1" stop-color="#7E532C"/></linearGradient>
+<linearGradient id="r07-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5F6974"/><stop offset="0.45" stop-color="#D9DFE6"/><stop offset="1" stop-color="#5A636E"/></linearGradient>
+<radialGradient id="r07-disc" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#A3AEBB"/></radialGradient>
+<filter id="r07-glow" x="-80%" y="-120%" width="260%" height="340%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="r07-fade" gradientUnits="userSpaceOnUse" x1="0" y1="380" x2="0" y2="520"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#000000"/></linearGradient>
+<mask id="r07-mask" maskUnits="userSpaceOnUse" x="-400" y="-200" width="1400" height="1100"><rect x="-400" y="-200" width="1400" height="1100" fill="url(#r07-fade)"/></mask>
+</defs><g mask="url(#r07-mask)"><rect x="275" y="268" width="50" height="72" rx="8" fill="url(#r07-metal)"/>
+<ellipse cx="300" cy="338" rx="46" ry="8" fill="url(#r07-bronze)"/>
+<path d="M110 660 C110 420 160 345 230 337 L370 337 C440 345 490 420 490 660 Z" fill="url(#r07-shell)"/>
+<path d="M110 660 C110 420 160 345 230 337 L370 337 C440 345 490 420 490 660" fill="none" stroke="#8DB8FF" stroke-opacity="0.35" stroke-width="1.5"/>
+<path d="M200 395 Q300 420 400 395" fill="none" stroke="#B7C1CD" stroke-width="2"/>
+<circle cx="300" cy="448" r="20" fill="none" stroke="#B7C1CD" stroke-width="2"/>
+<circle cx="300" cy="448" r="10" fill="#4C8DFF" filter="url(#r07-glow)"/><circle cx="458" cy="392" r="24" fill="url(#r07-shell)"/><circle cx="458" cy="392" r="16" fill="none" stroke="url(#r07-bronze)" stroke-width="5"/></g><g transform="rotate(4 300 170)">
+<path d="M190 160 C190 20 410 20 410 160" fill="none" stroke="#262E39" stroke-width="16" stroke-linecap="round"/>
+<ellipse cx="300" cy="170" rx="120" ry="110" fill="url(#r07-shell)"/>
+<ellipse cx="300" cy="170" rx="120" ry="110" fill="none" stroke="#8DB8FF" stroke-opacity="0.4" stroke-width="1.5"/>
+<rect x="214" y="132" width="172" height="102" rx="51" fill="url(#r07-visor)"/>
+<path d="M234 160 Q258 142 296 140" fill="none" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="5" stroke-linecap="round"/>
+<g filter="url(#r07-glow)"><rect x="233" y="191" width="34" height="14" rx="7" fill="#9CC6FF"/><rect x="305" y="191" width="34" height="14" rx="7" fill="#9CC6FF"/></g>
+<circle cx="178" cy="182" r="42" fill="url(#r07-shell)"/><circle cx="178" cy="182" r="32" fill="none" stroke="url(#r07-bronze)" stroke-width="7"/><circle cx="178" cy="182" r="25" fill="url(#r07-disc)"/>
+<circle cx="422" cy="182" r="42" fill="url(#r07-shell)"/><circle cx="422" cy="182" r="32" fill="none" stroke="url(#r07-bronze)" stroke-width="7"/><circle cx="422" cy="182" r="25" fill="url(#r07-disc)"/>
+</g><path d="M142 392 L60 520 L-24 470" fill="none" stroke="#8F9BAA" stroke-width="50" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M142 392 L60 520 L-24 470" fill="none" stroke="#E7ECF1" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="520" r="15" fill="none" stroke="url(#r07-bronze)" stroke-width="5"/><path d="M-46 482 L-50 500" fill="none" stroke="#8F9BAA" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-46 482 L-50 500" fill="none" stroke="#E7ECF1" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M-18 484 L-20 500" fill="none" stroke="#8F9BAA" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M-18 484 L-20 500" fill="none" stroke="#E7ECF1" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><circle cx="-30" cy="464" r="30" fill="url(#r07-shell)" stroke="#8F9BAA" stroke-width="3"/><circle cx="-78" cy="470" r="36" fill="#1E2938" stroke="#8DB8FF" stroke-width="3"/>
+<line x1="-78" y1="470" x2="-99.6" y2="448.4" stroke="#4C8DFF" stroke-width="6" stroke-linecap="round"/>
+<g stroke="#8DB8FF" stroke-opacity="0.6" stroke-width="3" stroke-linecap="round"><line x1="-126" y1="470" x2="-136" y2="470"/><line x1="-78" y1="422" x2="-78" y2="412"/><line x1="-114.8" y1="433.2" x2="-122.8" y2="425.2"/></g><circle cx="142" cy="392" r="24" fill="url(#r07-shell)"/><circle cx="142" cy="392" r="16" fill="none" stroke="url(#r07-bronze)" stroke-width="5"/></g></g></svg>
+</div>
+<div class="entete">
+<span class="gauche"><span class="numero">Nº 07</span><span class="chapitre">Apprendre de ses erreurs</span></span>
+
+</div><div class="bloc-titre-a">
+<h1 class="titre-couverture-a" style="max-width:760px">Le<br>gradient<span class="accent">.</span></h1>
+<p class="accroche-a">La pente, quand il y a plusieurs boutons à régler.</p>
+</div><div class="pied-a">
+<div class="pied">
+<span class="signature">Ladji Lama Kamagate</span>
+<span class="glissez">
+<span>Glissez</span>
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color: var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span></div>
+</div>
+</div>
+</body>
+</html>

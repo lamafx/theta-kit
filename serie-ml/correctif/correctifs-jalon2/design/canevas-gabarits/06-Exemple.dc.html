@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page de contenu — Exemple chiffré</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#2D5BFF}a:hover{color:#1C3FC4}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 72px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Geist Mono', monospace; font-size: 17px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<span style="display: flex; gap: 14px"><span style="color: {{accent}}">Nº 08</span><span style="color: #5F6673">Apprendre de ses erreurs</span></span>
+<span style="color: #5F6673">6 / 8</span>
+</div>
+
+<span style="margin-top: 64px; font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Exemple chiffré</span>
+<h2 style="margin: 16px 0 0; font-size: 54px; line-height: 1.06; font-weight: 600; letter-spacing: -0.03em; color: #0E1116">Trois pas, à la main.</h2>
+<p style="margin: 24px 0 0; max-width: 880px; font-size: 27px; line-height: 1.45; color: #3E4450">Prenons l’erreur <span style="font-family: 'STIX Two Text', serif; font-style: italic">J</span>(<span style="font-family: 'STIX Two Text', serif; font-style: italic">θ</span>) = <span style="font-family: 'STIX Two Text', serif; font-style: italic">θ</span>², dont la pente vaut 2<span style="font-family: 'STIX Two Text', serif; font-style: italic">θ</span>. On part de <span style="font-family: 'STIX Two Text', serif; font-style: italic">θ</span> = 3, avec <span style="font-family: 'STIX Two Text', serif; font-style: italic; color: {{accent}}">η</span> = 0,1.</p>
+
+<table style="margin-top: 40px; width: 100%; border-collapse: collapse; font-size: 24px; font-variant-numeric: tabular-nums">
+<thead>
+<tr style="font-family: 'Geist Mono', monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">
+<th scope="col" style="text-align: left; padding: 0 0 14px; font-weight: 500">Pas</th>
+<th scope="col" style="text-align: right; padding: 0 0 14px; font-weight: 500">θ</th>
+<th scope="col" style="text-align: right; padding: 0 0 14px; font-weight: 500">Pente 2θ</th>
+<th scope="col" style="text-align: right; padding: 0 0 14px; font-weight: 500">Pas η × pente</th>
+<th scope="col" style="text-align: right; padding: 0 0 14px; font-weight: 500">Nouveau θ</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-top: 1px solid #E4E6EA">
+<td style="padding: 18px 0; color: #5F6673">1</td>
+<td style="padding: 18px 0; text-align: right">3</td>
+<td style="padding: 18px 0; text-align: right">6</td>
+<td style="padding: 18px 0; text-align: right; color: {{accent}}">0,6</td>
+<td style="padding: 18px 0; text-align: right; font-weight: 600">2,4</td>
+</tr>
+<tr style="border-top: 1px solid #E4E6EA">
+<td style="padding: 18px 0; color: #5F6673">2</td>
+<td style="padding: 18px 0; text-align: right">2,4</td>
+<td style="padding: 18px 0; text-align: right">4,8</td>
+<td style="padding: 18px 0; text-align: right; color: {{accent}}">0,48</td>
+<td style="padding: 18px 0; text-align: right; font-weight: 600">1,92</td>
+</tr>
+<tr style="border-top: 1px solid #E4E6EA; border-bottom: 1px solid #E4E6EA">
+<td style="padding: 18px 0; color: #5F6673">3</td>
+<td style="padding: 18px 0; text-align: right">1,92</td>
+<td style="padding: 18px 0; text-align: right">3,84</td>
+<td style="padding: 18px 0; text-align: right; color: {{accent}}">0,384</td>
+<td style="padding: 18px 0; text-align: right; font-weight: 600">1,536</td>
+</tr>
+</tbody>
+</table>
+
+<svg viewBox="0 0 920 360" width="920" height="360" role="img" aria-label="Courbe J égale thêta au carré. Quatre points descendent la pente : thêta 3 (erreur 9), 2,4 (5,76), 1,92 (3,69), 1,536 (2,36)." style="margin-top: 32px; display: block">
+<line x1="80" y1="320" x2="860" y2="320" stroke="#E4E6EA" stroke-width="2"></line>
+<polyline points="80.0,313.2 118.0,317.4 156.0,319.6 194.0,319.9 232.0,318.2 270.0,314.5 308.0,308.9 346.0,301.4 384.0,291.9 422.0,280.5 460.0,267.1 498.0,251.7 536.0,234.5 574.0,215.2 612.0,194.0 650.0,170.9 688.0,145.8 726.0,118.8 764.0,89.8 802.0,58.9 840.0,26.0" fill="none" stroke="#0E1116" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline>
+<polyline points="780,77 660,164.5 564,220.5 487.2,256.3" fill="none" stroke="{{accent}}" stroke-width="2"></polyline>
+<circle cx="180" cy="320" r="6" fill="#FFFFFF" stroke="#0E1116" stroke-width="2"></circle>
+<circle cx="660" cy="164.5" r="6" fill="{{accent}}"></circle>
+<circle cx="564" cy="220.5" r="5.5" fill="{{accent}}"></circle>
+<circle cx="487.2" cy="256.3" r="5" fill="{{accent}}"></circle>
+<circle cx="780" cy="77" r="8" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<g font-family="Geist Mono, monospace" font-size="16" font-weight="500" fill="#5F6673">
+<text x="800" y="82">J = 9</text>
+<text x="680" y="168">5,76</text>
+<text x="584" y="224">3,69</text>
+<text x="500" y="282">2,36</text>
+</g>
+<text x="180" y="350" text-anchor="middle" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">θ = 0</text>
+<text x="860" y="350" text-anchor="end" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">paramètre θ</text>
+</svg>
+
+<p style="margin: 28px 0 0; font-size: 24px; line-height: 1.4; color: #0E1116">L’erreur passe de 9 à 2,36 en trois pas, et chaque pas est plus court que le précédent.</p>
+
+<div style="margin-top: auto; padding-top: 22px; border-top: 1px solid #E4E6EA; display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 20px; font-weight: 500; color: #0E1116">Ladji Lama Kamagate</span>
+<span style="display: flex; align-items: center; gap: 12px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">Glissez</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D5BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2D5BFF","options":["#2D5BFF","#2D6CDF","#0E1116"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#2D5BFF' };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+episode: 8
+couverture: classique  # choix de l'utilisateur (2026-11-03) : la couverture d'avant la couverture A
+pages:
+
+- type: couverture
+  titre: "La descente\nde gradient."
+  visuel:
+    famille: niveaux
+    calcul: descente_gradient_2d
+    params:
+      # Couverture validée (session de design n° 2) : un chemin qui converge vers le centre ; 07 a des flèches sans chemin.
+      centre: [540, 400]
+      ellipses: [280, 240, 205, 175, 145, 118, 92]
+      opacites: [0.12, 0.17, 0.23, 0.3, 0.38, 0.48, 0.6]
+      depart: [-212, -65]
+      eta: 0.1
+      courbures: [1.3, 7.79]
+      pas: 3
+  visuel_classique:  # couverture classique : réglages d'avant la couverture A (fixture 08, commit e57677b)
+    famille: niveaux
+    calcul: descente_gradient_2d
+    params:
+      centre: [540, 300]
+      ellipses: [660, 570, 490, 415, 345, 280, 220]
+      opacites: [0.08, 0.12, 0.17, 0.24, 0.33, 0.45, 0.6]
+      depart: [-504, -154]
+      eta: 0.1
+      courbures: [1.3, 7.79]
+      pas: 3
+
+- type: ouverture
+  rappel: "On sait mesurer l'erreur (Nº 05) et lire une pente (Nº 06 et 07)."
+  titre: "Descendre\nla pente."
+  texte: "Le modèle ne voit pas toute la courbe du coût $J$. Il mesure la pente là où il est, fait un pas dans l'autre sens, et recommence."
+  sources: [d2l-local, ruder-aveugle, mlcc-direction, mlcc-pente-negative, d2l-negatif, ruder-oppose, mlcc-recommencer]
+  visuel:
+    famille: courbe
+    calcul: descente_gradient
+    params:
+      forme: descente
+      origine: [460, 340]
+      echelle: [105, 20]
+      axe: 372
+      theta0: -3.4
+      eta: 0.15
+      pas: 5
+      textes:
+        gradient: la pente monte
+        pas: le pas, à l'opposé
+        courbe: coût $J(θ)$
+        minimum: minimum
+        axe: paramètre θ
+      description: "Une courbe de coût en U. Le point de départ θ0 est haut sur le flanc gauche ; nabla J indique que la pente monte vers la gauche ; une flèche bleue fait un pas dans l'autre sens, vers θ1, puis des pas de plus en plus courts mènent au minimum."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Pente forte, grand pas.\nPente faible, petit pas."
+  texte: "Prenons un seul paramètre $θ$. $!η$, le taux d'apprentissage, est un nombre fixe choisi d'avance, ici 0,15 ; le pas vaut $!η$ × la pente. Loin du minimum, la pente est forte : grands pas. Près du minimum, elle s'aplatit : les pas raccourcissent d'eux-mêmes."
+  sources: [mlcc-taux, mlcc-controle, d2l-concepteur, d2l-fixe, ruder-taille, mlcc-multiplie, mlcc-proportionnel, mlcc-grand-pas]
+  visuel:
+    famille: courbe
+    calcul: descente_gradient
+    params:
+      forme: pentes
+      origine: [460, 380]
+      echelle: [105, 22]
+      axe: 410
+      eta: 0.15
+      points:
+      - {theta: -3, decalage: [85, 80]}
+      - {theta: -0.8, decalage: [-140, 22]}  # sous la courbe, hors de la tangente
+      textes:
+        pente: pente
+        pas: pas
+        minimum: minimum
+        courbe: coût $J(θ) = θ²$
+        axe: paramètre θ
+      description: "La courbe en U du coût J égal thêta au carré. En θ = −3, la tangente est raide (pente −6) et le pas vaut 0,9. En θ = −0,8, la tangente est douce (pente −1,6) et le pas ne vaut plus que 0,24."
+  encadres:
+  - titre: Le taux reste fixe
+    texte: "C'est la pente qui diminue : le même $η$ donne **des pas plus courts** quand la courbe s'aplatit."
+
+- type: comparaison
+  role: Comparaison
+  titre: "Le bon pas : ni trop petit,\nni trop grand."
+  texte: "Même courbe $J(θ)$ = $θ$², même départ, trois $!η$ différents. Seule la taille des pas change, et avec elle tout le comportement de la descente."
+  sources: [d2l-carre, d2l-lent, mlcc-trop-bas, mlcc-converge, d2l-oscille, d2l-diverge, mlcc-augmente, ruder-defi, mlcc-trop-haut, mlcc-ideal, mlcc-propre]
+  visuel:
+    famille: courbe
+    calcul: descente_gradient
+    params:
+      forme: comparaison
+      origine: [140, 200]
+      echelle: [26, 7.3]
+      domaine: [-4.9846, 4.9846]
+      theta0: -3.6
+  cas:
+  - etiquette: $η$ = 0,05
+    titre: Trop lent
+    texte: Après 5 pas, encore loin du minimum.
+    params: {eta: 0.05, pas: 5, description: "η égal 0,05 : cinq petits pas, le point reste loin du minimum."}
+  - etiquette: $η$ = 0,3
+    titre: Convergence
+    texte: 4 pas suffisent pour arriver près du minimum.
+    retenu: true
+    params: {eta: 0.3, pas: 4, description: "η égal 0,3 : quatre pas mènent tout près du minimum."}
+  - etiquette: $η$ = 1,05
+    titre: Divergence
+    texte: "Chaque pas saute de l'autre côté, plus haut : le point oscille et diverge."
+    alerte: true
+    params: {eta: 1.05, pas: 3, description: "η égal 1,05 : chaque pas saute de l'autre côté de la courbe, de plus en plus haut. Le coût augmente."}
+  encadre:
+    titre: En pratique
+    texte: "Il dépend du problème : chaque modèle et chaque jeu de données a le sien. Un $η$ un peu trop grand fait déjà **osciller** autour du minimum."
+
+- type: formule
+  role: Formule
+  titre: "Tout tient\nen une ligne."
+  texte: "Chaque pas suit la même règle. Une itération, c'est un pas : on la répète jusqu'à ce que la pente soit presque nulle, ou pour un nombre d'itérations fixé d'avance."
+  sources: [ruder-formule, ruder-oppose, d2l-regle, d2l-plusieurs, mlcc-nouveau, mlcc-iteratif, mlcc-recommencer, d2l-arret, ruder-taille]
+  panneau:
+    formule: θ_{t+1} = θ_t [−η]∇J(θ_t)
+  lignes:
+  - symbole: θ_t
+    sens: "les paramètres du modèle à l'itération $t$ ; ici, un seul"
+  - symbole: ∇J(θ_t)
+    sens: "le gradient du coût (épisode 07) ; avec un seul paramètre, la pente"
+  - symbole: "[η]"
+    sens: "le taux d'apprentissage : la taille du pas"
+  - symbole: "[−]"
+    sens: on va dans le sens opposé au gradient
+  - symbole: θ_{t+1}
+    sens: "les paramètres après ce pas"
+
+- type: exemple
+  role: Exemple chiffré
+  titre: Trois pas, à la main.
+  texte: "Prenons $J$($θ$) = $θ$², dont la pente vaut 2$θ$ (épisode 06). On part de $θ$ = 3, avec $!η$ = 0,1."
+  sources: [d2l-carre, mlcc-multiplie, d2l-regle, mlcc-nouveau]
+  tableau:
+    calcul: descente_gradient_tableau
+    params: {theta0: 3, eta: 0.1, pas: 3}
+    colonnes:
+    - {titre: Itération, champ: pas}
+    - {titre: θ, champ: theta}
+    - {titre: Pente 2θ, champ: pente}
+    - {titre: Pas η × pente, champ: deplacement, style: accent}
+    - {titre: Nouveau θ, champ: nouveau, style: gras}
+  visuel:
+    famille: courbe
+    calcul: descente_gradient
+    params:
+      forme: iterations
+      origine: [180, 320]
+      echelle: [200, 27]
+      echantillons: [-0.5, 3.3, 0.19]
+      theta0: 3
+      eta: 0.1
+      pas: 3
+      decalages: [[20, 5], [20, 3.5], [20, 3.5], [12.8, 25.7]]
+      textes:
+        erreur: J
+        origine: θ = 0
+        axe: paramètre θ
+      description: "La courbe du coût J égal thêta au carré. Quatre points descendent la pente : θ = 3 (coût 9), 2,4 (5,76), 1,92 (3,69), 1,536 (2,36)."
+  conclusion: "Le coût passe de 9 à 2,36 en trois pas, et chaque pas est plus court que le précédent."
+
+- type: piege
+  role: Piège
+  titre: "Pente nulle ne veut pas\ndire coût nul."
+  texte: "Reprenons le coût des ventes d'Ames selon $a$, $b$ fixé à 4 (épisode 05). Au creux, la droite de l'épisode 04, la pente est nulle : la descente s'arrête. Pourtant $J$ vaut encore 1 030 millions de FCFA au carré : aucune droite ne passe par toutes les ventes."
+  sources: [mlcc-bille, mlcc-converge, mlcc-convexe, mlcc-plancher, mlcc-zero, mlcc-meilleur, ames-ventes, ames-surface, ames-prix, ames-fichier, bceao-dollar]
+  visuel:
+    famille: courbe
+    params:
+      forme: plancher
+      origine: [460, 400]
+      echelle: [280, 0.13]
+      fonction: {a: 852.2, c: 1029.9}  # calculs.cout.cout_selon_a(b=4, unite=20) : θ = (a − 74) / 20
+      domaine: [-1.4, 1.4]
+      textes:
+        zero: coût = 0
+        pente: pente = 0
+        ecart: coût restant
+        courbe: coût $J$
+        axe: réglage $a$ ($b$ = 4)
+      description: "La courbe en U du coût J des droites d'Ames selon leur inclinaison a, avec b = 4 fixé. Au creux, la droite de l'épisode 04, la tangente est plate (pente nulle). Une accolade orange mesure le coût restant entre le creux, 1 030, et la ligne coût = 0."
+  encadre:
+    texte: "Plus de pas n'y changent rien : aucun autre réglage de cette droite ne fait mieux. Pour faire baisser $J$, il faut **changer de modèle**."
+
+- type: fin
+  points:
+  - "Le modèle mesure la pente là où il est, fait un pas dans l'autre sens, et recommence."
+  - "Le pas vaut $η$ × la pente : près du minimum, les pas raccourcissent d'eux-mêmes."
+  - "$η$ trop petit : trop lent. Trop grand : le point oscille et diverge."
+  verification:
+    question: "Pourquoi les pas raccourcissent-ils près du minimum, alors que $η$ ne change pas ?"
+    page: 3
+
+linkedin:
+  texte: |-
+    La descente de gradient a été décrite en 1847, pour calculer l'orbite d'un astre.
+
+    Le 18 octobre de cette année-là, Augustin Cauchy présente à l'Académie des sciences une méthode pour résoudre des systèmes d'équations : l'élimination habituelle échoue souvent, ou donne une équation très compliquée.
+
+    Son idée : partir de valeurs données, calculer les dérivées, retrancher à chaque inconnue sa dérivée multipliée par un petit nombre, puis recommencer.
+
+    Ce petit nombre, il le note déjà θ. Nous gardons cette lettre pour les paramètres et nommons η la taille du pas : θ ← θ − η∇J(θ).
+
+    Le reste a changé d'échelle : six inconnues pour une orbite chez Cauchy, 175 milliards de paramètres pour GPT-3 en 2020, entraînés avec des variantes de la même idée.
+
+    Le carrousel s'arrête sur ce que cette ligne cache : selon η, le même algorithme traîne, converge ou diverge.
+
+    Si votre coût monte à chaque itération, commencez par regarder η.
+  hashtag: "#DescenteDeGradient"
+  generique: "#Optimisation"

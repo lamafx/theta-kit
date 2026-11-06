@@ -1,0 +1,57 @@
+numero: 33
+titre: Le gradient boosting
+format: long
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: Chaque nouvel arbre corrige les erreurs du précédent.
+couverture:
+  famille: arbre
+  description: un escalier de petits arbres alignés
+  verbe: tracer
+  geste: tracer
+prerequis_explicites:
+- 8
+termes_introduits:
+- terme: boosting
+  formes:
+  - boosting
+- terme: apprenant faible
+  formes:
+  - apprenant faible
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: L'arbre 1 prédit, l'arbre 2 prédit l'erreur restante, et ainsi de suite.
+- page: 3
+  type: Mécanisme
+  message: La prédiction s'approche de la cible, étape par étape.
+- page: 4
+  type: Lien
+  message: C'est une descente de gradient, faite arbre par arbre.
+- page: 5
+  type: Comparaison
+  message: 'Forêt : des arbres en parallèle. Boosting : des arbres en série.'
+- page: 6
+  type: Repère
+  message: XGBoost et LightGBM, les références pour les données en tableau.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 34
+  transition: 'Revenons à la frontière : laquelle est la meilleure ?'
+references:
+  cours:
+  - titre: SKL · Gradient-boosted trees
+    url: https://scikit-learn.org/stable/modules/ensemble.html#gradient-boosted-trees
+  sources_originales:
+  - citation: 'Friedman (2001), Greedy function approximation: A gradient boosting machine, Annals of Statistics
+      ; Chen et Guestrin (2016), XGBoost'
+    liens:
+    - titre: 'Greedy function approximation: A gradient boosting machine'
+      url: https://doi.org/10.1214/aos/1013203451
+    - titre: XGBoost
+      url: https://arxiv.org/abs/1603.02754

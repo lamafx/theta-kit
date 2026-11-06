@@ -1,0 +1,54 @@
+numero: 21
+titre: La matrice de confusion
+format: court
+saison: 2
+chapitre:
+  numero: 5
+  titre: Évaluer un modèle
+accroche: Voir où le modèle se trompe, pas seulement combien.
+couverture:
+  famille: grille
+  description: grille 2 × 2 aux cases plus ou moins remplies
+  verbe: examiner
+  geste: loupe
+prerequis_explicites: []
+termes_introduits:
+- terme: vrai positif
+  formes:
+  - vrai positif
+- terme: faux positif
+  formes:
+  - faux positif
+- terme: vrai négatif
+  formes:
+  - vrai négatif
+- terme: faux négatif
+  formes:
+  - faux négatif
+- terme: exactitude
+  formes:
+  - exactitude
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Le tableau 2 × 2 : ce qui était vrai, ce qui a été prédit.'
+- page: 3
+  type: Exemple chiffré
+  message: '100 mails triés : lire chaque case.'
+- page: 4
+  type: Piège
+  message: '99 % d''exactitude avec 1 % de fraudes : il suffit de répondre toujours « pas fraude ».'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 22
+  transition: Il faut des mesures qui ne se laissent pas tromper.
+references:
+  cours:
+  - titre: MLCC · Thresholding
+    url: https://developers.google.com/machine-learning/crash-course/classification/thresholding
+  - titre: SKL · Classification metrics
+    url: https://scikit-learn.org/stable/modules/model_evaluation.html#classification-metrics
+  sources_originales: []

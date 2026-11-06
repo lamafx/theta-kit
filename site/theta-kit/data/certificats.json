@@ -1,0 +1,100 @@
+[
+  {
+    "id": "ai-for-good-bronze-2026",
+    "type": "prix",
+    "rang": "Bronze",
+    "date": "2026",
+    "image": "/certificats/ai-for-good-bronze-2026.jpg",
+    "fichier": "/certificats/ai-for-good-bronze-2026.jpg",
+    "titre": {
+      "fr": "Bronze Award · AI and Space Computing Challenge 2026",
+      "en": "Bronze Award · AI and Space Computing Challenge 2026"
+    },
+    "emetteur": {
+      "fr": "AI for Good Global Summit · UIT",
+      "en": "AI for Good Global Summit · ITU"
+    },
+    "competences": [
+      "IA",
+      "Équipe HeriTech"
+    ],
+    "desc": {
+      "fr": "Bronze Award de l’AI and Space Computing Challenge 2026, au AI for Good Global Summit, avec l’équipe HeriTech. Certificat signé par Seizo Onoe, directeur du Bureau de la normalisation des télécommunications de l’Union internationale des télécommunications.",
+      "en": "Bronze Award in the AI and Space Computing Challenge 2026, at the AI for Good Global Summit, with team HeriTech. Certificate signed by Seizo Onoe, Director of the Telecommunication Standardization Bureau of the International Telecommunication Union."
+    }
+  },
+  {
+    "id": "datacamp-nlp-python",
+    "type": "cert",
+    "date": "2026-05-26",
+    "image": "/certificats/datacamp-nlp-python.jpg",
+    "fichier": "/certificats/datacamp-nlp-python.pdf",
+    "numero": "47 895 236",
+    "titre": {
+      "fr": "Natural Language Processing (NLP) in Python",
+      "en": "Natural Language Processing (NLP) in Python"
+    },
+    "emetteur": {
+      "fr": "DataCamp",
+      "en": "DataCamp"
+    },
+    "competences": [
+      "NLP",
+      "Python"
+    ],
+    "desc": {
+      "fr": "Cours de 4 heures. Attestation nº 47 895 236.",
+      "en": "4-hour course. Statement of accomplishment no. 47 895 236."
+    }
+  },
+  {
+    "id": "datacamp-supervised-scikit-learn",
+    "type": "cert",
+    "date": "2026-05-22",
+    "image": "/certificats/datacamp-supervised-scikit-learn.jpg",
+    "fichier": "/certificats/datacamp-supervised-scikit-learn.pdf",
+    "numero": "47 703 932",
+    "titre": {
+      "fr": "Supervised Learning with scikit-learn",
+      "en": "Supervised Learning with scikit-learn"
+    },
+    "emetteur": {
+      "fr": "DataCamp",
+      "en": "DataCamp"
+    },
+    "competences": [
+      "Scikit-learn",
+      "Apprentissage supervisé"
+    ],
+    "desc": {
+      "fr": "Cours de 4 heures. Attestation nº 47 703 932.",
+      "en": "4-hour course. Statement of accomplishment no. 47 703 932."
+    }
+  },
+  {
+    "id": "smartwattuia-2025",
+    "type": "prix",
+    "rang": "3ᵉ",
+    "date": "2025-06",
+    "image": null,
+    "fichier": null,
+    "titre": {
+      "fr": "3ᵉ place au hackathon SmartWattUIA",
+      "en": "3rd place at the SmartWattUIA hackathon"
+    },
+    "emetteur": {
+      "fr": "Hackathon SmartWattUIA",
+      "en": "SmartWattUIA hackathon"
+    },
+    "competences": [
+      "Arduino",
+      "ESP32",
+      "FastAPI"
+    ],
+    "desc": {
+      "fr": "Système intelligent de gestion de l’électricité, conçu en quatre jours (11 au 14 juin 2025) : collecte des données et envoi par API pour optimiser la consommation. J’y ai réalisé la logique électronique et l’API.",
+      "en": "Intelligent electricity management system, built in four days (11 to 14 June 2025): data collection and sending through an API to optimise consumption. I built the electronic logic and the API."
+    },
+    "_note": "pas de fichier : la carte affiche une plaque typographique (voir prototype)"
+  }
+]

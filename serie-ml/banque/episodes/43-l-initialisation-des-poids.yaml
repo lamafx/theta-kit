@@ -1,0 +1,50 @@
+numero: 43
+titre: L'initialisation des poids
+format: court
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Bien partir pour bien apprendre.
+couverture:
+  famille: barres
+  description: histogrammes de poids en forme de cloche
+  verbe: ranger
+  geste: deposer
+prerequis_explicites: []
+termes_introduits:
+- terme: initialisation de Xavier
+  formes:
+  - initialisation de Xavier
+- terme: initialisation de He
+  formes:
+  - initialisation de He
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Tous les poids à zéro : tous les neurones apprennent la même chose.'
+- page: 3
+  type: Comparaison
+  message: Poids trop petits, trop grands, bien réglés.
+- page: 4
+  type: Repère
+  message: Xavier avec tanh, He avec ReLU.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 44
+  transition: 'Bien partir, puis bien marcher : améliorons la descente elle-même.'
+references:
+  cours:
+  - titre: D2L 5.4
+    url: https://d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html
+  sources_originales:
+  - citation: Glorot et Bengio (2010), Understanding the difficulty of training deep feedforward neural networks
+      ; He et al. (2015), Delving Deep into Rectifiers
+    liens:
+    - titre: Understanding the difficulty of training deep feedforward neural networks
+      url: https://proceedings.mlr.press/v9/glorot10a.html
+    - titre: Delving Deep into Rectifiers
+      url: https://arxiv.org/abs/1502.01852

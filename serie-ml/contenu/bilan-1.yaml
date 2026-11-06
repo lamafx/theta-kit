@@ -1,0 +1,22 @@
+# Bilan de la saison 1 : rien de nouveau, le post rassemble les épisodes 1 à 19.
+# Le sommaire vient des fiches, la reprise de calendrier.yaml.
+saison: 1
+couverture:
+  titre: "Saison 1,\nle bilan."
+  accroche: 19 épisodes pour comprendre comment une IA apprend. Le sommaire complet, à garder.
+sommaire:
+  titre: "De la première idée\nà la première décision."
+  texte: "Chaque épisode s'appuie sur les précédents. Relisez-les dans l'ordre : tous sont sur mon profil."
+linkedin:
+  texte: |-
+    19 épisodes, une seule question :
+    comment une machine apprend-elle ?
+
+    Elle part d'exemples. Elle mesure ses erreurs avec une fonction de coût. Elle corrige ses paramètres pas à pas, par descente de gradient.
+
+    Deux usages suivent : prédire un nombre avec la régression, choisir une catégorie avec la classification.
+
+    Ce post rassemble les quatre chapitres de la saison. Chaque épisode s'appuie sur les précédents : si vous en avez manqué un, le sommaire vous indique par où reprendre.
+
+    Il reste une question, celle de la saison 2 : comment savoir si un modèle est fiable ?
+  hashtag: "#FondamentauxML"

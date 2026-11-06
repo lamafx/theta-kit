@@ -1,0 +1,32 @@
+# Planche des fonds de couverture (A11, session de design n° 1) : une couverture par famille, rendue avec
+# le gabarit de couverture, le titre et l'accroche des fiches. 08 (Lignes de niveau) sert de modèle ; 07 (même famille, flèches ∇J, A56) 09 (chemin bruité, A59) et 10 (courbe ondulée, A60) s'y ajoutent ; 06 (courbe en U et tangentes, A62) aussi.
+# Session de design n° 2 (2026-11-01) : couverture A, chaque motif dans la zone du geste de l'épisode ; 03 et 04
+# comme leur contenu.
+- episode: 1
+  params: {}
+- episode: 2
+  params: {}
+  # Accroche figée comme sur l'image de référence : la fiche dit « ligne de tableau » depuis le 2026-11-01 (D22).
+  accroche: Pour une machine, un exemple n'est qu'une ligne de nombres.
+- episode: 3
+  params: {centres: [[480, 260], [700, 380], [560, 560]], effectifs: [30, 30, 26], dispersion: 55, graine: 3}
+- episode: 4
+  params: {marquee: 4, pivot: [500, 590]}
+- episode: 6
+  params: {tangentes: {origine: [560, 560], echelle: [62, 24], domaine: [-3, 3.1], points: [-1.5, 0, 2.5], longueur: 340}}
+- episode: 7
+  params: {centre: [540, 400], ellipses: [270, 225, 185, 148, 114, 82], opacites: [0.12, 0.17, 0.24, 0.32, 0.42, 0.55], rapport: 2.0, fleches: [[1, -35], [3, 205], [2, 120], [4, -110]], longueur: 70}
+- episode: 8
+  params: {centre: [540, 400], ellipses: [280, 240, 205, 175, 145, 118, 92], opacites: [0.12, 0.17, 0.23, 0.3, 0.38, 0.48, 0.6], depart: [-212, -65], eta: 0.1, courbures: [1.3, 7.79], pas: 3}
+- episode: 9
+  params: {centre: [540, 400], ellipses: [196, 168, 144, 122, 102, 83, 64], opacites: [0.12, 0.17, 0.23, 0.3, 0.38, 0.48, 0.6], depart: [-150, -46], eta: 0.1, courbures: [1.3, 7.79], pas: 14, bruit: 180, graine: 9}
+- episode: 10
+  params: {vague: {origine: [450, 405], echelle: [240, 150], domaine: [-1, 1.75], depart: -0.9, eta: 0.05, pas: 12}}
+- episode: 19
+  params: {}
+- episode: 20
+  params: {}
+- episode: 31
+  params: {}
+- episode: 37
+  params: {}

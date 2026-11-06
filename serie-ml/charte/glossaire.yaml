@@ -1,0 +1,773 @@
+# Formes à compléter au jalon 3 (pluriels, verbes, synonymes). Ex. : divergence → diverge, diverger, divergent.
+- terme: Machine Learning
+  introduit_par: 1
+  formes:
+  - Machine Learning
+- terme: exemple
+  introduit_par: 1
+  formes:
+  - exemple
+- terme: apprentissage
+  introduit_par: 1
+  formes:
+  - apprentissage
+- terme: modèle
+  introduit_par: 1  # A23 : employé par le canevas validé de l'épisode 01
+  formes:
+  - modèle
+- terme: jeu de données
+  introduit_par: 2
+  formes:
+  - jeu de données
+- terme: caractéristique
+  introduit_par: 2
+  formes:
+  - caractéristique
+- terme: étiquette
+  introduit_par: 2
+  formes:
+  - étiquette
+- terme: supervisé
+  introduit_par: 1  # décision de l'utilisateur (2026-10-26) : « apprentissage supervisé » est nommé et défini dès l'épisode 01
+  formes:
+  - supervisé
+- terme: non supervisé
+  introduit_par: 3
+  formes:
+  - non supervisé
+- terme: par renforcement
+  introduit_par: 3
+  formes:
+  - par renforcement
+- terme: régression
+  introduit_par: 3
+  formes:
+  - régression
+- terme: classification
+  introduit_par: 3
+  formes:
+  - classification
+- terme: paramètre θ
+  introduit_par: 4
+  formes:
+  - paramètre θ
+- terme: prédiction ŷ
+  introduit_par: 4
+  formes:
+  - prédiction ŷ
+- terme: entraînement
+  introduit_par: 4
+  formes:
+  - entraînement
+- terme: erreur (résidu)
+  introduit_par: 5
+  formes:
+  - erreur (résidu)
+- terme: fonction de coût J
+  introduit_par: 5
+  formes:
+  - fonction de coût J
+- terme: erreur quadratique moyenne (MSE)
+  introduit_par: 5
+  formes:
+  - erreur quadratique moyenne (MSE)
+- terme: dérivée
+  introduit_par: 6
+  formes:
+  - dérivée
+- terme: tangente
+  introduit_par: 6
+  formes:
+  - tangente
+- terme: pente
+  introduit_par: 6
+  formes:
+  - pente
+- terme: dérivée partielle
+  introduit_par: 7
+  formes:
+  - dérivée partielle
+- terme: gradient ∇J
+  introduit_par: 7
+  formes:
+  - gradient ∇J
+- terme: lignes de niveau
+  introduit_par: 7
+  formes:
+  - lignes de niveau
+- terme: taux d'apprentissage η
+  introduit_par: 8
+  formes:
+  - taux d'apprentissage η
+- terme: itération
+  introduit_par: 8
+  formes:
+  - itération
+- terme: convergence
+  introduit_par: 8
+  formes:
+  - convergence
+- terme: oscillation
+  introduit_par: 8
+  formes:
+  - oscillation
+- terme: divergence
+  introduit_par: 8
+  formes:
+  - divergence
+- terme: descente stochastique (SGD)
+  introduit_par: 9
+  formes:
+  - descente stochastique (SGD)
+- terme: mini-lot
+  introduit_par: 9
+  formes:
+  - mini-lot
+- terme: époque
+  introduit_par: 9
+  formes:
+  - époque
+- terme: minimum local
+  introduit_par: 10
+  formes:
+  - minimum local
+- terme: minimum global
+  introduit_par: 10
+  formes:
+  - minimum global
+- terme: point selle
+  introduit_par: 10
+  formes:
+  - point selle
+- terme: fonction convexe
+  introduit_par: 10
+  formes:
+  - fonction convexe
+- terme: poids w
+  introduit_par: 11
+  formes:
+  - poids w
+- terme: biais b
+  introduit_par: 11
+  formes:
+  - biais b
+- terme: ajustement
+  introduit_par: 11
+  formes:
+  - ajustement
+- terme: vecteur de poids
+  introduit_par: 12
+  formes:
+  - vecteur de poids
+- terme: produit scalaire
+  introduit_par: 12
+  formes:
+  - produit scalaire
+- terme: normalisation
+  introduit_par: 13
+  formes:
+  - normalisation
+- terme: standardisation
+  introduit_par: 13
+  formes:
+  - standardisation
+- terme: moyenne μ
+  introduit_par: 13
+  formes:
+  - moyenne μ
+- terme: écart-type σ
+  introduit_par: 13
+  formes:
+  - écart-type σ
+- terme: polynôme
+  introduit_par: 14
+  formes:
+  - polynôme
+- terme: degré
+  introduit_par: 14
+  formes:
+  - degré
+- terme: classe
+  introduit_par: 15
+  formes:
+  - classe
+- terme: frontière de décision
+  introduit_par: 15
+  formes:
+  - frontière de décision
+- terme: classification binaire
+  introduit_par: 15
+  formes:
+  - classification binaire
+- terme: sigmoïde σ
+  introduit_par: 16
+  formes:
+  - sigmoïde σ
+- terme: probabilité
+  introduit_par: 16
+  formes:
+  - probabilité
+- terme: score (logit)
+  introduit_par: 17
+  formes:
+  - score (logit)
+- terme: seuil de décision
+  introduit_par: 17
+  formes:
+  - seuil de décision
+- terme: entropie croisée (log loss)
+  introduit_par: 18
+  formes:
+  - entropie croisée (log loss)
+- terme: logarithme
+  introduit_par: 18
+  formes:
+  - logarithme
+- terme: logits
+  introduit_par: 19
+  formes:
+  - logits
+- terme: softmax
+  introduit_par: 19
+  formes:
+  - softmax
+- terme: classification multi-classes
+  introduit_par: 19
+  formes:
+  - classification multi-classes
+- terme: encodage one-hot
+  introduit_par: 19
+  formes:
+  - encodage one-hot
+- terme: jeu d'entraînement
+  introduit_par: 20
+  formes:
+  - jeu d'entraînement
+- terme: jeu de validation
+  introduit_par: 20
+  formes:
+  - jeu de validation
+- terme: jeu de test
+  introduit_par: 20
+  formes:
+  - jeu de test
+- terme: fuite de données
+  introduit_par: 20
+  formes:
+  - fuite de données
+- terme: vrai positif
+  introduit_par: 21
+  formes:
+  - vrai positif
+- terme: faux positif
+  introduit_par: 21
+  formes:
+  - faux positif
+- terme: vrai négatif
+  introduit_par: 21
+  formes:
+  - vrai négatif
+- terme: faux négatif
+  introduit_par: 21
+  formes:
+  - faux négatif
+- terme: exactitude
+  introduit_par: 21
+  formes:
+  - exactitude
+- terme: précision
+  introduit_par: 22
+  formes:
+  - précision
+- terme: rappel
+  introduit_par: 22
+  formes:
+  - rappel
+- terme: score F1
+  introduit_par: 22
+  formes:
+  - score F1
+- terme: taux de vrais positifs
+  introduit_par: 23
+  formes:
+  - taux de vrais positifs
+- terme: taux de faux positifs
+  introduit_par: 23
+  formes:
+  - taux de faux positifs
+- terme: courbe ROC
+  introduit_par: 23
+  formes:
+  - courbe ROC
+- terme: AUC
+  introduit_par: 23
+  formes:
+  - AUC
+- terme: validation croisée à k plis
+  introduit_par: 24
+  formes:
+  - validation croisée à k plis
+- terme: pli
+  introduit_par: 24
+  formes:
+  - pli
+- terme: surapprentissage
+  introduit_par: 25
+  formes:
+  - surapprentissage
+- terme: sous-apprentissage
+  introduit_par: 25
+  formes:
+  - sous-apprentissage
+- terme: généralisation
+  introduit_par: 25
+  formes:
+  - généralisation
+- terme: capacité
+  introduit_par: 25
+  formes:
+  - capacité
+- terme: biais
+  introduit_par: 26
+  formes:
+  - biais
+- terme: variance
+  introduit_par: 26
+  formes:
+  - variance
+- terme: bruit
+  introduit_par: 26
+  formes:
+  - bruit
+- terme: régularisation
+  introduit_par: 27
+  formes:
+  - régularisation
+- terme: pénalité
+  introduit_par: 27
+  formes:
+  - pénalité
+- terme: L2 (Ridge)
+  introduit_par: 27
+  formes:
+  - L2 (Ridge)
+- terme: λ
+  introduit_par: 27
+  formes:
+  - λ
+- terme: L1 (Lasso)
+  introduit_par: 28
+  formes:
+  - L1 (Lasso)
+- terme: parcimonie
+  introduit_par: 28
+  formes:
+  - parcimonie
+- terme: sélection de caractéristiques
+  introduit_par: 28
+  formes:
+  - sélection de caractéristiques
+- terme: arrêt précoce
+  introduit_par: 29
+  formes:
+  - arrêt précoce
+- terme: patience
+  introduit_par: 29
+  formes:
+  - patience
+- terme: distance
+  introduit_par: 30
+  formes:
+  - distance
+- terme: k plus proches voisins (k-NN)
+  introduit_par: 30
+  formes:
+  - k plus proches voisins (k-NN)
+- terme: vote majoritaire
+  introduit_par: 30
+  formes:
+  - vote majoritaire
+- terme: nœud
+  introduit_par: 31
+  formes:
+  - nœud
+- terme: feuille
+  introduit_par: 31
+  formes:
+  - feuille
+- terme: profondeur
+  introduit_par: 31
+  formes:
+  - profondeur
+- terme: impureté de Gini
+  introduit_par: 31
+  formes:
+  - impureté de Gini
+- terme: méthode d'ensemble
+  introduit_par: 32
+  formes:
+  - méthode d'ensemble
+- terme: bagging
+  introduit_par: 32
+  formes:
+  - bagging
+- terme: forêt aléatoire
+  introduit_par: 32
+  formes:
+  - forêt aléatoire
+- terme: boosting
+  introduit_par: 33
+  formes:
+  - boosting
+- terme: apprenant faible
+  introduit_par: 33
+  formes:
+  - apprenant faible
+- terme: marge
+  introduit_par: 34
+  formes:
+  - marge
+- terme: vecteurs de support
+  introduit_par: 34
+  formes:
+  - vecteurs de support
+- terme: noyau
+  introduit_par: 34
+  formes:
+  - noyau
+- terme: regroupement (clustering)
+  introduit_par: 35
+  formes:
+  - regroupement (clustering)
+- terme: centroïde
+  introduit_par: 35
+  formes:
+  - centroïde
+- terme: inertie
+  introduit_par: 35
+  formes:
+  - inertie
+- terme: réduction de dimension
+  introduit_par: 36
+  formes:
+  - réduction de dimension
+- terme: composante principale
+  introduit_par: 36
+  formes:
+  - composante principale
+- terme: variance expliquée
+  introduit_par: 36
+  formes:
+  - variance expliquée
+- terme: neurone
+  introduit_par: 37
+  formes:
+  - neurone
+- terme: somme pondérée
+  introduit_par: 37
+  formes:
+  - somme pondérée
+- terme: perceptron
+  introduit_par: 37
+  formes:
+  - perceptron
+- terme: fonction d'activation
+  introduit_par: 38
+  formes:
+  - fonction d'activation
+- terme: non-linéarité
+  introduit_par: 38
+  formes:
+  - non-linéarité
+- terme: ReLU
+  introduit_par: 38
+  formes:
+  - ReLU
+- terme: tanh
+  introduit_par: 38
+  formes:
+  - tanh
+- terme: couche d'entrée
+  introduit_par: 39
+  formes:
+  - couche d'entrée
+- terme: couche cachée
+  introduit_par: 39
+  formes:
+  - couche cachée
+- terme: couche de sortie
+  introduit_par: 39
+  formes:
+  - couche de sortie
+- terme: réseau profond
+  introduit_par: 39
+  formes:
+  - réseau profond
+- terme: propagation avant
+  introduit_par: 40
+  formes:
+  - propagation avant
+- terme: matrice de poids W
+  introduit_par: 40
+  formes:
+  - matrice de poids W
+- terme: rétropropagation
+  introduit_par: 41
+  formes:
+  - rétropropagation
+- terme: règle de la chaîne
+  introduit_par: 41
+  formes:
+  - règle de la chaîne
+- terme: disparition du gradient
+  introduit_par: 42
+  formes:
+  - disparition du gradient
+- terme: explosion du gradient
+  introduit_par: 42
+  formes:
+  - explosion du gradient
+- terme: connexion résiduelle
+  introduit_par: 42
+  formes:
+  - connexion résiduelle
+- terme: initialisation de Xavier
+  introduit_par: 43
+  formes:
+  - initialisation de Xavier
+- terme: initialisation de He
+  introduit_par: 43
+  formes:
+  - initialisation de He
+- terme: momentum
+  introduit_par: 44
+  formes:
+  - momentum
+- terme: RMSProp
+  introduit_par: 44
+  formes:
+  - RMSProp
+- terme: Adam
+  introduit_par: 44
+  formes:
+  - Adam
+- terme: taux d'apprentissage adaptatif
+  introduit_par: 44
+  formes:
+  - taux d'apprentissage adaptatif
+- terme: dropout
+  introduit_par: 45
+  formes:
+  - dropout
+- terme: taux de dropout
+  introduit_par: 45
+  formes:
+  - taux de dropout
+- terme: normalisation par lots (batch norm)
+  introduit_par: 46
+  formes:
+  - normalisation par lots (batch norm)
+- terme: convolution
+  introduit_par: 47
+  formes:
+  - convolution
+- terme: filtre (noyau)
+  introduit_par: 47
+  formes:
+  - filtre (noyau)
+- terme: carte de caractéristiques
+  introduit_par: 47
+  formes:
+  - carte de caractéristiques
+- terme: pooling
+  introduit_par: 48
+  formes:
+  - pooling
+- terme: réseau convolutif (CNN)
+  introduit_par: 48
+  formes:
+  - réseau convolutif (CNN)
+- terme: séquence
+  introduit_par: 49
+  formes:
+  - séquence
+- terme: état caché
+  introduit_par: 49
+  formes:
+  - état caché
+- terme: réseau récurrent (RNN)
+  introduit_par: 49
+  formes:
+  - réseau récurrent (RNN)
+- terme: LSTM
+  introduit_par: 50
+  formes:
+  - LSTM
+- terme: porte d'oubli
+  introduit_par: 50
+  formes:
+  - porte d'oubli
+- terme: porte d'entrée
+  introduit_par: 50
+  formes:
+  - porte d'entrée
+- terme: porte de sortie
+  introduit_par: 50
+  formes:
+  - porte de sortie
+- terme: état de cellule
+  introduit_par: 50
+  formes:
+  - état de cellule
+- terme: apprentissage par transfert
+  introduit_par: 51
+  formes:
+  - apprentissage par transfert
+- terme: modèle pré-entraîné
+  introduit_par: 51
+  formes:
+  - modèle pré-entraîné
+- terme: couches gelées
+  introduit_par: 51
+  formes:
+  - couches gelées
+- terme: token
+  introduit_par: 52
+  formes:
+  - token
+- terme: vocabulaire
+  introduit_par: 52
+  formes:
+  - vocabulaire
+- terme: sous-mot
+  introduit_par: 52
+  formes:
+  - sous-mot
+- terme: sac de mots
+  introduit_par: 53
+  formes:
+  - sac de mots
+- terme: TF-IDF
+  introduit_par: 53
+  formes:
+  - TF-IDF
+- terme: embedding
+  introduit_par: 54
+  formes:
+  - embedding
+- terme: vecteur dense
+  introduit_par: 54
+  formes:
+  - vecteur dense
+- terme: similarité cosinus
+  introduit_par: 54
+  formes:
+  - similarité cosinus
+- terme: contexte
+  introduit_par: 55
+  formes:
+  - contexte
+- terme: fenêtre
+  introduit_par: 55
+  formes:
+  - fenêtre
+- terme: skip-gram
+  introduit_par: 55
+  formes:
+  - skip-gram
+- terme: CBOW
+  introduit_par: 55
+  formes:
+  - CBOW
+- terme: attention
+  introduit_par: 56
+  formes:
+  - attention
+- terme: poids d'attention
+  introduit_par: 56
+  formes:
+  - poids d'attention
+- terme: auto-attention
+  introduit_par: 57
+  formes:
+  - auto-attention
+- terme: requête
+  introduit_par: 57
+  formes:
+  - requête
+- terme: clé
+  introduit_par: 57
+  formes:
+  - clé
+- terme: valeur
+  introduit_par: 57
+  formes:
+  - valeur
+- terme: tête d'attention
+  introduit_par: 57
+  formes:
+  - tête d'attention
+- terme: Transformer
+  introduit_par: 58
+  formes:
+  - Transformer
+- terme: encodage de position
+  introduit_par: 58
+  formes:
+  - encodage de position
+- terme: encodeur
+  introduit_par: 58
+  formes:
+  - encodeur
+- terme: décodeur
+  introduit_par: 58
+  formes:
+  - décodeur
+- terme: modèle de langage
+  introduit_par: 59
+  formes:
+  - modèle de langage
+- terme: génération
+  introduit_par: 59
+  formes:
+  - génération
+- terme: pré-entraînement
+  introduit_par: 59
+  formes:
+  - pré-entraînement
+- terme: LLM
+  introduit_par: 59
+  formes:
+  - LLM
+- terme: température
+  introduit_par: 60
+  formes:
+  - température
+- terme: échantillonnage
+  introduit_par: 60
+  formes:
+  - échantillonnage
+- terme: top-k
+  introduit_par: 60
+  formes:
+  - top-k
+- terme: top-p
+  introduit_par: 60
+  formes:
+  - top-p
+- terme: fine-tuning
+  introduit_par: 61
+  formes:
+  - fine-tuning
+- terme: LoRA
+  introduit_par: 61
+  formes:
+  - LoRA
+- terme: intention
+  introduit_par: 62
+  formes:
+  - intention
+- terme: assistant conversationnel
+  introduit_par: 62
+  formes:
+  - assistant conversationnel

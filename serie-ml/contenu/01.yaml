@@ -1,0 +1,103 @@
+episode: 1
+couverture: classique  # choix de l'utilisateur (2026-11-03) : la couverture d'avant la couverture A
+pages:
+
+- type: couverture
+  titre: "Qu'est-ce que le\nMachine Learning ?"
+  visuel:
+    famille: nuage
+    params:
+      graine: 1
+
+- type: ouverture
+  titre: "Qu'est-ce que le\nMachine\nLearning ?"
+  texte: "Programme classique : règles écrites à la main. Machine Learning : modèle tiré d'exemples. Ici, apprentissage supervisé : chaque exemple a sa réponse ; le modèle prédit celle de cas nouveaux."
+  sources: [dlb-donnees, dlb-supervise, dlb-taches, glossaire-modele]
+  visuel:
+    famille: flux
+    params:
+      forme: page
+      lignes:
+      - {etiquette: Programme classique, ton: contexte, etapes: [Règles + données, Programme, Réponses]}
+      - {etiquette: Apprentissage supervisé, etapes: [Données + réponses, Apprentissage, "!Modèle"]}
+      description: "Deux schémas. Programme classique, en gris : des règles et des données entrent dans le programme, qui donne des réponses. Apprentissage supervisé : des données et leurs réponses entrent dans l'apprentissage, qui donne un modèle, en bleu."
+
+- type: capture
+  role: Exemple
+  titre: "Le spam : trop de règles\nà écrire à la main."
+  texte: "Certaines tâches sont trop difficiles pour des règles écrites à la main. En 2019, Google indique bloquer dans Gmail plus de 99,9 % des spams, du phishing et des maliciels, en combinant règles et apprentissage, qui repère des motifs que les auteurs de règles pourraient manquer."
+  sources: [dlb-taches, gmail-date, gmail-999, gmail-regles, gmail-motifs, glossaire-spam, dlb-supervise]
+  fenetre: Messagerie · dossier Spam
+  image:
+    attendu: Votre dossier spam, adresses et noms floutés
+    legende: Le tri du spam, simplifié.
+  sans_image:
+    famille: flux
+    params:
+      lignes:
+      - {etiquette: Apprendre, etapes: [Mails déjà triés, Apprentissage, "!Modèle"]}
+      - {etiquette: Trier, etapes: [Nouveau mail, Modèle, [Spam, Non-spam]]}
+      description: "Deux schémas. Apprendre : des mails déjà triés passent par l'apprentissage, qui donne un modèle, en bleu. Trier : un nouveau mail passe par le modèle, qui le classe en spam ou non-spam."
+
+- type: contexte
+  role: Contexte
+  titre: "1959 : un programme apprend\nà jouer mieux que son auteur."
+  texte: "En 1959, Arthur Samuel emploie le terme machine learning dans le titre d'un article sur un programme de dames. L'auteur lui fournit des critères ; en jouant, le programme apprend lesquels comptent. Selon l'article, après 8 à 10 heures de jeu machine, il dépasse son auteur."
+  sources: [samuel-publication, samuel-titre, samuel-auteur, samuel-mieux-que-l-auteur, samuel-heures, samuel-liste-fournie, samuel-ibm-704]
+  image:
+    attendu: Un ordinateur IBM 704 (années 1950), le type de machine sur lequel ont tourné les expériences de Samuel
+    recherche: [IBM 704, IBM 704 computer, IBM 704 mainframe]
+    legende: Un IBM 704 au centre Langley de la NACA.
+    fichier: candidats/01/wikimedia-commons-file-ibm-electronic-data-processing-machine-gpn-20.jpg
+
+- type: piege
+  role: Piège
+  titre: "Loin de ses exemples,\nrien ne garantit sa réponse."
+  texte: "Le modèle tire ses règles d'un nombre limité d'exemples : il peut bien prédire des cas proches, mais rien ne le garantit. Face à un cas très différent, ses erreurs peuvent augmenter. Les choix humains comptent aussi : Samuel avait écrit les critères parmi lesquels son programme choisissait."
+  sources: [dlb-induction, dlb-probable, dlb-generalisation, samuel-liste-fournie, samuel-liste-humaine, wilds-decalage]
+  visuel:
+    famille: nuage
+    params:
+      forme: points
+      origine: [40, 408]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      cadre: [920, 444]
+      centres: [[3.4, 3.4]]
+      effectifs: [26]
+      dispersion: 0.85
+      graine: 7
+      zone: true
+      hors_zone: [8.4, 6.6]
+      textes: {zone: ce que couvrent les exemples, hors_zone: un cas éloigné}
+      description: "Un nuage d'exemples dans une zone grise. Un point orange, loin de la zone, est un cas que les exemples ne couvrent pas."
+  encadre:
+    texte: "Les exemples, et les choix de ceux qui conçoivent le modèle, **limitent** ce qu'il peut apprendre."
+
+- type: fin
+  points:
+  - "Programme classique : des règles écrites à la main. Apprentissage supervisé : chaque exemple a sa réponse."
+  - "Le Machine Learning en tire un modèle, qui prédit ici la réponse de cas nouveaux."
+  - Loin de ses exemples, rien ne garantit sa réponse.
+  verification:
+    question: "D'où le Machine Learning tire-t-il un modèle ?"
+    page: 2
+
+linkedin:
+  texte: |-
+    Vous reconnaissez un spam d'un coup d'œil.
+    Pourriez-vous écrire la règle exacte qui permet de le faire ?
+
+    Essayons.
+
+    « Contient le mot gratuit » : votre opérateur l'écrit aussi.
+    « Plein de majuscules » : une alerte de votre banque aussi.
+    « Expéditeur inconnu » : comme tout nouveau contact.
+
+    Chaque règle bloque des messages légitimes, en laisse passer d'autres, et les spams changent sans cesse.
+
+    Le Machine Learning déplace le travail : au lieu d'écrire la règle, on fournit des mails déjà triés, et l'apprentissage en tire un modèle. Les deux approches cohabitent. En 2019, Gmail combinait règles et apprentissage, et Google indiquait bloquer environ 100 millions de spams de plus chaque jour grâce à TensorFlow.
+
+    Écrire un programme, c'est expliquer. Entraîner un modèle, c'est montrer. Les 61 épisodes suivants partent de cette différence.
+  hashtag: "#ApprentissageAutomatique"

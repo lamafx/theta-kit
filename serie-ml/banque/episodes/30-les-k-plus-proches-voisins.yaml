@@ -1,0 +1,50 @@
+numero: 30
+titre: Les k plus proches voisins
+format: court
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: Dis-moi qui sont tes voisins, je te dirai qui tu es.
+couverture:
+  famille: nuage
+  description: un point central relié à ses voisins les plus proches
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: distance
+  formes:
+  - distance
+- terme: k plus proches voisins (k-NN)
+  formes:
+  - k plus proches voisins (k-NN)
+- terme: vote majoritaire
+  formes:
+  - vote majoritaire
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Un nouveau point prend la classe majoritaire de ses k voisins.
+- page: 3
+  type: Comparaison
+  message: 'k = 1, 5 et 25 : une frontière nerveuse ou lisse (lien avec 26).'
+- page: 4
+  type: Piège
+  message: Sans normalisation (13), les distances sont faussées.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 31
+  transition: Et si le modèle posait plutôt des questions ?
+references:
+  cours:
+  - titre: SKL · Nearest neighbors
+    url: https://scikit-learn.org/stable/modules/neighbors.html
+  sources_originales:
+  - citation: Cover et Hart (1967), Nearest neighbor pattern classification, IEEE Trans. Information Theory
+    liens:
+    - titre: Nearest neighbor pattern classification
+      url: https://doi.org/10.1109/TIT.1967.1053964

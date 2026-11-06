@@ -1,0 +1,55 @@
+numero: 17
+titre: La régression logistique
+format: long
+saison: 1
+chapitre:
+  numero: 4
+  titre: La classification
+accroche: Transformer un score en probabilité.
+couverture:
+  famille: courbe
+  description: courbe en S au-dessus de points alignés à 0 et à 1
+  verbe: peser
+  geste: balance
+prerequis_explicites: []
+termes_introduits:
+- terme: score (logit)
+  formes:
+  - score (logit)
+- terme: seuil de décision
+  formes:
+  - seuil de décision
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: z = w·x + b, puis p = σ(z).
+- page: 3
+  type: Mécanisme
+  message: Les points à 0 et à 1, et la sigmoïde ajustée entre eux.
+- page: 4
+  type: Mécanisme
+  message: Le seuil 0,5 redonne la frontière de décision.
+- page: 5
+  type: Comparaison
+  message: 'Seuil 0,3, 0,5 ou 0,8 : un modèle plus ou moins prudent.'
+- page: 6
+  type: Piège
+  message: Avec la sigmoïde, la MSE donne un coût qui n'est plus convexe (lien avec 10).
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 18
+  transition: Il faut un coût fait pour les probabilités.
+references:
+  cours:
+  - titre: MLCC · Logistic regression
+    url: https://developers.google.com/machine-learning/crash-course/logistic-regression
+  - titre: SKL · Logistic regression
+    url: https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  sources_originales:
+  - citation: Cox (1958), The Regression Analysis of Binary Sequences, JRSS B
+    liens:
+    - titre: The Regression Analysis of Binary Sequences
+      url: https://doi.org/10.1111/j.2517-6161.1958.tb00292.x

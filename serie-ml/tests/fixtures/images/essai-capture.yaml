@@ -1,0 +1,15 @@
+# Mire d'essai (tests/fixtures/images/generer.py), jamais publiée ; elle remplit la zone image des pages Contexte et Capture des tests et des canevas (A24).
+titre: essai-capture
+auteur: Ladji Lama Kamagate
+date: '2026'
+page_source: tests/fixtures/images/essai-capture.png
+url_fichier: tests/fixtures/images/essai-capture.png
+source: tests
+genre: capture
+classe: libre
+licence: Domaine public
+conditions: Mire d'essai produite par tests/fixtures/images/generer.py.
+sha256: c5b1056a7d956fb1ecb80049d94801e0dd6ce6f3aa229aada00784799c1beed8
+largeur: 1200
+hauteur: 840
+telecharge_le: 2026-10-20

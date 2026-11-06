@@ -1,0 +1,65 @@
+numero: 9
+titre: Descente stochastique et mini-lots
+format: long
+saison: 1
+chapitre:
+  numero: 2
+  titre: Apprendre de ses erreurs
+accroche: Apprendre vite, sans tout relire à chaque pas.
+couverture:
+  famille: niveaux
+  description: chemin bruité qui zigzague sur les lignes de niveau
+  verbe: compter
+  geste: compter
+  doigts: 2
+prerequis_explicites: []
+termes_introduits:
+- terme: descente stochastique (SGD)
+  formes:
+  - descente stochastique (SGD)
+- terme: mini-lot
+  formes:
+  - mini-lot
+- terme: époque
+  formes:
+  - époque
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Calculer ∇J sur un million d'exemples à chaque pas, c'est lent.
+- page: 3
+  type: Comparaison
+  message: 'Tout le jeu : lent et régulier. Un exemple : rapide et bruité. Un mini-lot de 32 à 256 : le compromis.'
+- page: 4
+  type: Mécanisme
+  message: Le chemin bruité arrive quand même près du minimum.
+- page: 5
+  type: Définition
+  message: Une époque = un passage complet sur toutes les données.
+- page: 6
+  type: Piège
+  message: 'Un η grand plus du bruit : le modèle ne se pose jamais. D''où un η qui décroît au fil des époques.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 10
+  transition: Et si la courbe avait plusieurs creux ?
+references:
+  cours:
+  - titre: D2L 12.4
+    url: https://d2l.ai/chapter_optimization/sgd.html
+  - titre: D2L 12.5
+    url: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  - titre: D2L 12.11
+    url: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  # Ajoutée le 2026-11-01 (production de l'épisode) : la taille de mini-lot « de 32 à 256 » (page 3) n'est écrite
+  # ni dans D2L 12.4, 12.5, 12.11, ni chez Robbins et Monro ; DLB 8.1.3 l'écrit.
+  - titre: DLB ch. 8
+    url: https://www.deeplearningbook.org/contents/optimization.html
+  sources_originales:
+  - citation: Robbins et Monro (1951), A Stochastic Approximation Method, Annals of Mathematical Statistics
+    liens:
+    - titre: A Stochastic Approximation Method
+      url: https://doi.org/10.1214/aoms/1177729586

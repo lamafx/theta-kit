@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bibliothèque — Courbe, droites</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+</style>
+</helmet>
+<style>
+
+
+body{margin:0}
+
+</style>
+<div style="width: 1080px; height: 2800px; box-sizing: border-box; padding: 64px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; gap: 40px; overflow: hidden">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #2D5BFF">Bibliothèque · formes de page</span>
+<h1 style="margin: 0; font-size: 46px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em">Courbe · droites, tangentes et creux</h1>
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">tangentes · la pente en trois points, sans pas (mécanisme, épisode 06)</span>
+
+<svg viewBox="0 0 920 450" width="920" height="450" role="img" aria-label="Une courbe en U et ses tangentes en trois points : descendante (pente −4), plate au creux (pente 0), montante (pente 4). En a = 2, un pas de 1 sur la tangente la fait monter de 4." style="display: block">
+<line x1="86" y1="410" x2="834" y2="410" stroke="#E4E6EA" stroke-width="2"></line>
+<path d="M86 99.4 Q460 700.6 834 99.4" fill="none" stroke="#0E1116" stroke-width="3" stroke-linecap="round"></path>
+<line x1="150" y1="210.9" x2="330" y2="381.1" stroke="#2D5BFF" stroke-width="2.5" stroke-dasharray="7 6"></line>
+<line x1="240" y1="306" x2="240" y2="402" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="370" y1="400" x2="550" y2="400" stroke="#2D5BFF" stroke-width="2.5" stroke-dasharray="7 6"></line>
+<line x1="460" y1="410" x2="460" y2="402" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="546" y1="422.7" x2="814" y2="169.3" stroke="#2D5BFF" stroke-width="2.5" stroke-dasharray="7 6"></line>
+<line x1="680" y1="306" x2="680" y2="402" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="680" y1="296" x2="790" y2="296" stroke="#0E1116" stroke-width="1.5" stroke-dasharray="4 4"></line>
+<line x1="790" y1="296" x2="790" y2="192" stroke="#2D5BFF" stroke-width="3"></line>
+<text x="735" y="324" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">1</text>
+<circle cx="460" cy="400" r="7" fill="#FFFFFF" stroke="#0E1116" stroke-width="2"></circle>
+<circle cx="240" cy="296" r="9" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<text x="62" y="278" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">pente −4</text>
+<circle cx="460" cy="400" r="9" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<text x="486" y="378" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">pente 0</text>
+<circle cx="680" cy="296" r="9" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<text x="530" y="282" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">pente 4</text>
+<text x="460" y="374" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116"></text>
+<text x="640" y="60" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">J(a) = a²</tspan></text>
+<text x="830" y="444" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">réglage <tspan font-family="STIX Two Text, serif" font-style="italic">a</tspan></text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">trace · une courbe à deux creux, la descente arrêtée dans le premier (ouverture, épisode 10)</span>
+
+<svg viewBox="0 0 920 450" width="920" height="450" role="img" aria-label="Une courbe à deux creux. Partie à gauche, la descente s&#x27;arrête dans le premier creux, le minimum local, plus haut que le minimum global à droite." style="display: block">
+<defs>
+<marker id="tr-pas" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<line x1="100" y1="250" x2="700" y2="250" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="300" y1="374.8" x2="300" y2="58" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="314" y="72" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">coût <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">J</tspan></text>
+<text x="820" y="282" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">réglage <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">θ</tspan></text>
+<polyline points="100,154 102.5,155.3 105,156.7 107.5,158.2 110,159.9 112.5,161.7 115,163.7 117.5,165.7 120,167.8 122.5,170.1 125,172.4 127.5,174.8 130,177.3 132.5,179.9 135,182.5 137.5,185.1 140,187.9 142.5,190.6 145,193.4 147.5,196.2 150,199.1 152.5,201.9 155,204.8 157.5,207.7 160,210.5 162.5,213.3 165,216.1 167.5,218.9 170,221.7 172.5,224.4 175,227 177.5,229.6 180,232.2 182.5,234.7 185,237.1 187.5,239.5 190,241.7 192.5,243.9 195,246 197.5,248.1 200,250 202.5,251.8 205,253.6 207.5,255.2 210,256.8 212.5,258.2 215,259.5 217.5,260.7 220,261.9 222.5,262.9 225,263.8 227.5,264.6 230,265.3 232.5,265.8 235,266.3 237.5,266.7 240,266.9 242.5,267.1 245,267.1 247.5,267.1 250,267 252.5,266.7 255,266.4 257.5,266 260,265.5 262.5,265 265,264.3 267.5,263.6 270,262.8 272.5,262 275,261.1 277.5,260.1 280,259.1 282.5,258.1 285,257 287.5,255.9 290,254.7 292.5,253.6 295,252.4 297.5,251.2 300,250 302.5,248.8 305,247.6 307.5,246.4 310,245.3 312.5,244.1 315,243 317.5,241.9 320,240.9 322.5,239.9 325,238.9 327.5,238 330,237.2 332.5,236.4 335,235.7 337.5,235 340,234.5 342.5,234 345,233.6 347.5,233.3 350,233 352.5,232.9 355,232.9 357.5,232.9 360,233.1 362.5,233.3 365,233.7 367.5,234.2 370,234.7 372.5,235.4 375,236.2 377.5,237.1 380,238.1 382.5,239.3 385,240.5 387.5,241.8 390,243.2 392.5,244.8 395,246.4 397.5,248.2 400,250 402.5,251.9 405,254 407.5,256.1 410,258.3 412.5,260.5 415,262.9 417.5,265.3 420,267.8 422.5,270.4 425,273 427.5,275.6 430,278.3 432.5,281.1 435,283.9 437.5,286.7 440,289.5 442.5,292.3 445,295.2 447.5,298.1 450,300.9 452.5,303.8 455,306.6 457.5,309.4 460,312.1 462.5,314.9 465,317.5 467.5,320.1 470,322.7 472.5,325.2 475,327.6 477.5,329.9 480,332.2 482.5,334.3 485,336.3 487.5,338.3 490,340.1 492.5,341.8 495,343.3 497.5,344.7 500,346 502.5,347.1 505,348.1 507.5,348.9 510,349.6 512.5,350 515,350.3 517.5,350.5 520,350.4 522.5,350.2 525,349.8 527.5,349.2 530,348.4 532.5,347.4 535,346.2 537.5,344.8 540,343.2 542.5,341.4 545,339.4 547.5,337.2 550,334.9 552.5,332.3 555,329.5 557.5,326.5 560,323.4 562.5,320 565,316.5 567.5,312.7 570,308.8 572.5,304.8 575,300.5 577.5,296.1 580,291.5 582.5,286.8 585,281.9 587.5,276.9 590,271.8 592.5,266.5 595,261.1 597.5,255.6 600,250 602.5,244.3 605,238.5 607.5,232.7 610,226.7 612.5,220.7 615,214.7 617.5,208.6 620,202.5 622.5,196.4 625,190.3 627.5,184.2 630,178.1 632.5,172 635,166 637.5,160 640,154.1 642.5,148.2 645,142.5 647.5,136.8 650,131.2 652.5,125.8 655,120.4 657.5,115.2 660,110.2 662.5,105.3 665,100.6 667.5,96.1 670,91.8 672.5,87.6 675,83.7 677.5,80 680,76.5 682.5,73.3 685,70.3 687.5,67.6 690,65.1 692.5,62.9 695,61 697.5,59.3 700,58" fill="none" stroke="#0E1116" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline>
+<circle cx="245.2" cy="267.1" r="7" fill="#FFFFFF" stroke="#0E1116" stroke-width="2.5"></circle>
+<circle cx="518.1" cy="350.5" r="7" fill="#FFFFFF" stroke="#0E1116" stroke-width="2.5"></circle>
+<line x1="120" y1="167.8" x2="131.9" y2="179.6" stroke="#2D5BFF" stroke-width="2" marker-end="url(#tr-pas)"></line>
+<line x1="138.2" y1="186" x2="154.9" y2="204.7" stroke="#2D5BFF" stroke-width="2" marker-end="url(#tr-pas)"></line>
+<line x1="160.9" y1="211.5" x2="178.3" y2="230.1" stroke="#2D5BFF" stroke-width="2" marker-end="url(#tr-pas)"></line>
+<line x1="184.5" y1="236.6" x2="197.6" y2="247.5" stroke="#2D5BFF" stroke-width="2" marker-end="url(#tr-pas)"></line>
+<g fill="#2D5BFF"><circle cx="138.2" cy="186" r="4.5"></circle><circle cx="160.9" cy="211.5" r="4.5"></circle><circle cx="184.5" cy="236.6" r="4.5"></circle><circle cx="204.5" cy="253.2" r="4.5"></circle><circle cx="218.8" cy="261.3" r="4.5"></circle><circle cx="228.1" cy="264.7" r="4.5"></circle><circle cx="234" cy="266.1" r="4.5"></circle><circle cx="237.8" cy="266.7" r="4.5"></circle><circle cx="240.3" cy="267" r="4.5"></circle><circle cx="242" cy="267.1" r="4.5"></circle><circle cx="243" cy="267.1" r="4.5"></circle><circle cx="243.8" cy="267.1" r="4.5"></circle><circle cx="244.2" cy="267.1" r="4.5"></circle><circle cx="244.6" cy="267.1" r="4.5"></circle><circle cx="244.8" cy="267.1" r="4.5"></circle><circle cx="244.9" cy="267.1" r="4.5"></circle><circle cx="245" cy="267.1" r="4.5"></circle><circle cx="245.1" cy="267.1" r="4.5"></circle><circle cx="245.1" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle><circle cx="245.2" cy="267.1" r="4.5"></circle></g>
+<circle cx="120" cy="167.8" r="9" fill="#FFFFFF" stroke="#2D5BFF" stroke-width="3"></circle>
+<text x="245" y="307" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">minimum local</text>
+<text x="518" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">minimum global</text>
+<text x="100" y="146" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">départ</text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">trace avec corde · convexe, la corde reste au-dessus (repère, épisode 10)</span>
+
+<svg viewBox="0 0 920 450" width="920" height="450" role="img" aria-label="Une courbe en U et une corde entre deux de ses points : le segment reste au-dessus de la courbe." style="display: block">
+<defs>
+<marker id="tr-pas" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<line x1="70" y1="400" x2="850" y2="400" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="460" y1="400" x2="460" y2="58" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="846" y="432" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">réglage <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">θ</tspan></text>
+<text x="474" y="72" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">coût <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">J</tspan></text>
+<polyline points="70,76 73.2,81.4 76.5,86.7 79.8,92 83,97.2 86.2,102.4 89.5,107.6 92.8,112.7 96,117.8 99.2,122.8 102.5,127.8 105.8,132.7 109,137.6 112.2,142.4 115.5,147.2 118.8,151.9 122,156.6 125.2,161.3 128.5,165.9 131.8,170.5 135,175 138.2,179.5 141.5,183.9 144.8,188.3 148,192.6 151.2,196.9 154.5,201.2 157.8,205.4 161,209.6 164.2,213.7 167.5,217.8 170.8,221.8 174,225.8 177.2,229.7 180.5,233.6 183.8,237.4 187,241.2 190.2,245 193.5,248.7 196.8,252.4 200,256 203.2,259.6 206.5,263.1 209.8,266.6 213,270 216.2,273.4 219.5,276.8 222.8,280.1 226,283.4 229.2,286.6 232.5,289.8 235.8,292.9 239,296 242.2,299 245.5,302 248.8,304.9 252,307.8 255.2,310.7 258.5,313.5 261.8,316.3 265,319 268.2,321.7 271.5,324.3 274.8,326.9 278,329.4 281.2,331.9 284.5,334.4 287.8,336.8 291,339.2 294.2,341.5 297.5,343.8 300.8,346 304,348.2 307.2,350.3 310.5,352.4 313.8,354.4 317,356.4 320.2,358.4 323.5,360.3 326.8,362.2 330,364 333.2,365.8 336.5,367.5 339.8,369.2 343,370.8 346.2,372.4 349.5,374 352.8,375.5 356,377 359.2,378.4 362.5,379.8 365.8,381.1 369,382.4 372.2,383.6 375.5,384.8 378.8,385.9 382,387 385.2,388.1 388.5,389.1 391.8,390.1 395,391 398.2,391.9 401.5,392.7 404.8,393.5 408,394.2 411.2,394.9 414.5,395.6 417.8,396.2 421,396.8 424.2,397.3 427.5,397.8 430.8,398.2 434,398.6 437.2,398.9 440.5,399.2 443.8,399.4 447,399.6 450.2,399.8 453.5,399.9 456.8,400 460,400 463.2,400 466.5,399.9 469.8,399.8 473,399.6 476.2,399.4 479.5,399.2 482.8,398.9 486,398.6 489.2,398.2 492.5,397.8 495.8,397.3 499,396.8 502.2,396.2 505.5,395.6 508.8,394.9 512,394.2 515.2,393.5 518.5,392.7 521.8,391.9 525,391 528.2,390.1 531.5,389.1 534.8,388.1 538,387 541.2,385.9 544.5,384.8 547.8,383.6 551,382.4 554.2,381.1 557.5,379.8 560.8,378.4 564,377 567.2,375.5 570.5,374 573.8,372.4 577,370.8 580.2,369.2 583.5,367.5 586.8,365.8 590,364 593.2,362.2 596.5,360.3 599.8,358.4 603,356.4 606.2,354.4 609.5,352.4 612.8,350.3 616,348.2 619.2,346 622.5,343.8 625.8,341.5 629,339.2 632.2,336.8 635.5,334.4 638.8,331.9 642,329.4 645.2,326.9 648.5,324.3 651.8,321.7 655,319 658.2,316.3 661.5,313.5 664.8,310.7 668,307.8 671.2,304.9 674.5,302 677.8,299 681,296 684.2,292.9 687.5,289.8 690.8,286.6 694,283.4 697.2,280.1 700.5,276.8 703.8,273.4 707,270 710.2,266.6 713.5,263.1 716.8,259.6 720,256 723.2,252.4 726.5,248.7 729.8,245 733,241.2 736.2,237.4 739.5,233.6 742.8,229.7 746,225.8 749.2,221.8 752.5,217.8 755.8,213.7 759,209.6 762.2,205.4 765.5,201.2 768.8,196.9 772,192.6 775.2,188.3 778.5,183.9 781.8,179.5 785,175 788.2,170.5 791.5,165.9 794.8,161.3 798,156.6 801.2,151.9 804.5,147.2 807.8,142.4 811,137.6 814.2,132.7 817.5,127.8 820.8,122.8 824,117.8 827.2,112.7 830.5,107.6 833.8,102.4 837,97.2 840.2,92 843.5,86.7 846.8,81.4 850,76" fill="none" stroke="#0E1116" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline>
+<line x1="200" y1="256" x2="590" y2="364" stroke="#2D5BFF" stroke-width="2.5" stroke-dasharray="8 6"></line>
+<circle cx="200" cy="256" r="7" fill="#2D5BFF"></circle>
+<circle cx="590" cy="364" r="7" fill="#2D5BFF"></circle>
+<text x="505" y="280" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">la corde reste au-dessus</text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">droite · ŷ = a·x + b, les deux réglages (ouverture)</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Une droite qui monte. Un pas de 1 vers la droite la fait monter de a ; elle coupe l&#x27;axe vertical à la hauteur b. Pour une entrée x, on lit la prédiction ŷ sur la droite." style="display: block">
+<line x1="110" y1="370" x2="870" y2="370" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="110" y1="370" x2="110" y2="25.6" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="866" y="402" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">entrée <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">x</tspan></text>
+<text x="124" y="39.6" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">prédiction <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">ŷ</tspan></text>
+<line x1="110" y1="307" x2="870" y2="55" stroke="#0E1116" stroke-width="3" stroke-linecap="round"></line>
+<line x1="642" y1="370" x2="642" y2="139.6" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="4 5"></line>
+<line x1="633" y1="130.6" x2="110" y2="130.6" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="4 5"></line>
+<circle cx="642" cy="130.6" r="8" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<text x="642" y="402" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#0E1116"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="24">x</tspan></text>
+<text x="96" y="138.6" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#0E1116"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="24">ŷ</tspan></text>
+<line x1="300" y1="244" x2="376" y2="244" stroke="#5F6673" stroke-width="2" stroke-dasharray="5 5"></line>
+<line x1="376" y1="244" x2="376" y2="218.8" stroke="#2D5BFF" stroke-width="4" stroke-linecap="round"></line>
+<text x="338" y="270" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">1</text>
+<text x="392" y="239.4" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">a</tspan>, la pente</text>
+<circle cx="110" cy="307" r="7.5" fill="#2D5BFF"></circle>
+<text x="128" y="337" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">b</tspan>, la hauteur en <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">x</tspan> = 0</text>
+<text x="870" y="41" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">ŷ = a·x + b</tspan></text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">pivot et décalage · une case de comparaison chacun (comparaison)</span>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px">
+
+<svg viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="La droite tourne autour de son point de départ sur l&#x27;axe vertical : seule la pente a change." style="display: block">
+<defs>
+<marker id="dp-arc" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<line x1="40" y1="270" x2="420" y2="270" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="270" x2="40" y2="18" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="416" y="302" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">x</tspan></text>
+<text x="54" y="32" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">ŷ</tspan></text>
+<line x1="40" y1="210" x2="387.4" y2="18" stroke="#C3C7CE" stroke-width="2.5" stroke-linecap="round"></line>
+<line x1="40" y1="210" x2="420" y2="135" stroke="#2D5BFF" stroke-width="3" stroke-linecap="round"></line>
+<path d="M215 113.3 A200 200 0 0 1 234.7 164.4" fill="none" stroke="#2D5BFF" stroke-width="2.5" marker-end="url(#dp-arc)"></path>
+<text x="239.2" y="144.3" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="24">a</tspan> change</text>
+<circle cx="40" cy="210" r="7" fill="#FFFFFF" stroke="#0E1116" stroke-width="2.5"></circle>
+<text x="56" y="238" font-family="Geist, sans-serif" font-size="22" fill="#0E1116"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">b</tspan> fixe</text>
+</svg>
+
+<svg viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="La droite descend sans tourner : seule la hauteur b change, la pente reste la même." style="display: block">
+<defs>
+<marker id="dd-fleche" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<line x1="40" y1="270" x2="420" y2="270" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="270" x2="40" y2="18" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="416" y="302" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">x</tspan></text>
+<text x="54" y="32" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">ŷ</tspan></text>
+<line x1="40" y1="150" x2="420" y2="30" stroke="#C3C7CE" stroke-width="2.5" stroke-linecap="round"></line>
+<line x1="40" y1="240" x2="420" y2="120" stroke="#2D5BFF" stroke-width="3" stroke-linecap="round"></line>
+<line x1="116" y1="131" x2="116" y2="207" stroke="#2D5BFF" stroke-width="3" marker-end="url(#dd-fleche)"></line>
+<line x1="306" y1="71" x2="306" y2="147" stroke="#2D5BFF" stroke-width="3" marker-end="url(#dd-fleche)"></line>
+<text x="132" y="179" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="24">b</tspan> change</text>
+</svg>
+
+</div>
+
+</div>
+
+
+</div>
+</x-dc>
+</body>
+</html>

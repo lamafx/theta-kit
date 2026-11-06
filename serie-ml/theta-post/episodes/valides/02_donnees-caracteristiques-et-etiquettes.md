@@ -1,0 +1,18 @@
+# Nº 02 · texte validé le 2026-11-05
+
+Numéroter ses quartiers 1, 2 et 3 paraît anodin.
+Pour certains modèles, le troisième vaut maintenant trois fois le premier.
+
+Un tableau de données n’est pas un simple rangement : chaque colonne décrit le monde au modèle, et il la prend au mot.
+
+Le risque dépend pourtant du modèle : certains lisent ces numéros comme des quantités, d’autres savent traiter directement des catégories, sans leur prêter d’ordre.
+
+La parade classique, une colonne par quartier, a aussi ses limites : avec un très grand nombre de catégories, elle peut devenir un mauvais choix.
+
+Ce vocabulaire dépasse les maisons. Dans mon mémoire sur un agent conversationnel, un exemple était une requête client (1 919 au total), et son étiquette l’une de 19 intentions.
+
+Mini-exercice : un fichier clients contient « couleur préférée » et « taille de T-shirt (S, M, L) ». Une seule de ces colonnes peut recevoir des numéros sans inventer un ordre. Laquelle ?
+
+Nº 02 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 03 : Les trois familles d’apprentissage.
+
+#MachineLearning #IntelligenceArtificielle #DataScience #PreparationDesDonnees #ThetaML

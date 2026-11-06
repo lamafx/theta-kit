@@ -1,0 +1,157 @@
+# Extraits mot pour mot des références de la fiche 07, lus le 2026-11-01 : D2L 2.4 (page HTML, formules en
+# LaTeX comme dans la source), DLB ch. 4 (version HTML du livre, pages 82 et 83 ; indices et symboles perdus par
+# l'extraction du texte rétablis comme dans l'original) et MIT OCW 18.02SC, session 35 (notes « Gradient:
+# definition and properties », PDF lié depuis la page de la session ; le ∇ et les fractions, perdus par
+# l'extraction du texte, rétablis comme dans l'original).
+episode: 7
+extraits:
+- id: d2l-plusieurs
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: In deep learning, we also need to work with functions of many variables.
+  appuie: "Ouverture : un modèle a plusieurs paramètres, son coût est une fonction de plusieurs variables."
+- id: d2l-partielle
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "To calculate \\frac{\\partial y}{\\partial x_i}, we can treat x_1, \\ldots, x_{i-1}, x_{i+1}, \\ldots, x_n as constants and calculate the derivative of y with respect to x_i."
+  appuie: "Ouverture et exemple chiffré : la dérivée partielle se calcule en gardant les autres paramètres fixes."
+- id: d2l-vecteur
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: We can concatenate partial derivatives of a multivariate function with respect to all its variables to obtain a vector that is called the gradient of the function.
+  appuie: "Ouverture : les dérivées partielles, rangées dans un vecteur, forment le gradient."
+- id: d2l-n
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "The gradient of the function f with respect to \\mathbf{x} is a vector of n partial derivatives:"
+  appuie: "Ouverture : une dérivée partielle par variable, donc autant de composantes que de paramètres."
+- id: d2l-nabla
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "When there is no ambiguity, \\nabla_{\\mathbf{x}} f(\\mathbf{x}) is typically replaced by \\nabla f(\\mathbf{x})."
+  appuie: "Ouverture : la notation ∇J pour le gradient du coût J."
+- id: d2l-puissance
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "\\frac{d}{dx} x^n = n x^{n-1} for n \\neq 0"
+  appuie: "Exemple chiffré : la dérivée de a² est 2a, celle de b² est 2b (règle de la puissance, n = 2)."
+- id: d2l-multiple
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "\\frac{d}{dx} [C f(x)] = C \\frac{d}{dx} f(x) Constant multiple rule"
+  appuie: "Exemple chiffré : la dérivée de 3b² est 3 × 2b = 6b."
+- id: d2l-somme
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "\\frac{d}{dx} [f(x) + g(x)] = \\frac{d}{dx} f(x) + \\frac{d}{dx} g(x) Sum rule"
+  appuie: "Exemple chiffré : la dérivée de a² + 3b² se fait terme à terme."
+- id: d2l-constante
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "\\frac{d}{dx} C = 0 for any constant C"
+  appuie: "Exemple chiffré : b fixé, le terme 3b² est une constante et ne compte pas dans la dérivée partielle selon a (et inversement)."
+- id: d2l-optimisation
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: From the viewpoint of optimization, gradients allow us to determine how to move the parameters of a model in order to lower the loss, and each step of the optimization algorithms used throughout this book will require calculating the gradient.
+  appuie: "Fin et transition vers 08 : le gradient dit comment bouger les paramètres pour faire baisser le coût."
+- id: dlb-plusieurs
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: "We often minimize functions that have multiple inputs: f : ℝⁿ → ℝ."
+  appuie: "Ouverture : le coût à faire baisser dépend de plusieurs paramètres."
+- id: dlb-partielle
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: The partial derivative ∂/∂xᵢ f(x) measures how f changes as only the variable xᵢ increases at point x.
+  appuie: "Ouverture : la dérivée partielle mesure comment J change quand un seul paramètre bouge."
+- id: dlb-gradient
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: "The gradient generalizes the notion of derivative to the case where the derivative is with respect to a vector: the gradient of f is the vector containing all the partial derivatives, denoted ∇ₓf(x)."
+  appuie: "Ouverture : le gradient, vecteur de toutes les dérivées partielles, généralise la dérivée de l'épisode 06."
+- id: dlb-element
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: Element i of the gradient is the partial derivative of f with respect to xᵢ.
+  appuie: "Exemple chiffré : la première composante de ∇J est la dérivée partielle selon a, la seconde selon b."
+- id: dlb-critique
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: In multiple dimensions, critical points are points where every element of the gradient is equal to zero.
+  appuie: "Mécanisme ou exemple : au fond de la vallée, toutes les composantes du gradient sont nulles (comme la pente nulle de l'épisode 06)."
+- id: dlb-plus-vite
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: To minimize f, we would like to find the direction in which f decreases the fastest.
+  appuie: "Mécanisme : parmi toutes les directions, on cherche celle où le coût change le plus vite."
+- id: dlb-montee
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: In other words, the gradient points directly uphill, and the negative gradient points directly downhill.
+  appuie: "Mécanisme : ∇J pointe vers la montée la plus raide ; son opposé vers la descente la plus raide."
+- id: dlb-descendre
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: We can decrease f by moving in the direction of the negative gradient.
+  appuie: "Fin, transition vers 08 : aller dans le sens opposé au gradient fait baisser le coût."
+- id: mit-taux
+  reference: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  lu_sur: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/6d4f46e89733b7291f86a22882aa2311_MIT18_02SC_notes_18.pdf
+  lu_le: 2026-11-01
+  extrait: If w = f(x, y), then ∂w/∂x and ∂w/∂y are the rates of change of w in the i and j directions.
+  appuie: "Ouverture : avec deux réglages, deux dérivées partielles, une par direction."
+- id: mit-vecteur
+  reference: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  lu_sur: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/6d4f46e89733b7291f86a22882aa2311_MIT18_02SC_notes_18.pdf
+  lu_le: 2026-11-01
+  extrait: It will be quite useful to put these two derivatives together in a vector called the gradient of w.
+  appuie: "Ouverture : les deux dérivées partielles rangées dans un vecteur, le gradient."
+- id: mit-symbole
+  reference: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  lu_sur: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/6d4f46e89733b7291f86a22882aa2311_MIT18_02SC_notes_18.pdf
+  lu_le: 2026-11-01
+  extrait: We will also use the symbol ∇w to denote the gradient.
+  appuie: "Ouverture : le symbole ∇ (« nabla ») pour le gradient."
+- id: mit-plan
+  reference: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  lu_sur: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/6d4f46e89733b7291f86a22882aa2311_MIT18_02SC_notes_18.pdf
+  lu_le: 2026-11-01
+  extrait: The vector ∇f(x, y) lies in the plane.
+  appuie: "Mécanisme : avec deux réglages, ∇J se dessine comme une flèche sur la carte des réglages (a, b)."
+- id: mit-perpendiculaire
+  reference: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  lu_sur: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/6d4f46e89733b7291f86a22882aa2311_MIT18_02SC_notes_18.pdf
+  lu_le: 2026-11-01
+  extrait: In the next session we will prove that for w = f(x, y) the gradient is perpendicular to the level curves f(x, y) = c.
+  appuie: "Mécanisme et couverture : les lignes de niveau relient les points de même coût (f = c) ; ∇J leur est perpendiculaire."
+- id: mit-exemple
+  reference: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  lu_sur: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/6d4f46e89733b7291f86a22882aa2311_MIT18_02SC_notes_18.pdf
+  lu_le: 2026-11-01
+  extrait: Since the gradient at (1,2) is a multiple of ⟨1, 2⟩, it points radially outward and hence is perpendicular to the circle.
+  appuie: "Mécanisme : sur une carte de niveaux d'une vallée, la flèche du gradient part vers l'extérieur, à angle droit de la ligne de niveau."
+- id: dlb-sans-direction
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: When f′(x) = 0, the derivative provides no information about which direction to move.
+  appuie: "Mécanisme, encadré : au fond de la vallée, ∇J = (0 ; 0) n'indique aucune direction (le livre le dit pour une dérivée nulle ; en plusieurs dimensions, dlb-critique)."

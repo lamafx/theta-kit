@@ -1,0 +1,61 @@
+numero: 25
+titre: Sur-apprentissage et sous-apprentissage
+format: long
+saison: 2
+chapitre:
+  numero: 6
+  titre: Bien généraliser
+accroche: Apprendre par cœur n'est pas comprendre.
+couverture:
+  famille: courbe
+  description: courbes d'erreur d'entraînement et de validation qui s'écartent
+  verbe: se tromper
+  geste: gratter
+prerequis_explicites:
+- 14
+- 20
+termes_introduits:
+- terme: surapprentissage
+  formes:
+  - surapprentissage
+- terme: sous-apprentissage
+  formes:
+  - sous-apprentissage
+- terme: généralisation
+  formes:
+  - généralisation
+- terme: capacité
+  formes:
+  - capacité
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: L'élève qui récite les corrigés sans les comprendre.
+- page: 3
+  type: Comparaison
+  message: 'Degré 1, 3 et 15 (rappel de 14) : trop simple, juste, trop complexe.'
+- page: 4
+  type: Mécanisme
+  message: 'Les deux courbes d''erreur selon la complexité : l''écart se creuse.'
+- page: 5
+  type: Diagnostic
+  message: 'Deux erreurs hautes : sous-apprentissage. Basse puis haute : surapprentissage.'
+- page: 6
+  type: Remèdes
+  message: Plus de données, un modèle plus simple, la régularisation.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 26
+  transition: Derrière ces deux erreurs se cache un compromis.
+references:
+  cours:
+  - titre: MLCC · Overfitting
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/overfitting
+  - titre: MLCC · Model complexity
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity
+  - titre: D2L 3.6
+    url: https://d2l.ai/chapter_linear-regression/generalization.html
+  sources_originales: []

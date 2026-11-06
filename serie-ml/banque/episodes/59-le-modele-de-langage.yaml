@@ -1,0 +1,61 @@
+numero: 59
+titre: Le modèle de langage
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Prédire le token suivant, encore et encore.
+couverture:
+  famille: barres
+  description: barres de probabilités pour le token suivant
+  verbe: se demander
+  geste: menton
+prerequis_explicites: []
+termes_introduits:
+- terme: modèle de langage
+  formes:
+  - modèle de langage
+- terme: génération
+  formes:
+  - génération
+- terme: pré-entraînement
+  formes:
+  - pré-entraînement
+- terme: LLM
+  formes:
+  - LLM
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: '« Le chat dort sur le… » : les tokens candidats (canapé, lit, toit) avec leurs probabilités.'
+- page: 3
+  type: Mécanisme
+  message: Une softmax (19) sur tout le vocabulaire de tokens (52).
+- page: 4
+  type: Mécanisme
+  message: 'Générer (le décodage) : choisir un token, l''ajouter, recommencer.'
+- page: 5
+  type: Lien
+  message: Le coût est l'entropie croisée (18), sur des milliards de phrases.
+- page: 6
+  type: Repère
+  message: C'est le principe des grands modèles de langage (LLM).
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 60
+  transition: Mais comment choisir le mot parmi ces probabilités ?
+references:
+  cours:
+  - titre: MLCC · Intro to LLMs
+    url: https://developers.google.com/machine-learning/crash-course/llm
+  - titre: D2L 11.9
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html
+  sources_originales:
+  - citation: Brown et al. (2020), Language Models are Few-Shot Learners
+    liens:
+    - titre: Language Models are Few-Shot Learners
+      url: https://arxiv.org/abs/2005.14165

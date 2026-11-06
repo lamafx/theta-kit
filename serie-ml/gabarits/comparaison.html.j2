@@ -1,0 +1,28 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">{{ p.role }}</span>
+<h2 class="titre-page">{{ p.titre|texte }}</h2>
+<p class="texte">{{ p.texte|texte }}</p>
+
+<div class="cas-grille" style="--nb-cas: {{ cas|length }}">
+{% for c in cas %}
+<div class="cas{% if c.alerte %} alerte{% elif c.retenu %} retenu{% endif %}">
+<span class="cas-etiquette">{{ c.etiquette|texte_stix }}</span>
+{{ c.visuel }}
+<span class="cas-titre">{{ c.titre|texte }}</span>
+<span class="cas-texte">{{ c.texte|texte }}</span>
+</div>
+{% endfor %}
+</div>
+{% if p.encadre %}
+
+<div class="pratique">
+<span class="titre-encadre">{{ p.encadre.titre|texte }}</span>
+<p>{{ p.encadre.texte|texte }}</p>
+</div>
+{% endif %}
+
+{{ ui.pied(signature) }}
+{% endblock %}

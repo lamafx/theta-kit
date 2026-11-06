@@ -1,0 +1,160 @@
+episode: 11
+pages:
+
+- type: couverture
+  titre: "La régression\nlinéaire."
+  visuel:
+    famille: nuage
+    params:
+      graine: 11
+
+- type: ouverture
+  rappel: "Nº 04 : une droite et ses réglages ; Nº 05 : la MSE ; Nº 08 : la descente."
+  titre: "Tracer la meilleure\ndroite."
+  texte: "Avec la seule surface, la **régression linéaire** prédit $ŷ$ = $w$·$x$ + $b$. Le poids $w$ règle son influence, le biais $b$ la prédiction à surface nulle. L'**ajustement** les choisit."
+  sources: [d2l-prix, d2l-exemple-maisons, d2l-poids-biais, d2l-influence, d2l-une-variable, d2l-objectif, d2l-figure, skl-coef, ames-ventes, ames-4000, ames-surface, ames-prix, ames-fichier, bceao-dollar]
+  visuel:
+    famille: nuage
+    params:
+      forme: droite
+      source: ames
+      n: 120
+      graine: 11
+      origine: [84, 400]
+      echelle: [290, 1.0]
+      domaine: [0, 2.75]
+      plage: [0, 370]
+      cadre: [920, 450]
+      ecarts: false
+      decalage: [-150, -24]
+      textes: {x: "surface (centaines de m²)", y: "prix (millions de FCFA)", droite: $ŷ = w·x + b$}
+      description: "120 ventes réelles d'Ames en points gris, le prix en fonction de la surface, et la droite des moindres carrés, en bleu, qui monte à travers le nuage."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Une droite au hasard,\npuis une boucle."
+  texte: "L'entraînement part de $w$ et $b$ tirés au hasard, près de zéro. Puis il répète trois gestes : mesurer le coût, lire le gradient, faire un pas. Il s'arrête quand le coût ne baisse plus."
+  sources: [mlcc-hasard, d2l-initialiser, mlcc-perte, mlcc-direction, mlcc-pas, mlcc-boucle, d2l-descente, d2l-ajustement]
+  visuel:
+    famille: flux
+    params:
+      forme: page
+      lignes:
+      - {etiquette: Au départ, ton: contexte, etapes: [Deux réglages au hasard, Une droite, Un premier coût]}
+      - {etiquette: À chaque itération, etapes: [Mesurer le coût, Lire le gradient, "!Faire un pas"]}
+      - {etiquette: À la fin, ton: contexte, etapes: [Le coût ne baisse plus, Arrêt, La droite ajustée]}
+      description: "Deux schémas. Au départ, en gris : w et b tirés au hasard donnent une droite et un premier coût. À chaque itération : mesurer le coût, lire le gradient, faire un pas, en bleu. À la fin, en gris : le coût ne baisse plus, l'entraînement s'arrête sur la droite ajustée."
+  encadres:
+  - titre: Rien de nouveau
+    texte: "C'est la descente de gradient, avec la MSE pour coût."
+  - titre: Deux réglages à la fois
+    texte: "Chaque itération corrige $w$ et $b$ ensemble, avec le gradient du coût."
+
+- type: comparaison
+  role: Comparaison
+  titre: "La droite après 0, 10\net 100 itérations."
+  texte: "Mêmes ventes, même $!η$ = 0,2. Pour lire le progrès, le départ est fixé à $w$ = 0 et $b$ = 0. La droite grise est le creux de la MSE."
+  sources: [mlcc-instantanes, d2l-arret, d2l-lentement, d2l-pas-exact, skl-moindres-carres, mlcc-convexe, d2l-minimum-global, ames-ventes, ames-4000, ames-surface, ames-prix, ames-fichier, bceao-dollar]
+  visuel:
+    famille: nuage
+    params:
+      forme: droite
+      source: ames
+      n: 120
+      graine: 11
+      origine: [16, 206]
+      echelle: [94, 0.54]
+      domaine: [0, 2.75]
+      plage: [0, 370]
+      cadre: [280, 220]
+      ecarts: false
+      fantome: true
+  cas:
+  - etiquette: 0 itération
+    titre: À plat
+    texte: "$w$ = 0, $b$ = 0 : le coût $J$ vaut 13 400."
+    alerte: true
+    params:
+      descente: {eta: 0.2, iteration: 0}
+      description: "120 ventes d'Ames ; au départ, w = 0 et b = 0 : la droite est à plat."
+  - etiquette: 10 itérations
+    titre: Elle monte
+    texte: "$w$ = 57,5, $b$ = 27,9 : $J$ tombe à 1 085."
+    params:
+      descente: {eta: 0.2, iteration: 10}
+      description: "Après 10 itérations, la droite monte vers les points."
+  - etiquette: 100 itérations
+    titre: Presque au creux
+    texte: "$w$ = 72,2, $b$ = 6,1 : $J$ arrive à 1 030."
+    retenu: true
+    params:
+      descente: {eta: 0.2, iteration: 100}
+      description: "Après 100 itérations, elle se confond presque avec la droite des moindres carrés, en gris."
+  encadre:
+    titre: Pas tout à fait exact
+    texte: "La descente approche du creux sans forcément l'atteindre. Et $J$ ne tombe pas à zéro : aucune droite ne passe par toutes les ventes."
+
+- type: formule
+  role: Formule
+  titre: "Deux dérivées,\nun pas pour chacune."
+  texte: "La MSE dépend de $w$ et de $b$ ; sa dérivée selon chacun donne sa part du gradient. Pour une droite, une formule directe donne aussi le creux. La plupart des modèles suivants n'en ont pas."
+  sources: [mlcc-mse, mlcc-derivee-poids, mlcc-derivee-biais, d2l-demi, d2l-mise-a-jour-b, d2l-analytique]
+  panneau:
+    formule: "∇_w J = {2}/{n} Σ [(ŷ_i − y_i)]·x_i"
+  lignes:
+  - symbole: ∇_w J
+    sens: "la pente de $J$ selon $w$"
+  - symbole: "[(ŷ_i − y_i)]"
+    sens: "l'erreur sur la vente $i$"
+  - symbole: x_i
+    sens: "la surface de la vente $i$"
+  - symbole: ∇_b J
+    sens: "le même calcul pour le biais $b$, sans multiplier par la surface"
+
+- type: piege
+  role: Piège
+  titre: "Une droite ne suit pas\nune relation courbe."
+  texte: "La régression linéaire suppose une relation à peu près en ligne droite. Sur une relation courbe, même la meilleure droite garde des écarts réguliers : au-dessus aux deux bouts, en dessous au milieu."
+  sources: [d2l-hypothese-lineaire, skl-combinaison, skl-non-lineaire]
+  visuel:
+    famille: nuage
+    params:
+      forme: droite
+      polynome: [6.5, -2.2, 0.28]
+      n: 18
+      bruit: 0.35
+      abscisses: [0.3, 8.1]
+      graine: 4
+      origine: [40, 380]
+      echelle: [104, 40]
+      domaine: [0, 8.4]
+      plage: [0, 9]
+      cadre: [920, 420]
+      textes: {x: entrée $x$, y: résultat $y$, droite: la meilleure droite, ecart: écart}
+      decalage: [-20, 44]
+      description: "Des points d'illustration qui dessinent un U et la droite des moindres carrés : les points sont au-dessus aux deux bouts, en dessous au milieu."
+  encadre:
+    texte: "Plus d'itérations n'y changent rien : le problème vient du **modèle**. Un prochain épisode reprend ce cas."
+
+- type: fin
+  points:
+  - "La **régression linéaire** prédit $ŷ$ = $w$·$x$ + $b$ : le poids $w$, le biais $b$."
+  - "L'**ajustement** part de réglages au hasard, puis répète : mesurer le coût, lire le gradient, faire un pas."
+  - "Une droite ne suit pas une relation courbe : le problème vient du modèle."
+  verification:
+    question: "Pourquoi le coût ne tombe-t-il pas à zéro après 100 itérations ?"
+    page: 4
+
+linkedin:
+  texte: |-
+    La régression linéaire a une formule exacte.
+    Alors pourquoi la faire apprendre pas à pas ?
+
+    Elle remonte au début du XIXe siècle, avec Legendre en 1805 et Gauss en 1809. Pour une droite, une formule donne directement les meilleurs réglages, sans la moindre itération.
+
+    Le détour par la descente de gradient paraît donc inutile. Sur les 2 925 ventes d'Ames, elle retrouve après 1 000 itérations la droite que la formule donne d'un coup.
+
+    Ce détour a pourtant un intérêt. La plupart des modèles qui suivront n'ont pas de formule de ce genre. Il ne leur reste que la boucle : mesurer le coût, lire le gradient, faire un pas.
+
+    La droite sert de banc d'essai : on connaît la réponse, on peut vérifier que la boucle la retrouve.
+  hashtag: "#RegressionLineaire"

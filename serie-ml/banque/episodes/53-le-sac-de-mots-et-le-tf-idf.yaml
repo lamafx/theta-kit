@@ -1,0 +1,48 @@
+numero: 53
+titre: Le sac de mots et le TF-IDF
+format: court
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Compter les mots pour représenter un texte.
+couverture:
+  famille: barres
+  description: barres de fréquence de mots
+  verbe: compter
+  geste: compter
+  doigts: 4
+prerequis_explicites: []
+termes_introduits:
+- terme: sac de mots
+  formes:
+  - sac de mots
+- terme: TF-IDF
+  formes:
+  - TF-IDF
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Un texte devient un vecteur de comptes.
+- page: 3
+  type: Mécanisme
+  message: 'TF-IDF : un mot fréquent ici mais rare ailleurs pèse lourd.'
+- page: 4
+  type: Piège
+  message: L'ordre est perdu, et « bon » et « excellent » n'ont rien en commun.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 54
+  transition: Il faut des vecteurs qui portent le sens.
+references:
+  cours:
+  - titre: SKL · Text feature extraction
+    url: https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction
+  sources_originales:
+  - citation: Sparck Jones (1972), A Statistical Interpretation of Term Specificity, Journal of Documentation
+    liens:
+    - titre: A Statistical Interpretation of Term Specificity
+      url: https://doi.org/10.1108/eb026526

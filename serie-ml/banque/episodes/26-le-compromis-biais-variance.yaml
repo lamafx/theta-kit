@@ -1,0 +1,56 @@
+numero: 26
+titre: Le compromis biais-variance
+format: long
+saison: 2
+chapitre:
+  numero: 6
+  titre: Bien généraliser
+accroche: 'Trop rigide ou trop nerveux : il faut choisir.'
+couverture:
+  famille: nuage
+  description: une cible avec des impacts groupés ou dispersés
+  verbe: peser
+  geste: balance
+prerequis_explicites: []
+termes_introduits:
+- terme: biais
+  formes:
+  - biais
+- terme: variance
+  formes:
+  - variance
+- terme: bruit
+  formes:
+  - bruit
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'La cible : biais faible ou fort, variance faible ou forte.'
+- page: 3
+  type: Mécanisme
+  message: 'Biais : se tromper toujours dans le même sens. Variance : changer d''avis selon les données.'
+- page: 4
+  type: Mécanisme
+  message: L'erreur totale en U selon la complexité.
+- page: 5
+  type: Lien
+  message: Biais fort = sous-apprentissage, variance forte = surapprentissage.
+- page: 6
+  type: Piège
+  message: 'Le bruit des données : une erreur qu''aucun modèle ne peut supprimer.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 27
+  transition: Comment calmer un modèle trop nerveux ?
+references:
+  cours:
+  - titre: DLB ch. 5
+    url: https://www.deeplearningbook.org/contents/ml.html
+  sources_originales:
+  - citation: Geman, Bienenstock et Doursat (1992), Neural Networks and the Bias/Variance Dilemma, Neural Computation
+    liens:
+    - titre: Neural Networks and the Bias/Variance Dilemma
+      url: https://doi.org/10.1162/neco.1992.4.1.1

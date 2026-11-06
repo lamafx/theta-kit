@@ -1,0 +1,45 @@
+numero: 48
+titre: Le pooling et l'architecture d'un CNN
+format: court
+saison: 3
+chapitre:
+  numero: 9
+  titre: Les réseaux spécialisés
+accroche: Des bords aux formes, puis aux objets.
+couverture:
+  famille: blocs
+  description: une pile de couches qui rétrécissent
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: pooling
+  formes:
+  - pooling
+- terme: réseau convolutif (CNN)
+  formes:
+  - réseau convolutif (CNN)
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Le max-pooling garde la valeur la plus forte de chaque zone.
+- page: 3
+  type: Mécanisme
+  message: 'Couches basses : des bords. Couches hautes : des formes, puis des objets.'
+- page: 4
+  type: Repère
+  message: Convolution, pooling, puis couches denses et softmax (19).
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 49
+  transition: Les images ont un espace. Le texte et le son ont un ordre.
+references:
+  cours:
+  - titre: D2L 7.5
+    url: https://d2l.ai/chapter_convolutional-neural-networks/pooling.html
+  sources_originales:
+  - citation: LeCun et al. (1998), même article
+    liens: []

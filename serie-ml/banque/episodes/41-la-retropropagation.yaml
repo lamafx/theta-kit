@@ -1,0 +1,57 @@
+numero: 41
+titre: La rétropropagation
+format: long
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Remonter l'erreur, couche par couche.
+couverture:
+  famille: reseau
+  description: réseau parcouru par des flèches en sens inverse
+  verbe: transmettre
+  geste: porter
+prerequis_explicites:
+- 6
+- 8
+termes_introduits:
+- terme: rétropropagation
+  formes:
+  - rétropropagation
+- terme: règle de la chaîne
+  formes:
+  - règle de la chaîne
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Chaque poids a sa part de responsabilité dans l'erreur.
+- page: 3
+  type: Mécanisme
+  message: 'La règle de la chaîne : les pentes se multiplient d''une couche à l''autre.'
+- page: 4
+  type: Exemple chiffré
+  message: Le mini-réseau de l'épisode 40, en sens inverse.
+- page: 5
+  type: Mécanisme
+  message: Passe avant, passe arrière, mise à jour.
+- page: 6
+  type: Lien
+  message: C'est la descente de gradient (08) appliquée à tout le réseau.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 42
+  transition: Des pentes multipliées couche après couche… et si elles sont toutes petites ?
+references:
+  cours:
+  - titre: MLCC · Backpropagation
+    url: https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation
+  - titre: D2L 5.3
+    url: https://d2l.ai/chapter_multilayer-perceptrons/backprop.html
+  sources_originales:
+  - citation: Rumelhart, Hinton et Williams (1986), Learning representations by back-propagating errors, Nature
+    liens:
+    - titre: Learning representations by back-propagating errors
+      url: https://doi.org/10.1038/323533a0

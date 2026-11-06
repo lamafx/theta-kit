@@ -1,0 +1,59 @@
+numero: 55
+titre: Word2Vec
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Un mot se définit par les mots qui l'entourent.
+couverture:
+  famille: reseau
+  description: un mot central relié à ses voisins dans une fenêtre
+  verbe: être attentif
+  geste: ecoute
+prerequis_explicites: []
+termes_introduits:
+- terme: contexte
+  formes:
+  - contexte
+- terme: fenêtre
+  formes:
+  - fenêtre
+- terme: skip-gram
+  formes:
+  - skip-gram
+- terme: CBOW
+  formes:
+  - CBOW
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: On reconnaît un mot à ses fréquentations.
+- page: 3
+  type: Mécanisme
+  message: 'Skip-gram : prédire les voisins à partir du mot.'
+- page: 4
+  type: Mécanisme
+  message: 'CBOW : prédire le mot à partir de ses voisins.'
+- page: 5
+  type: Lien
+  message: Un petit réseau, une softmax (19) et une descente de gradient (08).
+- page: 6
+  type: Piège
+  message: 'Un seul vecteur par mot : « avocat », le fruit ou le métier ?'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 56
+  transition: Il faut un sens qui dépende du contexte.
+references:
+  cours:
+  - titre: D2L 15.1
+    url: https://d2l.ai/chapter_natural-language-processing-pretraining/word2vec.html
+  sources_originales:
+  - citation: Mikolov et al. (2013), Efficient Estimation of Word Representations in Vector Space
+    liens:
+    - titre: Efficient Estimation of Word Representations in Vector Space
+      url: https://arxiv.org/abs/1301.3781

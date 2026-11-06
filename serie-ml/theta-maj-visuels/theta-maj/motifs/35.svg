@@ -1,0 +1,26 @@
+<defs>
+<g id="m35-pts">
+<circle cx="-50" cy="-20" r="9"/><circle cx="-20" cy="30" r="9"/><circle cx="10" cy="-40" r="9"/><circle cx="40" cy="10" r="9"/><circle cx="-62" cy="28" r="9"/><circle cx="25" cy="48" r="9"/><circle cx="58" cy="-28" r="9"/><circle cx="-14" cy="-4" r="9"/><circle cx="-2" cy="66" r="9"/><circle cx="-38" cy="-56" r="9"/><circle cx="74" cy="34" r="9"/><circle cx="-80" cy="-8" r="9"/>
+</g>
+<marker id="m35-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8DB8FF"/></marker>
+</defs>
+<g role="img" aria-label="Un nuage de points réparti en trois groupes, chacun marqué par son centre. Le point tenu par le robot rejoint le groupe le plus proche.">
+<g transform="translate(210 600) scale(0.9)">
+<circle r="120" fill="none" stroke="{{accent}}" stroke-width="1.5" stroke-dasharray="4 8" stroke-opacity="0.6"/>
+<use href="#m35-pts" fill="{{accent}}"/>
+</g>
+<g transform="translate(420 840) rotate(50) scale(0.9)">
+<circle r="120" fill="none" stroke="#F5F8FC" stroke-width="1.5" stroke-dasharray="4 8" stroke-opacity="0.45"/>
+<use href="#m35-pts" fill="#F5F8FC"/>
+</g>
+<g transform="translate(770 890) rotate(-70) scale(0.85)">
+<circle r="120" fill="none" stroke="#8DB8FF" stroke-width="1.5" stroke-dasharray="4 8" stroke-opacity="0.5"/>
+<use href="#m35-pts" fill="#0A0F17" stroke="#8DB8FF" stroke-width="3"/>
+</g>
+<g stroke="#F5F8FC" stroke-width="5" stroke-linecap="round">
+<path d="M198 588 L222 612 M222 588 L198 612"/>
+<path d="M408 828 L432 852 M432 828 L408 852" stroke="{{accent}}"/>
+<path d="M758 878 L782 902 M782 878 L758 902"/>
+</g>
+<path d="M592 846 Q620 890 690 896" fill="none" stroke="#8DB8FF" stroke-width="2.5" stroke-dasharray="3 7" stroke-linecap="round" marker-end="url(#m35-arr)"/>
+</g>

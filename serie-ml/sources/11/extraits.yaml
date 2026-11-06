@@ -1,0 +1,255 @@
+# Extraits mot pour mot des références de la fiche 11, lus le 2026-11-02 : D2L 3.1 (page HTML ; formules en LaTeX
+# comme dans la source, numéros d'équation retirés, retours à la ligne du HTML joints par une espace),
+# scikit-learn « Linear Models » (page HTML, sections 1.1, 1.1.1 et 1.1.16), MLCC « Gradient descent » (page HTML,
+# ajoutée à la fiche 11 : la boucle de la page 3 et les deux dérivées de la page 5, sans le facteur 1/2 de D2L,
+# n'y sont écrites que là). Les maisons d'Ames (fil rouge de la saison 1, ajoutées à la fiche 11) : De Cock (2011)
+# relu le 2026-11-02 (PDF de l'article, DataDocumentation.txt et en-tête d'AmesHousing.txt) ; le cours BCEAO du
+# 27 octobre 2026 est repris de sources/05/ (lu le 2026-10-30), car la page de la BCEAO affiche le cours du jour et
+# calculs/devises.py garde celui du 27.
+episode: 11
+extraits:
+# --- D2L 3.1 · Linear Regression -----------------------------------------------------------------
+- id: d2l-prix
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: Regression problems pop up whenever we want to predict a numerical value. Common examples include predicting prices (of homes, stocks, etc.)
+  appuie: "Ouverture : prédire un prix de maison est une régression (épisode 03)."
+- id: d2l-exemple-maisons
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: As a running example, suppose that we wish to estimate the prices of houses (in dollars) based on their area (in square feet) and age (in years).
+  appuie: "Ouverture : le prix d'une maison selon sa surface, exemple suivi de D2L (ici avec la seule surface)."
+- id: d2l-date
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: Linear regression is both the simplest and most popular among the standard tools for tackling regression problems. Dating back to the dawn of the 19th century (Gauss, 1809, Legendre, 1805)
+  appuie: "Post ou ouverture : la régression linéaire remonte au début du XIXe siècle (Legendre 1805, Gauss 1809)."
+- id: d2l-hypothese-lineaire
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "First, we assume that the relationship between features \\(\\mathbf{x}\\) and target \\(y\\) is approximately linear"
+  appuie: "Piège : la régression linéaire suppose une relation à peu près en ligne droite ; une relation courbe sort de cette hypothèse."
+- id: d2l-poids-biais
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "Here \\(w_{\\textrm{area}}\\) and \\(w_{\\textrm{age}}\\) are called weights, and \\(b\\) is called a bias (or offset or intercept)."
+  appuie: "Ouverture : les termes poids w et biais b (le a et le b de l'épisode 04)."
+- id: d2l-influence
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: The weights determine the influence of each feature on our prediction. The bias determines the value of the estimate when all features are zero.
+  appuie: "Ouverture : le poids règle l'influence de la surface ; le biais est la prédiction pour une surface nulle."
+- id: d2l-surface-nulle
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: Even though we will never see any newly-built homes with precisely zero area, we still need the bias because it allows us to express all linear functions of our features (rather than restricting us to lines that pass through the origin).
+  appuie: "Ouverture : une maison de 0 m² n'existe pas, mais le biais évite d'imposer une droite qui passe par l'origine (comme le post de l'épisode 04)."
+- id: d2l-une-variable
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "\\[\\hat{y} = w_1 x_1 + \\cdots + w_d x_d + b.\\]"
+  appuie: "Ouverture : ŷ = w·x + b est le cas d'une seule caractéristique (d = 1) ; plusieurs caractéristiques à l'épisode 12."
+- id: d2l-objectif
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "Given a dataset, our goal is to choose the weights \\(\\mathbf{w}\\) and the bias \\(b\\) that, on average, make our model’s predictions fit the true prices observed in the data as closely as possible."
+  appuie: "Ouverture et terme ajustement : choisir w et b pour que les prédictions collent au mieux, en moyenne, aux prix observés."
+- id: d2l-pas-exact
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "we would not expect to find a real-world dataset of \\(n\\) examples where \\(y^{(i)}\\) exactly equals \\(\\mathbf{w}^\\top \\mathbf{x}^{(i)}+b\\) for all \\(1 \\leq i \\leq n\\)."
+  appuie: "Comparaison : même la meilleure droite ne passe pas par toutes les ventes (épisode 08, page Piège)."
+- id: d2l-ajustement
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: Naturally, fitting our model to the data requires that we agree on some measure of fitness (or, equivalently, of unfitness).
+  appuie: "Mécanisme : l'ajustement (fitting) demande une mesure de l'écart, la MSE de l'épisode 05."
+- id: d2l-figure
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: Fitting a linear regression model to one-dimensional data.
+  appuie: "Couverture et ouverture : un nuage de points et la droite ajustée, une seule entrée."
+- id: d2l-demi
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "The constant \\(\\frac{1}{2}\\) makes no real difference but proves to be notationally convenient, since it cancels out when we take the derivative of the loss."
+  appuie: "Formule : D2L écrit le coût avec un facteur 1/2, d'où des dérivées sans le 2 ; avec la MSE de l'épisode 05 (sans 1/2), le 2 reste (MLCC)."
+- id: d2l-analytique
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "Unlike most of the models that we will cover, linear regression presents us with a surprisingly easy optimization problem. In particular, we can find the optimal parameters (as assessed on the training data) analytically by applying a simple formula as follows."
+  appuie: "Nuance (formule ou encadré) : pour la droite, une formule directe donne aussi le creux ; la descente sert ici d'exemple, et sert aux modèles sans formule."
+- id: d2l-descente
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: consists of iteratively reducing the error by updating the parameters in the direction that incrementally lowers the loss function. This algorithm is called gradient descent.
+  appuie: "Mécanisme : la descente de gradient (épisode 08) appliquée à w et b."
+- id: d2l-initialiser
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "(i) initialize the values of the model parameters, typically at random;"
+  appuie: "Mécanisme : on part de réglages tirés au hasard."
+- id: d2l-mise-a-jour-b
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "b &\\leftarrow b - \\frac{\\eta}{|\\mathcal{B}|} \\sum_{i \\in \\mathcal{B}_t} \\partial_b l^{(i)}(\\mathbf{w}, b) && = b - \\frac{\\eta}{|\\mathcal{B}|} \\sum_{i \\in \\mathcal{B}_t} \\left(\\mathbf{w}^\\top \\mathbf{x}^{(i)} + b - y^{(i)}\\right)."
+  appuie: "Formule : la mise à jour de b, moyenne des erreurs ŷ − y (avec le facteur 1/2 de D2L)."
+- id: d2l-arret
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: After training for some predetermined number of iterations (or until some other stopping criterion is met), we record the estimated model parameters
+  appuie: "Comparaison : on s'arrête après un nombre d'itérations fixé d'avance (0, 10, 100)."
+- id: d2l-lentement
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: Although the algorithm converges slowly towards the minimizers it typically will not find them exactly in a finite number of steps.
+  appuie: "Comparaison : après 100 itérations, la droite approche du creux sans l'atteindre exactement."
+- id: d2l-minimum-global
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-02
+  extrait: "Linear regression happens to be a learning problem with a global minimum (whenever \\(\\mathbf{X}\\) is full rank, or equivalently, whenever \\(\\mathbf{X}^\\top \\mathbf{X}\\) is invertible)."
+  appuie: "Comparaison : un seul creux, pas de faux creux (épisode 10), sous la condition dite par D2L."
+# --- scikit-learn · Linear Models, Ordinary Least Squares -------------------------------------------
+- id: skl-combinaison
+  reference: https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-02
+  extrait: The following are a set of methods intended for regression in which the target value is expected to be a linear combination of the features.
+  appuie: "Piège : un modèle linéaire suppose que la cible est une combinaison linéaire des caractéristiques."
+- id: skl-moindres-carres
+  reference: https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-02
+  extrait: "LinearRegression fits a linear model with coefficients \\(w = (w_1, ..., w_p)\\) to minimize the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation."
+  appuie: "Comparaison et nuance : la méthode des moindres carrés minimise la somme des carrés des écarts, le même creux que la MSE."
+- id: skl-coef
+  reference: https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-02
+  extrait: "stores the coefficients \\(w\\) of the linear model in its coef_ and intercept_ attributes"
+  appuie: "Ouverture : w (coefficient) et b (ordonnée à l'origine, intercept) sont les deux réglages appris."
+- id: skl-non-lineaire
+  reference: https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-02
+  extrait: One common pattern within machine learning is to use linear models trained on nonlinear functions of the data.
+  appuie: "Piège : une relation courbe se traite en donnant au modèle des fonctions non linéaires des données (régression polynomiale, épisode 14)."
+# --- MLCC · Linear regression: Gradient descent -----------------------------------------------------
+- id: mlcc-hasard
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: The model begins training with randomized weights and biases near zero, and then repeats the following steps
+  appuie: "Mécanisme : départ d'un poids et d'un biais tirés au hasard, près de zéro."
+- id: mlcc-perte
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: Calculate the loss with the current weight and bias.
+  appuie: "Mécanisme, étape 1 : calculer le coût (MSE) avec les réglages du moment."
+- id: mlcc-direction
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: Determine the direction to move the weights and bias that reduce loss.
+  appuie: "Mécanisme, étape 2 : le gradient donne la direction (épisode 07)."
+- id: mlcc-pas
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: Move the weight and bias values a small amount in the direction that reduces loss.
+  appuie: "Mécanisme, étape 3 : un pas (épisode 08)."
+- id: mlcc-boucle
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: Return to step one and repeat the process until the model can't reduce the loss any further.
+  appuie: "Mécanisme : la boucle, jusqu'à ce que le coût ne baisse plus."
+- id: mlcc-mse
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: "$ \\frac{1}{M} \\sum_{i=1}^{M} (f_{w,b}(x_{(i)}) - y_{(i)})^2 $"
+  appuie: "Formule : la MSE de l'épisode 05, sans facteur 1/2 (M exemples, notés n dans la série)."
+- id: mlcc-derivee-poids
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: "$ \\frac{1}{M} \\sum_{i=1}^{M} (f_{w,b}(x_{(i)}) - y_{(i)}) * 2x_{(i)} $"
+  appuie: "Formule : la dérivée du coût selon w, (2/n) Σ (ŷ − y)·x."
+- id: mlcc-derivee-biais
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: "$ \\frac{1}{M} \\sum_{i=1}^{M} (f_{w,b}(x_{(i)}) - y_{(i)}) * 2 $"
+  appuie: "Formule : la dérivée du coût selon b, (2/n) Σ (ŷ − y)."
+- id: mlcc-instantanes
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: "In the following figures, we draw the model at three points during the training process: the beginning, the middle, and the end."
+  appuie: "Comparaison : la droite montrée à trois moments de l'entraînement (0, 10 et 100 itérations dans la fiche)."
+- id: mlcc-convexe
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: Linear models have convex loss functions, ensuring that gradient descent will always find the global minimum, resulting in the best possible model for the given data.
+  appuie: "Comparaison : avec la MSE d'une droite, la descente vise le seul creux (épisode 10) ; « always » suppose un η bien choisi (épisode 08)."
+# --- Maisons d'Ames (De Cock, 2011), fil rouge de la saison 1 ---------------------------------------
+- id: ames-ventes
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-11-02
+  extrait: This paper presents a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations
+  appuie: "Ouverture, comparaison : les ventes de maisons d'Ames, 2006 à 2010 (calculs/ames.py)."
+- id: ames-4000
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-11-02
+  extrait: I would recommend removing any houses with more than 4000 square feet from the data set (which eliminates these five unusual observations)
+  appuie: "Ouverture, comparaison : les maisons de plus de 4 000 pieds carrés sont écartées, comme le recommande l'auteur (calculs/ames.py)."
+- id: ames-surface
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-02
+  extrait: "Gr Liv Area (Continuous): Above grade (ground) living area square feet"
+  appuie: "Ouverture : l'entrée x, la surface habitable (en centaines de m², calculs/ames.py)."
+- id: ames-prix
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-02
+  extrait: "SalePrice (Continuous): Sale price $$"
+  appuie: "Ouverture : la valeur réelle y, le prix de vente, converti en millions de FCFA (calculs/devises.py)."
+- id: ames-fichier
+  reference: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_sur: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_le: 2026-11-02
+  extrait: Gr Liv Area
+  appuie: "Ouverture, comparaison : la colonne de la surface dans le fichier de données, cité avec la date de consultation."
+- id: bceao-dollar
+  reference: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_sur: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_le: 2026-10-30
+  extrait: "Cours des devises du mardi 27 Octobre 2026 Devise FCFA Euro 655,9570 Dollar us 588,3000"
+  appuie: "Ouverture, comparaison : prix en millions de FCFA au cours du 27 octobre 2026 (repris de sources/05/)."
+illisibles: []

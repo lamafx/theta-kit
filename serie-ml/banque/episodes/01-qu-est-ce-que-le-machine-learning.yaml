@@ -1,0 +1,88 @@
+numero: 1
+titre: Qu'est-ce que le Machine Learning ?
+format: court
+saison: 1
+chapitre:
+  numero: 1
+  titre: Les bases
+accroche: Au lieu d'écrire les règles, on montre des exemples.
+couverture:
+  famille: nuage
+  description: nuage de points épars, les exemples
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: Machine Learning
+  formes:
+  - Machine Learning
+- terme: exemple
+  formes:
+  - exemple
+- terme: apprentissage
+  formes:
+  - apprentissage
+- terme: modèle
+  formes:
+  - modèle
+- terme: supervisé  # décision de l'utilisateur (2026-10-26), comme « modèle » (A23)
+  formes:
+  - supervisé
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Programme classique : règles + données → réponses. Machine Learning : données + réponses → règles.'
+# Ordre des pages 3 et 4 inversé le 2026-10-30 à la demande de l'utilisateur : le problème avant l'origine.
+- page: 3
+  type: Exemple
+  message: 'Le filtre anti-spam : impossible d''écrire toutes les règles, facile de montrer des milliers de mails
+    déjà triés.'
+  image_reelle: capture de ton propre dossier spam, adresses floutées.
+- page: 4
+  type: Contexte
+  message: '1959 : Arthur Samuel (IBM) publie un programme de dames qui apprend à jouer mieux que son auteur, en
+    8 à 10 heures de jeu.'
+  image_reelle: photo d'un IBM 704, le modèle utilisé pour ses expériences.
+- page: 5
+  type: Piège
+  message: 'Le ML n''est pas magique : il n''apprend que ce que contiennent ses exemples. Même le programme de Samuel
+    partait d''une liste de critères fournie par son auteur.'
+- page: 6
+  type: Fin
+episode_suivant:
+  numero: 2
+  transition: Mais à quoi ressemble un exemple, pour une machine ?
+references:
+  cours:
+  - titre: DLB ch. 5
+    url: https://www.deeplearningbook.org/contents/ml.html
+  # Ajouté le 2026-10-31 à la demande de l'utilisateur (relecture de 01 et 02 : définir le modèle).
+  - titre: MLCC · Machine Learning Glossary
+    url: https://developers.google.com/machine-learning/glossary
+  sources_originales:
+  - citation: Samuel (1959), Some Studies in Machine Learning Using the Game of Checkers, IBM Journal of R&D
+    liens:
+    - titre: Some Studies in Machine Learning Using the Game of Checkers
+      url: https://doi.org/10.1147/rd.33.0210
+  # Ajoutée le 2026-10-26 à la demande de l'utilisateur (relecture de l'épisode 01, page 4).
+  - citation: Google Workspace Blog (2019), Spam does not bring us joy, ridding Gmail of 100 million more spam messages with TensorFlow
+    liens:
+    - titre: Spam does not bring us joy, ridding Gmail of 100 million more spam messages with TensorFlow
+      url: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  # Ajoutée le 2026-11-01 à la demande de l'utilisateur (relecture de l'épisode 01, D18).
+  - citation: Koh et al. (2020), WILDS, A Benchmark of in-the-Wild Distribution Shifts, arXiv:2012.07421
+    liens:
+    - titre: "WILDS: A Benchmark of in-the-Wild Distribution Shifts"
+      url: https://arxiv.org/abs/2012.07421
+faits_verifies:
+- l'article de 1959 affirme qu'un ordinateur peut apprendre à jouer aux dames mieux que la personne qui l'a programmé,
+  en 8 à 10 heures de jeu machine
+- les expériences de l'article ont tourné sur un IBM 704
+- l'auteur fournissait une liste de critères pour juger une position (dont l'avance en pièces), et le programme
+  apprenait lesquels utiliser et quel poids leur donner
+- 'en 1962, après des milliers de parties contre lui-même, le programme bat Robert Nealey, qui se présentait comme
+  maître de dames (source : IBM)'
+a_ne_pas_ecrire:
+- la définition célèbre attribuée à Samuel, qu'on ne trouve pas dans l'article

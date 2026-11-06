@@ -1,0 +1,101 @@
+# Extraits mot pour mot des références de la fiche 04, lus le 2026-10-26 (MLCC) et le 2026-10-30 (Ames, BCEAO).
+# Le 2026-10-30, à la demande de l'utilisateur, l'exemple des voitures (MLCC) est remplacé par les maisons d'Ames.
+episode: 4
+extraits:
+- id: mlcc-droite
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-26
+  extrait: m is the slope of the line.
+  appuie: "Ouverture : a règle l'inclinaison de la droite."
+- id: mlcc-ordonnee
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-26
+  extrait: b is the y-intercept.
+  appuie: "Ouverture : b est l'ordonnée à l'origine."
+- id: mlcc-relation
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-26
+  extrait: In an ML context, linear regression finds the relationship between features and a label.
+  appuie: "Ouverture : de l'entrée x à la prédiction ŷ."
+- id: mlcc-parametre
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-26
+  extrait: Bias is a parameter of the model and is calculated during training.
+  appuie: "Définition : b, comme a, est un paramètre du modèle, calculé pendant l'entraînement."
+- id: mlcc-entrainement
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-26
+  extrait: During training, the model calculates the weight and bias that produce the best model.
+  appuie: "Définition : entraîner, c'est chercher les réglages qui donnent le meilleur modèle."
+- id: mlcc-minimiser
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-26
+  extrait: During training, the model adjusts its bias (b) and weights (w) to minimize the difference between predicted and actual values.
+  appuie: "Définition : « meilleur » se mesure par l'écart entre prédiction et valeur réelle (épisode 05)."
+- id: ames-ventes
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-10-30
+  extrait: This paper presents a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations
+  appuie: "Comparaison, encadré : des ventes de maisons à Ames, de 2006 à 2010 ; calculs/ames.py."
+- id: ames-4000
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-10-30
+  extrait: I would recommend removing any houses with more than 4000 square feet from the data set
+  appuie: "calculs/ames.py : les maisons de plus de 4 000 pieds carrés sont écartées avant le calcul de la droite."
+- id: ames-surface
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "Gr Liv Area (Continuous): Above grade (ground) living area square feet"
+  appuie: "Ouverture : l'entrée x, la surface habitable (en centaines de m², calculs/ames.py)."
+- id: ames-prix
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "SalePrice (Continuous): Sale price $$"
+  appuie: "Ouverture : la prédiction ŷ, le prix de vente, converti en millions de FCFA (calculs/devises.py)."
+- id: bceao-dollar
+  reference: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_sur: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_le: 2026-10-30
+  extrait: "Cours des devises du mardi 27 Octobre 2026 Devise FCFA Euro 655,9570 Dollar us 588,3000"
+  appuie: "Ouverture et comparaison : prix convertis en FCFA au cours du 27 octobre 2026."
+- id: mlcc-ligne
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-31
+  extrait: "We could create our own model by drawing a best fit line through the points:"
+  appuie: "Ouverture : linéaire, la prédiction suit une droite (une entrée)."
+- id: mlcc-glossaire-regression
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary#regression-model
+  lu_le: 2026-10-31
+  extrait: Informally, a model that generates a numerical prediction.
+  appuie: "Ouverture : une régression prédit un nombre (D11)."
+- id: mlcc-equation
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression
+  lu_le: 2026-10-31
+  extrait: "In ML, we write the equation for a linear regression model as follows:"
+  appuie: "Page 4 : la forme du modèle, une droite, est posée avant l'entraînement (D7)."
+- id: ds100-theta
+  reference: https://ds100.org/fa23-course-notes/ols/ols.html
+  lu_sur: https://ds100.org/fa23-course-notes/ols/ols.html
+  lu_le: 2026-11-01
+  extrait: "Our predicted value of y, ŷ, is a linear combination of the single observations (features), xi, and the parameters, θi."
+  appuie: "Page 4 : on note souvent les paramètres θ (D2)."
+- id: ames-fichier
+  reference: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_sur: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_le: 2026-11-01
+  extrait: Gr Liv Area
+  appuie: "Pages 2 et 3 : la colonne de la surface dans le fichier de données, cité avec la date de consultation (D10)."
+illisibles: []

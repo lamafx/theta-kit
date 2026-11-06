@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "title": "θ Théta · Machine Learning, one concept at a time",
+    "description": "An editorial series on LinkedIn by Ladji Lama Kamagate: one carousel per concept, as a PDF, plus a 3D journey and a 3D lab.",
+    "signature": "θ Théta, Machine Learning, one concept at a time."
+  },
+  "nav": {
+    "carrousels": "PDF carousels",
+    "labo": "3D lab",
+    "entrer": "Enter θ",
+    "profil": "My profile",
+    "menu": "Menu",
+    "fermer": "Close",
+    "langue": "Language"
+  },
+  "loader": {
+    "tagline": "One concept at a time"
+  },
+  "hero": {
+    "saison": "SEASON 1",
+    "serie": "Editorial series on LinkedIn · #ThetaML",
+    "titre_1": "Understand",
+    "titre_2": "Machine Learning,",
+    "titre_3": "one concept at a time.",
+    "intro": "Short, accurate carousels, one concept per episode, and a 3D lab to play with it. The θ robot takes you from your first model to gradient descent.",
+    "cta_voyage": "Enter the journey",
+    "cta_pdf": "The carousels as PDFs",
+    "stat_episodes": "episodes planned",
+    "stat_rythme": "posts per week",
+    "stat_rythme_val": "2 to 3",
+    "stat_3d": "concepts in 3D",
+    "robot_hint": "Click the robot",
+    "robot_hint_touch": "Tap the robot",
+    "defiler": "Scroll"
+  },
+  "carrousels": {
+    "surtitre": "The carousels · Season 1",
+    "titre_1": "Every post,",
+    "titre_2": "as a PDF.",
+    "intro": "The day an episode comes out on LinkedIn, its carousel lands here as a PDF, to download and keep.",
+    "suivre": "Follow #ThetaML on LinkedIn",
+    "telecharger": "Download the PDF",
+    "labo": "Open in the 3D lab",
+    "email": "Get it by email",
+    "pied_reel": "θ Théta carousel · PDF · {pages} pages",
+    "pied_provisoire": "Provisional summary sheet · PDF",
+    "passer": "Skip ahead",
+    "prochain": "Next · Nº {n} · {titre}",
+    "vers_voyage": "Or continue to the 3D journey ↓",
+    "precedent": "Previous",
+    "suivant": "Next",
+    "compteur": "{i} / {total}",
+    "pdf_langue": "(in French)"
+  },
+  "guide": {
+    "groupe": "End of season",
+    "t1": "The whole season,",
+    "t2": "in a single guide.",
+    "texte": "The concepts, formulas and examples of all 62 episodes, gathered in one PDF at the end of the season.",
+    "cta": "Tell me when it is out"
+  },
+  "createur": {
+    "surtitre": "Behind θ Théta · Episode 00",
+    "cta": "Discover my profile",
+    "cta_court": "See the profile"
+  },
+  "inscription": {
+    "surtitre": "The θ Théta list",
+    "titre_1": "Every episode,",
+    "titre_2": "in your inbox.",
+    "intro": "On release day, get the new episode with its PDF. At the end of the season, the complete guide to all 62 episodes.",
+    "plus_1": "One email per episode, no more",
+    "plus_2": "The carousel attached as a PDF",
+    "plus_3": "One-click unsubscribe",
+    "prenom": "First name",
+    "facultatif": "(optional)",
+    "email": "Email address",
+    "je_veux": "I want to receive",
+    "pdf": "The episode PDFs",
+    "newsletter": "The θ Théta newsletter",
+    "consentement": "I agree to receive emails from θ Théta. My address is used only for this, is never sold, and I can unsubscribe at any time.",
+    "envoyer": "Sign me up",
+    "envoi": "Sending…",
+    "merci": "Thanks {prenom}, you are on the list.",
+    "autre": "Sign up another address",
+    "err_email": "Please enter a valid email address.",
+    "err_interet": "Choose at least one: the PDFs or the newsletter.",
+    "err_consent": "Please tick the box to agree to receive emails.",
+    "err_envoi": "Your sign-up could not be sent. Please try again in a moment."
+  },
+  "modale_pdf": {
+    "titre": "Get Nº {n} by email",
+    "consent": "Please tick the box to agree to receive it by email.",
+    "aussi_newsletter": "Also sign me up for the newsletter",
+    "envoyer": "Send the PDF",
+    "merci": "On its way: the PDF is heading to your inbox.",
+    "err_envoi": "Your request could not be sent. Please try again in a moment."
+  },
+  "portail": {
+    "titre": "Last stop: the 3D journey ↓",
+    "bouton": "Enter the journey"
+  },
+  "voyage": {
+    "aide_bureau": "Scroll or use the arrow keys to move",
+    "aide_tactile": "Swipe to move",
+    "porte": "Nº {n}",
+    "brouillon": "Provisional sheet",
+    "guide": "The end-of-season guide",
+    "auteur": "The author",
+    "sortie": "Back to home",
+    "contact": "Write to the author"
+  },
+  "labo": {
+    "titre": "3D lab",
+    "lecture": "Play",
+    "pause": "Pause",
+    "reinit": "Reset",
+    "taux": "Learning rate η",
+    "lot": "Batch size",
+    "themes": {
+      "derivee": "The derivative",
+      "gradient": "The gradient",
+      "descente": "Gradient descent",
+      "minilots": "Mini-batches",
+      "minlocaux": "Local minima",
+      "selle": "Saddle point"
+    }
+  },
+  "profil": {
+    "episode": "Episode 00 · The author",
+    "retour": "← The series",
+    "contact": "Contact me",
+    "lire": "Read",
+    "en_une_phrase": "In one sentence",
+    "projets_titre": "Three projects, three concepts.",
+    "projet_n": "Project {i} / {total} · {date}",
+    "filtres": {
+      "all": "All",
+      "ml": "Machine Learning",
+      "vision": "Vision",
+      "iot": "IoT"
+    },
+    "preuves_titre": "Certifications and awards",
+    "preuves_filtres": {
+      "all": "All",
+      "cert": "Certifications",
+      "prix": "Awards"
+    },
+    "ouvrir_fichier": "Open the file",
+    "parcours_titre": "Journey",
+    "outils_titre": "My toolbox.",
+    "projet_unite": "project",
+    "projets_unite": "projects",
+    "fin": "End of episode",
+    "stage": "An ML internship? Let’s talk.",
+    "cv": "Download my CV ↓",
+    "disponible": "Available for an internship"
+  },
+  "episode": {
+    "telecharger": "Download the carousel (PDF, in French)",
+    "a_retenir": "Key takeaways",
+    "verifiez": "Check yourself",
+    "voir_reponse": "Show the answer",
+    "post": "The LinkedIn post",
+    "sources": "Sources",
+    "precedent": "Previous episode",
+    "suivant": "Next episode",
+    "labo": "Explore it in the 3D lab",
+    "brouillon": "Carousel in progress: provisional summary sheet."
+  },
+  "footer": {
+    "baseline_1": "Machine Learning,",
+    "baseline_2": "one concept at a time.",
+    "texte": "An editorial series on LinkedIn, its carousels as PDFs, a journey and a lab in 3D.",
+    "serie": "The series",
+    "voyage": "3D journey",
+    "recevoir": "Get the episodes",
+    "auteur": "The author",
+    "portfolio": "Portfolio",
+    "infos": "Info",
+    "confidentialite": "Privacy",
+    "mentions": "Legal notice",
+    "desinscrire": "Unsubscribe",
+    "copyright": "© {annee} θ Théta · Ladji Lama Kamagate · Abidjan",
+    "haut": "Back to top ↑"
+  },
+  "commun": {
+    "fr_seulement": "Available in French only for now.",
+    "fermer": "Close",
+    "precedent": "Previous",
+    "suivant": "Next"
+  }
+}

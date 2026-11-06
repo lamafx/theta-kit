@@ -1,0 +1,55 @@
+numero: 54
+titre: Les embeddings
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Quand les mots deviennent des points dans l'espace.
+couverture:
+  famille: nuage
+  description: nuage de mots en 2D, regroupés par sens
+  verbe: ranger
+  geste: deposer
+prerequis_explicites:
+- 36
+termes_introduits:
+- terme: embedding
+  formes:
+  - embedding
+- terme: vecteur dense
+  formes:
+  - vecteur dense
+- terme: similarité cosinus
+  formes:
+  - similarité cosinus
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Chaque mot devient un point dans un espace de quelques centaines de dimensions.
+- page: 3
+  type: Mécanisme
+  message: Les mots de sens proche sont proches dans l'espace.
+- page: 4
+  type: Formule
+  message: La similarité cosinus entre deux vecteurs.
+- page: 5
+  type: Exemple
+  message: roi − homme + femme ≈ reine.
+- page: 6
+  type: Repère
+  message: Les embeddings sont appris, comme des poids.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 55
+  transition: Comment apprend-on ces vecteurs ?
+references:
+  cours:
+  - titre: MLCC · Embeddings
+    url: https://developers.google.com/machine-learning/crash-course/embeddings
+  - titre: MLCC · Embedding space
+    url: https://developers.google.com/machine-learning/crash-course/embeddings/embedding-space
+  sources_originales: []

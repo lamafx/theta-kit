@@ -1,0 +1,138 @@
+# Extraits mot pour mot des références de la fiche 05, lus le 2026-10-31 (MLCC, D2L) ; ceux d'Ames et de la
+# BCEAO sont repris de sources/04/ (lus le 2026-10-30), pour la même droite et les mêmes maisons.
+episode: 5
+extraits:
+- id: mlcc-difference
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: In statistics and machine learning, loss measures the difference between the predicted and actual values.
+  appuie: "Ouverture : l'erreur compare la prédiction ŷ et la valeur réelle y."
+- id: mlcc-distance
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: Loss focuses on the distance between the values, not the direction.
+  appuie: "Mécanisme (page 3) : une prédiction trop basse compte autant qu'une trop haute."
+- id: mlcc-signe
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: Square the difference between the actual value and the prediction.
+  appuie: "Mécanisme (page 3) : élever l'erreur au carré retire son signe."
+- id: mlcc-carre-grand
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: When the difference between the prediction and label is large, squaring makes the loss even larger.
+  appuie: "Mécanisme (page 3) : le carré grossit les grosses erreurs."
+- id: mlcc-carre-petit
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: When the difference is small (less than 1), squaring makes the loss even smaller.
+  appuie: "Mécanisme (page 3) : à l'inverse, une erreur inférieure à 1 rapetisse (nuance pour la relecture)."
+- id: mlcc-aberrant
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: For instance, MSE moves the model more toward the outliers, while MAE doesn't.
+  appuie: "Mécanisme (page 3), le revers : un point très éloigné tire la droite vers lui."
+- id: mlcc-mse
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: "Mean squared error (MSE) The average of L2 losses across a set of N examples."
+  appuie: "Formule : la MSE est la moyenne des erreurs au carré sur les n exemples."
+- id: mlcc-choix
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  lu_le: 2026-10-31
+  extrait: Deciding whether to use MAE or MSE can depend on the dataset and the way you want to handle certain predictions.
+  appuie: "Formule : la MSE est un choix, pas le seul coût possible."
+- id: d2l-distance
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: Loss functions quantify the distance between the real and predicted values of the target.
+  appuie: "Formule : la fonction de coût J mesure l'écart entre valeurs réelles et prédites."
+- id: d2l-zero
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: The loss will usually be a nonnegative number where smaller values are better and perfect predictions incur a loss of 0.
+  appuie: "Formule : plus J est petit, mieux la droite colle aux données."
+- id: d2l-regression
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: For regression problems, the most common loss function is the squared error.
+  appuie: "Formule : la MSE est le coût le plus courant en régression."
+- id: d2l-carre
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: lead to even larger contributions to the loss, due to its quadratic form
+  appuie: "Mécanisme (page 3) : les grosses erreurs (« large differences between estimates and targets », symboles omis) pèsent davantage."
+- id: d2l-anomalies
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: while it encourages the model to avoid large errors it can also lead to excessive sensitivity to anomalous data
+  appuie: "Mécanisme (page 3), le revers : une sensibilité excessive aux données anormales."
+- id: d2l-moyenne
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: To measure the quality of a model on the entire dataset of n examples, we simply average (or equivalently, sum) the losses on the training set
+  appuie: "Formule : J fait la moyenne des erreurs au carré sur les n exemples (D2L ajoute un facteur 1/2, sans effet sur le creux)."
+- id: d2l-minimiser
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-10-31
+  extrait: that minimize the total loss across all training examples
+  appuie: "Mécanisme (page 6) : entraîner, c'est chercher les paramètres (« When training the model, we seek parameters ») au creux de J."
+- id: ames-ventes
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-10-30
+  extrait: This paper presents a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations
+  appuie: "Pages 3, 5 et 6 : les ventes de maisons d'Ames ; calculs/ames.py et calculs/cout.py."
+- id: ames-surface
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "Gr Liv Area (Continuous): Above grade (ground) living area square feet"
+  appuie: "Pages 3, 5 et 6 : l'entrée x, la surface habitable (en centaines de m², calculs/ames.py)."
+- id: ames-quartier
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "Neighborhood (Nominal): Physical locations within Ames city limits"
+  appuie: "Page 3 : le quartier de chaque maison du tableau."
+- id: ames-prix
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "SalePrice (Continuous): Sale price $$"
+  appuie: "Pages 3, 5 et 6 : la valeur réelle y, le prix de vente, converti en millions de FCFA (calculs/devises.py)."
+- id: bceao-dollar
+  reference: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_sur: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_le: 2026-10-30
+  extrait: "Cours des devises du mardi 27 Octobre 2026 Devise FCFA Euro 655,9570 Dollar us 588,3000"
+  appuie: "Pages 3 et 5 : prix et coûts en FCFA au cours du 27 octobre 2026."
+- id: ames-fichier
+  reference: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_sur: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_le: 2026-11-01
+  extrait: Gr Liv Area
+  appuie: "Pages 3, 5 et 6 : la colonne de la surface dans le fichier de données, cité avec la date de consultation (D10)."
+# Ajouté le 2026-11-01 (retours éditoriaux de l'utilisateur) : convention de signe.
+- id: nist-residu
+  reference: https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm
+  lu_sur: https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm
+  lu_le: 2026-11-01
+  extrait: The residuals from a fitted model are the differences between the responses observed at each combination values of the explanatory variables and the corresponding prediction of the response computed using the regression function.
+  appuie: "Page 2 : en statistique, le résidu s'écrit souvent observé moins prédit, y − ŷ."
+illisibles: []

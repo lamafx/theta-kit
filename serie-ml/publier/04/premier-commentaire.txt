@@ -1,0 +1,6 @@
+Références de l’épisode Nº 04 :
+- MLCC · Linear regression : https://developers.google.com/machine-learning/crash-course/linear-regression
+- MLCC · Machine Learning Glossary : https://developers.google.com/machine-learning/glossary
+- Data 100 · Ordinary Least Squares : https://ds100.org/fa23-course-notes/ols/ols.html
+- BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA) : https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+- De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 31 octobre 2026 : https://doi.org/10.1080/10691898.2011.11889627 ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt

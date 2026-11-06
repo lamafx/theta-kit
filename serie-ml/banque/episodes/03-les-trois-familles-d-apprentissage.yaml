@@ -1,0 +1,67 @@
+numero: 3
+titre: Les trois familles d'apprentissage
+format: court
+saison: 1
+chapitre:
+  numero: 1
+  titre: Les bases
+accroche: Avec la réponse, sans la réponse, ou par essais et erreurs.
+couverture:
+  famille: nuage
+  description: trois groupes de points distincts
+  verbe: compter
+  geste: compter
+  doigts: 3
+prerequis_explicites: []
+termes_introduits:
+- terme: non supervisé
+  formes:
+  - non supervisé
+- terme: par renforcement
+  formes:
+  - par renforcement
+- terme: régression
+  formes:
+  - régression
+- terme: classification
+  formes:
+  - classification
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Les trois grandes familles en trois colonnes, présentées comme des repères et non comme une liste complète. La nuance unique de l''épisode : des repères, pas une liste complète.'
+- page: 3
+  type: Comparaison
+  # Aligné le 2026-11-01 sur le contenu (relecture, D3).
+  message: 'Supervisé : retrouver le prix de chaque maison (épisode 02) ; non supervisé : chercher une structure, par exemple des groupes, sur le même nuage ; exemple des iris.'
+- page: 4
+  type: Repère
+  # Aligné le 2026-11-01 sur le contenu (relecture, D10).
+  message: 'Que prédit un modèle supervisé ? Régression : un nombre. Classification : une catégorie.'
+# Ajoutée le 2026-10-30 (ordre des pages revu à la demande de l'utilisateur) : la page Renforcement suit les
+# deux tâches du supervisé, déjà produite le 2026-10-26.
+- page: 5
+  type: Mécanisme
+  message: 'Par renforcement : le système agit, reçoit un retour, recommence ; les données ne sont pas réunies d''avance.'
+- page: 6
+  type: Fin
+episode_suivant:
+  numero: 4
+  transition: Mais concrètement, qu'est-ce qui apprend ?
+references:
+  cours:
+  - titre: DLB ch. 5
+    url: https://www.deeplearningbook.org/contents/ml.html
+  # Ajoutées le 2026-11-01 à la demande de l'utilisateur (relecture de l'épisode 03, D6 et D12).
+  - titre: Sutton et Barto, Reinforcement Learning, An Introduction, § 1.1
+    url: http://incompleteideas.net/book/first/ebook/node7.html
+  # Ajoutée le 2026-11-01 (audit éditorial de l'utilisateur, point 03.2) : un retour positif ou négatif.
+  - titre: Sutton et Barto, Reinforcement Learning, An Introduction, § 3.1
+    url: http://incompleteideas.net/book/first/ebook/node28.html
+  sources_originales:
+  - citation: Levine, Kumar, Tucker et Fu (2020), Offline Reinforcement Learning, Tutorial, Review, and Perspectives on Open Problems, arXiv:2005.01643
+    liens:
+    - titre: "Offline Reinforcement Learning: Tutorial, Review, and Perspectives on Open Problems"
+      url: https://arxiv.org/abs/2005.01643

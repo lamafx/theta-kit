@@ -1,0 +1,55 @@
+numero: 62
+titre: La classification d'intention
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Comprendre ce que l'utilisateur veut vraiment dire.
+couverture:
+  famille: reseau
+  description: des phrases qui convergent vers des catégories d'intention
+  verbe: être attentif
+  geste: ecoute
+prerequis_explicites:
+- 19
+- 22
+- 61
+termes_introduits:
+- terme: intention
+  formes:
+  - intention
+- terme: assistant conversationnel
+  formes:
+  - assistant conversationnel
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: « Je veux payer ma facture » → l'intention « paiement ».
+- page: 3
+  type: Mécanisme
+  message: Texte, tokens, embeddings, modèle, puis softmax sur les intentions.
+- page: 4
+  type: Exemple
+  message: 'Sur les jeux publics Snips et ATIS (Chen, Zhuo et Wang, 2019) : des phrases, leurs intentions, et la précision obtenue.'
+- page: 5
+  type: Évaluation
+  message: Matrice de confusion (21) et F1 (22) par intention.
+- page: 6
+  type: Piège
+  message: Les intentions proches, et les phrases hors sujet.
+- page: 7
+  type: Fin
+episode_suivant:
+  texte: Fin de la série · merci de l'avoir suivie
+references:
+  cours:
+  - titre: D2L 16.6
+    url: https://d2l.ai/chapter_natural-language-processing-applications/finetuning-bert.html
+  sources_originales:
+  - citation: Chen, Zhuo et Wang (2019), BERT for Joint Intent Classification and Slot Filling
+    liens:
+    - titre: BERT for Joint Intent Classification and Slot Filling
+      url: https://arxiv.org/abs/1902.10909

@@ -1,0 +1,130 @@
+[
+  {
+    "n": "01",
+    "tags": [
+      "ml"
+    ],
+    "date": {
+      "fr": "Oct. 2025 → fév. 2026",
+      "en": "Oct 2025 → Feb 2026"
+    },
+    "resultat": "88 %",
+    "_verifier": "88 % et XGBoost viennent de l’ancien CV ; le nouveau CV ne cite que Python",
+    "titre": {
+      "fr": "Détecter la pneumonie",
+      "en": "Detecting pneumonia"
+    },
+    "notion": {
+      "fr": "Classification",
+      "en": "Classification"
+    },
+    "outils": [
+      "Python",
+      "XGBoost",
+      "Django REST"
+    ],
+    "desc": {
+      "fr": "Un système intelligent qui surveille à la fois l’environnement et l’état de santé du patient, afin de prédire, prévenir et détecter la pneumonie, servi par une API REST.",
+      "en": "An intelligent system that monitors both the environment and the patient’s health in order to predict, prevent and detect pneumonia, served through a REST API."
+    },
+    "points": {
+      "fr": [
+        "Modèle de prédiction de la pneumonie : 88 % de précision.",
+        "API REST pour servir le modèle, avec Django REST Framework.",
+        "Rôle : développeur ML et API, en apprentissage par projet à l’ESATIC."
+      ],
+      "en": [
+        "Pneumonia prediction model: 88% precision.",
+        "REST API to serve the model, with Django REST Framework.",
+        "Role: ML and API developer, in project-based learning at ESATIC."
+      ]
+    }
+  },
+  {
+    "n": "02",
+    "tags": [
+      "ml",
+      "vision"
+    ],
+    "date": {
+      "fr": "Mars 2026 →",
+      "en": "Mar 2026 →"
+    },
+    "resultat": {
+      "fr": "Vision",
+      "en": "Vision"
+    },
+    "titre": {
+      "fr": "Retrouver une scène par l’image",
+      "en": "Finding a scene from an image"
+    },
+    "notion": {
+      "fr": "Embeddings et similarité",
+      "en": "Embeddings and similarity"
+    },
+    "outils": [
+      "React Native",
+      "FastAPI",
+      "PgVector"
+    ],
+    "desc": {
+      "fr": "Une application mobile qui identifie en temps réel des contenus vidéo à partir d’une vidéo, grâce à un moteur de recherche intelligente basé sur l’IA.",
+      "en": "A mobile app that identifies video content in real time from a video, using an AI-based intelligent search engine."
+    },
+    "points": {
+      "fr": [
+        "Application mobile en React Native.",
+        "Moteur de recherche par embeddings et recherche vectorielle, avec PgVector.",
+        "Backend FastAPI ; projet personnel depuis mars 2026."
+      ],
+      "en": [
+        "Mobile app in React Native.",
+        "Search engine using embeddings and vector search, with PgVector.",
+        "FastAPI backend; personal project since March 2026."
+      ]
+    }
+  },
+  {
+    "n": "03",
+    "tags": [
+      "iot"
+    ],
+    "date": {
+      "fr": "Juin 2025",
+      "en": "June 2025"
+    },
+    "resultat": {
+      "fr": "3ᵉ place",
+      "en": "3rd place"
+    },
+    "titre": {
+      "fr": "SmartWattUIA, l’électricité intelligente",
+      "en": "SmartWattUIA, smart electricity"
+    },
+    "notion": {
+      "fr": "Données de capteurs",
+      "en": "Sensor data"
+    },
+    "outils": [
+      "Arduino",
+      "ESP32",
+      "FastAPI"
+    ],
+    "desc": {
+      "fr": "Pendant un hackathon de quatre jours, un système de gestion de l’électricité qui collecte les données et les envoie par API pour optimiser la consommation.",
+      "en": "During a four-day hackathon, an electricity management system that collects data and sends it through an API to optimise consumption."
+    },
+    "points": {
+      "fr": [
+        "Collecte des données de consommation et envoi par API.",
+        "Logique électronique sur Arduino et ESP32.",
+        "3ᵉ place au hackathon SmartWattUIA, du 11 au 14 juin 2025."
+      ],
+      "en": [
+        "Collection of consumption data and sending through an API.",
+        "Electronic logic on Arduino and ESP32.",
+        "3rd place at the SmartWattUIA hackathon, 11 to 14 June 2025."
+      ]
+    }
+  }
+]

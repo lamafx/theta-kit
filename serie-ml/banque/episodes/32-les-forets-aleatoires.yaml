@@ -1,0 +1,51 @@
+numero: 32
+titre: Les forêts aléatoires
+format: court
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: Mille arbres un peu différents valent mieux qu'un seul.
+couverture:
+  famille: arbre
+  description: une rangée d'arbres stylisés
+  verbe: chercher
+  geste: visiere
+prerequis_explicites: []
+termes_introduits:
+- terme: méthode d'ensemble
+  formes:
+  - méthode d'ensemble
+- terme: bagging
+  formes:
+  - bagging
+- terme: forêt aléatoire
+  formes:
+  - forêt aléatoire
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Chaque arbre voit un tirage différent des données et des caractéristiques.
+- page: 3
+  type: Mécanisme
+  message: Les arbres votent, et la variance baisse (26).
+- page: 4
+  type: Repère
+  message: 'La forêt mesure aussi quelles caractéristiques comptent le plus pour prédire. Attention : utile pour
+    prédire ne veut pas dire cause.'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 33
+  transition: Et si les arbres se corrigeaient l'un l'autre au lieu de voter ?
+references:
+  cours:
+  - titre: SKL · Random forests
+    url: https://scikit-learn.org/stable/modules/ensemble.html#random-forests-and-other-randomized-tree-ensembles
+  sources_originales:
+  - citation: Breiman (2001), Random Forests, Machine Learning
+    liens:
+    - titre: Random Forests
+      url: https://doi.org/10.1023/A:1010933404324

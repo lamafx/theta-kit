@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page de contenu — Piège</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#2D5BFF}a:hover{color:#1C3FC4}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 72px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Geist Mono', monospace; font-size: 17px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<span style="display: flex; gap: 14px"><span style="color: #2D5BFF">Nº 08</span><span style="color: #5F6673">Apprendre de ses erreurs</span></span>
+<span style="color: #5F6673">7 / 8</span>
+</div>
+
+<span style="margin-top: 64px; font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{alert}}">Piège</span>
+<h2 style="margin: 16px 0 0; font-size: 54px; line-height: 1.06; font-weight: 600; letter-spacing: -0.03em; color: #0E1116">Pente nulle ne veut pas<br>dire erreur nulle.</h2>
+<p style="margin: 24px 0 0; max-width: 880px; font-size: 27px; line-height: 1.45; color: #3E4450">Au minimum, la pente vaut zéro et la descente s’arrête. Mais l’erreur peut rester élevée : le modèle est seulement le meilleur que sa forme permet.</p>
+
+<svg viewBox="0 0 920 440" width="920" height="440" role="img" aria-label="Courbe d'erreur en U dont le creux reste haut au-dessus de la ligne erreur égale zéro. Au creux, la tangente est plate (pente nulle). Une accolade orange mesure l'erreur restante entre le creux et zéro." style="margin-top: 40px; display: block">
+<line x1="40" y1="400" x2="880" y2="400" stroke="#0E1116" stroke-width="1.5" stroke-dasharray="4 6"></line>
+<text x="40" y="388" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">erreur = 0</text>
+<path d="M60 40 Q460 460 860 40" fill="none" stroke="#0E1116" stroke-width="3" stroke-linecap="round"></path>
+<line x1="330" y1="250" x2="590" y2="250" stroke="{{alert}}" stroke-width="2.5" stroke-dasharray="7 6"></line>
+<text x="604" y="256" font-family="Geist, sans-serif" font-size="18" font-weight="500" fill="{{alert}}">pente = 0</text>
+<line x1="460" y1="262" x2="460" y2="392" stroke="{{alert}}" stroke-width="3"></line>
+<line x1="448" y1="392" x2="472" y2="392" stroke="{{alert}}" stroke-width="3"></line>
+<line x1="448" y1="262" x2="472" y2="262" stroke="{{alert}}" stroke-width="3"></line>
+<text x="484" y="334" font-family="Geist, sans-serif" font-size="20" font-weight="600" fill="{{alert}}">erreur restante</text>
+<circle cx="460" cy="250" r="8" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<text x="700" y="110" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">erreur <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="20">J(θ)</tspan></text>
+<text x="880" y="432" text-anchor="end" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">paramètre θ</text>
+</svg>
+
+<div style="margin-top: 40px; border-top: 2px solid {{alert}}; padding-top: 24px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{alert}}">Ce que ça veut dire</span>
+<p style="margin: 0; font-size: 26px; line-height: 1.4; color: #0E1116">Pour réduire encore l’erreur, il ne sert à rien de continuer à descendre : il faut <strong style="font-weight: 600">changer de modèle</strong>.</p>
+</div>
+
+<div style="margin-top: auto; padding-top: 22px; border-top: 1px solid #E4E6EA; display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 20px; font-weight: 500; color: #0E1116">Ladji Lama Kamagate</span>
+<span style="display: flex; align-items: center; gap: 12px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">Glissez</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D5BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"alert":{"editor":"color","default":"#C2410C","options":["#C2410C","#B45309","#B91C1C"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+return { alert: this.props.alert ?? '#C2410C' };
+}
+}
+</script>
+</body>
+</html>

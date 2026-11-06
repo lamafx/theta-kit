@@ -1,0 +1,18 @@
+Le coût ne baisse plus.
+Le modèle a-t-il terminé, ou reste-t-il coincé ?
+
+Une pente presque nulle dit seulement qu’à cet endroit, le coût ne varie plus guère. Trois situations au moins y ressemblent :
+
+· un minimum global : le travail est fait ;
+· un minimum local : un creux, plus haut qu’un autre ;
+· un point selle : le coût descend encore dans au moins une direction.
+
+L’idée reçue : un entraînement bloqué serait piégé dans un minimum local.
+
+L’argument inverse : un minimum exige que toutes les directions remontent. Plus il y a de paramètres, moins c’est probable, sauf à un niveau d’erreur proche du meilleur. En 2014, Dauphin et ses coauteurs y voient surtout un problème de points selle, entourés de plateaux qui ralentissent l’apprentissage.
+
+Leur thèse repose en partie sur des fonctions d’erreur aléatoires : un éclairage, pas une loi. Elle invite pourtant à se méfier d’un coût qui stagne : ces plateaux, écrivent-ils, « give the illusory impression of the existence of a local minimum », l’illusion d’un minimum local.
+
+Nº 10 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 11 : La régression linéaire.
+
+#MachineLearning #IntelligenceArtificielle #DeepLearning #Optimisation #ThetaML

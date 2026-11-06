@@ -1,0 +1,120 @@
+episode: 2
+pages:
+
+- type: couverture
+  visuel:
+    famille: grille
+    params:
+      graine: 2
+      rangees: [2, 8]
+
+- type: ouverture
+  rappel: "Nº 01 : un modèle, tiré d'exemples, prédit la réponse de cas nouveaux."
+  titre: "Un exemple,\nc'est une ligne."
+  texte: "Ici, le modèle apprend d'exemples à la réponse connue. Pour lui, une maison n'est qu'une ligne de tableau : surface, chambres, quartier, puis prix, la réponse à apprendre."
+  sources: [glossaire-modele, glossaire-exemple, glossaire-etiquette, ames-ventes, ames-surface, ames-chambres, ames-quartier, ames-prix, bceao-dollar]
+  visuel:
+    famille: grille
+    params:
+      forme: ligne
+      colonnes: [Gr Liv Area, Bedroom AbvGr, Neighborhood, SalePrice]
+      valeurs: [83, 2, North Ames, 62000000]  # calculs.ames.maisons([2])
+      fantomes: 4
+      cadre: [920, 550]  # session visuelle n° 2 (570 avant)
+      textes: {ligne: une vente à Ames en 2010}
+      description: "Une ligne de tableau entre des lignes grises : 83 m², 2 chambres, quartier North Ames, prix 62 millions de FCFA. La dernière case, le prix, est en bleu."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Lignes, colonnes,\nétiquette."
+  texte: "Trois ventes d'Ames, aux États-Unis, en 2010 ; colonnes sous leurs noms d'origine. Chaque ligne est un exemple ; ici, chaque colonne sauf la dernière, une caractéristique : une variable d'entrée. La dernière, l'étiquette, est la réponse à apprendre en apprentissage supervisé : le prix. Converties en m² et FCFA, cours BCEAO du 27 octobre 2026."
+  sources: [glossaire-exemple, glossaire-caracteristique, glossaire-etiquette, mlcc-lignes, ames-fichier, ames-ventes, ames-surface, ames-chambres, ames-quartier, ames-prix, bceao-dollar]
+  visuel:
+    famille: grille
+    params:
+      forme: tableau
+      colonnes: [Gr Liv Area, Bedroom AbvGr, Neighborhood, SalePrice]
+      lignes:  # calculs.ames.maisons([2, 267, 171]) : surface, chambres, quartier, prix
+      - [83, 2, North Ames, 62000000]
+      - [195, 4, College Creek, 141000000]
+      - [106, 3, Old Town, 57000000]
+      fenetre: {colonne: 0, texte: une caractéristique}
+      textes: {exemples: exemple, caracteristiques: caractéristiques, etiquette: étiquette}
+      description: "Tableau de trois maisons vendues à Ames. Chaque ligne est un exemple ; les trois premières colonnes sont les caractéristiques ; la dernière, le prix, est l'étiquette. La colonne des surfaces est encadrée."
+  encadres:
+  - titre: Une ligne
+    texte: "Un **exemple** : une maison et tout ce qu'on en sait."
+  - titre: Une colonne
+    texte: "Une **caractéristique** : la même information pour toutes les maisons."
+
+- type: piege
+  role: Piège
+  titre: "Un quartier n'est pas\nune quantité."
+  texte: "Beaucoup de modèles ne reçoivent que des nombres : le nom du quartier doit alors être converti. Le piège : donner un numéro par quartier, comme dans ce tableau. Selon le modèle, ces numéros risquent d'être lus comme des quantités, comme si Old Town comptait trois fois plus que North Ames."
+  sources: [mlcc-nombres, mlcc-vecteur, mlcc-index, mlcc-continus, mlcc-une-colonne, mlcc-un-zero, ames-quartier, sklearn-categories-natives, sklearn-ordre]
+  visuel:
+    famille: grille
+    params:
+      forme: tableau
+      colonnes: [quartier, numéro]
+      lignes:
+      - [North Ames, 1]
+      - [College Creek, 2]
+      - [Old Town, 3]
+      etiquette: false
+      numeros: false
+      fenetre: {colonne: 1, texte: lu comme une quantité}
+      cadre: [920, 330]
+      description: "Trois quartiers et le numéro donné à chacun : North Ames 1, College Creek 2, Old Town 3. La colonne des numéros est encadrée : selon le modèle, elle risque d'être lue comme une quantité."
+  encadre:
+    texte: "Même piège avec des couleurs numérotées : le modèle y lirait **un ordre** et des écarts qui n'existent pas."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Une colonne
+par quartier."
+  texte: "Comment le modèle peut-il alors reconnaître un quartier ? Une solution parmi d'autres : une colonne par quartier. Pour chaque maison, la colonne de son quartier vaut 1, toutes les autres valent 0. Le modèle ne compare plus des numéros : il lit seulement si la maison est, ou non, dans chaque quartier."
+  sources: [mlcc-une-colonne, mlcc-un-zero, mlcc-vecteur-un, mlcc-nombres, ames-quartier, ames-indicatrices, sklearn-autre-possibilite, mlcc-limite]
+  visuel:
+    famille: grille
+    params:
+      forme: tableau
+      colonnes: [quartier, North Ames, College Creek, Old Town]
+      lignes:
+      - [North Ames, 1, 0, 0]
+      - [College Creek, 0, 1, 0]
+      - [Old Town, 0, 0, 1]
+      etiquette: false
+      numeros: false
+      cadre: [920, 420]
+      description: "Trois quartiers, une colonne pour chacun. North Ames : 1, 0, 0. College Creek : 0, 1, 0. Old Town : 0, 0, 1. Chaque maison a un seul 1, dans la colonne de son quartier."
+  encadres:
+  - titre: Une colonne par quartier
+    texte: "Trois quartiers : **trois colonnes**."
+  - titre: Un seul 1
+    texte: "Chaque maison a **un seul 1**, dans la colonne de son quartier."
+
+- type: fin
+  points:
+  - "Un exemple, c'est une ligne : ses caractéristiques, puis, en apprentissage supervisé, son étiquette."
+  - "Une caractéristique est une variable d'entrée ; l'étiquette est la réponse."
+  - "Un quartier n'est pas une quantité ; une solution : une colonne par quartier, 1 ou 0."
+  verification:
+    question: "Pour les maisons, quelle colonne est l'étiquette ?"
+    page: 3
+
+linkedin:
+  texte: |-
+    Numéroter ses quartiers 1, 2 et 3 paraît anodin.
+    Pour certains modèles, le troisième vaut maintenant trois fois le premier.
+
+    Un tableau de données n'est pas un simple rangement : chaque colonne décrit le monde au modèle, et il la prend au mot.
+
+    Le risque dépend pourtant du modèle : certains lisent ces numéros comme des quantités, d'autres savent traiter directement des catégories, sans leur prêter d'ordre.
+
+    La parade classique, une colonne par quartier, a aussi ses limites : avec un très grand nombre de catégories, elle peut devenir un mauvais choix.
+
+    Ce vocabulaire dépasse les maisons. Dans mon mémoire sur un agent conversationnel, un exemple était une requête client (1 919 au total), et son étiquette l'une de 19 intentions.
+
+    Mini-exercice : un fichier clients contient « couleur préférée » et « taille de T-shirt (S, M, L) ». Une seule de ces colonnes peut recevoir des numéros sans inventer un ordre. Laquelle ?
+  hashtag: "#PreparationDesDonnees"

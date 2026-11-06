@@ -1,0 +1,55 @@
+numero: 27
+titre: La régularisation L2
+format: court
+saison: 2
+chapitre:
+  numero: 6
+  titre: Bien généraliser
+accroche: Freiner un modèle trop ambitieux.
+couverture:
+  famille: courbe
+  description: une courbe tordue et sa version lissée
+  verbe: freiner
+  geste: paume
+prerequis_explicites: []
+termes_introduits:
+- terme: régularisation
+  formes:
+  - régularisation
+- terme: pénalité
+  formes:
+  - pénalité
+- terme: L2 (Ridge)
+  formes:
+  - L2 (Ridge)
+- terme: λ
+  formes:
+  - λ
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'J + λΣw² : les gros poids coûtent cher.'
+- page: 3
+  type: Comparaison
+  message: 'λ nul, moyen, grand : courbe tordue, lisse, trop plate.'
+- page: 4
+  type: Repère
+  message: λ se choisit avec le jeu de validation (20).
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 28
+  transition: Et si on voulait carrément éteindre des caractéristiques ?
+references:
+  cours:
+  - titre: MLCC · Regularization
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/regularization
+  - titre: D2L 3.7 · Weight decay
+    url: https://d2l.ai/chapter_linear-regression/weight-decay.html
+  sources_originales:
+  - citation: Hoerl et Kennard (1970), Ridge Regression, Technometrics
+    liens:
+    - titre: Ridge Regression
+      url: https://doi.org/10.1080/00401706.1970.10488634

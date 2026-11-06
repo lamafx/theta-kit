@@ -1,0 +1,43 @@
+numero: 16
+titre: La fonction sigmoïde
+format: court
+saison: 1
+chapitre:
+  numero: 4
+  titre: La classification
+accroche: Écraser n'importe quel nombre entre 0 et 1.
+couverture:
+  famille: courbe
+  description: courbe en S
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: sigmoïde σ
+  formes:
+  - sigmoïde σ
+- terme: probabilité
+  formes:
+  - probabilité
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: σ(z) = 1 / (1 + e⁻ᶻ).
+- page: 3
+  type: Mécanisme
+  message: 'z très négatif : 0. z = 0 : 0,5. z très positif : 1.'
+- page: 4
+  type: Lecture
+  message: La sortie se lit comme une probabilité.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 17
+  transition: Branchons la sigmoïde sur une régression.
+references:
+  cours:
+  - titre: MLCC · Sigmoid function
+    url: https://developers.google.com/machine-learning/crash-course/logistic-regression/sigmoid-function
+  sources_originales: []

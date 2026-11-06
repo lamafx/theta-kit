@@ -1,0 +1,15 @@
+# Mire d'essai (tests/fixtures/images/generer.py), jamais publiée ; elle remplit la zone image des pages Contexte et Capture des tests et des canevas (A24).
+titre: essai-photo
+auteur: Image d'essai
+date: '2026'
+page_source: tests/fixtures/images/essai-photo.png
+url_fichier: tests/fixtures/images/essai-photo.png
+source: tests
+genre: photo
+classe: libre
+licence: Domaine public
+conditions: Mire d'essai produite par tests/fixtures/images/generer.py.
+sha256: bc0232a0780960441633daeef51a75ee88df1256d446389db770fc01cb7b0c55
+largeur: 1200
+hauteur: 678
+telecharge_le: 2026-10-20

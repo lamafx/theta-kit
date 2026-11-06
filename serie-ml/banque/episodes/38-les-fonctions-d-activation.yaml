@@ -1,0 +1,59 @@
+numero: 38
+titre: Les fonctions d'activation
+format: long
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Sans elles, un réseau ne serait qu'une droite.
+couverture:
+  famille: courbe
+  description: ReLU, sigmoïde et tanh superposées
+  verbe: régler
+  geste: regler
+prerequis_explicites: []
+termes_introduits:
+- terme: fonction d'activation
+  formes:
+  - fonction d'activation
+- terme: non-linéarité
+  formes:
+  - non-linéarité
+- terme: ReLU
+  formes:
+  - ReLU
+- terme: tanh
+  formes:
+  - tanh
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Empiler des couches linéaires donne toujours une droite.
+- page: 3
+  type: Comparaison
+  message: Sigmoïde, tanh et ReLU.
+- page: 4
+  type: Mécanisme
+  message: 'Leurs pentes : la sigmoïde devient plate aux extrémités.'
+- page: 5
+  type: Repère
+  message: ReLU par défaut dans les couches cachées.
+- page: 6
+  type: Piège
+  message: Les neurones ReLU « morts », bloqués sur une pente nulle.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 39
+  transition: Assemblons les neurones en couches.
+references:
+  cours:
+  - titre: MLCC · Activation functions
+    url: https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions
+  sources_originales:
+  - citation: Glorot, Bordes et Bengio (2011), Deep Sparse Rectifier Neural Networks, AISTATS
+    liens:
+    - titre: Deep Sparse Rectifier Neural Networks
+      url: https://proceedings.mlr.press/v15/glorot11a.html

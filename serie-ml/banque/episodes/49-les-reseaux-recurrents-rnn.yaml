@@ -1,0 +1,56 @@
+numero: 49
+titre: Les réseaux récurrents (RNN)
+format: long
+saison: 3
+chapitre:
+  numero: 9
+  titre: Les réseaux spécialisés
+accroche: Une mémoire qui passe d'un mot au suivant.
+couverture:
+  famille: reseau
+  description: une boucle déroulée en chaîne de cellules
+  verbe: être attentif
+  geste: ecoute
+prerequis_explicites: []
+termes_introduits:
+- terme: séquence
+  formes:
+  - séquence
+- terme: état caché
+  formes:
+  - état caché
+- terme: réseau récurrent (RNN)
+  formes:
+  - réseau récurrent (RNN)
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'L''ordre compte : « le chien mord l''homme » n''est pas « l''homme mord le chien ».'
+- page: 3
+  type: Mécanisme
+  message: L'état caché passe d'un mot au suivant.
+- page: 4
+  type: Mécanisme
+  message: Le réseau déroulé dans le temps.
+- page: 5
+  type: Lien
+  message: La rétropropagation (41) à travers le temps.
+- page: 6
+  type: Piège
+  message: Sur les longues phrases, le gradient disparaît (42).
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 50
+  transition: Il faut une mémoire qui sait quoi garder.
+references:
+  cours:
+  - titre: D2L 9.4
+    url: https://d2l.ai/chapter_recurrent-neural-networks/rnn.html
+  - titre: D2L 9.7
+    url: https://d2l.ai/chapter_recurrent-neural-networks/bptt.html
+  - titre: DLB ch. 10
+    url: https://www.deeplearningbook.org/contents/rnn.html
+  sources_originales: []

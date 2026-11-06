@@ -1,0 +1,62 @@
+# Episode 10 · BROUILLON. Le carrousel reel n'existe pas encore : PDF = fiche resume provisoire de 3 pages.
+# Quand le carrousel est valide, l'automatisation remplace ce fichier sur le modele de 01.yaml
+# (statut: publie, pages, a_retenir, verifiez_vous, suivant, couverture, traduction EN).
+n: '10'
+saison: 1
+statut: brouillon
+groupe:
+  fr: Optimisation
+  en: Optimisation
+titre:
+  fr:
+    t1: Minimums locaux
+    t2: et points selle
+  en:
+    t1: Local minima
+    t2: and saddle points
+accroche:
+  fr: Le fond d’un creux n’est pas toujours le fond de la vallée. Une descente de gradient peut s’arrêter avant le point le plus bas.
+  en: TODO(traduction) a faire quand le carrousel sera valide
+resume:
+  fr: Le fond d’un creux n’est pas toujours le fond de la vallée, et une pente nulle n’est pas toujours un creux.
+  en: The bottom of a dip is not always the bottom of the valley, and a zero slope is not always a dip.
+theme: minlocaux
+pdf:
+  chemin: /pdf/theta-10.pdf
+  pages: 3
+  type: provisoire
+  langue: fr
+couverture: null
+pages: []
+a_retenir:
+  fr: []
+  en: []
+post_linkedin:
+  statut: a_valider
+  fr: |-
+    Le fond d’un creux n’est pas toujours le fond de la vallée.
+    Une descente de gradient peut s’arrêter avant le point le plus bas.
+
+    Imaginez une marche dans le brouillard : vous descendez tant que le sol descend, et vous vous arrêtez quand il devient plat. Rien ne vous dit qu’il n’existe pas, plus loin, une vallée plus basse. Et un col, plat en son centre, peut aussi vous retenir un moment.
+
+    Le carrousel montre, sur une courbe à deux creux, la différence entre minimum local et minimum global ; puis le point selle, où la pente est nulle sans que ce soit un minimum. Il finit par le cas des fonctions convexes, comme le coût d’une droite : là, tout minimum local est global. Le bruit des mini-lots (épisode 09) peut d’ailleurs aider la descente à sortir d’un minimum local.
+
+    Dans vos projets, comment vérifiez-vous qu’un entraînement ne s’est pas arrêté trop tôt ?
+
+    Nº 10 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 11 : La régression linéaire.
+  en: null
+hashtags:
+- '#MachineLearning'
+- '#IntelligenceArtificielle'
+- '#DataScience'
+- '#Optimisation'
+- '#ThetaML'
+linkedin:
+  url: null
+  publie_le: null
+  stats:
+    impressions: null
+    reactions: null
+    commentaires: null
+    partages: null
+    maj: null

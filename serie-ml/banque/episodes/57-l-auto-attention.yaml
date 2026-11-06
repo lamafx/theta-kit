@@ -1,0 +1,65 @@
+numero: 57
+titre: L'auto-attention
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Chaque mot regarde tous les autres.
+couverture:
+  famille: grille
+  description: matrice d'attention aux cases plus ou moins claires
+  verbe: chercher
+  geste: visiere
+prerequis_explicites:
+- 54
+termes_introduits:
+- terme: auto-attention
+  formes:
+  - auto-attention
+- terme: requête
+  formes:
+  - requête
+- terme: clé
+  formes:
+  - clé
+- terme: valeur
+  formes:
+  - valeur
+- terme: tête d'attention
+  formes:
+  - tête d'attention
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: '« Il a posé l''avocat sur la table » : quel sens pour « avocat » ?'
+- page: 3
+  type: Mécanisme
+  message: 'Requête, clé, valeur : comme une recherche dans une bibliothèque.'
+- page: 4
+  type: Formule
+  message: softmax(QKᵀ / √d) · V.
+- page: 5
+  type: Exemple
+  message: La matrice d'attention de la phrase.
+- page: 6
+  type: Repère
+  message: 'Plusieurs têtes : plusieurs façons de regarder la phrase.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 58
+  transition: 'Empilons l''auto-attention : voici le Transformer.'
+references:
+  cours:
+  - titre: D2L 11.5
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/multihead-attention.html
+  - titre: D2L 11.6
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/self-attention-and-positional-encoding.html
+  sources_originales:
+  - citation: Vaswani et al. (2017), Attention Is All You Need
+    liens:
+    - titre: Attention Is All You Need
+      url: https://arxiv.org/abs/1706.03762

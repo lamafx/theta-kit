@@ -1,0 +1,9 @@
+# CV exclu du dépôt public : il affiche le téléphone de l'auteur (site/theta-kit/CLAUDE.md, section 1, et Q19).
+site/theta-kit/public/cv/*.pdf
+
+# serie-ml a son propre .gitignore, appliqué aussi depuis cette racine.
+node_modules/
+.next/
+.vercel/
+.env
+.env.*

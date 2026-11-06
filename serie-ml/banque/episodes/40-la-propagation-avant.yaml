@@ -1,0 +1,43 @@
+numero: 40
+titre: La propagation avant
+format: court
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Suivre un exemple de l'entrée jusqu'à la réponse.
+couverture:
+  famille: reseau
+  description: réseau parcouru par un flux lumineux de gauche à droite
+  verbe: chercher
+  geste: visiere
+prerequis_explicites: []
+termes_introduits:
+- terme: propagation avant
+  formes:
+  - propagation avant
+- terme: matrice de poids W
+  formes:
+  - matrice de poids W
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Couche par couche : z = Wx + b, puis l''activation.'
+- page: 3
+  type: Exemple chiffré
+  message: Un mini-réseau 2-2-1 calculé à la main.
+- page: 4
+  type: Lien
+  message: 'En sortie : softmax (19) et entropie croisée (18).'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 41
+  transition: On a l'erreur en sortie. Comment remonter jusqu'au premier poids ?
+references:
+  cours:
+  - titre: D2L 5.3
+    url: https://d2l.ai/chapter_multilayer-perceptrons/backprop.html
+  sources_originales: []

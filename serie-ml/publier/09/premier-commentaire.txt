@@ -1,0 +1,6 @@
+Références de l’épisode Nº 09 :
+- D2L 12.4 : https://d2l.ai/chapter_optimization/sgd.html
+- D2L 12.5 : https://d2l.ai/chapter_optimization/minibatch-sgd.html
+- D2L 12.11 : https://d2l.ai/chapter_optimization/lr-scheduler.html
+- DLB ch. 8 : https://www.deeplearningbook.org/contents/optimization.html
+- Robbins et Monro (1951), A Stochastic Approximation Method, Annals of Mathematical Statistics : https://doi.org/10.1214/aoms/1177729586

@@ -1,0 +1,54 @@
+numero: 56
+titre: Le mécanisme d'attention
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Savoir sur quels mots se concentrer.
+couverture:
+  famille: reseau
+  description: liens pondérés entre les mots d'une phrase
+  verbe: être attentif
+  geste: ecoute
+prerequis_explicites:
+- 49
+termes_introduits:
+- terme: attention
+  formes:
+  - attention
+- terme: poids d'attention
+  formes:
+  - poids d'attention
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Traduire une longue phrase : un RNN oublie le début.'
+- page: 3
+  type: Mécanisme
+  message: À chaque mot produit, regarder tous les mots d'entrée, avec des poids.
+- page: 4
+  type: Mécanisme
+  message: Ces poids viennent d'une softmax (19).
+- page: 5
+  type: Exemple
+  message: La carte d'attention d'une traduction.
+- page: 6
+  type: Lien
+  message: Fini l'oubli des longues phrases.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 57
+  transition: Et si chaque mot regardait tous les mots de sa propre phrase ?
+references:
+  cours:
+  - titre: D2L 11.4
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/bahdanau-attention.html
+  sources_originales:
+  - citation: Bahdanau, Cho et Bengio (2014), Neural Machine Translation by Jointly Learning to Align and Translate
+    liens:
+    - titre: Neural Machine Translation by Jointly Learning to Align and Translate
+      url: https://arxiv.org/abs/1409.0473

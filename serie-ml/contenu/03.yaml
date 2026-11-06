@@ -1,0 +1,145 @@
+episode: 3
+pages:
+
+- type: couverture
+  visuel:
+    famille: nuage
+    params:
+      centres: [[480, 260], [700, 380], [560, 560]]  # couverture A : dans la zone du motif (position gauche)
+      effectifs: [30, 30, 26]
+      dispersion: 55
+      graine: 3
+  visuel_classique:  # couverture classique : réglages d'avant la couverture A (commit e57677b)
+    famille: nuage
+    params:
+      centres: [[790, 120], [990, 300], [900, 560]]
+      effectifs: [30, 30, 26]
+      dispersion: 55
+      graine: 3
+
+- type: ouverture
+  rappel: "Nº 01 : le modèle apprend d'exemples ; Nº 02 : une maison est une ligne, et son prix est l'étiquette."
+  titre: "Trois façons\nd'apprendre."
+  texte: "Les données n'ont pas toujours leur réponse. Trois grandes familles, des repères plutôt qu'une liste complète : supervisé, avec les réponses ; non supervisé, sans elles ; par renforcement, en agissant."
+  sources: [dlb-supervise, dlb-non-supervise, dlb-renforcement, dlb-flou, dlb-variantes]
+  visuel:
+    famille: nuage
+    params:
+      forme: panneaux
+      origine: [10, 360]
+      echelle: [26, 38]
+      cadre: [920, 420]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      centres: [[2.6, 5.6], [6.8, 2.6]]
+      effectifs: [12, 12]
+      dispersion: 0.8
+      graine: 3
+      textes: {titres: [supervisé, non supervisé, par renforcement], etapes: [Agir, Retour], retour: recommencer}
+      description: "Trois panneaux. Un nuage dont les points sont colorés selon leur étiquette ; le même nuage, tout gris ; une boucle : agir, recevoir un retour, recommencer."
+
+- type: comparaison
+  role: Comparaison
+  titre: "Avec ou sans\nétiquettes."
+  texte: "En apprentissage supervisé, chaque exemple a son étiquette, comme le prix de chaque maison de l'épisode 02 : le modèle apprend à la retrouver. En non supervisé, il n'y en a pas : le modèle cherche une structure, par exemple des groupes d'exemples semblables."
+  sources: [dlb-supervise, dlb-non-supervise, dlb-groupes, dlb-iris, dlb-iris-date, dlb-mal-pose]
+  visuel:
+    famille: nuage
+    params:
+      forme: points
+      origine: [30, 198]
+      echelle: [40, 20]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      cadre: [440, 205]  # texte en 30 px, session visuelle n° 2 (300 avant)
+      centres: [[2.6, 5.6], [6.8, 2.6]]
+      effectifs: [12, 12]
+      dispersion: 0.8
+      graine: 3
+  cas:
+  - etiquette: supervisé
+    titre: Retrouver l'étiquette
+    texte: Chaque point a sa couleur, celle de son étiquette.
+    retenu: true
+    params: {forme: points, etiquettes: true, description: "Le nuage, chaque point coloré selon son étiquette : noir ou bleu."}
+  - etiquette: non supervisé
+    titre: Trouver des groupes
+    texte: "Sans étiquette, des groupes trouvés : pas forcément des catégories réelles."
+    params:
+      forme: groupes
+      textes: {groupes: [groupe 1, groupe 2]}
+      description: "Le même nuage, sans étiquette : le modèle y trouve deux groupes, chacun marqué d'une tache bleue et de son centre."
+  encadre:
+    titre: Un exemple classique
+    texte: "Un jeu de données publié en 1936 décrit 150 fleurs d'iris. Avec l'espèce de chaque fleur, on apprend à la reconnaître d'après ses mesures ; sans elle, on peut chercher des groupes."
+
+- type: mecanisme
+  role: Repère
+  titre: "Un nombre\nou une catégorie."
+  texte: "Que prédit un modèle supervisé pour un cas nouveau ? Deux tâches reviennent souvent. La régression prédit un nombre, comme le prix d'une maison. La classification prédit une catégorie, comme l'espèce d'une fleur, ou spam et non-spam dans l'épisode 01."
+  sources: [dlb-taches-courantes, dlb-regression, dlb-classification, dlb-iris-especes]
+  visuel:
+    famille: nuage
+    params:
+      forme: droite
+      origine: [40, 384]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      n: 14
+      tendance: [0.55, 1.2]
+      bruit: 0.7
+      abscisses: [0.6, 9.4]
+      graine: 2
+      ecarts: false
+      decalage: [0, 64]
+      textes: {x: entrée, y: nombre à prédire, droite: régression}
+      description: "Des points autour d'une droite bleue : la régression prédit un nombre pour chaque entrée."
+  encadres:
+  - titre: Régression
+    texte: "Prédire **un nombre** : un prix, un montant."
+  - titre: Classification
+    texte: "Prédire **une catégorie** : une espèce, spam ou non."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Apprendre\nen agissant."
+  texte: "Et la troisième famille, celle qui agit ? Certains algorithmes ne se contentent pas d'un jeu de données fixe. En apprentissage par renforcement, le système agit dans un environnement, reçoit un retour, positif ou négatif, puis recommence : ses actions peuvent changer les données qu'il reçoit ensuite."
+  sources: [dlb-jeu-fixe, dlb-renforcement, sb-actions, levine-hors-ligne, dlb-jeu-entier, sb-positif-negatif]
+  visuel:
+    famille: flux
+    params:
+      forme: page
+      lignes:
+      - {etiquette: "Supervisé, non supervisé", ton: contexte, etapes: [Jeu de données fixe, Apprentissage, Modèle]}
+      - {etiquette: Par renforcement, etapes: [Agir, Environnement, "!Retour, puis recommencer"]}
+      description: "Deux schémas. En gris : un jeu de données fixe passe par l'apprentissage, qui donne un modèle. Par renforcement : le système agit, l'environnement répond, et ce retour le fait recommencer, en bleu."
+  encadres:
+  - titre: Supervisé, non supervisé
+    texte: "Le plus souvent, le modèle apprend d'un **jeu de données** fixe, réuni à l'avance."
+  - titre: Par renforcement
+    texte: "Le système **produit ses expériences** en agissant ; elles peuvent changer avec ses actions."
+
+- type: fin
+  points:
+  - "Supervisé : chaque exemple a son étiquette."
+  - "Non supervisé : pas d'étiquette, le modèle cherche une structure, comme des groupes."
+  - "Par renforcement : le système agit, reçoit un retour, recommence."
+  verification:
+    question: Quelle famille ne se contente pas d'un jeu de données fixe ?
+    page: 5
+
+linkedin:
+  texte: |-
+    Un modèle peut apprendre sans qu'on lui donne la moindre réponse, et même à partir de données qui n'existent pas encore.
+
+    Ce qui sépare les trois grandes familles d'apprentissage, c'est d'abord la situation de départ, pas la complexité de l'algorithme.
+
+    Chaque exemple a sa réponse ? Supervisé.
+    Aucun n'en a ? Non supervisé : on cherche une structure.
+    Pas de jeu de données fixe ? Renforcement : le système agit, et ses actions peuvent changer ce qu'il observe ensuite.
+
+    Ces cases sont des repères, pas des cloisons. Goodfellow, Bengio et Courville le rappellent : supervisé et non supervisé ne sont pas des termes formellement définis. Un projet peut n'avoir des réponses que pour une partie de ses exemples : c'est le semi-supervisé. Et le renforcement peut lui-même apprendre de données déjà réunies, sans agir : c'est le renforcement hors ligne.
+
+    Dans ces trois cas, il reste quelque chose à la fin de l'apprentissage. Souvent des nombres, parfois très peu : deux, dans l'épisode suivant.
+  hashtag: "#ApprentissageSupervise"

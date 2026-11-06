@@ -1,0 +1,46 @@
+numero: 46
+titre: La normalisation par lots
+format: court
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Recalibrer chaque couche, à chaque lot.
+couverture:
+  famille: barres
+  description: des distributions décalées qui se recentrent
+  verbe: régler
+  geste: regler
+prerequis_explicites:
+- 13
+termes_introduits:
+- terme: normalisation par lots (batch norm)
+  formes:
+  - normalisation par lots (batch norm)
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: La normalisation de l'épisode 13, mais à l'intérieur du réseau.
+- page: 3
+  type: Mécanisme
+  message: 'À l''entraînement : moyenne 0 et écart-type 1 sur chaque mini-lot, puis une échelle et un décalage appris.
+    En prédiction : des moyennes gardées pendant l''entraînement, pas celles du lot.'
+- page: 4
+  type: Repère
+  message: L'entraînement devient plus stable et accepte un η plus grand.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 47
+  transition: Pour les images, un réseau classique gaspille énormément de poids.
+references:
+  cours:
+  - titre: D2L 8.5
+    url: https://d2l.ai/chapter_convolutional-modern/batch-norm.html
+  sources_originales:
+  - citation: Ioffe et Szegedy (2015), Batch Normalization
+    liens:
+    - titre: Batch Normalization
+      url: https://arxiv.org/abs/1502.03167

@@ -1,0 +1,57 @@
+numero: 35
+titre: Le k-means
+format: long
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: Former des groupes sans qu'on donne la réponse.
+couverture:
+  famille: nuage
+  description: trois groupes de points autour de leurs centres
+  verbe: ranger
+  geste: deposer
+prerequis_explicites:
+- 3
+termes_introduits:
+- terme: regroupement (clustering)
+  formes:
+  - regroupement (clustering)
+- terme: centroïde
+  formes:
+  - centroïde
+- terme: inertie
+  formes:
+  - inertie
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Des clients regroupés selon leur comportement.
+- page: 3
+  type: Mécanisme
+  message: Chaque point rejoint le centre le plus proche, puis chaque centre se déplace au milieu de son groupe.
+- page: 4
+  type: Comparaison
+  message: Itérations 1, 2 et 5.
+- page: 5
+  type: Mécanisme
+  message: Choisir k avec la méthode du coude.
+- page: 6
+  type: Piège
+  message: Le résultat dépend du départ, et les groupes non ronds sont mal gérés.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 36
+  transition: Trop de caractéristiques pour voir quoi que ce soit ?
+references:
+  cours:
+  - titre: SKL · K-means
+    url: https://scikit-learn.org/stable/modules/clustering.html#k-means
+  sources_originales:
+  - citation: Lloyd (1982), Least squares quantization in PCM, IEEE Trans. Information Theory
+    liens:
+    - titre: Least squares quantization in PCM
+      url: https://doi.org/10.1109/TIT.1982.1056489

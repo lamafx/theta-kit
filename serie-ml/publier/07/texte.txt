@@ -1,0 +1,17 @@
+Le gradient ne pointe pas vers le minimum.
+Même son opposé n’y mène pas forcément tout droit.
+
+Prenons J = a² + 3b², au point (1 ; 1).
+
+Le minimum est en (0 ; 0) : il faudrait réduire a et b autant l’un que l’autre, direction (−1 ; −1).
+Le gradient vaut (2 ; 6) : son opposé indique (−2 ; −6), à environ 27 degrés de cette direction.
+
+La flèche se trompe-t-elle ? Non : elle ne connaît pas le minimum. Elle répond à une question locale : quels réglages pèsent le plus sur le coût, ici ? En ce point, b pèse trois fois plus que a.
+
+C’est tout l’intérêt du gradient. Dès que plusieurs paramètres doivent être ajustés en même temps, une seule pente ne suffit plus : il faut savoir comment chacun d’eux pèse sur le coût.
+
+Si la flèche ne vise pas le but, comment arrive-t-on quand même ? En la recalculant à chaque pas.
+
+Nº 07 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 08 : La descente de gradient.
+
+#MachineLearning #IntelligenceArtificielle #Mathematiques #Gradient #ThetaML

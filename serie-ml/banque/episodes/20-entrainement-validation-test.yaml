@@ -1,0 +1,50 @@
+numero: 20
+titre: Entraînement, validation, test
+format: court
+saison: 2
+chapitre:
+  numero: 5
+  titre: Évaluer un modèle
+accroche: Ne jamais noter un élève sur ses propres exercices.
+couverture:
+  famille: blocs
+  description: une barre de données découpée en trois blocs
+  verbe: freiner
+  geste: paume
+prerequis_explicites: []
+termes_introduits:
+- terme: jeu d'entraînement
+  formes:
+  - jeu d'entraînement
+- terme: jeu de validation
+  formes:
+  - jeu de validation
+- terme: jeu de test
+  formes:
+  - jeu de test
+- terme: fuite de données
+  formes:
+  - fuite de données
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Un découpage 70 / 15 / 15.
+- page: 3
+  type: Mécanisme
+  message: 'Le rôle de chacun : apprendre, régler, juger une seule fois.'
+- page: 4
+  type: Piège
+  message: 'La fuite de données : normaliser (13) avant de découper laisse le jeu de test influencer l''entraînement.
+    Bonne pratique : découper d''abord, calculer μ et σ sur l''entraînement seul, puis les appliquer aux trois jeux.'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 21
+  transition: Juger, oui. Mais avec quelle mesure ?
+references:
+  cours:
+  - titre: MLCC · Dividing datasets
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets
+  sources_originales: []

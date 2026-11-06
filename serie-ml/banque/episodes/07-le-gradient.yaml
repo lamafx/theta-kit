@@ -1,0 +1,52 @@
+numero: 7
+titre: Le gradient
+format: court
+saison: 1
+chapitre:
+  numero: 2
+  titre: Apprendre de ses erreurs
+accroche: La pente, quand il y a plusieurs boutons à régler.
+couverture:
+  famille: niveaux
+  description: lignes de niveau avec des flèches perpendiculaires
+  verbe: régler
+  geste: regler
+prerequis_explicites: []
+termes_introduits:
+- terme: dérivée partielle
+  formes:
+  - dérivée partielle
+- terme: gradient ∇J
+  formes:
+  - gradient ∇J
+- terme: lignes de niveau
+  formes:
+  - lignes de niveau
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Une dérivée par paramètre, rangées dans un vecteur : le gradient ∇J.'
+- page: 3
+  type: Mécanisme
+  message: Sur une carte de niveaux, ∇J pointe vers la montée la plus raide.
+- page: 4
+  type: Exemple chiffré
+  message: J(a, b) = a² + 3b², donc ∇J = (2a, 6b).
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 8
+  transition: On sait où ça monte. Il suffit d'aller dans l'autre sens.
+references:
+  cours:
+  - titre: D2L 2.4 · Calculus
+    url: https://d2l.ai/chapter_preliminaries/calculus.html
+  - titre: DLB ch. 4
+    url: https://www.deeplearningbook.org/contents/numerical.html
+  # Ajoutée le 2026-11-01 (production de l'épisode) : les lignes de niveau et le gradient perpendiculaire à
+  # elles (page 3, couverture) ne sont écrits ni dans D2L 2.4 ni dans DLB ch. 4.
+  - titre: MIT OCW 18.02SC · Gradient, definition and properties (D. Auroux, 2010)
+    url: https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/
+  sources_originales: []

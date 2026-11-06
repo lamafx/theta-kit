@@ -1,0 +1,50 @@
+numero: 6
+titre: 'La pente d''une courbe : la dérivée'
+format: court
+saison: 1
+chapitre:
+  numero: 2
+  titre: Apprendre de ses erreurs
+accroche: Savoir si ça monte ou si ça descend, et à quelle vitesse.
+couverture:
+  famille: courbe
+  description: courbe avec des tangentes en plusieurs points
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: dérivée
+  formes:
+  - dérivée
+- terme: tangente
+  formes:
+  - tangente
+- terme: pente
+  formes:
+  - pente
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: La dérivée est la pente de la tangente en un point.
+- page: 3
+  type: Mécanisme
+  message: 'Positive : ça monte. Négative : ça descend. Nulle : c''est plat, comme au fond du creux.'
+- page: 4
+  type: Exemple chiffré
+  message: J(a) = a², donc J′(a) = 2a. En a = 3, la pente vaut 6.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 7
+  transition: Mais un modèle a souvent des milliers de boutons.
+references:
+  cours:
+  - titre: D2L 2.4 · Calculus
+    url: https://d2l.ai/chapter_preliminaries/calculus.html
+  # Ajoutée le 2026-11-01 (production de l'épisode) : le sens du signe de la dérivée et la pente nulle
+  # (points critiques) ne sont pas écrits dans D2L 2.4 ; DLB ch. 4 est déjà la référence de la fiche 07.
+  - titre: DLB ch. 4
+    url: https://www.deeplearningbook.org/contents/numerical.html
+  sources_originales: []

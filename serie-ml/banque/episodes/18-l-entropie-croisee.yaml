@@ -1,0 +1,56 @@
+numero: 18
+titre: L'entropie croisée
+format: long
+saison: 1
+chapitre:
+  numero: 4
+  titre: La classification
+accroche: Punir une IA sûre d'elle… quand elle a tort.
+couverture:
+  famille: courbe
+  description: courbe −log(p)
+  verbe: se tromper
+  geste: gratter
+prerequis_explicites: []
+termes_introduits:
+- terme: entropie croisée (log loss)
+  formes:
+  - entropie croisée (log loss)
+- terme: logarithme
+  formes:
+  - logarithme
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Si la vraie classe est 1, le coût vaut −log(p).
+- page: 3
+  type: Exemple chiffré
+  message: 'p = 0,9 : coût 0,11. p = 0,1 : coût 2,3.'
+- page: 4
+  type: Formule
+  message: J = −\[y·log(p) + (1 − y)·log(1 − p)\], en moyenne sur les exemples.
+- page: 5
+  type: Comparaison
+  message: MSE et entropie croisée face à une erreur commise avec assurance.
+- page: 6
+  type: Repère
+  message: 'Pour un modèle linéaire suivi de la sigmoïde, l''entropie croisée donne un coût convexe : tout minimum
+    local est global.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 19
+  transition: Et s'il y a plus de deux classes ?
+references:
+  cours:
+  - titre: MLCC · Log loss
+    url: https://developers.google.com/machine-learning/crash-course/logistic-regression/loss-regularization
+  - titre: DLB ch. 3
+    url: https://www.deeplearningbook.org/contents/prob.html
+  sources_originales:
+  - citation: Shannon (1948), A Mathematical Theory of Communication, Bell System Technical Journal
+    liens:
+    - titre: A Mathematical Theory of Communication
+      url: https://doi.org/10.1002/j.1538-7305.1948.tb01338.x

@@ -1,0 +1,28 @@
+<g role="img" aria-label="Un arbre de décision : une question à la racine, deux questions au deuxième niveau, quatre feuilles qui donnent la classe.">
+<g stroke="{{accent}}" stroke-width="2.5" stroke-opacity="0.7" fill="none">
+<path d="M330 624 L190 706"/>
+<path d="M330 624 L470 706"/>
+<path d="M190 754 L120 846"/>
+<path d="M190 754 L260 846"/>
+<path d="M470 754 L400 846"/>
+<path d="M470 754 L540 846"/>
+</g>
+<g fill="#0A0F17" stroke="{{accent}}" stroke-width="2.5">
+<rect x="260" y="576" width="140" height="48" rx="24"/>
+<rect x="120" y="706" width="140" height="48" rx="24"/>
+<rect x="400" y="706" width="140" height="48" rx="24"/>
+</g>
+<g font-family="Geist Mono, monospace" font-size="24" font-weight="500" fill="#F5F8FC" text-anchor="middle">
+<text x="330" y="608">x₁ &gt; 3 ?</text>
+<text x="190" y="738">x₂ &gt; 1 ?</text>
+<text x="470" y="738">x₂ &gt; 5 ?</text>
+</g>
+<circle cx="120" cy="862" r="16" fill="{{accent}}"/>
+<circle cx="260" cy="862" r="16" fill="#F5F8FC"/>
+<circle cx="400" cy="862" r="16" fill="#F5F8FC"/>
+<circle cx="540" cy="862" r="16" fill="{{accent}}"/>
+<g font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#A7B3C2" text-anchor="middle">
+<text x="190" y="672">oui</text>
+<text x="470" y="672">non</text>
+</g>
+</g>

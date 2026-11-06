@@ -1,0 +1,37 @@
+fuseau: Africa/Abidjan
+creneaux:
+  # Décision de l'utilisateur (2026-10-26) : mardi et jeudi chaque semaine (le samedi des semaines impaires, A32, est retiré).
+  semaine_impaire:
+  - - mardi
+    - 08:30
+  - - jeudi
+    - 08:30
+  semaine_paire:
+  - - mardi
+    - 08:30
+  - - jeudi
+    - 08:30
+avance_minimum_episodes_relus: 4
+date_lancement: 2026-11-10
+saisons:
+  1:
+    episodes:
+    - 1
+    - 19
+    bilan: true
+  2:
+    episodes:
+    - 20
+    - 36
+    bilan: true
+  3:
+    episodes:
+    - 37
+    - 51
+    bilan: true
+  4:
+    episodes:
+    - 52
+    - 62
+    bilan: true
+pause_entre_saisons_semaines: 2

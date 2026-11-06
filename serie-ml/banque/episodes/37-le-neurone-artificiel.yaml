@@ -1,0 +1,51 @@
+numero: 37
+titre: Le neurone artificiel
+format: court
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Une somme pondérée, puis une décision.
+couverture:
+  famille: reseau
+  description: 'schéma d''un neurone : entrées, somme, sortie'
+  verbe: peser
+  geste: balance
+prerequis_explicites:
+- 17
+termes_introduits:
+- terme: neurone
+  formes:
+  - neurone
+- terme: somme pondérée
+  formes:
+  - somme pondérée
+- terme: perceptron
+  formes:
+  - perceptron
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Entrées × poids + biais, puis activation, puis sortie.
+- page: 3
+  type: Lien
+  message: C'est exactement la régression logistique (17).
+- page: 4
+  type: Piège
+  message: 'Un seul neurone ne trace qu''une frontière droite : il échoue sur le XOR.'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 38
+  transition: Tout se joue dans l'activation.
+references:
+  cours:
+  - titre: MLCC · Nodes and hidden layers
+    url: https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers
+  sources_originales:
+  - citation: Rosenblatt (1958), The perceptron, Psychological Review
+    liens:
+    - titre: The perceptron
+      url: https://doi.org/10.1037/h0042519

@@ -1,0 +1,99 @@
+format:
+  largeur_px: 1080
+  hauteur_px: 1350
+  marges_px:
+    haut: 72
+    cotes: 80
+    bas: 56
+  pages_max: 9
+  formats:
+    court:
+    - 4
+    - 6
+    long:
+    - 7
+    - 9
+couleurs:
+  claire:
+    fond: '#FFFFFF'
+    texte: '#0E1116'
+    texte_courant: '#3E4450'
+    secondaire: '#5F6673'
+    filet: '#E4E6EA'
+    accent: '#2D5BFF'
+    panneau: '#F4F6FA'
+    gris_contexte: '#C3C7CE'
+  couverture:
+    fond: '#0A0F17'
+    texte: '#F5F8FC'
+    texte_courant: '#A7B3C2'
+    secondaire: '#8A97A8'
+    filet: '#1E2938'
+    accent: '#4C8DFF'
+    carte: '#0F1621'
+  fin:
+    fond: '#EEF2F8'
+    texte: '#0E1116'
+    texte_courant: '#3E4450'
+    secondaire: '#5F6673'
+    filet: '#D5DCE6'
+    accent: '#2D5BFF'
+    baguette: '#2A3340'
+  alerte: '#C2410C'
+  # Couleurs des canevas sans thème (A20).
+  complements:
+    fond_image: '#EEF1F5'  # fond d'une image ou d'un écran en attente
+    icone: '#8A919C'  # icônes, flèche du gradient
+    bord_carte: '#1B2533'  # bord des cartes des planches de bibliothèque
+    texte_bloc_sombre: '#C9D3DF'  # texte des blocs sur fond sombre
+polices:
+  texte: Geist
+  etiquettes: Geist Mono
+  formules: STIX Two Text
+  # Geist, Geist Mono et STIX Two Text n'ont ni ∇ (U+2207) ni l'espace fine insécable (U+202F).
+  # Chaque @font-face reçoit une règle de complément : même famille, même poids, même style,
+  # limitée à ces caractères, pour qu'aucune police du système ne les dessine.
+  complement:
+    fichier: stix-two-math-latin-400-normal.woff2
+    unicode_range: U+2207, U+202F
+  # Geist et Geist Mono n'ont pas de lettres grecques (A29) : hors formule (« paramètre θ », tableaux,
+  # étiquettes des visuels), elles sont dessinées par STIX Two Text, la police des formules.
+  grecques:
+    fichier: stix-two-text-greek-400-normal.woff2
+    unicode_range: U+0370-03FF
+    familles:
+    - Geist
+    - Geist Mono
+tailles_px:
+  titre_couverture: 124  # session de design n° 2 (2026-11-01) : couverture A ; 92 px avant
+  titre_couverture_long: 96  # titre de plus de 26 caractères
+  titre_couverture_classique: 92  # couverture classique (d'avant la couverture A), gardée au choix le 2026-11-02
+  titre_bilan: 108  # couverture du post bilan, inchangée
+  titre_ouverture: 108
+  titre_page: 60  # session de design n° 2 (lisibilité sur téléphone) ; 54 avant
+  texte: 30  # 27 avant
+  points_fin: 38
+  etiquette: 22  # 16 avant ; aucun texte sous 22 px
+  entete: 22  # 17 avant
+  credit: 22  # 14 avant
+  texte_min: 22  # 20 avant
+  signature: 24  # 20 avant
+limites_mots:
+  ouverture: 32  # session de design n° 2 : textes plus grands (40 avant)
+  contenu: 55  # 70 avant
+images_reelles:
+  largeur: 920
+  photo_hauteur: 430  # session de design n° 2 : texte en 30 px (520 avant)
+  capture_hauteur: 430
+  rayon: 20
+  noir_et_blanc: true
+  voile_accent_opacite: 0.08
+  max_par_page: 1
+  max_par_carrousel: 2
+signature: Ladji Lama Kamagate
+serie:
+  nom: Théta
+  symbole: θ
+  affichage: θ Théta
+  sous_titre: le Machine Learning, une notion à la fois
+  hashtag: '#ThetaML'  # vérifié libre sur LinkedIn le 2026-10-25 ; termine chaque post (A34)

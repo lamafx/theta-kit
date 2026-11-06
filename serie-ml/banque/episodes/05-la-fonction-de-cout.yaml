@@ -1,0 +1,71 @@
+numero: 5
+titre: La fonction de coût
+format: long
+saison: 1
+chapitre:
+  numero: 2
+  titre: Apprendre de ses erreurs
+accroche: Avant d'apprendre, une IA doit savoir à quel point elle se trompe.
+couverture:
+  famille: nuage
+  description: nuage de points, une droite et les segments d'écart
+  verbe: se tromper
+  geste: gratter
+prerequis_explicites: []
+termes_introduits:
+- terme: erreur (résidu)
+  formes:
+  - erreur (résidu)
+- terme: fonction de coût J
+  formes:
+  - fonction de coût J
+- terme: erreur quadratique moyenne (MSE)
+  formes:
+  - erreur quadratique moyenne (MSE)
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Prédire, puis comparer : les écarts verticaux entre les points et la droite.'
+- page: 3
+  type: Mécanisme
+  message: 'Pourquoi le carré : des erreurs toujours positives, et les grosses erreurs punies davantage. Revers
+    : un seul point aberrant peut tirer toute la droite. La MSE est le coût de référence de la régression, pas de
+    tous les problèmes.'
+- page: 4
+  type: Formule
+  message: J = (1/n) Σ (ŷᵢ − yᵢ)².
+- page: 5
+  type: Comparaison
+  message: Une bonne droite et une mauvaise droite, avec leur J.
+- page: 6
+  type: Mécanisme
+  message: 'J selon le réglage a : une courbe en U, dont le creux est la meilleure droite.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 6
+  transition: Pour descendre vers ce creux, il faut savoir lire une pente.
+references:
+  cours:
+  - titre: MLCC · Loss
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/loss
+  - titre: D2L 3.1
+    url: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  # Ajoutée le 2026-10-31 : prix en FCFA (cours de conversion), comme aux fiches 02 et 04.
+  - titre: BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)
+    url: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  # Ajoutée le 2026-11-01 (retours éditoriaux de l'utilisateur) : convention de signe du résidu en statistique.
+  - titre: NIST/SEMATECH e-Handbook of Statistical Methods, 4.4.4 How can I tell if a model fits my data?
+    url: https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm
+  sources_originales:
+  # Ajoutée le 2026-10-31 : les maisons d'Ames, exemple suivi de la saison 1 (décision de l'utilisateur du
+  # 2026-10-30), servent à mesurer l'erreur de la droite de l'épisode 04.
+  - citation: De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 31 octobre 2026
+    liens:
+    - titre: Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project
+      url: https://doi.org/10.1080/10691898.2011.11889627
+    # Ajouté le 2026-11-01 (relecture de l'épisode 02, D10) : citation des données demandée par la revue.
+    - titre: Ames Housing Data, Dean De Cock, Journal of Statistics Education 19(3), consulté le 31 octobre 2026
+      url: http://jse.amstat.org/v19n3/decock/AmesHousing.txt

@@ -1,0 +1,656 @@
+{
+  "_lisezmoi": "Coordonnées dans le repère local du robot (600 x 660). Repère canonique : le motif du sujet est à GAUCHE du robot, le bras actif est le bras gauche à l'écran (épaule en 142,392). L'épaule droite est en 458,392. Pour la position 'gauche', le générateur retourne le robot en miroir. Les yeux par défaut sont centrés ; 'regard' décale les deux yeux (x, y). 'inclinaison' tourne la tête en degrés autour de (300,170), négatif = vers la gauche.",
+  "placements": {
+    "droite": {
+      "translate": [
+        405,
+        110
+      ],
+      "scale": 1.45,
+      "miroir": false,
+      "titre": "bas",
+      "zone_motif": [
+        40,
+        180,
+        560,
+        640
+      ],
+      "fondu": [
+        380,
+        520
+      ]
+    },
+    "gauche": {
+      "translate": [
+        585,
+        73
+      ],
+      "scale": 1.3,
+      "miroir": true,
+      "titre": "bas",
+      "zone_motif": [
+        520,
+        180,
+        1060,
+        720
+      ]
+    },
+    "bas": {
+      "translate": [
+        520,
+        590
+      ],
+      "scale": 1.35,
+      "miroir": false,
+      "titre": "haut",
+      "zone_motif": [
+        80,
+        560,
+        620,
+        900
+      ]
+    },
+    "haut": {
+      "translate": [
+        555,
+        -62
+      ],
+      "scale": 1.25,
+      "miroir": false,
+      "titre": "bas",
+      "zone_motif": [
+        80,
+        440,
+        900,
+        1000
+      ]
+    },
+    "bas-centre": {
+      "translate": [
+        150,
+        500
+      ],
+      "scale": 1.3,
+      "miroir": false,
+      "titre": "haut",
+      "zone_motif": [
+        80,
+        520,
+        1000,
+        1180
+      ]
+    }
+  },
+  "gestes": {
+    "visiere": {
+      "verbe": "chercher",
+      "description": "Main en visière au-dessus des yeux, il scrute le motif en contrebas.",
+      "position": "droite",
+      "inclinaison": -6,
+      "regard": [
+        -16,
+        10
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              58,
+              262
+            ],
+            [
+              176,
+              132
+            ]
+          ],
+          "main": {
+            "type": "plat",
+            "x": 215,
+            "y": 126,
+            "angle": -8,
+            "longueur": 130
+          }
+        }
+      ],
+      "accessoires": []
+    },
+    "pointer": {
+      "verbe": "montrer",
+      "description": "Bras tendu, il pointe du doigt l'élément clé du motif.",
+      "position": "gauche",
+      "inclinaison": -5,
+      "regard": [
+        -16,
+        -8
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              25,
+              352
+            ],
+            [
+              -76,
+              302
+            ]
+          ],
+          "main": {
+            "type": "index",
+            "x": -82,
+            "y": 300,
+            "angle": 199
+          }
+        }
+      ],
+      "accessoires": []
+    },
+    "menton": {
+      "verbe": "se demander",
+      "description": "Main au menton, tête penchée, yeux levés vers le motif. Des points d'interrogation flottent à côté.",
+      "position": "bas",
+      "inclinaison": -8,
+      "regard": [
+        -14,
+        -12
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              172,
+              610
+            ],
+            [
+              284,
+              312
+            ]
+          ],
+          "main": {
+            "type": "menton",
+            "x": 290,
+            "y": 304
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "question",
+          "x": 100,
+          "y": 141,
+          "taille": 120
+        },
+        {
+          "type": "question",
+          "x": 78,
+          "y": 44,
+          "taille": 66,
+          "opacite": 0.55
+        }
+      ]
+    },
+    "deposer": {
+      "verbe": "ranger",
+      "description": "Penché depuis le haut, il tient un point entre ses doigts et le dépose dans un groupe.",
+      "position": "haut",
+      "inclinaison": 10,
+      "regard": [
+        -12,
+        18
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              60,
+              530
+            ],
+            [
+              26,
+              652
+            ]
+          ],
+          "main": {
+            "type": "pince",
+            "x": 24,
+            "y": 664
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "point",
+          "x": 19,
+          "y": 706
+        }
+      ]
+    },
+    "loupe": {
+      "verbe": "examiner",
+      "description": "Il tient une loupe devant une partie du motif pour la regarder de près.",
+      "position": "droite",
+      "inclinaison": -4,
+      "regard": [
+        -16,
+        -2
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              40,
+              430
+            ],
+            [
+              -30,
+              320
+            ]
+          ],
+          "main": {
+            "type": "poing",
+            "x": -34,
+            "y": 316
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "loupe",
+          "x": -34,
+          "y": 316,
+          "cx": -112,
+          "cy": 222,
+          "r": 62
+        }
+      ]
+    },
+    "balance": {
+      "verbe": "peser",
+      "description": "Les deux mains ouvertes, paumes vers le haut, il compare deux choses comme une balance.",
+      "position": "bas-centre",
+      "inclinaison": 6,
+      "regard": [
+        -10,
+        14
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              100,
+              520
+            ],
+            [
+              0,
+              486
+            ]
+          ],
+          "main": {
+            "type": "ouverte",
+            "x": -6,
+            "y": 480
+          }
+        },
+        {
+          "points": [
+            [
+              458,
+              392
+            ],
+            [
+              500,
+              560
+            ],
+            [
+              600,
+              540
+            ]
+          ],
+          "main": {
+            "type": "ouverte",
+            "x": 606,
+            "y": 534
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "objet",
+          "x": -6,
+          "y": 440,
+          "forme": "cercle",
+          "couleur": "accent"
+        },
+        {
+          "type": "objet",
+          "x": 606,
+          "y": 494,
+          "forme": "carre",
+          "couleur": "blanc"
+        }
+      ]
+    },
+    "compter": {
+      "verbe": "compter",
+      "description": "Main levée, il compte sur ses doigts.",
+      "position": "gauche",
+      "inclinaison": -4,
+      "regard": [
+        -12,
+        -10
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              60,
+              470
+            ],
+            [
+              22,
+              334
+            ]
+          ],
+          "main": {
+            "type": "doigts",
+            "x": 20,
+            "y": 324,
+            "doigts": 3
+          }
+        }
+      ],
+      "accessoires": []
+    },
+    "paume": {
+      "verbe": "freiner",
+      "description": "Bras tendu, paume ouverte face au motif : stop, on freine, on sépare.",
+      "position": "droite",
+      "inclinaison": 5,
+      "regard": [
+        -14,
+        0
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              30,
+              384
+            ],
+            [
+              -78,
+              366
+            ]
+          ],
+          "main": {
+            "type": "paume",
+            "x": -92,
+            "y": 360
+          }
+        }
+      ],
+      "accessoires": []
+    },
+    "gratter": {
+      "verbe": "se tromper",
+      "description": "Il se gratte la tête, gêné, devant une erreur.",
+      "position": "bas",
+      "inclinaison": 10,
+      "regard": [
+        -8,
+        -12
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              30,
+              300
+            ],
+            [
+              150,
+              96
+            ]
+          ],
+          "main": {
+            "type": "poing",
+            "x": 156,
+            "y": 90
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "question",
+          "x": 40,
+          "y": 96,
+          "taille": 96,
+          "texte": "?!"
+        }
+      ]
+    },
+    "regler": {
+      "verbe": "régler",
+      "description": "Il tourne un bouton de réglage entre ses doigts.",
+      "position": "droite",
+      "inclinaison": 4,
+      "regard": [
+        -14,
+        12
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              60,
+              520
+            ],
+            [
+              -24,
+              470
+            ]
+          ],
+          "main": {
+            "type": "pince",
+            "x": -30,
+            "y": 464
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "bouton",
+          "x": -78,
+          "y": 470,
+          "r": 36
+        }
+      ]
+    },
+    "tracer": {
+      "verbe": "tracer",
+      "description": "Il tient un crayon et trace une ligne dans le motif.",
+      "position": "gauche",
+      "inclinaison": 2,
+      "regard": [
+        -14,
+        10
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              40,
+              470
+            ],
+            [
+              -56,
+              424
+            ]
+          ],
+          "main": {
+            "type": "poing",
+            "x": -60,
+            "y": 420
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "crayon",
+          "x1": -36,
+          "y1": 380,
+          "x2": -110,
+          "y2": 500
+        }
+      ]
+    },
+    "porter": {
+      "verbe": "transmettre",
+      "description": "Il porte un objet à deux mains devant lui, comme pour le passer plus loin.",
+      "position": "bas-centre",
+      "inclinaison": 0,
+      "regard": [
+        0,
+        16
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              150,
+              560
+            ],
+            [
+              246,
+              520
+            ]
+          ],
+          "main": {
+            "type": "ouverte",
+            "x": 244,
+            "y": 516
+          }
+        },
+        {
+          "points": [
+            [
+              458,
+              392
+            ],
+            [
+              450,
+              560
+            ],
+            [
+              354,
+              520
+            ]
+          ],
+          "main": {
+            "type": "ouverte",
+            "x": 356,
+            "y": 516
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "objet",
+          "x": 300,
+          "y": 470,
+          "forme": "boite",
+          "couleur": "accent"
+        }
+      ]
+    },
+    "ecoute": {
+      "verbe": "être attentif",
+      "description": "Main posée sur son casque, tête penchée vers le motif : il écoute, il fait attention.",
+      "position": "droite",
+      "inclinaison": -10,
+      "regard": [
+        -16,
+        -2
+      ],
+      "bras": [
+        {
+          "points": [
+            [
+              142,
+              392
+            ],
+            [
+              64,
+              330
+            ],
+            [
+              150,
+              214
+            ]
+          ],
+          "main": {
+            "type": "paume",
+            "x": 150,
+            "y": 196,
+            "angle": -20
+          }
+        }
+      ],
+      "accessoires": [
+        {
+          "type": "ondes",
+          "x": 60,
+          "y": 186
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<defs><marker id="m08-step" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="{{accent}}"/></marker></defs>
+<g aria-hidden="true">
+<g fill="none" stroke="{{accent}}" stroke-width="1.5">
+<ellipse cx="290" cy="600" rx="520" ry="280" stroke-opacity="0.07"/>
+<ellipse cx="290" cy="600" rx="430" ry="232" stroke-opacity="0.1"/>
+<ellipse cx="290" cy="600" rx="352" ry="190" stroke-opacity="0.14"/>
+<ellipse cx="290" cy="600" rx="282" ry="152" stroke-opacity="0.2"/>
+<ellipse cx="290" cy="600" rx="218" ry="118" stroke-opacity="0.28"/>
+<ellipse cx="290" cy="600" rx="160" ry="86" stroke-opacity="0.4"/>
+<ellipse cx="290" cy="600" rx="106" ry="57" stroke-opacity="0.55"/>
+<ellipse cx="290" cy="600" rx="56" ry="30" stroke-opacity="0.72"/>
+</g>
+<line x1="110" y1="300" x2="190" y2="496" stroke="{{accent}}" stroke-width="3" marker-end="url(#m08-step)"/>
+<line x1="196" y1="506" x2="268" y2="458" stroke="{{accent}}" stroke-width="2.5" stroke-opacity="0.85" marker-end="url(#m08-step)"/>
+<polyline points="276,462 290,540 270,580 290,600" fill="none" stroke="{{accent}}" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>
+<circle cx="110" cy="300" r="10" fill="#F5F8FC" stroke="{{accent}}" stroke-width="3"/>
+<circle cx="194" cy="504" r="6" fill="{{accent}}"/>
+<circle cx="272" cy="458" r="5" fill="{{accent}}"/>
+<circle cx="290" cy="600" r="9" fill="#0A0F17" stroke="#F5F8FC" stroke-width="3"/>
+<circle cx="290" cy="600" r="3" fill="#F5F8FC"/>
+</g>

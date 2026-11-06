@@ -1,0 +1,76 @@
+numero: 2
+titre: Données, caractéristiques et étiquettes
+format: court
+saison: 1
+chapitre:
+  numero: 1
+  titre: Les bases
+accroche: Pour une machine, un exemple n'est qu'une ligne de tableau.
+couverture:
+  famille: grille
+  description: grille de données, une colonne mise en évidence
+  verbe: examiner
+  geste: loupe
+prerequis_explicites: []
+termes_introduits:
+- terme: jeu de données
+  formes:
+  - jeu de données
+- terme: caractéristique
+  formes:
+  - caractéristique
+- terme: étiquette
+  formes:
+  - étiquette
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Une maison = surface, chambres, quartier, et son prix : une ligne d''un tableau.'
+- page: 3
+  type: Mécanisme
+  message: Lignes = exemples, colonnes = caractéristiques, dernière colonne = étiquette.
+- page: 4
+  type: Piège
+  # Modifié le 2026-10-30 à la demande de l'utilisateur (vrai piège ; avant : « Le texte et les images doivent
+  # d'abord devenir des nombres. »).
+  message: 'Un quartier n''est pas une quantité : numéroter des catégories fait croire à un ordre.'
+# Ajoutée le 2026-10-31 à la demande de l'utilisateur (comment coder un quartier).
+- page: 5
+  type: Mécanisme
+  message: 'Une colonne par quartier : 1 si la maison y est, 0 sinon.'
+- page: 6
+  type: Fin
+episode_suivant:
+  numero: 3
+  transition: Et quand on n'a pas d'étiquette ?
+references:
+  cours:
+  - titre: MLCC · Feature vectors
+    url: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  # Ajoutées le 2026-10-26 pendant la production (A43) : étiquette, tableau de maisons, image en nombres.
+  - titre: MLCC · Machine Learning Glossary
+    url: https://developers.google.com/machine-learning/glossary
+  # Ajoutée le 2026-10-30 à la demande de l'utilisateur : prix en FCFA (cours de conversion).
+  - titre: BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)
+    url: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  # Ajoutée le 2026-10-30 à la demande de l'utilisateur : piège des catégories numérotées.
+  - titre: MLCC · Categorical data, vocabulary and one-hot encoding
+    url: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  # Ajoutées le 2026-11-01 (audit éditorial de l'utilisateur, points 02.1, 02.2 et 02.4) : catégories lues
+  # comme ordonnées selon le modèle, autres encodages, modèles qui acceptent directement des catégories.
+  - titre: scikit-learn · Preprocessing data, Encoding categorical features
+    url: https://scikit-learn.org/stable/modules/preprocessing.html
+  - titre: scikit-learn · Ensembles, Categorical Features Support
+    url: https://scikit-learn.org/stable/modules/ensemble.html
+  sources_originales:
+  # Le 2026-10-30, à la demande de l'utilisateur : les maisons d'Ames, exemple suivi de la saison 1, remplacent
+  # le jeu UCI des chiffres manuscrits (Alpaydin et Kaynak, 1998), retiré avec la page qu'il appuyait.
+  - citation: De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 31 octobre 2026
+    liens:
+    - titre: Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project
+      url: https://doi.org/10.1080/10691898.2011.11889627
+    # Ajouté le 2026-11-01 (relecture de l'épisode 02, D10) : citation des données demandée par la revue.
+    - titre: Ames Housing Data, Dean De Cock, Journal of Statistics Education 19(3), consulté le 31 octobre 2026
+      url: http://jse.amstat.org/v19n3/decock/AmesHousing.txt

@@ -1,0 +1,3 @@
+Références de l’épisode Nº 06 :
+- D2L 2.4 · Calculus : https://d2l.ai/chapter_preliminaries/calculus.html
+- DLB ch. 4 : https://www.deeplearningbook.org/contents/numerical.html

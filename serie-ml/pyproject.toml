@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "serie-theta"
+version = "0.1.0"
+description = "Générateur de la série de carrousels θ Théta"
+requires-python = ">=3.11"
+dependencies = [
+    "PyYAML>=6.0",
+    "pydantic>=2.5",
+    "Jinja2>=3.1",
+    "playwright>=1.40",
+    "pypdf>=4.0",
+    "keyring>=25",  # jeton LinkedIn dans le gestionnaire d'identifiants de Windows
+    "tzdata>=2024.1",  # fuseaux horaires (Africa/Abidjan) sous Windows
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+serie = "serie.cli:main"
+
+[tool.setuptools]
+packages = ["serie", "bibliotheque", "calculs"]
+
+[tool.setuptools.package-data]
+calculs = ["donnees/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

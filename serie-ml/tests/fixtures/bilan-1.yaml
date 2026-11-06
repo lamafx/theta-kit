@@ -1,0 +1,9 @@
+# Bilan de la saison 1 : textes repris des canevas Bilan-Couverture et Bilan-Sommaire.
+# Fixture de test du jalon 2 ; le contenu réel des bilans sera écrit par /bilan (jalon 4).
+saison: 1
+couverture:
+  titre: "Saison 1,\nle bilan."
+  accroche: 19 épisodes pour comprendre comment une IA apprend. Le sommaire complet, à garder.
+sommaire:
+  titre: "De la première idée\nà la première décision."
+  texte: "Chaque épisode s'appuie sur les précédents. Relisez-les dans l'ordre : tous sont sur mon profil."

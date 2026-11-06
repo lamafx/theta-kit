@@ -1,0 +1,64 @@
+numero: 50
+titre: Les LSTM
+format: long
+saison: 3
+chapitre:
+  numero: 9
+  titre: Les réseaux spécialisés
+accroche: Apprendre ce qu'il faut retenir, et ce qu'il faut oublier.
+couverture:
+  famille: reseau
+  description: une cellule et ses trois portes
+  verbe: se demander
+  geste: menton
+prerequis_explicites: []
+termes_introduits:
+- terme: LSTM
+  formes:
+  - LSTM
+- terme: porte d'oubli
+  formes:
+  - porte d'oubli
+- terme: porte d'entrée
+  formes:
+  - porte d'entrée
+- terme: porte de sortie
+  formes:
+  - porte de sortie
+- terme: état de cellule
+  formes:
+  - état de cellule
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Une voie rapide pour la mémoire.
+- page: 3
+  type: Mécanisme
+  message: La porte d'oubli décide ce qu'on efface.
+- page: 4
+  type: Mécanisme
+  message: Les portes d'entrée et de sortie décident ce qu'on écrit et ce qu'on lit.
+- page: 5
+  type: Lien
+  message: Pourquoi le gradient survit enfin (42).
+- page: 6
+  type: Repère
+  message: Le GRU, une version simplifiée.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 51
+  transition: Entraîner tout ça de zéro coûte cher. Et si on réutilisait ?
+references:
+  cours:
+  - titre: D2L 10.1
+    url: https://d2l.ai/chapter_recurrent-modern/lstm.html
+  - titre: D2L 10.2 · GRU
+    url: https://d2l.ai/chapter_recurrent-modern/gru.html
+  sources_originales:
+  - citation: Hochreiter et Schmidhuber (1997), Long Short-Term Memory, Neural Computation
+    liens:
+    - titre: Long Short-Term Memory
+      url: https://doi.org/10.1162/neco.1997.9.8.1735

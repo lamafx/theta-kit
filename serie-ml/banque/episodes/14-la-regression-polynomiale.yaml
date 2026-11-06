@@ -1,0 +1,45 @@
+numero: 14
+titre: La régression polynomiale
+format: court
+saison: 1
+chapitre:
+  numero: 3
+  titre: La régression
+accroche: Quand la relation n'est pas une ligne droite.
+couverture:
+  famille: nuage
+  description: courbe qui épouse un nuage de points courbe
+  verbe: tracer
+  geste: tracer
+prerequis_explicites: []
+termes_introduits:
+- terme: polynôme
+  formes:
+  - polynôme
+- terme: degré
+  formes:
+  - degré
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Ajouter x² et x³ comme de nouvelles caractéristiques.
+- page: 3
+  type: Comparaison
+  message: Degré 1, 3 et 15 sur les mêmes points.
+- page: 4
+  type: Piège
+  message: Le degré 15 passe par tous les points… et rate les nouveaux. Avant-goût du chapitre 6.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 15
+  transition: Prédire un nombre, on sait faire. Et prédire une catégorie ?
+references:
+  cours:
+  - titre: MLCC · Polynomial transforms
+    url: https://developers.google.com/machine-learning/crash-course/numerical-data/polynomial-transforms
+  - titre: SKL · Polynomial features
+    url: https://scikit-learn.org/stable/modules/preprocessing.html#generating-polynomial-features
+  sources_originales: []

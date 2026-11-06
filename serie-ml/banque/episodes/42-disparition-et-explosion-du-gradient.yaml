@@ -1,0 +1,63 @@
+numero: 42
+titre: Disparition et explosion du gradient
+format: long
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Quand le signal d'erreur s'éteint, ou explose.
+couverture:
+  famille: reseau
+  description: flèches arrière de plus en plus fines
+  verbe: se tromper
+  geste: gratter
+prerequis_explicites: []
+termes_introduits:
+- terme: disparition du gradient
+  formes:
+  - disparition du gradient
+- terme: explosion du gradient
+  formes:
+  - explosion du gradient
+- terme: connexion résiduelle
+  formes:
+  - connexion résiduelle
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 0,25 multiplié dix fois par lui-même ≈ 0,000001.
+- page: 3
+  type: Mécanisme
+  message: Les premières couches n'apprennent presque plus.
+- page: 4
+  type: Comparaison
+  message: Sigmoïde (pente au plus 0,25) contre ReLU (pente 1).
+- page: 5
+  type: Mécanisme
+  message: 'L''explosion : des pentes supérieures à 1, et la divergence revient (08).'
+- page: 6
+  type: Remèdes
+  message: ReLU, bonne initialisation, normalisation, connexions résiduelles.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 43
+  transition: Tout commence par le choix des poids de départ.
+references:
+  cours:
+  - titre: D2L 5.4
+    url: https://d2l.ai/chapter_multilayer-perceptrons/numerical-stability-and-init.html
+  - titre: D2L 8.6 · ResNet
+    url: https://d2l.ai/chapter_convolutional-modern/resnet.html
+  sources_originales:
+  - citation: Bengio, Simard et Frasconi (1994), Learning long-term dependencies with gradient descent is difficult
+      ; Pascanu et al. (2012), On the difficulty of training RNNs ; He et al. (2015), Deep Residual Learning
+    liens:
+    - titre: Learning long-term dependencies with gradient descent is difficult
+      url: https://doi.org/10.1109/72.279181
+    - titre: On the difficulty of training RNNs
+      url: https://arxiv.org/abs/1211.5063
+    - titre: Deep Residual Learning
+      url: https://arxiv.org/abs/1512.03385

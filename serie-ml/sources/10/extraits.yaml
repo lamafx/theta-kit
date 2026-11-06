@@ -1,0 +1,209 @@
+# Extraits mot pour mot des références de la fiche 10, lus le 2026-11-02 : D2L 12.1 et 12.2 (pages HTML ; formules
+# en LaTeX comme dans la source, numéros d'équation retirés, retours à la ligne du HTML joints par une espace),
+# MLCC Gradient descent (page HTML, ajoutée à la fiche 10 : « comme la MSE d'une droite », page 4, n'est écrit ni
+# dans D2L 12.1 ni dans D2L 12.2) et Dauphin et al. (2014), lu sur arXiv (résumé sur la page abs, corps sur le PDF
+# v1 ; césures de fin de ligne du PDF rejointes).
+episode: 10
+extraits:
+# --- D2L 12.1 · Optimization and Deep Learning ---------------------------------------------------
+- id: d2l-defis
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: There are many challenges in deep learning optimization. Some of the most vexing ones are local minima, saddle points, and vanishing gradients.
+  appuie: "Fil de l'épisode : minimums locaux et points selle, deux difficultés de l'optimisation."
+- id: d2l-minimum-local
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: "For any objective function \\(f(x)\\), if the value of \\(f(x)\\) at \\(x\\) is smaller than the values of \\(f(x)\\) at any other points in the vicinity of \\(x\\), then \\(f(x)\\) could be a local minimum."
+  appuie: "Ouverture : un minimum local est plus bas que tous ses voisins proches."
+- id: d2l-minimum-global
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: "If the value of \\(f(x)\\) at \\(x\\) is the minimum of the objective function over the entire domain, then \\(f(x)\\) is the global minimum."
+  appuie: "Ouverture : le minimum global est le plus bas de toute la courbe."
+- id: d2l-exemple-deux-creux
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: "For example, given the function \\[f(x) = x \\cdot \\textrm{cos}(\\pi x) \\textrm{ for } -1.0 \\leq x \\leq 2.0,\\] we can approximate the local minimum and global minimum of this function."
+  appuie: "Ouverture et couverture : une courbe à deux creux, l'un local, l'autre global (f(x) = x·cos(πx), D2L)."
+- id: d2l-nombreux-optima
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: The objective function of deep learning models usually has many local optima.
+  appuie: "Ouverture : le coût d'un modèle d'apprentissage profond a d'ordinaire de nombreux creux."
+- id: d2l-arret-local
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: When the numerical solution of an optimization problem is near the local optimum, the numerical solution obtained by the final iteration may only minimize the objective function locally, rather than globally, as the gradient of the objective function’s solutions approaches or becomes zero.
+  appuie: "Ouverture : la descente s'arrête dans le premier creux, car la pente y devient nulle."
+- id: d2l-bruit-deloge
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: Only some degree of noise might knock the parameter out of the local minimum. In fact, this is one of the beneficial properties of minibatch stochastic gradient descent where the natural variation of gradients over minibatches is able to dislodge the parameters from local minima.
+  appuie: "Ouverture (nuance, lien avec l'épisode 09) : le bruit des mini-lots peut faire sortir d'un minimum local."
+- id: d2l-selle-definition
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: Besides local minima, saddle points are another reason for gradients to vanish. A saddle point is any location where all gradients of a function vanish but which is neither a global nor a local minimum.
+  appuie: "Mécanisme : un point selle, ∇J = 0 sans être un minimum."
+- id: d2l-selle-x3
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: "Consider the function \\(f(x) = x^3\\). Its first and second derivative vanish for \\(x=0\\). Optimization might stall at this point, even though it is not a minimum."
+  appuie: "Mécanisme : la descente peut caler à un point selle."
+- id: d2l-selle-2d
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: "Saddle points in higher dimensions are even more insidious, as the example below shows. Consider the function \\(f(x, y) = x^2 - y^2\\). It has its saddle point at \\((0, 0)\\). This is a maximum with respect to \\(y\\) and a minimum with respect to \\(x\\). Moreover, it looks like a saddle, which is where this mathematical property got its name."
+  appuie: "Mécanisme : J(a, b) = a² − b², creux selon a, sommet selon b ; la forme d'une selle donne son nom au point."
+- id: d2l-selle-probable
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: For high-dimensional problems the likelihood that at least some of the eigenvalues are negative is quite high. This makes saddle points more likely than local minima.
+  appuie: "Mécanisme : avec beaucoup de paramètres, les points selle sont plus probables que les minimums locaux."
+- id: d2l-convexe-rare
+  reference: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_sur: https://d2l.ai/chapter_optimization/optimization-intro.html
+  lu_le: 2026-11-02
+  extrait: In short, convex functions are those where the eigenvalues of the Hessian are never negative. Sadly, though, most deep learning problems do not fall into this category.
+  appuie: "Repère (cas particulier) : la plupart des problèmes d'apprentissage profond ne sont pas convexes."
+# --- D2L 12.2 · Convexity -------------------------------------------------------------------------
+- id: d2l-convexite-role
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: Convexity plays a vital role in the design of optimization algorithms. This is largely due to the fact that it is much easier to analyze and test algorithms in such a context.
+  appuie: "Repère : le cas convexe sert à étudier les algorithmes de descente."
+- id: d2l-non-convexe-dl
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: Furthermore, even though the optimization problems in deep learning are generally nonconvex, they often exhibit some properties of convex ones near local minima.
+  appuie: "Repère (nuance) : les problèmes d'apprentissage profond sont en général non convexes."
+- id: d2l-definition-convexe
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: "Given a convex set \\(\\mathcal{X}\\), a function \\(f: \\mathcal{X} \\to \\mathbb{R}\\) is convex if for all \\(x, x' \\in \\mathcal{X}\\) and for all \\(\\lambda \\in [0, 1]\\) we have \\[\\lambda f(x) + (1-\\lambda) f(x') \\geq f(\\lambda x + (1-\\lambda) x').\\]"
+  appuie: "Repère : définition d'une fonction convexe (la corde entre deux points reste au-dessus de la courbe)."
+- id: d2l-cosinus-parabole
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: As expected, the cosine function is nonconvex, whereas the parabola and the exponential function are.
+  appuie: "Repère : une parabole (la courbe en U des épisodes 05 à 08) est convexe ; une courbe ondulée ne l'est pas."
+- id: d2l-local-global
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: First and foremost, the local minima of convex functions are also the global minima.
+  appuie: "Repère : avec une fonction convexe, tout minimum local est global."
+- id: d2l-exemple-parabole
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: "For instance, the convex function \\(f(x) = (x-1)^2\\) has a local minimum at \\(x=1\\), which is also the global minimum."
+  appuie: "Repère : exemple d'une parabole dont le minimum local est aussi global."
+- id: d2l-pas-coince
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: The fact that the local minima for convex functions are also the global minima is very convenient. It means that if we minimize functions we cannot “get stuck”.
+  appuie: "Repère : pas de faux creux où rester coincé."
+- id: d2l-fond-plat
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: "Note, though, that this does not mean that there cannot be more than one global minimum or that there might even exist one. For instance, the function \\(f(x) = \\mathrm{max}(|x|-1, 0)\\) attains its minimum value over the interval \\([-1, 1]\\)."
+  appuie: "Repère (nuance de la fiche) : le fond peut être plat, plusieurs points au même coût le plus bas ; il peut même ne pas exister de minimum."
+- id: d2l-derivee-seconde
+  reference: https://d2l.ai/chapter_optimization/convexity.html
+  lu_sur: https://d2l.ai/chapter_optimization/convexity.html
+  lu_le: 2026-11-02
+  extrait: "Formally, a twice-differentiable one-dimensional function \\(f: \\mathbb{R} \\rightarrow \\mathbb{R}\\) is convex if and only if its second derivative \\(f'' \\geq 0\\)."
+  appuie: "Repère : une courbe dont la pente ne fait que croître est convexe."
+# --- MLCC · Gradient descent (ajoutée à la fiche 10 le 2026-11-02) ---------------------------------
+- id: mlcc-lineaire-convexe
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: The loss functions for linear models always produce a convex surface. As a result of this property, when a linear regression model converges, we know the model has found the weights and bias that produce the lowest loss.
+  appuie: "Repère : le coût d'un modèle linéaire (la MSE d'une droite, épisode 05) est convexe ; la descente y trouve le coût le plus bas."
+- id: mlcc-minimum-global
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: Linear models have convex loss functions, ensuring that gradient descent will always find the global minimum, resulting in the best possible model for the given data.
+  appuie: "Repère : pour un modèle linéaire, la descente trouve le minimum global."
+- id: mlcc-bille
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-02
+  extrait: If we graphed the weights and bias points during gradient descent, the points would look like a ball rolling down a hill, finally stopping at the point where there's no more downward slope.
+  appuie: "Ouverture : la descente s'arrête là où le sol ne descend plus."
+# --- Dauphin et al. (2014) · Identifying and attacking the saddle point problem -------------------
+- id: dauphin-date
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/abs/1406.2572
+  lu_le: 2026-11-02
+  extrait: "[Submitted on 10 Jun 2014]"
+  appuie: "Date de l'article : 2014."
+- id: dauphin-idee-recue
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/abs/1406.2572
+  lu_le: 2026-11-02
+  extrait: Gradient descent or quasi-Newton methods are almost ubiquitously used to perform such minimizations, and it is often thought that a main source of difficulty for these local methods to find the global minimum is the proliferation of local minima with much higher error than the global minimum.
+  appuie: "Mécanisme : on a longtemps pensé que la difficulté venait des minimums locaux."
+- id: dauphin-selle
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/abs/1406.2572
+  lu_le: 2026-11-02
+  extrait: Here we argue, based on results from statistical physics, random matrix theory, neural network theory, and empirical evidence, that a deeper and more profound difficulty originates from the proliferation of saddle points, not local minima, especially in high dimensional problems of practical interest.
+  appuie: "Mécanisme : Dauphin et al. (2014) soutiennent que la difficulté vient plutôt des points selle, en grande dimension."
+- id: dauphin-plateaux
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/abs/1406.2572
+  lu_le: 2026-11-02
+  extrait: Such saddle points are surrounded by high error plateaus that can dramatically slow down learning, and give the illusory impression of the existence of a local minimum.
+  appuie: "Mécanisme : autour d'un point selle, un plateau ralentit la descente et ressemble à un minimum local."
+- id: dauphin-rapport
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/pdf/1406.2572v1
+  lu_le: 2026-11-02
+  extrait: Indeed the ratio of the number of saddle points to local minima increases exponentially with the dimensionality N .
+  appuie: "Mécanisme : plus il y a de paramètres, plus les points selle l'emportent sur les minimums locaux (fonctions d'erreur aléatoires)."
+- id: dauphin-une-dimension
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/pdf/1406.2572v1
+  lu_le: 2026-11-02
+  extrait: "(Rasmussen and Williams, 2005) have shown that such a random error function would have many local minima and maxima, with high probability over the choice of the function, but saddles would occur with negligible probability."
+  appuie: "Ouverture et Mécanisme (nuance) : avec un seul paramètre, une courbe aléatoire a surtout des creux et des bosses ; le point selle vient avec plusieurs paramètres."
+- id: dauphin-repousse
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/pdf/1406.2572v1
+  lu_le: 2026-11-02
+  extrait: While gradient descent dynamics are repelled away from a saddle point to lower error by following directions of negative curvature, this repulsion can occur slowly due to the plateau.
+  appuie: "Mécanisme (nuance) : la descente finit par quitter un point selle par la direction qui descend, mais lentement à cause du plateau."
+- id: dauphin-minimums-proches
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/pdf/1406.2572v1
+  lu_le: 2026-11-02
+  extrait: Conversely, all local minima, which necessarily have index 0, are likely to have an error very close to that of the global minimum.
+  appuie: "Nuance (fonctions d'erreur aléatoires en grande dimension) : les minimums locaux ont probablement une erreur proche de celle du minimum global."
+- id: dauphin-toutes-directions
+  reference: https://arxiv.org/abs/1406.2572
+  lu_sur: https://arxiv.org/pdf/1406.2572v1
+  lu_le: 2026-11-02
+  extrait: Intuitively, in high dimensions, the chance that all the directions around a critical point lead upward (positive curvature) is exponentially small w.r.t. the number of dimensions, unless the critical point is the global minimum or stands at an error level close to it, i.e., it is unlikely one can find a way to go further down.
+  appuie: "Mécanisme : un minimum demande que toutes les directions remontent ; avec beaucoup de paramètres, c'est rare."

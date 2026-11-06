@@ -1,0 +1,50 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">{{ p.role }}</span>
+<h2 class="titre-page">{{ p.titre|texte }}</h2>
+{% if image %}
+<p class="texte">{{ p.texte|texte }}</p>
+
+<figure class="figure">
+<div class="photo">
+<img class="image-reelle" src="{{ image.url }}" alt="{{ p.image.legende|typo }}">
+<div class="voile"></div>
+</div>
+<figcaption>
+<span class="legende-image">{{ p.image.legende|texte }}</span>
+<span class="credit">{{ image.credit|typo }}</span>
+</figcaption>
+</figure>
+{% if p.reperes %}
+
+<div class="reperes">
+{% for r in p.reperes %}
+<div class="repere">
+<span class="date">{{ r.date|typo }}</span>
+<span class="fait">{{ r.texte|texte }}</span>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% else %}
+{#- Variante sans image : le texte prend la place de la photo (même cadre), la frise des repères s'agrandit. -#}
+<div class="a-la-place">
+<p>{{ p.texte|texte }}</p>
+</div>
+{% if p.reperes %}
+
+<div class="frise" style="--nb-reperes: {{ p.reperes|length }}">
+{% for r in p.reperes %}
+<div class="jalon">
+<span class="date">{{ r.date|typo }}</span>
+<span class="fait">{{ r.texte|texte }}</span>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% endif %}
+
+{{ ui.pied(signature) }}
+{% endblock %}

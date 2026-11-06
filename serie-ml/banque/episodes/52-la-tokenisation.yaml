@@ -1,0 +1,52 @@
+numero: 52
+titre: La tokenisation
+format: court
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Découper le texte en morceaux qu'une machine peut compter.
+couverture:
+  famille: blocs
+  description: une phrase découpée en blocs
+  verbe: compter
+  geste: compter
+  doigts: 3
+prerequis_explicites:
+- 2
+termes_introduits:
+- terme: token
+  formes:
+  - token
+- terme: vocabulaire
+  formes:
+  - vocabulaire
+- terme: sous-mot
+  formes:
+  - sous-mot
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Des mots, des caractères ou des sous-mots.
+- page: 3
+  type: Exemple
+  message: Un mot rare découpé en sous-mots connus.
+- page: 4
+  type: Repère
+  message: Chaque token reçoit un numéro dans le vocabulaire.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 53
+  transition: Des numéros, oui. Mais comment en faire des caractéristiques ?
+references:
+  cours:
+  - titre: D2L 15.6
+    url: https://d2l.ai/chapter_natural-language-processing-pretraining/subword-embedding.html
+  sources_originales:
+  - citation: Sennrich, Haddow et Birch (2015), Neural Machine Translation of Rare Words with Subword Units
+    liens:
+    - titre: Neural Machine Translation of Rare Words with Subword Units
+      url: https://arxiv.org/abs/1508.07909

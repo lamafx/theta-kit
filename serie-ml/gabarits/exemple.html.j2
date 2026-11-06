@@ -1,0 +1,35 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">{{ p.role }}</span>
+<h2 class="titre-page">{{ p.titre|texte }}</h2>
+<p class="texte">{{ p.texte|texte }}</p>
+{% if tableau %}
+
+<table class="tableau">
+<thead>
+<tr>
+{% for col in tableau.colonnes %}<th scope="col">{{ col|texte }}</th>
+{% endfor %}
+</tr>
+</thead>
+<tbody>
+{% for rangee in tableau.lignes %}
+<tr>
+{% for cellule in rangee %}<td{% if cellule.classe %} class="{{ cellule.classe }}"{% endif %}>{{ cellule.texte }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+
+{{ visuel }}
+{% if p.conclusion %}
+
+<p class="conclusion">{{ p.conclusion|texte }}</p>
+{% endif %}
+
+{{ ui.pied(signature) }}
+{% endblock %}

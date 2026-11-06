@@ -1,0 +1,39 @@
+titre: File:Circuito di calcolo per il sistema IBM 704 - Museo scienza tecnologia Milano D1207.jpg
+auteur: I.B.M. Italia (costruttore/ produttore/ progettista)
+date: between 1954 and 1954 date QS:P571,+1954-00-00T00:00:00Z/10,P1319,+1954-00-00T00:00:00Z/9,P1326,+1954-00-00T00:00:00Z/9
+page_source: https://commons.wikimedia.org/wiki/File:Circuito_di_calcolo_per_il_sistema_IBM_704_-_Museo_scienza_tecnologia_Milano_D1207.jpg
+url_fichier: https://upload.wikimedia.org/wikipedia/commons/b/b5/Circuito_di_calcolo_per_il_sistema_IBM_704_-_Museo_scienza_tecnologia_Milano_D1207.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original
+source: Wikimedia Commons
+genre: photo
+classe: libre
+licence: CC BY-SA 4.0
+conditions: 'Creative Commons Attribution-Share Alike 4.0 Credit: Catalogo collezioni (Italian) . Museoscienza.org
+  . Museo nazionale della scienza e della tecnologia Leonardo da Vinci, Milano.'
+lien_licence: https://creativecommons.org/licenses/by-sa/4.0
+description_source: 'Il dispositivo è costituito da un telaio di plastica avente la parte superiore in acciaio Sulla
+  parte superiore sono inserite 6 valvole termoioniche (pentodi, codici: 6136 e 6AU6WA) ed un relé; nella parte
+  interna una serie di componenti elettronici sono assemblati in un circuito e connessi tra loro con cavi di rame
+  ricoperto e stagnature: si tratta di resistori, condensatori, diodi, e altri componenti tra i quali varie bobine
+  di arresto della propagazione di segnali di disturbo. I cavi più lunghi sono intrecciati tra loro Sulla parte
+  inferiore del telaio si trova una morsettiera metallica per la connessione elettrica di questo dispositivo nel
+  sistema. Funzione Il dispositivo è un modulo standard di circuito elettronico, sostituibile; la sua funzione specifica
+  integra l''esecuzione di operazioni logiche e aritmetiche del calcolatore. Modalità d''uso L''utilizzo avveniva
+  all''interno del sistema IBM704. Notizie storico-critiche Il calcolatore IBM 704 è di tipo scientifico, molto
+  utilizzato per calcoli ingegnieristici e scientifici. Il sistema 704, presenta una memoria interna a nuclei magnetici
+  (nuclei di ferrite) che sostituisce quelle a tubi catodici e di tipo elettrostatico dei predecessori, questo innalza
+  la velocità di calcolo grazie alla drastica riduzione dei tempi di accesso alla memoria interna: da millesimi
+  di secondo a circa 12 milionesimi di secondo. Il sistema continua ad avere diversi livelli fisici di memoria,
+  compreso un tamburo magnetico che aiuta la memoria interna per lo più memorizzando parte dei programmi, tabelle
+  di calcolo e risultati intermedi del processo I circuiti che eseguivano le operazioni logico aritmetiche continuano
+  ad essere quasi esclusivamente costituiti da moduli di circuiti a valvole termoioniche come i predecessori di
+  questa generazione di calcolatori. Rispetto ai predeccessori, per il calcolo scientifico, il nuovo calcolatore
+  viene dotato dell''aritmetica floating-point (a virgola mobile) e di varie nuove istruzioni Inoltre, appositamente
+  per il 704, viene impostato da John W. Backus, uno dei capo progetto della IBM, il linguaggio FORTRAN (FORmula
+  TRANslot). Il programma venne distribuito a tutti i clienti che avevano ordinato il 704 e questo fu per un vero
+  e proprio test al linguaggio che permise la definizione del compilatore in 6 mesi anzicché in 2 anni come previsto
+  Il calcolatore IBM 704 è stato prodotto dal 1954 al 1960.'
+sha256: 09c64ec1ae66713c37fbde3371405f6a7ef76c88ac9a408ebb896fc07c2b4bd3
+largeur: 1280
+hauteur: 914
+telecharge_le: '2026-10-25'
+verification: 'classe : CC BY-SA'

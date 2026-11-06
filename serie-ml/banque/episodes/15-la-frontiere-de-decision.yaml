@@ -1,0 +1,47 @@
+numero: 15
+titre: La frontière de décision
+format: court
+saison: 1
+chapitre:
+  numero: 4
+  titre: La classification
+accroche: Séparer les données en deux camps.
+couverture:
+  famille: nuage
+  description: deux nuages de points séparés par une ligne
+  verbe: séparer
+  geste: paume
+prerequis_explicites:
+- 3
+termes_introduits:
+- terme: classe
+  formes:
+  - classe
+- terme: frontière de décision
+  formes:
+  - frontière de décision
+- terme: classification binaire
+  formes:
+  - classification binaire
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Spam ou non-spam : deux classes.'
+- page: 3
+  type: Mécanisme
+  message: 'Une droite qui sépare : d''un côté 0, de l''autre 1.'
+- page: 4
+  type: Piège
+  message: Un 0 ou un 1 brut ne dit pas à quel point le modèle est sûr.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 16
+  transition: Il nous faut une sortie entre 0 et 1.
+references:
+  cours:
+  - titre: MLCC · Classification
+    url: https://developers.google.com/machine-learning/crash-course/classification
+  sources_originales: []

@@ -1,0 +1,169 @@
+# Extraits mot pour mot des références de la fiche 02, lus le 2026-10-26 (MLCC), puis le 2026-10-30 (BCEAO,
+# Ames, MLCC données catégorielles). Le 2026-10-30, à la demande de l'utilisateur, l'épisode suit les maisons
+# d'Ames (exemple de la saison 1) ; le tableau du glossaire et le jeu UCI ne sont plus montrés.
+episode: 2
+extraits:
+- id: mlcc-vecteur
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_le: 2026-10-26
+  extrait: You can think of a feature vector as the floating-point values comprising one example.
+  appuie: "Piège : ce que reçoit le modèle est fait de nombres."
+- id: mlcc-lignes
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_le: 2026-10-26
+  extrait: suppose a dataset provides five columns, but only two of those columns (b and d) are features in the model.
+  appuie: "Mécanisme : les colonnes du jeu de données ; certaines sont des caractéristiques."
+- id: mlcc-nombres
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_le: 2026-10-26
+  extrait: Every value in a feature vector must be a floating-point value.
+  appuie: "Piège : toutes les valeurs reçues par le modèle sont des nombres."
+- id: mlcc-ingenierie
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_le: 2026-10-26
+  extrait: This process is called feature engineering, and it is a vital part of machine learning.
+  appuie: "Post : convertir les données demande du soin (décision D4 de la relecture du 2026-10-26)."
+- id: glossaire-exemple
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary
+  lu_le: 2026-10-26
+  extrait: The values of one row of features and possibly a label.
+  appuie: "Ouverture et mécanisme : un exemple, une ligne de caractéristiques et parfois une étiquette."
+- id: glossaire-caracteristique
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary
+  lu_le: 2026-10-26
+  extrait: An input variable to a machine learning model. An example consists of one or more features.
+  appuie: "Mécanisme : une caractéristique est une variable d'entrée."
+- id: glossaire-etiquette
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary
+  lu_le: 2026-10-26
+  extrait: In supervised machine learning, the "answer" or "result" portion of an example.
+  appuie: "Ouverture et mécanisme : l'étiquette est la réponse, connue pour les exemples d'apprentissage, en apprentissage supervisé."
+- id: mlcc-index
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-10-30
+  extrait: Machine learning models can only manipulate floating-point numbers. Therefore, you must convert each string to a unique index number
+  appuie: "Piège : le nom du quartier doit être converti ; la première idée est de le numéroter."
+- id: mlcc-continus
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-10-30
+  extrait: If the categorical feature data is left as indexed integers and loaded into a model, the model would treat the indexed values as continuous floating-point numbers.
+  appuie: "Piège, texte et encadré : des quartiers ou des couleurs numérotés sont traités comme des quantités, avec des écarts entre eux."
+- id: mlcc-six-fois
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-10-30
+  extrait: The model would then consider "purple" six times more likely than "orange."
+  appuie: "Non cité depuis le second audit de l'utilisateur (2026-11-01) : la phrase parle de probabilité là où il s'agit de grandeur ; gardé pour l'historique."
+- id: mlcc-une-colonne
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-10-30
+  extrait: Each category is represented by a vector (array) of N elements, where N is the number of categories.
+  appuie: "Page 5 : une colonne par quartier."
+- id: mlcc-un-zero
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-10-30
+  extrait: Exactly one of the elements in a one-hot vector has the value 1.0; all the remaining elements have the value 0.0.
+  appuie: "Page 5 : 1 dans la colonne du quartier de la maison, 0 ailleurs."
+- id: ames-ventes
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-10-30
+  extrait: This paper presents a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations
+  appuie: "Mécanisme : des maisons vendues à Ames, aux États-Unis ; calculs/ames.py."
+- id: ames-4000
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-10-30
+  extrait: I would recommend removing any houses with more than 4000 square feet from the data set
+  appuie: "calculs/ames.py : les maisons de plus de 4 000 pieds carrés sont écartées."
+- id: ames-surface
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "Gr Liv Area (Continuous): Above grade (ground) living area square feet"
+  appuie: "Ouverture et mécanisme : la surface habitable (convertie en m² par calculs/ames.py)."
+- id: ames-chambres
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "Bedroom (Discrete): Bedrooms above grade (does NOT include basement bedrooms)"
+  appuie: "Ouverture et mécanisme : le nombre de chambres."
+- id: ames-quartier
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "Neighborhood (Nominal): Physical locations within Ames city limits"
+  appuie: "Ouverture, mécanisme et piège : le quartier, une donnée texte (North Ames, College Creek, Old Town)."
+- id: ames-prix
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-10-30
+  extrait: "SalePrice (Continuous): Sale price $$"
+  appuie: "Ouverture et mécanisme : le prix de vente, en dollars, converti en FCFA (calculs/devises.py)."
+- id: bceao-dollar
+  reference: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_sur: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_le: 2026-10-30
+  extrait: "Cours des devises du mardi 27 Octobre 2026 Devise FCFA Euro 655,9570 Dollar us 588,3000"
+  appuie: "Ouverture, mécanisme et post : prix convertis en FCFA (calculs/devises.py), demande de l'utilisateur du 2026-10-30."
+- id: glossaire-modele
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary
+  lu_le: 2026-10-31
+  extrait: In supervised machine learning, a model takes an example as input and infers a prediction as output.
+  appuie: "Ouverture : ce qu'est le modèle, rappelé avant de dire ce qu'il reçoit (demande de l'utilisateur, 2026-10-31)."
+- id: mlcc-vecteur-un
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-11-01
+  extrait: It is the one-hot vector, not the string or the index number, that gets passed to the feature vector.
+  appuie: "Page 5 : le modèle ne reçoit plus le nom ni le numéro du quartier (D21)."
+- id: ames-indicatrices
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-11-01
+  extrait: I would suggest incorporating the neighborhood variable into their models by converting it to a set of dummy (indicator) variables.
+  appuie: "Page 5 : une colonne par quartier, recommandé par l'auteur du jeu d'Ames (D13)."
+- id: ames-fichier
+  reference: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_sur: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_le: 2026-11-01
+  extrait: Bedroom AbvGr
+  appuie: "Pages 2 et 3 : le nom de la colonne des chambres dans le fichier de données (D17, D10)."
+# Ajoutés le 2026-11-01 (audit éditorial de l'utilisateur, points 02.1, 02.2 et 02.4).
+- id: sklearn-ordre
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-01
+  extrait: Such integer representation can, however, not be used directly with all scikit-learn estimators, as these expect continuous input, and would interpret the categories as being ordered, which is often not desired
+  appuie: "Page 4, texte et encadré : selon le modèle, des numéros de catégories sont lus comme des quantités ordonnées."
+- id: sklearn-autre-possibilite
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-01
+  extrait: Another possibility to convert categorical features to features that can be used with scikit-learn estimators is to use a one-of-K, also known as one-hot or dummy encoding.
+  appuie: "Page 5 et fin : une colonne par catégorie est une solution parmi d'autres."
+- id: sklearn-categories-natives
+  reference: https://scikit-learn.org/stable/modules/ensemble.html
+  lu_sur: https://scikit-learn.org/stable/modules/ensemble.html
+  lu_le: 2026-11-01
+  extrait: "HistGradientBoostingClassifier and HistGradientBoostingRegressor have native support for categorical features: they can consider splits on non-ordered, categorical data."
+  appuie: "Page 4 et post : certains modèles acceptent directement des catégories ; beaucoup ne reçoivent que des nombres."
+- id: mlcc-limite
+  reference: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_sur: https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+  lu_le: 2026-11-01
+  extrait: When the number of categories is high, one-hot encoding is usually a bad choice.
+  appuie: "Page 5 et fin : une colonne par catégorie n'est pas la seule méthode."
+illisibles: []

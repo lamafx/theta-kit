@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page de contenu — Mécanisme</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#2D5BFF}a:hover{color:#1C3FC4}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 72px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Geist Mono', monospace; font-size: 17px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<span style="display: flex; gap: 14px"><span style="color: {{accent}}">Nº 08</span><span style="color: #5F6673">Apprendre de ses erreurs</span></span>
+<span style="color: #5F6673">3 / 8</span>
+</div>
+
+<span style="margin-top: 64px; font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Mécanisme</span>
+<h2 style="margin: 16px 0 0; font-size: 54px; line-height: 1.06; font-weight: 600; letter-spacing: -0.03em; color: #0E1116">Pente forte, grand pas.<br>Pente faible, petit pas.</h2>
+<p style="margin: 24px 0 0; max-width: 880px; font-size: 27px; line-height: 1.45; color: #3E4450">Le pas vaut <span style="font-family: 'STIX Two Text', serif; font-style: italic; color: {{accent}}">η</span> × la pente, où <span style="font-family: 'STIX Two Text', serif; font-style: italic; color: {{accent}}">η</span>, le taux d’apprentissage, est un réglage fixe (ici, avec un seul paramètre). Loin du minimum, la courbe est raide : le modèle avance vite. Près du minimum, elle s’aplatit et les pas raccourcissent d’eux-mêmes.</p>
+
+<svg viewBox="0 0 920 460" width="920" height="460" role="img" aria-label="Courbe d'erreur en U. Au point θ = −3, la tangente est raide (pente −6) et le pas vaut 0,9. Au point θ = −0,8, la tangente est douce (pente −1,6) et le pas vaut 0,24." style="margin-top: 36px; display: block">
+<defs>
+<marker id="pm-step" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<line x1="40" y1="410" x2="880" y2="410" stroke="#E4E6EA" stroke-width="2"></line>
+<path d="M40 28 Q460 732 880 28" fill="none" stroke="#0E1116" stroke-width="3" stroke-linecap="round"></path>
+<line x1="70" y1="87.7" x2="220" y2="276.3" stroke="{{accent}}" stroke-width="2" stroke-dasharray="6 6"></line>
+<line x1="301" y1="340.8" x2="451" y2="391" stroke="{{accent}}" stroke-width="2" stroke-dasharray="6 6"></line>
+<circle cx="460" cy="380" r="7" fill="#FFFFFF" stroke="#0E1116" stroke-width="2"></circle>
+<circle cx="145" cy="182" r="9" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<circle cx="376" cy="365.9" r="8" fill="#FFFFFF" stroke="#0E1116" stroke-width="3"></circle>
+<line x1="145" y1="190" x2="145" y2="402" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="376" y1="374" x2="376" y2="402" stroke="#C3C7CE" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="145" y1="410" x2="233" y2="410" stroke="{{accent}}" stroke-width="5" stroke-linecap="round" marker-end="url(#pm-step)"></line>
+<line x1="376" y1="410" x2="396" y2="410" stroke="{{accent}}" stroke-width="5" stroke-linecap="round" marker-end="url(#pm-step)"></line>
+<text x="230" y="262" font-family="Geist, sans-serif" font-size="18" font-weight="500" fill="#0E1116">pente −6</text>
+<text x="300" y="396" font-family="Geist, sans-serif" font-size="18" font-weight="500" fill="#0E1116">pente −1,6</text>
+<text x="189" y="444" text-anchor="middle" font-family="Geist Mono, monospace" font-size="17" font-weight="500" fill="{{accent}}">pas = 0,9</text>
+<text x="390" y="444" text-anchor="middle" font-family="Geist Mono, monospace" font-size="17" font-weight="500" fill="{{accent}}">pas = 0,24</text>
+<text x="460" y="350" text-anchor="middle" font-family="Geist, sans-serif" font-size="17" font-weight="500" fill="#0E1116">minimum</text>
+<text x="640" y="150" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">erreur <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="20">J(θ)</tspan></text>
+<text x="880" y="444" text-anchor="end" font-family="Geist, sans-serif" font-size="16" fill="#5F6673">paramètre θ</text>
+</svg>
+
+<div style="margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; border-top: 1px solid #E4E6EA; padding-top: 28px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">Loin du minimum</span>
+<span style="font-size: 24px; line-height: 1.35; color: #0E1116">Pente raide : <strong style="font-weight: 600">grands pas</strong>, on gagne du temps.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">Près du minimum</span>
+<span style="font-size: 24px; line-height: 1.35; color: #0E1116">Pente douce : <strong style="font-weight: 600">petits pas</strong>, on ne dépasse pas.</span>
+</div>
+</div>
+
+<div style="margin-top: auto; padding-top: 22px; border-top: 1px solid #E4E6EA; display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 20px; font-weight: 500; color: #0E1116">Ladji Lama Kamagate</span>
+<span style="display: flex; align-items: center; gap: 12px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">Glissez</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D5BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2D5BFF","options":["#2D5BFF","#2D6CDF","#0E1116"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#2D5BFF' };
+}
+}
+</script>
+</body>
+</html>

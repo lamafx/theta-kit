@@ -1,0 +1,51 @@
+numero: 13
+titre: Normaliser les données
+format: court
+saison: 1
+chapitre:
+  numero: 3
+  titre: La régression
+accroche: Mettre toutes les caractéristiques sur la même échelle.
+couverture:
+  famille: niveaux
+  description: lignes de niveau très allongées qui deviennent rondes
+  verbe: ranger
+  geste: deposer
+prerequis_explicites: []
+termes_introduits:
+- terme: normalisation
+  formes:
+  - normalisation
+- terme: standardisation
+  formes:
+  - standardisation
+- terme: moyenne μ
+  formes:
+  - moyenne μ
+- terme: écart-type σ
+  formes:
+  - écart-type σ
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: '120 m² contre 3 chambres : la vallée du coût est très allongée.'
+- page: 3
+  type: Comparaison
+  message: 'Vallée allongée : la descente zigzague. Vallée ronde : elle va droit au but.'
+- page: 4
+  type: Formule
+  message: x′ = (x − μ) / σ.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 14
+  transition: Et quand une droite ne suffit plus ?
+references:
+  cours:
+  - titre: MLCC · Normalization
+    url: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  - titre: SKL · Standardization
+    url: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  sources_originales: []

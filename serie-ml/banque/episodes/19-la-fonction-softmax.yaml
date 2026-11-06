@@ -1,0 +1,58 @@
+numero: 19
+titre: La fonction Softmax
+format: long
+saison: 1
+chapitre:
+  numero: 4
+  titre: La classification
+accroche: Choisir entre plusieurs réponses, avec des probabilités.
+couverture:
+  famille: barres
+  description: barres de probabilités de hauteurs différentes
+  verbe: compter
+  geste: compter
+  doigts: 3
+prerequis_explicites: []
+termes_introduits:
+- terme: logits
+  formes:
+  - logits
+- terme: softmax
+  formes:
+  - softmax
+- terme: classification multi-classes
+  formes:
+  - classification multi-classes
+- terme: encodage one-hot
+  formes:
+  - encodage one-hot
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Chat, chien ou oiseau : trois scores bruts deviennent trois probabilités.'
+- page: 3
+  type: Mécanisme
+  message: Exponentielle de chaque score, puis division par la somme.
+- page: 4
+  type: Exemple chiffré
+  message: Scores (2 ; 1 ; 0,1) → probabilités (0,66 ; 0,24 ; 0,10).
+- page: 5
+  type: Formule
+  message: softmax(zᵢ) = e^zᵢ / Σⱼ e^zⱼ.
+- page: 6
+  type: Mécanisme
+  message: 'Avec l''entropie croisée : le coût vaut −log de la probabilité de la bonne classe.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 20
+  transition: Notre modèle prédit. Mais est-il bon ?
+references:
+  cours:
+  - titre: D2L 4.1
+    url: https://d2l.ai/chapter_linear-classification/softmax-regression.html
+  - titre: MLCC · Multi-class
+    url: https://developers.google.com/machine-learning/crash-course/neural-networks/multi-class
+  sources_originales: []

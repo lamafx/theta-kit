@@ -1,0 +1,48 @@
+numero: 24
+titre: La validation croisée
+format: court
+saison: 2
+chapitre:
+  numero: 5
+  titre: Évaluer un modèle
+accroche: Tester cinq fois plutôt qu'une.
+couverture:
+  famille: blocs
+  description: cinq barres découpées, le bloc de test qui se déplace
+  verbe: compter
+  geste: compter
+  doigts: 5
+prerequis_explicites: []
+termes_introduits:
+- terme: validation croisée à k plis
+  formes:
+  - validation croisée à k plis
+- terme: pli
+  formes:
+  - pli
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Cinq découpages : chaque bloc sert une fois de test.'
+- page: 3
+  type: Mécanisme
+  message: La moyenne et l'écart des cinq scores.
+- page: 4
+  type: Repère
+  message: Précieux avec peu de données, coûteux avec beaucoup.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 25
+  transition: 'Excellent à l''entraînement, mauvais au test : que se passe-t-il ?'
+references:
+  cours:
+  - titre: SKL · Cross-validation
+    url: https://scikit-learn.org/stable/modules/cross_validation.html
+  sources_originales:
+  - citation: Stone (1974), Cross-Validatory Choice and Assessment of Statistical Predictions, JRSS B
+    liens:
+    - titre: Cross-Validatory Choice and Assessment of Statistical Predictions
+      url: https://doi.org/10.1111/j.2517-6161.1974.tb00994.x

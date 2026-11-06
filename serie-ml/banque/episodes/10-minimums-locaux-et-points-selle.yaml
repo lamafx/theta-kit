@@ -1,0 +1,60 @@
+numero: 10
+titre: Minimums locaux et points selle
+format: court
+saison: 1
+chapitre:
+  numero: 2
+  titre: Apprendre de ses erreurs
+accroche: Le fond d'un creux n'est pas toujours le fond de la vallée.
+couverture:
+  famille: courbe
+  description: courbe ondulée à plusieurs creux
+  verbe: se demander
+  geste: menton
+prerequis_explicites: []
+termes_introduits:
+- terme: minimum local
+  formes:
+  - minimum local
+- terme: minimum global
+  formes:
+  - minimum global
+- terme: point selle
+  formes:
+  - point selle
+- terme: fonction convexe
+  formes:
+  - fonction convexe
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Une courbe à deux creux : la descente s''arrête dans le premier.'
+- page: 3
+  type: Mécanisme
+  message: 'Le point selle : plat dans une direction, en pente dans l''autre.'
+- page: 4
+  type: Repère
+  message: 'Avec un coût convexe, comme la MSE d''une droite, tout minimum local est global : pas de faux creux,
+    même si le fond peut être plat.'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 11
+  transition: Mettons tout ensemble sur un premier vrai modèle.
+references:
+  cours:
+  - titre: D2L 12.1
+    url: https://d2l.ai/chapter_optimization/optimization-intro.html
+  - titre: D2L 12.2 · Convexity
+    url: https://d2l.ai/chapter_optimization/convexity.html
+  # Ajoutée le 2026-11-02 (production de l'épisode) : « comme la MSE d'une droite » (page 4) n'est écrit ni dans
+  # D2L 12.1 ni dans D2L 12.2 ; MLCC l'écrit (« The loss functions for linear models always produce a convex surface »).
+  - titre: MLCC · Gradient descent
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  sources_originales:
+  - citation: Dauphin et al. (2014), Identifying and attacking the saddle point problem
+    liens:
+    - titre: Identifying and attacking the saddle point problem
+      url: https://arxiv.org/abs/1406.2572

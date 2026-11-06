@@ -1,0 +1,51 @@
+numero: 39
+titre: Le réseau multicouche
+format: court
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Des couches de neurones qui apprennent à voir autrement.
+couverture:
+  famille: reseau
+  description: réseau de nœuds en trois couches reliées
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: couche d'entrée
+  formes:
+  - couche d'entrée
+- terme: couche cachée
+  formes:
+  - couche cachée
+- terme: couche de sortie
+  formes:
+  - couche de sortie
+- terme: réseau profond
+  formes:
+  - réseau profond
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Le schéma à trois couches.
+- page: 3
+  type: Mécanisme
+  message: 'Chaque couche déforme l''espace : le XOR devient séparable.'
+- page: 4
+  type: Repère
+  message: « Profond » veut simplement dire plusieurs couches cachées.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 40
+  transition: Comment l'information traverse-t-elle le réseau ?
+references:
+  cours:
+  - titre: D2L 5.1
+    url: https://d2l.ai/chapter_multilayer-perceptrons/mlp.html
+  - titre: DLB ch. 6
+    url: https://www.deeplearningbook.org/contents/mlp.html
+  sources_originales: []

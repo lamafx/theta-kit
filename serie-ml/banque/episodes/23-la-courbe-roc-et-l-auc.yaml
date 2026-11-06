@@ -1,0 +1,59 @@
+numero: 23
+titre: La courbe ROC et l'AUC
+format: long
+saison: 2
+chapitre:
+  numero: 5
+  titre: Évaluer un modèle
+accroche: Juger un modèle sur tous les seuils à la fois.
+couverture:
+  famille: courbe
+  description: courbe ROC bombée au-dessus de la diagonale
+  verbe: chercher
+  geste: visiere
+prerequis_explicites: []
+termes_introduits:
+- terme: taux de vrais positifs
+  formes:
+  - taux de vrais positifs
+- terme: taux de faux positifs
+  formes:
+  - taux de faux positifs
+- terme: courbe ROC
+  formes:
+  - courbe ROC
+- terme: AUC
+  formes:
+  - AUC
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Chaque seuil donne un point.
+- page: 3
+  type: Mécanisme
+  message: 'On relie les points : la courbe ROC.'
+- page: 4
+  type: Comparaison
+  message: Le hasard (diagonale, AUC 0,5), un bon modèle, le modèle parfait (AUC 1).
+- page: 5
+  type: Lecture
+  message: L'AUC = la probabilité de classer un positif au-dessus d'un négatif.
+- page: 6
+  type: Piège
+  message: Avec des classes très déséquilibrées, préférer la courbe précision-rappel.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 24
+  transition: Un seul découpage des données, c'est peut-être un coup de chance.
+references:
+  cours:
+  - titre: MLCC · ROC and AUC
+    url: https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc
+  sources_originales:
+  - citation: Fawcett (2006), An introduction to ROC analysis, Pattern Recognition Letters
+    liens:
+    - titre: An introduction to ROC analysis
+      url: https://doi.org/10.1016/j.patrec.2005.10.010

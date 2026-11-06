@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bibliothèque — Nuage de points, formes de page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+</style>
+</helmet>
+<style>
+
+
+body{margin:0}
+
+</style>
+<div style="width: 1080px; height: 4050px; box-sizing: border-box; padding: 64px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; gap: 40px; overflow: hidden">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #2D5BFF">Bibliothèque · formes de page</span>
+<h1 style="margin: 0; font-size: 46px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em">Nuage · 5 formes</h1>
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">points · zone couverte et point hors zone (piège)</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Un nuage d&#x27;exemples dans une zone grise. Un point orange, loin de la zone, est un cas que les exemples ne couvrent pas." style="display: block">
+<line x1="40" y1="384" x2="880" y2="384" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="384" x2="40" y2="14.4" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="876" y="416" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">caractéristique 1</text>
+<text x="54" y="28.4" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">caractéristique 2</text>
+<g opacity="0.3"><polygon points="181.8,246.4 204.8,299.6 356.1,290.1 405,218.5 365.3,189.7 278.4,170.2 206.7,202.4" fill="#C3C7CE" stroke="#C3C7CE" stroke-width="48" stroke-linejoin="round"></polygon></g>
+<text x="278.4" y="134.2" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">ce que couvrent les exemples</text>
+<circle cx="307.4" cy="215.3" r="6" fill="#0E1116"></circle>
+<circle cx="309.5" cy="246.2" r="6" fill="#0E1116"></circle>
+<circle cx="259.2" cy="242.4" r="6" fill="#0E1116"></circle>
+<circle cx="405" cy="218.5" r="6" fill="#0E1116"></circle>
+<circle cx="399.6" cy="225.1" r="6" fill="#0E1116"></circle>
+<circle cx="353.8" cy="227.4" r="6" fill="#0E1116"></circle>
+<circle cx="206.7" cy="202.4" r="6" fill="#0E1116"></circle>
+<circle cx="361.7" cy="215.7" r="6" fill="#0E1116"></circle>
+<circle cx="204.8" cy="299.6" r="6" fill="#0E1116"></circle>
+<circle cx="262.1" cy="251.9" r="6" fill="#0E1116"></circle>
+<circle cx="347.4" cy="236.1" r="6" fill="#0E1116"></circle>
+<circle cx="362.8" cy="258.4" r="6" fill="#0E1116"></circle>
+<circle cx="347.6" cy="219.7" r="6" fill="#0E1116"></circle>
+<circle cx="278.4" cy="170.2" r="6" fill="#0E1116"></circle>
+<circle cx="365.3" cy="189.7" r="6" fill="#0E1116"></circle>
+<circle cx="281.3" cy="262.1" r="6" fill="#0E1116"></circle>
+<circle cx="301.1" cy="238.4" r="6" fill="#0E1116"></circle>
+<circle cx="370.7" cy="225.1" r="6" fill="#0E1116"></circle>
+<circle cx="293.7" cy="270.2" r="6" fill="#0E1116"></circle>
+<circle cx="288.4" cy="188.7" r="6" fill="#0E1116"></circle>
+<circle cx="267.9" cy="225.2" r="6" fill="#0E1116"></circle>
+<circle cx="356.1" cy="290.1" r="6" fill="#0E1116"></circle>
+<circle cx="329" cy="185.6" r="6" fill="#0E1116"></circle>
+<circle cx="181.8" cy="246.4" r="6" fill="#0E1116"></circle>
+<circle cx="318" cy="265" r="6" fill="#0E1116"></circle>
+<circle cx="361.1" cy="236.7" r="6" fill="#0E1116"></circle>
+<circle cx="745.6" cy="93.6" r="9" fill="#C2410C" stroke="#FFFFFF" stroke-width="2"></circle>
+<text x="727.6" y="99.6" text-anchor="end" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#C2410C">un cas jamais vu</text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">points · avec ou sans étiquettes, une case de comparaison chacun (comparaison)</span>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px">
+
+<svg viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="Le même nuage, chaque point coloré selon son étiquette : noir ou bleu." style="display: block">
+<line x1="30" y1="270" x2="430" y2="270" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="30" y1="270" x2="30" y2="18" stroke="#E4E6EA" stroke-width="2"></line>
+<circle cx="137" cy="72" r="5" fill="#0E1116"></circle>
+<circle cx="104.2" cy="78.2" r="5" fill="#0E1116"></circle>
+<circle cx="125.7" cy="108.3" r="5" fill="#0E1116"></circle>
+<circle cx="194.8" cy="98.2" r="5" fill="#0E1116"></circle>
+<circle cx="132.6" cy="84.5" r="5" fill="#0E1116"></circle>
+<circle cx="170" cy="102.8" r="5" fill="#0E1116"></circle>
+<circle cx="152.8" cy="125.4" r="5" fill="#0E1116"></circle>
+<circle cx="122.3" cy="112.5" r="5" fill="#0E1116"></circle>
+<circle cx="91.4" cy="138.2" r="5" fill="#0E1116"></circle>
+<circle cx="81.9" cy="107.7" r="5" fill="#0E1116"></circle>
+<circle cx="128.5" cy="109.7" r="5" fill="#0E1116"></circle>
+<circle cx="136.2" cy="134" r="5" fill="#0E1116"></circle>
+<circle cx="299.4" cy="186.3" r="5" fill="#2D5BFF"></circle>
+<circle cx="326" cy="212.3" r="5" fill="#2D5BFF"></circle>
+<circle cx="289.2" cy="240.4" r="5" fill="#2D5BFF"></circle>
+<circle cx="285.9" cy="244.7" r="5" fill="#2D5BFF"></circle>
+<circle cx="256.6" cy="165.6" r="5" fill="#2D5BFF"></circle>
+<circle cx="231.6" cy="172.8" r="5" fill="#2D5BFF"></circle>
+<circle cx="312.5" cy="199.5" r="5" fill="#2D5BFF"></circle>
+<circle cx="316.7" cy="179.3" r="5" fill="#2D5BFF"></circle>
+<circle cx="335.4" cy="197.5" r="5" fill="#2D5BFF"></circle>
+<circle cx="283" cy="206.5" r="5" fill="#2D5BFF"></circle>
+<circle cx="270.4" cy="193.1" r="5" fill="#2D5BFF"></circle>
+<circle cx="276.8" cy="166.3" r="5" fill="#2D5BFF"></circle>
+</svg>
+
+<svg viewBox="0 0 440 300" width="440" height="300" role="img" aria-label="Le même nuage, tous les points en gris : aucune étiquette." style="display: block">
+<line x1="30" y1="270" x2="430" y2="270" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="30" y1="270" x2="30" y2="18" stroke="#E4E6EA" stroke-width="2"></line>
+<circle cx="137" cy="72" r="5" fill="#8A919C"></circle>
+<circle cx="104.2" cy="78.2" r="5" fill="#8A919C"></circle>
+<circle cx="125.7" cy="108.3" r="5" fill="#8A919C"></circle>
+<circle cx="194.8" cy="98.2" r="5" fill="#8A919C"></circle>
+<circle cx="132.6" cy="84.5" r="5" fill="#8A919C"></circle>
+<circle cx="170" cy="102.8" r="5" fill="#8A919C"></circle>
+<circle cx="152.8" cy="125.4" r="5" fill="#8A919C"></circle>
+<circle cx="122.3" cy="112.5" r="5" fill="#8A919C"></circle>
+<circle cx="91.4" cy="138.2" r="5" fill="#8A919C"></circle>
+<circle cx="81.9" cy="107.7" r="5" fill="#8A919C"></circle>
+<circle cx="128.5" cy="109.7" r="5" fill="#8A919C"></circle>
+<circle cx="136.2" cy="134" r="5" fill="#8A919C"></circle>
+<circle cx="299.4" cy="186.3" r="5" fill="#8A919C"></circle>
+<circle cx="326" cy="212.3" r="5" fill="#8A919C"></circle>
+<circle cx="289.2" cy="240.4" r="5" fill="#8A919C"></circle>
+<circle cx="285.9" cy="244.7" r="5" fill="#8A919C"></circle>
+<circle cx="256.6" cy="165.6" r="5" fill="#8A919C"></circle>
+<circle cx="231.6" cy="172.8" r="5" fill="#8A919C"></circle>
+<circle cx="312.5" cy="199.5" r="5" fill="#8A919C"></circle>
+<circle cx="316.7" cy="179.3" r="5" fill="#8A919C"></circle>
+<circle cx="335.4" cy="197.5" r="5" fill="#8A919C"></circle>
+<circle cx="283" cy="206.5" r="5" fill="#8A919C"></circle>
+<circle cx="270.4" cy="193.1" r="5" fill="#8A919C"></circle>
+<circle cx="276.8" cy="166.3" r="5" fill="#8A919C"></circle>
+</svg>
+
+</div>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">groupes · des groupes trouvés dans les données</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Trois groupes de points, chacun dans une tache bleue, son centre marqué d&#x27;un anneau." style="display: block">
+<line x1="40" y1="384" x2="880" y2="384" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="384" x2="40" y2="14.4" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="876" y="416" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">caractéristique 1</text>
+<text x="54" y="28.4" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">caractéristique 2</text>
+<g opacity="0.08"><polygon points="156.2,156.6 160.5,179.2 217,210.9 261.3,212 298.9,160.8 284.9,140.6 202.4,83.8" fill="#2D5BFF" stroke="#2D5BFF" stroke-width="40" stroke-linejoin="round"></polygon></g>
+<text x="227.5" y="51.8" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">groupe 1</text>
+<g opacity="0.08"><polygon points="581.9,139.3 609.8,198.2 771.7,135.2 772.1,128.1 698,63.5 627.5,58" fill="#2D5BFF" stroke="#2D5BFF" stroke-width="40" stroke-linejoin="round"></polygon></g>
+<text x="670.5" y="26" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">groupe 2</text>
+<g opacity="0.08"><polygon points="434.9,270.4 435.3,279.4 459.8,355.6 542.2,299.5 436.5,263.5" fill="#2D5BFF" stroke="#2D5BFF" stroke-width="40" stroke-linejoin="round"></polygon></g>
+<text x="465.9" y="231.5" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">groupe 3</text>
+<circle cx="160.5" cy="179.2" r="6" fill="#0E1116"></circle>
+<circle cx="261.3" cy="212" r="6" fill="#0E1116"></circle>
+<circle cx="217" cy="210.9" r="6" fill="#0E1116"></circle>
+<circle cx="284.9" cy="140.6" r="6" fill="#0E1116"></circle>
+<circle cx="298.9" cy="160.8" r="6" fill="#0E1116"></circle>
+<circle cx="246.6" cy="154.6" r="6" fill="#0E1116"></circle>
+<circle cx="184.5" cy="142.3" r="6" fill="#0E1116"></circle>
+<circle cx="156.2" cy="156.6" r="6" fill="#0E1116"></circle>
+<circle cx="262.9" cy="144.8" r="6" fill="#0E1116"></circle>
+<circle cx="202.4" cy="83.8" r="6" fill="#0E1116"></circle>
+<circle cx="664.8" cy="145.6" r="6" fill="#0E1116"></circle>
+<circle cx="670.3" cy="143.8" r="6" fill="#0E1116"></circle>
+<circle cx="640.6" cy="138.8" r="6" fill="#0E1116"></circle>
+<circle cx="772.1" cy="128.1" r="6" fill="#0E1116"></circle>
+<circle cx="671.2" cy="109.5" r="6" fill="#0E1116"></circle>
+<circle cx="771.7" cy="135.2" r="6" fill="#0E1116"></circle>
+<circle cx="627.5" cy="58" r="6" fill="#0E1116"></circle>
+<circle cx="581.9" cy="139.3" r="6" fill="#0E1116"></circle>
+<circle cx="698" cy="63.5" r="6" fill="#0E1116"></circle>
+<circle cx="609.8" cy="198.2" r="6" fill="#0E1116"></circle>
+<circle cx="697.7" cy="143.7" r="6" fill="#0E1116"></circle>
+<circle cx="640.4" cy="115.6" r="6" fill="#0E1116"></circle>
+<circle cx="472.2" cy="292.1" r="6" fill="#0E1116"></circle>
+<circle cx="436.5" cy="263.5" r="6" fill="#0E1116"></circle>
+<circle cx="542.2" cy="299.5" r="6" fill="#0E1116"></circle>
+<circle cx="435.3" cy="279.4" r="6" fill="#0E1116"></circle>
+<circle cx="486.1" cy="330.1" r="6" fill="#0E1116"></circle>
+<circle cx="434.9" cy="270.4" r="6" fill="#0E1116"></circle>
+<circle cx="454.7" cy="309.8" r="6" fill="#0E1116"></circle>
+<circle cx="471.6" cy="301.4" r="6" fill="#0E1116"></circle>
+<circle cx="459.8" cy="355.6" r="6" fill="#0E1116"></circle>
+<circle cx="227.5" cy="158.6" r="9" fill="#FFFFFF" stroke="#2D5BFF" stroke-width="3"></circle>
+<circle cx="670.5" cy="126.6" r="9" fill="#FFFFFF" stroke="#2D5BFF" stroke-width="3"></circle>
+<circle cx="465.9" cy="300.2" r="9" fill="#FFFFFF" stroke="#2D5BFF" stroke-width="3"></circle>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">droite · régression et écarts</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Des points autour d&#x27;une droite bleue qui passe au plus près d&#x27;eux ; un trait pointillé relie chaque point à la droite." style="display: block">
+<line x1="40" y1="384" x2="880" y2="384" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="384" x2="40" y2="14.4" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="876" y="416" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">entrée <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">x</tspan></text>
+<text x="54" y="28.4" font-family="Geist, sans-serif" font-size="22" fill="#5F6673"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">y</tspan></text>
+<g stroke="#2D5BFF" stroke-width="2" stroke-opacity="0.6" stroke-dasharray="4 4">
+<line x1="90.4" y1="250.7" x2="90.4" y2="302.4"></line>
+<line x1="147.3" y1="314.7" x2="147.3" y2="289.1"></line>
+<line x1="317.9" y1="231.4" x2="317.9" y2="249.3"></line>
+<line x1="374.7" y1="272" x2="374.7" y2="236.1"></line>
+<line x1="431.6" y1="225.1" x2="431.6" y2="222.8"></line>
+<line x1="488.4" y1="219.2" x2="488.4" y2="209.6"></line>
+<line x1="545.3" y1="212.7" x2="545.3" y2="196.3"></line>
+<line x1="602.1" y1="189.2" x2="602.1" y2="183"></line>
+<line x1="715.9" y1="151.3" x2="715.9" y2="156.5"></line>
+<line x1="829.6" y1="96.7" x2="829.6" y2="130"></line>
+</g>
+<line x1="40" y1="314.1" x2="880" y2="118.2" stroke="#2D5BFF" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="90.4" cy="244.7" r="6" fill="#0E1116"></circle>
+<circle cx="147.3" cy="320.7" r="6" fill="#0E1116"></circle>
+<circle cx="204.1" cy="271.8" r="6" fill="#0E1116"></circle>
+<circle cx="261" cy="263" r="6" fill="#0E1116"></circle>
+<circle cx="317.9" cy="225.4" r="6" fill="#0E1116"></circle>
+<circle cx="374.7" cy="278" r="6" fill="#0E1116"></circle>
+<circle cx="431.6" cy="231.1" r="6" fill="#0E1116"></circle>
+<circle cx="488.4" cy="225.2" r="6" fill="#0E1116"></circle>
+<circle cx="545.3" cy="218.7" r="6" fill="#0E1116"></circle>
+<circle cx="602.1" cy="195.2" r="6" fill="#0E1116"></circle>
+<circle cx="659" cy="168.7" r="6" fill="#0E1116"></circle>
+<circle cx="715.9" cy="145.3" r="6" fill="#0E1116"></circle>
+<circle cx="772.7" cy="148" r="6" fill="#0E1116"></circle>
+<circle cx="829.6" cy="90.7" r="6" fill="#0E1116"></circle>
+<text x="880" y="182.2" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#2D5BFF"><tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">ŷ = a·x + b</tspan></text>
+<text x="104.4" y="279.5" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">écart</text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">frontière · deux classes de part et d&#39;autre</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Deux classes de points, noirs en haut à gauche, bleus en bas à droite, séparées par une droite en pointillé." style="display: block">
+<line x1="40" y1="384" x2="880" y2="384" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="384" x2="40" y2="40.8" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="876" y="416" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">caractéristique 1</text>
+<text x="54" y="54.8" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">caractéristique 2</text>
+<line x1="230.5" y1="384" x2="731.1" y2="40.8" stroke="#0E1116" stroke-width="2.5" stroke-dasharray="8 7" stroke-linecap="round"></line>
+<circle cx="199.4" cy="140.2" r="6" fill="#0E1116"></circle>
+<circle cx="367.2" cy="175.5" r="6" fill="#0E1116"></circle>
+<circle cx="191.5" cy="157.8" r="6" fill="#0E1116"></circle>
+<circle cx="328.1" cy="111.7" r="6" fill="#0E1116"></circle>
+<circle cx="200.1" cy="206.4" r="6" fill="#0E1116"></circle>
+<circle cx="345.3" cy="136.4" r="6" fill="#0E1116"></circle>
+<circle cx="407.9" cy="116.3" r="6" fill="#0E1116"></circle>
+<circle cx="284.3" cy="166.1" r="6" fill="#0E1116"></circle>
+<circle cx="486.3" cy="166.6" r="6" fill="#0E1116"></circle>
+<circle cx="232.7" cy="200.3" r="6" fill="#0E1116"></circle>
+<circle cx="299.2" cy="149.4" r="6" fill="#0E1116"></circle>
+<circle cx="266" cy="157.7" r="6" fill="#0E1116"></circle>
+<circle cx="648.7" cy="259.8" r="6" fill="#2D5BFF"></circle>
+<circle cx="710.9" cy="278.9" r="6" fill="#2D5BFF"></circle>
+<circle cx="492.7" cy="259.4" r="6" fill="#2D5BFF"></circle>
+<circle cx="520.6" cy="294" r="6" fill="#2D5BFF"></circle>
+<circle cx="516.6" cy="287.1" r="6" fill="#2D5BFF"></circle>
+<circle cx="569.1" cy="278.8" r="6" fill="#2D5BFF"></circle>
+<circle cx="877.5" cy="289.1" r="6" fill="#2D5BFF"></circle>
+<circle cx="691.7" cy="339.6" r="6" fill="#2D5BFF"></circle>
+<circle cx="606.2" cy="261" r="6" fill="#2D5BFF"></circle>
+<circle cx="621" cy="272.5" r="6" fill="#2D5BFF"></circle>
+<circle cx="635.8" cy="327.1" r="6" fill="#2D5BFF"></circle>
+<circle cx="670.6" cy="319.4" r="6" fill="#2D5BFF"></circle>
+<text x="701.1" y="42.8" text-anchor="end" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">frontière</text>
+<text x="918" y="17.5" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">classe B</text>
+<circle cx="805.4" cy="12" r="6" fill="#2D5BFF"></circle>
+<text x="777.4" y="17.5" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">classe A</text>
+<circle cx="664.9" cy="12" r="6" fill="#0E1116"></circle>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">panneaux · les trois familles d&#39;apprentissage (ouverture de l&#39;épisode 03)</span>
+
+<svg viewBox="0 0 920 340" width="920" height="340" role="img" aria-label="Trois panneaux. Un nuage dont les points sont colorés selon leur étiquette ; le même nuage, tout gris ; une boucle : agir, recevoir une récompense, recommencer." style="display: block">
+<defs><marker id="np-objet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E1116"></path></marker><marker id="np-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker></defs>
+<g transform="translate(0 0)">
+<line x1="10" y1="280" x2="270" y2="280" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="10" y1="280" x2="10" y2="28" stroke="#E4E6EA" stroke-width="2"></line>
+<circle cx="79.6" cy="82" r="5" fill="#0E1116"></circle>
+<circle cx="58.2" cy="88.2" r="5" fill="#0E1116"></circle>
+<circle cx="72.2" cy="118.3" r="5" fill="#0E1116"></circle>
+<circle cx="117.1" cy="108.2" r="5" fill="#0E1116"></circle>
+<circle cx="76.7" cy="94.5" r="5" fill="#0E1116"></circle>
+<circle cx="101" cy="112.8" r="5" fill="#0E1116"></circle>
+<circle cx="89.8" cy="135.4" r="5" fill="#0E1116"></circle>
+<circle cx="70" cy="122.5" r="5" fill="#0E1116"></circle>
+<circle cx="49.9" cy="148.2" r="5" fill="#0E1116"></circle>
+<circle cx="43.7" cy="117.7" r="5" fill="#0E1116"></circle>
+<circle cx="74" cy="119.7" r="5" fill="#0E1116"></circle>
+<circle cx="79" cy="144" r="5" fill="#0E1116"></circle>
+<circle cx="185.1" cy="196.3" r="5" fill="#2D5BFF"></circle>
+<circle cx="202.4" cy="222.3" r="5" fill="#2D5BFF"></circle>
+<circle cx="178.5" cy="250.4" r="5" fill="#2D5BFF"></circle>
+<circle cx="176.3" cy="254.7" r="5" fill="#2D5BFF"></circle>
+<circle cx="157.3" cy="175.6" r="5" fill="#2D5BFF"></circle>
+<circle cx="141" cy="182.8" r="5" fill="#2D5BFF"></circle>
+<circle cx="193.6" cy="209.5" r="5" fill="#2D5BFF"></circle>
+<circle cx="196.3" cy="189.3" r="5" fill="#2D5BFF"></circle>
+<circle cx="208.5" cy="207.5" r="5" fill="#2D5BFF"></circle>
+<circle cx="174.5" cy="216.5" r="5" fill="#2D5BFF"></circle>
+<circle cx="166.3" cy="203.1" r="5" fill="#2D5BFF"></circle>
+<circle cx="170.4" cy="176.3" r="5" fill="#2D5BFF"></circle>
+</g>
+<g transform="translate(320 0)">
+<line x1="10" y1="280" x2="270" y2="280" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="10" y1="280" x2="10" y2="28" stroke="#E4E6EA" stroke-width="2"></line>
+<circle cx="79.6" cy="82" r="5" fill="#8A919C"></circle>
+<circle cx="58.2" cy="88.2" r="5" fill="#8A919C"></circle>
+<circle cx="72.2" cy="118.3" r="5" fill="#8A919C"></circle>
+<circle cx="117.1" cy="108.2" r="5" fill="#8A919C"></circle>
+<circle cx="76.7" cy="94.5" r="5" fill="#8A919C"></circle>
+<circle cx="101" cy="112.8" r="5" fill="#8A919C"></circle>
+<circle cx="89.8" cy="135.4" r="5" fill="#8A919C"></circle>
+<circle cx="70" cy="122.5" r="5" fill="#8A919C"></circle>
+<circle cx="49.9" cy="148.2" r="5" fill="#8A919C"></circle>
+<circle cx="43.7" cy="117.7" r="5" fill="#8A919C"></circle>
+<circle cx="74" cy="119.7" r="5" fill="#8A919C"></circle>
+<circle cx="79" cy="144" r="5" fill="#8A919C"></circle>
+<circle cx="185.1" cy="196.3" r="5" fill="#8A919C"></circle>
+<circle cx="202.4" cy="222.3" r="5" fill="#8A919C"></circle>
+<circle cx="178.5" cy="250.4" r="5" fill="#8A919C"></circle>
+<circle cx="176.3" cy="254.7" r="5" fill="#8A919C"></circle>
+<circle cx="157.3" cy="175.6" r="5" fill="#8A919C"></circle>
+<circle cx="141" cy="182.8" r="5" fill="#8A919C"></circle>
+<circle cx="193.6" cy="209.5" r="5" fill="#8A919C"></circle>
+<circle cx="196.3" cy="189.3" r="5" fill="#8A919C"></circle>
+<circle cx="208.5" cy="207.5" r="5" fill="#8A919C"></circle>
+<circle cx="174.5" cy="216.5" r="5" fill="#8A919C"></circle>
+<circle cx="166.3" cy="203.1" r="5" fill="#8A919C"></circle>
+<circle cx="170.4" cy="176.3" r="5" fill="#8A919C"></circle>
+</g>
+<rect x="660" y="28" width="216" height="76" rx="14" fill="#FFFFFF" stroke="#0E1116" stroke-width="2"></rect>
+<text x="768.0" y="74.0" text-anchor="middle" font-family="Geist, sans-serif" font-size="24" font-weight="500" fill="#0E1116">Agir</text>
+<rect x="660" y="192" width="216" height="76" rx="14" fill="#FFFFFF" stroke="#0E1116" stroke-width="2"></rect>
+<text x="768.0" y="238.0" text-anchor="middle" font-family="Geist, sans-serif" font-size="24" font-weight="500" fill="#0E1116">Récompense</text>
+<line x1="714" y1="110" x2="714" y2="182" stroke="#0E1116" stroke-width="2.5" marker-end="url(#np-objet)"></line>
+<path d="M880 230 L906 230 L906 66 L886 66" fill="none" stroke="#2D5BFF" stroke-width="3" marker-end="url(#np-accent)"></path>
+<text x="892" y="155" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#2D5BFF">recommencer</text>
+<text x="140" y="328" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">supervisé</text>
+<text x="460" y="328" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">non supervisé</text>
+<text x="780" y="328" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">renforcement</text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">droite en comparaison · ventes d&#39;Ames, la droite après 0, 10 et 100 pas de descente (épisode 11)</span>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px">
+
+<svg viewBox="0 0 280 220" width="280" height="220" role="img" aria-label="120 ventes d&#x27;Ames ; au départ, w = 0 et b = 0 : la droite est à plat." style="display: block">
+<line x1="16" y1="206" x2="274.5" y2="206" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="16" y1="206" x2="16" y2="6.2" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="18.8" y1="206" x2="274.5" y2="89.9" stroke="#C3C7CE" stroke-width="3" stroke-linecap="round"></line>
+<line x1="16" y1="206" x2="274.5" y2="206" stroke="#C2410C" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="141" cy="144.4" r="5" fill="#0E1116"></circle>
+<circle cx="83" cy="164.9" r="5" fill="#0E1116"></circle>
+<circle cx="152.2" cy="166" r="5" fill="#0E1116"></circle>
+<circle cx="146.5" cy="117.1" r="5" fill="#0E1116"></circle>
+<circle cx="68.8" cy="178.7" r="5" fill="#0E1116"></circle>
+<circle cx="131" cy="152" r="5" fill="#0E1116"></circle>
+<circle cx="170.9" cy="153.6" r="5" fill="#0E1116"></circle>
+<circle cx="140.6" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="202.9" cy="91.6" r="5" fill="#0E1116"></circle>
+<circle cx="76.3" cy="178.7" r="5" fill="#0E1116"></circle>
+<circle cx="104" cy="161.7" r="5" fill="#0E1116"></circle>
+<circle cx="106.4" cy="146.3" r="5" fill="#0E1116"></circle>
+<circle cx="120.8" cy="149.1" r="5" fill="#0E1116"></circle>
+<circle cx="179.7" cy="136.1" r="5" fill="#0E1116"></circle>
+<circle cx="261.4" cy="110.1" r="5" fill="#0E1116"></circle>
+<circle cx="137.5" cy="153.3" r="5" fill="#0E1116"></circle>
+<circle cx="142" cy="147.2" r="5" fill="#0E1116"></circle>
+<circle cx="154.5" cy="148.5" r="5" fill="#0E1116"></circle>
+<circle cx="166" cy="130.4" r="5" fill="#0E1116"></circle>
+<circle cx="184.4" cy="155.2" r="5" fill="#0E1116"></circle>
+<circle cx="122" cy="172.6" r="5" fill="#0E1116"></circle>
+<circle cx="97.8" cy="171.2" r="5" fill="#0E1116"></circle>
+<circle cx="188.6" cy="115.1" r="5" fill="#0E1116"></circle>
+<circle cx="151.6" cy="149.2" r="5" fill="#0E1116"></circle>
+<circle cx="178" cy="146.6" r="5" fill="#0E1116"></circle>
+<circle cx="69.8" cy="177.7" r="5" fill="#0E1116"></circle>
+<circle cx="139.7" cy="148.8" r="5" fill="#0E1116"></circle>
+<circle cx="124.9" cy="176.3" r="5" fill="#0E1116"></circle>
+<circle cx="103.8" cy="169.5" r="5" fill="#0E1116"></circle>
+<circle cx="125.3" cy="165.7" r="5" fill="#0E1116"></circle>
+<circle cx="166.2" cy="123.3" r="5" fill="#0E1116"></circle>
+<circle cx="122" cy="161.5" r="5" fill="#0E1116"></circle>
+<circle cx="162.9" cy="142.3" r="5" fill="#0E1116"></circle>
+<circle cx="97.2" cy="179" r="5" fill="#0E1116"></circle>
+<circle cx="121.3" cy="171.5" r="5" fill="#0E1116"></circle>
+<circle cx="196.9" cy="153.6" r="5" fill="#0E1116"></circle>
+<circle cx="200.9" cy="130.6" r="5" fill="#0E1116"></circle>
+<circle cx="246.6" cy="77.1" r="5" fill="#0E1116"></circle>
+<circle cx="116.6" cy="148.7" r="5" fill="#0E1116"></circle>
+<circle cx="74.5" cy="185.7" r="5" fill="#0E1116"></circle>
+<circle cx="117.1" cy="167.9" r="5" fill="#0E1116"></circle>
+<circle cx="115.8" cy="159.3" r="5" fill="#0E1116"></circle>
+<circle cx="124.9" cy="152.9" r="5" fill="#0E1116"></circle>
+<circle cx="132.8" cy="156.3" r="5" fill="#0E1116"></circle>
+<circle cx="169.1" cy="137.1" r="5" fill="#0E1116"></circle>
+<circle cx="157.5" cy="105.8" r="5" fill="#0E1116"></circle>
+<circle cx="151.9" cy="168.2" r="5" fill="#0E1116"></circle>
+<circle cx="104.5" cy="174.9" r="5" fill="#0E1116"></circle>
+<circle cx="103.8" cy="169.3" r="5" fill="#0E1116"></circle>
+<circle cx="91.5" cy="161.2" r="5" fill="#0E1116"></circle>
+<circle cx="186.2" cy="156.1" r="5" fill="#0E1116"></circle>
+<circle cx="144.7" cy="152.5" r="5" fill="#0E1116"></circle>
+<circle cx="109.7" cy="156.4" r="5" fill="#0E1116"></circle>
+<circle cx="99.8" cy="165" r="5" fill="#0E1116"></circle>
+<circle cx="156.5" cy="148.2" r="5" fill="#0E1116"></circle>
+<circle cx="99" cy="168" r="5" fill="#0E1116"></circle>
+<circle cx="153.2" cy="130.1" r="5" fill="#0E1116"></circle>
+<circle cx="172.9" cy="132.6" r="5" fill="#0E1116"></circle>
+<circle cx="135.5" cy="137.7" r="5" fill="#0E1116"></circle>
+<circle cx="102.2" cy="174.2" r="5" fill="#0E1116"></circle>
+<circle cx="155.2" cy="168.5" r="5" fill="#0E1116"></circle>
+<circle cx="205.3" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="240.8" cy="118.3" r="5" fill="#0E1116"></circle>
+<circle cx="161.9" cy="113.9" r="5" fill="#0E1116"></circle>
+<circle cx="147.9" cy="149.2" r="5" fill="#0E1116"></circle>
+<circle cx="91.5" cy="187.4" r="5" fill="#0E1116"></circle>
+<circle cx="211.2" cy="135.5" r="5" fill="#0E1116"></circle>
+<circle cx="210.2" cy="94.8" r="5" fill="#0E1116"></circle>
+<circle cx="211.1" cy="65.6" r="5" fill="#0E1116"></circle>
+<circle cx="173.9" cy="103.1" r="5" fill="#0E1116"></circle>
+<circle cx="244.2" cy="129.8" r="5" fill="#0E1116"></circle>
+<circle cx="162.3" cy="144.1" r="5" fill="#0E1116"></circle>
+<circle cx="71.9" cy="179" r="5" fill="#0E1116"></circle>
+<circle cx="152.8" cy="122.6" r="5" fill="#0E1116"></circle>
+<circle cx="151.5" cy="138.4" r="5" fill="#0E1116"></circle>
+<circle cx="132.1" cy="151.4" r="5" fill="#0E1116"></circle>
+<circle cx="165.8" cy="145.3" r="5" fill="#0E1116"></circle>
+<circle cx="94.1" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="162.7" cy="169.5" r="5" fill="#0E1116"></circle>
+<circle cx="139.2" cy="164.7" r="5" fill="#0E1116"></circle>
+<circle cx="186.6" cy="107" r="5" fill="#0E1116"></circle>
+<circle cx="129.8" cy="172.8" r="5" fill="#0E1116"></circle>
+<circle cx="145.4" cy="153.9" r="5" fill="#0E1116"></circle>
+<circle cx="151.7" cy="139.4" r="5" fill="#0E1116"></circle>
+<circle cx="120" cy="154.4" r="5" fill="#0E1116"></circle>
+<circle cx="147" cy="153.4" r="5" fill="#0E1116"></circle>
+<circle cx="136" cy="161.5" r="5" fill="#0E1116"></circle>
+<circle cx="123.3" cy="158.9" r="5" fill="#0E1116"></circle>
+<circle cx="112.1" cy="159.9" r="5" fill="#0E1116"></circle>
+<circle cx="200.5" cy="94.8" r="5" fill="#0E1116"></circle>
+<circle cx="95" cy="171.1" r="5" fill="#0E1116"></circle>
+<circle cx="153.2" cy="149.5" r="5" fill="#0E1116"></circle>
+<circle cx="101.9" cy="170.3" r="5" fill="#0E1116"></circle>
+<circle cx="130.2" cy="167.9" r="5" fill="#0E1116"></circle>
+<circle cx="245" cy="102.8" r="5" fill="#0E1116"></circle>
+<circle cx="99.7" cy="165.3" r="5" fill="#0E1116"></circle>
+<circle cx="213" cy="131" r="5" fill="#0E1116"></circle>
+<circle cx="180.3" cy="155.2" r="5" fill="#0E1116"></circle>
+<circle cx="132.7" cy="146.1" r="5" fill="#0E1116"></circle>
+<circle cx="187.2" cy="104.3" r="5" fill="#0E1116"></circle>
+<circle cx="143.2" cy="162.2" r="5" fill="#0E1116"></circle>
+<circle cx="222.4" cy="11.7" r="5" fill="#0E1116"></circle>
+<circle cx="141.1" cy="120.2" r="5" fill="#0E1116"></circle>
+<circle cx="183.7" cy="162.5" r="5" fill="#0E1116"></circle>
+<circle cx="230.3" cy="147.2" r="5" fill="#0E1116"></circle>
+<circle cx="85.6" cy="192" r="5" fill="#0E1116"></circle>
+<circle cx="185.3" cy="133.9" r="5" fill="#0E1116"></circle>
+<circle cx="141" cy="156.1" r="5" fill="#0E1116"></circle>
+<circle cx="107.8" cy="169.9" r="5" fill="#0E1116"></circle>
+<circle cx="116.5" cy="153.3" r="5" fill="#0E1116"></circle>
+<circle cx="134.9" cy="175.5" r="5" fill="#0E1116"></circle>
+<circle cx="172.1" cy="154.7" r="5" fill="#0E1116"></circle>
+<circle cx="174.2" cy="144.7" r="5" fill="#0E1116"></circle>
+<circle cx="134.9" cy="140.2" r="5" fill="#0E1116"></circle>
+<circle cx="140.7" cy="161.6" r="5" fill="#0E1116"></circle>
+<circle cx="269" cy="114.8" r="5" fill="#0E1116"></circle>
+<circle cx="158.3" cy="145.8" r="5" fill="#0E1116"></circle>
+<circle cx="155.7" cy="152.3" r="5" fill="#0E1116"></circle>
+<circle cx="179.2" cy="105" r="5" fill="#0E1116"></circle>
+<circle cx="175.6" cy="117.2" r="5" fill="#0E1116"></circle>
+</svg>
+
+<svg viewBox="0 0 280 220" width="280" height="220" role="img" aria-label="Après 10 pas, la droite monte vers les points." style="display: block">
+<line x1="16" y1="206" x2="274.5" y2="206" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="16" y1="206" x2="16" y2="6.2" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="18.8" y1="206" x2="274.5" y2="89.9" stroke="#C3C7CE" stroke-width="3" stroke-linecap="round"></line>
+<line x1="16" y1="190.9" x2="274.5" y2="105.5" stroke="#2D5BFF" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="141" cy="144.4" r="5" fill="#0E1116"></circle>
+<circle cx="83" cy="164.9" r="5" fill="#0E1116"></circle>
+<circle cx="152.2" cy="166" r="5" fill="#0E1116"></circle>
+<circle cx="146.5" cy="117.1" r="5" fill="#0E1116"></circle>
+<circle cx="68.8" cy="178.7" r="5" fill="#0E1116"></circle>
+<circle cx="131" cy="152" r="5" fill="#0E1116"></circle>
+<circle cx="170.9" cy="153.6" r="5" fill="#0E1116"></circle>
+<circle cx="140.6" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="202.9" cy="91.6" r="5" fill="#0E1116"></circle>
+<circle cx="76.3" cy="178.7" r="5" fill="#0E1116"></circle>
+<circle cx="104" cy="161.7" r="5" fill="#0E1116"></circle>
+<circle cx="106.4" cy="146.3" r="5" fill="#0E1116"></circle>
+<circle cx="120.8" cy="149.1" r="5" fill="#0E1116"></circle>
+<circle cx="179.7" cy="136.1" r="5" fill="#0E1116"></circle>
+<circle cx="261.4" cy="110.1" r="5" fill="#0E1116"></circle>
+<circle cx="137.5" cy="153.3" r="5" fill="#0E1116"></circle>
+<circle cx="142" cy="147.2" r="5" fill="#0E1116"></circle>
+<circle cx="154.5" cy="148.5" r="5" fill="#0E1116"></circle>
+<circle cx="166" cy="130.4" r="5" fill="#0E1116"></circle>
+<circle cx="184.4" cy="155.2" r="5" fill="#0E1116"></circle>
+<circle cx="122" cy="172.6" r="5" fill="#0E1116"></circle>
+<circle cx="97.8" cy="171.2" r="5" fill="#0E1116"></circle>
+<circle cx="188.6" cy="115.1" r="5" fill="#0E1116"></circle>
+<circle cx="151.6" cy="149.2" r="5" fill="#0E1116"></circle>
+<circle cx="178" cy="146.6" r="5" fill="#0E1116"></circle>
+<circle cx="69.8" cy="177.7" r="5" fill="#0E1116"></circle>
+<circle cx="139.7" cy="148.8" r="5" fill="#0E1116"></circle>
+<circle cx="124.9" cy="176.3" r="5" fill="#0E1116"></circle>
+<circle cx="103.8" cy="169.5" r="5" fill="#0E1116"></circle>
+<circle cx="125.3" cy="165.7" r="5" fill="#0E1116"></circle>
+<circle cx="166.2" cy="123.3" r="5" fill="#0E1116"></circle>
+<circle cx="122" cy="161.5" r="5" fill="#0E1116"></circle>
+<circle cx="162.9" cy="142.3" r="5" fill="#0E1116"></circle>
+<circle cx="97.2" cy="179" r="5" fill="#0E1116"></circle>
+<circle cx="121.3" cy="171.5" r="5" fill="#0E1116"></circle>
+<circle cx="196.9" cy="153.6" r="5" fill="#0E1116"></circle>
+<circle cx="200.9" cy="130.6" r="5" fill="#0E1116"></circle>
+<circle cx="246.6" cy="77.1" r="5" fill="#0E1116"></circle>
+<circle cx="116.6" cy="148.7" r="5" fill="#0E1116"></circle>
+<circle cx="74.5" cy="185.7" r="5" fill="#0E1116"></circle>
+<circle cx="117.1" cy="167.9" r="5" fill="#0E1116"></circle>
+<circle cx="115.8" cy="159.3" r="5" fill="#0E1116"></circle>
+<circle cx="124.9" cy="152.9" r="5" fill="#0E1116"></circle>
+<circle cx="132.8" cy="156.3" r="5" fill="#0E1116"></circle>
+<circle cx="169.1" cy="137.1" r="5" fill="#0E1116"></circle>
+<circle cx="157.5" cy="105.8" r="5" fill="#0E1116"></circle>
+<circle cx="151.9" cy="168.2" r="5" fill="#0E1116"></circle>
+<circle cx="104.5" cy="174.9" r="5" fill="#0E1116"></circle>
+<circle cx="103.8" cy="169.3" r="5" fill="#0E1116"></circle>
+<circle cx="91.5" cy="161.2" r="5" fill="#0E1116"></circle>
+<circle cx="186.2" cy="156.1" r="5" fill="#0E1116"></circle>
+<circle cx="144.7" cy="152.5" r="5" fill="#0E1116"></circle>
+<circle cx="109.7" cy="156.4" r="5" fill="#0E1116"></circle>
+<circle cx="99.8" cy="165" r="5" fill="#0E1116"></circle>
+<circle cx="156.5" cy="148.2" r="5" fill="#0E1116"></circle>
+<circle cx="99" cy="168" r="5" fill="#0E1116"></circle>
+<circle cx="153.2" cy="130.1" r="5" fill="#0E1116"></circle>
+<circle cx="172.9" cy="132.6" r="5" fill="#0E1116"></circle>
+<circle cx="135.5" cy="137.7" r="5" fill="#0E1116"></circle>
+<circle cx="102.2" cy="174.2" r="5" fill="#0E1116"></circle>
+<circle cx="155.2" cy="168.5" r="5" fill="#0E1116"></circle>
+<circle cx="205.3" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="240.8" cy="118.3" r="5" fill="#0E1116"></circle>
+<circle cx="161.9" cy="113.9" r="5" fill="#0E1116"></circle>
+<circle cx="147.9" cy="149.2" r="5" fill="#0E1116"></circle>
+<circle cx="91.5" cy="187.4" r="5" fill="#0E1116"></circle>
+<circle cx="211.2" cy="135.5" r="5" fill="#0E1116"></circle>
+<circle cx="210.2" cy="94.8" r="5" fill="#0E1116"></circle>
+<circle cx="211.1" cy="65.6" r="5" fill="#0E1116"></circle>
+<circle cx="173.9" cy="103.1" r="5" fill="#0E1116"></circle>
+<circle cx="244.2" cy="129.8" r="5" fill="#0E1116"></circle>
+<circle cx="162.3" cy="144.1" r="5" fill="#0E1116"></circle>
+<circle cx="71.9" cy="179" r="5" fill="#0E1116"></circle>
+<circle cx="152.8" cy="122.6" r="5" fill="#0E1116"></circle>
+<circle cx="151.5" cy="138.4" r="5" fill="#0E1116"></circle>
+<circle cx="132.1" cy="151.4" r="5" fill="#0E1116"></circle>
+<circle cx="165.8" cy="145.3" r="5" fill="#0E1116"></circle>
+<circle cx="94.1" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="162.7" cy="169.5" r="5" fill="#0E1116"></circle>
+<circle cx="139.2" cy="164.7" r="5" fill="#0E1116"></circle>
+<circle cx="186.6" cy="107" r="5" fill="#0E1116"></circle>
+<circle cx="129.8" cy="172.8" r="5" fill="#0E1116"></circle>
+<circle cx="145.4" cy="153.9" r="5" fill="#0E1116"></circle>
+<circle cx="151.7" cy="139.4" r="5" fill="#0E1116"></circle>
+<circle cx="120" cy="154.4" r="5" fill="#0E1116"></circle>
+<circle cx="147" cy="153.4" r="5" fill="#0E1116"></circle>
+<circle cx="136" cy="161.5" r="5" fill="#0E1116"></circle>
+<circle cx="123.3" cy="158.9" r="5" fill="#0E1116"></circle>
+<circle cx="112.1" cy="159.9" r="5" fill="#0E1116"></circle>
+<circle cx="200.5" cy="94.8" r="5" fill="#0E1116"></circle>
+<circle cx="95" cy="171.1" r="5" fill="#0E1116"></circle>
+<circle cx="153.2" cy="149.5" r="5" fill="#0E1116"></circle>
+<circle cx="101.9" cy="170.3" r="5" fill="#0E1116"></circle>
+<circle cx="130.2" cy="167.9" r="5" fill="#0E1116"></circle>
+<circle cx="245" cy="102.8" r="5" fill="#0E1116"></circle>
+<circle cx="99.7" cy="165.3" r="5" fill="#0E1116"></circle>
+<circle cx="213" cy="131" r="5" fill="#0E1116"></circle>
+<circle cx="180.3" cy="155.2" r="5" fill="#0E1116"></circle>
+<circle cx="132.7" cy="146.1" r="5" fill="#0E1116"></circle>
+<circle cx="187.2" cy="104.3" r="5" fill="#0E1116"></circle>
+<circle cx="143.2" cy="162.2" r="5" fill="#0E1116"></circle>
+<circle cx="222.4" cy="11.7" r="5" fill="#0E1116"></circle>
+<circle cx="141.1" cy="120.2" r="5" fill="#0E1116"></circle>
+<circle cx="183.7" cy="162.5" r="5" fill="#0E1116"></circle>
+<circle cx="230.3" cy="147.2" r="5" fill="#0E1116"></circle>
+<circle cx="85.6" cy="192" r="5" fill="#0E1116"></circle>
+<circle cx="185.3" cy="133.9" r="5" fill="#0E1116"></circle>
+<circle cx="141" cy="156.1" r="5" fill="#0E1116"></circle>
+<circle cx="107.8" cy="169.9" r="5" fill="#0E1116"></circle>
+<circle cx="116.5" cy="153.3" r="5" fill="#0E1116"></circle>
+<circle cx="134.9" cy="175.5" r="5" fill="#0E1116"></circle>
+<circle cx="172.1" cy="154.7" r="5" fill="#0E1116"></circle>
+<circle cx="174.2" cy="144.7" r="5" fill="#0E1116"></circle>
+<circle cx="134.9" cy="140.2" r="5" fill="#0E1116"></circle>
+<circle cx="140.7" cy="161.6" r="5" fill="#0E1116"></circle>
+<circle cx="269" cy="114.8" r="5" fill="#0E1116"></circle>
+<circle cx="158.3" cy="145.8" r="5" fill="#0E1116"></circle>
+<circle cx="155.7" cy="152.3" r="5" fill="#0E1116"></circle>
+<circle cx="179.2" cy="105" r="5" fill="#0E1116"></circle>
+<circle cx="175.6" cy="117.2" r="5" fill="#0E1116"></circle>
+</svg>
+
+<svg viewBox="0 0 280 220" width="280" height="220" role="img" aria-label="Après 100 pas, elle se confond presque avec la droite des moindres carrés, en gris." style="display: block">
+<line x1="16" y1="206" x2="274.5" y2="206" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="16" y1="206" x2="16" y2="6.2" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="18.8" y1="206" x2="274.5" y2="89.9" stroke="#C3C7CE" stroke-width="3" stroke-linecap="round"></line>
+<line x1="16" y1="202.7" x2="274.5" y2="95.5" stroke="#2D5BFF" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="141" cy="144.4" r="5" fill="#0E1116"></circle>
+<circle cx="83" cy="164.9" r="5" fill="#0E1116"></circle>
+<circle cx="152.2" cy="166" r="5" fill="#0E1116"></circle>
+<circle cx="146.5" cy="117.1" r="5" fill="#0E1116"></circle>
+<circle cx="68.8" cy="178.7" r="5" fill="#0E1116"></circle>
+<circle cx="131" cy="152" r="5" fill="#0E1116"></circle>
+<circle cx="170.9" cy="153.6" r="5" fill="#0E1116"></circle>
+<circle cx="140.6" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="202.9" cy="91.6" r="5" fill="#0E1116"></circle>
+<circle cx="76.3" cy="178.7" r="5" fill="#0E1116"></circle>
+<circle cx="104" cy="161.7" r="5" fill="#0E1116"></circle>
+<circle cx="106.4" cy="146.3" r="5" fill="#0E1116"></circle>
+<circle cx="120.8" cy="149.1" r="5" fill="#0E1116"></circle>
+<circle cx="179.7" cy="136.1" r="5" fill="#0E1116"></circle>
+<circle cx="261.4" cy="110.1" r="5" fill="#0E1116"></circle>
+<circle cx="137.5" cy="153.3" r="5" fill="#0E1116"></circle>
+<circle cx="142" cy="147.2" r="5" fill="#0E1116"></circle>
+<circle cx="154.5" cy="148.5" r="5" fill="#0E1116"></circle>
+<circle cx="166" cy="130.4" r="5" fill="#0E1116"></circle>
+<circle cx="184.4" cy="155.2" r="5" fill="#0E1116"></circle>
+<circle cx="122" cy="172.6" r="5" fill="#0E1116"></circle>
+<circle cx="97.8" cy="171.2" r="5" fill="#0E1116"></circle>
+<circle cx="188.6" cy="115.1" r="5" fill="#0E1116"></circle>
+<circle cx="151.6" cy="149.2" r="5" fill="#0E1116"></circle>
+<circle cx="178" cy="146.6" r="5" fill="#0E1116"></circle>
+<circle cx="69.8" cy="177.7" r="5" fill="#0E1116"></circle>
+<circle cx="139.7" cy="148.8" r="5" fill="#0E1116"></circle>
+<circle cx="124.9" cy="176.3" r="5" fill="#0E1116"></circle>
+<circle cx="103.8" cy="169.5" r="5" fill="#0E1116"></circle>
+<circle cx="125.3" cy="165.7" r="5" fill="#0E1116"></circle>
+<circle cx="166.2" cy="123.3" r="5" fill="#0E1116"></circle>
+<circle cx="122" cy="161.5" r="5" fill="#0E1116"></circle>
+<circle cx="162.9" cy="142.3" r="5" fill="#0E1116"></circle>
+<circle cx="97.2" cy="179" r="5" fill="#0E1116"></circle>
+<circle cx="121.3" cy="171.5" r="5" fill="#0E1116"></circle>
+<circle cx="196.9" cy="153.6" r="5" fill="#0E1116"></circle>
+<circle cx="200.9" cy="130.6" r="5" fill="#0E1116"></circle>
+<circle cx="246.6" cy="77.1" r="5" fill="#0E1116"></circle>
+<circle cx="116.6" cy="148.7" r="5" fill="#0E1116"></circle>
+<circle cx="74.5" cy="185.7" r="5" fill="#0E1116"></circle>
+<circle cx="117.1" cy="167.9" r="5" fill="#0E1116"></circle>
+<circle cx="115.8" cy="159.3" r="5" fill="#0E1116"></circle>
+<circle cx="124.9" cy="152.9" r="5" fill="#0E1116"></circle>
+<circle cx="132.8" cy="156.3" r="5" fill="#0E1116"></circle>
+<circle cx="169.1" cy="137.1" r="5" fill="#0E1116"></circle>
+<circle cx="157.5" cy="105.8" r="5" fill="#0E1116"></circle>
+<circle cx="151.9" cy="168.2" r="5" fill="#0E1116"></circle>
+<circle cx="104.5" cy="174.9" r="5" fill="#0E1116"></circle>
+<circle cx="103.8" cy="169.3" r="5" fill="#0E1116"></circle>
+<circle cx="91.5" cy="161.2" r="5" fill="#0E1116"></circle>
+<circle cx="186.2" cy="156.1" r="5" fill="#0E1116"></circle>
+<circle cx="144.7" cy="152.5" r="5" fill="#0E1116"></circle>
+<circle cx="109.7" cy="156.4" r="5" fill="#0E1116"></circle>
+<circle cx="99.8" cy="165" r="5" fill="#0E1116"></circle>
+<circle cx="156.5" cy="148.2" r="5" fill="#0E1116"></circle>
+<circle cx="99" cy="168" r="5" fill="#0E1116"></circle>
+<circle cx="153.2" cy="130.1" r="5" fill="#0E1116"></circle>
+<circle cx="172.9" cy="132.6" r="5" fill="#0E1116"></circle>
+<circle cx="135.5" cy="137.7" r="5" fill="#0E1116"></circle>
+<circle cx="102.2" cy="174.2" r="5" fill="#0E1116"></circle>
+<circle cx="155.2" cy="168.5" r="5" fill="#0E1116"></circle>
+<circle cx="205.3" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="240.8" cy="118.3" r="5" fill="#0E1116"></circle>
+<circle cx="161.9" cy="113.9" r="5" fill="#0E1116"></circle>
+<circle cx="147.9" cy="149.2" r="5" fill="#0E1116"></circle>
+<circle cx="91.5" cy="187.4" r="5" fill="#0E1116"></circle>
+<circle cx="211.2" cy="135.5" r="5" fill="#0E1116"></circle>
+<circle cx="210.2" cy="94.8" r="5" fill="#0E1116"></circle>
+<circle cx="211.1" cy="65.6" r="5" fill="#0E1116"></circle>
+<circle cx="173.9" cy="103.1" r="5" fill="#0E1116"></circle>
+<circle cx="244.2" cy="129.8" r="5" fill="#0E1116"></circle>
+<circle cx="162.3" cy="144.1" r="5" fill="#0E1116"></circle>
+<circle cx="71.9" cy="179" r="5" fill="#0E1116"></circle>
+<circle cx="152.8" cy="122.6" r="5" fill="#0E1116"></circle>
+<circle cx="151.5" cy="138.4" r="5" fill="#0E1116"></circle>
+<circle cx="132.1" cy="151.4" r="5" fill="#0E1116"></circle>
+<circle cx="165.8" cy="145.3" r="5" fill="#0E1116"></circle>
+<circle cx="94.1" cy="166.9" r="5" fill="#0E1116"></circle>
+<circle cx="162.7" cy="169.5" r="5" fill="#0E1116"></circle>
+<circle cx="139.2" cy="164.7" r="5" fill="#0E1116"></circle>
+<circle cx="186.6" cy="107" r="5" fill="#0E1116"></circle>
+<circle cx="129.8" cy="172.8" r="5" fill="#0E1116"></circle>
+<circle cx="145.4" cy="153.9" r="5" fill="#0E1116"></circle>
+<circle cx="151.7" cy="139.4" r="5" fill="#0E1116"></circle>
+<circle cx="120" cy="154.4" r="5" fill="#0E1116"></circle>
+<circle cx="147" cy="153.4" r="5" fill="#0E1116"></circle>
+<circle cx="136" cy="161.5" r="5" fill="#0E1116"></circle>
+<circle cx="123.3" cy="158.9" r="5" fill="#0E1116"></circle>
+<circle cx="112.1" cy="159.9" r="5" fill="#0E1116"></circle>
+<circle cx="200.5" cy="94.8" r="5" fill="#0E1116"></circle>
+<circle cx="95" cy="171.1" r="5" fill="#0E1116"></circle>
+<circle cx="153.2" cy="149.5" r="5" fill="#0E1116"></circle>
+<circle cx="101.9" cy="170.3" r="5" fill="#0E1116"></circle>
+<circle cx="130.2" cy="167.9" r="5" fill="#0E1116"></circle>
+<circle cx="245" cy="102.8" r="5" fill="#0E1116"></circle>
+<circle cx="99.7" cy="165.3" r="5" fill="#0E1116"></circle>
+<circle cx="213" cy="131" r="5" fill="#0E1116"></circle>
+<circle cx="180.3" cy="155.2" r="5" fill="#0E1116"></circle>
+<circle cx="132.7" cy="146.1" r="5" fill="#0E1116"></circle>
+<circle cx="187.2" cy="104.3" r="5" fill="#0E1116"></circle>
+<circle cx="143.2" cy="162.2" r="5" fill="#0E1116"></circle>
+<circle cx="222.4" cy="11.7" r="5" fill="#0E1116"></circle>
+<circle cx="141.1" cy="120.2" r="5" fill="#0E1116"></circle>
+<circle cx="183.7" cy="162.5" r="5" fill="#0E1116"></circle>
+<circle cx="230.3" cy="147.2" r="5" fill="#0E1116"></circle>
+<circle cx="85.6" cy="192" r="5" fill="#0E1116"></circle>
+<circle cx="185.3" cy="133.9" r="5" fill="#0E1116"></circle>
+<circle cx="141" cy="156.1" r="5" fill="#0E1116"></circle>
+<circle cx="107.8" cy="169.9" r="5" fill="#0E1116"></circle>
+<circle cx="116.5" cy="153.3" r="5" fill="#0E1116"></circle>
+<circle cx="134.9" cy="175.5" r="5" fill="#0E1116"></circle>
+<circle cx="172.1" cy="154.7" r="5" fill="#0E1116"></circle>
+<circle cx="174.2" cy="144.7" r="5" fill="#0E1116"></circle>
+<circle cx="134.9" cy="140.2" r="5" fill="#0E1116"></circle>
+<circle cx="140.7" cy="161.6" r="5" fill="#0E1116"></circle>
+<circle cx="269" cy="114.8" r="5" fill="#0E1116"></circle>
+<circle cx="158.3" cy="145.8" r="5" fill="#0E1116"></circle>
+<circle cx="155.7" cy="152.3" r="5" fill="#0E1116"></circle>
+<circle cx="179.2" cy="105" r="5" fill="#0E1116"></circle>
+<circle cx="175.6" cy="117.2" r="5" fill="#0E1116"></circle>
+</svg>
+
+</div>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">droite sur une relation courbe · les écarts ont un motif (piège, épisode 11)</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="Des points qui dessinent un U et la droite des moindres carrés : les points sont au-dessus aux deux bouts, en dessous au milieu." style="display: block">
+<line x1="40" y1="380" x2="913.6" y2="380" stroke="#E4E6EA" stroke-width="2"></line>
+<line x1="40" y1="380" x2="40" y2="20" stroke="#E4E6EA" stroke-width="2"></line>
+<text x="909.6" y="412" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">entrée <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">x</tspan></text>
+<text x="54" y="34" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">résultat <tspan font-family="STIX Two Text, serif" font-style="italic" font-size="26">y</tspan></text>
+<g stroke="#2D5BFF" stroke-width="2" stroke-opacity="0.6" stroke-dasharray="4 4">
+<line x1="71.2" y1="150.8" x2="71.2" y2="249.6"></line>
+<line x1="118.9" y1="179.8" x2="118.9" y2="246.8"></line>
+<line x1="166.7" y1="223" x2="166.7" y2="244"></line>
+<line x1="214.3" y1="237.1" x2="214.3" y2="241.2"></line>
+<line x1="309.8" y1="261.2" x2="309.8" y2="235.6"></line>
+<line x1="357.5" y1="256.4" x2="357.5" y2="232.8"></line>
+<line x1="405.2" y1="297.3" x2="405.2" y2="230.1"></line>
+<line x1="453" y1="285.9" x2="453" y2="227.3"></line>
+<line x1="500.6" y1="293.9" x2="500.6" y2="224.5"></line>
+<line x1="548.4" y1="287.5" x2="548.4" y2="221.7"></line>
+<line x1="596.1" y1="266.9" x2="596.1" y2="218.9"></line>
+<line x1="643.8" y1="244.3" x2="643.8" y2="216.1"></line>
+<line x1="691.6" y1="219.9" x2="691.6" y2="213.3"></line>
+<line x1="739.3" y1="204.2" x2="739.3" y2="210.5"></line>
+<line x1="786.9" y1="149" x2="786.9" y2="207.8"></line>
+<line x1="834.7" y1="132.4" x2="834.7" y2="205"></line>
+<line x1="882.4" y1="126.3" x2="882.4" y2="202.2"></line>
+</g>
+<line x1="40" y1="251.4" x2="913.6" y2="200.4" stroke="#2D5BFF" stroke-width="3" stroke-linecap="round"></line>
+<circle cx="71.2" cy="144.8" r="6" fill="#0E1116"></circle>
+<circle cx="118.9" cy="173.8" r="6" fill="#0E1116"></circle>
+<circle cx="166.7" cy="217" r="6" fill="#0E1116"></circle>
+<circle cx="214.3" cy="231.1" r="6" fill="#0E1116"></circle>
+<circle cx="262" cy="243.9" r="6" fill="#0E1116"></circle>
+<circle cx="309.8" cy="267.2" r="6" fill="#0E1116"></circle>
+<circle cx="357.5" cy="262.4" r="6" fill="#0E1116"></circle>
+<circle cx="405.2" cy="303.3" r="6" fill="#0E1116"></circle>
+<circle cx="453" cy="291.9" r="6" fill="#0E1116"></circle>
+<circle cx="500.6" cy="299.9" r="6" fill="#0E1116"></circle>
+<circle cx="548.4" cy="293.5" r="6" fill="#0E1116"></circle>
+<circle cx="596.1" cy="272.9" r="6" fill="#0E1116"></circle>
+<circle cx="643.8" cy="250.3" r="6" fill="#0E1116"></circle>
+<circle cx="691.6" cy="225.9" r="6" fill="#0E1116"></circle>
+<circle cx="739.3" cy="198.2" r="6" fill="#0E1116"></circle>
+<circle cx="786.9" cy="143" r="6" fill="#0E1116"></circle>
+<circle cx="834.7" cy="126.4" r="6" fill="#0E1116"></circle>
+<circle cx="882.4" cy="120.3" r="6" fill="#0E1116"></circle>
+<text x="893.6" y="244.4" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#2D5BFF">la meilleure droite</text>
+<text x="85.2" y="203.2" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">écart</text>
+</svg>
+
+</div>
+
+
+</div>
+</x-dc>
+</body>
+</html>

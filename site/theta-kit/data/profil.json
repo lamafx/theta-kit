@@ -1,0 +1,238 @@
+{
+  "_note": "Source : CV(s) de l'auteur et page Profil du prototype. Ne jamais afficher le téléphone. Voir README, point CV.",
+  "nom": "Ladji Lama Kamagate",
+  "prenom_affiche": "Ladji Lama",
+  "nom_affiche": "Kamagate",
+  "photo": "/img/llk-cutout.png",
+  "titre": {
+    "fr": "Étudiant en licence SRIT à l’ESATIC · Machine Learning et API",
+    "en": "SRIT undergraduate at ESATIC · Machine Learning and APIs"
+  },
+  "accroche": {
+    "fr": "Étudiant en licence SRIT à l’ESATIC, je construis des modèles de Machine Learning et les API qui les servent. θ Théta, c’est ma façon de l’expliquer.",
+    "en": "An SRIT undergraduate at ESATIC, I build Machine Learning models and the APIs that serve them. θ Théta is my way of explaining it."
+  },
+  "en_une_phrase": {
+    "fr": "J’apprends le Machine Learning en le construisant, et je le partage une notion à la fois.",
+    "en": "I learn Machine Learning by building it, and I share it one concept at a time."
+  },
+  "recherche": {
+    "fr": "Je cherche un stage pour mettre mes compétences en intelligence artificielle au service d’une équipe innovante, contribuer à des projets concrets, et continuer à progresser.",
+    "en": "I am looking for an internship to put my artificial intelligence skills to work for an innovative team, contribute to real projects, and keep improving."
+  },
+  "statut": {
+    "fr": "Ouvert à un stage en ML",
+    "en": "Open to an ML internship"
+  },
+  "lieu": {
+    "fr": "Abidjan, Côte d’Ivoire",
+    "en": "Abidjan, Côte d’Ivoire"
+  },
+  "mots_cles": {
+    "fr": [
+      "Machine Learning",
+      "API REST",
+      "Computer Vision",
+      "IoT",
+      "Abidjan",
+      "Ouvert à un stage",
+      "θ Théta"
+    ],
+    "en": [
+      "Machine Learning",
+      "REST APIs",
+      "Computer Vision",
+      "IoT",
+      "Abidjan",
+      "Open to an internship",
+      "θ Théta"
+    ]
+  },
+  "compteurs": [
+    {
+      "valeur": 88,
+      "suffixe": "%",
+      "fr": "de précision sur la détection de la pneumonie",
+      "en": "precision on pneumonia detection",
+      "_verifier": "chiffre du CV « Stagiaire Machine Learning », absent du CV « Développeur web et mobile »"
+    },
+    {
+      "valeur": 3,
+      "suffixe": "e",
+      "fr": "place au hackathon SmartWattUIA 2025",
+      "en": "place at the SmartWattUIA 2025 hackathon"
+    },
+    {
+      "valeur": 3,
+      "suffixe": "",
+      "fr": "projets construits avec leur API",
+      "en": "projects built with their API"
+    },
+    {
+      "valeur": 62,
+      "suffixe": "",
+      "fr": "épisodes prévus pour θ Théta",
+      "en": "episodes planned for θ Théta"
+    }
+  ],
+  "contact": {
+    "email": "lamkam760@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/kamagate-ladji-lama-02a18429b",
+    "github": "https://github.com/lamafx",
+    "ancien_portfolio": "https://lama-portofolio.vercel.app",
+    "cv": "/cv/CV-Ladji-Lama-Kamagate.pdf"
+  },
+  "langues": [
+    {
+      "fr": "Français",
+      "en": "French",
+      "niveau": "C1"
+    },
+    {
+      "fr": "Anglais",
+      "en": "English",
+      "niveau": "B1"
+    }
+  ],
+  "boite_a_outils": [
+    {
+      "fr": "Analyser",
+      "en": "Analyse",
+      "desc": {
+        "fr": "Explorer les données et entraîner les modèles.",
+        "en": "Explore data and train models."
+      },
+      "outils": [
+        {
+          "t": "Python",
+          "n": 3
+        },
+        {
+          "t": "XGBoost",
+          "n": 1
+        },
+        {
+          "t": "NumPy"
+        },
+        {
+          "t": "Pandas"
+        },
+        {
+          "t": "Matplotlib"
+        },
+        {
+          "t": "Scikit-learn"
+        }
+      ]
+    },
+    {
+      "fr": "Servir",
+      "en": "Serve",
+      "desc": {
+        "fr": "Exposer les modèles et stocker les données.",
+        "en": "Expose models and store data."
+      },
+      "outils": [
+        {
+          "t": "FastAPI",
+          "n": 2
+        },
+        {
+          "t": "Django REST",
+          "n": 1
+        },
+        {
+          "t": "PgVector",
+          "n": 1
+        },
+        {
+          "t": "PostgreSQL"
+        },
+        {
+          "t": "MySQL"
+        }
+      ]
+    },
+    {
+      "fr": "Construire des interfaces",
+      "en": "Build interfaces",
+      "desc": {
+        "fr": "Des applications web et mobiles pour mettre les modèles entre les mains des utilisateurs.",
+        "en": "Web and mobile apps that put models in users’ hands."
+      },
+      "outils": [
+        {
+          "t": "React Native",
+          "n": 1
+        },
+        {
+          "t": "React.js"
+        },
+        {
+          "t": "JavaScript"
+        },
+        {
+          "t": "HTML et CSS"
+        },
+        {
+          "t": "PHP"
+        }
+      ]
+    },
+    {
+      "fr": "Livrer",
+      "en": "Ship",
+      "desc": {
+        "fr": "Versionner, empaqueter, tester, et passer au concret.",
+        "en": "Version, package, test, and make it real."
+      },
+      "outils": [
+        {
+          "t": "Arduino",
+          "n": 1
+        },
+        {
+          "t": "ESP32",
+          "n": 1
+        },
+        {
+          "t": "Git"
+        },
+        {
+          "t": "Docker"
+        },
+        {
+          "t": "Postman"
+        }
+      ]
+    },
+    {
+      "fr": "Au-delà du code",
+      "en": "Beyond code",
+      "desc": {
+        "fr": "Secrétaire général du Bureau de Promotion IT12 de l’ESATIC : coordination, gestion et communication interne.",
+        "en": "Secretary General of the IT12 Promotion Office at ESATIC: coordination, administration and internal communication."
+      },
+      "outils": [
+        {
+          "t": "Français C1"
+        },
+        {
+          "t": "Anglais B1"
+        },
+        {
+          "t": "Gestion de projet"
+        },
+        {
+          "t": "Travail en équipe"
+        },
+        {
+          "t": "Leadership associatif"
+        },
+        {
+          "t": "Autonomie"
+        }
+      ]
+    }
+  ]
+}

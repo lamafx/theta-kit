@@ -1,0 +1,363 @@
+# Extraits mot pour mot des références de la fiche 09, lus le 2026-11-01 : D2L 12.4, 12.5 et 12.11 (pages HTML ;
+# formules en LaTeX comme dans la source, retours à la ligne du HTML joints par une espace), DLB ch. 8 (page HTML,
+# ajoutée à la fiche pour la taille de mini-lot ; ε, perdu par l'extraction du texte, rétabli comme dans l'original)
+# et Robbins et Monro (1951), lu sur la copie JSTOR hébergée par l'université Columbia (PDF numérisé ; l'OCR abîme
+# les indices et les lettres grecques, rétablis comme dans l'original : x₁, x₂, xₙ, θ, aₙ). La page de l'éditeur
+# (Project Euclid, cible du DOI) ne renvoie pas le texte à un outil de lecture.
+episode: 9
+extraits:
+# --- D2L 12.4 · Stochastic Gradient Descent ----------------------------------------------------
+- id: d2l-moyenne-exemples
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: In deep learning, the objective function is usually the average of the loss functions for each example in the training dataset.
+  appuie: "Ouverture : le coût J est une moyenne sur les exemples ; son gradient demande un calcul par exemple."
+- id: d2l-simulation
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Now, we will compare it with gradient descent by adding random noise with a mean of 0 and a variance of 1 to the gradient to simulate a stochastic gradient descent.
+  appuie: "Visuels : les chemins bruités sont simulés comme dans D2L, en ajoutant au gradient un bruit tiré de moyenne 0 (calculs.descente_gradient.sgd_2d)."
+- id: d2l-non-convexe
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Optimality guarantees for stochastic gradient descent are in general not available in nonconvex cases since the number of local minima that require checking might well be exponential.
+  appuie: "Mécanisme (cas particulier) : avec plusieurs creux, rien n'est garanti."
+- id: d2l-cout-n
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: "If gradient descent is used, the computational cost for each independent variable iteration is \\(\\mathcal{O}(n)\\), which grows linearly with \\(n\\)."
+  appuie: "Ouverture : avec la descente de gradient, chaque pas coûte un calcul par exemple ; le coût grandit avec le nombre d'exemples."
+- id: d2l-cout-grand-jeu
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Therefore, when the training dataset is larger, the cost of gradient descent for each iteration will be higher.
+  appuie: "Ouverture : plus le jeu de données est grand, plus chaque pas est cher."
+- id: d2l-sgd-reduit
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Stochastic gradient descent (SGD) reduces computational cost at each iteration.
+  appuie: "Comparaison : la descente stochastique (SGD) rend chaque pas moins cher."
+- id: d2l-sgd-un-exemple
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: "At each iteration of stochastic gradient descent, we uniformly sample an index \\(i\\in\\{1,\\ldots, n\\}\\) for data examples at random, and compute the gradient \\(\\nabla f_i(\\mathbf{x})\\) to update \\(\\mathbf{x}\\):"
+  appuie: "Comparaison : à chaque pas, la SGD tire un exemple au hasard et calcule le gradient sur lui seul."
+- id: d2l-sgd-regle
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: "\\[\\mathbf{x} \\leftarrow \\mathbf{x} - \\eta \\nabla f_i(\\mathbf{x}),\\]"
+  appuie: "Comparaison : la règle de l'épisode 08, avec le gradient d'un seul exemple."
+- id: d2l-sgd-o1
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: "We can see that the computational cost for each iteration drops from \\(\\mathcal{O}(n)\\) of the gradient descent to the constant \\(\\mathcal{O}(1)\\)."
+  appuie: "Comparaison : un pas de SGD coûte le même prix, quelle que soit la taille du jeu."
+- id: d2l-en-moyenne
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: This means that, on average, the stochastic gradient is a good estimate of the gradient.
+  appuie: "Mécanisme : en moyenne, le gradient d'un exemple tiré au hasard indique la bonne direction."
+- id: d2l-bruite
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: As we can see, the trajectory of the variables in the stochastic gradient descent is much more noisy than the one we observed in gradient descent in Section 12.3.
+  appuie: "Comparaison et mécanisme : le chemin de la SGD est bien plus bruité que celui de la descente de gradient."
+- id: d2l-pres-du-minimum
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: "That is, even when we arrive near the minimum, we are still subject to the uncertainty injected by the instantaneous gradient via \\(\\eta \\nabla f_i(\\mathbf{x})\\)."
+  appuie: "Mécanisme et piège : le chemin arrive près du minimum, mais le bruit du pas η × gradient d'un exemple demeure."
+- id: d2l-sans-progres
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Even worse, it will not improve after additional steps
+  appuie: "Piège : avec un η fixe, des pas de plus n'y changent rien."
+- id: d2l-reduire-eta
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: The only way to resolve these conflicting goals is to reduce the learning rate dynamically as optimization progresses.
+  appuie: "Piège : d'où un taux d'apprentissage qui décroît au fil de l'apprentissage."
+- id: d2l-ni-trop-vite
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: If it is too quick, we will stop optimizing prematurely. If we decrease it too slowly, we waste too much time on optimization.
+  appuie: "Piège (nuance) : η ne doit décroître ni trop vite ni trop lentement."
+- id: d2l-convexe
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: For convex problems we can prove that for a wide choice of learning rates stochastic gradient descent will converge to the optimal solution.
+  appuie: "Mécanisme (cas particulier) : la garantie vaut pour un coût en forme de vallée unique (convexe), comme celui des épisodes 05 et 08."
+- id: d2l-pas-trop-vite
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: namely to reduce the learning rate progressively, albeit not too quickly.
+  appuie: "Piège et fin : faire décroître η peu à peu, sans aller trop vite."
+- id: d2l-sgd-prefere
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: When there are more examples in the training dataset, it costs more to compute each iteration for gradient descent, so stochastic gradient descent is preferred in these cases.
+  appuie: "Ouverture et comparaison : sur un grand jeu de données, on préfère la SGD."
+- id: d2l-une-seule-fois
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Instead we iterated over all instances exactly once.
+  appuie: "Définition : en pratique, chaque exemple est vu une fois par passage."
+- id: d2l-ordre-different
+  reference: https://d2l.ai/chapter_optimization/sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/sgd.html
+  lu_le: 2026-11-01
+  extrait: Last note that repeated passes through the training dataset traverse it in a different random order.
+  appuie: "Définition : chaque nouveau passage sur les données les parcourt dans un autre ordre, tiré au hasard."
+# --- D2L 12.5 · Minibatch Stochastic Gradient Descent --------------------------------------------
+- id: d2l-tout-le-jeu
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: "So far we encountered two extremes in the approach to gradient-based learning: Section 12.3 uses the full dataset to compute gradients and to update parameters, one pass at a time."
+  appuie: "Comparaison : premier extrême, tout le jeu de données pour chaque pas."
+- id: d2l-un-exemple
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: Conversely Section 12.4 processes one training example at a time to make progress.
+  appuie: "Comparaison : second extrême, un exemple à la fois."
+- id: d2l-entre-les-deux
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: This suggests that there might be something in between, and in fact, that is what we have been using so far in the examples we discussed.
+  appuie: "Comparaison : le mini-lot est l'entre-deux."
+- id: d2l-mini-lot
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: "That is, we replace the gradient \\(\\mathbf{g}_t\\) over a single observation by one over a small batch"
+  appuie: "Comparaison : le gradient d'un mini-lot remplace celui d'un seul exemple."
+- id: d2l-ecart-type
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: "Since the minibatch gradient is composed of \\(b \\stackrel{\\textrm{def}}{=} |\\mathcal{B}_t|\\) independent gradients which are being averaged, its standard deviation is reduced by a factor of \\(b^{-\\frac{1}{2}}\\)."
+  appuie: "Comparaison : la moyenne sur un mini-lot de b exemples réduit le bruit (écart-type divisé par √b)."
+- id: d2l-mieux-aligne
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: This, by itself, is a good thing, since it means that the updates are more reliably aligned with the full gradient.
+  appuie: "Comparaison : avec un mini-lot, les pas suivent plus fidèlement le gradient de tout le jeu."
+- id: d2l-rendement-decroissant
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: Alas, after some point, the additional reduction in standard deviation is minimal when compared to the linear increase in computational cost.
+  appuie: "Comparaison : un mini-lot plus gros coûte plus cher, pour un gain de régularité de plus en plus faible."
+- id: d2l-memoire
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: In practice we pick a minibatch that is large enough to offer good computational efficiency while still fitting into the memory of a GPU.
+  appuie: "Comparaison : la taille du mini-lot dépend aussi de la mémoire du processeur graphique."
+- id: d2l-tout-le-jeu-epoque
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: As a result the model parameters are updated only once per epoch.
+  appuie: "Définition : sur tout le jeu, un seul pas par époque."
+- id: d2l-1500-pas
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: In our case this amounts to 1500 updates per epoch.
+  appuie: "Définition : avec un exemple par pas, 1 500 exemples font 1 500 pas par époque (exemple de D2L)."
+- id: d2l-1500-exemples
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: This can be achieved by setting the minibatch size to 1500 (i.e., to the total number of examples).
+  appuie: "Définition : le jeu de l'exemple de D2L compte 1 500 exemples."
+- id: d2l-une-fois-par-epoque
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: "In minibatch stochastic gradient descent we process batches of data obtained by a random permutation of the training data (i.e., each observation is processed only once per epoch, albeit in random order)."
+  appuie: "Définition : une époque, c'est un passage où chaque exemple est vu une fois, dans un ordre tiré au hasard."
+- id: d2l-compromis
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: Minibatch stochastic gradient descent is able to trade-off convergence speed and computation efficiency.
+  appuie: "Comparaison : le mini-lot est un compromis."
+- id: d2l-temps-sgd
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: As can be seen, although stochastic gradient descent converges faster than GD in terms of number of examples processed, it uses more time to reach the same loss than GD because computing the gradient example by example is not as efficient.
+  appuie: "Comparaison (nuance) : un pas sur un seul exemple est rapide, mais calculer exemple par exemple fait perdre du temps machine."
+- id: d2l-horloge
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: In general, minibatch stochastic gradient descent is faster than stochastic gradient descent and gradient descent for convergence to a smaller risk, when measured in terms of clock time.
+  appuie: "Comparaison : en temps de calcul, le mini-lot est en général le plus rapide des trois."
+- id: d2l-decroitre-eta
+  reference: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_sur: https://d2l.ai/chapter_optimization/minibatch-sgd.html
+  lu_le: 2026-11-01
+  extrait: It is advisable to decay the learning rates during training.
+  appuie: "Piège : faire décroître η pendant l'apprentissage."
+# --- D2L 12.11 · Learning Rate Scheduling --------------------------------------------------------
+- id: d2l-rebondir
+  reference: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_sur: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_le: 2026-11-01
+  extrait: If the learning rate remains large we may simply end up bouncing around the minimum and thus not reach optimality.
+  appuie: "Piège : un η qui reste grand fait rebondir le modèle autour du minimum, sans s'y poser."
+- id: d2l-par-epoque
+  reference: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_sur: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_le: 2026-11-01
+  extrait: "We could adjust it downward after every epoch (or even after every minibatch), e.g., in a dynamic manner in response to how optimization is progressing."
+  appuie: "Piège : baisser η après chaque époque (ou chaque mini-lot)."
+- id: d2l-paliers
+  reference: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_sur: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_le: 2026-11-01
+  extrait: A piecewise decrease of the learning rate whenever progress has plateaued is effective in practice.
+  appuie: "Piège : une façon courante, baisser η par paliers quand le coût ne baisse plus."
+- id: d2l-decroissance-lente
+  reference: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_sur: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_le: 2026-11-01
+  extrait: "In short, we want the rate to decay, but probably more slowly than \\(\\mathcal{O}(t^{-\\frac{1}{2}})\\) which would be a good choice for convex problems."
+  appuie: "Piège (nuance) : la bonne vitesse de décroissance dépend du problème."
+- id: d2l-taille-eta
+  reference: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_sur: https://d2l.ai/chapter_optimization/lr-scheduler.html
+  lu_le: 2026-11-01
+  extrait: If it is too large, optimization diverges, if it is too small, it takes too long to train or we end up with a suboptimal result.
+  appuie: "Rappel de l'épisode 08 : η trop grand diverge, trop petit est trop lent."
+# --- DLB ch. 8 · Optimization for Training Deep Models --------------------------------------------
+- id: dlb-entre-deux
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: Most algorithms used for deep learning fall somewhere in between, using more than one but fewer than all the training examples.
+  appuie: "Comparaison : la plupart des apprentissages utilisent plus d'un exemple, mais pas tous."
+- id: dlb-stochastique
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: These were traditionally called minibatch or minibatch stochastic methods, and it is now common to call them simply stochastic methods.
+  appuie: "Comparaison : « SGD » désigne aussi, le plus souvent, la descente par mini-lots."
+- id: dlb-plus-precis
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: Larger batches provide a more accurate estimate of the gradient, but with less than linear returns.
+  appuie: "Comparaison : un mini-lot plus grand estime mieux le gradient, avec un gain qui s'amenuise."
+- id: dlb-32-256
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: Typical power of 2 batch sizes range from 32 to 256, with 16 sometimes being attempted for large models.
+  appuie: "Comparaison : un mini-lot compte d'ordinaire de 32 à 256 exemples (puissances de 2), parfois 16 pour les grands modèles."
+- id: dlb-annee
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/
+  lu_le: 2026-11-02
+  extrait: "year={2016}"
+  appuie: "Comparaison, fin et post (C1 de la relecture) : la fourchette de 32 à 256 est décrite dans le livre paru en 2016 (MIT Press)."
+- id: dlb-plusieurs-passages
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: Nonetheless, it is usually best to make several passes through the training set, unless the training set is extremely large.
+  appuie: "Définition : on fait d'ordinaire plusieurs passages complets sur les données, plusieurs époques."
+- id: dlb-epoques
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: When multiple such epochs are used, only the first epoch follows the unbiased gradient of the generalization error
+  appuie: "Définition : chacun de ces passages s'appelle une époque."
+- id: dlb-decroitre
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: "In practice, it is necessary to gradually decrease the learning rate over time, so we now denote the learning rate at iteration k as ε_k."
+  appuie: "Piège : en pratique, il faut faire décroître η au fil des itérations."
+- id: dlb-bruit-demeure
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: This is because the SGD gradient estimator introduces a source of noise (the random sampling of m training examples) that does not vanish even when we arrive at a minimum.
+  appuie: "Piège : le bruit du tirage des exemples ne disparaît pas, même au minimum."
+- id: dlb-vrai-gradient
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-01
+  extrait: By comparison, the true gradient of the total cost function becomes small and then 0 when we approach and reach a minimum using batch gradient descent, so batch gradient descent can use a fixed learning rate.
+  appuie: "Piège : sur tout le jeu, le gradient s'annule au minimum, et un η fixe suffit (épisode 08)."
+# --- Robbins et Monro (1951) ----------------------------------------------------------------------
+- id: rm-publication
+  reference: https://doi.org/10.1214/aoms/1177729586
+  lu_sur: https://www.columbia.edu/~ww2040/8100F16/RM51.pdf
+  lu_le: 2026-11-01
+  extrait: "Source: The Annals of Mathematical Statistics , Sep., 1951, Vol. 22, No. 3 (Sep., 1951), pp. 400-407"
+  appuie: "Piège : l'article paraît en 1951, dans les Annals of Mathematical Statistics."
+- id: rm-inconnue
+  reference: https://doi.org/10.1214/aoms/1177729586
+  lu_sur: https://www.columbia.edu/~ww2040/8100F16/RM51.pdf
+  lu_le: 2026-11-01
+  extrait: M(x) is assumed to be a monotone function of x but is unknown to the experimenter
+  appuie: "Piège : on ne connaît pas la fonction, seulement des mesures bruitées de celle-ci."
+- id: rm-methode
+  reference: https://doi.org/10.1214/aoms/1177729586
+  lu_sur: https://www.columbia.edu/~ww2040/8100F16/RM51.pdf
+  lu_le: 2026-11-01
+  extrait: "We give a method for making successive experiments at levels x₁, x₂, ··· in such a way that xₙ will tend to θ in probability."
+  appuie: "Piège : une suite d'essais bruités qui se rapproche de la solution."
+- id: rm-suite
+  reference: https://doi.org/10.1214/aoms/1177729586
+  lu_sur: https://www.columbia.edu/~ww2040/8100F16/RM51.pdf
+  lu_le: 2026-11-01
+  extrait: "Let {aₙ} be a fixed sequence of positive constants such that"
+  appuie: "Piège : la taille des pas est une suite aₙ fixée d'avance."
+- id: rm-un-sur-n
+  reference: https://doi.org/10.1214/aoms/1177729586
+  lu_sur: https://www.columbia.edu/~ww2040/8100F16/RM51.pdf
+  lu_le: 2026-11-01
+  extrait: "The hypotheses (6) and (26) concerning {aₙ} are satisfied by the sequence aₙ = 1/n"
+  appuie: "Piège : par exemple des pas de taille 1/n, qui décroissent à chaque essai."
+# Ajoutés le 2026-11-05 (texte du post réécrit, A63).
+- id: dlb-rendement
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-05
+  extrait: "reduces the standard error of the mean only by a factor of 10"
+  appuie: "Post : cent fois plus de calcul, une erreur type dix fois plus petite."
+- id: dlb-calcul-total
+  reference: https://www.deeplearningbook.org/contents/optimization.html
+  lu_sur: https://www.deeplearningbook.org/contents/optimization.html
+  lu_le: 2026-11-05
+  extrait: "in terms of total computation, not in terms of number of updates"
+  appuie: "Post : la convergence plus rapide se mesure en calcul total, pas en nombre de pas."
+illisibles: []

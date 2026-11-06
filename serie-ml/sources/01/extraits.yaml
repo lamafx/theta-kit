@@ -1,0 +1,156 @@
+# Extraits mot pour mot des références de la fiche 01, lus le 2026-10-25.
+# Samuel (1959) : le DOI mène à IEEE Xplore, qui refuse la lecture automatique ; lu sur la reproduction
+# hébergée par le MIT CSAIL (texte reconnu par OCR, coquilles de reconnaissance corrigées d'après le scan).
+episode: 1
+extraits:
+- id: dlb-donnees
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-25
+  extrait: A machine learning algorithm is an algorithm that is able to learn from data.
+  appuie: "Ouverture : en Machine Learning, le programme apprend à partir de données."
+- id: dlb-taches
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-25
+  extrait: Machine learning enables us to tackle tasks that are too difficult to solve with fixed programs written and designed by human beings.
+  appuie: "Exemple : des tâches trop difficiles pour des règles écrites à la main, comme le tri du spam."
+- id: dlb-jeu-de-donnees
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-25
+  extrait: A dataset is a collection of many examples, as defined in section 5.1.1.
+  appuie: "Les exemples : des milliers de mails déjà triés forment l'expérience du programme."
+- id: dlb-generalisation
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-25
+  extrait: The ability to perform well on previously unobserved inputs is called generalization.
+  appuie: "Piège : le but est de bien faire sur des cas jamais vus."
+- id: dlb-induction
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-25
+  extrait: Inductive reasoning, or inferring general rules from a limited set of examples, is not logically valid.
+  appuie: "Piège : des règles tirées d'un nombre limité d'exemples ne sont pas certaines."
+- id: dlb-probable
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-25
+  extrait: Machine learning promises to find rules that are probably correct about most members of the set they concern.
+  appuie: "Piège : des règles probablement justes, pas des certitudes."
+- id: samuel-publication
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-25
+  extrait: Originally published in IBM Journal, Vol. 3, No. 3. July, 1959.
+  appuie: "Contexte : l'article paraît en 1959 dans l'IBM Journal."
+- id: samuel-mieux-que-l-auteur
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-25
+  extrait: A computer can be programmed so that it will learn to play a better game of checkers than can be played by the person who wrote the program.
+  appuie: "Contexte : le programme apprend à jouer aux dames mieux que son auteur."
+- id: samuel-heures
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-25
+  extrait: It can learn to do this in a remarkably short period of time (8 or 10 hours of machine-playing time)
+  appuie: "Contexte : en 8 à 10 heures de jeu machine."
+- id: samuel-ibm-704
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-25
+  extrait: The availability of a larger and faster machine (the IBM 704)
+  appuie: "Contexte : les expériences tournent sur un IBM 704 (photo)."
+- id: samuel-liste-fournie
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-25
+  extrait: this procedure of having the program select terms for the evaluation polynomial from a supplied list
+  appuie: "Piège : le programme choisit parmi des critères que son auteur lui a fournis."
+- id: samuel-liste-humaine
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-25
+  extrait: With a man-generated list one might at least ask that the terms be members of an orthogonal set
+  appuie: "Piège : la liste des critères est écrite par un humain."
+- id: samuel-titre
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-26
+  extrait: Some Studies in Machine Learning Using the Game of Checkers
+  appuie: "Contexte : Samuel emploie le terme machine learning dans le titre de son article."
+- id: samuel-auteur
+  reference: https://doi.org/10.1147/rd.33.0210
+  lu_sur: https://people.csail.mit.edu/brooks/idocs/Samuel.pdf
+  lu_le: 2026-10-26
+  extrait: Arthur L. Samuel
+  appuie: "Contexte : le prénom de l'auteur, Arthur."
+- id: gmail-date
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-26
+  extrait: February 7, 2019
+  appuie: "Exemple : les chiffres de Gmail datent de 2019."
+- id: gmail-999
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-26
+  extrait: our existing ML models are highly effective at doing this—in conjunction with our other protections, they help block more than 99.9 percent of spam, phishing, and malware from reaching Gmail inboxes.
+  appuie: "Exemple : plus de 99,9 % des spams, du phishing et des logiciels malveillants bloqués."
+- id: gmail-100-millions
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-26
+  extrait: With TensorFlow, we are now blocking around 100 million additional spam messages every day.
+  appuie: "Exemple : environ 100 millions de spams de plus bloqués chaque jour."
+- id: gmail-regles
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-26
+  extrait: These new protections complement existing ML and rules-based protections
+  appuie: "Exemple : l'apprentissage complète des règles écrites, il ne les remplace pas."
+- id: gmail-motifs
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-26
+  extrait: ML makes catching spam possible by helping us identify patterns in large data sets that humans who create the rules might not catch
+  appuie: "Exemple : l'apprentissage repère des motifs que les auteurs de règles pourraient manquer."
+- id: dlb-supervise
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/contents/ml.html
+  lu_le: 2026-10-26
+  extrait: Supervised learning algorithms experience a dataset containing features, but each example is also associated with a label or target.
+  appuie: "Ouverture : en apprentissage supervisé, des exemples et leurs réponses (étiquettes)."
+- id: glossaire-modele
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary
+  lu_le: 2026-10-31
+  extrait: In supervised machine learning, a model takes an example as input and infers a prediction as output.
+  appuie: "Ouverture : le modèle, tiré des exemples, prédit la réponse d'un cas nouveau (demande de l'utilisateur, 2026-10-31)."
+- id: gmail-tensorflow
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-31
+  extrait: TensorFlow, an open-source machine learning (ML) framework developed at Google
+  appuie: "Post : TensorFlow, un outil d'apprentissage développé par Google."
+- id: glossaire-spam
+  reference: https://developers.google.com/machine-learning/glossary
+  lu_sur: https://developers.google.com/machine-learning/glossary
+  lu_le: 2026-10-31
+  extrait: A model that determines whether email messages are spam (the positive class) or not spam (the negative class).
+  appuie: "Page 3 : trier des mails en spam ou non-spam est une tâche de classification (D14)."
+- id: gmail-adapte
+  reference: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_sur: https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+  lu_le: 2026-10-31
+  extrait: it makes it easy for us to adapt quickly to ever-changing spam attempts
+  appuie: "Post : l'apprentissage permet de s'adapter vite à des spams qui changent sans cesse (D16)."
+- id: wilds-decalage
+  reference: https://arxiv.org/abs/2012.07421
+  lu_sur: https://arxiv.org/abs/2012.07421
+  lu_le: 2026-10-31
+  extrait: Distribution shifts -- where the training distribution differs from the test distribution -- can substantially degrade the accuracy of machine learning (ML) systems deployed in the wild.
+  appuie: "Page 5 : face à un cas très différent de ses exemples, les erreurs peuvent augmenter (D18)."
+illisibles: []

@@ -1,0 +1,50 @@
+numero: 51
+titre: L'apprentissage par transfert
+format: court
+saison: 3
+chapitre:
+  numero: 9
+  titre: Les réseaux spécialisés
+accroche: Réutiliser ce qu'un autre modèle a déjà appris.
+couverture:
+  famille: reseau
+  description: un réseau aux couches basses figées et aux couches hautes allumées
+  verbe: transmettre
+  geste: porter
+prerequis_explicites: []
+termes_introduits:
+- terme: apprentissage par transfert
+  formes:
+  - apprentissage par transfert
+- terme: modèle pré-entraîné
+  formes:
+  - modèle pré-entraîné
+- terme: couches gelées
+  formes:
+  - couches gelées
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Un CNN entraîné sur des millions d'images sait déjà voir les bords.
+- page: 3
+  type: Mécanisme
+  message: Geler les premières couches, réentraîner les dernières.
+- page: 4
+  type: Repère
+  message: Peu de données ? Le transfert d'abord.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 52
+  transition: 'Le transfert a tout changé pour le langage. Mais d''abord : comment une machine lit-elle ?'
+references:
+  cours:
+  - titre: D2L 14.2
+    url: https://d2l.ai/chapter_computer-vision/fine-tuning.html
+  sources_originales:
+  - citation: Yosinski et al. (2014), How transferable are features in deep neural networks?
+    liens:
+    - titre: How transferable are features in deep neural networks?
+      url: https://arxiv.org/abs/1411.1792

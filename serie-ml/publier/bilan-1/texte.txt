@@ -1,0 +1,14 @@
+19 épisodes, une seule question :
+comment une machine apprend-elle ?
+
+Elle part d’exemples. Elle mesure ses erreurs avec une fonction de coût. Elle corrige ses paramètres pas à pas, par descente de gradient.
+
+Deux usages suivent : prédire un nombre avec la régression, choisir une catégorie avec la classification.
+
+Ce post rassemble les quatre chapitres de la saison. Chaque épisode s’appuie sur les précédents : si vous en avez manqué un, le sommaire vous indique par où reprendre.
+
+Il reste une question, celle de la saison 2 : comment savoir si un modèle est fiable ?
+
+Saison 1 · θ Théta, le Machine Learning, une notion à la fois. Saison 2 : reprise le mardi 2 février.
+
+#MachineLearning #IntelligenceArtificielle #DataScience #FondamentauxML #ThetaML

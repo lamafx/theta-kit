@@ -1,0 +1,50 @@
+numero: 29
+titre: L'arrêt précoce
+format: court
+saison: 2
+chapitre:
+  numero: 6
+  titre: Bien généraliser
+accroche: Savoir s'arrêter au bon moment.
+couverture:
+  famille: courbe
+  description: courbes d'erreur avec un repère vertical au minimum de validation
+  verbe: freiner
+  geste: paume
+prerequis_explicites:
+- 9
+termes_introduits:
+- terme: arrêt précoce
+  formes:
+  - arrêt précoce
+- terme: patience
+  formes:
+  - patience
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'L''erreur de validation remonte : on arrête.'
+- page: 3
+  type: Mécanisme
+  message: Garder le meilleur modèle, avec une patience de quelques époques.
+- page: 4
+  type: Repère
+  message: Gratuit et efficace, surtout pour les réseaux de neurones.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 30
+  transition: 'Changeons de famille : des modèles qui n''utilisent pas la descente de gradient.'
+references:
+  cours:
+  - titre: MLCC · Interpreting loss curves
+    url: https://developers.google.com/machine-learning/crash-course/overfitting/interpreting-loss-curves
+  - titre: DLB ch. 7
+    url: https://www.deeplearningbook.org/contents/regularization.html
+  sources_originales:
+  - citation: 'Prechelt (1998), Early Stopping — But When?, Neural Networks: Tricks of the Trade'
+    liens:
+    - titre: Early Stopping — But When?
+      url: https://doi.org/10.1007/3-540-49430-8_3

@@ -1,0 +1,62 @@
+# Episode 04 · BROUILLON. Le carrousel reel n'existe pas encore : PDF = fiche resume provisoire de 3 pages.
+# Quand le carrousel est valide, l'automatisation remplace ce fichier sur le modele de 01.yaml
+# (statut: publie, pages, a_retenir, verifiez_vous, suivant, couverture, traduction EN).
+n: '04'
+saison: 1
+statut: brouillon
+groupe:
+  fr: Les bases
+  en: The basics
+titre:
+  fr:
+    t1: Modèle
+    t2: et paramètres
+  en:
+    t1: Model
+    t2: and parameters
+accroche:
+  fr: Un modèle de Machine Learning peut tenir en une ligne. Et n’avoir que deux réglages.
+  en: TODO(traduction) a faire quand le carrousel sera valide
+resume:
+  fr: 'Une régression linéaire tient en une ligne et deux réglages : un prix de base et un montant par mètre carré.'
+  en: 'Linear regression fits in one line and two settings: a base price and an amount per square metre.'
+theme: null
+pdf:
+  chemin: /pdf/theta-04.pdf
+  pages: 3
+  type: provisoire
+  langue: fr
+couverture: null
+pages: []
+a_retenir:
+  fr: []
+  en: []
+post_linkedin:
+  statut: a_valider
+  fr: |-
+    Un modèle de Machine Learning peut tenir en une ligne.
+    Et n’avoir que deux réglages.
+
+    Pour estimer le prix d’une maison, on peut partir d’un prix de base et ajouter un montant pour chaque mètre carré. Une régression linéaire raisonne ainsi, avec une différence : elle calcule elle-même ces deux nombres à partir des ventes passées. Ici, le prix de base est celui d’une maison de 0 m² : un point de départ du calcul, pas une vente réelle.
+
+    Le carrousel reprend les maisons de l’épisode 02 : à Ames, aux États-Unis, une droite calculée sur les ventes de 2006 à 2010 prédit le prix selon la surface, en FCFA au cours BCEAO du 27 octobre 2026. Il montre ce que changent a et b, et laisse une question pour la suite : meilleurs réglages, mais selon quoi ?
+
+    Quel phénomène de votre quotidien décririez-vous avec une simple droite ?
+
+    Nº 04 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 05 : La fonction de coût.
+  en: null
+hashtags:
+- '#MachineLearning'
+- '#IntelligenceArtificielle'
+- '#DataScience'
+- '#RegressionLineaire'
+- '#ThetaML'
+linkedin:
+  url: null
+  publie_le: null
+  stats:
+    impressions: null
+    reactions: null
+    commentaires: null
+    partages: null
+    maj: null

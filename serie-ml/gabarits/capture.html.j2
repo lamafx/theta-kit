@@ -1,0 +1,44 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">{{ p.role }}</span>
+<h2 class="titre-page">{{ p.titre|texte }}</h2>
+<p class="texte">{{ p.texte|texte }}</p>
+
+<figure class="figure{% if image %} avec-capture{% endif %}">
+{% if image %}
+<div class="capture">
+<div class="barre">
+<span class="point"></span>
+<span class="point"></span>
+<span class="point"></span>
+<span class="fenetre">{{ p.fenetre|typo }}</span>
+</div>
+<div class="ecran">
+<img class="image-reelle" src="{{ image.url }}" alt="{{ p.image.legende|typo }}">
+{% if p.annotation %}{#- Le badge est dans le cadre : une seule position, ils ne se séparent pas. -#}
+<div class="surlignage" style="top: {{ p.annotation.haut }}px; height: {{ p.annotation.hauteur }}px">
+<span class="badge">{{ p.annotation.texte|typo }}</span>
+</div>
+{% endif %}
+</div>
+</div>
+<figcaption>
+<span class="legende-image">{{ p.image.legende|texte }}</span>
+<span class="credit">{{ image.credit|typo }}</span>
+</figcaption>
+{% else %}
+{#- Variante sans image (règle D6) : un schéma de la famille Flux, jamais une fausse capture. -#}
+<div class="schema">
+{{ schema }}
+</div>
+<figcaption>
+<span class="legende-image">{{ p.image.legende|texte }}</span>
+<span class="credit">Schéma</span>
+</figcaption>
+{% endif %}
+</figure>
+
+{{ ui.pied(signature) }}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{# Couverture classique : celle d'avant la couverture A (commit e57677b), gardée au choix de l'utilisateur (2026-11-02). #}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.serie()) }}
+
+<div class="scene scene-couverture-ep">
+{{ fond }}
+{{ robot }}
+</div>
+
+<h1 class="titre-couverture titre-couverture-ep">{{ titre|titre_point }}</h1>
+<p class="accroche accroche-couverture-ep">{{ accroche|texte }}</p>
+
+{{ ui.pied(signature, fleche=26) }}
+{% endblock %}

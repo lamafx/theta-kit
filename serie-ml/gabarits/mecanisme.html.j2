@@ -1,0 +1,23 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">{{ p.role }}</span>
+<h2 class="titre-page">{{ p.titre|texte }}</h2>
+<p class="texte">{{ p.texte|texte }}</p>
+
+{{ visuel }}
+{% if p.encadres %}
+
+<div class="encadres">
+{% for e in p.encadres %}
+<div class="encadre">
+<span class="titre-encadre">{{ e.titre|texte }}</span>
+<span class="texte-encadre">{{ e.texte|texte }}</span>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+
+{{ ui.pied(signature) }}
+{% endblock %}

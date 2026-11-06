@@ -1,0 +1,114 @@
+episode: 10
+couverture: classique  # choix de l'utilisateur (2026-11-03) : la couverture d'avant la couverture A
+pages:
+
+- type: couverture
+  titre: "Minimums locaux\net points selle."
+  visuel:
+    famille: courbe
+    params:
+      # A60 (session de design n° 2) : courbe à plusieurs creux de D2L 12.1, x·cos(πx), et une descente arrêtée
+      # dans le creux local (calculs.descente_gradient.iterations_f).
+      vague: {origine: [450, 405], echelle: [240, 150], domaine: [-1, 1.75], depart: -0.9, eta: 0.05, pas: 12}
+  visuel_classique:  # couverture classique : la même courbe, pleine largeur, autour du robot centré
+    famille: courbe
+    params:
+      vague: {origine: [380, 320], echelle: [400, 190], domaine: [-1.05, 1.9], depart: -0.85, eta: 0.05, pas: 12}
+
+- type: ouverture
+  rappel: "Nº 05, 06 et 07 : le coût $J$, sa pente $∇J$ ; Nº 08 et 09 : la descente, pas à pas, jusqu'à une pente nulle."
+  titre: "Le premier creux."
+  texte: "Cette courbe a deux creux. La descente partie à gauche s'arrête au premier, où la pente est nulle : un **minimum local**. Le plus bas est le **minimum global**."
+  sources: [d2l-exemple-deux-creux, d2l-minimum-local, d2l-minimum-global, d2l-arret-local, mlcc-bille, d2l-nombreux-optima]
+  visuel:
+    famille: courbe
+    params:
+      forme: trace
+      courbe: ondulee
+      origine: [300, 320]
+      echelle: [200, 125]
+      domaine: [-1, 2]
+      plage: [-1.3, 2.1]
+      cadre: [920, 580]
+      creux: true
+      descentes:
+      - {depart: -0.9, eta: 0.05, pas: 30, texte: départ, decalage: [-20, -22]}
+      position_x: [820, 352]
+      textes: {x: réglage $θ$, y: coût $J$, minimum_local: minimum local, minimum_global: minimum global}
+      description: "Une courbe à deux creux. Partie à gauche, la descente s'arrête dans le premier creux, le minimum local, plus haut que le minimum global à droite."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Plat, sans être\nun creux."
+  texte: "Avec deux réglages $a$ et $b$, une pente nulle peut tromper : au **point selle**, $∇J$ = (0 ; 0), mais $J$ est en creux selon $a$, en bosse selon $b$. Partie sur l'axe, la descente y cale ; partie à côté, elle finit par s'en écarter."
+  sources: [d2l-selle-definition, d2l-selle-x3, d2l-selle-2d, dauphin-plateaux, dauphin-repousse, dauphin-toutes-directions, d2l-selle-probable, dauphin-selle, dauphin-rapport, dauphin-date]
+  visuel:
+    famille: niveaux
+    params:
+      forme: chemin
+      origine: [460, 205]
+      echelle: 120
+      domaine: [-2.4, 2.4]
+      plage: [-1.65, 1.65]
+      cadre: [920, 410]
+      courbures: [1, -1]
+      niveaux: [-2, -1, 0, 1, 2]
+      chemins:
+      - {depart: [-2.2, 0], eta: 0.1, pas: 20, style: objet, texte: cale au point selle, decalage: [-10, 34]}
+      - {depart: [-2.2, 0.08], eta: 0.1, pas: 20, texte: s'en écarte, ancre: 13, decalage: [18, 8]}
+      textes: {x: réglage $a$, y: réglage $b$, minimum: point selle}
+      description: "Lignes de niveau en hyperboles autour d'un point selle : un creux selon le réglage horizontal a, une bosse selon le vertical b. Un chemin parti sur l'axe cale au point selle ; un autre, parti à peine au-dessus, finit par s'en écarter."
+  encadres:
+  - titre: Avec beaucoup de réglages
+    texte: "Plus il y a de réglages, plus les points selle l'emportent en nombre sur les minimums locaux. C'est ce qu'avancent Dauphin et ses coauteurs en 2014, pour des fonctions d'erreur tirées au hasard."
+
+- type: mecanisme
+  role: Repère
+  titre: "Avec un coût convexe,\npas de faux creux."
+  texte: "Pour une **fonction convexe**, toute corde reste au-dessus de la courbe, et tout minimum local est global : pas de creux plus haut où caler. C'est le cas de la MSE d'une droite (Nº 05). Le fond peut toutefois être plat."
+  sources: [d2l-definition-convexe, d2l-cosinus-parabole, d2l-local-global, d2l-exemple-parabole, d2l-pas-coince, mlcc-lineaire-convexe, mlcc-minimum-global, d2l-fond-plat, d2l-convexe-rare, d2l-non-convexe-dl, d2l-nombreux-optima]
+  visuel:
+    famille: courbe
+    params:
+      forme: trace
+      courbe: parabole
+      origine: [460, 385]
+      echelle: [130, 36]
+      domaine: [-3, 3]
+      plage: [0, 9.5]
+      cadre: [920, 425]
+      corde: [-2, 1]
+      textes: {x: réglage $θ$, y: coût $J$, corde: la corde reste au-dessus}
+      decalage_corde: [110, -30]
+      description: "Une courbe en U et une corde entre deux de ses points : le segment reste au-dessus de la courbe."
+  encadres:
+  - titre: Un cas particulier
+    texte: "La droite et sa MSE sont un cas favorable. Pour la plupart des grands modèles, vus plus loin dans la série, le coût n'est pas convexe et compte de nombreux creux."
+
+- type: fin
+  points:
+  - "La descente peut s'arrêter au premier creux, où la pente est nulle : un **minimum local**. Le plus bas est le **minimum global**."
+  - "Au **point selle**, $∇J$ = (0 ; 0), mais $J$ est en creux selon $a$, en bosse selon $b$."
+  - "Pour une **fonction convexe**, comme la MSE d'une droite, tout minimum local est global."
+  verification:
+    question: "Au point selle, la pente est nulle : pourquoi n'est-ce pas un minimum ?"
+    page: 3
+
+linkedin:
+  texte: |-
+    Le coût ne baisse plus.
+    Le modèle a-t-il terminé, ou reste-t-il coincé ?
+
+    Une pente presque nulle dit seulement qu'à cet endroit, le coût ne varie plus guère. Trois situations au moins y ressemblent :
+
+    · un minimum global : le travail est fait ;
+    · un minimum local : un creux, plus haut qu'un autre ;
+    · un point selle : le coût descend encore dans au moins une direction.
+
+    L'idée reçue : un entraînement bloqué serait piégé dans un minimum local.
+
+    L'argument inverse : un minimum exige que toutes les directions remontent. Plus il y a de paramètres, moins c'est probable, sauf à un niveau d'erreur proche du meilleur. En 2014, Dauphin et ses coauteurs y voient surtout un problème de points selle, entourés de plateaux qui ralentissent l'apprentissage.
+
+    Leur thèse repose en partie sur des fonctions d'erreur aléatoires : un éclairage, pas une loi. Elle invite pourtant à se méfier d'un coût qui stagne : ces plateaux, écrivent-ils, « give the illusory impression of the existence of a local minimum », l'illusion d'un minimum local.
+  hashtag: "#Optimisation"
+  generique: "#DeepLearning"

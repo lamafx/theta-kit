@@ -1,0 +1,40 @@
+# Calendrier d'essai figé (copie de calendrier.yaml avant le 2026-10-26 : rythme A32, sans date de lancement).
+# Les tests en dépendent, pas du calendrier réel que l'utilisateur règle.
+fuseau: Africa/Abidjan
+creneaux:
+  semaine_impaire:
+  - - mardi
+    - 08:30
+  - - jeudi
+    - 08:30
+  - - samedi
+    - '10:00'
+  semaine_paire:
+  - - mardi
+    - 08:30
+  - - jeudi
+    - 08:30
+avance_minimum_episodes_relus: 4
+date_lancement: null
+saisons:
+  1:
+    episodes:
+    - 1
+    - 19
+    bilan: true
+  2:
+    episodes:
+    - 20
+    - 36
+    bilan: true
+  3:
+    episodes:
+    - 37
+    - 51
+    bilan: true
+  4:
+    episodes:
+    - 52
+    - 62
+    bilan: true
+pause_entre_saisons_semaines: 2

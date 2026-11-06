@@ -1,0 +1,42 @@
+# Fixture de test (B2) : les pages Image-Contexte et Image-Capture des canevas, recopiées mot pour mot
+# (épisode 01, pages 3 et 4 sur 6). Ce n'est pas une production : contenu/ reste vide.
+# Les images sont des images d'essai unies (tests/fixtures/images/) : la zone de l'image et le crédit
+# sont masqués dans la comparaison aux références, qui montrent encore l'ancien cadre d'attente.
+episode: 1
+total: 6
+premiere_page: 3
+pages:
+
+- type: contexte
+  role: Contexte
+  titre: "1959 : un programme apprend\nà jouer mieux que son auteur."
+  texte: "Arthur Samuel, ingénieur chez IBM, donne à un programme de dames une liste de critères pour juger une position. En jouant, le programme apprend lesquels comptent. Après 8 à 10 heures de jeu, il joue mieux que son auteur."
+  image:
+    attendu: Salle de l'IBM 704 · Lawrence Livermore · octobre 1956
+    legende: Un IBM 704, le modèle utilisé dans ses expériences.
+    fichier: essai-photo.png
+  reperes:
+  - date: "1959"
+    texte: Publication de l'étude dans l'IBM Journal
+  - date: "1962"
+    texte: Le programme bat Robert Nealey, maître de dames autoproclamé
+
+- type: capture
+  role: Exemple
+  titre: "Personne n'écrit\nles règles du spam."
+  texte: "Les arnaques changent sans arrêt. Au lieu d'écrire une règle pour chacune, on montre au modèle des mails déjà triés : spam ou non. Il apprend lui-même ce qui les distingue."
+  fenetre: Messagerie · dossier Spam
+  image:
+    attendu: Votre dossier spam · adresses et noms floutés
+    legende: Le tri se fait à partir des exemples déjà vus.
+    fichier: essai-capture.png
+  sans_image:
+    famille: flux
+    params:
+      lignes:
+      - etapes: [Mails déjà triés, Programme, [Spam, Non-spam]]
+      description: "Des mails déjà triés entrent dans le programme, qui classe chaque nouveau mail en spam ou non-spam."
+  annotation:
+    texte: Classé seul, sans règle écrite
+    haut: 128
+    hauteur: 64

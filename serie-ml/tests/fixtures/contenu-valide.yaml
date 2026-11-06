@@ -1,0 +1,66 @@
+# Contenu de test : structure seulement, textes repris du canevas de l'épisode 08.
+# Fixture de test (B2) : ce n'est pas une production.
+episode: 8
+pages:
+- type: couverture
+  visuel:
+    famille: niveaux
+    params: {chemin: converge}
+- type: ouverture
+  rappel: On sait mesurer l'erreur (Nº 05) et lire une pente (Nº 06 et 07).
+  titre: Descente de gradient.
+  texte: Le modèle ne voit pas toute la courbe d'erreur. Il mesure la pente là où il se trouve, puis fait un pas dans l'autre sens.
+  visuel:
+    famille: courbe
+    params: {pas: 3}
+    calcul: descente_gradient
+  legende: Les pas raccourcissent à mesure que la pente s'aplatit.
+- type: comparaison
+  role: Comparaison
+  titre: "Le bon pas : ni trop petit,\nni trop grand."
+  texte: Même courbe, même départ, trois valeurs de η.
+  visuel:
+    famille: courbe
+    calcul: descente_gradient
+  cas:
+  - etiquette: η = 0,05
+    titre: Trop lent
+    texte: Après 5 pas, toujours loin du creux.
+    params: {eta: 0.05}
+  - etiquette: η = 0,3
+    titre: Convergence
+    texte: 4 pas suffisent pour atteindre le creux.
+    params: {eta: 0.3}
+  - etiquette: η = 1,05
+    titre: Divergence
+    texte: Chaque pas rebondit plus haut.
+    alerte: true
+    params: {eta: 1.05}
+- type: formule
+  role: Formule
+  titre: Tout tient en une ligne.
+  texte: On l'applique à chaque itération t.
+  panneau:
+    formule: θ_{t+1} = θ_t − η ∇J(θ_t)
+  lignes:
+  - {symbole: θ_t, sens: les paramètres du modèle à l'itération t}
+  - {symbole: η, sens: le taux d'apprentissage}
+- type: exemple
+  role: Exemple chiffré
+  titre: Trois pas, à la main.
+  texte: Prenons l'erreur J(θ) = θ², dont la pente vaut 2θ.
+  tableau:
+    calcul: descente_gradient_tableau
+    params: {theta0: 3, eta: 0.1, pas: 3}
+    colonnes:
+    - {titre: Pas, champ: pas}
+    - {titre: θ, champ: theta}
+    - {titre: Nouveau θ, champ: nouveau, style: gras}
+- type: fin
+  points:
+  - Le gradient indique où l'erreur monte. On avance dans l'autre sens.
+  - "Le pas vaut η × la pente : il raccourcit près du minimum."
+  - "η trop petit : c'est lent. Trop grand : ça diverge."
+  verification:
+    question: Pourquoi les pas raccourcissent-ils près du minimum ?
+    page: 2

@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "title": "θ Théta · Le Machine Learning, une notion à la fois",
+    "description": "Une série éditoriale sur LinkedIn par Ladji Lama Kamagate : un carrousel par notion, en PDF, un voyage et un labo en 3D.",
+    "signature": "θ Théta, le Machine Learning, une notion à la fois."
+  },
+  "nav": {
+    "carrousels": "Carrousels PDF",
+    "labo": "Labo 3D",
+    "entrer": "Entrer θ",
+    "profil": "Mon profil",
+    "menu": "Menu",
+    "fermer": "Fermer",
+    "langue": "Langue"
+  },
+  "loader": {
+    "tagline": "Une notion à la fois"
+  },
+  "hero": {
+    "saison": "SAISON 1",
+    "serie": "Série éditoriale sur LinkedIn · #ThetaML",
+    "titre_1": "Comprendre le",
+    "titre_2": "Machine Learning,",
+    "titre_3": "une notion à la fois.",
+    "intro": "Des carrousels courts et exacts, une notion par épisode, un labo 3D pour la manipuler. Le robot θ vous accompagne du premier modèle à la descente de gradient.",
+    "cta_voyage": "Entrer dans le voyage",
+    "cta_pdf": "Les carrousels en PDF",
+    "stat_episodes": "épisodes prévus",
+    "stat_rythme": "posts par semaine",
+    "stat_rythme_val": "2 à 3",
+    "stat_3d": "notions en 3D",
+    "robot_hint": "Cliquez sur le robot",
+    "robot_hint_touch": "Touchez le robot",
+    "defiler": "Défiler"
+  },
+  "carrousels": {
+    "surtitre": "Les carrousels · Saison 1",
+    "titre_1": "Chaque post,",
+    "titre_2": "en PDF.",
+    "intro": "Le jour où un épisode paraît sur LinkedIn, son carrousel arrive ici en PDF, à télécharger et à garder.",
+    "suivre": "Suivre #ThetaML sur LinkedIn",
+    "telecharger": "Télécharger le PDF",
+    "labo": "Ouvrir dans le labo 3D",
+    "email": "Recevoir par e-mail",
+    "pied_reel": "Carrousel θ Théta · PDF · {pages} pages",
+    "pied_provisoire": "Fiche résumé provisoire · PDF",
+    "passer": "Passer à la suite",
+    "prochain": "Prochain · Nº {n} · {titre}",
+    "vers_voyage": "Ou continuer vers le voyage 3D ↓",
+    "precedent": "Précédent",
+    "suivant": "Suivant",
+    "compteur": "{i} / {total}",
+    "pdf_langue": ""
+  },
+  "guide": {
+    "groupe": "Fin de saison",
+    "t1": "Toute la saison,",
+    "t2": "dans un seul guide.",
+    "texte": "Les notions, les formules et les exemples des 62 épisodes, réunis en un PDF à la fin de la saison.",
+    "cta": "Être prévenu de sa sortie"
+  },
+  "createur": {
+    "surtitre": "Derrière θ Théta · Épisode 00",
+    "cta": "Découvrir mon profil",
+    "cta_court": "Voir le profil"
+  },
+  "inscription": {
+    "surtitre": "La liste θ Théta",
+    "titre_1": "Chaque épisode,",
+    "titre_2": "dans votre boîte mail.",
+    "intro": "Le jour de sa sortie, recevez le nouvel épisode avec son PDF. En fin de saison, le guide complet des 62 épisodes.",
+    "plus_1": "Un e-mail par épisode, pas plus",
+    "plus_2": "Le carrousel en PDF joint",
+    "plus_3": "Désinscription en un clic",
+    "prenom": "Prénom",
+    "facultatif": "(facultatif)",
+    "email": "Adresse e-mail",
+    "je_veux": "Je veux recevoir",
+    "pdf": "Les PDF des épisodes",
+    "newsletter": "La newsletter θ Théta",
+    "consentement": "J’accepte de recevoir les e-mails de θ Théta. Mon adresse sert uniquement à cet envoi, n’est jamais revendue, et je peux me désinscrire à tout moment.",
+    "envoyer": "Je m’inscris",
+    "envoi": "Envoi…",
+    "merci": "Merci {prenom}, c’est noté.",
+    "autre": "Inscrire une autre adresse",
+    "err_email": "Indiquez une adresse e-mail valide.",
+    "err_interet": "Choisissez au moins : les PDF ou la newsletter.",
+    "err_consent": "Cochez la case pour accepter de recevoir les e-mails.",
+    "err_envoi": "L’inscription n’a pas pu être envoyée. Réessayez dans un instant."
+  },
+  "modale_pdf": {
+    "titre": "Recevoir le Nº {n} par e-mail",
+    "consent": "Cochez la case pour accepter l’envoi par e-mail.",
+    "aussi_newsletter": "M’inscrire aussi à la newsletter",
+    "envoyer": "Envoyer le PDF",
+    "merci": "C’est parti : le PDF arrive dans votre boîte mail.",
+    "err_envoi": "La demande n’a pas pu être envoyée. Réessayez dans un instant."
+  },
+  "portail": {
+    "titre": "Dernière étape : le voyage 3D ↓",
+    "bouton": "Entrer dans le voyage"
+  },
+  "voyage": {
+    "aide_bureau": "Molette ou flèches pour avancer",
+    "aide_tactile": "Glissez pour avancer",
+    "porte": "Nº {n}",
+    "brouillon": "Fiche provisoire",
+    "guide": "Le guide de fin de saison",
+    "auteur": "L’auteur",
+    "sortie": "Revenir à l’accueil",
+    "contact": "Écrire à l’auteur"
+  },
+  "labo": {
+    "titre": "Labo 3D",
+    "lecture": "Lecture",
+    "pause": "Pause",
+    "reinit": "Réinitialiser",
+    "taux": "Taux d’apprentissage η",
+    "lot": "Taille du lot",
+    "themes": {
+      "derivee": "La dérivée",
+      "gradient": "Le gradient",
+      "descente": "Descente de gradient",
+      "minilots": "Mini-lots",
+      "minlocaux": "Minimums locaux",
+      "selle": "Point selle"
+    }
+  },
+  "profil": {
+    "episode": "Épisode 00 · L’auteur",
+    "retour": "← La série",
+    "contact": "Me contacter",
+    "lire": "Lire",
+    "en_une_phrase": "En une phrase",
+    "projets_titre": "Trois projets, trois notions.",
+    "projet_n": "Projet {i} / {total} · {date}",
+    "filtres": {
+      "all": "Tout",
+      "ml": "Machine Learning",
+      "vision": "Vision",
+      "iot": "IoT"
+    },
+    "preuves_titre": "Certifications et distinctions",
+    "preuves_filtres": {
+      "all": "Tout",
+      "cert": "Certifications",
+      "prix": "Prix"
+    },
+    "ouvrir_fichier": "Ouvrir le fichier",
+    "parcours_titre": "Parcours",
+    "outils_titre": "Ma boîte à outils.",
+    "projet_unite": "projet",
+    "projets_unite": "projets",
+    "fin": "Fin de l’épisode",
+    "stage": "Un stage en ML ? Parlons-en.",
+    "cv": "Télécharger mon CV ↓",
+    "disponible": "Disponible pour un stage"
+  },
+  "episode": {
+    "telecharger": "Télécharger le carrousel (PDF)",
+    "a_retenir": "À retenir",
+    "verifiez": "Vérifiez-vous",
+    "voir_reponse": "Voir la réponse",
+    "post": "Le post LinkedIn",
+    "sources": "Sources",
+    "precedent": "Épisode précédent",
+    "suivant": "Épisode suivant",
+    "labo": "Manipuler dans le labo 3D",
+    "brouillon": "Carrousel en préparation : fiche résumé provisoire."
+  },
+  "footer": {
+    "baseline_1": "Le Machine Learning,",
+    "baseline_2": "une notion à la fois.",
+    "texte": "Une série éditoriale sur LinkedIn, ses carrousels en PDF, un voyage et un labo en 3D.",
+    "serie": "La série",
+    "voyage": "Voyage 3D",
+    "recevoir": "Recevoir les épisodes",
+    "auteur": "L’auteur",
+    "portfolio": "Portfolio",
+    "infos": "Infos",
+    "confidentialite": "Confidentialité",
+    "mentions": "Mentions légales",
+    "desinscrire": "Se désinscrire",
+    "copyright": "© {annee} θ Théta · Ladji Lama Kamagate · Abidjan",
+    "haut": "Haut de page ↑"
+  },
+  "commun": {
+    "fr_seulement": "",
+    "fermer": "Fermer",
+    "precedent": "Précédent",
+    "suivant": "Suivant"
+  }
+}

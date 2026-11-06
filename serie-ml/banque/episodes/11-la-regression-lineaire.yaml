@@ -1,0 +1,73 @@
+numero: 11
+titre: La régression linéaire
+format: long
+saison: 1
+chapitre:
+  numero: 3
+  titre: La régression
+accroche: Tracer la meilleure droite à travers les données.
+couverture:
+  famille: nuage
+  description: nuage de points et droite ajustée
+  verbe: tracer
+  geste: tracer
+prerequis_explicites:
+- 4
+- 5
+- 8
+termes_introduits:
+- terme: poids w
+  formes:
+  - poids w
+- terme: biais b
+  formes:
+  - biais b
+- terme: ajustement
+  formes:
+  - ajustement
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Le prix selon la surface : ŷ = w·x + b.'
+- page: 3
+  type: Mécanisme
+  message: Une droite au hasard, puis MSE, gradient et pas, en boucle.
+- page: 4
+  type: Comparaison
+  message: La droite après 0, 10 et 100 itérations.
+- page: 5
+  type: Formule
+  message: ∂J/∂w = (2/n) Σ (ŷ − y)·x et ∂J/∂b = (2/n) Σ (ŷ − y).
+- page: 6
+  type: Piège
+  message: Une droite ne suit pas une relation courbe.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 12
+  transition: Le prix ne dépend pas que de la surface.
+references:
+  cours:
+  - titre: D2L 3.1
+    url: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  - titre: SKL · Ordinary least squares
+    url: https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
+  # Ajoutée le 2026-11-02 (production de l'épisode) : la boucle de la page 3 (hasard, coût, direction, pas) et les
+  # dérivées de la page 5 avec le facteur 2 (MSE sans 1/2, comme l'épisode 05) ne sont écrites que là ; D2L 3.1 met
+  # un facteur 1/2 dans le coût.
+  - titre: MLCC · Gradient descent
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  # Ajoutée le 2026-11-02 (production de l'épisode) : prix en FCFA (cours de conversion), comme aux fiches 02, 04, 05 et 08.
+  - titre: BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)
+    url: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  sources_originales:
+  # Ajoutée le 2026-11-02 (production de l'épisode) : les maisons d'Ames, exemple suivi de la saison 1 (décision de
+  # l'utilisateur du 2026-10-30), donnent le prix selon la surface de la page 2 et la droite des pages 4 et 6.
+  - citation: De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 2 novembre 2026
+    liens:
+    - titre: Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project
+      url: https://doi.org/10.1080/10691898.2011.11889627
+    - titre: Ames Housing Data, Dean De Cock, Journal of Statistics Education 19(3), consulté le 2 novembre 2026
+      url: http://jse.amstat.org/v19n3/decock/AmesHousing.txt

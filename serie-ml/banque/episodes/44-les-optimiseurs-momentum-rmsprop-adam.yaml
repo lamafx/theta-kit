@@ -1,0 +1,67 @@
+numero: 44
+titre: 'Les optimiseurs : momentum, RMSProp, Adam'
+format: long
+saison: 3
+chapitre:
+  numero: 8
+  titre: Les réseaux de neurones
+accroche: Descendre plus vite, sans déraper.
+couverture:
+  famille: niveaux
+  description: plusieurs chemins sur les lignes de niveau, l'un zigzague, l'autre glisse
+  verbe: chercher
+  geste: visiere
+prerequis_explicites:
+- 9
+- 13
+termes_introduits:
+- terme: momentum
+  formes:
+  - momentum
+- terme: RMSProp
+  formes:
+  - RMSProp
+- terme: Adam
+  formes:
+  - Adam
+- terme: taux d'apprentissage adaptatif
+  formes:
+  - taux d'apprentissage adaptatif
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: La SGD zigzague dans les vallées étroites.
+- page: 3
+  type: Mécanisme
+  message: 'Le momentum : garder de l''élan d''un pas à l''autre.'
+- page: 4
+  type: Mécanisme
+  message: 'RMSProp : un pas adapté à chaque paramètre.'
+- page: 5
+  type: Comparaison
+  message: SGD, momentum et Adam sur la même vallée.
+- page: 6
+  type: Repère
+  message: 'Adam avec η = 0,001 : le réglage par défaut.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 45
+  transition: Un gros réseau surapprend vite. Comment l'en empêcher ?
+references:
+  cours:
+  - titre: D2L 12.6
+    url: https://d2l.ai/chapter_optimization/momentum.html
+  - titre: D2L 12.8
+    url: https://d2l.ai/chapter_optimization/rmsprop.html
+  - titre: D2L 12.10
+    url: https://d2l.ai/chapter_optimization/adam.html
+  sources_originales:
+  - citation: Kingma et Ba (2014), Adam ; Hinton, Lecture 6e · rmsprop
+    liens:
+    - titre: Adam
+      url: https://arxiv.org/abs/1412.6980
+    - titre: Lecture 6e · rmsprop
+      url: https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf

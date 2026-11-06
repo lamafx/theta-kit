@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page de contenu — Formule</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#2D5BFF}a:hover{color:#1C3FC4}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 72px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Geist Mono', monospace; font-size: 17px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<span style="display: flex; gap: 14px"><span style="color: {{accent}}">Nº 08</span><span style="color: #5F6673">Apprendre de ses erreurs</span></span>
+<span style="color: #5F6673">5 / 8</span>
+</div>
+
+<span style="margin-top: 64px; font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{accent}}">Formule</span>
+<h2 style="margin: 16px 0 0; font-size: 54px; line-height: 1.06; font-weight: 600; letter-spacing: -0.03em; color: #0E1116">Tout tient en une ligne.</h2>
+<p style="margin: 24px 0 0; max-width: 880px; font-size: 27px; line-height: 1.45; color: #3E4450">Ce qu’on vient de voir s’écrit avec une seule règle. On l’applique à chaque itération <span style="font-family: 'STIX Two Text', serif; font-style: italic">t</span>, encore et encore, jusqu’à ce que la pente soit presque nulle.</p>
+
+<div style="margin-top: 52px; background: #F4F6FA; border-radius: 24px; padding: 64px 40px; display: flex; justify-content: center">
+<div role="img" aria-label="thêta t plus 1 égale thêta t moins êta fois gradient de J en thêta t" style="font-family: 'STIX Two Text', 'Times New Roman', serif; font-size: 76px; line-height: 1; color: #0E1116; white-space: nowrap"><i>θ</i><sub style="font-size: 0.58em; vertical-align: -0.34em; line-height: 0"><i>t</i>+1</sub><span style="padding: 0 0.26em">=</span><i>θ</i><sub style="font-size: 0.58em; vertical-align: -0.34em; line-height: 0"><i>t</i></sub><span style="padding: 0 0.26em; color: {{accent}}">−</span><i style="color: {{accent}}">η</i><span style="padding-left: 0.1em">∇</span><i>J</i>(<i>θ</i><sub style="font-size: 0.58em; vertical-align: -0.34em; line-height: 0"><i>t</i></sub>)</div>
+</div>
+
+<div style="margin-top: 44px; display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid #E4E6EA">
+<span style="font-family: 'STIX Two Text', serif; font-size: 36px; color: #0E1116"><i>θ</i><sub style="font-size: 0.6em; vertical-align: -0.3em; line-height: 0"><i>t</i></sub></span>
+<span style="font-size: 24px; line-height: 1.4; color: #3E4450">les paramètres du modèle à l’itération <span style="font-family: 'STIX Two Text', serif; font-style: italic">t</span></span>
+</div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid #E4E6EA">
+<span style="font-family: 'STIX Two Text', serif; font-size: 36px; color: #0E1116">∇<i>J</i>(<i>θ</i><sub style="font-size: 0.6em; vertical-align: -0.3em; line-height: 0"><i>t</i></sub>)</span>
+<span style="font-size: 24px; line-height: 1.4; color: #3E4450">la pente de l’erreur, là où se trouve le modèle</span>
+</div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid #E4E6EA">
+<span style="font-family: 'STIX Two Text', serif; font-style: italic; font-size: 36px; color: {{accent}}">η</span>
+<span style="font-size: 24px; line-height: 1.4; color: #3E4450">le taux d’apprentissage : la taille du pas</span>
+</div>
+<div style="display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid #E4E6EA; border-bottom: 1px solid #E4E6EA">
+<span style="font-family: 'STIX Two Text', serif; font-size: 36px; color: {{accent}}">−</span>
+<span style="font-size: 24px; line-height: 1.4; color: #3E4450">on va dans le sens opposé à la pente</span>
+</div>
+</div>
+
+<div style="margin-top: auto; padding-top: 22px; border-top: 1px solid #E4E6EA; display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 20px; font-weight: 500; color: #0E1116">Ladji Lama Kamagate</span>
+<span style="display: flex; align-items: center; gap: 12px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">Glissez</span>
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2D5BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#2D5BFF","options":["#2D5BFF","#2D6CDF","#0E1116"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+return { accent: this.props.accent ?? '#2D5BFF' };
+}
+}
+</script>
+</body>
+</html>

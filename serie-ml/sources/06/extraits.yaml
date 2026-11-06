@@ -1,0 +1,107 @@
+# Extraits mot pour mot des références de la fiche 06, lus le 2026-11-01 : D2L 2.4 (page HTML) et DLB ch. 4
+# (version HTML du livre, page 81 à 83 ; le prime de f′(x), perdu par l'extraction du texte, est rétabli comme
+# dans l'original).
+episode: 6
+extraits:
+- id: d2l-taux
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: Put simply, a derivative is the rate of change in a function with respect to changes in its arguments.
+  appuie: "Ouverture : la dérivée dit de combien la fonction change quand on bouge son entrée."
+- id: d2l-pente
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: Note that derivatives tell us the slope of a function at a particular location.
+  appuie: "Ouverture : la dérivée est la pente de la courbe en un point."
+- id: d2l-tangente
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: Now we can plot the function u = f(x) and its tangent line y = 2x - 3 at x=1, where the coefficient 2 is the slope of the tangent line.
+  appuie: "Ouverture : la tangente en un point est une droite dont la pente est la dérivée en ce point."
+- id: d2l-limite
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: This limit tells us what the ratio between a perturbation h and the change in the function value f(x + h) - f(x) converges to as we shrink its size to zero.
+  appuie: "Exemple chiffré : la hausse de J divisée par un petit pas h s'approche de la dérivée quand h rapetisse."
+- id: d2l-numerique
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: Setting x=1, we see that \frac{f(x+h) - f(x)}{h} approaches 2 as h approaches 0.
+  appuie: "Exemple chiffré : la même vérification, pas de plus en plus petits, faite ici en a = 3."
+- id: d2l-instantane
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: We can interpret the derivative f′(x) as the instantaneous rate of change of f(x) with respect to x.
+  appuie: "Ouverture et exemple : la notation f′ (ici J′) et le sens de taux de variation en un point."
+- id: d2l-vitesse
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: Derivatives can tell us how rapidly a loss function would increase or decrease were we to increase or decrease each parameter by an infinitesimally small amount.
+  appuie: "Mécanisme et exemple : le signe dit si le coût monte ou descend, la taille dit à quelle vitesse."
+- id: d2l-puissance
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: "\\frac{d}{dx} x^n = n x^{n-1} for n \\neq 0"
+  appuie: "Exemple chiffré : la dérivée de a² est 2a (règle de la puissance, n = 2)."
+- id: d2l-optimisation
+  reference: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_sur: https://d2l.ai/chapter_preliminaries/calculus.html
+  lu_le: 2026-11-01
+  extrait: This comes in handy for the optimization problems that we face in deep learning, where we repeatedly update our parameters in order to decrease the loss function.
+  appuie: "Ouverture et fin : la dérivée sert à faire baisser le coût en réglant les paramètres."
+- id: dlb-pente
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: The derivative f′(x) gives the slope of f(x) at the point x.
+  appuie: "Ouverture : la dérivée en un point est la pente de la courbe en ce point."
+- id: dlb-petit-pas
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: In other words, it specifies how to scale a small change in the input to obtain the corresponding change in the output
+  appuie: "Exemple chiffré : un petit pas sur a change J d'environ la pente fois ce pas."
+- id: dlb-negatif
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: For x < 0, we have f′(x) < 0, so we can decrease f by moving rightward.
+  appuie: "Mécanisme : dérivée négative, la courbe descend quand l'entrée augmente."
+- id: dlb-positif
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: For x > 0, we have f′(x) > 0, so we can decrease f by moving leftward.
+  appuie: "Mécanisme : dérivée positive, la courbe monte quand l'entrée augmente."
+- id: dlb-minimum
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: Global minimum at x = 0.
+  appuie: "Mécanisme : au fond du creux de la parabole, la pente est nulle (figure 4.1 du livre)."
+- id: dlb-critique
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: A critical point is a point with zero slope.
+  appuie: "Mécanisme : une pente nulle signale un point où la courbe est plate."
+- id: dlb-types
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: Such a point can either be a local minimum, which is lower than the neighboring points; a local maximum, which is higher than the neighboring points; or a saddle point, which has neighbors that are both higher and lower than the point itself.
+  appuie: "Mécanisme, la nuance : une pente nulle n'est pas toujours un creux ; elle l'est aussi au sommet d'une bosse."
+- id: dlb-sans-direction
+  reference: https://www.deeplearningbook.org/contents/numerical.html
+  lu_sur: https://www.deeplearningbook.org/contents/numerical.html
+  lu_le: 2026-11-01
+  extrait: When f′(x) = 0, the derivative provides no information about which direction to move.
+  appuie: "Mécanisme : pente nulle, la dérivée n'indique plus de quel côté aller."

@@ -1,0 +1,14 @@
+# Fixture de test (session de design n° 1, A22) : la page de fin de l'épisode 62, pour la référence Fin-Serie.
+# Les points et la question sont des textes d'essai, pas une production : seul le bloc de clôture est étudié.
+episode: 62
+premiere_page: 9
+total: 9
+pages:
+- type: fin
+  points:
+  - Premier point à retenir, texte d'essai sur une ligne.
+  - Deuxième point à retenir, texte d'essai un peu plus long.
+  - Troisième point, texte d'essai.
+  verification:
+    question: Question d'essai pour l'encadré de vérification ?
+    page: 3

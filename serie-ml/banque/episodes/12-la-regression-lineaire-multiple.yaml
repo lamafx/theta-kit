@@ -1,0 +1,45 @@
+numero: 12
+titre: La régression linéaire multiple
+format: court
+saison: 1
+chapitre:
+  numero: 3
+  titre: La régression
+accroche: Plusieurs caractéristiques, un seul résultat.
+couverture:
+  famille: nuage
+  description: plan incliné au-dessus d'un nuage de points en perspective
+  verbe: peser
+  geste: balance
+prerequis_explicites: []
+termes_introduits:
+- terme: vecteur de poids
+  formes:
+  - vecteur de poids
+- terme: produit scalaire
+  formes:
+  - produit scalaire
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: ŷ = w₁x₁ + w₂x₂ + … + b.
+- page: 3
+  type: Mécanisme
+  message: Avec deux caractéristiques, la droite devient un plan.
+- page: 4
+  type: Lecture
+  message: Chaque poids dit l'influence d'une caractéristique… si elles sont à la même échelle.
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 13
+  transition: 'Justement : des m² et un nombre de chambres ne sont pas à la même échelle.'
+references:
+  cours:
+  - titre: SKL · Linear models
+    url: https://scikit-learn.org/stable/modules/linear_model.html
+  - titre: MLCC · Feature vectors
+    url: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  sources_originales: []

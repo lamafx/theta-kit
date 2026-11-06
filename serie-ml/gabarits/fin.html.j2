@@ -1,0 +1,53 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+{% if reprise is defined %}
+{#- Fin du post bilan (A35) : la reprise et ce qui vient, sans points ni « Vérifiez-vous ». -#}
+<span class="a-retenir">{{ reprise.etiquette|typo }}</span>
+<p class="reprise">{{ reprise.titre|typo }}</p>
+
+<ol class="points lignes-reprise">
+{% for l in reprise.lignes %}
+<li>
+<span class="numero-point">{{ l.numero }}</span>
+<span class="point">{{ l.titre|typo }}</span>
+</li>
+{% endfor %}
+</ol>
+{% else %}
+<span class="a-retenir">À retenir</span>
+
+<ol class="points">
+{% for pt in p.points %}
+<li>
+<span class="numero-point">{{ "%02d"|format(loop.index) }}</span>
+<span class="point">{{ pt|texte }}</span>
+</li>
+{% endfor %}
+</ol>
+
+<div class="verifiez">
+<span class="etiquette-verifiez">Vérifiez-vous</span>
+<span class="question">{{ p.verification.question|texte }}</span>
+<span class="reponse">{{ ("Réponse : page %d"|format(p.verification.page))|typo }}</span>
+</div>
+{% endif %}
+
+<div class="suivant">
+<span class="etiquette-suivant">{{ suivant.etiquette|typo }}</span>
+<span class="titre-suivant">{{ suivant.titre|typo }}</span>
+{% if suivant.transition %}<span class="transition">{{ suivant.transition|typo }}</span>
+{% endif %}{% if suivant.saisons %}
+<ol class="saisons">
+{% for s in suivant.saisons %}
+<li><span class="saison">Saison {{ s.numero }}</span><span class="episodes">{{ ("Nº %02d à %02d"|format(s.debut, s.fin))|typo }}</span></li>
+{% endfor %}
+</ol>
+{% endif %}<span class="invitation">{{ suivant.invitation|typo }}</span>
+</div>
+
+{{ ui.pied(signature, glissez=False) }}
+
+{{ robot }}
+{% endblock %}

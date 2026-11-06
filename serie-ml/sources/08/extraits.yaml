@@ -1,0 +1,315 @@
+# Extraits mot pour mot des références de la fiche 08, lus le 2026-11-01 : MLCC « Gradient descent » et
+# « Hyperparameters » (pages HTML ; formules en LaTeX comme dans la source), D2L 12.3 (page HTML, formules en LaTeX
+# comme dans la source) et Ruder (2016), arXiv:1609.04747v2 (PDF ; θ, η et ∇, perdus par l'extraction du texte,
+# rétablis comme dans l'original). Les maisons d'Ames (fil rouge de la saison 1) servent à la page Piège : extraits
+# de De Cock (2011) relus le 2026-11-01 ; le cours BCEAO du 27 octobre 2026 est repris de sources/05/ (lu le
+# 2026-10-30), car la page de la BCEAO affiche aujourd'hui le cours du 30 octobre et calculs/devises.py garde
+# celui du 27.
+episode: 8
+extraits:
+# --- MLCC · Gradient descent ---------------------------------------------------------------
+- id: mlcc-iteratif
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: Gradient descent is a mathematical technique that iteratively finds the weights and bias that produce the model with the lowest loss.
+  appuie: "Ouverture et formule : la descente de gradient cherche, pas après pas, les paramètres au coût le plus faible."
+- id: mlcc-direction
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: Determine the direction to move the weights and bias that reduce loss.
+  appuie: "Ouverture : à chaque pas, le modèle cherche le sens qui fait baisser le coût."
+- id: mlcc-petit-pas
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: Move the weight and bias values a small amount in the direction that reduces loss.
+  appuie: "Ouverture : un pas dans le sens qui fait baisser le coût."
+- id: mlcc-recommencer
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: Return to step one and repeat the process until the model can't reduce the loss any further.
+  appuie: "Ouverture et formule : on recommence, pas après pas (itérations)."
+- id: mlcc-pente-negative
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: Move a small amount in the direction of the negative slope to get the next weight and bias.
+  appuie: "Ouverture : le pas va dans le sens opposé à la pente."
+- id: mlcc-nouveau
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: "New\\ weight = old\\ weight - (small\\ amount * weight\\ slope)"
+  appuie: "Formule : nouveau paramètre = ancien paramètre − taux × pente."
+- id: mlcc-converge
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: When a model converges, additional iterations don't reduce loss more because gradient descent has found the weights and bias that nearly minimize the loss.
+  appuie: "Comparaison et piège : la convergence ; au-delà, de nouvelles itérations ne font plus baisser le coût."
+- id: mlcc-convexe
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: The loss functions for linear models always produce a convex surface. As a result of this property, when a linear regression model converges, we know the model has found the weights and bias that produce the lowest loss.
+  appuie: "Piège : pour une droite, le creux où la descente s'arrête est le coût le plus faible de la droite."
+- id: mlcc-bille
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: the points would look like a ball rolling down a hill, finally stopping at the point where there's no more downward slope.
+  appuie: "Piège : là où la pente est nulle, la descente s'arrête."
+- id: mlcc-plancher
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: This point represents the minimum loss for the model, which is typically greater than 0.
+  appuie: "Piège : au minimum, le coût reste en général au-dessus de zéro."
+- id: mlcc-zero
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: A loss of 0 would mean that the model fits every data point exactly, which is usually a sign of overfitting (i.e., the model is too complex/powerful).
+  appuie: "Piège : un coût nul voudrait dire que la droite passe par chaque point ; un modèle plus puissant peut descendre plus bas."
+- id: mlcc-meilleur
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  lu_le: 2026-11-01
+  extrait: This would be the best model for this dataset because no other weight and bias values produce a model with lower loss.
+  appuie: "Piège : aucun autre réglage de la droite ne fait mieux ; plus de pas n'y changent rien."
+# --- MLCC · Hyperparameters ----------------------------------------------------------------
+- id: mlcc-taux
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: Learning rate is a floating point number you set that influences how quickly the model converges.
+  appuie: "Mécanisme : le taux d'apprentissage η est un nombre choisi d'avance."
+- id: mlcc-controle
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: In other words, hyperparameters are values that you control; parameters are values that the model calculates during training.
+  appuie: "Mécanisme : η est réglé par nous ; le paramètre θ est ajusté par le modèle."
+- id: mlcc-multiplie
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: The model multiplies the gradient by the learning rate to determine the model's parameters (weight and bias values) for the next iteration.
+  appuie: "Mécanisme et exemple chiffré : le pas vaut η × la pente."
+- id: mlcc-proportionnel
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: The difference between the old model parameters and the new model parameters is proportional to the slope of the loss function.
+  appuie: "Mécanisme : le déplacement est proportionnel à la pente."
+- id: mlcc-grand-pas
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: For example, if the slope is large, the model takes a large step. If small, it takes a small step.
+  appuie: "Mécanisme : pente forte, grand pas ; pente faible, petit pas."
+- id: mlcc-trop-bas
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: If the learning rate is too low, the model can take a long time to converge.
+  appuie: "Comparaison : η trop petit, on avance à peine."
+- id: mlcc-trop-haut
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: However, if the learning rate is too high, the model never converges, but instead bounces around the weights and bias that minimize the loss.
+  appuie: "Comparaison : η trop grand, le point saute d'un bord à l'autre du creux."
+- id: mlcc-augmente
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: A learning rate that's too large never converges because each iteration either causes the loss to bounce around or continually increase.
+  appuie: "Comparaison : η trop grand, le coût rebondit ou ne cesse d'augmenter."
+- id: mlcc-ideal
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: The ideal learning rate is problem-dependent.
+  appuie: "Comparaison (encadré) : le bon η dépend du problème."
+- id: mlcc-propre
+  reference: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_sur: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  lu_le: 2026-11-01
+  extrait: Each model and dataset will have its own ideal learning rate.
+  appuie: "Comparaison (encadré) : chaque modèle et chaque jeu de données a son propre η."
+# --- D2L 12.3 · Gradient Descent -----------------------------------------------------------
+- id: d2l-negatif
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "It is not unreasonable to assume that for small \\(\\epsilon\\) moving in the direction of the negative gradient will decrease \\(f\\)."
+  appuie: "Ouverture : un petit pas dans le sens opposé à la pente fait baisser le coût."
+- id: d2l-local
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "That is, in first-order approximation \\(f(x+\\epsilon)\\) is given by the function value \\(f(x)\\) and the first derivative \\(f'(x)\\) at \\(x\\)."
+  appuie: "Ouverture : le pas se décide avec la valeur et la pente au point où l'on se trouve."
+- id: d2l-fixe
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "To keep things simple we pick a fixed step size \\(\\eta > 0\\) and choose \\(\\epsilon = -\\eta f'(x)\\)."
+  appuie: "Mécanisme : η fixe ; le déplacement vaut − η × la pente."
+- id: d2l-concepteur
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "The learning rate \\(\\eta\\) can be set by the algorithm designer."
+  appuie: "Mécanisme : η, le taux d'apprentissage, est choisi par qui entraîne le modèle."
+- id: d2l-regle
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "(12.3.4)¶\\[x \\leftarrow x - \\eta f'(x)\\] to iterate \\(x\\), the value of function \\(f(x)\\) might decline."
+  appuie: "Formule : la règle de mise à jour, avec un seul paramètre."
+- id: d2l-arret
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "continuously iterate \\(x\\) until the stop condition is reached, for example, when the magnitude of the gradient \\(|f'(x)|\\) is small enough or the number of iterations has reached a certain value."
+  appuie: "Formule : on répète jusqu'à une pente presque nulle ou un nombre d'itérations fixé."
+- id: d2l-carre
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "For simplicity we choose the objective function \\(f(x)=x^2\\) to illustrate how to implement gradient descent."
+  appuie: "Exemple chiffré et comparaison : le coût J(θ) = θ², choisi pour l'exemple."
+- id: d2l-lent
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "If we use a learning rate that is too small, it will cause \\(x\\) to update very slowly, requiring more iterations to get a better solution."
+  appuie: "Comparaison : η trop petit, θ avance très lentement."
+- id: d2l-diverge
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "For example, when we set the learning rate to \\(\\eta=1.1\\), \\(x\\) overshoots the optimal solution \\(x=0\\) and gradually diverges."
+  appuie: "Comparaison : sur f(x) = x², un η trop grand fait dépasser le creux et diverger."
+- id: d2l-oscille
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "If we pick it too small, we make little progress. If we pick it too large, the solution oscillates and in the worst case it might even diverge."
+  appuie: "Comparaison : trop petit, peu de progrès ; trop grand, oscillation, et au pire divergence."
+- id: d2l-plusieurs
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: "\\[\\mathbf{x} \\leftarrow \\mathbf{x} - \\eta \\nabla f(\\mathbf{x}).\\]"
+  appuie: "Formule : avec plusieurs paramètres, la pente est remplacée par le gradient ∇J."
+- id: d2l-resume
+  reference: https://d2l.ai/chapter_optimization/gd.html
+  lu_sur: https://d2l.ai/chapter_optimization/gd.html
+  lu_le: 2026-11-01
+  extrait: Learning rates matter. Too large and we diverge, too small and we do not make progress.
+  appuie: "Comparaison et fin : η trop petit, c'est lent ; trop grand, ça diverge."
+# --- Ruder (2016) ----------------------------------------------------------------------------
+- id: ruder-oppose
+  reference: https://arxiv.org/abs/1609.04747
+  lu_sur: https://arxiv.org/pdf/1609.04747
+  lu_le: 2026-11-01
+  extrait: "Gradient descent is a way to minimize an objective function J(θ) parameterized by a model's parameters θ ∈ R^d by updating the parameters in the opposite direction of the gradient of the objective function ∇_θ J(θ) w.r.t. to the parameters."
+  appuie: "Ouverture et formule : on met à jour les paramètres θ dans le sens opposé au gradient de J."
+- id: ruder-taille
+  reference: https://arxiv.org/abs/1609.04747
+  lu_sur: https://arxiv.org/pdf/1609.04747
+  lu_le: 2026-11-01
+  extrait: The learning rate η determines the size of the steps we take to reach a (local) minimum.
+  appuie: "Mécanisme et formule : η, le taux d'apprentissage, règle la taille du pas."
+- id: ruder-formule
+  reference: https://arxiv.org/abs/1609.04747
+  lu_sur: https://arxiv.org/pdf/1609.04747
+  lu_le: 2026-11-01
+  extrait: "θ = θ − η · ∇_θ J(θ)"
+  appuie: "Formule : θ ← θ − η∇J(θ) (équation 1 de l'article, descente sur tout le jeu de données)."
+- id: ruder-aveugle
+  reference: https://arxiv.org/abs/1609.04747
+  lu_sur: https://arxiv.org/pdf/1609.04747
+  lu_le: 2026-11-01
+  extrait: However, a ball that rolls down a hill, blindly following the slope, is highly unsatisfactory.
+  appuie: "Ouverture : la descente suit la pente sans voir plus loin."
+- id: ruder-defi
+  reference: https://arxiv.org/abs/1609.04747
+  lu_sur: https://arxiv.org/pdf/1609.04747
+  lu_le: 2026-11-01
+  extrait: A learning rate that is too small leads to painfully slow convergence, while a learning rate that is too large can hinder convergence and cause the loss function to fluctuate around the minimum or even to diverge.
+  appuie: "Comparaison : trop petit, convergence lente ; trop grand, oscillation autour du minimum, voire divergence."
+# --- Maisons d'Ames (page Piège) -----------------------------------------------------------
+- id: ames-ventes
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-11-01
+  extrait: This paper presents a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations
+  appuie: "Piège : les ventes de maisons d'Ames ; coût J calculé par calculs/cout.py."
+- id: ames-surface
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-01
+  extrait: "Gr Liv Area (Continuous): Above grade (ground) living area square feet"
+  appuie: "Piège : l'entrée de la droite, la surface habitable (en centaines de m², calculs/ames.py)."
+- id: ames-prix
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-01
+  extrait: "SalePrice (Continuous): Sale price $$"
+  appuie: "Piège : le prix de vente, converti en millions de FCFA (calculs/devises.py)."
+- id: ames-fichier
+  reference: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_sur: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_le: 2026-11-01
+  extrait: Gr Liv Area
+  appuie: "Piège : la colonne de la surface dans le fichier de données, cité avec la date de consultation."
+- id: bceao-dollar
+  reference: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_sur: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_le: 2026-10-30
+  extrait: "Cours des devises du mardi 27 Octobre 2026 Devise FCFA Euro 655,9570 Dollar us 588,3000"
+  appuie: "Piège : le coût J en millions de FCFA au carré, au cours du 27 octobre 2026 (repris de sources/05/)."
+# Ajoutés le 2026-11-05 (texte du post réécrit, A63). Note de Cauchy lue en traduction anglaise.
+- id: cauchy-petit-theta
+  reference: https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf
+  lu_sur: https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf
+  lu_le: 2026-11-05
+  extrait: "will become inferior to u, if θ is sufficiently small"
+  appuie: "Post : Cauchy note θ le petit nombre qui fixe la taille du pas."
+- id: cauchy-orbite
+  reference: https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf
+  lu_sur: https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf
+  lu_le: 2026-11-05
+  extrait: "Then the unknowns are in number six."
+  appuie: "Post : six inconnues pour l'orbite d'un astre."
+- id: lemarechal-astronomie
+  reference: https://ems.press/books/dms/251/4938
+  lu_sur: https://ems.press/content/book-chapter-files/27368?nt=1
+  lu_le: 2026-11-05
+  extrait: "Cauchy is motivated by astronomic calculations"
+  appuie: "Post : une méthode née de calculs d'astronomie."
+- id: lemarechal-date
+  reference: https://ems.press/books/dms/251/4938
+  lu_sur: https://ems.press/content/book-chapter-files/27368?nt=1
+  lu_le: 2026-11-05
+  extrait: "of October 18, 1847"
+  appuie: "Post : la note date du 18 octobre 1847."
+- id: brown-parametres
+  reference: https://arxiv.org/abs/2005.14165
+  lu_sur: https://arxiv.org/abs/2005.14165
+  lu_le: 2026-11-05
+  extrait: "an autoregressive language model with 175 billion parameters"
+  appuie: "Post : 175 milliards de paramètres pour GPT-3 en 2020."
+- id: brown-adam
+  reference: https://arxiv.org/abs/2005.14165
+  lu_sur: https://ar5iv.labs.arxiv.org/html/2005.14165
+  lu_le: 2026-11-05
+  extrait: "To train all versions of GPT-3, we use Adam"
+  appuie: "Post : GPT-3 est entraîné avec Adam, une variante de la descente de gradient."

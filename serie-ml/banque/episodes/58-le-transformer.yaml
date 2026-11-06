@@ -1,0 +1,63 @@
+numero: 58
+titre: Le Transformer
+format: long
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: L'architecture derrière les grands modèles de langage.
+couverture:
+  famille: blocs
+  description: blocs empilés reliés par des flèches résiduelles
+  verbe: montrer
+  geste: pointer
+prerequis_explicites:
+- 42
+- 46
+termes_introduits:
+- terme: Transformer
+  formes:
+  - Transformer
+- terme: encodage de position
+  formes:
+  - encodage de position
+- terme: encodeur
+  formes:
+  - encodeur
+- terme: décodeur
+  formes:
+  - décodeur
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Auto-attention et réseau dense, empilés N fois.
+- page: 3
+  type: Mécanisme
+  message: L'encodage de position redonne l'ordre des mots.
+- page: 4
+  type: Mécanisme
+  message: 'Connexions résiduelles et normalisation : entraîner très profond (42).'
+- page: 5
+  type: Comparaison
+  message: 'RNN : mot par mot. Transformer : toute la phrase en parallèle.'
+- page: 6
+  type: Repère
+  message: Encodeur (BERT) et décodeur (GPT).
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 59
+  transition: Que fait un décodeur, au juste ? Il prédit le token suivant.
+references:
+  cours:
+  - titre: D2L 11.7
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html
+  - titre: MLCC · Transformers
+    url: https://developers.google.com/machine-learning/crash-course/llm/transformers
+  sources_originales:
+  - citation: Vaswani et al. (2017), même article ; Devlin et al. (2018), BERT
+    liens:
+    - titre: BERT
+      url: https://arxiv.org/abs/1810.04805

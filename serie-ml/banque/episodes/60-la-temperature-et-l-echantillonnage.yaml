@@ -1,0 +1,54 @@
+numero: 60
+titre: La température et l'échantillonnage
+format: court
+saison: 4
+chapitre:
+  numero: 10
+  titre: Le langage
+accroche: Régler la créativité d'un modèle.
+couverture:
+  famille: barres
+  description: barres de probabilités plus ou moins aplaties
+  verbe: régler
+  geste: regler
+prerequis_explicites: []
+termes_introduits:
+- terme: température
+  formes:
+  - température
+- terme: échantillonnage
+  formes:
+  - échantillonnage
+- terme: top-k
+  formes:
+  - top-k
+- terme: top-p
+  formes:
+  - top-p
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Diviser les logits par T avant la softmax.
+- page: 3
+  type: Comparaison
+  message: 'T = 0,2, 1 et 2 : distribution plus concentrée, inchangée, plus aplatie. La température change la diversité
+    des réponses, pas leur justesse.'
+- page: 4
+  type: Repère
+  message: 'Top-k et top-p : ne tirer que parmi les tokens les plus probables.'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 61
+  transition: Un modèle généraliste. Comment le spécialiser ?
+references:
+  cours:
+  - titre: D2L 11.9
+    url: https://d2l.ai/chapter_attention-mechanisms-and-transformers/large-pretraining-transformers.html
+  sources_originales:
+  - citation: Holtzman et al. (2019), The Curious Case of Neural Text Degeneration
+    liens:
+    - titre: The Curious Case of Neural Text Degeneration
+      url: https://arxiv.org/abs/1904.09751

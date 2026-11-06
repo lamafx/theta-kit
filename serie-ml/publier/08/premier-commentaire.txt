@@ -1,0 +1,10 @@
+Références de l’épisode Nº 08 :
+- MLCC · Gradient descent : https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+- MLCC · Hyperparameters : https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+- D2L 12.3 : https://d2l.ai/chapter_optimization/gd.html
+- BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA) : https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+- Ruder (2016), An overview of gradient descent optimization algorithms : https://arxiv.org/abs/1609.04747
+- De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 1er novembre 2026 : https://doi.org/10.1080/10691898.2011.11889627 ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+- Cauchy (1847), Méthode générale pour la résolution des systèmes d'équations simultanées, Comptes rendus de l'Académie des sciences 25, 536-538 ; traduction anglaise en ligne : https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf
+- Lemaréchal (2012), Cauchy and the Gradient Method, Documenta Mathematica, Extra Volume ISMP, 251-254 : https://ems.press/books/dms/251/4938
+- Brown et al. (2020), Language Models are Few-Shot Learners, arXiv:2005.14165 : https://arxiv.org/abs/2005.14165

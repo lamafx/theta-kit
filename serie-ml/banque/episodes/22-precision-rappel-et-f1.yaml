@@ -1,0 +1,56 @@
+numero: 22
+titre: Précision, rappel et F1
+format: long
+saison: 2
+chapitre:
+  numero: 5
+  titre: Évaluer un modèle
+accroche: Ne pas crier au loup, et ne pas rater le loup.
+couverture:
+  famille: barres
+  description: deux jauges qui se répondent
+  verbe: peser
+  geste: balance
+prerequis_explicites: []
+termes_introduits:
+- terme: précision
+  formes:
+  - précision
+- terme: rappel
+  formes:
+  - rappel
+- terme: score F1
+  formes:
+  - score F1
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Précision : parmi mes alertes, combien sont justes ?'
+- page: 3
+  type: Mécanisme
+  message: 'Rappel : parmi les vrais cas, combien j''en attrape ?'
+- page: 4
+  type: Comparaison
+  message: 'Filtre anti-spam ou dépistage d''une maladie : laquelle des deux compte le plus.'
+- page: 5
+  type: Formule
+  message: F1 = 2PR / (P + R).
+- page: 6
+  type: Mécanisme
+  message: Déplacer le seuil (17) échange de la précision contre du rappel.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 23
+  transition: Et si on regardait tous les seuils à la fois ?
+references:
+  cours:
+  - titre: MLCC · Accuracy, precision, recall
+    url: https://developers.google.com/machine-learning/crash-course/classification/accuracy-precision-recall
+  sources_originales:
+  - citation: Davis et Goadrich (2006), The relationship between Precision-Recall and ROC curves, ICML
+    liens:
+    - titre: The relationship between Precision-Recall and ROC curves
+      url: https://doi.org/10.1145/1143844.1143874

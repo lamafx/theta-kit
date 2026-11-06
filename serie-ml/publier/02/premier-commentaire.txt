@@ -1,0 +1,8 @@
+Références de l’épisode Nº 02 :
+- MLCC · Feature vectors : https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+- MLCC · Machine Learning Glossary : https://developers.google.com/machine-learning/glossary
+- BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA) : https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+- MLCC · Categorical data, vocabulary and one-hot encoding : https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding
+- scikit-learn · Preprocessing data, Encoding categorical features : https://scikit-learn.org/stable/modules/preprocessing.html
+- scikit-learn · Ensembles, Categorical Features Support : https://scikit-learn.org/stable/modules/ensemble.html
+- De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 31 octobre 2026 : https://doi.org/10.1080/10691898.2011.11889627 ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt

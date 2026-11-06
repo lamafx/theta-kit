@@ -1,0 +1,557 @@
+episodes:
+  '01':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T01:23:01'
+        empreinte: 0fd1146000d4642341e61f102a56504556f6de96b4b2c0a346e86d2358172435
+      sources:
+        fait_le: '2026-11-02T01:23:03'
+        empreinte: f08a95869f4486ed889093584ca11052e8309b842bd858eb72a86fe25e89013a
+      contenu:
+        fait_le: '2026-11-05T15:55:28'
+        empreinte: 173c5b8c5deadaaf0fbabd8fed62117ebccd0892d2ad919bb551c1f7462b42ea
+      linkedin:
+        fait_le: '2026-11-05T15:55:31'
+        empreinte: d56e269c796d95337c7df146d02160d8a88f871d6943b63e6c1b2084e9709a44
+      images:
+        fait_le: '2026-11-05T15:55:35'
+        empreinte: 247291148634fdcd3574753f0768ebc6bb37db638b8885d4fca2cf63926410f0
+      rendu:
+        fait_le: '2026-11-05T15:55:56'
+        empreinte: 087e19bfbb0819c62c2c000aa8013fa58817db4adf3872126c4b597ac928552e
+      verification:
+        fait_le: '2026-11-05T15:58:04'
+        empreinte: cd6d964af3810dcaa785a379304e55a389703354bd93e3c9f5afb07d650519bd
+      relecture:
+        fait_le: '2026-11-06T02:22:25'
+        empreinte: 88109ad2f3518be9ef1f11a044674dd5a0e84d0c93ceae976929872ebd4c026c
+      publication:
+        fait_le: '2026-11-05T15:58:19'
+        empreinte: 669d556cb160440ee05b909a33a2e59abbe236df5a9a040405281a22302c7d93
+    publie_le: null
+  '02':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T01:23:24'
+        empreinte: ee383b086c46b69520e479c04e608bf3c3d9ab23f8a8c941beccabad52a8e14c
+      sources:
+        fait_le: '2026-11-02T01:23:27'
+        empreinte: 80df6416d711b77409dec80b77bba4a3d89d40498417f89e36033b4bca09a0d4
+      contenu:
+        fait_le: '2026-11-05T15:58:24'
+        empreinte: 073bfb011b3602d45a96b9809bea1ec12905b9420c2043091790a054a97710d9
+      linkedin:
+        fait_le: '2026-11-05T15:58:26'
+        empreinte: 257af8f7d8a87fa7a8075fce3fada1d060dc9dca31ddb5b25efad178aff03c60
+      images:
+        fait_le: '2026-11-05T15:58:29'
+        empreinte: 257af8f7d8a87fa7a8075fce3fada1d060dc9dca31ddb5b25efad178aff03c60
+      rendu:
+        fait_le: '2026-11-05T15:58:40'
+        empreinte: 391748d97e302d910d9f23be4b00d3b0c279d2a842bad44279f666d53945113f
+      verification:
+        fait_le: '2026-11-05T15:59:04'
+        empreinte: ccaf9557746d93195bf6e50a67cdb713103560438a0d059d33fef0ee56b09b46
+      relecture:
+        fait_le: '2026-11-06T02:22:27'
+        empreinte: 4c5c6c92797acb35a1addbaff952e002d4fb530ccaaec4c878629ae78154b6eb
+      publication:
+        fait_le: '2026-11-05T15:59:19'
+        empreinte: 5fcb565f07cbf8799ebb2d9d2d21450b0ff6a0de3d1ee2135706018bdc1d8538
+    publie_le: null
+  '03':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T01:23:44'
+        empreinte: cff72bdbcd046172bb99807d760ace406adb353a33848350327b11daa2693aee
+      sources:
+        fait_le: '2026-11-02T01:23:47'
+        empreinte: cd01c1d7eafff23d7e76bc3ec41c2e9418b9d72ac1a654cb9ee82d6598203779
+      contenu:
+        fait_le: '2026-11-05T15:59:22'
+        empreinte: 587e928a3fdfa0486eab6079a24115149e6c1ed70879ae37a4a554a99bc7d694
+      linkedin:
+        fait_le: '2026-11-05T15:59:25'
+        empreinte: 02c95d26dbd792c564467e37df164f3164dee3ddc32ec76e6df31ea0931a5ae5
+      images:
+        fait_le: '2026-11-05T15:59:27'
+        empreinte: 02c95d26dbd792c564467e37df164f3164dee3ddc32ec76e6df31ea0931a5ae5
+      rendu:
+        fait_le: '2026-11-05T15:59:41'
+        empreinte: f917f8f51182c289c4311670396e951a3b5c4e73f49e4c79c8b1bacf7d7fca4d
+      verification:
+        fait_le: '2026-11-05T16:00:05'
+        empreinte: e17da41702bedb322fac108baca049f49df6b31b6cf81f2664cfd3277b84199c
+      relecture:
+        fait_le: '2026-11-06T02:22:30'
+        empreinte: 3bebe3cfcb70596ba2660b529bcd6d0977c9f5da3970376234b227490fab0672
+      publication:
+        fait_le: '2026-11-05T16:00:21'
+        empreinte: 57f9a6c0569ee1f4d0e04db16ba07b4c9feed4a475cce94ddb1b0796c868a751
+    publie_le: null
+  '04':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T01:24:25'
+        empreinte: 9c292a59967935d16d4a2d22e024d30a97b33cc68a0833872fa66323acfec6c2
+      sources:
+        fait_le: '2026-11-02T01:24:29'
+        empreinte: b11415453728f3842014714eee35b140bba9332d7ba5d0312f55e83bd3c901df
+      contenu:
+        fait_le: '2026-11-05T16:00:24'
+        empreinte: 64059b50f8cc0a6db50218173414747d46719551f5270f62573ca52e44dafddf
+      linkedin:
+        fait_le: '2026-11-05T16:00:26'
+        empreinte: 20a77180e8f83b62f5e2c46bb608c7c127c297b1de824f98a66316388efe80c9
+      images:
+        fait_le: '2026-11-05T16:00:29'
+        empreinte: 20a77180e8f83b62f5e2c46bb608c7c127c297b1de824f98a66316388efe80c9
+      rendu:
+        fait_le: '2026-11-05T16:00:39'
+        empreinte: cccfe3f42f3d27b2b6fa593ba2b78db135629e63f94fdc84d3b1432bfc8412db
+      verification:
+        fait_le: '2026-11-05T16:01:02'
+        empreinte: 7e56672a15a913040a0ffadcefb3f4a5f264125c48d2253293b34058ee51b741
+      relecture:
+        fait_le: '2026-11-06T02:22:33'
+        empreinte: 2a34877c283546074c3eb4d9eac5e46e8521ace68d20645d651b14a326c993c2
+      publication:
+        fait_le: '2026-11-05T16:01:13'
+        empreinte: b40db55d6362900e9c43b1fdbc2875bb884ba18c27e0c335b0b66a0d136640e7
+    publie_le: null
+  '05':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T01:24:58'
+        empreinte: 5752626408069f3db78131e8573474a017dd99099be37a525294651dd1103895
+      sources:
+        fait_le: '2026-11-02T01:25:01'
+        empreinte: 1dc76d5366f36a4abd570967293fe32fbd12cb72fe5f5e7118154bdaac9adf0e
+      contenu:
+        fait_le: '2026-11-05T16:01:15'
+        empreinte: e62fa541f93e7383dbd0c28757221fda7979c33ae28da6964baa5971b89d70a7
+      linkedin:
+        fait_le: '2026-11-05T16:01:18'
+        empreinte: 0092227601e4d8f6c3ffd90c34fe276bed0d0b609c1e0ea3789541a67e7697fe
+      images:
+        fait_le: '2026-11-05T16:01:20'
+        empreinte: 0092227601e4d8f6c3ffd90c34fe276bed0d0b609c1e0ea3789541a67e7697fe
+      rendu:
+        fait_le: '2026-11-05T16:01:31'
+        empreinte: 76d0aeaf8c59c8cdf0dd3bdebd02539fda05a00407decbf737ba30f6bdd5a489
+      verification:
+        fait_le: '2026-11-05T16:01:52'
+        empreinte: d73d5b31b539911bb34ec85b6e1a49092cc1199b58ae39393648aceac7b4b3ec
+      relecture:
+        fait_le: '2026-11-06T02:22:40'
+        empreinte: 0a61566b3ab407ebbb726cea1dcec3a3fec51c57c0c5232b55d99c6a19371671
+      publication:
+        fait_le: '2026-11-05T16:02:05'
+        empreinte: 656446e73806e12550087a3ce6773a946f6f7b74220c2dbd066f12893c043b2f
+    publie_le: null
+  '06':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-01T12:06:13'
+        empreinte: 500ee7d22441a0076dbda5254a1be1676cc5835f92fea84b41c7b4a54d2d9fb4
+      sources:
+        fait_le: '2026-11-01T12:06:09'
+        empreinte: 9678dee4c9f3ab2f221543a32bb47a6dc9397c24d4d5566f0724e4d7d0c0470d
+      contenu:
+        fait_le: '2026-11-06T00:06:54'
+        empreinte: 5571a6b25ddba571676f3a38ba4bf3c959d28abdfc644bc93b5bc219a390f908
+      linkedin:
+        fait_le: '2026-11-06T00:06:56'
+        empreinte: 58135222380c9e9f3ca7a56e48d6bd982a92f27f1c5ce16e2b841ede07d6ecef
+      images:
+        fait_le: '2026-11-06T00:06:58'
+        empreinte: 58135222380c9e9f3ca7a56e48d6bd982a92f27f1c5ce16e2b841ede07d6ecef
+      rendu:
+        fait_le: '2026-11-06T00:07:10'
+        empreinte: ef7e2416e04ef52e9ba33c2de58f86a411f8ae1a15cd8d7cb9dd3e276b8f6405
+      verification:
+        fait_le: '2026-11-06T00:07:54'
+        empreinte: 7c59c01da1dd71053d871dd9acfee6bd4a47f0b267001ec840d66d9a5296a788
+      relecture:
+        fait_le: '2026-11-06T02:22:45'
+        empreinte: 5c725cb07ece88b7be9c309d480dfe57af3954b887b35a379c7ca1b657d7e19f
+      publication:
+        fait_le: '2026-11-06T00:08:06'
+        empreinte: 111a3ef2e697fb419a31258c767948b331ba95d4fac12b68d3e42c515c11470c
+    publie_le: null
+  '07':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-01T18:30:56'
+        empreinte: 76214c4ea9cc8694eef8e2aa625e925f7ee62156097e71f0b6076f44e1f144a5
+      sources:
+        fait_le: '2026-11-01T18:44:41'
+        empreinte: dc2c1cacf9077188f8e9c618e1f1afa58eabc1c0f074ae149ef3d638f256b0f7
+      contenu:
+        fait_le: '2026-11-05T16:03:10'
+        empreinte: 2035565c452ba738960b485480ba9563f51acc78cf6e076742055238664ccf70
+      linkedin:
+        fait_le: '2026-11-05T16:03:13'
+        empreinte: 755ed8fb9c1e315e262027ddbf3868443211682a93ee345063a5acda37a89b19
+      images:
+        fait_le: '2026-11-05T16:03:16'
+        empreinte: 755ed8fb9c1e315e262027ddbf3868443211682a93ee345063a5acda37a89b19
+      rendu:
+        fait_le: '2026-11-05T16:03:26'
+        empreinte: b7b9f9b603251a0de4c80986ce4ffdb12cca7fedae3bbec33b3ac2ba7234e588
+      verification:
+        fait_le: '2026-11-05T16:03:51'
+        empreinte: 255c2e93ef806a88f1f0cc8d53e5e64d7d8e707e7afc3e8e08c6b1c7b5e78d29
+      relecture:
+        fait_le: '2026-11-06T02:22:53'
+        empreinte: b7b01a51060a1e2ed2fc473109f1f2eb2894c27839a5f76e533c1b52bc300b0f
+      publication:
+        fait_le: '2026-11-05T16:04:05'
+        empreinte: 77c668776454d44af939bf1f8d0f31ce733adc4d4e6437172a58142dca79154f
+    publie_le: null
+  '08':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-05T16:04:07'
+        empreinte: 1093b86a8be4fa28e916ee5d1ea2f46a1bb1323b777c1d3ed3e7d7a84585767e
+      sources:
+        fait_le: '2026-11-05T16:04:10'
+        empreinte: a783d9e1f2c42d21c8f639a55d33434fe18ebc16b13196d4af5b8838d0620d56
+      contenu:
+        fait_le: '2026-11-05T16:04:12'
+        empreinte: 467097babdbf935c447ab47c7e4352773c07ecb3eba3c6a8c2a206f9f5d221bf
+      linkedin:
+        fait_le: '2026-11-05T16:04:14'
+        empreinte: 244e577ae22c5425772148735976864ba53c8d10c2081125d79343c5d87f6cf0
+      images:
+        fait_le: '2026-11-05T16:04:17'
+        empreinte: 244e577ae22c5425772148735976864ba53c8d10c2081125d79343c5d87f6cf0
+      rendu:
+        fait_le: '2026-11-05T16:04:27'
+        empreinte: a5d9cb87a2b1cb9f39a9e6dbad15573f238c907fd004770e2d59fe6c0c8da5d9
+      verification:
+        fait_le: '2026-11-05T16:04:51'
+        empreinte: 740384e04ea068d32d347eb8ffc925c58029376fa4ce89c4fac16dd9c401018b
+      relecture:
+        fait_le: '2026-11-06T02:23:00'
+        empreinte: bda37f4080cc8ea02e8a8c2febc3e79ff8c01f2e9288acbd0b0b247d1eb901af
+      publication:
+        fait_le: '2026-11-05T16:05:16'
+        empreinte: c369f527618df97bab234d4ebd1d0a07aebf4f105d6bce4392723c87fbf0c335
+    publie_le: null
+  '09':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-05T16:05:19'
+        empreinte: 583a0c1a7916c875d4b2a27a8e8e7692b3a515bfb700072b2469fc2c81922d99
+      sources:
+        fait_le: '2026-11-05T16:05:22'
+        empreinte: 83ef35ea044a3eb8fa602598d13ffbb34ccabde8e45d3c701ef3a95ef90fb304
+      contenu:
+        fait_le: '2026-11-06T00:08:09'
+        empreinte: 71c882341dd9a3f2227a3032883954484d75cef09cb359b89be077d8e964c1d3
+      linkedin:
+        fait_le: '2026-11-06T00:08:11'
+        empreinte: 5db4b55e92e00b61ba025b321abc0e3ea7bee8ea1dbd4e538c59864a7f5a75dc
+      images:
+        fait_le: '2026-11-06T00:08:14'
+        empreinte: 5db4b55e92e00b61ba025b321abc0e3ea7bee8ea1dbd4e538c59864a7f5a75dc
+      rendu:
+        fait_le: '2026-11-06T00:08:24'
+        empreinte: aacd17829ebe88da2e4bf99533fcef14b67fb951876753a9d17c939806107664
+      verification:
+        fait_le: '2026-11-06T00:09:42'
+        empreinte: 47fc382cfcd01f6a2c0ae66aa7f71b8e1e71d61e8f3a7941a1960bef75783035
+      relecture:
+        fait_le: '2026-11-06T02:23:04'
+        empreinte: 0defcd911f25e45b7519a1f2a213bffcc3a35998702e9fc412e16fa8d6d2730c
+      publication:
+        fait_le: '2026-11-06T00:09:59'
+        empreinte: 12970895bc516b97cf944b379a71e60297adbd0204e1cfb834416dfecd4dfd02
+    publie_le: null
+  '10':
+    statut: relu
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T01:33:03'
+        empreinte: a5aed1418f995e4f70a9bdc20654e5bf1a48797e7f976a72ce8de5beaac94a1c
+      sources:
+        fait_le: '2026-11-02T01:33:05'
+        empreinte: fb18a5873fd9e1eddcecc64f41e40b9ee5585df716b4b02bb72330995b616980
+      contenu:
+        fait_le: '2026-11-06T00:10:01'
+        empreinte: 1d28cbfd99ece64e266e300abc28709eff31322bc5289298d624bd784c4cdebe
+      linkedin:
+        fait_le: '2026-11-06T00:10:04'
+        empreinte: e68d992a3ec1c3189bd039f8796c226af37d401629e5534d75f62bf66b1b5f56
+      images:
+        fait_le: '2026-11-06T00:10:07'
+        empreinte: e68d992a3ec1c3189bd039f8796c226af37d401629e5534d75f62bf66b1b5f56
+      rendu:
+        fait_le: '2026-11-06T00:10:19'
+        empreinte: 16d5bf3ce05181a79a9192fd83e3d52e1a09c9a4837c50add8c63eaa96ea7406
+      verification:
+        fait_le: '2026-11-06T00:10:53'
+        empreinte: 59a7e337f41a3bcef20bc96807f731372fe8eee7cbd37c1e7446406272df4512
+      relecture:
+        fait_le: '2026-11-06T02:23:08'
+        empreinte: 8dca34ae3b86b9b97b074c017f1925277876192eff8d7d2f7bba521c23faf8d2
+      publication:
+        fait_le: '2026-11-06T00:11:06'
+        empreinte: 18f1db4d1fc72d0fa28cff0440035f14efa65de9e139be17952151fa7b1191ef
+    publie_le: null
+  '11':
+    statut: a_faire
+    etapes:
+      lecture:
+        fait_le: '2026-11-02T02:54:12'
+        empreinte: fb581683c4ea532cefeaf30f163c7351d9be2ef599c11a6ac5054d519b452d50
+      sources:
+        fait_le: '2026-11-02T02:48:24'
+        empreinte: 51d4f855182667e459a7ee7ab9b2c50bf18a2bdbb9a459c300a6f57b352d202f
+      contenu:
+        fait_le: '2026-11-06T04:26:20'
+        empreinte: e810036b4ea3be5afd4455ec1e8fd80a365d75c970488ff92449f6b62b36814c
+      linkedin:
+        fait_le: '2026-11-06T04:26:23'
+        empreinte: 05f19d3f25faab1309a6b0c17c481db5a05232fade4b932a7034c15447fa8907
+      images:
+        fait_le: '2026-11-06T04:26:27'
+        empreinte: 05f19d3f25faab1309a6b0c17c481db5a05232fade4b932a7034c15447fa8907
+      rendu:
+        fait_le: '2026-11-06T04:26:30'
+        empreinte: 42228872c041ce86c50ef0bc2a2d90ab519a34a4cef5c072067fff3286717f4b
+      verification:
+        fait_le: '2026-11-06T04:26:34'
+        empreinte: 23bece5043e0986d62a1f689b807a0248b7705ac908665dc0b2f1171f4ca90e1
+    publie_le: null
+  '12':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '13':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '14':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '15':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '16':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '17':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '18':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '19':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '20':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '21':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '22':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '23':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '24':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '25':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '26':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '27':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '28':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '29':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '30':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '31':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '32':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '33':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '34':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '35':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '36':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '37':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '38':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '39':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '40':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '41':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '42':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '43':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '44':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '45':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '46':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '47':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '48':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '49':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '50':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '51':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '52':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '53':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '54':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '55':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '56':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '57':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '58':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '59':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '60':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '61':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  '62':
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+bilans:
+  1:
+    statut: genere
+    etapes: {}
+    publie_le: null
+  2:
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  3:
+    statut: a_faire
+    etapes: {}
+    publie_le: null
+  4:
+    statut: a_faire
+    etapes: {}
+    publie_le: null

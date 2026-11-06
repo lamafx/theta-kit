@@ -1,0 +1,96 @@
+numero: 8
+titre: La descente de gradient
+format: long
+saison: 1
+chapitre:
+  numero: 2
+  titre: Apprendre de ses erreurs
+accroche: Comment une IA apprend de ses erreurs, un pas à la fois.
+couverture:
+  famille: niveaux
+  description: lignes de niveau et chemin qui converge vers le centre (couverture validée)
+  verbe: chercher
+  geste: visiere
+prerequis_explicites: []
+termes_introduits:
+- terme: taux d'apprentissage η
+  formes:
+  - taux d'apprentissage η
+- terme: itération
+  formes:
+  - itération
+- terme: convergence
+  formes:
+  - convergence
+- terme: oscillation
+  formes:
+  - oscillation
+- terme: divergence
+  formes:
+  - divergence
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Le modèle ne voit que la pente sous ses pieds, et fait un pas dans l'autre sens.
+- page: 3
+  type: Mécanisme
+  message: 'Avec un η fixe et un seul paramètre, le déplacement vaut η × la pente : pente forte, grand pas ; pente
+    faible, petit pas. Les pas raccourcissent près du minimum.'
+- page: 4
+  type: Comparaison
+  message: 'η trop petit : on avance à peine. Bien choisi : convergence. Trop grand : oscillation, puis divergence.'
+- page: 5
+  type: Formule
+  message: θ ← θ − η∇J(θ), symbole par symbole.
+- page: 6
+  type: Exemple chiffré
+  message: 'J(θ) = θ², θ = 3, η = 0,1 : 3 → 2,4 → 1,92 → 1,536. L''erreur passe de 9 à 2,36.'
+- page: 7
+  type: Piège
+  message: 'Pente nulle ne veut pas dire erreur nulle : au minimum, l''erreur peut rester élevée, et il faut alors
+    changer de modèle.'
+- page: 8
+  type: Fin
+episode_suivant:
+  numero: 9
+  transition: Calculer la pente sur toutes les données à chaque pas, ça coûte cher.
+references:
+  cours:
+  - titre: MLCC · Gradient descent
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+  - titre: MLCC · Hyperparameters
+    url: https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters
+  - titre: D2L 12.3
+    url: https://d2l.ai/chapter_optimization/gd.html
+  # Ajoutée le 2026-11-01 (production de l'épisode) : coût des maisons d'Ames en FCFA (page Piège), comme à la
+  # fiche 05.
+  - titre: BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)
+    url: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  sources_originales:
+  - citation: Ruder (2016), An overview of gradient descent optimization algorithms
+    liens:
+    - titre: An overview of gradient descent optimization algorithms
+      url: https://arxiv.org/abs/1609.04747
+  # Ajoutée le 2026-11-01 (production de l'épisode) : les maisons d'Ames, exemple suivi de la saison 1 (décision de
+  # l'utilisateur du 2026-10-30), montrent en page Piège que le creux du coût de l'épisode 05 reste au-dessus de 0.
+  - citation: De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 1er novembre 2026
+    liens:
+    - titre: Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project
+      url: https://doi.org/10.1080/10691898.2011.11889627
+    - titre: Ames Housing Data, Dean De Cock, Journal of Statistics Education 19(3), consulté le 1er novembre 2026
+      url: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  # Ajoutées le 2026-11-05 (texte du post réécrit, A63).
+  - citation: Cauchy (1847), Méthode générale pour la résolution des systèmes d'équations simultanées, Comptes rendus de l'Académie des sciences 25, 536-538 ; traduction anglaise en ligne
+    liens:
+    - titre: Méthode générale pour la résolution des systèmes d'équations simultanées
+      url: https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf
+  - citation: Lemaréchal (2012), Cauchy and the Gradient Method, Documenta Mathematica, Extra Volume ISMP, 251-254
+    liens:
+    - titre: Cauchy and the Gradient Method
+      url: https://ems.press/books/dms/251/4938
+  - citation: Brown et al. (2020), Language Models are Few-Shot Learners, arXiv:2005.14165
+    liens:
+    - titre: Language Models are Few-Shot Learners
+      url: https://arxiv.org/abs/2005.14165

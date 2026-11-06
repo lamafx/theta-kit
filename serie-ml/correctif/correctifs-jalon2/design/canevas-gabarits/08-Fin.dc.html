@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page de fin — robot clair</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#4C8DFF}a:hover{color:#7AAAFF}
+</style>
+</helmet>
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 72px 80px 56px; background: {{c.bg}}; color: {{c.ink}}; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Geist Mono', monospace; font-size: 17px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase">
+<span style="display: flex; gap: 14px"><span style="color: {{c.accent}}">Nº 08</span><span style="color: {{c.muted}}">Apprendre de ses erreurs</span></span>
+<span style="color: {{c.muted}}">8 / 8</span>
+</div>
+
+<span style="margin-top: 72px; font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{c.accent}}">À retenir</span>
+
+<ol style="margin: 36px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 40px; max-width: 900px">
+<li style="display: flex; gap: 28px; align-items: baseline">
+<span style="font-family: 'Geist Mono', monospace; font-size: 20px; font-weight: 500; color: {{c.accent}}; min-width: 36px">01</span>
+<span style="font-size: 38px; line-height: 1.25; font-weight: 500; letter-spacing: -0.015em; color: {{c.ink}}">Le gradient indique où l’erreur monte. On avance dans l’autre sens.</span>
+</li>
+<li style="display: flex; gap: 28px; align-items: baseline">
+<span style="font-family: 'Geist Mono', monospace; font-size: 20px; font-weight: 500; color: {{c.accent}}; min-width: 36px">02</span>
+<span style="font-size: 38px; line-height: 1.25; font-weight: 500; letter-spacing: -0.015em; color: {{c.ink}}">Le pas vaut <span style="font-family: 'STIX Two Text', serif; font-style: italic">η</span> × la pente : il raccourcit près du minimum.</span>
+</li>
+<li style="display: flex; gap: 28px; align-items: baseline">
+<span style="font-family: 'Geist Mono', monospace; font-size: 20px; font-weight: 500; color: {{c.accent}}; min-width: 36px">03</span>
+<span style="font-size: 38px; line-height: 1.25; font-weight: 500; letter-spacing: -0.015em; color: {{c.ink}}"><span style="font-family: 'STIX Two Text', serif; font-style: italic">η</span> trop petit : c’est lent. Trop grand : ça diverge.</span>
+</li>
+</ol>
+
+<div style="margin-top: auto; margin-bottom: 40px; max-width: 380px; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{c.muted}}">Épisode suivant · Nº 09</span>
+<span style="font-size: 30px; line-height: 1.15; font-weight: 600; letter-spacing: -0.02em; color: {{c.ink}}">Descente stochastique et mini-lots</span>
+<span style="font-size: 20px; line-height: 1.4; color: {{c.body}}">Suivez la série et enregistrez ce carrousel pour le relire.</span>
+</div>
+
+<div style="position: relative; z-index: 2; padding-top: 22px; border-top: 1px solid {{c.line}}; display: flex; align-items: center">
+<span style="font-size: 20px; font-weight: 500; color: {{c.ink}}">Ladji Lama Kamagate</span>
+</div>
+
+<svg viewBox="0 0 640 520" width="640" height="520" role="img" aria-label="Le robot blanc de la série, en bas à droite, sourit et pointe le résumé avec une baguette." style="position: absolute; left: 380px; top: 726px; display: block">
+<defs>
+<radialGradient id="pf-shell" cx="38%" cy="28%" r="80%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="0.55" stop-color="#E4E9EF"></stop><stop offset="1" stop-color="#97A3B2"></stop></radialGradient>
+<linearGradient id="pf-visor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1C2735"></stop><stop offset="1" stop-color="#04070B"></stop></linearGradient>
+<linearGradient id="pf-bronze" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3D3A1"></stop><stop offset="0.5" stop-color="#C08A52"></stop><stop offset="1" stop-color="#7E532C"></stop></linearGradient>
+<linearGradient id="pf-metal" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5F6974"></stop><stop offset="0.45" stop-color="#D9DFE6"></stop><stop offset="1" stop-color="#5A636E"></stop></linearGradient>
+<radialGradient id="pf-disc" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#A3AEBB"></stop></radialGradient>
+<filter id="pf-glow" x="-80%" y="-120%" width="260%" height="340%"><feGaussianBlur stdDeviation="5" result="b"></feGaussianBlur><feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+<linearGradient id="pf-fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0.8" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#000000"></stop></linearGradient>
+<mask id="pf-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="520"><rect x="0" y="0" width="640" height="520" fill="url(#pf-fade)"></rect></mask>
+</defs>
+<g mask="url(#pf-mask)">
+<line x1="186" y1="202" x2="102.8" y2="9.6" stroke="{{c.stick}}" stroke-width="7" stroke-linecap="round"></line>
+<circle cx="102.8" cy="9.6" r="6" fill="{{c.accent}}" filter="url(#pf-glow)"></circle>
+<g transform="translate(140 0)">
+<path d="M110 520 C110 410 160 345 230 337 L370 337 C440 345 490 410 490 520 Z" fill="url(#pf-shell)"></path>
+<path d="M110 520 C110 410 160 345 230 337 L370 337 C440 345 490 410 490 520" fill="none" stroke="#8DB8FF" stroke-opacity="0.4" stroke-width="1.5"></path>
+<path d="M200 395 Q300 420 400 395" fill="none" stroke="#B7C1CD" stroke-width="2"></path>
+<circle cx="300" cy="448" r="20" fill="none" stroke="#B7C1CD" stroke-width="2"></circle>
+<circle cx="300" cy="448" r="10" fill="{{c.accent}}" filter="url(#pf-glow)"></circle>
+<circle cx="458" cy="392" r="24" fill="url(#pf-shell)"></circle>
+<circle cx="458" cy="392" r="16" fill="none" stroke="url(#pf-bronze)" stroke-width="5"></circle>
+<circle cx="458" cy="392" r="10" fill="url(#pf-disc)"></circle>
+<rect x="275" y="268" width="50" height="62" rx="8" fill="url(#pf-metal)"></rect>
+<ellipse cx="300" cy="332" rx="46" ry="8" fill="url(#pf-bronze)"></ellipse>
+<path d="M190 160 C190 20 410 20 410 160" fill="none" stroke="#262E39" stroke-width="16" stroke-linecap="round"></path>
+<path d="M190 160 C190 20 410 20 410 160" fill="none" stroke="#46505E" stroke-width="4" stroke-linecap="round"></path>
+<ellipse cx="300" cy="170" rx="120" ry="110" fill="url(#pf-shell)"></ellipse>
+<ellipse cx="300" cy="170" rx="120" ry="110" fill="none" stroke="#8DB8FF" stroke-opacity="0.4" stroke-width="1.5"></ellipse>
+<path d="M205 112 Q300 86 395 112" fill="none" stroke="#C5CDD7" stroke-width="2"></path>
+<rect x="214" y="132" width="172" height="102" rx="51" fill="url(#pf-visor)"></rect>
+<path d="M234 160 Q258 142 296 140" fill="none" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="5" stroke-linecap="round"></path>
+<g fill="none" stroke="#9CC6FF" stroke-width="7" stroke-linecap="round" filter="url(#pf-glow)">
+<path d="M250 196 Q264 178 278 196"></path>
+<path d="M322 196 Q336 178 350 196"></path>
+</g>
+<circle cx="178" cy="182" r="42" fill="url(#pf-shell)"></circle>
+<circle cx="178" cy="182" r="32" fill="none" stroke="url(#pf-bronze)" stroke-width="7"></circle>
+<circle cx="178" cy="182" r="25" fill="url(#pf-disc)"></circle>
+<circle cx="178" cy="182" r="9" fill="#DCE2E9" stroke="#8A95A2" stroke-width="2"></circle>
+<circle cx="422" cy="182" r="42" fill="url(#pf-shell)"></circle>
+<circle cx="422" cy="182" r="32" fill="none" stroke="url(#pf-bronze)" stroke-width="7"></circle>
+<circle cx="422" cy="182" r="25" fill="url(#pf-disc)"></circle>
+<circle cx="422" cy="182" r="9" fill="#DCE2E9" stroke="#8A95A2" stroke-width="2"></circle>
+<rect x="87" y="259.65" width="46" height="164.7" rx="23" fill="url(#pf-shell)" transform="rotate(-32.6 110 342)"></rect>
+<circle cx="142" cy="392" r="24" fill="url(#pf-shell)"></circle>
+<circle cx="142" cy="392" r="16" fill="none" stroke="url(#pf-bronze)" stroke-width="5"></circle>
+<circle cx="142" cy="392" r="10" fill="url(#pf-disc)"></circle>
+<rect x="39" y="166.6" width="40" height="148.8" rx="20" fill="url(#pf-shell)" transform="rotate(-20.4 59 241)"></rect>
+<circle cx="78" cy="292" r="17" fill="#161D27"></circle>
+<circle cx="78" cy="292" r="10" fill="none" stroke="{{c.accent}}" stroke-width="3" filter="url(#pf-glow)"></circle>
+<rect x="18" y="162" width="42" height="42" rx="15" fill="url(#pf-shell)"></rect>
+<line x1="24" y1="178" x2="52" y2="178" stroke="#9AA6B4" stroke-width="2" stroke-linecap="round"></line>
+<line x1="24" y1="190" x2="52" y2="190" stroke="#9AA6B4" stroke-width="2" stroke-linecap="round"></line>
+</g>
+</g>
+</svg>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"select","default":"clair","options":["sombre","clair"]},"$preview":{"width":1080,"height":1350}}'>
+class Component extends DCLogic {
+renderVals() {
+const clair = (this.props.theme ?? 'clair') === 'clair';
+const c = clair
+? { bg: '#EEF2F8', ink: '#0E1116', muted: '#5F6673', line: '#D5DCE6', body: '#3E4450', stick: '#2A3340', accent: '#2D5BFF' }
+: { bg: '#0A0F17', ink: '#F5F8FC', muted: '#8A97A8', line: '#1E2938', body: '#A7B3C2', stick: '#C9D3DF', accent: '#4C8DFF' };
+return { c };
+}
+}
+</script>
+</body>
+</html>

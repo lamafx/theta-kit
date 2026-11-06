@@ -1,0 +1,50 @@
+numero: 28
+titre: La régularisation L1
+format: court
+saison: 2
+chapitre:
+  numero: 6
+  titre: Bien généraliser
+accroche: Garder l'essentiel, éteindre le reste.
+couverture:
+  famille: niveaux
+  description: un losange et un cercle posés sur les lignes de niveau
+  verbe: régler
+  geste: regler
+prerequis_explicites: []
+termes_introduits:
+- terme: L1 (Lasso)
+  formes:
+  - L1 (Lasso)
+- terme: parcimonie
+  formes:
+  - parcimonie
+- terme: sélection de caractéristiques
+  formes:
+  - sélection de caractéristiques
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: J + λΣ|w|.
+- page: 3
+  type: Comparaison
+  message: L2 réduit tous les poids, L1 en met plusieurs exactement à zéro.
+- page: 4
+  type: Mécanisme
+  message: 'Le losange touche les lignes de niveau par un coin : un poids tombe à zéro.'
+- page: 5
+  type: Fin
+episode_suivant:
+  numero: 29
+  transition: 'Il existe une régularisation encore plus simple : s''arrêter à temps.'
+references:
+  cours:
+  - titre: SKL · Lasso
+    url: https://scikit-learn.org/stable/modules/linear_model.html#lasso
+  sources_originales:
+  - citation: Tibshirani (1996), Regression Shrinkage and Selection via the Lasso, JRSS B
+    liens:
+    - titre: Regression Shrinkage and Selection via the Lasso
+      url: https://doi.org/10.1111/j.2517-6161.1996.tb02080.x

@@ -1,0 +1,57 @@
+numero: 34
+titre: Les machines à vecteurs de support (SVM)
+format: long
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: La frontière qui laisse le plus de marge.
+couverture:
+  famille: nuage
+  description: deux nuages, une frontière et ses deux bandes de marge
+  verbe: tracer
+  geste: tracer
+prerequis_explicites:
+- 15
+termes_introduits:
+- terme: marge
+  formes:
+  - marge
+- terme: vecteurs de support
+  formes:
+  - vecteurs de support
+- terme: noyau
+  formes:
+  - noyau
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: 'Plusieurs droites séparent les deux classes : laquelle choisir ?'
+- page: 3
+  type: Mécanisme
+  message: Celle qui laisse la plus grande marge. Seuls les points au bord comptent.
+- page: 4
+  type: Mécanisme
+  message: 'Données non séparables : l''astuce du noyau les sépare dans un autre espace.'
+- page: 5
+  type: Comparaison
+  message: Noyau linéaire et noyau gaussien sur les mêmes données.
+- page: 6
+  type: Repère
+  message: 'La marge souple : tolérer quelques erreurs pour mieux généraliser.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 35
+  transition: Et sans aucune étiquette ?
+references:
+  cours:
+  - titre: SKL · Support vector machines
+    url: https://scikit-learn.org/stable/modules/svm.html
+  sources_originales:
+  - citation: Cortes et Vapnik (1995), Support-vector networks, Machine Learning
+    liens:
+    - titre: Support-vector networks
+      url: https://doi.org/10.1007/BF00994018

@@ -1,0 +1,27 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">{{ p.role }}</span>
+<h2 class="titre-page">{{ p.titre|texte }}</h2>
+<p class="texte">{{ p.texte|texte }}</p>
+
+<div class="panneau">
+{% if p.panneau.formule %}<div class="formule" role="img" aria-label="{{ p.panneau.formule }}">{{ p.panneau.formule|formule }}</div>
+{% else %}<div class="phrase">{{ p.panneau.phrase|texte }}</div>
+{% endif %}
+</div>
+
+<div class="lignes">
+{% for l in p.lignes %}
+<div class="ligne">
+{% if l.symbole %}{% set s = l.symbole|symbole %}<span class="symbole{% if s.italique %} it{% endif %}{% if s.accent %} accent{% endif %}">{{ s.html }}</span>
+{% else %}<span class="numero-ligne">{{ "%02d"|format(loop.index) }}</span>
+{% endif %}
+<span class="sens">{{ l.sens|texte }}</span>
+</div>
+{% endfor %}
+</div>
+
+{{ ui.pied(signature) }}
+{% endblock %}

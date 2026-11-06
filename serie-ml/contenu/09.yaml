@@ -1,0 +1,177 @@
+episode: 9
+pages:
+
+- type: couverture
+  titre: "Descente stochastique\net mini-lots."
+  visuel:
+    famille: niveaux
+    params:
+      # A59 (session de design n° 2) : chemin bruité qui zigzague (calculs.descente_gradient.sgd_2d) ; 08 converge sans bruit.
+      centre: [540, 400]
+      ellipses: [196, 168, 144, 122, 102, 83, 64]
+      opacites: [0.12, 0.17, 0.23, 0.3, 0.38, 0.48, 0.6]
+      depart: [-150, -46]
+      eta: 0.1
+      courbures: [1.3, 7.79]
+      pas: 14
+      bruit: 180
+      graine: 9
+  visuel_classique:  # couverture classique : ellipses de 08 classique, chemin bruité à la même échelle
+    famille: niveaux
+    params:
+      centre: [540, 300]
+      ellipses: [660, 570, 490, 415, 345, 280, 220]
+      opacites: [0.08, 0.12, 0.17, 0.24, 0.33, 0.45, 0.6]
+      depart: [-504, -154]
+      eta: 0.1
+      courbures: [1.3, 7.79]
+      pas: 14
+      bruit: 430
+      graine: 9
+
+- type: ouverture
+  rappel: "Nº 05 : le coût $J$ ; Nº 06 et 07 : sa pente, le gradient $∇J$ ; Nº 08 : un pas dans l'autre sens."
+  titre: "Tout relire\nà chaque pas ?"
+  texte: "Chaque pas calcule $∇J$ sur tous les exemples, un calcul par exemple. Imaginons-en un million : un million de calculs pour un seul pas."
+  sources: [d2l-moyenne-exemples, d2l-cout-n, d2l-cout-grand-jeu, d2l-tout-le-jeu]
+  visuel:
+    famille: niveaux
+    params:
+      forme: chemin
+      origine: [460, 260]
+      echelle: 105
+      domaine: [-3.6, 3.6]
+      plage: [-2.3, 2.3]
+      cadre: [920, 500]
+      courbures: [1, 3]
+      niveaux: [1, 4, 9]
+      chemins:
+      - {depart: [-3.2, 1.3], eta: 0.1, pas: 12, style: accent, texte: tout le jeu, decalage: [-30, -26]}
+      textes: {minimum: minimum}
+      description: "Lignes de niveau en ellipses du coût J. Un chemin régulier part du flanc gauche et descend vers le minimum, marqué d'une croix : chaque pas lit tout le jeu."
+
+- type: comparaison
+  role: Comparaison
+  titre: "Combien d'exemples\npar pas ?"
+  texte: "Même carte, même départ. Seul change le nombre d'exemples lus à chaque pas pour calculer $∇J$."
+  sources: [d2l-tout-le-jeu, d2l-un-exemple, d2l-sgd-un-exemple, d2l-sgd-reduit, d2l-sgd-o1, d2l-bruite, d2l-entre-les-deux, d2l-mini-lot, d2l-ecart-type, d2l-mieux-aligne, dlb-32-256, d2l-compromis, dlb-stochastique, dlb-entre-deux, dlb-annee, d2l-temps-sgd, d2l-horloge, d2l-simulation]
+  visuel:
+    famille: niveaux
+    params:
+      forme: chemin
+      origine: [140, 120]
+      echelle: 35
+      domaine: [-3.9, 3.9]
+      plage: [-3.3, 3.3]
+      cadre: [280, 240]
+      courbures: [1, 3]
+      niveaux: [1, 4, 9]
+  cas:
+  - etiquette: Tout le jeu
+    titre: Régulier, mais lourd
+    texte: Chaque pas lit tous les exemples.
+    params:
+      chemins: [{depart: [-3, 1.5], eta: 0.1, pas: 20, style: objet}]
+      description: "Tout le jeu : un chemin régulier qui descend droit vers le minimum."
+  - etiquette: Un exemple
+    titre: Rapide, mais bruité
+    texte: "Chaque pas lit un exemple tiré au hasard : c'est la descente stochastique (SGD)."
+    params:
+      chemins: [{depart: [-3, 1.5], eta: 0.1, pas: 20, bruit: 3, lot: 1, graine: 4, style: accent}]
+      description: "Un exemple par pas : le chemin zigzague autour de la descente régulière."
+  - etiquette: Un mini-lot
+    titre: Le compromis
+    texte: "Chaque pas lit un mini-lot, souvent de 32 à 256 exemples (usage décrit en 2016)."
+    retenu: true
+    params:
+      chemins: [{depart: [-3, 1.5], eta: 0.1, pas: 20, bruit: 3, lot: 32, graine: 4, style: accent}]
+      description: "Un mini-lot de 32 exemples par pas : le chemin zigzague bien moins."
+  encadre:
+    titre: En pratique
+    texte: "On dit souvent SGD même avec des mini-lots. Un exemple à la fois fait perdre du temps machine : en temps de calcul, le mini-lot va en général **plus vite** que les deux autres."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Faux à chaque pas,\njuste en moyenne."
+  texte: "Pourquoi la SGD avance-t-elle quand même ? Le $∇J$ d'un seul exemple dévie, mais en moyenne il indique la même direction que celui de tout le jeu. Les écarts se compensent : le chemin zigzague, puis arrive près du minimum."
+  sources: [d2l-en-moyenne, d2l-bruite, d2l-pres-du-minimum, d2l-convexe, d2l-non-convexe, d2l-simulation]
+  visuel:
+    famille: niveaux
+    params:
+      forme: chemin
+      origine: [460, 225]
+      echelle: 100
+      domaine: [-3.6, 3.6]
+      plage: [-2.1, 2.1]
+      cadre: [920, 450]
+      courbures: [1, 3]
+      niveaux: [1, 4, 9]
+      chemins:
+      - {depart: [-3, 1.3], eta: 0.1, pas: 12, style: contexte, texte: tout le jeu, decalage: [-30, -26]}
+      - {depart: [-3, -1.3], eta: 0.1, pas: 25, bruit: 3, lot: 1, graine: 7, style: accent, texte: un exemple par pas, decalage: [-60, 44]}
+      description: "Lignes de niveau en ellipses du coût J. En gris, la descente régulière sur tout le jeu. En bleu, la descente stochastique, un exemple par pas : elle zigzague, puis finit près du minimum, marqué d'une croix."
+  encadres:
+  - titre: Un cas particulier
+    texte: "Ici, $J$ n'a qu'**un seul creux**. Avec plusieurs creux, il n'y a en général plus de garantie."
+
+- type: formule
+  role: Définition
+  titre: "Compter en époques."
+  texte: "Si chaque pas ne lit qu'une partie des exemples, combien de pas faut-il pour les voir tous ?"
+  sources: [d2l-une-fois-par-epoque, d2l-une-seule-fois, d2l-ordre-different, d2l-tout-le-jeu-epoque, d2l-1500-pas, d2l-1500-exemples, dlb-plusieurs-passages, dlb-epoques]
+  panneau:
+    phrase: "Une époque, c'est un passage complet sur toutes les données."
+  lignes:
+  - sens: "Chaque exemple y est vu une fois, dans un ordre tiré au hasard, qui change d'une époque à l'autre."
+  - sens: "Tout le jeu à chaque pas : 1 pas par époque."
+  - sens: "Un exemple à chaque pas : 1 500 pas pour 1 500 exemples."
+  - sens: "On fait d'ordinaire plusieurs époques."
+
+- type: piege
+  role: Piège
+  titre: "Un taux fixe ne laisse pas\nle modèle se poser."
+  texte: "Avec un $η$ fixe, les écarts ne disparaissent pas, même au minimum : le modèle rebondit autour sans s'y poser. D'où un $η$ qui décroît au fil des époques, ni trop vite, ni trop lentement."
+  sources: [dlb-bruit-demeure, dlb-vrai-gradient, d2l-pres-du-minimum, d2l-sans-progres, d2l-rebondir, d2l-reduire-eta, dlb-decroitre, d2l-par-epoque, d2l-decroitre-eta, d2l-ni-trop-vite, d2l-pas-trop-vite, rm-publication, rm-inconnue, rm-methode, rm-suite, rm-un-sur-n, d2l-simulation]
+  visuel:
+    famille: niveaux
+    params:
+      forme: chemin
+      origine: [460, 225]
+      echelle: 100
+      domaine: [-3.6, 3.6]
+      plage: [-2.1, 2.1]
+      cadre: [920, 450]
+      courbures: [1, 3]
+      niveaux: [1, 4, 9]
+      alerte: true
+      chemins:
+      - {depart: [-3, 1.3], eta: 0.15, pas: 30, bruit: 4, graine: 7, style: accent, texte: taux fixe, decalage: [-40, -26]}
+      description: "Lignes de niveau en ellipses du coût J et un chemin bruité, en orange, avec un taux fixe : il arrive vers le minimum, marqué d'une croix, puis rebondit autour sans s'y poser."
+  encadre:
+    texte: "Un taux qui décroît raccourcit les pas, et les écarts avec eux. En 1951 déjà, Robbins et Monro raccourcissaient les pas d'une suite d'essais bruités pour approcher une solution."
+
+- type: fin
+  points:
+  - "Chaque pas lit un exemple tiré au hasard (SGD) ou un mini-lot, souvent de 32 à 256 en 2016."
+  - "Faux à chaque pas, juste en moyenne : le chemin zigzague, puis arrive près du minimum."
+  - "Avec un $η$ fixe, le modèle rebondit autour du minimum : d'où un $η$ qui décroît au fil des époques."
+  verification:
+    question: "Pourquoi, avec un $η$ fixe, la SGD ne se pose-t-elle pas au minimum ?"
+    page: 6
+
+linkedin:
+  texte: |-
+    Calculer une pente sur 10 000 exemples plutôt que 100 demande cent fois plus de calcul, pour une estimation seulement dix fois plus précise.
+
+    La cause est une racine carrée : l'erreur type d'une moyenne estimée sur n exemples décroît en 1/√n.
+
+    100 exemples : calcul 1, erreur 1.
+    10 000 exemples : calcul 100, erreur 0,1.
+
+    D'où le pari de la descente stochastique et des mini-lots : renoncer à une pente exacte pour faire bien plus de pas. Goodfellow, Bengio et Courville notent en 2016 que la plupart des algorithmes d'optimisation convergent ainsi beaucoup plus vite, en calcul total et non en nombre de pas.
+
+    Le prix à payer est un chemin qui zigzague et qui, à taux d'apprentissage fixe, ne se pose pas au minimum.
+
+    Au-delà d'un certain point, un pas de plus vaut souvent mieux qu'un exemple de plus.
+  hashtag: "#DescenteStochastique"
+  generique: "#Optimisation"

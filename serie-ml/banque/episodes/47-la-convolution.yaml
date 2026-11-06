@@ -1,0 +1,58 @@
+numero: 47
+titre: La convolution
+format: long
+saison: 3
+chapitre:
+  numero: 9
+  titre: Les réseaux spécialisés
+accroche: Regarder une image par petites fenêtres.
+couverture:
+  famille: grille
+  description: grille de pixels et un filtre 3 × 3 qui glisse
+  verbe: examiner
+  geste: loupe
+prerequis_explicites: []
+termes_introduits:
+- terme: convolution
+  formes:
+  - convolution
+- terme: filtre (noyau)
+  formes:
+  - filtre (noyau)
+- terme: carte de caractéristiques
+  formes:
+  - carte de caractéristiques
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: Une image de 1000 × 1000 pixels = un million d'entrées.
+- page: 3
+  type: Mécanisme
+  message: Un filtre 3 × 3 glisse sur toute l'image.
+- page: 4
+  type: Exemple chiffré
+  message: Un filtre qui détecte les bords verticaux.
+- page: 5
+  type: Mécanisme
+  message: 'Le partage des poids : le même filtre partout.'
+- page: 6
+  type: Repère
+  message: 'Les filtres ne sont pas écrits à la main : ils sont appris.'
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 48
+  transition: Empilons les filtres pour construire un vrai réseau d'images.
+references:
+  cours:
+  - titre: D2L 7.2
+    url: https://d2l.ai/chapter_convolutional-neural-networks/conv-layer.html
+  - titre: DLB ch. 9
+    url: https://www.deeplearningbook.org/contents/convnets.html
+  sources_originales:
+  - citation: LeCun et al. (1998), Gradient-Based Learning Applied to Document Recognition, Proceedings of the IEEE
+    liens:
+    - titre: Gradient-Based Learning Applied to Document Recognition
+      url: https://leon.bottou.org/papers/lecun-98h

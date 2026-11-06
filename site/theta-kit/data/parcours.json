@@ -1,0 +1,83 @@
+[
+  {
+    "annee": "2023",
+    "fr": {
+      "t": "Baccalauréat scientifique, mention Bien",
+      "d": "Série D, Lycée Classique d’Abidjan."
+    },
+    "en": {
+      "t": "Science baccalaureate, with honours (Bien)",
+      "d": "Series D, Lycée Classique d’Abidjan."
+    }
+  },
+  {
+    "annee": "2023",
+    "fr": {
+      "t": "Licence SRIT à l’ESATIC",
+      "d": "Systèmes, réseaux informatiques et télécommunications. En cours."
+    },
+    "en": {
+      "t": "SRIT bachelor’s at ESATIC",
+      "d": "Systems, computer networks and telecommunications. In progress."
+    }
+  },
+  {
+    "annee": "2024",
+    "fr": {
+      "t": "Formateur IoT au Club Informatique",
+      "d": "J’initie les membres aux bonnes pratiques de l’IoT, de novembre 2024 à mai 2025."
+    },
+    "en": {
+      "t": "IoT trainer at the Computer Club",
+      "d": "I introduced members to IoT best practices, from November 2024 to May 2025."
+    }
+  },
+  {
+    "annee": "2025",
+    "fr": {
+      "t": "3ᵉ place au hackathon SmartWattUIA",
+      "d": "Puis, à partir d’octobre, le projet de détection de la pneumonie."
+    },
+    "en": {
+      "t": "3rd place at the SmartWattUIA hackathon",
+      "d": "Then, from October, the pneumonia detection project."
+    }
+  },
+  {
+    "annee": "2026",
+    "fr": {
+      "t": "Recherche vidéo par l’image",
+      "d": "Embeddings, recherche vectorielle et API, depuis mars."
+    },
+    "en": {
+      "t": "Video search from an image",
+      "d": "Embeddings, vector search and APIs, since March."
+    }
+  },
+  {
+    "annee": "2026",
+    "fr": {
+      "t": "Bronze Award au AI for Good Global Summit",
+      "d": "AI and Space Computing Challenge 2026, avec l’équipe HeriTech. En mai, deux certifications DataCamp : NLP en Python et apprentissage supervisé avec scikit-learn."
+    },
+    "en": {
+      "t": "Bronze Award at the AI for Good Global Summit",
+      "d": "AI and Space Computing Challenge 2026, with team HeriTech. In May, two DataCamp certifications: NLP in Python and supervised learning with scikit-learn."
+    }
+  },
+  {
+    "annee": {
+      "fr": "Aujourd’hui",
+      "en": "Today"
+    },
+    "actuel": true,
+    "fr": {
+      "t": "θ Théta",
+      "d": "La série LinkedIn, ce site et son labo 3D : le Machine Learning, une notion à la fois."
+    },
+    "en": {
+      "t": "θ Théta",
+      "d": "The LinkedIn series, this site and its 3D lab: Machine Learning, one concept at a time."
+    }
+  }
+]

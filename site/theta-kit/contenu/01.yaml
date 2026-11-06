@@ -1,0 +1,108 @@
+# Épisode 01 · extrait du carrousel réel public/pdf/theta-01.pdf (6 pages)
+# FR = texte exact du carrousel. EN = traduction fidèle, sans ajout.
+n: "01"
+saison: 1
+statut: publie          # publie | brouillon
+groupe: { fr: "Les bases", en: "The basics" }
+titre:
+  fr: { t1: "Qu’est-ce que le", t2: "Machine Learning ?" }
+  en: { t1: "What is", t2: "Machine Learning?" }
+accroche:
+  fr: "Au lieu d’écrire les règles, on montre des exemples."
+  en: "Instead of writing the rules, we show examples."
+resume:
+  fr: "Au lieu d’écrire les règles, on montre des exemples. Programme classique, apprentissage supervisé, le spam, Arthur Samuel en 1959, et le piège des cas éloignés."
+  en: "Instead of writing the rules, we show examples. Classic programs, supervised learning, spam, Arthur Samuel in 1959, and the trap of distant cases."
+theme: null             # aucun thème de labo pour cet épisode
+pdf: { chemin: "/pdf/theta-01.pdf", pages: 6, type: carrousel, langue: fr }
+couverture: "/covers/theta-01.webp"
+
+pages:
+  - num: 2
+    rubrique: { fr: "Épisode 1 · Saison 1", en: "Episode 1 · Season 1" }
+    titre: { fr: "Qu’est-ce que le Machine Learning ?", en: "What is Machine Learning?" }
+    texte:
+      fr: "Programme classique : règles écrites à la main. Machine Learning : modèle tiré d’exemples. Ici, apprentissage supervisé : chaque exemple a sa réponse ; le modèle prédit celle de cas nouveaux."
+      en: "Classic program: rules written by hand. Machine Learning: a model drawn from examples. Here, supervised learning: each example has its answer; the model predicts the answer for new cases."
+    schema:
+      fr: ["Programme classique : Règles + données → Programme → Réponses", "Apprentissage supervisé : Données + réponses → Apprentissage → Modèle"]
+      en: ["Classic program: Rules + data → Program → Answers", "Supervised learning: Data + answers → Learning → Model"]
+  - num: 3
+    rubrique: { fr: "Exemple", en: "Example" }
+    titre: { fr: "Le spam : trop de règles à écrire à la main.", en: "Spam: too many rules to write by hand." }
+    texte:
+      fr: "Certaines tâches sont trop difficiles pour des règles écrites à la main. En 2019, Google indique bloquer dans Gmail plus de 99,9 % des spams, du phishing et des maliciels, en combinant règles et apprentissage, qui repère des motifs que les auteurs de règles pourraient manquer."
+      en: "Some tasks are too hard for hand-written rules. In 2019, Google reported blocking more than 99.9% of spam, phishing and malware in Gmail by combining rules and machine learning, which spots patterns that rule writers might miss."
+    schema:
+      fr: ["Apprendre : Mails déjà triés → Apprentissage → Modèle", "Trier : Nouveau mail → Modèle → Spam / Non-spam"]
+      en: ["Learn: Already-sorted emails → Learning → Model", "Sort: New email → Model → Spam / Not spam"]
+    legende: { fr: "Le tri du spam, simplifié. Schéma", en: "Spam filtering, simplified. Diagram" }
+  - num: 4
+    rubrique: { fr: "Contexte", en: "Context" }
+    titre: { fr: "1959 : un programme apprend à jouer mieux que son auteur.", en: "1959: a program learns to play better than its author." }
+    texte:
+      fr: "En 1959, Arthur Samuel emploie le terme machine learning dans le titre d’un article sur un programme de dames. L’auteur lui fournit des critères ; en jouant, le programme apprend lesquels comptent. Selon l’article, après 8 à 10 heures de jeu machine, il dépasse son auteur."
+      en: "In 1959, Arthur Samuel used the term machine learning in the title of a paper about a checkers program. The author gave it criteria; by playing, the program learned which ones mattered. According to the paper, after 8 to 10 hours of machine play, it surpassed its author."
+    image: { fr: "Un IBM 704 au centre Langley de la NACA.", en: "An IBM 704 at NACA’s Langley center.", credit: "Photo : NASA · Public domain · Wikimedia Commons" }
+  - num: 5
+    rubrique: { fr: "Piège", en: "Trap" }
+    titre: { fr: "Loin de ses exemples, rien ne garantit sa réponse.", en: "Far from its examples, nothing guarantees its answer." }
+    texte:
+      fr: "Le modèle tire ses règles d’un nombre limité d’exemples : il peut bien prédire des cas proches, mais rien ne le garantit. Face à un cas très différent, ses erreurs peuvent augmenter. Les choix humains comptent aussi : Samuel avait écrit les critères parmi lesquels son programme choisissait."
+      en: "The model draws its rules from a limited number of examples: it may predict nearby cases well, but nothing guarantees it. Faced with a very different case, its errors can grow. Human choices matter too: Samuel had written the criteria his program chose from."
+    ce_que_ca_veut_dire:
+      fr: "Les exemples, et les choix de ceux qui conçoivent le modèle, limitent ce qu’il peut apprendre."
+      en: "The examples, and the choices of those who design the model, limit what it can learn."
+
+a_retenir:
+  fr:
+    - "Programme classique : des règles écrites à la main. Apprentissage supervisé : chaque exemple a sa réponse."
+    - "Le Machine Learning en tire un modèle, qui prédit ici la réponse de cas nouveaux."
+    - "Loin de ses exemples, rien ne garantit sa réponse."
+  en:
+    - "Classic program: rules written by hand. Supervised learning: each example has its answer."
+    - "Machine Learning draws a model from them, which here predicts the answer for new cases."
+    - "Far from its examples, nothing guarantees its answer."
+verifiez_vous:
+  question: { fr: "D’où le Machine Learning tire-t-il un modèle ?", en: "Where does Machine Learning get a model from?" }
+  reponse_page: 2
+suivant:
+  n: "02"
+  titre: { fr: "Données, caractéristiques et étiquettes", en: "Data, features and labels" }
+  teaser: { fr: "Mais à quoi ressemble un exemple, pour une machine ?", en: "But what does an example look like to a machine?" }
+
+sources:
+  - "Google, 2019 : blocage des spams dans Gmail (règles + apprentissage, TensorFlow). Lien exact : TODO(auteur)."
+  - "A. L. Samuel, Some Studies in Machine Learning Using the Game of Checkers, IBM Journal, 1959."
+  - "Photo IBM 704 : NASA, domaine public, Wikimedia Commons."
+
+post_linkedin:
+  statut: a_valider      # texte du document projet « texte post » (5 nov. 2026), revu par la direction éditoriale avant publication
+  fr: |-
+    Un programme classique suit des règles écrites à la main.
+    Le Machine Learning les tire d’exemples.
+
+    Pensez au tri de vos mails. En 2019, Google indiquait bloquer environ 100 millions de spams de plus chaque jour grâce à TensorFlow, un outil d’apprentissage développé par Google. Selon le même billet, l’apprentissage permet de s’adapter vite à des spams qui changent sans cesse.
+
+    Le carrousel part du spam, une tâche où les règles écrites à la main ne suffisent pas, remonte au programme de dames d’Arthur Samuel en 1959, et finit sur une limite : loin de ses exemples, rien ne garantit la réponse d’un modèle.
+
+    Quelle tâche de votre quotidien serait difficile à décrire avec des règles écrites ?
+
+    Nº 01 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 02 : Données, caractéristiques et étiquettes.
+  en: |-
+    A classic program follows rules written by hand.
+    Machine Learning draws them from examples.
+
+    Think about how your email gets sorted. In 2019, Google said it was blocking about 100 million additional spam messages every day thanks to TensorFlow, a machine learning tool developed by Google. According to the same post, learning makes it possible to adapt quickly to spam that keeps changing.
+
+    The carousel starts from spam, a task where hand-written rules are not enough, goes back to Arthur Samuel’s checkers program in 1959, and ends on a limit: far from its examples, nothing guarantees a model’s answer.
+
+    Which task in your daily life would be hard to describe with written rules?
+
+    Nº 01 · θ Théta, Machine Learning, one concept at a time. Next episode · Nº 02: Data, features and labels.
+hashtags: ["#MachineLearning", "#IntelligenceArtificielle", "#DataScience", "#ApprentissageAutomatique", "#ThetaML"]
+
+linkedin:                # rempli par l'automatisation
+  url: null
+  publie_le: null
+  stats: { impressions: null, reactions: null, commentaires: null, partages: null, maj: null }

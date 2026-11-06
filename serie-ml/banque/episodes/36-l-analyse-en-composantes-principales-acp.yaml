@@ -1,0 +1,56 @@
+numero: 36
+titre: L'analyse en composantes principales (ACP)
+format: long
+saison: 2
+chapitre:
+  numero: 7
+  titre: Les modèles classiques
+accroche: Résumer beaucoup de dimensions en quelques-unes.
+couverture:
+  famille: nuage
+  description: un nuage allongé et ses deux axes principaux
+  verbe: montrer
+  geste: pointer
+prerequis_explicites: []
+termes_introduits:
+- terme: réduction de dimension
+  formes:
+  - réduction de dimension
+- terme: composante principale
+  formes:
+  - composante principale
+- terme: variance expliquée
+  formes:
+  - variance expliquée
+pages:
+- page: 1
+  type: Couverture
+- page: 2
+  type: Ouverture
+  message: '100 caractéristiques : impossible à dessiner.'
+- page: 3
+  type: Mécanisme
+  message: Trouver l'axe le long duquel les données s'étalent le plus.
+- page: 4
+  type: Mécanisme
+  message: 'Projeter sur deux axes : une carte en 2D.'
+- page: 5
+  type: Lecture
+  message: 'La variance expliquée : la part d''information qu''on garde.'
+- page: 6
+  type: Piège
+  message: Normaliser d'abord (13), sinon une caractéristique écrase les autres.
+- page: 7
+  type: Fin
+episode_suivant:
+  numero: 37
+  transition: Place aux réseaux de neurones, en commençant par une seule cellule.
+references:
+  cours:
+  - titre: SKL · PCA
+    url: https://scikit-learn.org/stable/modules/decomposition.html#principal-component-analysis-pca
+  sources_originales:
+  - citation: Pearson (1901), On lines and planes of closest fit to systems of points in space, Philosophical Magazine
+    liens:
+    - titre: On lines and planes of closest fit to systems of points in space
+      url: https://doi.org/10.1080/14786440109462720

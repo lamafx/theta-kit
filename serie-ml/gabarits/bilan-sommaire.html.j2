@@ -1,0 +1,24 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="role">Sommaire</span>
+<h2 class="titre-page">{{ titre|texte }}</h2>
+<p class="texte-sommaire">{{ texte_sommaire|texte }}</p>
+
+<div class="sommaire">
+{% for colonne in colonnes %}
+<div class="colonne">
+{% for chapitre in colonne %}
+<div class="chapitre-bilan">
+<span class="nom-chapitre">{{ ("Chapitre %d · %s"|format(chapitre.numero, chapitre.titre))|typo }}</span>
+{% for e in chapitre.episodes %}<div class="episode"><span class="numero-episode">{{ "%02d"|format(e.numero) }}</span><span class="titre-episode">{{ e.titre|typo }}</span></div>
+{% endfor %}
+</div>
+{% endfor %}
+</div>
+{% endfor %}
+</div>
+
+{{ ui.pied(signature) }}
+{% endblock %}

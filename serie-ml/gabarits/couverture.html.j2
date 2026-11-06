@@ -1,0 +1,21 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{#- Couverture A (session de design n° 2, 2026-11-01) : le robot, en buste, joue le sujet par son geste ; le motif
+    de la famille occupe la zone que son bras atteint. Titre en bas, ou en haut quand le robot occupe le bas. -#}
+{% block page %}
+<div class="scene-a" aria-hidden="false">
+<div class="motif-a" style="left:{{ zone[0] }}px;top:{{ zone[1] }}px;width:{{ zone[2] - zone[0] }}px;height:{{ zone[3] - zone[1] }}px">{{ fond }}</div>
+<svg class="robot-a" viewBox="0 0 1080 1350" width="1080" height="1350" xmlns="http://www.w3.org/2000/svg">{{ robot }}</svg>
+</div>
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.serie() if serie_visible else "") }}
+{%- set bloc %}
+<div class="bloc-titre-a{% if titre_en_haut %} en-haut{% endif %}">
+<h1 class="titre-couverture-a{% if titre_long %} long{% endif %}"{% if largeur_titre %} style="max-width:{{ largeur_titre }}px"{% endif %}>{{ titre|titre_point }}</h1>
+<p class="accroche-a">{{ accroche|texte }}</p>
+</div>
+{%- endset %}
+{% if titre_en_haut %}{{ bloc }}{% endif %}
+{% if not titre_en_haut %}{{ bloc }}{% endif %}
+<div class="pied-a{% if titre_en_haut %} en-bas{% endif %}{% if pied_etroit %} etroit{% endif %}">
+{{ ui.pied(signature, glissez=not pied_etroit, fleche=28) }}
+</div>
+{% endblock %}

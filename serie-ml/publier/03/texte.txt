@@ -1,0 +1,15 @@
+Un modèle peut apprendre sans qu’on lui donne la moindre réponse, et même à partir de données qui n’existent pas encore.
+
+Ce qui sépare les trois grandes familles d’apprentissage, c’est d’abord la situation de départ, pas la complexité de l’algorithme.
+
+Chaque exemple a sa réponse ? Supervisé.
+Aucun n’en a ? Non supervisé : on cherche une structure.
+Pas de jeu de données fixe ? Renforcement : le système agit, et ses actions peuvent changer ce qu’il observe ensuite.
+
+Ces cases sont des repères, pas des cloisons. Goodfellow, Bengio et Courville le rappellent : supervisé et non supervisé ne sont pas des termes formellement définis. Un projet peut n’avoir des réponses que pour une partie de ses exemples : c’est le semi-supervisé. Et le renforcement peut lui-même apprendre de données déjà réunies, sans agir : c’est le renforcement hors ligne.
+
+Dans ces trois cas, il reste quelque chose à la fin de l’apprentissage. Souvent des nombres, parfois très peu : deux, dans l’épisode suivant.
+
+Nº 03 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 04 : Modèle et paramètres.
+
+#MachineLearning #IntelligenceArtificielle #DataScience #ApprentissageSupervise #ThetaML

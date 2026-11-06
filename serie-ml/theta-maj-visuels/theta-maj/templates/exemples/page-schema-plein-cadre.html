@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Page D · schéma plein cadre</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#2D5BFF}a:hover{color:#1C3FC4}
+</style>
+</head>
+<body>
+
+<div style="width: 1080px; height: 1350px; box-sizing: border-box; padding: 72px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; overflow: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase">
+<span style="display: flex; gap: 14px"><span style="color: #2D5BFF">Nº 08</span><span style="color: #5F6673">Mécanisme</span></span>
+<span style="color: #5F6673">3 / 8</span>
+</div>
+
+<h2 style="margin: 56px 0 0; font-size: 60px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em; color: #0E1116">Pente forte, grand pas.<br>Pente faible, petit pas.</h2>
+<p style="margin: 22px 0 0; max-width: 880px; font-size: 30px; line-height: 1.4; color: #3E4450">Le pas vaut <span style="font-family: 'STIX Two Text', serif; font-style: italic; color: #2D5BFF">η</span> × la pente. Il raccourcit tout seul.</p>
+
+<svg viewBox="0 0 920 470" width="1080" height="552" role="img" aria-label="Courbe d'erreur J(θ) = θ² en U, sur toute la largeur. Au point θ = −3, la tangente est raide (pente −6) et le pas vaut 0,9. Au point θ = −0,8, la tangente est douce (pente −1,6) et le pas vaut 0,24. Ici η = 0,15." style="margin: 28px 0 0 -80px; display: block">
+<defs>
+<marker id="d-step" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<rect x="0" y="0" width="920" height="470" fill="#F4F6FA"></rect>
+<line x1="20" y1="412" x2="900" y2="412" stroke="#D5DCE6" stroke-width="2"></line>
+<path d="M40 28 Q460 732 880 28" fill="none" stroke="#0E1116" stroke-width="3.5" stroke-linecap="round"></path>
+<line x1="64" y1="80" x2="226" y2="284" stroke="#2D5BFF" stroke-width="2.5" stroke-dasharray="7 6"></line>
+<line x1="290" y1="337" x2="462" y2="395" stroke="#2D5BFF" stroke-width="2.5" stroke-dasharray="7 6"></line>
+<line x1="145" y1="192" x2="145" y2="404" stroke="#B8C0CB" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="376" y1="376" x2="376" y2="404" stroke="#B8C0CB" stroke-width="1.5" stroke-dasharray="3 5"></line>
+<line x1="145" y1="412" x2="233" y2="412" stroke="#2D5BFF" stroke-width="7" stroke-linecap="round" marker-end="url(#d-step)"></line>
+<line x1="376" y1="412" x2="396" y2="412" stroke="#2D5BFF" stroke-width="7" stroke-linecap="round" marker-end="url(#d-step)"></line>
+<circle cx="460" cy="380" r="7" fill="#FFFFFF" stroke="#0E1116" stroke-width="2.5"></circle>
+<circle cx="145" cy="182" r="10" fill="#FFFFFF" stroke="#0E1116" stroke-width="3.5"></circle>
+<circle cx="376" cy="365.9" r="9" fill="#FFFFFF" stroke="#0E1116" stroke-width="3.5"></circle>
+<g font-family="Geist, sans-serif" font-weight="500">
+<text x="168" y="168" font-size="23" fill="#0E1116">pente −6</text>
+<text x="168" y="196" font-size="21" fill="#3E4450">loin du minimum</text>
+<text x="398" y="330" font-size="23" fill="#0E1116">pente −1,6</text>
+<text x="398" y="356" font-size="21" fill="#3E4450">près du minimum</text>
+<text x="460" y="452" text-anchor="middle" font-size="21" fill="#0E1116">minimum</text>
+</g>
+<g font-family="Geist Mono, monospace" font-size="22" font-weight="500" fill="#2D5BFF">
+<text x="189" y="452" text-anchor="middle">pas 0,9</text>
+<text x="352" y="452" text-anchor="middle">pas 0,24</text>
+</g>
+<text x="660" y="140" font-family="STIX Two Text, serif" font-style="italic" font-size="26" fill="#3E4450">J(θ) = θ²</text>
+<text x="660" y="170" font-family="Geist, sans-serif" font-size="20" fill="#3E4450">η = 0,15</text>
+</svg>
+
+<div style="margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+<span style="font-size: 28px; line-height: 1.35; color: #0E1116">Pente raide : <strong style="font-weight: 600">grands pas</strong>, on gagne du temps.</span>
+<span style="font-size: 28px; line-height: 1.35; color: #0E1116">Pente douce : <strong style="font-weight: 600">petits pas</strong>, on ne dépasse pas.</span>
+</div>
+
+<div style="margin-top: auto; padding-top: 22px; border-top: 1px solid #E4E6EA; display: flex; justify-content: space-between; align-items: center">
+<span style="font-size: 24px; font-weight: 500; color: #0E1116">Ladji Lama Kamagate</span>
+<span style="display: flex; align-items: center; gap: 12px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 22px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #5F6673">Glissez</span>
+<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2D5BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+</span>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Références de l’épisode Nº 07 :
+- D2L 2.4 · Calculus : https://d2l.ai/chapter_preliminaries/calculus.html
+- DLB ch. 4 : https://www.deeplearningbook.org/contents/numerical.html
+- MIT OCW 18.02SC · Gradient, definition and properties (D. Auroux, 2010) : https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/

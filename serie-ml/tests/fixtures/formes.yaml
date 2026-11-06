@@ -1,0 +1,349 @@
+# Planches des formes de page (session de design n° 1) : une planche par famille, chaque forme à sa taille
+# réelle. Ce n'est pas une production : les valeurs des tableaux sont des valeurs d'essai ; les images, points
+# et droites viennent de calculs/.
+- nom: Formes-Grille
+  titre: Grille · 3 formes
+  famille: grille
+  hauteur: 1700
+  formes:
+  - legende: ligne · un exemple, une ligne (ouverture)
+    params:
+      forme: ligne
+      colonnes: [surface (m²), chambres, quartier, prix (k€)]
+      valeurs: [84, 3, Centre, 312]
+      textes: {ligne: une maison}
+      description: "Une ligne de tableau entre des lignes grises : 84 m², 3 chambres, quartier Centre, prix 312 k€. La dernière case, le prix, est en bleu."
+  - legende: tableau · exemples, caractéristiques, étiquette (mécanisme)
+    params:
+      forme: tableau
+      colonnes: [surface (m²), chambres, quartier, prix (k€)]
+      lignes:
+      - [84, 3, Centre, 312]
+      - [52, 2, Gare, 189]
+      - [120, 4, Parc, 455]
+      - [67, 2, Centre, 248]
+      - [95, 3, Port, 301]
+      fenetre: {colonne: 0, texte: une caractéristique}
+      textes: {exemples: exemple, caracteristiques: caractéristiques, etiquette: étiquette}
+      description: "Tableau de cinq maisons. Chaque ligne est un exemple ; les trois premières colonnes sont les caractéristiques ; la dernière, le prix, est l'étiquette. La colonne surface est encadrée."
+  - legende: pixels · une image devient des nombres (piège)
+    params:
+      forme: pixels
+      chiffre: 0
+      fenetre: {ligne: 3}
+      textes: {image: ce que l'on voit, nombres: ce que reçoit la machine, fleche: devient}
+      description: "Un zéro manuscrit en 8 × 8 cases bleues plus ou moins foncées, puis la même grille où chaque case porte sa valeur, de 0 à 16. La quatrième rangée est encadrée des deux côtés."
+- nom: Formes-Courbe
+  titre: Courbe · droites, tangentes et creux
+  famille: courbe
+  hauteur: 2800
+  formes:
+  - legende: tangentes · la pente en trois points, sans pas (mécanisme, épisode 06)
+    params:
+      forme: tangentes
+      origine: [460, 400]
+      echelle: [110, 26]
+      domaine: [-3.4, 3.4]
+      axe: 410
+      cadre: [920, 450]
+      points:
+      - {theta: -2, decalage: [-178, -18]}
+      - {theta: 0, decalage: [26, -22]}
+      - {theta: 2, triangle: true, decalage: [-150, -14]}
+      textes: {pente: pente, courbe: $J(a) = a²$, axe: réglage $a$}
+      description: "Une courbe en U et ses tangentes en trois points : descendante (pente −4), plate au creux (pente 0), montante (pente 4). En a = 2, un pas de 1 sur la tangente la fait monter de 4."
+  - legende: trace · une courbe à deux creux, la descente arrêtée dans le premier (ouverture, épisode 10)
+    params:
+      forme: trace
+      courbe: ondulee
+      origine: [300, 250]
+      echelle: [200, 96]
+      domaine: [-1, 2]
+      plage: [-1.3, 2]
+      cadre: [920, 450]
+      creux: true
+      descentes:
+      - {depart: -0.9, eta: 0.05, pas: 30, texte: départ, decalage: [-20, -22]}
+      position_x: [820, 282]
+      textes: {x: réglage $θ$, y: coût $J$, minimum_local: minimum local, minimum_global: minimum global}
+      description: "Une courbe à deux creux. Partie à gauche, la descente s'arrête dans le premier creux, le minimum local, plus haut que le minimum global à droite."
+  - legende: trace avec corde · convexe, la corde reste au-dessus (repère, épisode 10)
+    params:
+      forme: trace
+      courbe: parabole
+      origine: [460, 400]
+      echelle: [130, 36]
+      domaine: [-3, 3]
+      plage: [0, 9.5]
+      cadre: [920, 450]
+      corde: [-2, 1]
+      textes: {x: réglage $θ$, y: coût $J$, corde: la corde reste au-dessus}
+      decalage_corde: [110, -30]
+      description: "Une courbe en U et une corde entre deux de ses points : le segment reste au-dessus de la courbe."
+  - legende: droite · ŷ = a·x + b, les deux réglages (ouverture)
+    params:
+      forme: droite
+      origine: [110, 370]
+      echelle: [76, 42]
+      domaine: [0, 10]
+      plage: [0, 8.2]
+      a: 0.6
+      b: 1.5
+      x: 7
+      triangle: 2.5
+      decalage: [0, -14]
+      textes:
+        x: entrée $x$
+        y: prédiction $ŷ$
+        a: $a$, la pente
+        b: $b$, la hauteur en $x$ = 0
+        droite: $ŷ = a·x + b$
+        entree: $x$
+        sortie: $ŷ$
+      description: "Une droite qui monte. Un pas de 1 vers la droite la fait monter de a ; elle coupe l'axe vertical à la hauteur b. Pour une entrée x, on lit la prédiction ŷ sur la droite."
+  - legende: pivot et décalage · une case de comparaison chacun (comparaison)
+    params:
+      origine: [40, 270]
+      echelle: [38, 30]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      cadre: [440, 300]
+      textes: {x: $x$, y: $ŷ$}
+    cas:
+    - forme: pivot
+      a: 0.25
+      b: 2
+      fantomes: [0.7]
+      rayon: 200
+      textes: {x: $x$, y: $ŷ$, a: $a$ change, b: $b$ fixe}
+      description: "La droite tourne autour de son point de départ sur l'axe vertical : seule la pente a change."
+    - forme: decalage
+      a: 0.4
+      b: 1
+      fantomes: [4]
+      fleches: [2, 7]
+      textes: {x: $x$, y: $ŷ$, b: $b$ change}
+      description: "La droite descend sans tourner : seule la hauteur b change, la pente reste la même."
+- nom: Formes-Nuage
+  titre: Nuage · 5 formes
+  famille: nuage
+  hauteur: 4050
+  formes:
+  - legende: points · zone couverte et point hors zone (piège)
+    params:
+      forme: points
+      origine: [40, 384]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      centres: [[3.4, 3.4]]
+      effectifs: [26]
+      dispersion: 0.85
+      graine: 7
+      zone: true
+      hors_zone: [8.4, 6.6]
+      textes: {x: caractéristique 1, y: caractéristique 2, zone: ce que couvrent les exemples, hors_zone: un cas jamais vu}
+      description: "Un nuage d'exemples dans une zone grise. Un point orange, loin de la zone, est un cas que les exemples ne couvrent pas."
+  - legende: points · avec ou sans étiquettes, une case de comparaison chacun (comparaison)
+    params:
+      forme: points
+      origine: [30, 270]
+      echelle: [40, 30]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      cadre: [440, 300]
+      centres: [[2.6, 5.6], [6.8, 2.6]]
+      effectifs: [12, 12]
+      dispersion: 0.8
+      graine: 3
+    cas:
+    - etiquettes: true
+      description: "Le même nuage, chaque point coloré selon son étiquette : noir ou bleu."
+    - etiquettes: false
+      description: "Le même nuage, tous les points en gris : aucune étiquette."
+  - legende: groupes · des groupes trouvés dans les données
+    params:
+      forme: groupes
+      origine: [40, 384]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      centres: [[2.2, 5.4], [7.4, 5.8], [5, 1.9]]
+      effectifs: [10, 12, 9]
+      dispersion: 0.65
+      graine: 5
+      textes: {x: caractéristique 1, y: caractéristique 2, groupes: [groupe 1, groupe 2, groupe 3]}
+      description: "Trois groupes de points, chacun dans une tache bleue, son centre marqué d'un anneau."
+  - legende: droite · régression et écarts
+    params:
+      forme: droite
+      origine: [40, 384]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      n: 14
+      tendance: [0.55, 1.2]
+      bruit: 0.7
+      abscisses: [0.6, 9.4]
+      graine: 2
+      decalage: [0, 64]
+      textes: {x: entrée $x$, y: $y$, droite: $ŷ = a·x + b$, ecart: écart}
+      description: "Des points autour d'une droite bleue qui passe au plus près d'eux ; un trait pointillé relie chaque point à la droite."
+  - legende: frontière · deux classes de part et d'autre
+    params:
+      forme: frontiere
+      origine: [40, 384]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 7.8]
+      centres: [[3, 5.2], [7, 2.2]]
+      effectifs: [12, 12]
+      dispersion: 0.9
+      graine: 11
+      textes: {x: caractéristique 1, y: caractéristique 2, classes: [classe A, classe B], frontiere: frontière}
+      description: "Deux classes de points, noirs en haut à gauche, bleus en bas à droite, séparées par une droite en pointillé."
+  - legende: panneaux · les trois familles d'apprentissage (ouverture de l'épisode 03)
+    params:
+      forme: panneaux
+      origine: [10, 280]
+      echelle: [26, 30]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      centres: [[2.6, 5.6], [6.8, 2.6]]
+      effectifs: [12, 12]
+      dispersion: 0.8
+      graine: 3
+      textes: {titres: [supervisé, non supervisé, renforcement], etapes: [Agir, Récompense], retour: recommencer}
+      description: "Trois panneaux. Un nuage dont les points sont colorés selon leur étiquette ; le même nuage, tout gris ; une boucle : agir, recevoir une récompense, recommencer."
+  - legende: droite en comparaison · ventes d'Ames, la droite après 0, 10 et 100 pas de descente (épisode 11)
+    params:
+      forme: droite
+      source: ames
+      n: 120
+      graine: 11
+      origine: [16, 206]
+      echelle: [94, 0.54]
+      domaine: [0, 2.75]
+      plage: [0, 370]
+      cadre: [280, 220]
+      ecarts: false
+      fantome: true
+    cas:
+    - descente: {eta: 0.2, iteration: 0}
+      alerte: true
+      description: "120 ventes d'Ames ; au départ, w = 0 et b = 0 : la droite est à plat."
+    - descente: {eta: 0.2, iteration: 10}
+      description: "Après 10 pas, la droite monte vers les points."
+    - descente: {eta: 0.2, iteration: 100}
+      description: "Après 100 pas, elle se confond presque avec la droite des moindres carrés, en gris."
+  - legende: droite sur une relation courbe · les écarts ont un motif (piège, épisode 11)
+    params:
+      forme: droite
+      polynome: [6.5, -2.2, 0.28]
+      n: 18
+      bruit: 0.35
+      abscisses: [0.3, 8.1]
+      graine: 4
+      origine: [40, 380]
+      echelle: [104, 40]
+      domaine: [0, 8.4]
+      plage: [0, 9]
+      cadre: [920, 420]
+      textes: {x: entrée $x$, y: résultat $y$, droite: la meilleure droite, ecart: écart}
+      decalage: [-20, 44]
+      description: "Des points qui dessinent un U et la droite des moindres carrés : les points sont au-dessus aux deux bouts, en dessous au milieu."
+
+- nom: Formes-Flux
+  titre: Flux · forme page
+  famille: flux
+  hauteur: 1240
+  formes:
+  - legende: page · deux lignes comparées (ouverture)
+    params:
+      forme: page
+      lignes:
+      - {etiquette: Programme classique, ton: contexte, etapes: [Règles + données, Programme, Réponses]}
+      - {etiquette: Machine Learning, etapes: [Données + réponses, Apprentissage, "!Règles"]}
+      description: "Programme classique : des règles et des données donnent des réponses. Machine Learning : des données et des réponses donnent des règles."
+  - legende: page · sorties empilées (exemple sans capture)
+    params:
+      forme: page
+      lignes:
+      - etapes: [Mails déjà triés, Programme, [Spam, Non-spam]]
+      description: "Des mails déjà triés entrent dans le programme, qui classe chaque nouveau mail en spam ou non-spam."
+  - legende: page · boucle de retour (renforcement)
+    params:
+      forme: page
+      etapes: [Agir, Environnement, Récompense]
+      retour: recommencer
+      description: "L'agent agit, l'environnement répond par une récompense, et l'agent recommence."
+- nom: Formes-Niveaux
+  titre: Lignes de niveau · carte, gradient, chemins et selle
+  famille: niveaux
+  hauteur: 2450
+  formes:
+  - legende: carte · ∇J perpendiculaire aux niveaux, vers la montée (mécanisme, épisode 07)
+    params:
+      forme: carte
+      origine: [460, 225]
+      echelle: 100
+      domaine: [-3.4, 3.4]
+      plage: [-2, 2]
+      cadre: [920, 450]
+      courbures: [1, 3]
+      niveaux: [1, 4, 7]
+      longueur: 12
+      points:
+      - {point: [1, 1], valeurs: true, angle_droit: true, decalage: [14, 8]}
+      - {point: [2, -1], valeurs: true, decalage: [14, 8]}
+      - {point: [-2, 0], decalage: [-14, -16]}
+      - {point: [0, 0]}
+      textes: {x: réglage $a$, y: réglage $b$, gradient: ∇J, minimum: "∇J = (0 ; 0)"}
+      description: "Lignes de niveau en ellipses de J(a, b) = a² + 3b². En trois points, la flèche ∇J part perpendiculaire à la ligne de niveau, vers l'extérieur : en (1, 1), ∇J = (2 ; 6) ; en (2, −1), (4 ; −6). Au centre, ∇J = (0 ; 0)."
+  - legende: chemin · tout le jeu, un exemple, un mini-lot (mécanisme, épisode 09)
+    params:
+      forme: chemin
+      origine: [460, 225]
+      echelle: 100
+      domaine: [-3.6, 3.6]
+      plage: [-2.1, 2.1]
+      cadre: [920, 450]
+      courbures: [1, 3]
+      niveaux: [1, 4, 9]
+      chemins:
+      - {depart: [-3, 1.3], eta: 0.1, pas: 12, style: objet, texte: tout le jeu, decalage: [-40, -24]}
+      - {depart: [3, 1.5], eta: 0.1, pas: 25, bruit: 3, lot: 1, graine: 4, style: contexte, texte: un exemple, decalage: [-60, -24]}
+      - {depart: [1.6, -1.9], eta: 0.1, pas: 25, bruit: 3, lot: 16, graine: 4, texte: un mini-lot, decalage: [24, 8]}
+      textes: {}
+      description: "Lignes de niveau en ellipses et trois chemins : la descente sur tout le jeu, régulière ; sur un exemple, qui zigzague ; sur un mini-lot, moins bruitée. Tous arrivent près du minimum, marqué d'une croix."
+  - legende: chemin en comparaison · même bruit, taux fixe ou taux qui décroît (piège, épisode 09)
+    params:
+      forme: chemin
+      origine: [220, 150]
+      echelle: 55
+      domaine: [-3.8, 3.8]
+      plage: [-2.6, 2.6]
+      cadre: [440, 300]
+      courbures: [1, 3]
+      niveaux: [1, 4, 9]
+    cas:
+    - chemins: [{depart: [-3, 1.5], eta: 0.15, pas: 40, bruit: 4, graine: 7}]
+      alerte: true
+      description: "Avec un taux fixe, le chemin bruité rebondit autour du minimum sans s'y poser."
+    - chemins: [{depart: [-3, 1.5], eta: 0.15, pas: 40, bruit: 4, decroissance: true, graine: 7}]
+      description: "Avec un taux qui décroît, le même chemin bruité se resserre près du minimum."
+  - legende: chemin sur une selle · un chemin cale au point selle, l'autre s'en écarte (mécanisme, épisode 10)
+    params:
+      forme: chemin
+      origine: [460, 225]
+      echelle: 130
+      domaine: [-2.4, 2.4]
+      plage: [-1.65, 1.65]
+      cadre: [920, 450]
+      courbures: [1, -1]
+      niveaux: [-2, -1, 0, 1, 2]
+      chemins:
+      - {depart: [-2.2, 0], eta: 0.1, pas: 20, style: objet, texte: cale au point selle, decalage: [-10, 34]}
+      - {depart: [-2.2, 0.08], eta: 0.1, pas: 20, texte: s'en écarte, ancre: 16, decalage: [18, 6]}
+      textes: {minimum: point selle}
+      description: "Lignes de niveau en hyperboles autour d'un point selle : un creux selon le réglage horizontal, une bosse selon le vertical. Un chemin parti sur l'axe cale au point selle ; un autre, parti à peine au-dessus, finit par s'en écarter."

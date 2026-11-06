@@ -1,0 +1,14 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.serie()) }}
+
+<div class="scene">
+{{ fond }}
+{{ robot }}
+</div>
+
+<h1 class="titre-couverture">{{ titre|titre_point }}</h1>
+<p class="accroche">{{ accroche|texte }}</p>
+
+{{ ui.pied(signature, fleche=26) }}
+{% endblock %}

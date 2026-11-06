@@ -1,0 +1,102 @@
+episode: 6
+pages:
+
+- type: couverture
+  titre: "La pente\nd'une courbe :\nla dérivée."
+  visuel:
+    famille: courbe
+    params:
+      # A62 : la courbe en U du coût et ses tangentes (descend, plate au creux, monte) ; le robot pointe celle qui
+      # monte, marquée.
+      tangentes: {origine: [560, 560], echelle: [62, 24], domaine: [-3, 3.1], points: [-1.5, 0, 2.5], longueur: 340}
+  visuel_classique:  # couverture classique : la même courbe, autour du robot centré
+    famille: courbe
+    params:
+      tangentes: {origine: [540, 660], echelle: [110, 40], domaine: [-3.6, 3.6], points: [-2, 0, 2.6], longueur: 440}
+
+- type: ouverture
+  rappel: "Nº 05 : le coût $J$ selon un réglage $a$ dessine un U ; ici, le plus simple, $J$ = $a$²."
+  titre: "La dérivée,\nune pente."
+  texte: "La tangente suit la courbe en un point. Sa pente est la dérivée : le rythme auquel $J$ change quand le réglage $a$ bouge un peu."
+  sources: [d2l-taux, d2l-pente, d2l-tangente, d2l-instantane, dlb-pente, dlb-petit-pas]
+  visuel:
+    famille: courbe
+    params:
+      forme: tangentes
+      origine: [460, 400]
+      echelle: [110, 26]
+      domaine: [-3.4, 3.4]
+      axe: 410
+      cadre: [920, 450]
+      points:
+      - {theta: 2, triangle: true, decalage: [-150, -14]}
+      textes: {pente: pente, courbe: coût $J(a) = a²$, axe: réglage $a$}
+      description: "Une courbe en U, le coût J égal a au carré, et sa tangente en a = 2, en tirets. Un pas de 1 le long de l'axe fait monter la tangente de 4 : sa pente, la dérivée en ce point, vaut 4."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Le signe dit\nle sens."
+  texte: "Pente positive : $J$ monte quand $a$ augmente. Négative : $J$ descend. Nulle : c'est plat, comme au fond du creux. La taille de la pente dit la vitesse : en $a$ = 3, $J$ monte plus vite qu'il ne descend en $a$ = −2."
+  sources: [dlb-positif, dlb-negatif, dlb-minimum, dlb-critique, d2l-vitesse, dlb-types, dlb-sans-direction]
+  visuel:
+    famille: courbe
+    params:
+      forme: tangentes
+      origine: [460, 400]
+      echelle: [110, 26]
+      domaine: [-3.4, 3.4]
+      axe: 410
+      cadre: [920, 450]
+      points:
+      - {theta: -2, decalage: [-178, -18]}
+      - {theta: 0, decalage: [26, -22]}
+      - {theta: 3, decalage: [-150, -14]}
+      textes: {pente: pente, courbe: $J(a) = a²$, axe: réglage $a$}
+      description: "La courbe en U du coût J égal a au carré et ses tangentes en trois points : en a = −2, elle descend (pente −4) ; au creux, en a = 0, elle est plate (pente 0) ; en a = 3, elle monte (pente 6), plus raide."
+  encadres:
+  - titre: Plat ne veut pas dire creux
+    texte: "Au sommet d'une bosse aussi, la pente est nulle : elle n'indique plus **de quel côté aller**."
+
+- type: exemple
+  role: Exemple chiffré
+  titre: "La pente en $a$ = 3,\npar le calcul."
+  texte: "Pour $J$($a$) = $a$², la dérivée est $J′$($a$) = 2$a$ : en $a$ = 3, la pente vaut 6. Vérifions : on bouge $a$ d'un petit écart $h$ et on divise la hausse de $J$ par $h$."
+  sources: [d2l-puissance, d2l-limite, d2l-numerique, dlb-petit-pas]
+  visuel:
+    famille: grille
+    params:
+      forme: tableau
+      colonnes: [écart h, J(3 + h), hausse de J, hausse ÷ h]
+      lignes:  # calculs.descente_gradient.erreur(3 + h), erreur(3 + h) − erreur(3), puis ÷ h (arrondi à 2 décimales)
+      - [1, 16, 7, 7]
+      - [0.5, 12.25, 3.25, 6.5]
+      - [0.2, 10.24, 1.24, 6.2]
+      - [0.1, 9.61, 0.61, 6.1]
+      numeros: false
+      fenetre: {colonne: 3, texte: vers 6}
+      cadre: [920, 450]  # session de design n° 2 : un vide trop grand se comble par le cadre du visuel
+      description: "Tableau pour J égal a au carré, en a = 3. Écart h = 1 : J(4) = 16, hausse 7, rapport 7. h = 0,5 : J(3,5) = 12,25, hausse 3,25, rapport 6,5. h = 0,2 : J(3,2) = 10,24, hausse 1,24, rapport 6,2. h = 0,1 : J(3,1) = 9,61, hausse 0,61, rapport 6,1. La colonne des rapports, encadrée, s'approche de 6."
+  conclusion: "Quand $h$ rapetisse, le rapport s'approche de 6 : la pente en $a$ = 3."
+
+- type: fin
+  points:
+  - "La dérivée est la pente de la tangente : le rythme auquel $J$ change."
+  - "Pente positive : $J$ monte. Négative : il descend. Nulle : c'est plat."
+  - "Pour $J$($a$) = $a$², $J′$($a$) = 2$a$ : en $a$ = 3, la pente vaut 6."
+  verification:
+    question: "Que dit une pente nulle sur la courbe du coût ?"
+    page: 3
+
+linkedin:
+  texte: |-
+    Le compteur de votre voiture affiche une dérivée.
+
+    À 80 km/h, il ne dit ni où vous êtes ni où vous arriverez. Il dit à quel rythme votre position change, à cet instant.
+
+    Pour un modèle, la dérivée du coût joue ce rôle. Elle n'indique pas où se trouve le meilleur réglage. Elle indique dans quel sens le coût évolue si le réglage bouge un peu, et à quel rythme, là où l'on se trouve.
+
+    Cette information locale dispense d'essayer tous les réglages un par un.
+
+    Une dérivée ne dit pas où aller : elle dit de quel côté commencer.
+  hashtag: "#Derivee"
+  generique: "#Mathematiques"

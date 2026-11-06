@@ -1,0 +1,19 @@
+{% extends "_base.html.j2" %}{% import "_macros.html.j2" as ui %}
+{% block page %}
+{{ ui.entete(ep.numero_affiche, ep.chapitre, ui.pagination(page)) }}
+
+<span class="rappel">{{ rappel|texte }}</span>
+
+<h1 class="grand-titre">{{ p.titre|titre_point }}</h1>
+
+<p class="intuition">{{ p.texte|texte }}</p>
+
+{% if visuel %}
+<div class="visuel-ouverture">
+{{ visuel }}
+{% if p.legende %}<span class="legende">{{ p.legende|texte }}</span>{% endif %}
+</div>
+{% endif %}
+
+{{ ui.pied(signature) }}
+{% endblock %}

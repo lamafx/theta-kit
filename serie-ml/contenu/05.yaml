@@ -1,0 +1,163 @@
+episode: 5
+pages:
+
+- type: couverture
+  titre: "Comment une IA\nsait-elle qu'elle\nse trompe ?"
+  visuel:
+    famille: nuage
+    params:
+      graine: 5
+
+- type: ouverture
+  titre: "Mesurer l'erreur\nd'une droite."
+  texte: "Pour chaque exemple, la droite prédit $ŷ$ ; le résultat réel est $y$. L'erreur (résidu) est $ŷ$ − $y$, souvent $y$ − $ŷ$ en statistique ; sans signe, c'est la distance verticale."
+  sources: [mlcc-difference, mlcc-distance, nist-residu]
+  visuel:
+    famille: nuage
+    params:
+      forme: droite
+      origine: [40, 384]
+      echelle: [84, 44]
+      domaine: [0, 10]
+      plage: [0, 8.4]
+      cadre: [920, 432]  # le « x » en 26 px de l'axe ne doit pas être rogné en bas
+      n: 14
+      tendance: [0.55, 1.2]
+      bruit: 0.7
+      abscisses: [0.6, 9.4]
+      graine: 2
+      decalage: [0, 64]
+      textes: {x: entrée $x$, y: résultat réel $y$, droite: $ŷ = a·x + b$, ecart: erreur}
+      description: "Des points d'illustration autour d'une droite bleue ; un trait pointillé relie chaque point à la droite : c'est l'erreur de la prédiction pour cet exemple."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Pourquoi élever\nl'erreur au carré ?"
+  texte: "Droite de l'épisode 04, millions de FCFA (cours du 27 octobre 2026). Ses prédictions sont trop hautes ; trop basse, l'erreur serait négative : le carré la rend positive. Il grossit les grosses erreurs : l'erreur d'Old Town vaut trois fois et demie celle de College Creek, son carré près de treize fois."
+  sources: [mlcc-distance, mlcc-signe, mlcc-carre-grand, d2l-carre, mlcc-aberrant, d2l-anomalies, ames-ventes, ames-surface, ames-quartier, ames-prix, bceao-dollar]
+  visuel:
+    famille: grille
+    params:
+      forme: tableau
+      colonnes: [quartier, prix réel, prix prédit, erreur, erreur²]
+      lignes:  # calculs.cout.erreurs_maisons([2, 267, 171], a=74, b=4) : quartier, prix, prediction, erreur, carre
+      - [North Ames, 62, 65, 3, 9]
+      - [College Creek, 141, 148, 7, 49]
+      - [Old Town, 57, 82, 25, 625]
+      numeros: false
+      fenetre: {colonne: 4, texte: les carrés}
+      cadre: [920, 340]
+      description: "Tableau de trois maisons d'Ames, en millions de FCFA. North Ames : prix réel 62, prédit 65, erreur 3, carré 9. College Creek : 141, 148, erreur 7, carré 49. Old Town : 57, 82, erreur 25, carré 625. La colonne des carrés, en bleu, est encadrée."
+  encadres:
+  - titre: Le revers
+    texte: "Un seul point très éloigné peut **tirer toute la droite** vers lui."
+
+- type: formule
+  role: Formule
+  titre: "Un seul nombre :\nla moyenne des carrés."
+  texte: "On additionne les carrés des erreurs, puis on divise par le nombre d'exemples : c'est la fonction de coût $J$, ici l'erreur quadratique moyenne (MSE), la plus courante en régression, pas la seule. Plus $J$ est petit, mieux la droite suit les données."
+  sources: [mlcc-mse, d2l-distance, d2l-zero, d2l-moyenne, d2l-regression, mlcc-choix]
+  panneau:
+    formule: "J = {1}/{n} Σ [(ŷ_i − y_i)²]"
+  lignes:
+  - symbole: n
+    sens: le nombre d'exemples
+  - symbole: Σ
+    sens: "la somme sur les exemples, de $i$ = 1 à $n$"
+  - symbole: "[(ŷ_i − y_i)²]"
+    sens: "le carré de l'erreur sur l'exemple $i$"
+
+- type: comparaison
+  role: Comparaison
+  titre: "Deux droites,\ndeux coûts."
+  texte: "Même $b$ = 4, deux inclinaisons $a$, et $J$ calculé cette fois sur les ventes d'Ames de 2006 à 2010, pas sur les trois maisons. Les points ne sont pas dessinés : seul $J$ tranche. La droite de l'épisode 04 a le coût le plus faible des deux."
+  sources: [ames-ventes, ames-surface, ames-prix, bceao-dollar]
+  visuel:
+    famille: courbe
+    calcul: cout_ames  # J de chaque droite sur toutes les ventes gardées
+    params:
+      forme: pivot
+      origine: [40, 250]
+      echelle: [126, 0.96]
+      domaine: [0, 3]
+      plage: [0, 240]
+      cadre: [440, 300]  # session visuelle n° 2 (320 avant)
+      textes: {x: surface, y: prix}
+  cas:
+  - etiquette: $a$ = 74
+    titre: La droite de l'épisode 04
+    texte: "$J$ = 1 030"
+    retenu: true
+    params:
+      forme: pivot
+      a: 74
+      b: 4
+      fantomes: [40]
+      rayon: 120
+      textes: {x: surface, y: prix}
+      description: "La droite d'inclinaison 74, en bleu ; en gris, la droite plus plate d'inclinaison 40. Coût J : 1 030."
+  - etiquette: $a$ = 40
+    titre: Une droite trop plate
+    texte: "$J$ = 3 433 : plus de trois fois plus."
+    alerte: true
+    params:
+      forme: pivot
+      a: 40
+      b: 4
+      fantomes: [74]
+      rayon: 120
+      textes: {x: surface, y: prix}
+      description: "La droite d'inclinaison 40, en bleu ; en gris, celle de l'épisode 04. Coût J : 3 433."
+  encadre:
+    titre: Une unité étrange
+    texte: "$J$ s'exprime en millions de FCFA au carré : il sert à comparer des droites, pas à lire un prix."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Toutes les inclinaisons :\nune courbe en U."
+  texte: "Gardons $b$ = 4 et faisons varier $a$ : pour une droite et la MSE, les coûts $J$ forment un U. Son creux donne le meilleur $a$ quand $b$ = 4, sur ces ventes d'Ames : $a$ ≈ 74, comme dans l'épisode 04. Entraîner, c'est chercher le creux pour $a$ et $b$ ensemble."
+  sources: [d2l-minimiser, ames-ventes]
+  visuel:
+    famille: courbe
+    params:
+      forme: pentes
+      origine: [460, 400]
+      echelle: [105, 0.0296]
+      fonction: {a: 852.2, c: 1029.9}  # calculs.cout.cout_selon_a(b=4, unite=20) : θ = (a − 74) / 20
+      domaine: [-3.5, 3.5]
+      axe: 400
+      eta: 0
+      points: []
+      textes:
+        minimum: creux
+        courbe: coût $J$
+        axe: réglage $a$ ($b$ = 4)
+      description: "Courbe en U : le coût J des droites d'Ames selon leur inclinaison a, avec b = 4 fixé. Le creux, marqué d'un cercle, est en a = 74 ; il reste au-dessus de zéro."
+
+- type: fin
+  points:
+  - "L'erreur (résidu) : $ŷ$ − $y$, souvent $y$ − $ŷ$ en statistique ; sans signe, la distance verticale."
+  - "Le carré rend chaque erreur positive et grossit les grosses erreurs."
+  - "La fonction de coût $J$, la moyenne des carrés, a un creux : la droite au coût le plus faible."
+  verification:
+    question: "Pourquoi élever chaque erreur au carré ?"
+    page: 3
+
+linkedin:
+  texte: |-
+    Quand on élève les erreurs au carré, une seule erreur de 25 pèse autant que 625 erreurs de 1.
+
+    Le calcul tient en deux lignes :
+
+    Avec le carré : 25² = 625, soit 625 erreurs de 1.
+    Sans le carré (valeur absolue) : 25, soit 25 erreurs de 1.
+
+    Une fonction de coût ne se contente donc pas de mesurer. Elle dit au modèle ce qui est grave.
+
+    L'erreur quadratique moyenne, la plus courante en régression, lui dit d'éviter d'abord les grands écarts. C'est utile quand un grand écart coûte vraiment cher. C'est gênant quand ce point isolé est une anomalie : il tire le modèle vers lui, ce que l'erreur absolue moyenne fait bien moins.
+
+    Le choix dépend des données et de ce que coûte réellement une erreur.
+
+    Dans votre métier, une grosse erreur coûte-t-elle plus que plusieurs petites ?
+  hashtag: "#FonctionDeCout"
+  generique: "#Statistiques"
