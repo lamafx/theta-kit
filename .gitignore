@@ -7,3 +7,9 @@ node_modules/
 .vercel/
 .env
 .env.*
+
+# CV de travail, avec téléphone : jamais dans le dépôt public.
+site/theta-kit/docs/CV*.pdf
+
+# Vidéo de démonstration : référence locale, 41 Mo.
+site/theta-kit/*.mp4
