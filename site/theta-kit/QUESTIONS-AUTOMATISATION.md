@@ -4,6 +4,8 @@
 
 **Pour l'auteur** : les questions marquées 👤 ne peuvent être tranchées que par toi.
 
+**Règle de lecture** : `serie-ml` est la source de vérité et ce kit n'est qu'un outil pour produire le site. En cas d'écart, la série gagne et le kit s'adapte. Une proposition n'est donnée que si la série la justifie.
+
 ## A. Où et quoi
 
 **Q1.** Chemin du dossier ou dépôt de l'automatisation sur le PC (et URL GitHub s'il y en a une). Est-ce un dépôt Git ? Branche principale ?
@@ -33,11 +35,11 @@ Réponse : Tout est relatif à `serie-ml/`.
 Réponse : Par **Playwright** (Chromium) : `serie rendre NN` remplit les gabarits HTML, photographie chaque page en PNG et imprime chaque page en PDF, puis pypdf les assemble (`serie/rendu.py`, `photographier`). Résultat : `sortie/NN/NN-titre.pdf`, copié par `serie publier NN` vers `publier/NN/NN-titre.pdf` (`serie/publication.py`). Exemple : `publier/01/01-qu-est-ce-que-le-machine-learning.pdf`. Claude Design ne sert qu'aux maquettes.
 
 **Q6.** Existe-t-il déjà un fichier de données par épisode (YAML, JSON, Markdown) ? Si oui, son format exact : peut-il produire directement `contenu/NN.yaml` (schéma `docs/03-contenu.md`) ou faut-il une conversion ?
-Réponse : Oui, `contenu/NN.yaml`, mais **il faut une conversion** : les deux formats portent le même nom et n'ont pas le même schéma.
+Réponse : Oui, `contenu/NN.yaml`. C'est **le site qui s'adapte à ce format**, jamais l'inverse : une conversion lit la série et produit les fichiers du site, sans rien modifier dans `serie-ml`.
 - Série : `episode`, `couverture`, `pages[]` (`type`, `titre`, `texte`, `sources`, `visuel`), bloc `linkedin` (`serie/schemas.py`).
-- Site : `n`, `saison`, `statut`, `groupe`, `titre{t1,t2}`, `accroche`, `resume`, `theme`, `pdf`, `pages[]`, `a_retenir`, `verifiez_vous`, `suivant`, `sources`, `post_linkedin` (`docs/03-contenu.md`).
-- Récupérables : saison, groupe (`chapitre.titre`), titre et accroche (fiche `banque/`), texte du post (`publier/NN/texte.txt`), sources (`premier-commentaire.txt`).
-- Absents de la série : toute la version anglaise, `resume`, `theme`, le découpage `t1`/`t2`, `a_retenir`, `verifiez_vous`. Le schéma zod impose `a_retenir` et `verifiez_vous` pour un épisode `publie`.
+- Statut du site : à déduire de `etat.yaml` (`a_faire`, `genere`, `relu`, `publie`, `mesure`). Les valeurs `publie` et `brouillon` du kit ne font pas foi.
+- Groupe, titre et accroche : fiche `banque/episodes/NN-*.yaml`. Texte du post : `publier/NN/texte.txt`. Sources : `publier/NN/premier-commentaire.txt`.
+- Absents de la série : version anglaise, `resume`, `theme`, `t1`/`t2`, `a_retenir`, `verifiez_vous`. Ils devront être dérivés des pages de la série. Le schéma de `docs/03-contenu.md` est à revoir s'il exige un champ que la série ne fournit pas.
 
 **Q7.** Comment est marquée la **validation par l'auteur** (fichier, champ `statut`, commande manuelle) ? Le site ne doit recevoir que des épisodes validés.
 Réponse : Par le champ `statut` de `etat.yaml`, passé à la main : `serie statut NN relu`. Valeurs : `a_faire`, `genere`, `relu`, `publie`, `mesure` (`serie/schemas.py`, classe `Statut`). `CLAUDE.md` en fait le seul arrêt obligatoire par épisode. Pour le site, condition proposée : `relu` et étapes à jour (`serie reprendre NN`), les mêmes garde-fous que LinkedIn. Limite : les épisodes 01 à 10 sont `relu`, mais la relecture n'a pas été repassée et `sortie/decisions.md` liste 34 décisions non arbitrées.
@@ -59,7 +61,7 @@ Réponse : Dans le **gestionnaire d'identifiants de Windows** (keyring, service 
 ## D. Branchement avec le site
 
 **Q12.** 👤 Mode de branchement préféré (voir `docs/08`) : A même dépôt, B deux dépôts avec commit automatique (recommandé), C webhook ?
-Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** **Mode A, même dépôt**. Les deux dossiers sont désormais réunis dans le dépôt public `theta-kit`, ce qui rend le mode B inutile : pas de second clone ni de jeton à portée limitée. Vercel : `Root Directory = site/theta-kit`, avec une « Ignored Build Step » pour ne pas reconstruire à chaque commit de `serie-ml/`. Ce choix remplace la recommandation par défaut de `docs/08` (mode B). Conséquence : `serie-ml` a son propre dépôt à l'intérieur, à garder en tête pour tout commit à la racine.
+Réponse : 👤 **Proposition tirée de `serie-ml`, à confirmer par l'auteur.** **Mode A, même dépôt**. Il reflète la règle : le site se reconstruit à partir de `serie-ml`, qui reste seul maître du contenu, sans copie à synchroniser dans un second dépôt. Les deux dossiers sont réunis dans le dépôt public `theta-kit`. Vercel : `Root Directory = site/theta-kit`, avec une « Ignored Build Step » pour limiter les reconstructions. La recommandation du mode B dans `docs/08` n'est qu'un choix du kit. Conséquence : `serie-ml` a son propre dépôt à l'intérieur, à garder en tête pour tout commit à la racine.
 
 **Q13.** L'automatisation tourne-t-elle uniquement sur le PC de l'auteur, ou aussi sur un serveur ou dans le cloud ? (Détermine si elle peut faire `git push`.)
 Réponse : Uniquement sur le PC de l'auteur. Il n'y a ni serveur ni cloud : le serveur reste à faire dans la feuille de route. La tâche planifiée tourne si une session Windows est ouverte. Elle peut faire `git push` : le Git Credential Manager est configuré. Le PC éteint ou fermé, plus de 2 heures de retard font manquer le post.
@@ -68,12 +70,12 @@ Réponse : Uniquement sur le PC de l'auteur. Il n'y a ni serveur ni cloud : le s
 Réponse : Non. Le post ne contient aucun lien vers le site (Q8) et le site n'est pas construit : ce kit ne contient encore aucun code Next.js. Le lancement du 2026-11-10 ne dépend donc pas du site. Si un lien est ajouté plus tard, il faudra attendre que la page réponde 200 avant publication (`docs/08`). Ce sera une modification de l'automatisation.
 
 **Q15.** Les épisodes 04 à 10 ont-ils déjà des carrousels finis (PDF + couverture) dans l'automatisation ? Si oui, où ? Ils remplaceront les fiches provisoires du kit.
-Réponse : Oui, tous : `serie-ml/publier/04/` à `publier/10/` contiennent le PDF final (de 5 à 8 pages), `couvertures/` (PNG), `apercus/`, `texte.txt`, `premier-commentaire.txt`, `date.txt`. Les PDF 01 à 03 du kit sont identiques octet pour octet à ceux de la série ; les PDF 04 à 10 du kit sont les fiches de 3 pages à remplacer. Il faut produire les `theta-NN.webp` (`docs/08`). Attention : les YAML du kit sont en retard sur la série. Les textes de post diffèrent sur les 10 épisodes (de 21 à 39 % de ressemblance avec `publier/NN/texte.txt`), l'accroche sur 04 à 10, et le groupe « Optimisation » s'appelle « Apprendre de ses erreurs » dans `banque/` pour 05 à 10.
+Réponse : Oui, tous : `serie-ml/publier/04/` à `publier/10/` contiennent le PDF final (de 5 à 8 pages), `couvertures/` (PNG), `apercus/`, `texte.txt`, `premier-commentaire.txt`, `date.txt`. Les PDF 01 à 03 du kit sont identiques octet pour octet à ceux de la série ; les PDF 04 à 10 du kit sont les fiches de 3 pages à remplacer. Il faut produire les `theta-NN.webp` (`docs/08`). Les YAML du kit sont à régénérer depuis la série, qui fait foi. Les textes de post diffèrent sur les 10 épisodes (de 21 à 39 % de ressemblance avec `publier/NN/texte.txt`), l'accroche sur 04 à 10, et le groupe « Optimisation » s'appelle « Apprendre de ses erreurs » dans `banque/` pour 05 à 10.
 
 ## E. E-mails
 
 **Q16.** L'automatisation envoie-t-elle déjà des e-mails ou gère-t-elle une liste d'abonnés (Brevo, Mailchimp, Gmail API, autre) ? Sinon, 👤 d'accord pour Brevo (offre gratuite à vérifier sur brevo.com) ?
-Réponse : Non : aucune trace d'envoi d'e-mail ni de liste d'abonnés dans `serie/`, `theta-post/CLAUDE.md`, `AMBIGUITES.md`, `charte/` et `.claude/` (recherche `brevo`, `mailchimp`, `smtp`, `newsletter`). La newsletter reste à faire dans la feuille de route. 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Brevo, comme le prévoit le kit ; l'offre gratuite n'a pas été vérifiée ici.
+Réponse : Non : aucune trace d'envoi d'e-mail ni de liste d'abonnés dans `serie/`, `theta-post/CLAUDE.md`, `AMBIGUITES.md`, `charte/` et `.claude/` (recherche `brevo`, `mailchimp`, `smtp`, `newsletter`). 👤 **`serie-ml` ne tranche pas : à décider par l'auteur.** Brevo n'est qu'une suggestion du kit ; le choix du service reste ouvert et son offre gratuite n'a pas été vérifiée.
 
 **Q17.** À la sortie d'un épisode, l'envoi de la newsletter doit-il être automatique, ou validé par l'auteur comme le post ?
 Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Automatique, sans seconde validation. La décision du 2026-10-30 (A49) fait de `serie statut NN relu` le seul arrêt, et la publication suit seule. L'envoi doit partir **après** la réussite du post LinkedIn, pas avant, pour ne jamais annoncer un épisode qui n'est pas sorti.
@@ -84,16 +86,19 @@ Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l
 Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** `theta-ml.vercel.app` : le nom paraît libre (`DEPLOYMENT_NOT_FOUND` le 2026-11-06, à confirmer à la création du projet). Il suit le hashtag de la série, #ThetaML.
 
 **Q19.** Quel CV publier sur le site ? Le plus récent dit « Développeur web et mobile » et ne mentionne plus les 88 % ni XGBoost ; l'ancien dit « Stagiaire Machine Learning ». Le site met en avant le ML : garder les 88 % (et dire s'il s'agit de précision ou d'exactitude, *precision* ou *accuracy* en anglais) ou les retirer ?
-Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Publier un CV orienté ML, **sans téléphone**, et **retirer les 88 % pour l'instant**. Le CV du kit affiche le numéro de téléphone, ce que `CLAUDE.md` interdit : il a été exclu du dépôt public (`.gitignore` à la racine). L'objectif de la série est un stage, et `profil.json` annonce « Ouvert à un stage en ML », alors que ce CV titre « Développeur web et mobile ». Les 88 % sont marqués `_verifier` dans `data/projets.json` et `data/profil.json`. Précision ou exactitude : inconnu, à demander à l'auteur. La série exige un chiffre sourcé, et l'erreur serait visible dès l'épisode 22 (Nº 22, « Précision, rappel et F1 »).
+Réponse : 👤 **Proposition tirée de `serie-ml`, à confirmer par l'auteur.** Le téléphone reste hors du public. Le CV du kit l'affiche ; il a été exclu du dépôt public (`.gitignore` à la racine).
+- **Profil** : la série présente l'auteur comme étudiant en 3e année de licence SRIT à l'ESATIC, qui travaille sur le NLP, les agents conversationnels et le développement logiciel (`theta-post/editorial/ligne_editoriale.md`, section 6). Ni « Développeur web et mobile » ni les textes de `data/` du kit ne font foi : le CV et le profil sont à aligner sur cette section.
+- **Mise en avant** : la même section donne des faits précis sur le mémoire NGONI (19 intentions, corpus de 1 919 exemples, jeu de test final de 2 041 requêtes, BGE-M3). Elle les marque « à confirmer avant chaque usage ».
+- **88 %** : à retirer. La série n'en parle pas (`theta-post/editorial/`), et ses règles exigent un chiffre daté et sourcé (`serie-ml/CLAUDE.md`). Précision ou exactitude : inconnu, à demander à l'auteur.
 
 **Q20.** Ajout de nouveaux certificats : simple (tu me les envoies, je les ajoute dans `data/certificats.json` via Git) ou page `/admin` protégée sur le site ?
 Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Simple, par Git : ajout dans `data/certificats.json`. Le site est statique et sans base de données ; une page `/admin` ajouterait une authentification à maintenir pour un ajout rare.
 
 **Q21.** Anglais britannique ou américain pour la version EN ?
-Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Britannique : le kit l'utilise déjà (`docs/04-i18n.md`, ligne 21). La série n'a pas de version anglaise.
+Réponse : 👤 **`serie-ml` ne tranche pas : à décider par l'auteur.** La série est uniquement en français (`serie-ml/CLAUDE.md`) et n'a aucune version anglaise. L'orthographe britannique n'est qu'un choix du kit (`docs/04-i18n.md`). Tout texte anglais serait un texte nouveau, à faire valider, et non une reprise de la série.
 
 **Q22.** Que faire de l'ancien portfolio `lama-portofolio.vercel.app` : redirection vers `/profil`, ou on le garde ?
-Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** Le garder tant que le nouveau site n'est pas en ligne : il répond encore (HTTP 200) et le CV y renvoie. Rediriger ensuite vers `/profil`. La série ne tranche pas ce point.
+Réponse : 👤 **`serie-ml` ne tranche pas : à décider par l'auteur.** L'ancien portfolio répond encore (HTTP 200), mais la série n'en dit rien.
 
 **Q23.** Pour l'AI for Good Bronze Award : nom exact de l'équipe (HeriTech) et ton rôle dans l'équipe, à afficher ?
 Réponse : Nom de l'équipe : **HeriTech**, confirmé par le certificat (`public/certificats/ai-for-good-bronze-2026.jpg`). Il cite trois membres, dont l'auteur, et deux tuteurs. Rôle dans l'équipe : inconnu, à demander à l'auteur ; ni le certificat ni `data/` ne le disent.

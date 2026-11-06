@@ -13,6 +13,7 @@ Auteur : Ladji Lama Kamagate (Abidjan, ESATIC SRIT). Série : θ Théta, « le M
 
 ## 1. Règles absolues
 
+- **`../../serie-ml` est la source de vérité.** Ce kit n'est qu'un outil pour produire le site. Textes, statuts, profil et décisions se réfèrent à `serie-ml` ; en cas d'écart avec le kit (`contenu/`, `data/`, `docs/`), la série gagne et le kit s'adapte. Si la série ne tranche pas, demande à l'auteur.
 - **Ne rien inventer.** Aucune statistique, date, expérience, projet, certification ou citation qui ne figure pas dans `contenu/`, `data/` ou les PDF de `public/`. En cas de doute, laisse un `TODO(auteur)` visible dans le code et liste-le dans ton compte rendu.
 - **Pas de tiret long** (le caractère cadratin ni le double tiret) dans les textes affichés. Utilise deux-points, virgule ou point.
 - **Téléphone de l'auteur jamais affiché** publiquement, même s'il est dans le CV.
