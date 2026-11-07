@@ -11,5 +11,5 @@ export function useMoteur(Moteur: any, { dict, ...p }: any) {
   const router = useRouter();
   const tr = (s: string) => (p.locale === 'en' ? dict?.[s] ?? s : frTypo(s));
   const v = useEngine(Moteur, { ...p, tr, nav: (h: string) => router.push(h), prefetch: () => router.prefetch(p.href.voyage) });
-  return { v, t: (k: string) => t(k as never) };
+  return { v, t: (k: string, a?: any) => t(k as never, a) };
 }

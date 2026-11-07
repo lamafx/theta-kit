@@ -215,6 +215,7 @@ scene.add(rob); this.robots.push(rob);
 this.cards = []; this.hits = [];
 this.CH.forEach((c, i) => { if (c.v) this.cards.push(this.makeCard(c, i)); });
 this.buildPortrait();
+this.comp = new T.Group(); this.comp.add(this.makeRobot()); this.comp.visible = false; scene.add(this.comp); this.compI = -1; this.compT = -10; this.refus = {};
 this.clock = new T.Clock(); this.fit();
 this.ro = new ResizeObserver(() => this.fit()); this.ro.observe(this.canvas.parentElement);
 }
@@ -424,7 +425,7 @@ if (Math.abs(this.target - this.cur) < 1e-4 && Math.abs(this.cv) < 1e-3) { this.
 }
 this.vel = this.vel * 0.85 + ((this.cur - prev) / Math.max(dt, 1e-3)) * 0.15;
 if (this.exit) { this.exit.t += dt; this.warp = Math.min(1, this.warp + dt * 1.6); }
-if (this.arr > 0) this.arr = Math.max(0, this.arr - dt * 0.75);
+if (this.arr > 0) this.arr = Math.max(0, this.arr - dt * 2.2);
 this.pulse = Math.max(0, this.pulse - dt * 2.2);
 const ar = this.arr * this.arr * (3 - 2 * this.arr);
 const sp = Math.min(1, Math.abs(this.vel) * 0.8 + this.warp + ar + this.pulse * 0.35);
@@ -435,7 +436,7 @@ for (let i = 0; i < L.length; i++) pa[i * 6 + 5] = pa[i * 6 + 2] - L[i] * stt;
 this.sg.attributes.position.needsUpdate = true;
 }
 this.perf.acc += dt; this.perf.n++;
-if (this.perf.n >= 90) { const avg = this.perf.acc / this.perf.n; this.perf.acc = 0; this.perf.n = 0; if (avg > 1 / 42 && this.dpr > 1) { this.dpr = Math.max(1, this.dpr - 0.35); this.r.setPixelRatio(this.dpr); this.r.setSize(this.W, this.H, false); } }
+if (this.perf.n >= 90) { const avg = this.perf.acc / this.perf.n; this.perf.acc = 0; this.perf.n = 0; if (avg > 1 / 30 && this.dpr > 1.5) { this.dpr = Math.max(1.5, this.dpr - 0.25); this.r.setPixelRatio(this.dpr); this.r.setSize(this.W, this.H, false); } }
 if (!this.mdrag && !this.touch) { this.lookT.x *= Math.exp(-dt * 0.9); this.lookT.y *= Math.exp(-dt * 0.9); }
 this.look.x += (this.lookT.x - this.look.x) * Math.min(1, dt * 6); this.look.y += (this.lookT.y - this.look.y) * Math.min(1, dt * 6);
 this.camP.x += (this.ptr.x * 0.5 - this.camP.x) * Math.min(1, dt * 2.5); this.camP.y += (-this.ptr.y * 0.35 - this.camP.y) * Math.min(1, dt * 2.5);
@@ -448,6 +449,21 @@ this.helix.rotation.z = t * 0.02 + this.cur * 0.08;
 this.dust.rotation.z = -t * 0.01;
 this.camLight.intensity = 6 + this.pulse * 10 + ar * 8; this.camLight.position.set(this.cam.position.x, this.cam.position.y, cz - 3);
 const ci = Math.round(this.cur);
+{
+const ci = Math.round(this.cur); const ch = this.CH[ci]; const etroit = this.W < 820 || this.W / this.H < 1.05;
+if (ci !== this.compI && Math.abs(this.cur - ci) < 0.18) {
+this.compI = ci; this.compT = t;
+const lab = ch && ch.ep && ch.links && ch.links[0] && ch.links[0].theme ? ci : -1;
+if (lab !== this.state.offre) this.setState({ offre: lab });
+}
+const e = Math.max(0, 1 - (t - this.compT) / 1.8); const cp = this.cam.position; const m = !!(ch && ch.ep);
+this.comp.visible = m;
+if (m) {
+this.comp.scale.setScalar(etroit ? 0.2 : 0.26);
+this.comp.position.set(cp.x + (etroit ? 0.36 : 1.42), cp.y + (etroit ? 0.62 : -0.8) + Math.abs(Math.sin(t * (4 + 7 * e))) * (0.04 + 0.16 * e), cp.z - 2.4);
+this.comp.rotation.set(0.05, -0.5 + Math.sin(t * 3.4) * (0.16 + 0.34 * e), Math.sin(t * 5.2) * (0.07 + 0.16 * e));
+}
+}
 this.gates.forEach((g, i) => { g.rotation.y = Math.sin(t * 0.4 + i) * 0.12; const near = Math.max(0, 1 - Math.abs(this.cur - i) * 1.4); this.glowMats[i].opacity = 0.2 + near * 0.55 + this.warp * 0.4; });
 this.robots.forEach((rob, k) => { const b = rob.userData.base; const etroit = this.W < 820 || this.W / this.H < 1.05; rob.position.x = etroit ? rob.userData.side * 0.62 : b.x; rob.scale.setScalar(etroit ? 0.72 : 1); rob.position.y = (etroit ? -0.2 : b.y) + Math.sin(t * 1.6 + k) * 0.06; rob.rotation.y = rob.userData.last ? 0.55 + Math.sin(t * 0.7) * 0.12 : -0.35 + Math.sin(t * 0.6) * 0.15 + this.camP.x * 0.4; });
 const blink = (t % 3.8) < 0.12 ? 0.15 : 1; this.eyes.forEach((e) => { e.scale.x = blink; });
@@ -499,7 +515,7 @@ const fin = Math.max(0, Math.min(1, (20 - dist) / 11)), fout = Math.max(0, Math.
 const op = fin * fout;
 const ax = narrow ? 0 : c.side * 0.75; const ay = narrow ? -0.45 : 0.35;
 v.set(ax, ay, this.zc(i)).project(this.cam);
-const sx = narrow ? this.W / 2 : (v.x + 1) / 2 * this.W, sy = narrow ? this.H * 0.73 : (1 - v.y) / 2 * this.H;
+const sx = narrow ? this.W / 2 : (v.x + 1) / 2 * this.W, sy = narrow ? this.H * 0.62 : (1 - v.y) / 2 * this.H;
 const sc = narrow ? Math.min(1, 6 / dist) : Math.min(2.4, 6 / dist);
 const tx = narrow ? '-50%' : (c.side < 0 ? '-100%' : '0%');
 const ry = narrow ? 0 : -c.side * 14 * (1 - fout * 0.4) + this.look.x * 20;
@@ -533,7 +549,7 @@ return { label: c.nav, go: this.jumps[i], current: on ? 'step' : 'false', weight
 const c = this.CH[idx];
 return {
 chapters: chapters, navItems: navItems,
-goPrev: () => this.jumpTo(this.clampT(Math.round(this.target) - 1)), goNext: () => this.jumpTo(this.clampT(Math.round(this.target) + 1)), href: this.props.href, aide: this.L('Molette · glisser pour regarder · cliquer sur une carte'), noGL: !!this.state.noGL, setCanvas: this.setCanvas, setIris: this.setIris, setBar: this.setBar, setCursor: this.setCursor,
+offre: this.state.offre >= 0 && !this.refus[this.state.offre] ? { texte: this.L('Le labo du ') + this.CH[this.state.offre].num + this.L(' vous attend !'), href: this.CH[this.state.offre].links[0].href, label: this.CH[this.state.offre].links[0].label, oui: (e) => this.leave(e, this.CH[this.state.offre].links[0].theme), non: () => { this.refus[this.state.offre] = true; this.setState({ offreVue: this.state.offre }); } } : null, nonTxt: this.L('Pas maintenant'), goPrev: () => this.jumpTo(this.clampT(Math.round(this.target) - 1)), goNext: () => this.jumpTo(this.clampT(Math.round(this.target) + 1)), href: this.props.href, aide: this.L('Molette · glisser pour regarder · cliquer sur une carte'), noGL: !!this.state.noGL, setCanvas: this.setCanvas, setIris: this.setIris, setBar: this.setBar, setCursor: this.setCursor,
 onWheel: this.onWheel, onKey: this.onKey, onDown: this.onDown, onMove: this.onMove, onUp: this.onUp, onLeave: this.onLeave,
 goLabAny: this.goLabAny, goMain: this.goMain,
 cursor: this.state.drag ? 'grabbing' : (this.state.hoverLabel ? 'pointer' : 'default'),

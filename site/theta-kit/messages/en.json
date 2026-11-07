@@ -11,7 +11,12 @@
     "profil": "My profile",
     "menu": "Menu",
     "fermer": "Close",
-    "langue": "Language"
+    "langue": "Language",
+    "barre_accueil": "Home",
+    "barre_episodes": "Episodes",
+    "barre_voyage": "Journey",
+    "barre_labo": "Lab",
+    "barre_profil": "Profile"
   },
   "loader": {
     "tagline": "One concept at a time"
@@ -152,7 +157,18 @@
       "regression": "Linear regression"
     },
     "bonus": "",
-    "saison": "Season 1"
+    "saison": "Season 1",
+    "saison_n": "Season {n}",
+    "choisir": "Choose a lab",
+    "ouvre_le": "Opens on {date}",
+    "a_venir": "Coming soon",
+    "ouverts": "{n} open",
+    "prec": "Previous lab",
+    "suiv": "Next lab",
+    "verrou_titre": "This lab is not open yet.",
+    "verrou_texte": "It opens on {date}, with its episode.",
+    "verrou_sans": "It will open with its episode.",
+    "retour": "Go to the open lab"
   },
   "profil": {
     "episode": "Episode 00 · The author",

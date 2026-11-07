@@ -6,9 +6,9 @@ constructor(...args) {
 super(...args);
 this.C = { white: '#F5F8FC', blue: '#4C8DFF', light: '#9CC6FF', pale: '#CFE0FF', bronze: '#D9A066', muted: '#8A97A8', grid: '#2E3B4D' };
 this.TH = this.themesDef();
-this.ORDER = ['exemples', 'donnees', 'familles', 'modele', 'cout', 'derivee', 'gradient', 'descente', 'minilots', 'minlocaux', 'selle', 'regression'];
-this.onPa = (e) => this.setState({ pa: parseFloat(e.target.value) });
-this.onPb = (e) => this.setState({ pb: parseFloat(e.target.value) });
+this.ORDER = ['exemples', 'donnees', 'familles', 'modele', 'cout', 'derivee', 'gradient', 'descente', 'minilots', 'minlocaux', 'selle', 'regression'].filter((id) => !this.props.ouverts || this.props.ouverts.includes(id));
+this.onPa = (e) => this.setState({ pa: parseFloat(e.target.value), touche: true });
+this.onPb = (e) => this.setState({ pb: parseFloat(e.target.value), touche: true });
 this.BATCH = [1, 8, 32, 256];
 const saved = this.TH[this.props.theme] ? this.props.theme : null;
 this.state = { theme: saved, eta: null, batch: 1, noise: false, h: 0.5, playing: false, showNeg: false, stats: [], calc: [], msg: '', chart: null, done: {}, ready: false, flash: false, dragging: false, success: false, exiting: false };
@@ -21,7 +21,7 @@ this.onMove = (e) => this.pMove(e);
 this.onUp = () => this.pUp();
 this.goVoyage = (e) => this.leave(e);
 this.goMain = (e) => this.leave(e);
-this.togglePlay = () => { if (!this.three) return; if (this.diverged) this.resetPos(); this.converged = false; this.lastStepT = -1; this.setState({ playing: !this.state.playing }); };
+this.togglePlay = () => { if (!this.three) return; if (this.diverged) this.resetPos(); this.converged = false; this.lastStepT = -1; this.setState({ playing: !this.state.playing, touche: true }); };
 this.doStep = () => { if (!this.three) return; if (this.diverged) this.resetPos(); this.converged = false; this.setState({ playing: false }); this.stepOnce(); };
 this.doReset = () => { if (!this.three) return; this.setState({ playing: false }); this.resetPos(); };
 this.onEta = (e) => this.setState({ eta: parseFloat(e.target.value) });
@@ -122,7 +122,7 @@ pickTheme(k) {
 if (this.swap) { this.swapSuivant = k; return; }
 if (k === this.themeKey()) return;
 this.swap = { t: 0, k: k };
-this.setState({ playing: false });
+this.setState({ playing: false, touche: false });
 if (this.props.onTheme) this.props.onTheme(k);
 }
 
@@ -130,7 +130,8 @@ init() {
 const T = window.THREE; this.T = T; const C = this.C;
 if (this.Q.statique === 'webgl') throw new Error('webgl');
 const r = new T.WebGLRenderer({ canvas: this.canvas, antialias: this.Q.aa, alpha: true });
-r.setPixelRatio(this.Q.dpr);
+// Le labo se regarde de près : sa scène garde toute la finesse de l'écran, jusqu'à 2,5.
+r.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2.5));
 r.outputColorSpace = T.SRGBColorSpace; r.toneMapping = T.ACESFilmicToneMapping; r.toneMappingExposure = 1.1;
 r.shadowMap.enabled = true; r.shadowMap.type = T.PCFSoftShadowMap;
 this.r = r;
@@ -455,6 +456,7 @@ ndc(e) { const r = this.canvas.getBoundingClientRect(); return new this.T.Vector
 paramsFromPoint(pt) { const th = this.th(); return th.kind === '1d' ? [pt.x / th.sx] : [pt.x / th.s, pt.z / th.s]; }
 pDown(e) {
 if (!this.three || this.swap) return;
+if (!this.state.touche) this.setState({ touche: true });
 if (e.target && e.target.closest && e.target.closest('button,a,input,summary')) return;
 this.ray.setFromCamera(this.ndc(e), this.cam);
 const hr = this.ray.intersectObject(this.rob, true); const hl = this.ray.intersectObject(this.landTop, false);
@@ -711,7 +713,7 @@ const v = this.view, d = this.camDist || 8; const ty = th.kind === '1d' ? -0.2 :
 this.cam.position.set(d * Math.sin(v.yaw) * Math.cos(v.pitch), ty + d * Math.sin(v.pitch), d * Math.cos(v.yaw) * Math.cos(v.pitch));
 this.cam.lookAt(0, ty, 0);
 if (t - this.lastUI > 0.12 && !this.swap) this.pushUI();
-this.r.render(this.scene, this.cam);
+this.r.render(this.scene, this.cam); this.perfTick(this.r);
 }
 
 renderVals() {
@@ -735,7 +737,7 @@ else if (ctl.bascule) tg = th.bascule();
 else if (ctl.push) tg = { label: this.L('Pousser'), on: false, fn: this.push };
 const stats = this.state.stats || [];
 return {
-themes: themes, score: score,
+themes: themes, score: score, arbre: this.props.arbre, actuel: k, pick: (id) => this.pickTheme(id), indice: this.state.touche || !this.state.ready || this.state.noGL ? '' : this.L(ctl.play ? 'Appuyez sur Lecture' : ctl.ab ? 'Réglez a et b' : 'Glissez le robot'),
 num: th.num, title: th.title, sub: th.sub, idea: th.idea, goal: th.goal,
 statLine: [th.formula].concat(stats.map((r) => r.k + ' ' + r.v)).join('   ·   '),
 sceneLabel: this.L('Scène 3D : le robot Théta sur la surface de coût de la notion « ') + th.title + this.L(' ».'),

@@ -21,7 +21,7 @@ this.mBack = (e) => { if (e && e.target === e.currentTarget) this.closeMail(); }
 this.mSubmit = (e) => { if (e && e.preventDefault) e.preventDefault(); this.requestPdf(); };
 this.setBubble = (el) => { this.bubbleEl = el; };
 this.setPdBar = (el) => { this.pdBar = el; }; this.setPdCount = (el) => { this.pdCount = el; };
-this.poke = () => { if (!this.hero3) return; if (this.hAct && this.now() - this.hAct.t0 < 0.8) return; this.heroAct(this.hFirst ? 'wave' : this.heroPick()); this.hFirst = false; };
+this.poke = () => { if (!this.hero3) return; if (this.hAct && this.now() - this.hAct.t0 < 0.3) return; this.heroAct(this.hFirst ? 'wave' : this.heroPick()); this.hFirst = false; };
 this.pdNext = () => this.pdGo(1); this.pdPrev = () => this.pdGo(-1);
 this.pdSkip = () => { if (!this.portal) return; this.scrollTween(window.scrollY + this.portal.getBoundingClientRect().top); };
 this.setFrame = (el) => { this.frame = el; };
@@ -34,13 +34,7 @@ this.setPortal = (el) => { if (el) this.portal = el; };
 this.setS1 = (el) => { this.s1 = el; }; this.setS2 = (el) => { this.s2 = el; }; this.setS3 = (el) => { this.s3 = el; };
 this.setBar = (el) => { this.barEl = el; }; this.setBarIn = (el) => { this.barIn = el; };
 this.setFlash = (el) => { this.flash = el; }; this.setGo = (el) => { this.goEl = el; };
-this.enter = (e) => {
-if (e && e.preventDefault) e.preventDefault();
-if (!this.portal) return;
-const r = this.portal.getBoundingClientRect(); const top = window.scrollY + r.top; const total = r.height - window.innerHeight;
-if (r.top > window.innerHeight) window.scrollTo({ top: top - 2, behavior: 'auto' });
-requestAnimationFrame(() => window.scrollTo({ top: top + total, behavior: 'smooth' }));
-};
+this.enter = (e) => { if (e && e.preventDefault) e.preventDefault(); this.go(); };
 this.setIris = (el) => { this.irisEl = el; };
 this.toProfil = (e) => this.toLabo(e);
 this.ctMove = (e) => { const a = e.currentTarget; if (!a) return; const r = a.getBoundingClientRect(); a.style.setProperty('--cx', (e.clientX - r.left) + 'px'); a.style.setProperty('--cy', (e.clientY - r.top) + 'px'); };
@@ -187,6 +181,7 @@ const eye = (x) => { if (open < 0.18) { c.beginPath(); c.moveTo(x - 28, ey); c.l
 const happy = (x) => { c.beginPath(); c.arc(x, ey + 14, 26, Math.PI * 1.15, Math.PI * 1.85); c.stroke(); };
 const line = (x0, y0, x1, y1) => { c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.stroke(); };
 if (expr === 'happy') { happy(ex[0]); happy(ex[1]); c.beginPath(); c.arc(mx, my - 14, 26, Math.PI * 0.2, Math.PI * 0.8); c.stroke(); }
+else if (expr === 'excite') { happy(ex[0]); happy(ex[1]); c.beginPath(); c.arc(mx, my - 22, 34, 0, Math.PI); c.closePath(); c.fill(); }
 else if (expr === 'wink') { eye(ex[0]); happy(ex[1]); c.beginPath(); c.arc(mx + 8, my - 12, 18, Math.PI * 0.15, Math.PI * 0.85); c.stroke(); }
 else if (expr === 'surprised') { [0, 1].forEach((k) => { c.beginPath(); c.arc(ex[k], ey, 24, 0, Math.PI * 2); c.stroke(); }); c.beginPath(); c.arc(mx, my, 10, 0, Math.PI * 2); c.stroke(); }
 else if (expr === 'grimace') { line(ex[0] - 22, ey - 18, ex[0] + 18, ey); line(ex[0] + 18, ey, ex[0] - 22, ey + 18); line(ex[1] + 22, ey - 18, ex[1] - 18, ey); line(ex[1] - 18, ey, ex[1] + 22, ey + 18); c.lineWidth = 9; c.beginPath(); for (let k = 0; k <= 6; k++) { const x = mx - 42 + k * 14, y = my + (k % 2 ? -7 : 7); if (k) c.lineTo(x, y); else c.moveTo(x, y); } c.stroke(); }
@@ -196,13 +191,13 @@ else { eye(ex[0]); eye(ex[1]); c.lineWidth = 8; line(mx - 12, my, mx + 12, my); 
 if (this.faceTex) this.faceTex.needsUpdate = true;
 }
 heroAct(name) {
-const D = { wave: [2.8, this.L('Salut ! Bienvenue sur Théta.')], wink: [1.9, this.L('Une notion à la fois.')], grimace: [2.3, this.L('Un minimum local… encore ?')], surprised: [2.0, this.L('Oh ! Un gradient.')], think: [3.0, this.L('Et si on dérivait ?')], silly: [2.6, this.L('Même pas peur des maths.')] };
+const D = { wave: [2.8, this.L('Salut ! Bienvenue sur Théta.')], wink: [1.9, this.L('Une notion à la fois.')], grimace: [2.3, this.L('Un minimum local… encore ?')], surprised: [2.0, this.L('Oh ! Un gradient.')], think: [3.0, this.L('Et si on dérivait ?')], silly: [2.6, this.L('Même pas peur des maths.')], excite: [2.4, this.L('Vite, le labo vous attend !')], danse: [2.8, this.L('Une notion, deux notions, trois notions !')], tire: [2.0, this.L('Encore, encore !')], peur: [1.8, this.L('Aïe, un point selle !')] };
 const d = D[name]; if (!d) return;
 this.hAct = { name: name, t0: this.now(), dur: d[0] };
 if (this.bubbleEl) { this.bubbleEl.textContent = d[1]; }
 }
 heroPick() {
-if (!this.hBag.length) { this.hBag = ['wink', 'grimace', 'surprised', 'think', 'silly', 'wave']; for (let i = this.hBag.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = this.hBag[i]; this.hBag[i] = this.hBag[j]; this.hBag[j] = t; } }
+if (!this.hBag.length) { this.hBag = ['excite', 'grimace', 'danse', 'silly', 'tire', 'wink', 'excite', 'peur', 'surprised', 'danse', 'grimace', 'think', 'wave']; for (let i = this.hBag.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = this.hBag[i]; this.hBag[i] = this.hBag[j]; this.hBag[j] = t; } }
 return this.hBag.pop();
 }
 heroFrame() {
@@ -213,29 +208,34 @@ const T = window.THREE; const t = this.now() - this.hT0; const dt = Math.min(0.0
 const ss = (a, b, x) => { const k = Math.max(0, Math.min(1, (x - a) / (b - a))); return k * k * (3 - 2 * k); };
 if (!this.hAct && t > this.hNext) { this.heroAct(this.hFirst ? 'wave' : this.heroPick()); this.hFirst = false; }
 let name = '', u = 0, e = 0;
-if (this.hAct) { u = this.now() - this.hAct.t0; name = this.hAct.name; e = ss(0, 0.35, u) * (1 - ss(this.hAct.dur - 0.45, this.hAct.dur, u)); if (u >= this.hAct.dur) { this.hAct = null; this.hNext = t + 4.5 + Math.random() * 3.5; name = ''; e = 0; } }
+if (this.hAct) { u = this.now() - this.hAct.t0; name = this.hAct.name; e = ss(0, 0.35, u) * (1 - ss(this.hAct.dur - 0.45, this.hAct.dur, u)); if (u >= this.hAct.dur) { this.hAct = null; this.hNext = t + 0.9 + Math.random() * 1.4; name = ''; e = 0; } }
 const mx = this.mx || 0, my = this.my || 0;
 const A = this.hArms, H = this.hHead, B = this.hBody;
-let hy = mx * 0.7, hx = my * 0.35, hz = 0, by = Math.sin(t * 1.6) * 0.05, sq = 1;
-const pose = { '-1': { z: -0.3, x: 0, ez: 0, ex: 0 }, '1': { z: 0.3, x: 0, ez: 0, ex: 0 } };
+let hy = mx * 0.7 + Math.sin(t * 1.3) * 0.16, hx = my * 0.35, hz = Math.sin(t * 2.1) * 0.05, by = Math.abs(Math.sin(t * 3.2)) * 0.07, sq = 1, tourne = 0;
+const vif = Math.sin(t * 3.2) * 0.14;
+const pose = { '-1': { z: -0.34 - vif, x: 0, ez: 0, ex: 0 }, '1': { z: 0.34 + vif, x: 0, ez: 0, ex: 0 } };
 if (name === 'wave') { pose['-1'].z = -0.3 - 2.45 * e; pose['-1'].ez = -(0.15 + 0.55 * Math.sin(u * 11)) * e; hz = 0.12 * e; }
 else if (name === 'think') { pose['1'].x = -1.2 * e; pose['1'].z = 0.3 - 0.75 * e; pose['1'].ex = -2.1 * e; hz = -0.14 * e; hx -= 0.18 * e; hy = hy * (1 - e) + 0.25 * e; }
 else if (name === 'grimace') { hy += Math.sin(u * 16) * 0.2 * e; sq = 1 - 0.06 * e; pose['-1'].z = -0.15 - 0.3 * e; pose['1'].z = 0.15 + 0.3 * e; }
 else if (name === 'surprised') { const bump = u < 0.6 ? Math.sin(u / 0.6 * Math.PI) : 0; by += 0.25 * bump; pose['-1'].z = -0.15 - 0.9 * e; pose['1'].z = 0.15 + 0.9 * e; hx -= 0.1 * e; }
 else if (name === 'wink') { hz = -0.18 * e; pose['1'].z = 0.15 + 0.6 * e; pose['1'].ez = 0.5 * e; }
+else if (name === 'excite') { by += Math.abs(Math.sin(u * 9)) * 0.3 * e; pose['-1'].z = -0.3 - (2.3 + 0.3 * Math.sin(u * 18)) * e; pose['1'].z = 0.3 + (2.3 + 0.3 * Math.sin(u * 18 + 1)) * e; hy += Math.sin(u * 14) * 0.25 * e; }
+else if (name === 'danse') { const b2 = Math.sin(u * 7); tourne = b2 * 0.55 * e; by += Math.abs(b2) * 0.16 * e; hz = -b2 * 0.26 * e; pose['-1'].z = -0.3 - (1.2 + b2) * e; pose['1'].z = 0.3 + (1.2 - b2) * e; }
+else if (name === 'tire') { hy += Math.sin(u * 20) * 0.3 * e; hz = Math.sin(u * 12) * 0.2 * e; by += Math.abs(Math.sin(u * 11)) * 0.14 * e; pose['-1'].ez = -0.7 * e; pose['1'].ez = 0.7 * e; }
+else if (name === 'peur') { sq = 1 - 0.14 * e; by -= 0.06 * e; hy += Math.sin(u * 30) * 0.12 * e; pose['-1'].z = -0.1; pose['1'].z = 0.1; pose['-1'].x = -1.1 * e; pose['1'].x = -1.1 * e; pose['-1'].ex = -1.6 * e; pose['1'].ex = -1.6 * e; }
 else if (name === 'silly') { hz = Math.sin(u * 6) * 0.25 * e; pose['-1'].z = -0.15 - (0.5 + 0.35 * Math.sin(u * 12)) * e; pose['1'].z = 0.15 + (0.5 + 0.35 * Math.sin(u * 12 + 1.5)) * e; }
 const k = Math.min(1, dt * 9);
 [-1, 1].forEach((s) => { const a = A[s], p = pose[s]; a.sp.rotation.z += (p.z - a.sp.rotation.z) * k; a.sp.rotation.x += (p.x - a.sp.rotation.x) * k; a.ep.rotation.z += (p.ez - a.ep.rotation.z) * k; a.ep.rotation.x += (p.ex - a.ep.rotation.x) * k; });
 hy = Math.max(-0.7, Math.min(0.7, hy)); hx = Math.max(-0.35, Math.min(0.35, hx));
 H.rotation.y += (hy - H.rotation.y) * Math.min(1, dt * 6); H.rotation.x += (hx - H.rotation.x) * Math.min(1, dt * 6); H.rotation.z += (hz - H.rotation.z) * Math.min(1, dt * 6);
 B.position.y = by; B.scale.set(1 + (1 - sq) * 0.6, sq, 1);
-B.rotation.y = Math.sin(t * 0.5) * 0.08 + mx * 0.15;
+B.rotation.y = Math.sin(t * 0.9) * 0.16 + mx * 0.15 + tourne;
 this.hContact.scale.setScalar(1 - by * 0.9); this.hContact.material.opacity = Math.max(0.3, 1 - by * 2.5);
 this.hChest.material.emissiveIntensity = 1.1 + 0.6 * Math.sin(t * 2.4);
 this.hTheta.rotation.y = Math.sin(t * 0.35) * 0.08 + mx * 0.08; this.hGlow.opacity = 0.28 + 0.08 * Math.sin(t * 1.8); this.hHalo.rotation.z = t * 0.06; this.hDust.rotation.y = t * 0.02;
 // face
 let expr = 'neutral';
-if (e > 0.15) expr = name === 'wave' ? 'happy' : name;
+if (e > 0.15) expr = { wave: 'happy', danse: 'happy', tire: 'silly', peur: 'grimace' }[name] || name;
 let open = 1;
 if (!name) { if (t > this.hBlink) { const b = t - this.hBlink; open = b < 0.16 ? Math.abs(1 - b / 0.08) : 1; if (b >= 0.16) this.hBlink = t + 2.4 + Math.random() * 2.8; } }
 const lx = Math.max(-1, Math.min(1, mx * 2)), ly = Math.max(-1, Math.min(1, my * 2));
@@ -323,8 +323,8 @@ this.clock = window.THREE ? new window.THREE.Clock() : null; this.loop();
 go() {
 if (this.went) return; this.went = true;
 try { window.localStorage.setItem('theta-from-portal', '1'); } catch (err) {}
-if (this.flash) { this.flash.style.transition = 'opacity .5s ease'; this.flash.style.opacity = '1'; }
-setTimeout(() => { if (!this.dead) this.go_(this.props.href.voyage); }, 420);
+if (this.flash) { this.flash.style.transition = 'opacity .16s ease'; this.flash.style.opacity = '1'; }
+setTimeout(() => { if (!this.dead) { this.go_(this.props.href.voyage); this.went = false; } }, 120);
 }
 init() {
 const T = window.THREE; this.T = T;
@@ -385,9 +385,7 @@ if (this.s3) { this.s3.style.opacity = o3.toFixed(3); this.s3.style.transform = 
 const txt = Math.max(o1, o2, o3);
 if (this.barIn) this.barIn.style.transform = 'scaleX(' + ps.toFixed(3) + ')';
 if (p < 0.85) this.armed = true;
-if (this.flash && !this.went) { const f = Math.max(0, Math.min(1, (ps - 0.88) / 0.1)); this.flash.style.transition = 'none'; this.flash.style.opacity = (f * f).toFixed(3); }
 const inView = rect.top < vh && rect.bottom > 0;
-if (inView && p > 0.975 && !this.went && !this.state.tactile) this.enterTunnel();
 if (!this.three || !inView) return;
 const ease = ps * ps * (3 - 2 * ps);
 const cz = 9 - ease * 15;
@@ -449,7 +447,7 @@ const d = (n) => 'calc(var(--intro-base) + ' + (n * 0.14).toFixed(2) + 's)';
 const vh = this.state.vh || 900;
 return {
 showLoader: loader, d0: d(0), d1: d(1), d2: d(2), d3: d(3), d4: d(4), d5: d(5), d6: d(6),
-portalH: this.state.tactile ? '100dvh' : Math.round(vh * 4.5) + 'px', stickyH: this.state.tactile ? '100dvh' : vh + 'px', tactile: !!this.state.tactile, href: this.props.href, hrefConf: this.props.hrefConf, total: String(this.props.total), nbLabos: String(this.props.nbLabos), rythme: String(this.props.rythme), prochain: this.props.prochain, portes: this.props.portes, nbEps: this.props.nbEps,
+portalH: this.state.tactile ? '100dvh' : Math.round(vh * 3) + 'px', stickyH: this.state.tactile ? '100dvh' : vh + 'px', tactile: !!this.state.tactile, href: this.props.href, hrefConf: this.props.hrefConf, total: String(this.props.total), nbLabos: String(this.props.nbLabos), rythme: String(this.props.rythme), prochain: this.props.prochain, portes: this.props.portes, nbEps: this.props.nbEps,
 
 eps: this.EPS.map((e, i) => {
 const light = !e.guide && i % 2 === 1;

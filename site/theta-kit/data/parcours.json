@@ -2,17 +2,6 @@
   {
     "annee": "2023",
     "fr": {
-      "t": "Baccalauréat scientifique, mention Bien",
-      "d": "Série D, Lycée Classique d’Abidjan."
-    },
-    "en": {
-      "t": "Science baccalaureate, with honours (Bien)",
-      "d": "Series D, Lycée Classique d’Abidjan."
-    }
-  },
-  {
-    "annee": "2023",
-    "fr": {
       "t": "Licence SRIT à l’ESATIC",
       "d": "Systèmes, réseaux informatiques et télécommunications. En cours."
     },
@@ -57,12 +46,23 @@
   {
     "annee": "2026",
     "fr": {
-      "t": "Bronze Award au AI for Good Global Summit",
-      "d": "AI and Space Computing Challenge 2026, avec l’équipe HeriTech. En mai, deux certifications DataCamp : NLP en Python et apprentissage supervisé avec scikit-learn."
+      "t": "Deux certifications DataCamp",
+      "d": "En mai : NLP en Python et apprentissage supervisé avec scikit-learn."
     },
     "en": {
-      "t": "Bronze Award at the AI for Good Global Summit",
-      "d": "AI and Space Computing Challenge 2026, with team HeriTech. In May, two DataCamp certifications: NLP in Python and supervised learning with scikit-learn."
+      "t": "Two DataCamp certifications",
+      "d": "In May: NLP in Python and supervised learning with scikit-learn."
+    }
+  },
+  {
+    "annee": "2026",
+    "fr": {
+      "t": "Bronze Award · AI and Space Computing Challenge 2026",
+      "d": "AI for Good Global Summit, Union internationale des télécommunications, avec l’équipe HeriTech."
+    },
+    "en": {
+      "t": "Bronze Award · AI and Space Computing Challenge 2026",
+      "d": "AI for Good Global Summit, International Telecommunication Union, with team HeriTech."
     }
   },
   {

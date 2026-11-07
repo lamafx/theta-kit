@@ -36,3 +36,48 @@ details[open] .lb-chev{transform:rotate(180deg)}
 .lb-saison{flex-shrink:0;align-self:center;padding:0 14px 0 0;font:500 11px var(--font-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);white-space:nowrap}
 .lb-tabs{align-items:center}
 @media (max-width:980px){.lb-saison{padding-right:10px}}
+
+.lb-top{flex-wrap:nowrap}
+.lbm{position:relative;display:flex;align-items:center;gap:6px;min-width:0;flex:0 1 460px}
+.lbm-btn{flex:1;min-width:0;display:flex;align-items:center;gap:12px;min-height:46px;padding:0 16px;border-radius:999px;border:1px solid rgba(207,224,255,.16);background:rgba(10,15,23,.6);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:var(--white);font:500 15px var(--font-sans);cursor:pointer;transition:border-color .2s ease}
+.lbm-btn:hover{border-color:var(--saison)}
+.lbm-s{flex-shrink:0;font:500 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--saison)}
+.lbm-t{flex:1;min-width:0;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lbm-c{color:var(--ink-6);transition:transform .2s ease}
+.lbm-btn[aria-expanded="true"] .lbm-c{transform:rotate(180deg)}
+.lbm-fl{flex-shrink:0;width:46px;height:46px;border-radius:999px;border:1px solid rgba(207,224,255,.16);background:transparent;color:var(--white);font-size:20px;line-height:1;cursor:pointer}
+.lbm-fl:disabled{opacity:.3;cursor:default}
+.lbm-fond{position:fixed;inset:0;z-index:40;border:0;background:rgba(5,8,13,.5);cursor:default}
+.lbm-panneau{position:absolute;left:0;right:0;top:calc(100% + 10px);z-index:41;max-height:min(72vh,620px);overflow:auto;scrollbar-width:thin;scrollbar-color:var(--ink-2) transparent;padding:8px 16px 16px;border-radius:22px;background:var(--night);border:1px solid var(--ink-1);box-shadow:0 30px 70px -20px rgba(0,0,0,.8);animation:lbm-in .2s ease both}
+@keyframes lbm-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.lbm-tete{display:flex;align-items:center;justify-content:space-between;min-height:48px;font-size:15px}
+.lbm-tete button{width:40px;height:40px;border:0;border-radius:999px;background:transparent;color:var(--white);font-size:22px;cursor:pointer}
+.lbm-panneau details{border-top:1px solid var(--ink-1)}
+.lbm-panneau summary{display:flex;align-items:center;justify-content:space-between;min-height:50px;font-weight:600;font-size:16px;color:var(--saison);list-style:none;cursor:pointer}
+.lbm-panneau summary::-webkit-details-marker{display:none}
+.lbm-panneau summary small{font:500 11px var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-5)}
+.lbm-chap{padding:0 0 12px}
+.lbm-chap h3{margin:6px 0;font:500 11px var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-5)}
+.lbm-l{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:6px 10px;border:0;border-radius:12px;background:transparent;color:var(--white);font:400 15px var(--font-sans);text-align:left;cursor:pointer}
+.lbm-l span{flex-shrink:0;font:500 11px var(--font-mono);color:var(--saison)}
+button.lbm-l:hover{background:rgba(207,224,255,.07)}
+.lbm-l[aria-current="true"]{background:rgba(207,224,255,.11)}
+.lbm-ferme{color:var(--ink-5);cursor:default}
+.lbm-ferme span{color:var(--ink-4)}
+.lbm-ferme em{margin-left:auto;flex-shrink:0;font:500 11px var(--font-mono);font-style:normal;color:var(--bronze)}
+.lb-stat{top:84px}
+.lb-indice{position:absolute;left:50%;bottom:16px;z-index:3;transform:translateX(-50%);padding:9px 16px;border-radius:999px;background:var(--white);color:var(--night);font-size:14px;font-weight:600;pointer-events:none;white-space:nowrap;animation:lb-indice 2s ease-in-out infinite}
+@keyframes lb-indice{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+@media (prefers-reduced-motion: reduce){.lb-indice{animation:none}}
+@media (max-width:980px){
+.lb-stage{padding:10px 12px 14px !important;gap:10px !important}
+.lb-top{flex-wrap:wrap;gap:8px}
+.lbm{order:3;flex:1 0 100%}
+.lb-canvas{height:48dvh !important;min-height:320px !important;border-radius:20px}
+.lb-stat{font-size:11px !important}
+.lb-dock{border-radius:24px !important;justify-content:center}
+.lb-dock>div{flex:1 1 130px;width:auto !important;padding:0 8px !important}
+.lb-card{padding:18px !important}
+.lb-card h1{font-size:30px !important}
+}
+@media (max-width:980px){.lbm-panneau{position:fixed;left:0;right:0;top:auto;bottom:0;max-height:78dvh;padding-bottom:calc(92px + env(safe-area-inset-bottom));border-radius:24px 24px 0 0;border-width:1px 0 0}}

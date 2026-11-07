@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Accueil from '@/components/Accueil';
-import { dateLisible, episodesParus, prochain, serie, vuDe } from '@/lib/content';
+import { dateLisible, episodesParus, estOuvert, prochain, serie, vuDe } from '@/lib/content';
 import { dictMoteur, liens, THEMES } from '@/lib/liens';
 
 export const revalidate = 1800;
@@ -15,7 +15,8 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const suite = prochain();
   const carte = (e: (typeof parus)[number]) => {
     const v = vuDe(e, locale);
-    return { n: e.n, group: v.chapitre, t1: v.t1, t2: v.t2, text: v.accroche, cover: e.pret ? `/covers/theta-${e.n}.webp` : undefined, pages: e.nb_pages, theme: v.themes[0], labHref: v.themes[0] ? `${href.labo}/${v.themes[0]}` : undefined };
+    const th = estOuvert(e) ? v.themes[0] : undefined;
+    return { n: e.n, group: v.chapitre, t1: v.t1, t2: v.t2, text: v.accroche, cover: e.pret ? `/covers/theta-${e.n}.webp` : undefined, pages: e.nb_pages, theme: th, labHref: th ? `${href.labo}/${th}` : undefined };
   };
   const cartes: any[] = parus.map(carte);
   if (suite) {

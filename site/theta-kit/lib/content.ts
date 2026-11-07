@@ -44,6 +44,40 @@ export function prochain() {
   return serie.episodes.find((e) => !estParu(e));
 }
 
+/** Un labo ouvre avec son épisode. Le prochain épisode prêt ouvre le sien en avant-goût. */
+export function estOuvert(e: Episode, maintenant = new Date()): boolean {
+  return e.pret && (estParu(e, maintenant) || e === prochain());
+}
+
+export function arbreLabos(locale: string, titre: (id: string) => string) {
+  const ouverts: string[] = [];
+  const saisons = [...new Set(serie.episodes.map((e) => e.saison))].sort((a, b) => a - b);
+  const arbre = saisons.map((saison) => {
+    const eps = serie.episodes.filter((e) => e.saison === saison);
+    const chapitres = [...new Set(eps.map((e) => e.chapitre.numero))].map((numero) => {
+      const dans = eps.filter((e) => e.chapitre.numero === numero);
+      const labos = dans.flatMap((e) => (AFF[e.n]?.themes ?? []).map((id) => {
+        const ouvert = estOuvert(e);
+        if (ouvert) ouverts.push(id);
+        return { id, n: e.n, titre: titre(id), ouvert, quand: e.date ? dateLisible(e.date, locale) : null };
+      }));
+      return { titre: vuDe(dans[0], locale).chapitre, labos };
+    });
+    return { saison, chapitres, nbOuverts: chapitres.flatMap((c) => c.labos).filter((l) => l.ouvert).length };
+  });
+  return { arbre, ouverts };
+}
+
+export function labo(arbre: ReturnType<typeof arbreLabos>['arbre'], id: string) {
+  for (const s of arbre) {
+    for (const c of s.chapitres) {
+      const l = c.labos.find((x) => x.id === id);
+      if (l) return { ...l, saison: s.saison };
+    }
+  }
+  return null;
+}
+
 function coupure(titre: string): [string, string] {
   const mots = titre.split(' ');
   if (mots.length < 2) return ['', titre];

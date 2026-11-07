@@ -11,7 +11,12 @@
     "profil": "Mon profil",
     "menu": "Menu",
     "fermer": "Fermer",
-    "langue": "Langue"
+    "langue": "Langue",
+    "barre_accueil": "Accueil",
+    "barre_episodes": "Épisodes",
+    "barre_voyage": "Voyage",
+    "barre_labo": "Labo",
+    "barre_profil": "Profil"
   },
   "loader": {
     "tagline": "Une notion à la fois"
@@ -152,7 +157,18 @@
       "regression": "La régression linéaire"
     },
     "bonus": "",
-    "saison": "Saison 1"
+    "saison": "Saison 1",
+    "saison_n": "Saison {n}",
+    "choisir": "Choisir un labo",
+    "ouvre_le": "Ouvre le {date}",
+    "a_venir": "À venir",
+    "ouverts": "{n, plural, one {# ouvert} other {# ouverts}}",
+    "prec": "Labo précédent",
+    "suiv": "Labo suivant",
+    "verrou_titre": "Ce labo n’est pas encore ouvert.",
+    "verrou_texte": "Il ouvre le {date}, avec son épisode.",
+    "verrou_sans": "Il ouvrira avec son épisode.",
+    "retour": "Aller au labo ouvert"
   },
   "profil": {
     "episode": "Épisode 00 · L’auteur",

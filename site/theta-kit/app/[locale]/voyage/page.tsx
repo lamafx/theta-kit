@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Voyage from '@/components/Voyage';
-import { dateLisible, estParu, prochain, serie, vuDe } from '@/lib/content';
+import { dateLisible, estOuvert, estParu, prochain, serie, vuDe } from '@/lib/content';
 import { dictMoteur, liens } from '@/lib/liens';
 import { CONTACT } from '@/lib/profil';
 
@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     ...visibles.map((e, i) => {
       const v = vuDe(e, locale);
       const paru = estParu(e);
-      const labos = v.themes.map((id) => ({ href: `${href.labo}/${id}`, label: v.themes.length > 1 ? `${t('voyage.manipuler')} : ${titreLabo(id)}` : t('voyage.manipuler'), theme: id, primary: true }));
+      const labos = (estOuvert(e) ? v.themes : []).map((id) => ({ href: `${href.labo}/${id}`, label: v.themes.length > 1 ? `${t('voyage.manipuler')} : ${titreLabo(id)}` : t('voyage.manipuler'), theme: id, primary: true }));
       const links = paru ? [...labos, { href: `${href.accueil}/episodes/${e.n}`, label: t('voyage.episode') }] : labos;
       return {
         ep: e.n, nav: e.n, num: `Nº ${e.n}`, group: v.chapitre, t1: v.t1, t2: v.t2, text: v.accroche, formula: v.formule,

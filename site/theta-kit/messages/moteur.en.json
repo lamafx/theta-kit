@@ -232,5 +232,15 @@
   "η trop grand : le coût explose. Replacez le robot et réduisez η.": "η too large: the cost explodes. Reset the robot and reduce η.",
   "Le coût ne baisse presque plus : la droite est ajustée.": "The cost has almost stopped falling: the line is fitted.",
   "Mesurer le coût, lire le gradient, faire un pas.": "Measure the cost, read the gradient, take a step.",
-  "Vue 2D : l’ajustement": "2D view: the fit"
+  "Vue 2D : l’ajustement": "2D view: the fit",
+  "Appuyez sur Lecture": "Press Play",
+  "Réglez a et b": "Set a and b",
+  "Glissez le robot": "Drag the robot",
+  "Vite, le labo vous attend !": "Quick, the lab is waiting!",
+  "Une notion, deux notions, trois notions !": "One concept, two concepts, three!",
+  "Encore, encore !": "Again, again!",
+  "Aïe, un point selle !": "Ouch, a saddle point!",
+  "Le labo du ": "The lab for ",
+  " vous attend !": " is waiting for you!",
+  "Pas maintenant": "Not now"
 }

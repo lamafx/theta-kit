@@ -49,7 +49,7 @@ export default function TunnelView({ v, t }: { v: any; t: (k: string) => string 
 </button>
 </Fragment>))}
 </nav>
-<div style={{ position: 'absolute', left: 'clamp(18px, 3vw, 40px)', bottom: '26px', zIndex: '5', display: 'flex', flexDirection: 'column', gap: '10px', width: 'min(280px, 50vw)', pointerEvents: 'none' }}><div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', fontFamily: 'var(--font-mono)' }}><span style={{ fontSize: '26px', fontWeight: '500', color: '#F5F8FC' }}>{v.curLabel}</span>
+<div className="tn-bas" style={{ position: 'absolute', left: 'clamp(18px, 3vw, 40px)', bottom: '26px', zIndex: '5', display: 'flex', flexDirection: 'column', gap: '10px', width: 'min(280px, 50vw)', pointerEvents: 'none' }}><div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', fontFamily: 'var(--font-mono)' }}><span style={{ fontSize: '26px', fontWeight: '500', color: '#F5F8FC' }}>{v.curLabel}</span>
 <span style={{ fontSize: '13px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8A97A8' }}>{v.curName}</span>
 </div>
 <div style={{ height: '2px', background: '#1E2938', borderRadius: '2px', overflow: 'hidden' }}><div ref={v.setBar} style={{ width: '100%', height: '2px', background: '#4C8DFF', transformOrigin: 'left center', transform: 'scaleX(0)' }}></div>
@@ -62,7 +62,13 @@ export default function TunnelView({ v, t }: { v: any; t: (k: string) => string 
 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#A7B3C2' }}>{t('auto.voyage.t5')}</span>
 </div>
 </>)}
+{v.offre && (<div className="tn-offre" role="status">
+<span>{v.offre.texte}</span>
+<a href={v.offre.href} onClick={v.offre.oui}>{v.offre.label}</a>
+<button type="button" onClick={v.offre.non}>{v.nonTxt}</button>
+</div>)}
 <div className="tn-tact">
+<span>{t('voyage.aide_tactile')}</span>
 <button type="button" onClick={v.goPrev} aria-label={t('commun.precedent')}>‹</button>
 <button type="button" onClick={v.goNext} aria-label={t('commun.suivant')}>›</button>
 </div>

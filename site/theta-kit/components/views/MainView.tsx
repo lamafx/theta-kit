@@ -360,7 +360,6 @@ export default function MainView({ v, t }: { v: any; t: (k: string) => string })
 </div>
 </div>
 </section>
-<Footer />
 <div data-avant-portail="1" style={{ maxWidth: '1320px', margin: '0 auto', padding: '0 40px 60px', display: 'flex', justifyContent: 'center' }}><a href="#portail" onClick={v.enter} className="mono-cta" style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '12px', textDecoration: 'none', color: '#CFE0FF', fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: '500', letterSpacing: '0.2em', textTransform: 'uppercase' }}>{t('auto.accueil.t16')}<span className="th-bob" aria-hidden="true" style={{ fontSize: '18px' }}>↓</span>
 </a>
 </div>
@@ -385,7 +384,7 @@ export default function MainView({ v, t }: { v: any; t: (k: string) => string })
 <span style={{ color: '#4C8DFF' }}>θ</span>
 <span >{t('auto.accueil.t25')}</span>
 </div>
-{v.tactile && (<>
+{(<>
 <a className="th-btn" href={v.href.voyage} onClick={v.goNow} style={{ position: 'absolute', left: '50%', bottom: '84px', transform: 'translateX(-50%)', zIndex: '3', display: 'inline-flex', alignItems: 'center', minHeight: '52px', padding: '0 26px', borderRadius: '999px', background: '#F5F8FC', color: '#0A0F17', fontSize: '16px', fontWeight: '600', textDecoration: 'none', whiteSpace: 'nowrap' }}>{t('hero.cta_voyage')}</a>
 </>)}
 <div ref={v.setBar} aria-hidden="true" style={{ position: 'absolute', left: '50%', bottom: '40px', width: '160px', height: '2px', marginLeft: '-80px', background: '#1E2938', borderRadius: '2px', overflow: 'hidden' }}><div ref={v.setBarIn} style={{ width: '100%', height: '2px', background: '#4C8DFF', transformOrigin: 'left center', transform: 'scaleX(0)' }}></div>
@@ -393,6 +392,7 @@ export default function MainView({ v, t }: { v: any; t: (k: string) => string })
 <div ref={v.setFlash} aria-hidden="true" style={{ position: 'absolute', inset: '0', pointerEvents: 'none', opacity: '0', background: 'radial-gradient(60% 60% at 50% 46%, #F5F8FC 0%, #4C8DFF 30%, #0A0F17 80%)' }}></div>
 </div>
 </section>
+<Footer />
 {v.mOpen && (<>
 <div className="ml-back" onClick={v.mBack} style={{ position: 'fixed', inset: '0', zIndex: '220', background: 'rgba(5,8,13,0.62)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px', boxSizing: 'border-box' }}><div className="ml-card" role="dialog" aria-modal="true" aria-labelledby="ml-title" style={{ position: 'relative', width: '100%', maxWidth: '460px', borderRadius: '28px', background: '#F5F8FC', color: '#0A0F17', boxShadow: '0 40px 90px -30px rgba(0,0,0,.7)', overflow: 'hidden' }}><div style={{ position: 'relative', padding: '26px 28px 22px', background: 'radial-gradient(120% 140% at 90% 0%, #1C46C9 0%, #1C46C9 45%, #102C86 100%)', color: '#F5F8FC' }}><button type="button" onClick={v.closeMail} aria-label={t('nav.fermer')} style={{ position: 'absolute', right: '14px', top: '14px', width: '40px', height: '40px', borderRadius: '999px', border: '1px solid rgba(255,255,255,.3)', background: 'rgba(255,255,255,.08)', color: '#FFFFFF', fontSize: '18px', cursor: 'pointer' }}>×</button>
 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', fontWeight: '500', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#CFE0FF' }}>{t('auto.accueil.t26')}{' '}{v.mEp}{' '}{t('auto.accueil.t27')}</div>

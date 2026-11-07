@@ -35,7 +35,7 @@ export class DCLogic {
     p.n = 0;
     p.t0 = t;
     const dpr = r.getPixelRatio();
-    if (fps < 40 && dpr > 1) r.setPixelRatio(Math.max(1, dpr - 0.5));
+    if (fps < 30 && dpr > 1.5) r.setPixelRatio(Math.max(1.5, dpr - 0.25));
   }
 }
 
@@ -69,8 +69,8 @@ export function qualite() {
   else if (largeur < 1024 || tactile) niveau = 'mid';
   const reglages = {
     high: { dpr: Math.min(dp, 2), aa: true, part: 1, ombre: 2048 },
-    mid: { dpr: Math.min(dp, 1.5), aa: true, part: 0.5, ombre: 1024 },
-    low: { dpr: 1, aa: false, part: 0.2, ombre: 512 },
+    mid: { dpr: Math.min(dp, 2), aa: true, part: 0.5, ombre: 1024 },
+    low: { dpr: Math.min(dp, 1.75), aa: true, part: 0.25, ombre: 512 },
   };
   return { niveau, ...reglages[niveau], statique: !webgl ? 'webgl' : reduit ? 'reduit' : false };
 }

@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import BarreMobile from '@/components/BarreMobile';
 import { routing } from '@/i18n/routing';
 import '@/styles/commun.css';
 
@@ -11,7 +12,7 @@ const sans = Geist({ subsets: ['latin'], variable: '--font-sans', display: 'swap
 const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap', preload: false });
 const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-serif', display: 'swap', preload: false });
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://theta-ml.vercel.app';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://theta-kit.vercel.app';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -37,7 +38,7 @@ export default async function Layout({ children, params }: { children: React.Rea
   return (
     <html lang={locale} className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
       <body>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}<BarreMobile /></NextIntlClientProvider>
         <Analytics />
       </body>
     </html>

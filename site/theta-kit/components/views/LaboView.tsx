@@ -1,5 +1,6 @@
 // Généré depuis reference/Labo.dc.html. Les textes passent par t(), les valeurs par le moteur.
 import { Fragment } from 'react';
+import LaboMenu from '@/components/LaboMenu';
 import LangSwitch from '@/components/LangSwitch';
 export default function LaboView({ v, t }: { v: any; t: (k: string) => string }) {
   return (<>
@@ -7,6 +8,7 @@ export default function LaboView({ v, t }: { v: any; t: (k: string) => string })
 {v.noGL && (<>
 <div className="lb-nogl" style={{ position: 'absolute', inset: '0', zIndex: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', textAlign: 'center', fontSize: '15px', lineHeight: '1.55', color: '#CFE0FF' }}>{t('auto.labo.t1')}</div>
 </>)}
+{!!v.indice && <div className="lb-indice" aria-hidden="true">{v.indice}</div>}
 {v.notReady && (<>
 <div style={{ position: 'absolute', inset: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A97A8' }}>{t('auto.labo.t2')}</div>
 </>)}
@@ -26,15 +28,7 @@ export default function LaboView({ v, t }: { v: any; t: (k: string) => string })
 <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '26px', lineHeight: '1' }}>Théta</span>
 <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A97A8' }}>Labo</span>
 </a>
-<nav aria-label={t('auto.labo.t4')} className="lb-tabs lb-scroll"><span className="lb-saison">{t('labo.saison')}</span>
-{(v.themes || []).map((th: any, i1: number) => (<Fragment key={i1}>
-<button type="button" className="lb-tab" onClick={th.pick} aria-pressed={th.pressed} style={{ flexShrink: '0', display: 'inline-flex', alignItems: 'baseline', gap: '8px', minHeight: '44px', padding: '0 12px', border: '0', borderBottom: `1px solid ${th.line}`, background: 'transparent', color: th.color, fontFamily: 'var(--font-sans)', fontSize: '14px', cursor: 'pointer', whiteSpace: 'nowrap' }}><span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: th.numColor }}>{th.badge}</span>
-{th.title}{th.done && (<>
-<span aria-label={t('auto.labo.t5')} style={{ width: '5px', height: '5px', borderRadius: '999px', background: '#4C8DFF', alignSelf: 'center' }}></span>
-</>)}
-</button>
-</Fragment>))}
-</nav>
+<LaboMenu v={v} t={t} />
 <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}><LangSwitch sombre />
 <span className="lb-defis" style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8A97A8' }}>{t('auto.labo.t6')}{' '}<strong style={{ color: '#F5F8FC', fontWeight: '500' }}>{v.score}/{v.nbThemes}</strong>
 </span>
