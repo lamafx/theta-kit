@@ -309,6 +309,8 @@ this.onWheelCancel = () => { this.stw = null; }; window.addEventListener('wheel'
 this.measure = () => { const h = Math.max(520, Math.min(window.innerHeight || 900, 1400)); if (h !== this.state.vh) this.setState({ vh: h }); };
 this.measure(); window.addEventListener('resize', this.measure);
 this.tries = 0; this.boot();
+// Le chargement se joue à chaque ouverture ; ensuite, un retour dans le site ne le rejoue pas.
+setTimeout(() => document.documentElement.classList.add('vu'), 3800);
 }
 componentWillUnmount() { this.dead = true; if (this.onEsc) window.removeEventListener('keydown', this.onEsc); if (this.hro) this.hro.disconnect(); if (this.hr) this.hr.dispose(); if (this.onWheelCancel) { window.removeEventListener('wheel', this.onWheelCancel); window.removeEventListener('touchstart', this.onWheelCancel); } clearTimeout(this.fallT); clearTimeout(this.toastT); try { document.documentElement.style.overflow = ''; } catch (err) {} window.removeEventListener('message', this.onMsgB); if (this.onPM) window.removeEventListener('pointermove', this.onPM); window.removeEventListener('resize', this.measure); clearTimeout(this.bootTimer); cancelAnimationFrame(this.raf); if (this.ro) this.ro.disconnect(); if (this.r) this.r.dispose(); }
 boot() {

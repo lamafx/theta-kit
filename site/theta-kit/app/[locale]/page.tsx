@@ -4,7 +4,6 @@ import { dateLisible, episodesParus, estOuvert, prochain, serie, vuDe } from '@/
 import { dictMoteur, liens, THEMES } from '@/lib/liens';
 
 export const revalidate = 1800;
-const VU = "try{if(sessionStorage.getItem('theta-vu'))document.documentElement.classList.add('vu');else sessionStorage.setItem('theta-vu','1')}catch(e){}";
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -26,7 +25,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const nbEps = cartes.filter((c) => !c.guide).length;
   return (
     <>
-      <script dangerouslySetInnerHTML={{ __html: VU }} />
       <Accueil
         locale={locale}
         dict={dictMoteur(locale)}

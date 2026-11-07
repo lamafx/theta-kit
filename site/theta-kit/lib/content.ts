@@ -44,9 +44,20 @@ export function prochain() {
   return serie.episodes.find((e) => !estParu(e));
 }
 
+/** Décision de l'auteur (2026-11-07) : tous les labos sont ouverts. À false, chaque labo suit la date de son épisode. */
+const TOUS_LES_LABOS_OUVERTS = true;
+
 /** Un labo ouvre avec son épisode. Le prochain épisode prêt ouvre le sien en avant-goût. */
 export function estOuvert(e: Episode, maintenant = new Date()): boolean {
+  if (TOUS_LES_LABOS_OUVERTS) return true;
   return e.pret && (estParu(e, maintenant) || e === prochain());
+}
+
+/** Le labo proposé par défaut : celui du prochain épisode, sinon le dernier ouvert. */
+export function laboDuMoment(ouverts: string[]): string {
+  const suite = prochain();
+  const id = suite ? AFF[suite.n]?.themes?.[0] : undefined;
+  return id && ouverts.includes(id) ? id : ouverts[ouverts.length - 1] ?? 'exemples';
 }
 
 export function arbreLabos(locale: string, titre: (id: string) => string) {
