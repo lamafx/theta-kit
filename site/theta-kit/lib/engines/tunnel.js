@@ -460,7 +460,7 @@ const e = Math.max(0, 1 - (t - this.compT) / 1.8); const cp = this.cam.position;
 this.comp.visible = m;
 if (m) {
 this.comp.scale.setScalar(etroit ? 0.2 : 0.26);
-this.comp.position.set(cp.x + (etroit ? 0.36 : 1.42), cp.y + (etroit ? 0.62 : -0.8) + Math.abs(Math.sin(t * (4 + 7 * e))) * (0.04 + 0.16 * e), cp.z - 2.4);
+this.comp.position.set(cp.x + (etroit ? 0.36 : 1.42), cp.y + (etroit ? 0.62 : -0.6) + Math.abs(Math.sin(t * (4 + 7 * e))) * (0.04 + 0.16 * e), cp.z - 2.4);
 this.comp.rotation.set(0.05, -0.5 + Math.sin(t * 3.4) * (0.16 + 0.34 * e), Math.sin(t * 5.2) * (0.07 + 0.16 * e));
 }
 }
