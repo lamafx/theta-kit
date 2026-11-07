@@ -1,5 +1,7 @@
 # CV exclu du dépôt public : il affiche le téléphone de l'auteur (site/theta-kit/CLAUDE.md, section 1, et Q19).
 site/theta-kit/public/cv/*.pdf
+# Seul le CV ML sans téléphone est public.
+!site/theta-kit/public/cv/CV-Ladji-Lama-Kamagate-ML.pdf
 
 # serie-ml a son propre .gitignore, appliqué aussi depuis cette racine.
 node_modules/
@@ -13,3 +15,9 @@ site/theta-kit/docs/CV*.pdf
 
 # Vidéo de démonstration : référence locale, 41 Mo.
 site/theta-kit/*.mp4
+
+# Site
+site/theta-kit/.next/
+site/theta-kit/recette/
+site/theta-kit/next-env.d.ts
+site/theta-kit/tsconfig.tsbuildinfo

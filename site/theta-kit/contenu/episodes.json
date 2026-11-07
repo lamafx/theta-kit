@@ -1,0 +1,1397 @@
+{
+  "_note": "Fichier généré par scripts/sync-serie.mjs depuis serie-ml. Ne pas modifier à la main.",
+  "total": 62,
+  "posts_par_semaine": 2,
+  "lancement": "2026-11-10",
+  "fuseau": "Africa/Abidjan",
+  "episodes": [
+    {
+      "n": "01",
+      "saison": 1,
+      "chapitre": {
+        "numero": 1,
+        "titre": "Les bases"
+      },
+      "titre": "Qu’est-ce que le Machine Learning ?",
+      "accroche": "Au lieu d’écrire les règles, on montre des exemples.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-11-10T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 6,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Qu’est-ce que le Machine Learning ?",
+          "texte": "Programme classique : règles écrites à la main. Machine Learning : modèle tiré d’exemples. Ici, apprentissage supervisé : chaque exemple a sa réponse ; le modèle prédit celle de cas nouveaux."
+        },
+        {
+          "role": "Exemple",
+          "titre": "Le spam : trop de règles à écrire à la main.",
+          "texte": "Certaines tâches sont trop difficiles pour des règles écrites à la main. En 2019, Google indique bloquer dans Gmail plus de 99,9 % des spams, du phishing et des maliciels, en combinant règles et apprentissage, qui repère des motifs que les auteurs de règles pourraient manquer."
+        },
+        {
+          "role": "Contexte",
+          "titre": "1959 : un programme apprend à jouer mieux que son auteur.",
+          "texte": "En 1959, Arthur Samuel emploie le terme machine learning dans le titre d’un article sur un programme de dames. L’auteur lui fournit des critères ; en jouant, le programme apprend lesquels comptent. Selon l’article, après 8 à 10 heures de jeu machine, il dépasse son auteur."
+        },
+        {
+          "role": "Piège",
+          "titre": "Loin de ses exemples, rien ne garantit sa réponse.",
+          "texte": "Le modèle tire ses règles d’un nombre limité d’exemples : il peut bien prédire des cas proches, mais rien ne le garantit. Face à un cas très différent, ses erreurs peuvent augmenter. Les choix humains comptent aussi : Samuel avait écrit les critères parmi lesquels son programme choisissait."
+        }
+      ],
+      "fin": {
+        "points": [
+          "Programme classique : des règles écrites à la main. Apprentissage supervisé : chaque exemple a sa réponse.",
+          "Le Machine Learning en tire un modèle, qui prédit ici la réponse de cas nouveaux.",
+          "Loin de ses exemples, rien ne garantit sa réponse."
+        ],
+        "verification": {
+          "question": "D’où le Machine Learning tire-t-il un modèle ?",
+          "page": 2
+        }
+      },
+      "post": "Vous reconnaissez un spam d’un coup d’œil.\nPourriez-vous écrire la règle exacte qui permet de le faire ?\n\nEssayons.\n\n« Contient le mot gratuit » : votre opérateur l’écrit aussi.\n« Plein de majuscules » : une alerte de votre banque aussi.\n« Expéditeur inconnu » : comme tout nouveau contact.\n\nChaque règle bloque des messages légitimes, en laisse passer d’autres, et les spams changent sans cesse.\n\nLe Machine Learning déplace le travail : au lieu d’écrire la règle, on fournit des mails déjà triés, et l’apprentissage en tire un modèle. Les deux approches cohabitent. En 2019, Gmail combinait règles et apprentissage, et Google indiquait bloquer environ 100 millions de spams de plus chaque jour grâce à TensorFlow.\n\nÉcrire un programme, c’est expliquer. Entraîner un modèle, c’est montrer. Les 61 épisodes suivants partent de cette différence.\n\nNº 01 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 02 : Données, caractéristiques et étiquettes.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#DataScience",
+        "#ApprentissageAutomatique",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "DLB ch. 5",
+          "url": "https://www.deeplearningbook.org/contents/ml.html"
+        },
+        {
+          "libelle": "MLCC · Machine Learning Glossary",
+          "url": "https://developers.google.com/machine-learning/glossary"
+        },
+        {
+          "libelle": "Samuel (1959), Some Studies in Machine Learning Using the Game of Checkers, IBM Journal of R&D",
+          "url": "https://doi.org/10.1147/rd.33.0210"
+        },
+        {
+          "libelle": "Google Workspace Blog (2019), Spam does not bring us joy, ridding Gmail of 100 million more spam messages with TensorFlow",
+          "url": "https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow"
+        },
+        {
+          "libelle": "Koh et al. (2020), WILDS, A Benchmark of in-the-Wild Distribution Shifts, arXiv:2012.07421",
+          "url": "https://arxiv.org/abs/2012.07421"
+        },
+        {
+          "libelle": "Photo : NASA · Public domain · Wikimedia Commons",
+          "url": "https://commons.wikimedia.org/wiki/File:IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg"
+        }
+      ]
+    },
+    {
+      "n": "02",
+      "saison": 1,
+      "chapitre": {
+        "numero": 1,
+        "titre": "Les bases"
+      },
+      "titre": "Données, caractéristiques et étiquettes",
+      "accroche": "Pour une machine, un exemple n’est qu’une ligne de tableau.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-11-12T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 6,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Un exemple, c’est une ligne.",
+          "texte": "Ici, le modèle apprend d’exemples à la réponse connue. Pour lui, une maison n’est qu’une ligne de tableau : surface, chambres, quartier, puis prix, la réponse à apprendre."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Lignes, colonnes, étiquette.",
+          "texte": "Trois ventes d’Ames, aux États-Unis, en 2010 ; colonnes sous leurs noms d’origine. Chaque ligne est un exemple ; ici, chaque colonne sauf la dernière, une caractéristique : une variable d’entrée. La dernière, l’étiquette, est la réponse à apprendre en apprentissage supervisé : le prix. Converties en m² et FCFA, cours BCEAO du 27 octobre 2026."
+        },
+        {
+          "role": "Piège",
+          "titre": "Un quartier n’est pas une quantité.",
+          "texte": "Beaucoup de modèles ne reçoivent que des nombres : le nom du quartier doit alors être converti. Le piège : donner un numéro par quartier, comme dans ce tableau. Selon le modèle, ces numéros risquent d’être lus comme des quantités, comme si Old Town comptait trois fois plus que North Ames."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Une colonne par quartier.",
+          "texte": "Comment le modèle peut-il alors reconnaître un quartier ? Une solution parmi d’autres : une colonne par quartier. Pour chaque maison, la colonne de son quartier vaut 1, toutes les autres valent 0. Le modèle ne compare plus des numéros : il lit seulement si la maison est, ou non, dans chaque quartier."
+        }
+      ],
+      "fin": {
+        "points": [
+          "Un exemple, c’est une ligne : ses caractéristiques, puis, en apprentissage supervisé, son étiquette.",
+          "Une caractéristique est une variable d’entrée ; l’étiquette est la réponse.",
+          "Un quartier n’est pas une quantité ; une solution : une colonne par quartier, 1 ou 0."
+        ],
+        "verification": {
+          "question": "Pour les maisons, quelle colonne est l’étiquette ?",
+          "page": 3
+        }
+      },
+      "post": null,
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#DataScience",
+        "#PreparationDesDonnees",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "MLCC · Feature vectors",
+          "url": "https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors"
+        },
+        {
+          "libelle": "MLCC · Machine Learning Glossary",
+          "url": "https://developers.google.com/machine-learning/glossary"
+        },
+        {
+          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
+        },
+        {
+          "libelle": "MLCC · Categorical data, vocabulary and one-hot encoding",
+          "url": "https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding"
+        },
+        {
+          "libelle": "scikit-learn · Preprocessing data, Encoding categorical features",
+          "url": "https://scikit-learn.org/stable/modules/preprocessing.html"
+        },
+        {
+          "libelle": "scikit-learn · Ensembles, Categorical Features Support",
+          "url": "https://scikit-learn.org/stable/modules/ensemble.html"
+        }
+      ]
+    },
+    {
+      "n": "03",
+      "saison": 1,
+      "chapitre": {
+        "numero": 1,
+        "titre": "Les bases"
+      },
+      "titre": "Les trois familles d’apprentissage",
+      "accroche": "Avec la réponse, sans la réponse, ou par essais et erreurs.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-11-17T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 6,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Trois façons d’apprendre.",
+          "texte": "Les données n’ont pas toujours leur réponse. Trois grandes familles, des repères plutôt qu’une liste complète : supervisé, avec les réponses ; non supervisé, sans elles ; par renforcement, en agissant."
+        },
+        {
+          "role": "Comparaison",
+          "titre": "Avec ou sans étiquettes.",
+          "texte": "En apprentissage supervisé, chaque exemple a son étiquette, comme le prix de chaque maison de l’épisode 02 : le modèle apprend à la retrouver. En non supervisé, il n’y en a pas : le modèle cherche une structure, par exemple des groupes d’exemples semblables."
+        },
+        {
+          "role": "Repère",
+          "titre": "Un nombre ou une catégorie.",
+          "texte": "Que prédit un modèle supervisé pour un cas nouveau ? Deux tâches reviennent souvent. La régression prédit un nombre, comme le prix d’une maison. La classification prédit une catégorie, comme l’espèce d’une fleur, ou spam et non-spam dans l’épisode 01."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Apprendre en agissant.",
+          "texte": "Et la troisième famille, celle qui agit ? Certains algorithmes ne se contentent pas d’un jeu de données fixe. En apprentissage par renforcement, le système agit dans un environnement, reçoit un retour, positif ou négatif, puis recommence : ses actions peuvent changer les données qu’il reçoit ensuite."
+        }
+      ],
+      "fin": {
+        "points": [
+          "Supervisé : chaque exemple a son étiquette.",
+          "Non supervisé : pas d’étiquette, le modèle cherche une structure, comme des groupes.",
+          "Par renforcement : le système agit, reçoit un retour, recommence."
+        ],
+        "verification": {
+          "question": "Quelle famille ne se contente pas d’un jeu de données fixe ?",
+          "page": 5
+        }
+      },
+      "post": "Un modèle peut apprendre sans qu’on lui donne la moindre réponse, et même à partir de données qui n’existent pas encore.\n\nCe qui sépare les trois grandes familles d’apprentissage, c’est d’abord la situation de départ, pas la complexité de l’algorithme.\n\nChaque exemple a sa réponse ? Supervisé.\nAucun n’en a ? Non supervisé : on cherche une structure.\nPas de jeu de données fixe ? Renforcement : le système agit, et ses actions peuvent changer ce qu’il observe ensuite.\n\nCes cases sont des repères, pas des cloisons. Goodfellow, Bengio et Courville le rappellent : supervisé et non supervisé ne sont pas des termes formellement définis. Un projet peut n’avoir des réponses que pour une partie de ses exemples : c’est le semi-supervisé. Et le renforcement peut lui-même apprendre de données déjà réunies, sans agir : c’est le renforcement hors ligne.\n\nDans ces trois cas, il reste quelque chose à la fin de l’apprentissage. Souvent des nombres, parfois très peu : deux, dans l’épisode suivant.\n\nNº 03 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 04 : Modèle et paramètres.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#DataScience",
+        "#ApprentissageSupervise",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "DLB ch. 5",
+          "url": "https://www.deeplearningbook.org/contents/ml.html"
+        },
+        {
+          "libelle": "Sutton et Barto, Reinforcement Learning, An Introduction, § 1.1",
+          "url": "http://incompleteideas.net/book/first/ebook/node7.html"
+        },
+        {
+          "libelle": "Sutton et Barto, Reinforcement Learning, An Introduction, § 3.1",
+          "url": "http://incompleteideas.net/book/first/ebook/node28.html"
+        },
+        {
+          "libelle": "Levine, Kumar, Tucker et Fu (2020), Offline Reinforcement Learning, Tutorial, Review, and Perspectives on Open Problems, arXiv:2005.01643",
+          "url": "https://arxiv.org/abs/2005.01643"
+        }
+      ]
+    },
+    {
+      "n": "04",
+      "saison": 1,
+      "chapitre": {
+        "numero": 1,
+        "titre": "Les bases"
+      },
+      "titre": "Modèle et paramètres",
+      "accroche": "Un modèle, c’est une fonction avec des boutons de réglage.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-11-19T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 5,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Deux réglages : a et b.",
+          "texte": "La régression linéaire prédit le prix ŷ selon la seule surface x : la droite ŷ = a·x + b. a et b s’ajustent aux données, comme des boutons."
+        },
+        {
+          "role": "Comparaison",
+          "titre": "Changer a fait pivoter, changer b décale.",
+          "texte": "Que fait chaque bouton ? Le premier, a, à b fixe, fait tourner la droite autour de son point sur l’axe vertical. Le second, b, la fait monter ou descendre sans la tourner. Mêmes axes, même droite de départ, en gris."
+        },
+        {
+          "role": "Définition",
+          "titre": "Entraîner, c’est chercher les meilleurs réglages.",
+          "texte": "Les règles que le modèle tire des exemples (épisode 01) tiennent ici en deux nombres, a et b ; la forme, une droite, est choisie d’avance. Pendant l’entraînement, le modèle les ajuste aux exemples. Ces réglages sont ses paramètres ; on les note souvent ensemble θ."
+        }
+      ],
+      "fin": {
+        "points": [
+          "ŷ = a·x + b : deux réglages, a et b.",
+          "Changer a fait pivoter la droite, changer b la décale.",
+          "Entraîner, c’est chercher les meilleurs réglages, selon l’écart aux résultats réels."
+        ],
+        "verification": {
+          "question": "Si seul b change, que fait la droite ?",
+          "page": 3
+        }
+      },
+      "post": "2 925 ventes de maisons en entrée.\nDeux nombres en sortie : 74 et 4.\n\nC’est tout ce que garde une droite ajustée sur les ventes d’Ames. Un tel modèle se lit en deux parties :\n\nCe qui est choisi : la forme, ici une droite. Ce choix précède l’entraînement.\nCe qui est appris : les paramètres, ici 74 et 4, calculés à partir des exemples.\n\nCette séparation survit au changement d’échelle. Un réseau de neurones a lui aussi une forme choisie d’avance et des paramètres appris, seulement bien plus nombreux.\n\nLe second nombre réserve une surprise : c’est le prix prédit pour une maison de 0 m². Elle n’existe pas. Ce 4 n’est pas une vente, c’est un point de départ du calcul.\n\nQue fait chacun de ces nombres à la droite ? Deux gestes très différents, à voir en faisant glisser les pages.\n\nCe modèle ne garde aucune vente. Il en garde un résumé, avec ce que tout résumé laisse de côté.\n\nNº 04 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 05 : La fonction de coût.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#DataScience",
+        "#RegressionLineaire",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "MLCC · Linear regression",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression"
+        },
+        {
+          "libelle": "MLCC · Machine Learning Glossary",
+          "url": "https://developers.google.com/machine-learning/glossary"
+        },
+        {
+          "libelle": "Data 100 · Ordinary Least Squares",
+          "url": "https://ds100.org/fa23-course-notes/ols/ols.html"
+        },
+        {
+          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
+        }
+      ]
+    },
+    {
+      "n": "05",
+      "saison": 1,
+      "chapitre": {
+        "numero": 2,
+        "titre": "Apprendre de ses erreurs"
+      },
+      "titre": "La fonction de coût",
+      "accroche": "Avant d’apprendre, une IA doit savoir à quel point elle se trompe.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-11-24T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 7,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Mesurer l’erreur d’une droite.",
+          "texte": "Pour chaque exemple, la droite prédit ŷ ; le résultat réel est y. L’erreur (résidu) est ŷ − y, souvent y − ŷ en statistique ; sans signe, c’est la distance verticale."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Pourquoi élever l’erreur au carré ?",
+          "texte": "Droite de l’épisode 04, millions de FCFA (cours du 27 octobre 2026). Ses prédictions sont trop hautes ; trop basse, l’erreur serait négative : le carré la rend positive. Il grossit les grosses erreurs : l’erreur d’Old Town vaut trois fois et demie celle de College Creek, son carré près de treize fois."
+        },
+        {
+          "role": "Formule",
+          "titre": "Un seul nombre : la moyenne des carrés.",
+          "texte": "On additionne les carrés des erreurs, puis on divise par le nombre d’exemples : c’est la fonction de coût J, ici l’erreur quadratique moyenne (MSE), la plus courante en régression, pas la seule. Plus J est petit, mieux la droite suit les données."
+        },
+        {
+          "role": "Comparaison",
+          "titre": "Deux droites, deux coûts.",
+          "texte": "Même b = 4, deux inclinaisons a, et J calculé cette fois sur les ventes d’Ames de 2006 à 2010, pas sur les trois maisons. Les points ne sont pas dessinés : seul J tranche. La droite de l’épisode 04 a le coût le plus faible des deux."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Toutes les inclinaisons : une courbe en U.",
+          "texte": "Gardons b = 4 et faisons varier a : pour une droite et la MSE, les coûts J forment un U. Son creux donne le meilleur a quand b = 4, sur ces ventes d’Ames : a ≈ 74, comme dans l’épisode 04. Entraîner, c’est chercher le creux pour a et b ensemble."
+        }
+      ],
+      "fin": {
+        "points": [
+          "L’erreur (résidu) : ŷ − y, souvent y − ŷ en statistique ; sans signe, la distance verticale.",
+          "Le carré rend chaque erreur positive et grossit les grosses erreurs.",
+          "La fonction de coût J, la moyenne des carrés, a un creux : la droite au coût le plus faible."
+        ],
+        "verification": {
+          "question": "Pourquoi élever chaque erreur au carré ?",
+          "page": 3
+        }
+      },
+      "post": "Quand on élève les erreurs au carré, une seule erreur de 25 pèse autant que 625 erreurs de 1.\n\nLe calcul tient en deux lignes :\n\nAvec le carré : 25² = 625, soit 625 erreurs de 1.\nSans le carré (valeur absolue) : 25, soit 25 erreurs de 1.\n\nUne fonction de coût ne se contente donc pas de mesurer. Elle dit au modèle ce qui est grave.\n\nL’erreur quadratique moyenne, la plus courante en régression, lui dit d’éviter d’abord les grands écarts. C’est utile quand un grand écart coûte vraiment cher. C’est gênant quand ce point isolé est une anomalie : il tire le modèle vers lui, ce que l’erreur absolue moyenne fait bien moins.\n\nLe choix dépend des données et de ce que coûte réellement une erreur.\n\nDans votre métier, une grosse erreur coûte-t-elle plus que plusieurs petites ?\n\nNº 05 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 06 : La pente d’une courbe : la dérivée.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#Statistiques",
+        "#FonctionDeCout",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "MLCC · Loss",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression/loss"
+        },
+        {
+          "libelle": "D2L 3.1",
+          "url": "https://d2l.ai/chapter_linear-regression/linear-regression.html"
+        },
+        {
+          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
+        },
+        {
+          "libelle": "NIST/SEMATECH e-Handbook of Statistical Methods, 4.4.4 How can I tell if a model fits my data?",
+          "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm"
+        }
+      ]
+    },
+    {
+      "n": "06",
+      "saison": 1,
+      "chapitre": {
+        "numero": 2,
+        "titre": "Apprendre de ses erreurs"
+      },
+      "titre": "La pente d’une courbe : la dérivée",
+      "accroche": "Savoir si ça monte ou si ça descend, et à quelle vitesse.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-11-26T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 5,
+      "pages": [
+        {
+          "role": "",
+          "titre": "La dérivée, une pente.",
+          "texte": "La tangente suit la courbe en un point. Sa pente est la dérivée : le rythme auquel J change quand le réglage a bouge un peu."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Le signe dit le sens.",
+          "texte": "Pente positive : J monte quand a augmente. Négative : J descend. Nulle : c’est plat, comme au fond du creux. La taille de la pente dit la vitesse : en a = 3, J monte plus vite qu’il ne descend en a = −2."
+        },
+        {
+          "role": "Exemple chiffré",
+          "titre": "La pente en a = 3, par le calcul.",
+          "texte": "Pour J(a) = a², la dérivée est J′(a) = 2a : en a = 3, la pente vaut 6. Vérifions : on bouge a d’un petit écart h et on divise la hausse de J par h."
+        }
+      ],
+      "fin": {
+        "points": [
+          "La dérivée est la pente de la tangente : le rythme auquel J change.",
+          "Pente positive : J monte. Négative : il descend. Nulle : c’est plat.",
+          "Pour J(a) = a², J′(a) = 2a : en a = 3, la pente vaut 6."
+        ],
+        "verification": {
+          "question": "Que dit une pente nulle sur la courbe du coût ?",
+          "page": 3
+        }
+      },
+      "post": "Le compteur de votre voiture affiche une dérivée.\n\nÀ 80 km/h, il ne dit ni où vous êtes ni où vous arriverez. Il dit à quel rythme votre position change, à cet instant.\n\nPour un modèle, la dérivée du coût joue ce rôle. Elle n’indique pas où se trouve le meilleur réglage. Elle indique dans quel sens le coût évolue si le réglage bouge un peu, et à quel rythme, là où l’on se trouve.\n\nCette information locale dispense d’essayer tous les réglages un par un.\n\nUne dérivée ne dit pas où aller : elle dit de quel côté commencer.\n\nNº 06 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 07 : Le gradient.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#Mathematiques",
+        "#Derivee",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "D2L 2.4 · Calculus",
+          "url": "https://d2l.ai/chapter_preliminaries/calculus.html"
+        },
+        {
+          "libelle": "DLB ch. 4",
+          "url": "https://www.deeplearningbook.org/contents/numerical.html"
+        }
+      ]
+    },
+    {
+      "n": "07",
+      "saison": 1,
+      "chapitre": {
+        "numero": 2,
+        "titre": "Apprendre de ses erreurs"
+      },
+      "titre": "Le gradient",
+      "accroche": "La pente, quand il y a plusieurs boutons à régler.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-12-01T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 5,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Une pente par réglage.",
+          "texte": "Bougeons a seul, b fixé : la pente de J est la dérivée partielle selon a. Idem pour b. Rangées dans un vecteur, ces pentes forment le gradient ∇J."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "∇J pointe vers la montée la plus raide.",
+          "texte": "Prenons un coût simple, choisi pour l’exemple : J = a² + 3b². Sur la carte des réglages, les lignes de niveau relient les points de même coût. Hors du centre, ∇J est perpendiculaire à la ligne de niveau et pointe vers la montée la plus raide."
+        },
+        {
+          "role": "Exemple chiffré",
+          "titre": "∇J par le calcul.",
+          "texte": "Pour J = a² + 3b², on dérive en a, b fixé : 2a. Puis en b, a fixé : 3 fois 2b, soit 6b. Donc ∇J = (2a ; 6b), ici aux points de la carte."
+        }
+      ],
+      "fin": {
+        "points": [
+          "Bougeons a seul, b fixé : la pente de J est la dérivée partielle.",
+          "Rangées dans un vecteur, ces pentes forment le gradient ∇J.",
+          "Sur la carte, ∇J est perpendiculaire à la ligne de niveau et pointe vers la montée la plus raide."
+        ],
+        "verification": {
+          "question": "Sur la carte, que fait ∇J face à une ligne de niveau ?",
+          "page": 3
+        }
+      },
+      "post": "Le gradient ne pointe pas vers le minimum.\nMême son opposé n’y mène pas forcément tout droit.\n\nPrenons J = a² + 3b², au point (1 ; 1).\n\nLe minimum est en (0 ; 0) : il faudrait réduire a et b autant l’un que l’autre, direction (−1 ; −1).\nLe gradient vaut (2 ; 6) : son opposé indique (−2 ; −6), à environ 27 degrés de cette direction.\n\nLa flèche se trompe-t-elle ? Non : elle ne connaît pas le minimum. Elle répond à une question locale : quels réglages pèsent le plus sur le coût, ici ? En ce point, b pèse trois fois plus que a.\n\nC’est tout l’intérêt du gradient. Dès que plusieurs paramètres doivent être ajustés en même temps, une seule pente ne suffit plus : il faut savoir comment chacun d’eux pèse sur le coût.\n\nSi la flèche ne vise pas le but, comment arrive-t-on quand même ? En la recalculant à chaque pas.\n\nNº 07 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 08 : La descente de gradient.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#Mathematiques",
+        "#Gradient",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "D2L 2.4 · Calculus",
+          "url": "https://d2l.ai/chapter_preliminaries/calculus.html"
+        },
+        {
+          "libelle": "DLB ch. 4",
+          "url": "https://www.deeplearningbook.org/contents/numerical.html"
+        },
+        {
+          "libelle": "MIT OCW 18.02SC · Gradient, definition and properties (D. Auroux, 2010)",
+          "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/"
+        }
+      ]
+    },
+    {
+      "n": "08",
+      "saison": 1,
+      "chapitre": {
+        "numero": 2,
+        "titre": "Apprendre de ses erreurs"
+      },
+      "titre": "La descente de gradient",
+      "accroche": "Comment une IA apprend de ses erreurs, un pas à la fois.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-12-03T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 8,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Descendre la pente.",
+          "texte": "Le modèle ne voit pas toute la courbe du coût J. Il mesure la pente là où il est, fait un pas dans l’autre sens, et recommence."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Pente forte, grand pas. Pente faible, petit pas.",
+          "texte": "Prenons un seul paramètre θ. !η, le taux d’apprentissage, est un nombre fixe choisi d’avance, ici 0,15 ; le pas vaut !η × la pente. Loin du minimum, la pente est forte : grands pas. Près du minimum, elle s’aplatit : les pas raccourcissent d’eux-mêmes."
+        },
+        {
+          "role": "Comparaison",
+          "titre": "Le bon pas : ni trop petit, ni trop grand.",
+          "texte": "Même courbe J(θ) = θ², même départ, trois !η différents. Seule la taille des pas change, et avec elle tout le comportement de la descente."
+        },
+        {
+          "role": "Formule",
+          "titre": "Tout tient en une ligne.",
+          "texte": "Chaque pas suit la même règle. Une itération, c’est un pas : on la répète jusqu’à ce que la pente soit presque nulle, ou pour un nombre d’itérations fixé d’avance."
+        },
+        {
+          "role": "Exemple chiffré",
+          "titre": "Trois pas, à la main.",
+          "texte": "Prenons J(θ) = θ², dont la pente vaut 2θ (épisode 06). On part de θ = 3, avec !η = 0,1."
+        },
+        {
+          "role": "Piège",
+          "titre": "Pente nulle ne veut pas dire coût nul.",
+          "texte": "Reprenons le coût des ventes d’Ames selon a, b fixé à 4 (épisode 05). Au creux, la droite de l’épisode 04, la pente est nulle : la descente s’arrête. Pourtant J vaut encore 1 030 millions de FCFA au carré : aucune droite ne passe par toutes les ventes."
+        }
+      ],
+      "fin": {
+        "points": [
+          "Le modèle mesure la pente là où il est, fait un pas dans l’autre sens, et recommence.",
+          "Le pas vaut η × la pente : près du minimum, les pas raccourcissent d’eux-mêmes.",
+          "η trop petit : trop lent. Trop grand : le point oscille et diverge."
+        ],
+        "verification": {
+          "question": "Pourquoi les pas raccourcissent-ils près du minimum, alors que η ne change pas ?",
+          "page": 3
+        }
+      },
+      "post": "La descente de gradient a été décrite en 1847, pour calculer l’orbite d’un astre.\n\nLe 18 octobre de cette année-là, Augustin Cauchy présente à l’Académie des sciences une méthode pour résoudre des systèmes d’équations : l’élimination habituelle échoue souvent, ou donne une équation très compliquée.\n\nSon idée : partir de valeurs données, calculer les dérivées, retrancher à chaque inconnue sa dérivée multipliée par un petit nombre, puis recommencer.\n\nCe petit nombre, il le note déjà θ. Nous gardons cette lettre pour les paramètres et nommons η la taille du pas : θ ← θ − η∇J(θ).\n\nLe reste a changé d’échelle : six inconnues pour une orbite chez Cauchy, 175 milliards de paramètres pour GPT-3 en 2020, entraînés avec des variantes de la même idée.\n\nLe carrousel s’arrête sur ce que cette ligne cache : selon η, le même algorithme traîne, converge ou diverge.\n\nSi votre coût monte à chaque itération, commencez par regarder η.\n\nNº 08 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 09 : Descente stochastique et mini-lots.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#Optimisation",
+        "#DescenteDeGradient",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "MLCC · Gradient descent",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent"
+        },
+        {
+          "libelle": "MLCC · Hyperparameters",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression/hyperparameters"
+        },
+        {
+          "libelle": "D2L 12.3",
+          "url": "https://d2l.ai/chapter_optimization/gd.html"
+        },
+        {
+          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
+        },
+        {
+          "libelle": "Ruder (2016), An overview of gradient descent optimization algorithms",
+          "url": "https://arxiv.org/abs/1609.04747"
+        },
+        {
+          "libelle": "Cauchy (1847), Méthode générale pour la résolution des systèmes d’équations simultanées, Comptes rendus de l’Académie des sciences 25, 536-538 ; traduction anglaise en ligne",
+          "url": "https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf"
+        },
+        {
+          "libelle": "Lemaréchal (2012), Cauchy and the Gradient Method, Documenta Mathematica, Extra Volume ISMP, 251-254",
+          "url": "https://ems.press/books/dms/251/4938"
+        },
+        {
+          "libelle": "Brown et al. (2020), Language Models are Few-Shot Learners, arXiv:2005.14165",
+          "url": "https://arxiv.org/abs/2005.14165"
+        }
+      ]
+    },
+    {
+      "n": "09",
+      "saison": 1,
+      "chapitre": {
+        "numero": 2,
+        "titre": "Apprendre de ses erreurs"
+      },
+      "titre": "Descente stochastique et mini-lots",
+      "accroche": "Apprendre vite, sans tout relire à chaque pas.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-12-08T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 7,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Tout relire à chaque pas ?",
+          "texte": "Chaque pas calcule ∇J sur tous les exemples, un calcul par exemple. Imaginons-en un million : un million de calculs pour un seul pas."
+        },
+        {
+          "role": "Comparaison",
+          "titre": "Combien d’exemples par pas ?",
+          "texte": "Même carte, même départ. Seul change le nombre d’exemples lus à chaque pas pour calculer ∇J."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Faux à chaque pas, juste en moyenne.",
+          "texte": "Pourquoi la SGD avance-t-elle quand même ? Le ∇J d’un seul exemple dévie, mais en moyenne il indique la même direction que celui de tout le jeu. Les écarts se compensent : le chemin zigzague, puis arrive près du minimum."
+        },
+        {
+          "role": "Définition",
+          "titre": "Compter en époques.",
+          "texte": "Si chaque pas ne lit qu’une partie des exemples, combien de pas faut-il pour les voir tous ?"
+        },
+        {
+          "role": "Piège",
+          "titre": "Un taux fixe ne laisse pas le modèle se poser.",
+          "texte": "Avec un η fixe, les écarts ne disparaissent pas, même au minimum : le modèle rebondit autour sans s’y poser. D’où un η qui décroît au fil des époques, ni trop vite, ni trop lentement."
+        }
+      ],
+      "fin": {
+        "points": [
+          "Chaque pas lit un exemple tiré au hasard (SGD) ou un mini-lot, souvent de 32 à 256 en 2016.",
+          "Faux à chaque pas, juste en moyenne : le chemin zigzague, puis arrive près du minimum.",
+          "Avec un η fixe, le modèle rebondit autour du minimum : d’où un η qui décroît au fil des époques."
+        ],
+        "verification": {
+          "question": "Pourquoi, avec un η fixe, la SGD ne se pose-t-elle pas au minimum ?",
+          "page": 6
+        }
+      },
+      "post": "Calculer une pente sur 10 000 exemples plutôt que 100 demande cent fois plus de calcul, pour une estimation seulement dix fois plus précise.\n\nLa cause est une racine carrée : l’erreur type d’une moyenne estimée sur n exemples décroît en 1/√n.\n\n100 exemples : calcul 1, erreur 1.\n10 000 exemples : calcul 100, erreur 0,1.\n\nD’où le pari de la descente stochastique et des mini-lots : renoncer à une pente exacte pour faire bien plus de pas. Goodfellow, Bengio et Courville notent en 2016 que la plupart des algorithmes d’optimisation convergent ainsi beaucoup plus vite, en calcul total et non en nombre de pas.\n\nLe prix à payer est un chemin qui zigzague et qui, à taux d’apprentissage fixe, ne se pose pas au minimum.\n\nAu-delà d’un certain point, un pas de plus vaut souvent mieux qu’un exemple de plus.\n\nNº 09 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 10 : Minimums locaux et points selle.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#Optimisation",
+        "#DescenteStochastique",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "D2L 12.4",
+          "url": "https://d2l.ai/chapter_optimization/sgd.html"
+        },
+        {
+          "libelle": "D2L 12.5",
+          "url": "https://d2l.ai/chapter_optimization/minibatch-sgd.html"
+        },
+        {
+          "libelle": "D2L 12.11",
+          "url": "https://d2l.ai/chapter_optimization/lr-scheduler.html"
+        },
+        {
+          "libelle": "DLB ch. 8",
+          "url": "https://www.deeplearningbook.org/contents/optimization.html"
+        },
+        {
+          "libelle": "Robbins et Monro (1951), A Stochastic Approximation Method, Annals of Mathematical Statistics",
+          "url": "https://doi.org/10.1214/aoms/1177729586"
+        }
+      ]
+    },
+    {
+      "n": "10",
+      "saison": 1,
+      "chapitre": {
+        "numero": 2,
+        "titre": "Apprendre de ses erreurs"
+      },
+      "titre": "Minimums locaux et points selle",
+      "accroche": "Le fond d’un creux n’est pas toujours le fond de la vallée.",
+      "statut": "relu",
+      "pret": true,
+      "date": "2026-12-10T08:30:00.000Z",
+      "publie_le": null,
+      "nb_pages": 5,
+      "pages": [
+        {
+          "role": "",
+          "titre": "Le premier creux.",
+          "texte": "Cette courbe a deux creux. La descente partie à gauche s’arrête au premier, où la pente est nulle : un **minimum local**. Le plus bas est le **minimum global**."
+        },
+        {
+          "role": "Mécanisme",
+          "titre": "Plat, sans être un creux.",
+          "texte": "Avec deux réglages a et b, une pente nulle peut tromper : au **point selle**, ∇J = (0 ; 0), mais J est en creux selon a, en bosse selon b. Partie sur l’axe, la descente y cale ; partie à côté, elle finit par s’en écarter."
+        },
+        {
+          "role": "Repère",
+          "titre": "Avec un coût convexe, pas de faux creux.",
+          "texte": "Pour une **fonction convexe**, toute corde reste au-dessus de la courbe, et tout minimum local est global : pas de creux plus haut où caler. C’est le cas de la MSE d’une droite (Nº 05). Le fond peut toutefois être plat."
+        }
+      ],
+      "fin": {
+        "points": [
+          "La descente peut s’arrêter au premier creux, où la pente est nulle : un **minimum local**. Le plus bas est le **minimum global**.",
+          "Au **point selle**, ∇J = (0 ; 0), mais J est en creux selon a, en bosse selon b.",
+          "Pour une **fonction convexe**, comme la MSE d’une droite, tout minimum local est global."
+        ],
+        "verification": {
+          "question": "Au point selle, la pente est nulle : pourquoi n’est-ce pas un minimum ?",
+          "page": 3
+        }
+      },
+      "post": "Le coût ne baisse plus.\nLe modèle a-t-il terminé, ou reste-t-il coincé ?\n\nUne pente presque nulle dit seulement qu’à cet endroit, le coût ne varie plus guère. Trois situations au moins y ressemblent :\n\n· un minimum global : le travail est fait ;\n· un minimum local : un creux, plus haut qu’un autre ;\n· un point selle : le coût descend encore dans au moins une direction.\n\nL’idée reçue : un entraînement bloqué serait piégé dans un minimum local.\n\nL’argument inverse : un minimum exige que toutes les directions remontent. Plus il y a de paramètres, moins c’est probable, sauf à un niveau d’erreur proche du meilleur. En 2014, Dauphin et ses coauteurs y voient surtout un problème de points selle, entourés de plateaux qui ralentissent l’apprentissage.\n\nLeur thèse repose en partie sur des fonctions d’erreur aléatoires : un éclairage, pas une loi. Elle invite pourtant à se méfier d’un coût qui stagne : ces plateaux, écrivent-ils, « give the illusory impression of the existence of a local minimum », l’illusion d’un minimum local.\n\nNº 10 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 11 : La régression linéaire.",
+      "hashtags": [
+        "#MachineLearning",
+        "#IntelligenceArtificielle",
+        "#DeepLearning",
+        "#Optimisation",
+        "#ThetaML"
+      ],
+      "sources": [
+        {
+          "libelle": "D2L 12.1",
+          "url": "https://d2l.ai/chapter_optimization/optimization-intro.html"
+        },
+        {
+          "libelle": "D2L 12.2 · Convexity",
+          "url": "https://d2l.ai/chapter_optimization/convexity.html"
+        },
+        {
+          "libelle": "MLCC · Gradient descent",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent"
+        },
+        {
+          "libelle": "Dauphin et al. (2014), Identifying and attacking the saddle point problem",
+          "url": "https://arxiv.org/abs/1406.2572"
+        }
+      ]
+    },
+    {
+      "n": "11",
+      "saison": 1,
+      "chapitre": {
+        "numero": 3,
+        "titre": "La régression"
+      },
+      "titre": "La régression linéaire",
+      "accroche": "Tracer la meilleure droite à travers les données.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "12",
+      "saison": 1,
+      "chapitre": {
+        "numero": 3,
+        "titre": "La régression"
+      },
+      "titre": "La régression linéaire multiple",
+      "accroche": "Plusieurs caractéristiques, un seul résultat.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "13",
+      "saison": 1,
+      "chapitre": {
+        "numero": 3,
+        "titre": "La régression"
+      },
+      "titre": "Normaliser les données",
+      "accroche": "Mettre toutes les caractéristiques sur la même échelle.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "14",
+      "saison": 1,
+      "chapitre": {
+        "numero": 3,
+        "titre": "La régression"
+      },
+      "titre": "La régression polynomiale",
+      "accroche": "Quand la relation n’est pas une ligne droite.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "15",
+      "saison": 1,
+      "chapitre": {
+        "numero": 4,
+        "titre": "La classification"
+      },
+      "titre": "La frontière de décision",
+      "accroche": "Séparer les données en deux camps.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "16",
+      "saison": 1,
+      "chapitre": {
+        "numero": 4,
+        "titre": "La classification"
+      },
+      "titre": "La fonction sigmoïde",
+      "accroche": "Écraser n’importe quel nombre entre 0 et 1.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "17",
+      "saison": 1,
+      "chapitre": {
+        "numero": 4,
+        "titre": "La classification"
+      },
+      "titre": "La régression logistique",
+      "accroche": "Transformer un score en probabilité.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "18",
+      "saison": 1,
+      "chapitre": {
+        "numero": 4,
+        "titre": "La classification"
+      },
+      "titre": "L’entropie croisée",
+      "accroche": "Punir une IA sûre d’elle… quand elle a tort.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "19",
+      "saison": 1,
+      "chapitre": {
+        "numero": 4,
+        "titre": "La classification"
+      },
+      "titre": "La fonction Softmax",
+      "accroche": "Choisir entre plusieurs réponses, avec des probabilités.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "20",
+      "saison": 2,
+      "chapitre": {
+        "numero": 5,
+        "titre": "Évaluer un modèle"
+      },
+      "titre": "Entraînement, validation, test",
+      "accroche": "Ne jamais noter un élève sur ses propres exercices.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "21",
+      "saison": 2,
+      "chapitre": {
+        "numero": 5,
+        "titre": "Évaluer un modèle"
+      },
+      "titre": "La matrice de confusion",
+      "accroche": "Voir où le modèle se trompe, pas seulement combien.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "22",
+      "saison": 2,
+      "chapitre": {
+        "numero": 5,
+        "titre": "Évaluer un modèle"
+      },
+      "titre": "Précision, rappel et F1",
+      "accroche": "Ne pas crier au loup, et ne pas rater le loup.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "23",
+      "saison": 2,
+      "chapitre": {
+        "numero": 5,
+        "titre": "Évaluer un modèle"
+      },
+      "titre": "La courbe ROC et l’AUC",
+      "accroche": "Juger un modèle sur tous les seuils à la fois.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "24",
+      "saison": 2,
+      "chapitre": {
+        "numero": 5,
+        "titre": "Évaluer un modèle"
+      },
+      "titre": "La validation croisée",
+      "accroche": "Tester cinq fois plutôt qu’une.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "25",
+      "saison": 2,
+      "chapitre": {
+        "numero": 6,
+        "titre": "Bien généraliser"
+      },
+      "titre": "Sur-apprentissage et sous-apprentissage",
+      "accroche": "Apprendre par cœur n’est pas comprendre.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "26",
+      "saison": 2,
+      "chapitre": {
+        "numero": 6,
+        "titre": "Bien généraliser"
+      },
+      "titre": "Le compromis biais-variance",
+      "accroche": "Trop rigide ou trop nerveux : il faut choisir.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "27",
+      "saison": 2,
+      "chapitre": {
+        "numero": 6,
+        "titre": "Bien généraliser"
+      },
+      "titre": "La régularisation L2",
+      "accroche": "Freiner un modèle trop ambitieux.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "28",
+      "saison": 2,
+      "chapitre": {
+        "numero": 6,
+        "titre": "Bien généraliser"
+      },
+      "titre": "La régularisation L1",
+      "accroche": "Garder l’essentiel, éteindre le reste.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "29",
+      "saison": 2,
+      "chapitre": {
+        "numero": 6,
+        "titre": "Bien généraliser"
+      },
+      "titre": "L’arrêt précoce",
+      "accroche": "Savoir s’arrêter au bon moment.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "30",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "Les k plus proches voisins",
+      "accroche": "Dis-moi qui sont tes voisins, je te dirai qui tu es.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "31",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "Les arbres de décision",
+      "accroche": "Une suite de questions, oui ou non.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "32",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "Les forêts aléatoires",
+      "accroche": "Mille arbres un peu différents valent mieux qu’un seul.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "33",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "Le gradient boosting",
+      "accroche": "Chaque nouvel arbre corrige les erreurs du précédent.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "34",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "Les machines à vecteurs de support (SVM)",
+      "accroche": "La frontière qui laisse le plus de marge.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "35",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "Le k-means",
+      "accroche": "Former des groupes sans qu’on donne la réponse.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "36",
+      "saison": 2,
+      "chapitre": {
+        "numero": 7,
+        "titre": "Les modèles classiques"
+      },
+      "titre": "L’analyse en composantes principales (ACP)",
+      "accroche": "Résumer beaucoup de dimensions en quelques-unes.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "37",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "Le neurone artificiel",
+      "accroche": "Une somme pondérée, puis une décision.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "38",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "Les fonctions d’activation",
+      "accroche": "Sans elles, un réseau ne serait qu’une droite.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "39",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "Le réseau multicouche",
+      "accroche": "Des couches de neurones qui apprennent à voir autrement.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "40",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "La propagation avant",
+      "accroche": "Suivre un exemple de l’entrée jusqu’à la réponse.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "41",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "La rétropropagation",
+      "accroche": "Remonter l’erreur, couche par couche.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "42",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "Disparition et explosion du gradient",
+      "accroche": "Quand le signal d’erreur s’éteint, ou explose.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "43",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "L’initialisation des poids",
+      "accroche": "Bien partir pour bien apprendre.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "44",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "Les optimiseurs : momentum, RMSProp, Adam",
+      "accroche": "Descendre plus vite, sans déraper.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "45",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "Le dropout",
+      "accroche": "Éteindre des neurones au hasard pour mieux apprendre.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "46",
+      "saison": 3,
+      "chapitre": {
+        "numero": 8,
+        "titre": "Les réseaux de neurones"
+      },
+      "titre": "La normalisation par lots",
+      "accroche": "Recalibrer chaque couche, à chaque lot.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "47",
+      "saison": 3,
+      "chapitre": {
+        "numero": 9,
+        "titre": "Les réseaux spécialisés"
+      },
+      "titre": "La convolution",
+      "accroche": "Regarder une image par petites fenêtres.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "48",
+      "saison": 3,
+      "chapitre": {
+        "numero": 9,
+        "titre": "Les réseaux spécialisés"
+      },
+      "titre": "Le pooling et l’architecture d’un CNN",
+      "accroche": "Des bords aux formes, puis aux objets.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "49",
+      "saison": 3,
+      "chapitre": {
+        "numero": 9,
+        "titre": "Les réseaux spécialisés"
+      },
+      "titre": "Les réseaux récurrents (RNN)",
+      "accroche": "Une mémoire qui passe d’un mot au suivant.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "50",
+      "saison": 3,
+      "chapitre": {
+        "numero": 9,
+        "titre": "Les réseaux spécialisés"
+      },
+      "titre": "Les LSTM",
+      "accroche": "Apprendre ce qu’il faut retenir, et ce qu’il faut oublier.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "51",
+      "saison": 3,
+      "chapitre": {
+        "numero": 9,
+        "titre": "Les réseaux spécialisés"
+      },
+      "titre": "L’apprentissage par transfert",
+      "accroche": "Réutiliser ce qu’un autre modèle a déjà appris.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "52",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "La tokenisation",
+      "accroche": "Découper le texte en morceaux qu’une machine peut compter.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "53",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Le sac de mots et le TF-IDF",
+      "accroche": "Compter les mots pour représenter un texte.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "54",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Les embeddings",
+      "accroche": "Quand les mots deviennent des points dans l’espace.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "55",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Word2Vec",
+      "accroche": "Un mot se définit par les mots qui l’entourent.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "56",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Le mécanisme d’attention",
+      "accroche": "Savoir sur quels mots se concentrer.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "57",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "L’auto-attention",
+      "accroche": "Chaque mot regarde tous les autres.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "58",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Le Transformer",
+      "accroche": "L’architecture derrière les grands modèles de langage.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "59",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Le modèle de langage",
+      "accroche": "Prédire le token suivant, encore et encore.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "60",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "La température et l’échantillonnage",
+      "accroche": "Régler la créativité d’un modèle.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "61",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "Le fine-tuning",
+      "accroche": "Spécialiser un modèle géant avec peu de données.",
+      "statut": "a_faire",
+      "pret": false
+    },
+    {
+      "n": "62",
+      "saison": 4,
+      "chapitre": {
+        "numero": 10,
+        "titre": "Le langage"
+      },
+      "titre": "La classification d’intention",
+      "accroche": "Comprendre ce que l’utilisateur veut vraiment dire.",
+      "statut": "a_faire",
+      "pret": false
+    }
+  ]
+}

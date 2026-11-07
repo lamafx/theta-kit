@@ -1,12 +1,12 @@
 {
-  "_note": "Source : CV(s) de l'auteur et page Profil du prototype. Ne jamais afficher le téléphone. Voir README, point CV.",
+  "_note": "Profil aligné sur serie-ml/theta-post/editorial/ligne_editoriale.md, section 6. Le CV public est la version ML sans téléphone. Téléphone jamais affiché.",
   "nom": "Ladji Lama Kamagate",
   "prenom_affiche": "Ladji Lama",
   "nom_affiche": "Kamagate",
   "photo": "/img/llk-cutout.png",
   "titre": {
-    "fr": "Étudiant en licence SRIT à l’ESATIC · Machine Learning et API",
-    "en": "SRIT undergraduate at ESATIC · Machine Learning and APIs"
+    "fr": "Étudiant en 3ᵉ année de licence SRIT à l’ESATIC · NLP, agents conversationnels et développement logiciel",
+    "en": "Third-year SRIT undergraduate at ESATIC · NLP, conversational agents and software development"
   },
   "accroche": {
     "fr": "Étudiant en licence SRIT à l’ESATIC, je construis des modèles de Machine Learning et les API qui les servent. θ Théta, c’est ma façon de l’expliquer.",
@@ -50,13 +50,6 @@
   },
   "compteurs": [
     {
-      "valeur": 88,
-      "suffixe": "%",
-      "fr": "de précision sur la détection de la pneumonie",
-      "en": "precision on pneumonia detection",
-      "_verifier": "chiffre du CV « Stagiaire Machine Learning », absent du CV « Développeur web et mobile »"
-    },
-    {
       "valeur": 3,
       "suffixe": "e",
       "fr": "place au hackathon SmartWattUIA 2025",
@@ -80,7 +73,7 @@
     "linkedin": "https://www.linkedin.com/in/kamagate-ladji-lama-02a18429b",
     "github": "https://github.com/lamafx",
     "ancien_portfolio": "https://lama-portofolio.vercel.app",
-    "cv": "/cv/CV-Ladji-Lama-Kamagate.pdf"
+    "cv": "/cv/CV-Ladji-Lama-Kamagate-ML.pdf"
   },
   "langues": [
     {

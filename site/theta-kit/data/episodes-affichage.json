@@ -1,0 +1,368 @@
+{
+ "chapitres_en": {
+  "1": "The basics",
+  "2": "Learning from mistakes",
+  "3": "Regression",
+  "4": "Classification",
+  "5": "Evaluating a model",
+  "6": "Generalizing well",
+  "7": "Classic models",
+  "8": "Neural networks",
+  "9": "Specialized networks",
+  "10": "Language"
+ },
+ "episodes": {
+  "01": {
+   "titre_en": "What is Machine Learning?",
+   "fr": [
+    "Qu’est-ce que le",
+    "Machine Learning ?"
+   ],
+   "en": [
+    "What is",
+    "Machine Learning?"
+   ],
+   "accroche_en": "Instead of writing the rules, we show examples.",
+   "v": "ml",
+   "formule_fr": "exemples → règle",
+   "formule_en": "examples → rule",
+   "themes": [
+    "exemples"
+   ]
+  },
+  "02": {
+   "titre_en": "Data, features and labels",
+   "fr": [
+    "Données, caractéristiques",
+    "et étiquettes"
+   ],
+   "en": [
+    "Data, features",
+    "and labels"
+   ],
+   "accroche_en": "To a machine, an example is just a row in a table.",
+   "v": "data",
+   "formule_fr": "x → y",
+   "formule_en": "x → y",
+   "themes": [
+    "donnees"
+   ]
+  },
+  "03": {
+   "titre_en": "The three families of learning",
+   "fr": [
+    "Les trois familles",
+    "d’apprentissage"
+   ],
+   "en": [
+    "The three families",
+    "of learning"
+   ],
+   "accroche_en": "With the answer, without the answer, or by trial and error.",
+   "v": "families",
+   "formule_fr": null,
+   "formule_en": null,
+   "themes": [
+    "familles"
+   ]
+  },
+  "04": {
+   "titre_en": "Model and parameters",
+   "fr": [
+    "Modèle",
+    "et paramètres"
+   ],
+   "en": [
+    "Model",
+    "and parameters"
+   ],
+   "accroche_en": "A model is a function with tuning knobs.",
+   "v": "model",
+   "formule_fr": "ŷ = a·x + b",
+   "formule_en": "ŷ = a·x + b",
+   "themes": [
+    "modele"
+   ]
+  },
+  "05": {
+   "titre_en": "The cost function",
+   "fr": [
+    "La fonction",
+    "de coût"
+   ],
+   "en": [
+    "The cost",
+    "function"
+   ],
+   "accroche_en": "Before it can learn, an AI must know how wrong it is.",
+   "v": "cost",
+   "formule_fr": null,
+   "formule_en": null,
+   "themes": [
+    "cout"
+   ]
+  },
+  "06": {
+   "titre_en": "The slope of a curve: the derivative",
+   "fr": [
+    "La pente d’une courbe :",
+    "la dérivée"
+   ],
+   "en": [
+    "The slope of a curve:",
+    "the derivative"
+   ],
+   "accroche_en": "Knowing whether it goes up or down, and how fast.",
+   "v": "deriv",
+   "formule_fr": "J′(a) = 2a pour J(a) = a²",
+   "formule_en": "J′(a) = 2a for J(a) = a²",
+   "themes": [
+    "derivee"
+   ]
+  },
+  "07": {
+   "titre_en": "The gradient",
+   "fr": [
+    "Le",
+    "gradient"
+   ],
+   "en": [
+    "The",
+    "gradient"
+   ],
+   "accroche_en": "The slope, when there are several knobs to tune.",
+   "v": "grad",
+   "formule_fr": "∇J = (∂J/∂a ; ∂J/∂b)",
+   "formule_en": "∇J = (∂J/∂a, ∂J/∂b)",
+   "themes": [
+    "gradient"
+   ]
+  },
+  "08": {
+   "titre_en": "Gradient descent",
+   "fr": [
+    "La descente",
+    "de gradient"
+   ],
+   "en": [
+    "Gradient",
+    "descent"
+   ],
+   "accroche_en": "How an AI learns from its mistakes, one step at a time.",
+   "v": "gd",
+   "formule_fr": "θ ← θ − η∇J(θ)",
+   "formule_en": "θ ← θ − η∇J(θ)",
+   "themes": [
+    "descente"
+   ]
+  },
+  "09": {
+   "titre_en": "Stochastic descent and mini-batches",
+   "fr": [
+    "Descente stochastique",
+    "et mini-lots"
+   ],
+   "en": [
+    "Stochastic descent",
+    "and mini-batches"
+   ],
+   "accroche_en": "Learning fast, without rereading everything at each step.",
+   "v": "sgd",
+   "formule_fr": "∇J estimé sur B exemples",
+   "formule_en": "∇J estimated on B examples",
+   "themes": [
+    "minilots"
+   ]
+  },
+  "10": {
+   "titre_en": "Local minima and saddle points",
+   "fr": [
+    "Minimums locaux",
+    "et points selle"
+   ],
+   "en": [
+    "Local minima",
+    "and saddle points"
+   ],
+   "accroche_en": "The bottom of a dip is not always the bottom of the valley.",
+   "v": "local",
+   "formule_fr": "∇J = 0 ne suffit pas",
+   "formule_en": "∇J = 0 is not enough",
+   "themes": [
+    "minlocaux",
+    "selle"
+   ]
+  },
+  "11": {
+   "titre_en": "Linear regression",
+   "fr": [
+    "La régression",
+    "linéaire"
+   ],
+   "en": [
+    "Linear",
+    "regression"
+   ],
+   "accroche_en": "Drawing the best line through the data.",
+   "v": "reg",
+   "formule_fr": null,
+   "formule_en": null,
+   "themes": [
+    "regression"
+   ]
+  },
+  "12": {
+   "titre_en": "Multiple linear regression"
+  },
+  "13": {
+   "titre_en": "Normalizing data"
+  },
+  "14": {
+   "titre_en": "Polynomial regression"
+  },
+  "15": {
+   "titre_en": "The decision boundary"
+  },
+  "16": {
+   "titre_en": "The sigmoid function"
+  },
+  "17": {
+   "titre_en": "Logistic regression"
+  },
+  "18": {
+   "titre_en": "Cross-entropy"
+  },
+  "19": {
+   "titre_en": "The Softmax function"
+  },
+  "20": {
+   "titre_en": "Training, validation, test"
+  },
+  "21": {
+   "titre_en": "The confusion matrix"
+  },
+  "22": {
+   "titre_en": "Precision, recall and F1"
+  },
+  "23": {
+   "titre_en": "The ROC curve and AUC"
+  },
+  "24": {
+   "titre_en": "Cross-validation"
+  },
+  "25": {
+   "titre_en": "Overfitting and underfitting"
+  },
+  "26": {
+   "titre_en": "The bias-variance tradeoff"
+  },
+  "27": {
+   "titre_en": "L2 regularization"
+  },
+  "28": {
+   "titre_en": "L1 regularization"
+  },
+  "29": {
+   "titre_en": "Early stopping"
+  },
+  "30": {
+   "titre_en": "K-nearest neighbors"
+  },
+  "31": {
+   "titre_en": "Decision trees"
+  },
+  "32": {
+   "titre_en": "Random forests"
+  },
+  "33": {
+   "titre_en": "Gradient boosting"
+  },
+  "34": {
+   "titre_en": "Support vector machines (SVM)"
+  },
+  "35": {
+   "titre_en": "K-means"
+  },
+  "36": {
+   "titre_en": "Principal component analysis (PCA)"
+  },
+  "37": {
+   "titre_en": "The artificial neuron"
+  },
+  "38": {
+   "titre_en": "Activation functions"
+  },
+  "39": {
+   "titre_en": "The multilayer network"
+  },
+  "40": {
+   "titre_en": "Forward propagation"
+  },
+  "41": {
+   "titre_en": "Backpropagation"
+  },
+  "42": {
+   "titre_en": "Vanishing and exploding gradients"
+  },
+  "43": {
+   "titre_en": "Weight initialization"
+  },
+  "44": {
+   "titre_en": "Optimizers: momentum, RMSProp, Adam"
+  },
+  "45": {
+   "titre_en": "Dropout"
+  },
+  "46": {
+   "titre_en": "Batch normalization"
+  },
+  "47": {
+   "titre_en": "Convolution"
+  },
+  "48": {
+   "titre_en": "Pooling and CNN architecture"
+  },
+  "49": {
+   "titre_en": "Recurrent networks (RNN)"
+  },
+  "50": {
+   "titre_en": "LSTMs"
+  },
+  "51": {
+   "titre_en": "Transfer learning"
+  },
+  "52": {
+   "titre_en": "Tokenization"
+  },
+  "53": {
+   "titre_en": "Bag of words and TF-IDF"
+  },
+  "54": {
+   "titre_en": "Embeddings"
+  },
+  "55": {
+   "titre_en": "Word2Vec"
+  },
+  "56": {
+   "titre_en": "The attention mechanism"
+  },
+  "57": {
+   "titre_en": "Self-attention"
+  },
+  "58": {
+   "titre_en": "The Transformer"
+  },
+  "59": {
+   "titre_en": "The language model"
+  },
+  "60": {
+   "titre_en": "Temperature and sampling"
+  },
+  "61": {
+   "titre_en": "Fine-tuning"
+  },
+  "62": {
+   "titre_en": "Intent classification"
+  }
+ }
+}

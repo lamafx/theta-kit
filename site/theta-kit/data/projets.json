@@ -5,11 +5,13 @@
       "ml"
     ],
     "date": {
-      "fr": "Oct. 2025 → fév. 2026",
-      "en": "Oct 2025 → Feb 2026"
+      "fr": "Oct. 2025",
+      "en": "Oct 2025"
     },
-    "resultat": "88 %",
-    "_verifier": "88 % et XGBoost viennent de l’ancien CV ; le nouveau CV ne cite que Python",
+    "resultat": {
+      "fr": "API REST",
+      "en": "REST API"
+    },
     "titre": {
       "fr": "Détecter la pneumonie",
       "en": "Detecting pneumonia"
@@ -29,12 +31,12 @@
     },
     "points": {
       "fr": [
-        "Modèle de prédiction de la pneumonie : 88 % de précision.",
+        "Modèle de prédiction de la pneumonie.",
         "API REST pour servir le modèle, avec Django REST Framework.",
         "Rôle : développeur ML et API, en apprentissage par projet à l’ESATIC."
       ],
       "en": [
-        "Pneumonia prediction model: 88% precision.",
+        "Pneumonia prediction model.",
         "REST API to serve the model, with Django REST Framework.",
         "Role: ML and API developer, in project-based learning at ESATIC."
       ]
@@ -47,8 +49,8 @@
       "vision"
     ],
     "date": {
-      "fr": "Mars 2026 →",
-      "en": "Mar 2026 →"
+      "fr": "Mars 2026",
+      "en": "Mar 2026"
     },
     "resultat": {
       "fr": "Vision",
@@ -75,12 +77,12 @@
       "fr": [
         "Application mobile en React Native.",
         "Moteur de recherche par embeddings et recherche vectorielle, avec PgVector.",
-        "Backend FastAPI ; projet personnel depuis mars 2026."
+        "Backend FastAPI."
       ],
       "en": [
         "Mobile app in React Native.",
         "Search engine using embeddings and vector search, with PgVector.",
-        "FastAPI backend; personal project since March 2026."
+        "FastAPI backend."
       ]
     }
   },
