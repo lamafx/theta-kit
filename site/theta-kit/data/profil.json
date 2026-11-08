@@ -5,12 +5,12 @@
   "nom_affiche": "Kamagate",
   "photo": "/img/llk-cutout.png",
   "titre": {
-    "fr": "Étudiant en 3ᵉ année de licence SRIT à l’ESATIC · NLP, agents conversationnels et développement logiciel",
-    "en": "Third-year SRIT undergraduate at ESATIC · NLP, conversational agents and software development"
+    "fr": "Étudiant en Master 1 SIGL à l’ESATIC · Bronze Award AI for Good 2026 (UIT) · NLP, agents conversationnels et développement logiciel",
+    "en": "First-year master’s student in Information Systems and Software Engineering (SIGL) at ESATIC · ITU AI for Good 2026 Bronze Award · NLP, conversational agents and software development"
   },
   "accroche": {
-    "fr": "Étudiant en licence SRIT à l’ESATIC, je construis des modèles de Machine Learning et les API qui les servent. θ Théta, c’est ma façon de l’expliquer.",
-    "en": "An SRIT undergraduate at ESATIC, I build Machine Learning models and the APIs that serve them. θ Théta is my way of explaining it."
+    "fr": "Étudiant en Master 1 SIGL (systèmes d’information et génie logiciel) à l’ESATIC, je construis des modèles de Machine Learning et les API qui les servent. θ Théta, c’est ma façon de l’expliquer.",
+    "en": "A first-year master’s student in Information Systems and Software Engineering (SIGL) at ESATIC, I build Machine Learning models and the APIs that serve them. θ Théta is my way of explaining it."
   },
   "en_une_phrase": {
     "fr": "J’apprends le Machine Learning en le construisant, et je le partage une notion à la fois.",
@@ -50,10 +50,9 @@
   },
   "compteurs": [
     {
-      "valeur": 3,
-      "suffixe": "e",
-      "fr": "place au hackathon SmartWattUIA 2025",
-      "en": "place at the SmartWattUIA 2025 hackathon"
+      "texte": "Bronze",
+      "fr": "Award à l’AI for Good Global Summit 2026 de l’UIT (Nations unies), avec l’équipe HeriTech",
+      "en": "Award at ITU’s AI for Good Global Summit 2026 (United Nations), with team HeriTech"
     },
     {
       "valeur": 3,

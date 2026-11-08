@@ -10,7 +10,9 @@ this.fPick = this.FILT.map((f) => () => this.setState({ pjF: f[0], pjOpen: -1 })
 this.pjTog = this.PJ.map((_, i) => () => this.setState({ pjOpen: this.state.pjOpen === i ? -1 : i }));
 this.SEED = this.props.preuves;
 this.state.certs = []; this.state.czF = 'all'; this.state.lb = -1; this.state.canEdit = false; this.state.up = false; this.state.upType = 'cert'; this.state.upErr = ''; this.state.upBusy = false; this.state.upFile = '';
-this.czPick = [['all', this.L('Tout')], ['cert', 'Certifications'], ['prix', this.L('Prix')]].map((f) => () => this.setState({ czF: f[0], lb: -1 }));
+this.CZ_F = ['all', 'prix', 'cert', 'hackathon'];
+this.czPick = this.CZ_F.map((k) => () => this.setState({ czF: k, lb: -1 }));
+this.czKind = (c) => (c.type === 'prix' ? this.L('Distinction') : c.type === 'hackathon' ? this.L('Hackathon') : this.L('Certification'));
 this.czOpeners = []; for (let i = 0; i < 200; i++) { const k = i; this.czOpeners.push(() => this.setState({ lb: k })); }
 this.setRail = (el) => { this.rail = el; if (el) setTimeout(() => this.czScroll(), 50); }; this.setProg = (el) => { this.progEl = el; };
 this.czScroll = () => { const r = this.rail; if (!r || !this.progEl) return; const max = Math.max(1, r.scrollWidth - r.clientWidth); const vis = Math.max(0.08, Math.min(1, r.clientWidth / Math.max(1, r.scrollWidth))); this.progEl.style.width = (vis * 100).toFixed(1) + '%'; this.progEl.style.transform = 'translateX(' + ((r.scrollLeft / max) * (1 / vis - 1) * 100).toFixed(1) + '%)'; };
@@ -63,7 +65,7 @@ componentWillUnmount() { this.dead = true; if (this.unsubCerts) { try { this.uns
 
 czList() {
 const all = this.state.certs.concat(this.SEED); const F = this.state.czF;
-return all.filter((c) => F === 'all' || (F === 'prix' ? c.type === 'prix' : c.type !== 'prix'));
+return all.filter((c) => F === 'all' || c.type === F);
 }
 
 
@@ -139,7 +141,10 @@ renderVals() {
 const vh = this.state.vh || 900;
 const d = (n) => (0.15 + n * 0.14).toFixed(2) + 's';
 const czL = this.czList(); const allC = this.state.certs.concat(this.SEED);
-const nCert = allC.filter((c) => c.type !== 'prix').length, nPrix = allC.filter((c) => c.type === 'prix').length;
+const nOf = (k) => allC.filter((c) => c.type === k).length; const nCert = nOf('cert'), nPrix = nOf('prix'), nHack = nOf('hackathon');
+const pl = (n, one, many) => (n > 1 ? this.L(many) : this.L(one));
+const featI = czL.findIndex((c) => c.vedette);
+const czItem = (c, i, k) => ({ id: c.id || String(i), title: c.title, issuer: c.issuer, date: c.date || '', rank: c.rank || '', event: c.event || c.issuer, url: c.url || '', file: c.file || '', desc: c.desc || '', kind: c.type || 'cert', isImg: kindOf(c) === 'img', badge: this.czKind(c), aria: this.L('Agrandir : ') + c.title, skills: (c.skills || []).map((t) => ({ t: t })), open: this.czOpeners[i], delay: (k * 0.06).toFixed(2) + 's' });
 const lbc = this.state.lb >= 0 ? czL[this.state.lb] : null;
 const kindOf = (c) => (c.url && /^image\//.test(c.ct || '') ? 'img' : c.url && /pdf/.test(c.ct || '') ? 'pdf' : 'plate');
 const F = this.state.pjF;
@@ -149,11 +154,13 @@ href: this.props.href, cv: this.props.cv, coverH: vh + 'px', p: this.props.p,
 filters: this.FILT.map((f, k) => ({ label: f[1], n: f[0] === 'all' ? this.PJ.length : this.PJ.filter((p) => p.tags.indexOf(f[0]) >= 0).length, sel: F === f[0] ? 'true' : 'false', pick: this.fPick[k] })),
 projects: list.map((o, k) => ({ n: o.p.n, i: String(o.i + 1), title: o.p.title, date: o.p.date, res: o.p.res, notion: o.p.notion, desc: o.p.desc,
 bullets: o.p.bullets.map((b) => ({ t: b })), tools: o.p.tools.map((x) => ({ t: x })), isOpen: this.state.pjOpen === o.i, open: this.state.pjOpen === o.i ? 'true' : 'false', toggle: this.pjTog[o.i] })),
-czNCert: String(nCert), czSCert: nCert > 1 ? 's' : '', czNPrix: String(nPrix), czSPrix: nPrix > 1 ? 's' : '', czCanEdit: this.state.canEdit,
-czFilters: [['all', this.L('Tout'), allC.length, 0], ['cert', 'Certifications', nCert, 1], ['prix', this.L('Prix'), nPrix, 2]].filter((f) => f[2] > 0 || f[0] === 'all').map((f) => ({ label: f[1], n: String(f[2]), sel: this.state.czF === f[0] ? 'true' : 'false', pick: this.czPick[f[3]] })),
-czItems: czL.map((c, i) => { const k = kindOf(c); return { title: c.title, issuer: c.issuer, date: c.date || '', rank: c.rank || '', event: c.event || c.issuer, url: c.url || '', kind: c.type === 'prix' ? 'prix' : 'cert', isImg: k === 'img', isPdf: k === 'pdf', isPlate: k === 'plate', badge: c.type === 'prix' ? 'Distinction' : 'Certification', aria: this.L('Agrandir : ') + c.title, skills: (c.skills || []).map((t) => ({ t: t })), open: this.czOpeners[i], delay: (i * 0.08).toFixed(2) + 's' }; }),
+czCanEdit: this.state.canEdit,
+czStats: [[nPrix, 'distinction', 'distinctions'], [nCert, 'certification', 'certifications'], [nHack, 'hackathon', 'hackathons']].filter((s) => s[0] > 0).map((s) => ({ n: String(s[0]), label: pl(s[0], s[1], s[2]) })),
+czFilters: [['all', this.L('Tout'), allC.length, 0], ['prix', this.L('Distinctions'), nPrix, 1], ['cert', this.L('Certifications'), nCert, 2], ['hackathon', this.L('Hackathons'), nHack, 3]].filter((f) => f[2] > 0 || f[0] === 'all').map((f) => ({ label: f[1], n: String(f[2]), sel: this.state.czF === f[0] ? 'true' : 'false', pick: this.czPick[f[3]] })),
+czFeat: featI >= 0 ? czItem(czL[featI], featI, 0) : null,
+czItems: czL.map((c, i) => ({ c, i })).filter((o) => o.i !== featI).map((o, k) => czItem(o.c, o.i, k)),
 czPrev: this.czPrev, czNext: this.czNext, czScroll: this.czScroll, setRail: this.setRail, setProg: this.setProg, tilt: this.tilt, untilt: this.untilt, upOpenFn: this.upOpenFn,
-lbOpen: !!lbc, lbTitle: lbc ? lbc.title : '', lbIssuer: lbc ? lbc.issuer : '', lbDate: lbc ? (lbc.date || '') : '', lbDesc: lbc ? (lbc.desc || '') : '', lbKind: lbc ? (lbc.type === 'prix' ? 'Distinction' : 'Certification') : '',
+lbOpen: !!lbc, lbTitle: lbc ? lbc.title : '', lbIssuer: lbc ? lbc.issuer : '', lbDate: lbc ? (lbc.date || '') : '', lbDesc: lbc ? (lbc.desc || '') : '', lbKind: lbc ? this.czKind(lbc) : '',
 lbImg: !!lbc && kindOf(lbc) === 'img', lbPdf: !!lbc && kindOf(lbc) === 'pdf', lbPlate: !!lbc && kindOf(lbc) === 'plate', lbUrl: lbc ? (lbc.url || '') : '', lbRank: lbc ? (lbc.rank || '') : '', lbEvent: lbc ? (lbc.event || lbc.issuer) : '',
 lbSkills: lbc ? (lbc.skills || []).map((t) => ({ t: t })) : [], lbHasVerify: !!(lbc && lbc.verify), lbVerify: lbc ? (lbc.verify || '') : '', lbHasUrl: !!(lbc && (lbc.file || lbc.url)), lbFile: lbc ? (lbc.file || lbc.url || '') : '', lbCanDel: !!(lbc && !lbc.seed && this.state.canEdit),
 lbPos: lbc ? (this.state.lb + 1) + ' / ' + czL.length : '', lbClose: this.lbClose, lbBack: this.lbBack, lbPrev: this.lbPrev, lbNext: this.lbNext, lbDelete: this.lbDelete,

@@ -11,16 +11,42 @@
       "en": "Bronze Award · AI and Space Computing Challenge 2026"
     },
     "emetteur": {
-      "fr": "AI for Good Global Summit · UIT",
-      "en": "AI for Good Global Summit · ITU"
+      "fr": "AI for Good Global Summit · UIT (Nations unies)",
+      "en": "AI for Good Global Summit · ITU (United Nations)"
     },
     "competences": [
       "IA",
+      "Calcul spatial",
       "Équipe HeriTech"
     ],
     "desc": {
-      "fr": "Bronze Award de l’AI and Space Computing Challenge 2026, au AI for Good Global Summit, avec l’équipe HeriTech. Certificat signé par Seizo Onoe, directeur du Bureau de la normalisation des télécommunications de l’Union internationale des télécommunications.",
-      "en": "Bronze Award in the AI and Space Computing Challenge 2026, at the AI for Good Global Summit, with team HeriTech. Certificate signed by Seizo Onoe, Director of the Telecommunication Standardization Bureau of the International Telecommunication Union."
+      "fr": "Bronze Award de l’AI and Space Computing Challenge 2026, au AI for Good Global Summit organisé par l’Union internationale des télécommunications, l’agence des Nations unies pour le numérique. Obtenu avec l’équipe HeriTech. Certificat signé par Seizo Onoe, directeur du Bureau de la normalisation des télécommunications de l’UIT.",
+      "en": "Bronze Award in the AI and Space Computing Challenge 2026, at the AI for Good Global Summit organized by the International Telecommunication Union, the United Nations agency for digital technologies. Won with team HeriTech. Certificate signed by Seizo Onoe, Director of ITU’s Telecommunication Standardization Bureau."
+    },
+    "vedette": true
+  },
+  {
+    "id": "pnud-gnambele-hackathon-2026",
+    "type": "hackathon",
+    "date": "2026-10-06",
+    "image": "/certificats/pnud-gnambele-hackathon-2026.jpg",
+    "fichier": "/certificats/pnud-gnambele-hackathon-2026.pdf",
+    "titre": {
+      "fr": "Hackathon du Gnambêlê Bootcamp 2026 · Défi 6",
+      "en": "Gnambêlê Bootcamp 2026 Hackathon · Challenge 6"
+    },
+    "emetteur": {
+      "fr": "PNUD Côte d’Ivoire",
+      "en": "UNDP Côte d’Ivoire"
+    },
+    "competences": [
+      "Prototypage",
+      "Pitch",
+      "Équipe HeriTech"
+    ],
+    "desc": {
+      "fr": "Certificat de participation au hackathon du Gnambêlê Bootcamp, bootcamp africain sur le climat, la paix et la biodiversité, avec l’équipe HeriTech. Défi 6 : l’innovation au service de la lutte contre l’orpaillage illégal. Conception, prototypage, structuration et présentation d’une solution. Délivré à Abidjan le 6 octobre 2026 par le PNUD Côte d’Ivoire, avec les ministères chargés de la Jeunesse, de l’Environnement et des Eaux et Forêts.",
+      "en": "Certificate of participation in the Gnambêlê Bootcamp hackathon, an African bootcamp on climate, peace and biodiversity, with team HeriTech. Challenge 6: innovation to fight illegal gold mining. Design, prototyping, structuring and pitching of a solution. Issued in Abidjan on October 6, 2026 by UNDP Côte d’Ivoire, with the ministries in charge of Youth, the Environment, and Water and Forests."
     }
   },
   {

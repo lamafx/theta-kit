@@ -123,7 +123,7 @@
     "intro_text": "I will take you through my series, one θ gate after another. Drag to look around, click a card to open its lab.",
     "intro_groupe": "A series by Ladji Lama Kamagate",
     "auteur_groupe": "The creator of θ Théta",
-    "auteur_text": "SRIT undergraduate at ESATIC. I work on NLP, conversational agents and software development, and I explain Machine Learning with Théta.",
+    "auteur_text": "First-year master’s student in Information Systems and Software Engineering at ESATIC, ITU AI for Good 2026 Bronze Award. I work on NLP, conversational agents and software development, and I explain Machine Learning with Théta.",
     "stage": "Open to an ML internship",
     "contact_btn": "Contact me",
     "labo_btn": "Enter the lab",
@@ -204,7 +204,8 @@
     "preuves_filtres": {
       "all": "All",
       "cert": "Certifications",
-      "prix": "Awards"
+      "prix": "Awards",
+      "hackathon": "Hackathons"
     },
     "ouvrir_fichier": "Open the file",
     "parcours_titre": "Journey",
@@ -214,7 +215,10 @@
     "fin": "End of episode",
     "stage": "An ML internship? Let’s talk.",
     "cv": "Download my CV ↓",
-    "disponible": "Available for an internship"
+    "disponible": "Available for an internship",
+    "preuves_une": "Featured",
+    "preuves_voir": "View certificate",
+    "preuves_detail": "See details"
   },
   "episode": {
     "telecharger": "Download the carousel (PDF, in French)",
@@ -326,7 +330,7 @@
       "t2": "Cover",
       "t3": "Ladji Lama Kamagate",
       "t4": "Portrait of Ladji Lama Kamagate",
-      "t5": "A third-year SRIT undergraduate at ESATIC, I work on NLP, conversational agents and software development. θ Théta is my way of explaining Machine Learning.",
+      "t5": "A first-year master’s student in Information Systems and Software Engineering at ESATIC and winner of ITU’s AI for Good 2026 Bronze Award, I work on NLP, conversational agents and software development. θ Théta is my way of explaining Machine Learning.",
       "t6": "Open to an ML internship",
       "t7": "Abidjan, Côte d’Ivoire",
       "t8": "Read the episode",

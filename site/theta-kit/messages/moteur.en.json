@@ -321,5 +321,18 @@
   "Juste : b décale la droite vers le haut ou vers le bas. C’est a qui la fait pivoter.": "Right: b shifts the line up or down. It is a that makes it pivot.",
   "Question finale": "Final question",
   "Étape suivante": "Next step",
-  "Pas tout à fait. Repensez aux étapes, puis choisissez une autre réponse.": "Not quite. Think back to the steps, then pick another answer."
+  "Pas tout à fait. Repensez aux étapes, puis choisissez une autre réponse.": "Not quite. Think back to the steps, then pick another answer.",
+  "Distinction": "Award",
+  "Distinctions": "Awards",
+  "Hackathon": "Hackathon",
+  "Hackathons": "Hackathons",
+  "Certifications": "Certifications",
+  "Certification": "Certification",
+  "certification": "certification",
+  "certifications": "certifications",
+  "distinction": "award",
+  "distinctions": "awards",
+  "hackathon": "hackathon",
+  "hackathons": "hackathons",
+  "Distinction internationale": "International award"
 }

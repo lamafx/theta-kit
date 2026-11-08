@@ -19,7 +19,7 @@ export function donneesProfil(l: L) {
         : d;
   const d = {
     p: {
-      compteurs: profil.compteurs.map((c: any) => ({ valeur: c.valeur, sup: sup(c), label: c[l] })),
+      compteurs: profil.compteurs.map((c: any) => ({ valeur: c.valeur, sup: sup(c), texte: c.texte, label: c[l] })),
       parcours: parcours.map((e: any) => ({ annee: lg(e.annee, l), t: e[l].t, d: e[l].d, cls: e.actuel ? 'tl-now' : undefined })),
       outils: profil.boite_a_outils.map((g: any) => ({
         t: g[l],
@@ -32,7 +32,7 @@ export function donneesProfil(l: L) {
     })),
     preuves: certificats.map((c: any) => ({
       id: c.id, type: c.type, title: c.titre[l], issuer: c.emetteur[l], date: fmtDate(c.date), rank: c.rang ?? '', event: c.emetteur[l],
-      url: c.image ?? undefined, ct: c.image ? 'image/jpeg' : undefined, file: c.fichier ?? undefined, skills: c.competences, desc: c.desc[l], seed: true,
+      url: c.image ?? undefined, ct: c.image ? 'image/jpeg' : undefined, file: c.fichier ?? undefined, skills: c.competences, desc: c.desc[l], vedette: !!c.vedette, seed: true,
     })),
   };
   return l === 'fr' ? typoProfonde(d) : d;

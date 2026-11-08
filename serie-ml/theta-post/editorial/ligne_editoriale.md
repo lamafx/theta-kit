@@ -57,7 +57,7 @@ Hashtags spécifiques déjà utilisés : voir `historique_episodes.md`. Ne pas r
 
 ## 6. Matière personnelle de l'auteur (à confirmer avant chaque usage)
 
-L'auteur est étudiant en 3e année de licence Réseaux, Informatique et Télécommunications (SRIT) à l'ESATIC, Abidjan, Côte d'Ivoire. Il travaille sur le NLP, les agents conversationnels et le développement logiciel.
+L'auteur est étudiant en Master 1 Systèmes d'information et génie logiciel (SIGL) à l'ESATIC, Abidjan, Côte d'Ivoire, après une licence Réseaux, Informatique et Télécommunications (SRIT) obtenue en 2026 à l'ESATIC. Distinctions : Bronze Award de l'AI and Space Computing Challenge 2026, au AI for Good Global Summit de l'UIT, avec l'équipe HeriTech ; participation au hackathon du Gnambêlê Bootcamp 2026 du PNUD Côte d'Ivoire (défi 6, orpaillage illégal), avec la même équipe. Mis à jour le 2026-11-08 sur indication de l'auteur. Il travaille sur le NLP, les agents conversationnels et le développement logiciel.
 
 Expériences réelles connues, mobilisables quand elles éclairent la notion :
 

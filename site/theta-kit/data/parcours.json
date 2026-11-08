@@ -3,11 +3,11 @@
     "annee": "2023",
     "fr": {
       "t": "Licence SRIT à l’ESATIC",
-      "d": "Systèmes, réseaux informatiques et télécommunications. En cours."
+      "d": "Systèmes, réseaux informatiques et télécommunications, de 2023 à 2026. Diplôme obtenu."
     },
     "en": {
       "t": "SRIT bachelor’s at ESATIC",
-      "d": "Systems, computer networks and telecommunications. In progress."
+      "d": "Systems, computer networks and telecommunications, 2023 to 2026. Degree awarded."
     }
   },
   {
@@ -57,12 +57,34 @@
   {
     "annee": "2026",
     "fr": {
-      "t": "Bronze Award · AI and Space Computing Challenge 2026",
-      "d": "AI for Good Global Summit, Union internationale des télécommunications, avec l’équipe HeriTech."
+      "t": "Bronze Award · AI for Good Global Summit (UIT)",
+      "d": "AI and Space Computing Challenge 2026 de l’Union internationale des télécommunications, agence des Nations unies, avec l’équipe HeriTech."
     },
     "en": {
-      "t": "Bronze Award · AI and Space Computing Challenge 2026",
-      "d": "AI for Good Global Summit, International Telecommunication Union, with team HeriTech."
+      "t": "Bronze Award · ITU AI for Good Global Summit",
+      "d": "AI and Space Computing Challenge 2026 of the International Telecommunication Union, a United Nations agency, with team HeriTech."
+    }
+  },
+  {
+    "annee": "2026",
+    "fr": {
+      "t": "Hackathon du Gnambêlê Bootcamp (PNUD)",
+      "d": "En octobre, défi 6 : innover contre l’orpaillage illégal, avec l’équipe HeriTech."
+    },
+    "en": {
+      "t": "Gnambêlê Bootcamp hackathon (UNDP)",
+      "d": "In October, challenge 6: innovating against illegal gold mining, with team HeriTech."
+    }
+  },
+  {
+    "annee": "2026",
+    "fr": {
+      "t": "Master 1 SIGL à l’ESATIC",
+      "d": "Systèmes d’information et génie logiciel. En cours."
+    },
+    "en": {
+      "t": "First-year master’s in SIGL at ESATIC",
+      "d": "Information systems and software engineering. In progress."
     }
   },
   {

@@ -123,7 +123,7 @@
     "intro_text": "Je vous emmène à travers ma série, porte θ après porte θ. Glissez pour regarder autour, cliquez sur une carte pour ouvrir son labo.",
     "intro_groupe": "Une série de Ladji Lama Kamagate",
     "auteur_groupe": "Le créateur de θ Théta",
-    "auteur_text": "Étudiant en licence SRIT à l’ESATIC. Je travaille sur le NLP, les agents conversationnels et le développement logiciel, et j’explique le Machine Learning avec Théta.",
+    "auteur_text": "Étudiant en Master 1 SIGL à l’ESATIC, Bronze Award AI for Good 2026 (UIT). Je travaille sur le NLP, les agents conversationnels et le développement logiciel, et j’explique le Machine Learning avec Théta.",
     "stage": "Ouvert à un stage en ML",
     "contact_btn": "Me contacter",
     "labo_btn": "Entrer dans le labo",
@@ -204,7 +204,8 @@
     "preuves_filtres": {
       "all": "Tout",
       "cert": "Certifications",
-      "prix": "Prix"
+      "prix": "Distinctions",
+      "hackathon": "Hackathons"
     },
     "ouvrir_fichier": "Ouvrir le fichier",
     "parcours_titre": "Parcours",
@@ -214,7 +215,10 @@
     "fin": "Fin de l’épisode",
     "stage": "Un stage en ML ? Parlons-en.",
     "cv": "Télécharger mon CV ↓",
-    "disponible": "Disponible pour un stage"
+    "disponible": "Disponible pour un stage",
+    "preuves_une": "À la une",
+    "preuves_voir": "Voir le certificat",
+    "preuves_detail": "Voir le détail"
   },
   "episode": {
     "telecharger": "Télécharger le carrousel (PDF)",
@@ -326,7 +330,7 @@
       "t2": "Couverture",
       "t3": "Ladji Lama Kamagate",
       "t4": "Portrait de Ladji Lama Kamagate",
-      "t5": "Étudiant en 3ᵉ année de licence SRIT à l’ESATIC, je travaille sur le NLP, les agents conversationnels et le développement logiciel. θ Théta, c’est ma façon d’expliquer le Machine Learning.",
+      "t5": "Étudiant en Master 1 SIGL à l’ESATIC et lauréat du Bronze Award AI for Good 2026 de l’UIT, je travaille sur le NLP, les agents conversationnels et le développement logiciel. θ Théta, c’est ma façon d’expliquer le Machine Learning.",
       "t6": "Ouvert à un stage en ML",
       "t7": "Abidjan, Côte d’Ivoire",
       "t8": "Lire l’épisode",
