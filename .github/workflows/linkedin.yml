@@ -17,10 +17,10 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: "tourner (par défaut), etat (jeton et post dû), essai (vrai post de test, relations seulement, supprimé aussitôt)"
+        description: "tourner (par défaut), etat (jeton et post dû), apercu (le prochain post et ses refus), essai (vrai post de test, relations seulement, supprimé aussitôt)"
         type: choice
         default: tourner
-        options: [tourner, etat, essai]
+        options: [tourner, etat, apercu, essai]
 
 permissions:
   contents: write
@@ -64,6 +64,10 @@ jobs:
           case "$ACTION" in
             essai) python -m serie --racine . linkedin essai 1 --poster ;;
             etat)  python -m serie --racine . linkedin etat ;;
+            apercu)
+              # Le premier épisode encore « relu » : celui qui partira au prochain créneau.
+              n=$(python -c 'import yaml; e = yaml.safe_load(open("etat.yaml", encoding="utf-8"))["episodes"]; print(next(int(k) for k, v in sorted(e.items()) if v["statut"] == "relu"))')
+              python -m serie --racine . linkedin apercu "$n" || true ;;
             *)     python -m serie --racine . linkedin tourner ;;
           esac
 
