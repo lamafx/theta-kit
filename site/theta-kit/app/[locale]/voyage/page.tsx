@@ -14,18 +14,18 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations();
   const href = liens(locale);
   const suite = prochain();
-  const visibles = serie.episodes.filter((e) => estParu(e) || e === suite);
+  // Décision de l'auteur (2026-11-08) : tout le voyage est parcourable jusqu'à l'auteur ; les épisodes à venir sont verrouillés.
   const titreLabo = (id: string) => t(`labo.themes.${id}` as never);
   const chapitres: any[] = [
     { id: 'intro', nav: 'Intro', num: 'θ', group: t('voyage.intro_groupe'), t1: t('footer.baseline_1'), t2: t('footer.baseline_2'), text: t('voyage.intro_text'), side: -1, robot: 1 },
-    ...visibles.map((e, i) => {
+    ...serie.episodes.map((e, i) => {
       const v = vuDe(e, locale);
       const paru = estParu(e);
       const labos = (estOuvert(e) ? v.themes : []).map((id) => ({ href: `${href.labo}/${id}`, label: v.themes.length > 1 ? `${t('voyage.manipuler')} : ${titreLabo(id)}` : t('voyage.manipuler'), theme: id, primary: true }));
       const links = paru ? [...labos, { href: `${href.accueil}/episodes/${e.n}`, label: t('voyage.episode') }] : labos;
       return {
-        ep: e.n, nav: e.n, num: `Nº ${e.n}`, group: v.chapitre, t1: v.t1, t2: v.t2, text: v.accroche, formula: v.formule,
-        side: i % 2 ? -1 : 1, v: v.v, links,
+        ep: e.n, nav: e.n, num: `Nº ${e.n}`, group: v.chapitre, t1: v.t1, t2: v.t2, text: v.accroche, formula: paru ? v.formule : undefined,
+        side: i % 2 ? -1 : 1, v: paru || e === suite ? v.v : undefined, links, verrou: !paru,
         soon: paru ? undefined : e.date ? t('voyage.bientot', { date: dateLisible(e.date, locale) }) : t('carrousels.bientot'),
       };
     }),

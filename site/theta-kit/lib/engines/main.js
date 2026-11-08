@@ -449,7 +449,7 @@ const d = (n) => 'calc(var(--intro-base) + ' + (n * 0.14).toFixed(2) + 's)';
 const vh = this.state.vh || 900;
 return {
 showLoader: loader, d0: d(0), d1: d(1), d2: d(2), d3: d(3), d4: d(4), d5: d(5), d6: d(6),
-portalH: this.state.tactile ? '100dvh' : Math.round(vh * 3) + 'px', stickyH: this.state.tactile ? '100dvh' : vh + 'px', tactile: !!this.state.tactile, href: this.props.href, hrefConf: this.props.hrefConf, total: String(this.props.total), nbLabos: String(this.props.nbLabos), rythme: String(this.props.rythme), prochain: this.props.prochain, portes: this.props.portes, nbEps: this.props.nbEps,
+portalH: this.state.tactile ? '100dvh' : Math.round(vh * 3) + 'px', stickyH: this.state.tactile ? '100dvh' : vh + 'px', tactile: !!this.state.tactile, href: this.props.href, hrefConf: this.props.hrefConf, total: String(this.props.total), nbLabos: String(this.props.nbLabos), avecLabos: this.props.nbLabos > 0, rythme: String(this.props.rythme), prochain: this.props.prochain, portes: this.props.portes, nbEps: this.props.nbEps,
 
 eps: this.EPS.map((e, i) => {
 const light = !e.guide && i % 2 === 1;

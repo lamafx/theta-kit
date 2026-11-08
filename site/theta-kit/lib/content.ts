@@ -44,20 +44,19 @@ export function prochain() {
   return serie.episodes.find((e) => !estParu(e));
 }
 
-/** Décision de l'auteur (2026-11-07) : tous les labos sont ouverts. À false, chaque labo suit la date de son épisode. */
-const TOUS_LES_LABOS_OUVERTS = true;
-
-/** Un labo ouvre avec son épisode. Le prochain épisode prêt ouvre le sien en avant-goût. */
+/** Décision de l'auteur (2026-11-08) : un labo ouvre à la sortie de son épisode, jamais avant. */
 export function estOuvert(e: Episode, maintenant = new Date()): boolean {
-  if (TOUS_LES_LABOS_OUVERTS) return true;
-  return e.pret && (estParu(e, maintenant) || e === prochain());
+  return estParu(e, maintenant);
 }
 
-/** Le labo proposé par défaut : celui du prochain épisode, sinon le dernier ouvert. */
-export function laboDuMoment(ouverts: string[]): string {
-  const suite = prochain();
-  const id = suite ? AFF[suite.n]?.themes?.[0] : undefined;
-  return id && ouverts.includes(id) ? id : ouverts[ouverts.length - 1] ?? 'exemples';
+/** Les labos ouverts, sans doublon : le compteur de l'accueil. */
+export function nbLabosOuverts(maintenant = new Date()): number {
+  return new Set(serie.episodes.filter((e) => estOuvert(e, maintenant)).flatMap((e) => AFF[e.n]?.themes ?? [])).size;
+}
+
+/** Le labo proposé par défaut : le dernier ouvert. */
+export function laboDuMoment(ouverts: string[]): string | undefined {
+  return ouverts[ouverts.length - 1];
 }
 
 export function arbreLabos(locale: string, titre: (id: string) => string) {

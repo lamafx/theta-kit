@@ -23,7 +23,7 @@ export default function TunnelView({ v, t }: { v: any; t: (k: string) => string 
 </a>
 </Fragment>))}
 {c.soon && (<>
-<span style={{ display: 'inline-flex', alignItems: 'center', minHeight: '40px', padding: '0 16px', borderRadius: '999px', border: '1px dashed #2E3B4D', fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8A97A8' }}>{c.soonTxt}</span>
+<span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', minHeight: '40px', padding: '0 16px', borderRadius: '999px', border: '1px dashed #2E3B4D', fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8A97A8' }}>{c.verrou && <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V8a4 4 0 0 1 8 0v3"></path></svg>}{c.soonTxt}</span>
 </>)}
 </div>
 </section>
@@ -43,8 +43,8 @@ export default function TunnelView({ v, t }: { v: any; t: (k: string) => string 
 <a className="tn-btn" href={v.href.accueil} onClick={v.goMain} style={{ display: 'inline-flex', alignItems: 'center', minHeight: '40px', padding: '0 18px', borderRadius: '999px', color: '#F5F8FC', fontSize: '14px', fontWeight: '500', textDecoration: 'none' }}>{t('auto.voyage.t3')}</a>
 </div>
 </header>
-<nav className="tn-chapitres" aria-label={t('auto.voyage.t4')} style={{ position: 'absolute', right: 'clamp(14px, 2.6vw, 40px)', top: '50%', transform: 'translateY(-50%)', zIndex: '5', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>{(v.navItems || []).map((n: any, i3: number) => (<Fragment key={i3}>
-<button type="button" className="tn-nav" onClick={n.go} aria-current={n.current} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '14px', minHeight: '40px', padding: '0 2px 0 12px', border: '0', background: 'transparent', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '15px', fontWeight: n.weight, color: n.color }}><span >{n.label}</span>
+<nav className="tn-chapitres" aria-label={t('auto.voyage.t4')} style={{ position: 'absolute', right: 'clamp(14px, 2.6vw, 40px)', top: '50%', transform: 'translateY(-50%)', zIndex: '5', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>{(v.navItems || []).map((n: any, i3: number) => n.montre && (<Fragment key={i3}>
+<button type="button" className="tn-nav" onClick={n.go} aria-current={n.current} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '14px', minHeight: '40px', padding: '0 2px 0 12px', border: '0', background: 'transparent', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '15px', fontWeight: n.weight, color: n.color, opacity: n.verrou ? 0.6 : 1 }}><span >{n.label}</span>
 <span style={{ width: n.dot, height: n.dot, borderRadius: '999px', background: n.dotColor, boxShadow: n.glow, transition: 'all .35s ease' }}></span>
 </button>
 </Fragment>))}

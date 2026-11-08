@@ -168,7 +168,11 @@
     "verrou_titre": "Ce labo n’est pas encore ouvert.",
     "verrou_texte": "Il ouvre le {date}, avec son épisode.",
     "verrou_sans": "Il ouvrira avec son épisode.",
-    "retour": "Aller au labo ouvert"
+    "retour": "Aller au labo ouvert",
+    "aucun_titre": "Les labos ouvrent avec les épisodes.",
+    "aucun_texte": "Chaque labo ouvre le jour où son épisode paraît sur LinkedIn : on lit la notion, puis on la manipule pas à pas.",
+    "aucun_date": "Le premier ouvre avec le Nº {n}, le {date}.",
+    "aucun_retour": "Retour à l’accueil"
   },
   "profil": {
     "episode": "Épisode 00 · L’auteur",

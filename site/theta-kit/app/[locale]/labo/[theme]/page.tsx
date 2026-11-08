@@ -25,13 +25,15 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   if (!ouverts.includes(theme)) {
     const info = labo(arbre, theme);
     return (
-      <PageSimple retour={t('retour')}>
+      <PageSimple retour={t('aucun_retour')}>
         <article className="ep">
           <p className="ep-sur">{t('saison_n', { n: info?.saison ?? 1 })} · Nº {info?.n}</p>
           <h1>{info?.titre}</h1>
           <p className="ep-acc">{t('verrou_titre')}</p>
           <p className="ep-note">{info?.quand ? t('verrou_texte', { date: info.quand }) : t('verrou_sans')}</p>
-          <div className="ep-btns"><Link className="btn btn-plein" href="/labo">{t('retour')}</Link></div>
+          <div className="ep-btns">{ouverts.length > 0
+            ? <Link className="btn btn-plein" href="/labo">{t('retour')}</Link>
+            : <Link className="btn btn-plein" href="/">{t('aucun_retour')}</Link>}</div>
         </article>
       </PageSimple>
     );

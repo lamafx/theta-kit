@@ -19,7 +19,7 @@ export default function Voyage(p: any) {
             {p.chapters.filter((c: any) => c.ep).map((c: any) => (
               <li key={c.ep}>
                 {c.links?.[0] ? <a href={c.links[0].href}>{c.num} · {c.t1} {c.t2}</a> : <span>{c.num} · {c.t1} {c.t2}</span>}
-                <small>{c.text}</small>
+                <small>{c.verrou ? `${c.soon} · ` : ''}{c.text}</small>
               </li>
             ))}
           </ol>

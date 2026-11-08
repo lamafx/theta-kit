@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import Accueil from '@/components/Accueil';
-import { dateLisible, episodesParus, estOuvert, prochain, serie, vuDe } from '@/lib/content';
-import { dictMoteur, liens, THEMES } from '@/lib/liens';
+import { dateLisible, episodesParus, estOuvert, nbLabosOuverts, prochain, serie, vuDe } from '@/lib/content';
+import { dictMoteur, liens } from '@/lib/liens';
 
 export const revalidate = 1800;
 
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         cards={cartes}
         href={href}
         hrefConf={`${href.accueil}/confidentialite`}
-        nbLabos={THEMES.length}
+        nbLabos={nbLabosOuverts()}
         total={serie.total}
         rythme={serie.posts_par_semaine}
         prochain={suite ? t('carrousels.prochain_court', { n: suite.n, titre: vuDe(suite, locale).titre }) : ''}

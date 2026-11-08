@@ -148,7 +148,8 @@ const rim = new T.DirectionalLight(0x9cc6ff, 1.4); rim.position.set(3, 1, -4); s
 this.camLight = new T.PointLight(0x9cc6ff, 6, 9, 2); scene.add(this.camLight);
 
 const N = this.CH.length, zMin = this.zc(N - 1) - 34, zMax = 24;
-const segs = Math.round(3600 * this.Q.part); const pos = new Float32Array(segs * 6); const col = new Float32Array(segs * 6);
+const dens = Math.max(1, (zMax - zMin) / (this.S * 14 + 58)); // décor aussi dense quel que soit le nombre de portes
+const segs = Math.round(3600 * this.Q.part * dens); const pos = new Float32Array(segs * 6); const col = new Float32Array(segs * 6);
 const cBlue = new T.Color('#4C8DFF'), cPale = new T.Color('#CFE0FF'), cBronze = new T.Color('#D9A066'), cW = new T.Color('#F5F8FC'), tmp = new T.Color();
 for (let i = 0; i < segs; i++) {
 const a = Math.random() * Math.PI * 2; const rad = 3.6 + Math.pow(Math.random(), 0.7) * 8;
@@ -164,7 +165,7 @@ this.slen = new Float32Array(segs); for (let i = 0; i < segs; i++) this.slen[i] 
 const sg = new T.BufferGeometry(); sg.setAttribute('position', new T.BufferAttribute(pos, 3)); this.sg = sg; sg.setAttribute('color', new T.BufferAttribute(col, 3));
 this.streakMat = new T.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.7, blending: T.AdditiveBlending, depthWrite: false });
 this.streaks = new T.LineSegments(sg, this.streakMat); scene.add(this.streaks);
-const dots = Math.round(2400 * this.Q.part); const dp = new Float32Array(dots * 3);
+const dots = Math.round(2400 * this.Q.part * dens); const dp = new Float32Array(dots * 3);
 for (let i = 0; i < dots; i++) { const a = Math.random() * Math.PI * 2; const rad = 3 + Math.random() * 9; dp.set([Math.cos(a) * rad, Math.sin(a) * rad, zMin + Math.random() * (zMax - zMin)], i * 3); }
 const dg = new T.BufferGeometry(); dg.setAttribute('position', new T.BufferAttribute(dp, 3));
 this.dust = new T.Points(dg, new T.PointsMaterial({ color: 0x9cc6ff, size: 0.035, transparent: true, opacity: 0.7, blending: T.AdditiveBlending, depthWrite: false })); scene.add(this.dust);
@@ -189,7 +190,7 @@ for (let i = 0; i < N; i++) {
 const g = new T.Group(); const glow = new T.MeshBasicMaterial({ color: 0x4c8dff, transparent: true, opacity: 0.3, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false }); this.glowMats.push(glow);
 ['o', 'i', 'b1', 'b2'].forEach((k) => { g.add(new T.Mesh(gGeo[k], core)); g.add(new T.Mesh(gGeo[k + 'G'], glow)); });
 g.position.set(0, -1.25, this.zc(i) - 2.4); scene.add(g); this.gates.push(g);
-const ring = new T.Mesh(ringGeo, ringMat); ring.position.set(0, 0, this.zc(i) - 2.4); scene.add(ring);
+const ring = new T.Mesh(ringGeo, ringMat); ring.position.set(0, 0, this.zc(i) - 2.4); scene.add(ring); g.userData.ring = ring;
 }
 
 this.mat = {
@@ -507,6 +508,8 @@ this.cursorEl.style.width = big ? '64px' : '34px'; this.cursorEl.style.height = 
 this.cursorEl.style.background = big ? 'rgba(76,141,255,0.16)' : 'transparent'; this.cursorEl.style.borderColor = big ? '#4C8DFF' : 'rgba(207,224,255,0.55)';
 }
 const v = new T.Vector3();
+// Seules les portes proches sont dessinées : le voyage compte toute la série.
+this.gates.forEach((g, i) => { const vis = Math.abs(cz - this.zc(i)) < 110; g.visible = vis; g.userData.ring.visible = vis; });
 this.CH.forEach((c, i) => {
 const el = this.refs[i]; if (!el) return;
 const dist = cz - this.zc(i);
@@ -539,12 +542,15 @@ num: c.num, group: c.group, t1: c.t1, t2: c.t2, text: c.text,
 hasFormula: !!c.formula, formula: c.formula || '',
 origin: right ? 'left center' : 'right center', align: right ? 'left' : 'right', items: right ? 'flex-start' : 'flex-end',
 links: (c.links || []).map((l) => ({ href: l.href, label: l.label, go: (e) => this.leave(e, l.theme), bg: l.primary ? '#F5F8FC' : 'rgba(15,22,34,0.55)', color: l.primary ? '#0A0F17' : '#F5F8FC', border: l.primary ? '#F5F8FC' : '#2E3B4D' })),
-soon: !!c.soon, soonTxt: c.soon || ''
+soon: !!c.soon, soonTxt: c.soon || '', verrou: !!c.verrou
 };
 });
+const last = this.CH.length - 1;
 const navItems = this.CH.map((c, i) => {
 const on = i === idx;
-return { label: c.nav, go: this.jumps[i], current: on ? 'step' : 'false', weight: on ? '600' : '400', color: on ? '#F5F8FC' : '#8A97A8', dot: on ? '9px' : '6px', dotColor: on ? '#4C8DFF' : '#2E3B4D', glow: on ? '0 0 12px #4C8DFF' : 'none' };
+// Fenêtre autour de la porte courante, plus le début et la fin : la liste tient à l'écran.
+const montre = i === 0 || i >= last - 1 || Math.abs(i - idx) <= 3;
+return { montre, verrou: !!c.verrou, label: c.nav, go: this.jumps[i], current: on ? 'step' : 'false', weight: on ? '600' : '400', color: on ? '#F5F8FC' : '#8A97A8', dot: on ? '9px' : '6px', dotColor: on ? '#4C8DFF' : '#2E3B4D', glow: on ? '0 0 12px #4C8DFF' : 'none' };
 });
 const c = this.CH[idx];
 return {

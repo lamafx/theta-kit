@@ -121,9 +121,9 @@ export default function MainView({ v, t }: { v: any; t: (k: string) => string })
 <div className="hx-stat"><b >{v.rythme}</b>
 <span >{t('hero.stat_rythme')}</span>
 </div>
-<div className="hx-stat"><b>{v.nbLabos}</b>
+{v.avecLabos && (<div className="hx-stat"><b>{v.nbLabos}</b>
 <span >{t('hero.stat_3d')}</span>
-</div>
+</div>)}
 </div>
 </div>
 <div className="th-rise hx-panel" style={{ animationDelay: v.d1, position: 'relative', flex: '1 1 460px', minWidth: '0', alignSelf: 'stretch', minHeight: '600px', borderRadius: '36px', overflow: 'hidden', background: 'radial-gradient(110% 80% at 50% 38%, #1C46C9 0%, #1C46C9 38%, #102C86 72%, #13223F 100%)', boxShadow: '0 40px 80px -40px rgba(16,44,134,.75)' }}><canvas data-hero="1" ref={v.setHeroCanvas} onClick={v.poke} aria-label={t('auto.accueil.t4')} role="img" style={{ position: 'absolute', inset: '0', width: '100%', height: '100%', display: 'block', cursor: 'pointer' }}></canvas>
