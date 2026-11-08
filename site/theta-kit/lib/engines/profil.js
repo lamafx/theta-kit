@@ -1,4 +1,5 @@
 import { DCLogic } from './base';
+import { creerRobot, eclairerRobot } from './robot3d';
 
 export class ProfilEngine extends DCLogic {
 constructor(...args) {
@@ -11,12 +12,15 @@ this.pjTog = this.PJ.map((_, i) => () => this.setState({ pjOpen: this.state.pjOp
 this.SEED = this.props.preuves;
 this.state.certs = []; this.state.czF = 'all'; this.state.lb = -1; this.state.canEdit = false; this.state.up = false; this.state.upType = 'cert'; this.state.upErr = ''; this.state.upBusy = false; this.state.upFile = '';
 this.CZ_F = ['all', 'prix', 'cert', 'hackathon'];
-this.czPick = this.CZ_F.map((k) => () => this.setState({ czF: k, lb: -1 }));
+this.czPick = this.CZ_F.map((k) => () => { this.setState({ czF: k, lb: -1, czI: 0 }); if (this.rail) this.rail.scrollTo({ left: 0 }); });
+this.state.czI = 0;
+this.czGo = (i) => { const r = this.rail; const n = this.czList().length; if (!r || !n) return; const k = ((i % n) + n) % n; r.scrollTo({ left: k * r.clientWidth, behavior: 'smooth' }); this.setState({ czI: k }); };
+this.czDotGo = []; for (let i = 0; i < 200; i++) { const k = i; this.czDotGo.push(() => this.czGo(k)); }
 this.czKind = (c) => (c.type === 'prix' ? this.L('Distinction') : c.type === 'hackathon' ? this.L('Hackathon') : this.L('Certification'));
 this.czOpeners = []; for (let i = 0; i < 200; i++) { const k = i; this.czOpeners.push(() => this.setState({ lb: k })); }
 this.setRail = (el) => { this.rail = el; if (el) setTimeout(() => this.czScroll(), 50); }; this.setProg = (el) => { this.progEl = el; };
-this.czScroll = () => { const r = this.rail; if (!r || !this.progEl) return; const max = Math.max(1, r.scrollWidth - r.clientWidth); const vis = Math.max(0.08, Math.min(1, r.clientWidth / Math.max(1, r.scrollWidth))); this.progEl.style.width = (vis * 100).toFixed(1) + '%'; this.progEl.style.transform = 'translateX(' + ((r.scrollLeft / max) * (1 / vis - 1) * 100).toFixed(1) + '%)'; };
-this.czStep = (d) => { const r = this.rail; if (!r) return; const c = r.querySelector('.cz-card'); const w = c ? c.getBoundingClientRect().width + 26 : 460; r.scrollBy({ left: d * w, behavior: 'smooth' }); };
+this.czScroll = () => { const r = this.rail; if (!r) return; const k = Math.round(r.scrollLeft / Math.max(1, r.clientWidth)); if (k !== this.state.czI) this.setState({ czI: k }); };
+this.czStep = (d) => this.czGo(this.state.czI + d);
 this.czPrev = () => this.czStep(-1); this.czNext = () => this.czStep(1);
 this.tilt = (e) => { const el = e.currentTarget; const r = el.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; el.style.setProperty('--ry', ((x - 0.5) * 14).toFixed(2) + 'deg'); el.style.setProperty('--rx', ((0.5 - y) * 10).toFixed(2) + 'deg'); el.style.setProperty('--gx', (x * 100).toFixed(1) + '%'); el.style.setProperty('--gy', (y * 100).toFixed(1) + '%'); };
 this.untilt = (e) => { const el = e.currentTarget; el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); };
@@ -98,7 +102,9 @@ const ring = new T.Mesh(new T.TorusGeometry(3.7, 0.008, 6, 200), new T.MeshBasic
 const ring2 = new T.Mesh(new T.TorusGeometry(4.3, 0.006, 6, 200), new T.MeshBasicMaterial({ color: 0x4c8dff, transparent: true, opacity: 0.35, toneMapped: false })); ring2.rotation.x = 1.15; scene.add(ring2); this.ring2 = ring2;
 const dn = Math.round(900 * this.Q.part); const dp = new Float32Array(dn * 3); for (let i = 0; i < dn; i++) { const a = Math.random() * Math.PI * 2, rr = 2.6 + Math.random() * 5.5; dp.set([Math.cos(a) * rr * 1.4, Math.sin(a) * rr, -3 + Math.random() * 4], i * 3); }
 const dg = new T.BufferGeometry(); dg.setAttribute('position', new T.BufferAttribute(dp, 3));
-this.dust = new T.Points(dg, new T.PointsMaterial({ color: 0xcfe0ff, size: 0.03, transparent: true, opacity: 0.6, blending: T.AdditiveBlending, depthWrite: false })); scene.add(this.dust);
+this.dust = new T.Points(dg, new T.PointsMaterial({ color: 0xcfe0ff, size: 0.03, transparent: true, opacity: 0.6, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false })); scene.add(this.dust);
+// robot θ qui vole derrière la photo
+try { eclairerRobot(T, r, scene); const rb = creerRobot(T); rb.R.scale.setScalar(0.5); rb.R.position.set(7, 1.2, -0.7); scene.add(rb.R); this.rb = rb; } catch (err) { this.rb = null; }
 const fit = () => { const w = Math.max(1, cv.clientWidth), h = Math.max(1, cv.clientHeight); r.setSize(w, h, false); cam.aspect = w / h; const tn = Math.tan(16 * Math.PI / 180); this.dist = Math.max(7.6 / 2 / tn, (5.2 / cam.aspect) / 2 / tn); cam.updateProjectionMatrix(); this.W = w; this.H = h; };
 fit(); this.ro = new ResizeObserver(fit); this.ro.observe(cv);
 this.three = true; this.t0 = performance.now(); this.intro = 0;
@@ -117,9 +123,27 @@ this.th.rotation.x = this.my * 0.25;
 this.th.scale.setScalar(0.85 + ei * 0.15);
 this.th.position.y = 0.55 + sc * 1.4;
 this.glow.opacity = 0.26 + 0.08 * Math.sin(t * 1.8);
+if (this.rb) this.robotFrame(t, ei, sc);
 this.ring.rotation.z = t * 0.05; this.ring2.rotation.z = -t * 0.04; this.dust.rotation.z = t * 0.015;
 this.cam.position.set(this.mx * 0.8, -this.my * 0.5, this.dist || 13); this.cam.lookAt(0, 0.4, 0);
 this.r.render(this.scene, this.cam); this.perfTick(this.r);
+}
+/** Vol du robot : boucle de Lissajous autour de la photo, virages inclinés, regard vers la souris, salut de temps en temps. */
+robotFrame(t, ei, sc) {
+const rb = this.rb; const R = rb.R;
+const a = t * 0.21 + 0.6, b = t * 0.43 + 1.1, c = t * 0.29 + 0.4;
+const x = 3.2 * Math.sin(a) + (1 - ei) * 5, y = 1.35 + 0.8 * Math.sin(b), z = -0.7 + 1.3 * Math.sin(c);
+const vx = 0.672 * Math.cos(a), vz = 0.377 * Math.cos(c);
+R.position.set(x, y + sc * 1.4, z);
+R.rotation.y += (Math.max(-0.85, Math.min(0.85, vx * 1.4)) - R.rotation.y) * 0.06;
+R.rotation.z += (-vx * 0.5 - R.rotation.z) * 0.06;
+R.rotation.x += (vz * 0.35 - R.rotation.x) * 0.05;
+rb.B.position.y = 0.05 * Math.sin(t * 3.1);
+rb.tete.rotation.y = this.mx * 0.9 - R.rotation.y * 0.6; rb.tete.rotation.x = this.my * 0.35;
+const ph = (t + 3) % 11; const wv = ph < 2.4 ? Math.sin((ph / 2.4) * Math.PI) : 0;
+[-1, 1].forEach((s) => { const A = rb.bras[s]; A.sp.rotation.z = s * (0.22 + 0.08 * Math.sin(t * 2.2 + s)) + (s === 1 ? wv * 2.5 : 0); A.sp.rotation.x = 0.25 * (1 - wv); A.ep.rotation.z = s === 1 ? wv * 0.55 * Math.sin(t * 14) : 0; });
+rb.jet.material.opacity = 0.6 + 0.25 * Math.sin(t * 23); rb.jet.scale.set(0.7, 0.85 + 0.15 * Math.sin(t * 17), 1);
+rb.visage(wv > 0.2 ? 'happy' : 'neutral', (t % 4.3) < 0.13 ? 0.1 : 1, this.mx * 1.6, this.my * 1.2);
 }
 leave(e) {
 if (this.leaving) return;
@@ -143,7 +167,6 @@ const d = (n) => (0.15 + n * 0.14).toFixed(2) + 's';
 const czL = this.czList(); const allC = this.state.certs.concat(this.SEED);
 const nOf = (k) => allC.filter((c) => c.type === k).length; const nCert = nOf('cert'), nPrix = nOf('prix'), nHack = nOf('hackathon');
 const pl = (n, one, many) => (n > 1 ? this.L(many) : this.L(one));
-const featI = czL.findIndex((c) => c.vedette);
 const czItem = (c, i, k) => ({ id: c.id || String(i), title: c.title, issuer: c.issuer, date: c.date || '', rank: c.rank || '', event: c.event || c.issuer, url: c.url || '', file: c.file || '', desc: c.desc || '', kind: c.type || 'cert', isImg: kindOf(c) === 'img', badge: this.czKind(c), aria: this.L('Agrandir : ') + c.title, skills: (c.skills || []).map((t) => ({ t: t })), open: this.czOpeners[i], delay: (k * 0.06).toFixed(2) + 's' });
 const lbc = this.state.lb >= 0 ? czL[this.state.lb] : null;
 const kindOf = (c) => (c.url && /^image\//.test(c.ct || '') ? 'img' : c.url && /pdf/.test(c.ct || '') ? 'pdf' : 'plate');
@@ -157,8 +180,9 @@ bullets: o.p.bullets.map((b) => ({ t: b })), tools: o.p.tools.map((x) => ({ t: x
 czCanEdit: this.state.canEdit,
 czStats: [[nPrix, 'distinction', 'distinctions'], [nCert, 'certification', 'certifications'], [nHack, 'hackathon', 'hackathons']].filter((s) => s[0] > 0).map((s) => ({ n: String(s[0]), label: pl(s[0], s[1], s[2]) })),
 czFilters: [['all', this.L('Tout'), allC.length, 0], ['prix', this.L('Distinctions'), nPrix, 1], ['cert', this.L('Certifications'), nCert, 2], ['hackathon', this.L('Hackathons'), nHack, 3]].filter((f) => f[2] > 0 || f[0] === 'all').map((f) => ({ label: f[1], n: String(f[2]), sel: this.state.czF === f[0] ? 'true' : 'false', pick: this.czPick[f[3]] })),
-czFeat: featI >= 0 ? czItem(czL[featI], featI, 0) : null,
-czItems: czL.map((c, i) => ({ c, i })).filter((o) => o.i !== featI).map((o, k) => czItem(o.c, o.i, k)),
+czItems: czL.map((c, i) => Object.assign(czItem(c, i, i), { vedette: !!c.vedette, pos: (i + 1) + ' / ' + czL.length })),
+czPos: czL.length ? String(Math.min(this.state.czI, czL.length - 1) + 1).padStart(2, '0') + ' / ' + String(czL.length).padStart(2, '0') : '',
+czDots: czL.map((c, i) => ({ on: i === this.state.czI, label: (i + 1) + ' / ' + czL.length + ' · ' + c.title, go: this.czDotGo[i] })),
 czPrev: this.czPrev, czNext: this.czNext, czScroll: this.czScroll, setRail: this.setRail, setProg: this.setProg, tilt: this.tilt, untilt: this.untilt, upOpenFn: this.upOpenFn,
 lbOpen: !!lbc, lbTitle: lbc ? lbc.title : '', lbIssuer: lbc ? lbc.issuer : '', lbDate: lbc ? (lbc.date || '') : '', lbDesc: lbc ? (lbc.desc || '') : '', lbKind: lbc ? this.czKind(lbc) : '',
 lbImg: !!lbc && kindOf(lbc) === 'img', lbPdf: !!lbc && kindOf(lbc) === 'pdf', lbPlate: !!lbc && kindOf(lbc) === 'plate', lbUrl: lbc ? (lbc.url || '') : '', lbRank: lbc ? (lbc.rank || '') : '', lbEvent: lbc ? (lbc.event || lbc.issuer) : '',

@@ -20,7 +20,7 @@ export function donneesProfil(l: L) {
   const d = {
     p: {
       compteurs: profil.compteurs.map((c: any) => ({ valeur: c.valeur, sup: sup(c), texte: c.texte, label: c[l] })),
-      parcours: parcours.map((e: any) => ({ annee: lg(e.annee, l), t: e[l].t, d: e[l].d, cls: e.actuel ? 'tl-now' : undefined })),
+      parcours: [...parcours].reverse().map((e: any) => ({ annee: lg(e.annee, l), t: e[l].t, d: e[l].d, cls: e.actuel ? 'tl-now' : undefined })),
       outils: profil.boite_a_outils.map((g: any) => ({
         t: g[l],
         d: g.desc[l],

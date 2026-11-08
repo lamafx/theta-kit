@@ -147,37 +147,19 @@ export default function ProfilView({ v, t }: { v: any; t: (k: string) => string 
 </Fragment>))}
 </div>
 </div>
-{v.czFeat && (<>
-<article className="cz-feat" data-rv="1"><button type="button" className="cz-feat-media" onClick={v.czFeat.open} aria-label={v.czFeat.aria}><img src={v.czFeat.url} alt="" />
-</button>
-<div className="cz-feat-body"><div className="cz-feat-top"><span className="cz-pill une">{t('profil.preuves_une')}</span>
-<span className={`cz-pill ${v.czFeat.kind}`}>{v.czFeat.badge}</span>
-<span className="cz-date">{v.czFeat.date}</span>
-</div>
-<span className="cz-issuer">{v.czFeat.issuer}</span>
-<h3 >{v.czFeat.title}</h3>
-<p >{v.czFeat.desc}</p>
-<div className="cz-skills">{(v.czFeat.skills || []).map((k: any, ik: number) => (<Fragment key={ik}>
-<span >{k.t}</span>
-</Fragment>))}
-</div>
-<div className="cz-feat-acts"><button type="button" className="lb2-btn lb2-pri" onClick={v.czFeat.open}>{t('profil.preuves_voir')}</button>
-{v.czFeat.file && (<>
-<a className="lb2-btn" href={v.czFeat.file} target="_blank" rel="noopener">{t('auto.profil.t24')}</a>
-</>)}
-</div>
-</div>
-</article>
-</>)}
 <div className="cz-bar" data-rv="1"><div className="cz-seg" role="group" aria-label={t('auto.profil.t22')}>{(v.czFilters || []).map((f: any, i6: number) => (<Fragment key={i6}>
 <button type="button" aria-pressed={f.sel} onClick={f.pick}>{f.label}{' '}<span >{f.n}</span>
 </button>
 </Fragment>))}
 </div>
+<div className="cz-nav"><span className="cz-pos" aria-live="polite">{v.czPos}</span>
+<button type="button" className="cz-arrow" onClick={v.czPrev} aria-label={t('carrousels.precedent')}>←</button>
+<button type="button" className="cz-arrow" onClick={v.czNext} aria-label={t('carrousels.suivant')}>→</button>
 </div>
-<div className="cz-grid">{(v.czItems || []).map((c: any, i7: number) => (<Fragment key={c.id}>
-<article className="cz-card2" style={{ animationDelay: c.delay }}><button type="button" className="cz-hit" onClick={c.open} aria-label={c.aria}><span className="cz-thumb">{c.isImg && (<>
-<img src={c.url} alt="" loading="lazy" />
+</div>
+<div className="cz-track" ref={v.setRail} onScroll={v.czScroll} role="region" aria-roledescription="carousel" aria-label={t('profil.preuves_titre')}>{(v.czItems || []).map((c: any, i7: number) => (<Fragment key={c.id}>
+<article className="cz-feat cz-slide" role="group" aria-roledescription="slide" aria-label={c.pos}><button type="button" className="cz-feat-media" onClick={c.open} aria-label={c.aria}>{c.isImg && (<>
+<img src={c.url} alt="" loading={i7 > 0 ? 'lazy' : undefined} />
 </>)}
 {!c.isImg && (<>
 <span className="cz-plate"><span className="cz-rank">{c.rank}</span>
@@ -186,21 +168,32 @@ export default function ProfilView({ v, t }: { v: any; t: (k: string) => string 
 <span className="cz-laurel" aria-hidden="true"></span>
 </span>
 </>)}
-</span>
-<span className="cz-body"><span className="cz-row"><span className={`cz-pill ${c.kind}`}>{c.badge}</span>
+</button>
+<div className="cz-feat-body"><div className="cz-feat-top">{c.vedette && (<>
+<span className="cz-pill une">{t('profil.preuves_une')}</span>
+</>)}
+<span className={`cz-pill ${c.kind}`}>{c.badge}</span>
 <span className="cz-date">{c.date}</span>
-</span>
-<span className="cz-t">{c.title}</span>
-<span className="cz-iss">{c.issuer}</span>
-<span className="cz-skills">{(c.skills || []).map((k: any, i8: number) => (<Fragment key={i8}>
+</div>
+<span className="cz-issuer">{c.issuer}</span>
+<h3 >{c.title}</h3>
+<p >{c.desc}</p>
+<div className="cz-skills">{(c.skills || []).map((k: any, ik: number) => (<Fragment key={ik}>
 <span >{k.t}</span>
 </Fragment>))}
-</span>
-<span className="cz-more">{c.url ? t('profil.preuves_voir') : t('profil.preuves_detail')}{' '}<span aria-hidden="true">→</span>
-</span>
-</span>
-</button>
+</div>
+<div className="cz-feat-acts"><button type="button" className="lb2-btn lb2-pri" onClick={c.open}>{c.url ? t('profil.preuves_voir') : t('profil.preuves_detail')}</button>
+{c.file && (<>
+<a className="lb2-btn" href={c.file} target="_blank" rel="noopener">{t('auto.profil.t24')}</a>
+</>)}
+</div>
+</div>
 </article>
+</Fragment>))}
+</div>
+<div className="cz-dots" role="group" aria-label={t('auto.profil.t22')}>{(v.czDots || []).map((d: any, id: number) => (<Fragment key={id}>
+<button type="button" className="cz-dot" aria-current={d.on ? 'true' : undefined} aria-label={d.label} onClick={d.go}><span ></span>
+</button>
 </Fragment>))}
 </div>
 </div>
