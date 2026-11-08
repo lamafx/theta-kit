@@ -35,7 +35,7 @@ Auteur : Ladji Lama Kamagate (Abidjan, ESATIC SRIT). Série : θ Théta, « le M
 | Contenu | `contenu/NN.yaml` lus au build (`yaml` + `zod` pour valider), pages statiques (SSG) |
 | Formulaires | Route handler `app/api/inscription/route.ts` vers Brevo (ou le service que l'automatisation utilise déjà, voir Q-AUTO) |
 | Polices | paquet `geist` (Geist, Geist Mono) + `next/font/google` pour Instrument Serif |
-| Hébergement | Vercel, domaine `*.vercel.app` d'abord (nom à confirmer : `theta-ml.vercel.app` proposé) |
+| Hébergement | Vercel, domaine `theta-ml.vercel.app` (décidé par l'auteur le 2026-11-08) |
 | Analyse | Vercel Analytics (sans cookie) |
 
 ## 3. Pages et routes

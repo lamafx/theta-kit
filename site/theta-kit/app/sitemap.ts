@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { episodesParus } from '@/lib/content';
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://theta-kit.vercel.app';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://theta-ml.vercel.app';
 export const revalidate = 3600;
 
 export default function sitemap(): MetadataRoute.Sitemap {

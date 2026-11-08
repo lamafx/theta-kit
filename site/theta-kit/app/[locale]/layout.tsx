@@ -12,7 +12,7 @@ const sans = Geist({ subsets: ['latin'], variable: '--font-sans', display: 'swap
 const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap', preload: false });
 const serif = Instrument_Serif({ subsets: ['latin'], weight: '400', style: ['normal', 'italic'], variable: '--font-serif', display: 'swap', preload: false });
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://theta-kit.vercel.app';
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://theta-ml.vercel.app';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

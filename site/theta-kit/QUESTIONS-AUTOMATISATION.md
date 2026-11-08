@@ -83,7 +83,7 @@ Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l
 ## F. Décisions de l'auteur 👤
 
 **Q18.** Nom du sous-domaine Vercel : `theta-ml.vercel.app` te convient ? Sinon lequel ?
-Réponse : 👤 **Proposition tirée de l'état de la série, à confirmer par l'auteur.** `theta-ml.vercel.app` : le nom paraît libre (`DEPLOYMENT_NOT_FOUND` le 2026-11-06, à confirmer à la création du projet). Il suit le hashtag de la série, #ThetaML.
+Réponse : 👤 **Décidé par l'auteur le 2026-11-08 : `theta-ml.vercel.app`.** « kit » évoque une boîte à outils, alors que la série parle de Machine Learning ; le nom suit le hashtag #ThetaML. Le premier déploiement était sorti sous `theta-kit.vercel.app` : le code, `.env.example` et les teasers vidéo pointent désormais vers `theta-ml`. Le dépôt GitHub et le dossier gardent le nom `theta-kit`.
 
 **Q19.** Quel CV publier sur le site ? Le plus récent dit « Développeur web et mobile » et ne mentionne plus les 88 % ni XGBoost ; l'ancien dit « Stagiaire Machine Learning ». Le site met en avant le ML : garder les 88 % (et dire s'il s'agit de précision ou d'exactitude, *precision* ou *accuracy* en anglais) ou les retirer ?
 Réponse : 👤 **Proposition tirée de `serie-ml`, à confirmer par l'auteur.** Le téléphone reste hors du public. Le CV du kit l'affiche ; il a été exclu du dépôt public (`.gitignore` à la racine).

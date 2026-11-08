@@ -5,7 +5,7 @@
 1. Créer le dépôt GitHub du site (nom proposé : `theta-site`), branche `main`.
 2. `npx create-next-app@latest theta-site --ts --app --eslint --src-dir=false --import-alias "@/*"` puis y déplacer le contenu de ce kit (`contenu/`, `data/`, `messages/`, `public/`, `docs/`, `reference/`, `CLAUDE.md`).
 3. Sur vercel.com : « Add New Project », importer le dépôt, framework Next.js détecté, ajouter les variables de `docs/06`.
-4. Nom du projet Vercel = sous-domaine. Proposé : `theta-ml` → `https://theta-ml.vercel.app`. **À confirmer par l'auteur** (vérifier la disponibilité). Si `theta` est pris, essayer `theta-ml`, `thetaml`, `theta-kamagate`.
+4. Nom du projet Vercel = sous-domaine : `theta-ml` → `https://theta-ml.vercel.app`, décidé par l'auteur le 2026-11-08 (« kit » évoque une boîte à outils, la série parle de ML). Le dépôt et le dossier gardent le nom `theta-kit`.
 5. Chaque branche ou PR obtient une URL de prévisualisation : l'utiliser pour la recette (`docs/09`) avant de fusionner dans `main`.
 
 ## Réglages
