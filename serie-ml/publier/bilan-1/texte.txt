@@ -11,4 +11,6 @@ Il reste une question, celle de la saison 2 : comment savoir si un modèle est 
 
 Saison 1 · θ Théta, le Machine Learning, une notion à la fois. Saison 2 : reprise le mardi 2 février.
 
+La saison sur le site : https://theta-ml.vercel.app/fr
+
 #MachineLearning #IntelligenceArtificielle #DataScience #FondamentauxML #ThetaML

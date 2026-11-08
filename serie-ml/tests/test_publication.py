@@ -285,3 +285,30 @@ def test_serie_valider_controle_les_posts_prepares(tmp_path):
                                                          ("publier/10/texte.txt", "ERREUR"),
                                                          ("publier/11/texte.txt", "ERREUR")]
     assert "absent" in diags[0].message and "#THETAML" in diags[1].message and "6 hashtags" in diags[2].message
+
+
+# --- Liens du site (A68) ---------------------------------------------------------------------------
+
+def test_liens_site_episode_et_labos():
+    from serie.publication import liens_site
+    assert liens_site(1, ["exemples"]) == ("À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/01\n"
+                                           "À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/exemples")
+    assert liens_site(12, []) == "À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/12"
+    assert liens_site(None, []) == "La saison sur le site : https://theta-ml.vercel.app/fr"
+
+
+def test_texte_avec_liens_du_site(ep08, charte):
+    from serie.publication import liens_site
+    texte = composer_texte(ep08, charte, [], liens_site(8, ["descente"]))
+    # Les liens suivent la signature et précèdent les hashtags ; les adresses gardent leur forme exacte.
+    assert "\n\nÀ retrouver sur le site" in texte
+    assert "https://theta-ml.vercel.app/fr/episodes/08\n" in texte
+    assert "https://theta-ml.vercel.app/fr/labo/descente\n\n#MachineLearning" in texte
+    assert texte.endswith("#ThetaML\n") and controler_hashtags(texte, "test") == []
+    assert 60 <= mots_du_texte(texte) <= 220
+
+
+def test_labos_du_site_absent(tmp_path):
+    from serie.depot import Depot
+    from serie.publication import labos_du_site
+    assert labos_du_site(Depot(tmp_path), 1) == []

@@ -15,4 +15,8 @@ Leur thèse repose en partie sur des fonctions d’erreur aléatoires : un écl
 
 Nº 10 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 11 : La régression linéaire.
 
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/10
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/minlocaux
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/selle
+
 #MachineLearning #IntelligenceArtificielle #DeepLearning #Optimisation #ThetaML

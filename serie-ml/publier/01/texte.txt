@@ -15,4 +15,7 @@ Le Machine Learning déplace le travail : au lieu d’écrire la règle, on fou
 
 Nº 01 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 02 : Données, caractéristiques et étiquettes.
 
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/01
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/exemples
+
 #MachineLearning #IntelligenceArtificielle #DataScience #ApprentissageAutomatique #ThetaML

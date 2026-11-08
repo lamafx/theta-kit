@@ -13,6 +13,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 from dataclasses import dataclass
@@ -36,6 +37,11 @@ HASHTAGS_FIXES = ("#MachineLearning", "#IntelligenceArtificielle")
 HASHTAG_SERIE = "#ThetaML"  # à la fin de chaque post, écrit exactement ainsi (A34 ; charte.yaml, serie.hashtag)
 HASHTAGS_MIN, HASHTAGS_MAX = 4, 5  # 2 fixes + générique + sujet + série = 5 : le maximum est atteint par construction
 LIGNES_ACCROCHE = 3
+# A68 (2026-11-08) : chaque post renvoie au site, page de l'épisode et labo 3D. Le site lit la même série
+# (mode A, même dépôt) ; ses labos sont rattachés aux épisodes dans data/episodes-affichage.json.
+SITE = "https://theta-ml.vercel.app"
+SITE_LANGUE = "fr"
+AFFICHAGE_SITE = Path("..") / "site" / "theta-kit" / "data" / "episodes-affichage.json"
 CARACTERES_ACCROCHE = 150  # au-delà, LinkedIn coupe l'accroche avant « voir plus » sur mobile (avertissement, A33)
 
 LIEU = "texte LinkedIn"
@@ -74,15 +80,36 @@ def prochain(ep: Episode) -> str:
     return _phrase(f"{s['etiquette']} : {s['titre']}" if s["titre"] else s["etiquette"])
 
 
+def labos_du_site(depot: Depot, numero: int) -> list[str]:
+    """Les labos 3D de l'épisode sur le site ; aucun si le site n'est pas à côté de la série."""
+    chemin = depot.racine / AFFICHAGE_SITE
+    if not chemin.is_file():
+        return []
+    episodes = json.loads(chemin.read_text(encoding="utf-8")).get("episodes", {})
+    return list((episodes.get(f"{numero:02d}") or {}).get("themes") or [])
+
+
+def liens_site(numero: int | None, labos: list[str]) -> str:
+    """Le bloc de liens du post (A68) : la page de l'épisode, puis chaque labo. Sans numéro : l'accueil (bilan)."""
+    base = f"{SITE}/{SITE_LANGUE}"
+    if numero is None:
+        return f"La saison sur le site : {base}"
+    lignes = [f"À retrouver sur le site : {base}/episodes/{numero:02d}"]
+    lignes += [f"À manipuler dans le labo 3D : {base}/labo/{labo}" for labo in labos]
+    return "\n".join(lignes)
+
+
 def signature(ep: Episode, charte: Charte) -> str:
     serie = charte.donnees["serie"]
     return f"Nº {ep.fiche.numero:02d} · {serie['affichage']}, {serie['sous_titre']}. {prochain(ep)}"
 
 
-def composer_texte(ep: Episode, charte: Charte, licences: list[str]) -> str:
+def composer_texte(ep: Episode, charte: Charte, licences: list[str], site: str | None = None) -> str:
     li = ep.contenu.linkedin
     assert li is not None
     blocs = [composer(li.corps), composer(signature(ep, charte))]
+    if site:
+        blocs.append(composer(site))
     if licences:  # « CC BY-SA 4.0 » est un nom : pas de virgule décimale
         blocs.append("\n".join(composer("Licence de l'image :") + " " + l.replace(" : ", typographie.INSECABLE + ": ")
                                for l in licences))
@@ -171,7 +198,8 @@ def texte_du_post(moteur: Moteur, ep: Episode) -> tuple[str | None, list[ImageRe
     images = [im for p in ep.contenu.pages if p.type in ("contexte", "capture")
               if (im := image_retenue(moteur, p.image)) is not None]
     licences = sorted({l for im in images if (l := licence_avec_lien(im.fiche))})
-    return (composer_texte(ep, moteur.charte, licences) if ep.contenu.linkedin else None), images
+    site = liens_site(ep.fiche.numero, labos_du_site(moteur.depot, ep.fiche.numero))
+    return (composer_texte(ep, moteur.charte, licences, site) if ep.contenu.linkedin else None), images
 
 
 @dataclass
@@ -229,10 +257,13 @@ def signature_bilan(saison: int, calendrier: Calendrier, charte: Charte) -> str:
     return f"{debut} Saison {saison + 1} : reprise {'le ' + jour_en_clair(date) if date else 'prochainement'}."
 
 
-def composer_texte_bilan(bilan: ContenuBilan, calendrier: Calendrier, charte: Charte) -> str:
+def composer_texte_bilan(bilan: ContenuBilan, calendrier: Calendrier, charte: Charte, site: str | None = None) -> str:
     li = bilan.linkedin
     assert li is not None
-    corps = "\n\n".join([composer(li.corps), composer(signature_bilan(bilan.saison, calendrier, charte))])
+    blocs = [composer(li.corps), composer(signature_bilan(bilan.saison, calendrier, charte))]
+    if site:
+        blocs.append(composer(site))
+    corps = "\n\n".join(blocs)
     return corps + "\n\n" + " ".join([*HASHTAGS_FIXES, li.generique, li.hashtag, HASHTAG_SERIE]) + "\n"
 
 
@@ -247,7 +278,7 @@ def publier_bilan(depot: Depot, saison: int, contenu: Path | None = None, sortie
     if not chemin.exists():
         raise ErreurPublication(f"{chemin.name} n'existe pas")
     bilan = ContenuBilan.model_validate(lire_yaml(chemin))
-    texte = composer_texte_bilan(bilan, calendrier, Moteur(depot).charte) if bilan.linkedin else None
+    texte = composer_texte_bilan(bilan, calendrier, Moteur(depot).charte, liens_site(None, [])) if bilan.linkedin else None
     diags = controler_linkedin(bilan.linkedin, texte)
     if bloquants(diags):
         return Publication(None, diags)

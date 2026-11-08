@@ -12,4 +12,7 @@ Dans ces trois cas, il reste quelque chose à la fin de l’apprentissage. Souve
 
 Nº 03 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 04 : Modèle et paramètres.
 
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/03
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/familles
+
 #MachineLearning #IntelligenceArtificielle #DataScience #ApprentissageSupervise #ThetaML

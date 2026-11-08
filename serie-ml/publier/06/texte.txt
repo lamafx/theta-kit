@@ -10,4 +10,7 @@ Une dérivée ne dit pas où aller : elle dit de quel côté commencer.
 
 Nº 06 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 07 : Le gradient.
 
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/06
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/derivee
+
 #MachineLearning #IntelligenceArtificielle #Mathematiques #Derivee #ThetaML

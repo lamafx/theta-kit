@@ -27,8 +27,8 @@ episodes:
         fait_le: '2026-11-06T02:22:25'
         empreinte: 88109ad2f3518be9ef1f11a044674dd5a0e84d0c93ceae976929872ebd4c026c
       publication:
-        fait_le: '2026-11-05T15:58:19'
-        empreinte: 669d556cb160440ee05b909a33a2e59abbe236df5a9a040405281a22302c7d93
+        fait_le: '2026-11-08T02:24:19'
+        empreinte: 7cf63c267da63b8aeb4deb58ff87c291a6066eb66dca1ae41f7327a877cbaf4c
     publie_le: null
   '02':
     statut: relu
@@ -58,8 +58,8 @@ episodes:
         fait_le: '2026-11-06T02:22:27'
         empreinte: 4c5c6c92797acb35a1addbaff952e002d4fb530ccaaec4c878629ae78154b6eb
       publication:
-        fait_le: '2026-11-05T15:59:19'
-        empreinte: 5fcb565f07cbf8799ebb2d9d2d21450b0ff6a0de3d1ee2135706018bdc1d8538
+        fait_le: '2026-11-08T02:24:21'
+        empreinte: 447a77cd2efa1fe3d19912c2e1c2addbfc6bfe11e6a0c3697096ac32fe55b39f
     publie_le: null
   '03':
     statut: relu
@@ -89,8 +89,8 @@ episodes:
         fait_le: '2026-11-06T02:22:30'
         empreinte: 3bebe3cfcb70596ba2660b529bcd6d0977c9f5da3970376234b227490fab0672
       publication:
-        fait_le: '2026-11-05T16:00:21'
-        empreinte: 57f9a6c0569ee1f4d0e04db16ba07b4c9feed4a475cce94ddb1b0796c868a751
+        fait_le: '2026-11-08T02:24:23'
+        empreinte: f9a3b1c9c527359912f794021e49462696bd29fa9a9d99827c1ba43150922970
     publie_le: null
   '04':
     statut: relu
@@ -120,8 +120,8 @@ episodes:
         fait_le: '2026-11-06T02:22:33'
         empreinte: 2a34877c283546074c3eb4d9eac5e46e8521ace68d20645d651b14a326c993c2
       publication:
-        fait_le: '2026-11-05T16:01:13'
-        empreinte: b40db55d6362900e9c43b1fdbc2875bb884ba18c27e0c335b0b66a0d136640e7
+        fait_le: '2026-11-08T02:24:25'
+        empreinte: c7f02a0bc98c6edcb5b49e7074bf4349950e1491000726fb8a6bafe4d55e1239
     publie_le: null
   '05':
     statut: relu
@@ -151,8 +151,8 @@ episodes:
         fait_le: '2026-11-06T02:22:40'
         empreinte: 0a61566b3ab407ebbb726cea1dcec3a3fec51c57c0c5232b55d99c6a19371671
       publication:
-        fait_le: '2026-11-05T16:02:05'
-        empreinte: 656446e73806e12550087a3ce6773a946f6f7b74220c2dbd066f12893c043b2f
+        fait_le: '2026-11-08T02:24:27'
+        empreinte: a7a029334f02c88d32b8193625a20e3bc23e103e8c7709716fd2dc44b3c787e1
     publie_le: null
   '06':
     statut: relu
@@ -182,8 +182,8 @@ episodes:
         fait_le: '2026-11-06T02:22:45'
         empreinte: 5c725cb07ece88b7be9c309d480dfe57af3954b887b35a379c7ca1b657d7e19f
       publication:
-        fait_le: '2026-11-06T00:08:06'
-        empreinte: 111a3ef2e697fb419a31258c767948b331ba95d4fac12b68d3e42c515c11470c
+        fait_le: '2026-11-08T02:24:28'
+        empreinte: 037614107e5f1e30d75a9ab73adb68b6a948e5a948799b9980a41bef498eb255
     publie_le: null
   '07':
     statut: relu
@@ -213,8 +213,8 @@ episodes:
         fait_le: '2026-11-06T02:22:53'
         empreinte: b7b01a51060a1e2ed2fc473109f1f2eb2894c27839a5f76e533c1b52bc300b0f
       publication:
-        fait_le: '2026-11-05T16:04:05'
-        empreinte: 77c668776454d44af939bf1f8d0f31ce733adc4d4e6437172a58142dca79154f
+        fait_le: '2026-11-08T02:24:30'
+        empreinte: 37c491ab7ac0fae896287c3b0d57f9c2e278a30556b332a2444b35486cee9b22
     publie_le: null
   '08':
     statut: relu
@@ -244,8 +244,8 @@ episodes:
         fait_le: '2026-11-06T02:23:00'
         empreinte: bda37f4080cc8ea02e8a8c2febc3e79ff8c01f2e9288acbd0b0b247d1eb901af
       publication:
-        fait_le: '2026-11-05T16:05:16'
-        empreinte: c369f527618df97bab234d4ebd1d0a07aebf4f105d6bce4392723c87fbf0c335
+        fait_le: '2026-11-08T02:24:32'
+        empreinte: c6ea59b5c7c106d4a887bfb24be91cfec50cc452266de246cb8625e071199bbc
     publie_le: null
   '09':
     statut: relu
@@ -275,8 +275,8 @@ episodes:
         fait_le: '2026-11-06T02:23:04'
         empreinte: 0defcd911f25e45b7519a1f2a213bffcc3a35998702e9fc412e16fa8d6d2730c
       publication:
-        fait_le: '2026-11-06T00:09:59'
-        empreinte: 12970895bc516b97cf944b379a71e60297adbd0204e1cfb834416dfecd4dfd02
+        fait_le: '2026-11-08T02:24:34'
+        empreinte: 023ead970b616fc535c5f828e3ea67ec567b57149fffe3987e16a76f47e3ece9
     publie_le: null
   '10':
     statut: relu
@@ -306,8 +306,8 @@ episodes:
         fait_le: '2026-11-06T02:23:08'
         empreinte: 8dca34ae3b86b9b97b074c017f1925277876192eff8d7d2f7bba521c23faf8d2
       publication:
-        fait_le: '2026-11-06T00:11:06'
-        empreinte: 18f1db4d1fc72d0fa28cff0440035f14efa65de9e139be17952151fa7b1191ef
+        fait_le: '2026-11-08T02:24:36'
+        empreinte: ee5311db2a6b9dd99cb6cd06b635f80ca8bb1d823d10334a50028b2b4d542530
     publie_le: null
   '11':
     statut: a_faire

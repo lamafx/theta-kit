@@ -14,7 +14,7 @@ Saison `$ARGUMENTS`.
    `tests/fixtures/bilan-1.yaml`) : couverture (titre, accroche), sommaire (titre, texte). Rien de nouveau :
    le bilan rassemble, il n'enseigne pas. Vouvoiement, pas de superlatif. Le hook contrôle le schéma.
    Ajoute le bloc `linkedin` (`texte`, `hashtag`, `generique` si besoin), mêmes règles qu'un épisode :
-   60 à 220 mots, pas de lien ni de formule. La signature, la reprise et les hashtags sont ajoutés par le code.
+   60 à 220 mots, pas de lien ni de formule. La signature, la reprise, le lien du site (A68) et les hashtags sont ajoutés par le code.
 3. `.venv/Scripts/python -m serie bilan N --publier` écrit `sortie/bilan-N/` et `publier/bilan-N/`, puis regarde
    `sortie/bilan-N/page-01.png` à `page-03.png`.
 4. La page de fin (« Saison N+1 : reprise le [date] », A35) est écrite par le code, depuis `calendrier.yaml`

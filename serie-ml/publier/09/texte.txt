@@ -13,4 +13,7 @@ Au-delà d’un certain point, un pas de plus vaut souvent mieux qu’un exemple
 
 Nº 09 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 10 : Minimums locaux et points selle.
 
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/09
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/minilots
+
 #MachineLearning #IntelligenceArtificielle #Optimisation #DescenteStochastique #ThetaML

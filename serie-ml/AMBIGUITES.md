@@ -348,6 +348,19 @@ Session de design n° 1 (2026-10-25) : A12, A11, A24, A25, A22, A35 et A39 sont 
 
 ## Résolues
 
+### A68 · Lien du site dans chaque post
+
+| Champ | Contenu |
+| --- | --- |
+| Nº | A68 |
+| Jalon | 5 (lancement) |
+| Fichier | charte/texte-linkedin.md ; serie/publication.py (`liens_site`, `labos_du_site`) ; tests/test_publication.py ; publier/01 à 10 et bilan-1 |
+| Question | La charte interdisait tout lien dans le texte (Q8 de `site/theta-kit/QUESTIONS-AUTOMATISATION.md`). Le site existe désormais : le post doit-il y renvoyer ? |
+| Options | 1. Lien dans le texte du post. 2. Lien en premier commentaire. 3. Les deux. |
+| Gravité | Importante |
+| Statut | Résolue le 2026-11-08 |
+| Décision | Décision de l'utilisateur (2026-11-08) : option 1. Après la signature, le code ajoute « À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/NN », puis une ligne « À manipuler dans le labo 3D : … » par labo de l'épisode (rattachement lu dans `site/theta-kit/data/episodes-affichage.json`) ; le bilan renvoie à l'accueil. Le texte rédigé reste sans lien. Risque accepté : LinkedIn peut moins diffuser un post avec un lien externe. Les dossiers 01 à 10 et bilan-1 sont régénérés ; seul `texte.txt` change, l'étape « publication » est réenregistrée et les statuts restent « relu ». |
+
 ### A63 · Texte du post : règles de theta-post à la place du gabarit en quatre blocs
 
 | Champ | Contenu |

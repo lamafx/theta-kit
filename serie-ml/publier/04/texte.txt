@@ -16,4 +16,7 @@ Ce modèle ne garde aucune vente. Il en garde un résumé, avec ce que tout rés
 
 Nº 04 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 05 : La fonction de coût.
 
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/04
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/modele
+
 #MachineLearning #IntelligenceArtificielle #DataScience #RegressionLineaire #ThetaML
