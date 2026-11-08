@@ -12,7 +12,7 @@ const GABARITS = {
   telephone: { viewport: { width: 393, height: 852 }, hasTouch: true, isMobile: true, deviceScaleFactor: 2 },
   tablette: { viewport: { width: 768, height: 1024 }, hasTouch: true, isMobile: true },
 };
-const PAGES = ['/fr', '/en', '/fr/voyage', '/fr/labo/gradient', '/en/labo/selle', '/fr/profil', '/en/profil', '/fr/episodes/06', '/en/episodes/06'];
+const PAGES = ['/fr', '/en', '/fr/voyage', '/fr/labo', '/fr/labo/exemples', '/en/labo/familles', '/fr/labo/modele', '/fr/labo/gradient', '/en/labo/selle', '/fr/profil', '/en/profil', '/fr/episodes/06', '/en/episodes/06'];
 const TEXTES_INTERDITS = ['—', ...(process.env.TELEPHONE ? [process.env.TELEPHONE] : []), '88 %', '88%', '1 919', '2 041', 'à 3 posts'];
 const fps = (page, ms = 2500) => page.evaluate((d) => new Promise((ok) => {
   let n = 0; const t0 = performance.now();
