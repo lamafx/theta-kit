@@ -60,12 +60,19 @@ def entrees(depot: Depot, numero: int, etape: str) -> list[Path]:
     return sorted(fichiers)
 
 
+def contenu_normalise(f: Path) -> bytes:
+    """Contenu d'un fichier, fins de ligne Windows ramenées à LF pour un fichier texte : un fichier enregistré en
+    CRLF sous Windows et le même extrait en LF par Git (GitHub Actions, .gitattributes) ont la même empreinte."""
+    octets = f.read_bytes()
+    return octets if b"\0" in octets else octets.replace(b"\r\n", b"\n")
+
+
 def empreinte(depot: Depot, numero: int, etape: str) -> str:
-    """sha256 des chemins et des contenus de toutes les entrées de l'étape."""
+    """sha256 des chemins et des contenus (fins de ligne normalisées) de toutes les entrées de l'étape."""
     h = hashlib.sha256()
     for f in entrees(depot, numero, etape):
         h.update(f.relative_to(depot.racine).as_posix().encode("utf-8"))
-        h.update(hashlib.sha256(f.read_bytes()).digest())
+        h.update(hashlib.sha256(contenu_normalise(f)).digest())
     return h.hexdigest()
 
 

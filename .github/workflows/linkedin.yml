@@ -1,0 +1,110 @@
+# Publication LinkedIn de la série θ Théta, sans le PC de l'auteur (décision du 2026-11-08).
+#
+# La tournée (`serie linkedin tourner`) publie le post dû : statut « relu », étapes à jour, dossier publier/NN/
+# complet, heure prévue passée depuis moins de 2 heures, jamais deux fois le même post (publier/linkedin/NN.yaml).
+# Après un post, l'état est commité : Vercel reconstruit le site.
+#
+# Secret requis : THETA_LINKEDIN_JETON (le JSON du jeton, copié depuis le gestionnaire d'identifiants Windows).
+# Le jeton dure 60 jours. Pour le renouveler : `serie linkedin connecter` sur le PC,
+# puis `python outils/jeton-vers-github.py` depuis serie-ml/.
+name: LinkedIn
+
+on:
+  schedule:
+    # Heure d'Abidjan = UTC. Toutes les 5 minutes de 8 h à 10 h 55, chaque jour (épisodes et bilans).
+    # GitHub peut retarder un déclenchement de quelques minutes : la tournée tolère 2 heures de retard.
+    - cron: "*/5 8-10 * * *"
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "tourner (par défaut), etat (jeton et post dû), essai (vrai post de test, relations seulement, supprimé aussitôt)"
+        type: choice
+        default: tourner
+        options: [tourner, etat, essai]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: linkedin
+  cancel-in-progress: false
+
+jobs:
+  tournee:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: serie-ml
+    env:
+      PYTHONUTF8: "1"
+      THETA_LINKEDIN_JETON: ${{ secrets.THETA_LINKEDIN_JETON }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: serie-ml/pyproject.toml
+
+      - name: Installer la série
+        run: pip install --quiet -e .
+
+      - name: Tournée
+        id: tournee
+        # Une panne devient une issue (dernière étape). Le job n'échoue que pour une alerte nouvelle :
+        # pas d'e-mail toutes les 5 minutes tant qu'un même problème dure.
+        continue-on-error: true
+        env:
+          ACTION: ${{ inputs.action || 'tourner' }}
+          THETA_ALERTES: ${{ runner.temp }}/alertes.txt
+        run: |
+          case "$ACTION" in
+            essai) python -m serie --racine . linkedin essai 1 --poster ;;
+            etat)  python -m serie --racine . linkedin etat ;;
+            *)     python -m serie --racine . linkedin tourner ;;
+          esac
+
+      - name: Enregistrer l'état (trace du post, statut publié)
+        if: always()
+        run: |
+          git add -A -- etat.yaml publier
+          if git diff --cached --quiet; then echo "Rien à enregistrer."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "LinkedIn : post publié par la tournée GitHub Actions"
+          for essai in 1 2 3 4 5; do
+            git pull --rebase --quiet origin "${GITHUB_REF_NAME}" && git push --quiet origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((essai * 5))
+          done
+          echo "::error::Push impossible : la trace du post n'est pas enregistrée, à faire à la main."
+          exit 1
+
+      - name: Alertes en issues
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          THETA_ALERTES: ${{ runner.temp }}/alertes.txt
+          TOURNEE: ${{ steps.tournee.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$TOURNEE" = "failure" ]; then
+            echo "La tournée a échoué (détail dans le journal de la tournée)" >> "$THETA_ALERTES"
+          fi
+          [ -s "$THETA_ALERTES" ] || exit 0
+          ouvertes=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 200 --json title --jq '.[].title')
+          nouvelle=0
+          while IFS= read -r message; do
+            [ -n "$message" ] || continue
+            titre="LinkedIn · ${message:0:180}"
+            if ! printf '%s\n' "$ouvertes" | grep -Fxq -- "$titre"; then
+              corps=$(printf '%s\n\nTournée : %s\n\nFermez l’issue une fois le problème réglé.' "$message" "$RUN_URL")
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "$titre" --body "$corps"
+              ouvertes=$(printf '%s\n%s' "$ouvertes" "$titre")
+              nouvelle=1
+            fi
+          done < "$THETA_ALERTES"
+          # Une alerte nouvelle fait échouer le job : GitHub envoie aussi un e-mail.
+          [ "$nouvelle" = "0" ] || exit 1

@@ -262,3 +262,36 @@ def test_tache_planifiee_sans_fenetre(depot):
     script = li.script_planification(depot, Path("C:/venv/Scripts/pythonw.exe"))
     assert "pythonw.exe" in script and "linkedin tourner" in script and "-Minutes 5" in script
     assert "-StartWhenAvailable" in script and "-WakeToRun" in script
+
+
+# --- GitHub Actions (2026-11-08) ---------------------------------------------------------------------------
+
+def test_coffre_lit_les_secrets_github(monkeypatch):
+    monkeypatch.setenv("THETA_LINKEDIN_JETON", '{"access_token": "x"}')
+    assert li.Coffre().lire("jeton") == '{"access_token": "x"}'
+
+
+def test_coffre_sans_secret_sur_github_ne_touche_pas_au_keyring(monkeypatch):
+    monkeypatch.delenv("THETA_LINKEDIN_JETON", raising=False)
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    assert li.Coffre().lire("jeton") is None
+
+
+def test_alerte_github_ecrite_dans_le_fichier(monkeypatch, tmp_path):
+    fichier = tmp_path / "alertes.txt"
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.setenv("THETA_ALERTES", str(fichier))
+    li.prevenir("Nº 01 manqué\n(prévu le 10)")
+    assert fichier.read_text(encoding="utf-8") == "Nº 01 manqué (prévu le 10)\n"
+
+
+def test_pilote_une_seule_tournee(monkeypatch, tmp_path):
+    from serie.depot import Depot
+    depot = Depot(tmp_path)
+    monkeypatch.delenv("GITHUB_ACTIONS", raising=False)
+    assert li.pilote(depot) == "windows" and li.tournee_ici(depot)
+    (tmp_path / "publier" / "linkedin").mkdir(parents=True)
+    (tmp_path / "publier" / "linkedin" / "pilote.txt").write_text("github\n", encoding="utf-8")
+    assert not li.tournee_ici(depot)  # la tâche Windows ne publie plus
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    assert li.tournee_ici(depot)

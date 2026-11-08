@@ -5,7 +5,9 @@
 - `publier_episode` : le PDF de publier/NN/ (Documents API), le post (Posts API, texte au format little), puis
   le premier commentaire (Comments API) ; trace dans publier/linkedin/NN.yaml (lien du post, pour /stats). Garde-fous : statut « relu », étapes à jour (`serie reprendre`), dossier
   publier/NN/ complet, heure prévue passée depuis moins de RETARD_MAX, jamais deux fois le même épisode.
-- `tourner` : lancé toutes les 5 minutes par le Planificateur de tâches ; publie le post dû, s'il y en a un.
+- `tourner` : lancé toutes les 5 minutes par GitHub Actions (.github/workflows/linkedin.yml du dépôt theta-kit,
+  décision du 2026-11-08) ou par le Planificateur de tâches ; publie le post dû, s'il y en a un.
+  Sur GitHub, le jeton vient des secrets du dépôt (THETA_LINKEDIN_JETON) et les alertes deviennent des issues.
 
 Réponses de l'API d'après la documentation LinkedIn (Microsoft Learn, versions li-lms-2026-10) : Documents API,
 Posts API, Comments API, little Text Format.
@@ -55,10 +57,20 @@ class ErreurLinkedIn(Exception):
 
 # --- Secrets -----------------------------------------------------------------------------------------------
 
+def sur_github() -> bool:
+    return os.environ.get("GITHUB_ACTIONS") == "true"
+
+
 class Coffre:
-    """Identifiants de l'application et jeton, dans le gestionnaire d'identifiants de Windows."""
+    """Identifiants de l'application et jeton : variable THETA_LINKEDIN_<NOM> si elle existe (secrets GitHub),
+    sinon le gestionnaire d'identifiants de Windows."""
 
     def lire(self, nom: str) -> str | None:
+        valeur = os.environ.get(f"THETA_LINKEDIN_{nom.upper()}")
+        if valeur:
+            return valeur
+        if sur_github():
+            return None
         import keyring
 
         return keyring.get_password(SERVICE, nom)
@@ -451,6 +463,18 @@ def _prevenir_une_fois(depot: Depot, cle: str, message: str, prevenir: Callable[
     return message
 
 
+def pilote(depot: Depot) -> str:
+    """Qui fait la tournée : « github » (GitHub Actions) ou « windows » (Planificateur de tâches), d'après
+    publier/linkedin/pilote.txt, commité. L'autre côté ne fait rien : jamais deux tournées concurrentes, donc
+    jamais deux posts, même si la tâche Windows reste active (décision du 2026-11-08)."""
+    fichier = depot.racine / "publier" / "linkedin" / "pilote.txt"
+    return fichier.read_text(encoding="utf-8").strip().lower() if fichier.is_file() else "windows"
+
+
+def tournee_ici(depot: Depot) -> bool:
+    return (pilote(depot) == "github") == sur_github()
+
+
 def dossier_journal(depot: Depot) -> Path:
     return depot.racine / "sortie" / "linkedin"
 
@@ -479,6 +503,19 @@ class Verrou:
 
     def __exit__(self, *exc) -> None:
         self.chemin.unlink(missing_ok=True)
+
+
+def prevenir_github(message: str) -> None:
+    """Sur GitHub Actions : une ligne par alerte dans le fichier THETA_ALERTES ; le workflow en fait des issues."""
+    chemin = os.environ.get("THETA_ALERTES")
+    if chemin:
+        with open(chemin, "a", encoding="utf-8") as f:
+            f.write(" ".join(message.split()) + "\n")
+    print(f"::warning::{message}")
+
+
+def prevenir(message: str) -> None:
+    (prevenir_github if sur_github() else prevenir_windows)(message)
 
 
 def prevenir_windows(message: str) -> None:
@@ -583,9 +620,12 @@ def executer(args, depot: Depot) -> int:
                 print("Post de test supprimé.")
             return 0
         if action == "tourner":
+            if not tournee_ici(depot):
+                print(f"Tournée confiée à « {pilote(depot)} » (publier/linkedin/pilote.txt) : rien n'est fait ici.")
+                return 0
             maintenant = _maintenant()
             with Verrou(depot, maintenant):
-                message = tourner(depot, lambda: _client(coffre), maintenant, prevenir_windows, expiration(coffre))
+                message = tourner(depot, lambda: _client(coffre), maintenant, prevenir, expiration(coffre))
             if message != "rien à publier":
                 noter(depot, message, maintenant)
             print(message)
@@ -601,7 +641,7 @@ def executer(args, depot: Depot) -> int:
     except ErreurLinkedIn as exc:
         if action == "tourner":
             noter(depot, f"erreur : {exc}", _maintenant())
-            prevenir_windows(str(exc))
+            prevenir(str(exc))
         print(f"Erreur : {exc}")
         return 1
     return 2

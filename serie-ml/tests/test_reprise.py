@@ -167,3 +167,13 @@ def test_prochaine_publication(copie):
     (ligne,) = prochaine_publication(etat, calendrier, dt.datetime(2026, 11, 1))
     assert ligne == "Prochaine publication : Nº 01, mardi 3 novembre 2026, 8 h 30 (Africa/Abidjan) ; statut à faire"
     assert prochaine_publication(etat, Calendrier.model_validate(lire_yaml(copie.calendrier))) == []
+
+
+def test_empreinte_independante_des_fins_de_ligne(tmp_path):
+    """Un fichier en CRLF (Windows) et le même en LF (GitHub Actions) ont la même empreinte (2026-11-08)."""
+    from serie.reprise import contenu_normalise
+    (tmp_path / "a.yaml").write_bytes(b"cle: 1\r\nautre: 2\r\n")
+    (tmp_path / "b.yaml").write_bytes(b"cle: 1\nautre: 2\n")
+    (tmp_path / "c.png").write_bytes(b"\x89PNG\0\r\n")
+    assert contenu_normalise(tmp_path / "a.yaml") == contenu_normalise(tmp_path / "b.yaml")
+    assert contenu_normalise(tmp_path / "c.png") == b"\x89PNG\0\r\n"
