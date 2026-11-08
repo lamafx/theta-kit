@@ -37,6 +37,18 @@ this.animTo([p[0], p[1] + (Math.random() < 0.5 ? -0.12 : 0.12)], 0.45, 0.12);
 this.recenter = () => { this.viewT = { yaw: 0.0, pitch: this.th().kind === '1d' ? 0.3 : 0.62 }; };
 this.picks = {};
 this.ORDER.forEach((k) => { this.picks[k] = () => this.pickTheme(k); });
+// Parcours guidé (décision du 2026-11-08) : étapes « ce que vous regardez, à vous, ce qui vient de se passer »,
+// puis la question de vérification du carrousel.
+this.pc = { i: 0, fait: false, choix: null }; this.snap = {};
+this.pcSuivant = () => { const et = this.th().parcours; if (et) this.pcDebut(Math.min(et.length, this.pc.i + 1)); };
+this.pcRejouer = () => { const th = this.th(); if (th.rejouer) th.rejouer(); if (this.three) { this.resetPos(); this.redeco(); } this.pcDebut(0); };
+this.pcChoisir = (j) => { this.pc = { ...this.pc, choix: j }; this.lastKey = null; this.setState({ pcv: Date.now() }); };
+}
+pcDebut(i) {
+this.pc = { i: i, fait: false, choix: null };
+this.snap = { pa: this.state.pa, pb: this.state.pb, p: this.params ? this.params.slice() : null };
+const et = this.th().parcours; if (et && et[i] && et[i].debut) et[i].debut();
+this.lastKey = null; this.setState({ pcv: Date.now() });
 }
 leave(e) {
 if (this.leaving) return;
@@ -146,6 +158,7 @@ scene.environment = pm.fromScene(es, 0.04).texture; pm.dispose();
 scene.add(new T.HemisphereLight(0xcfe0ff, 0x0a0f17, 0.7));
 const key = new T.DirectionalLight(0xffffff, 2.0); key.position.set(-2.5, 5.5, 3.5); key.castShadow = true;
 key.shadow.mapSize.set(this.Q.ombre, this.Q.ombre);
+if (this.Q.niveau !== 'high') r.shadowMap.type = T.PCFShadowMap; // ombres plus simples sur téléphone et tablette
 const sc = key.shadow.camera; sc.left = -3; sc.right = 3; sc.top = 3; sc.bottom = -3; sc.near = 0.5; sc.far = 18;
 key.shadow.bias = -0.0004; key.shadow.normalBias = 0.02; key.shadow.radius = 4;
 scene.add(key);
@@ -364,7 +377,8 @@ if (!th.sansAxes) g.add(this.makeAxis(new T.Vector3(-th.ra * s - 0.14, bottom, t
 if (th.id === 'selle') { const ps = this.pos([0, 0]); ps.y += 0.38; ps.z -= 0.3; this.staticTag(g, 'point selle', ps); }
 return g;
 }
-buildTheme() {
+buildTheme() { this.construireTheme(); this.pcDebut(0); }
+construireTheme() {
 const th = this.th();
 if (this.land) {
 this.scene.remove(this.land);
@@ -662,7 +676,13 @@ return { title: title, lines: L, dots: D, texts: X };
 }
 pushUI() {
 this.lastUI = this.clock.elapsedTime;
-const u = this.ui(); const key = JSON.stringify(u) + this.themeKey() + this.state.h + this.etaVal();
+const u = this.ui(); const et = this.th().parcours;
+if (et) {
+if (this.pc.i < et.length && !this.pc.fait && et[this.pc.i].fait(u)) { this.pc = { ...this.pc, fait: true }; this.lastKey = null; }
+u.ok = this.pc.i >= et.length && this.pc.choix === this.th().quiz.bonne;
+u.pc = this.pc;
+}
+const key = JSON.stringify(u) + this.themeKey() + this.state.h + this.etaVal();
 if (key === this.lastKey) return; this.lastKey = key;
 const st = { stats: u.S.map((r) => ({ k: r[0], v: r[1] })), calc: u.calc.map((t) => ({ t: t })), msg: u.msg, success: u.ok, chart: u.chart };
 const tk = this.themeKey();
@@ -716,6 +736,24 @@ if (t - this.lastUI > 0.12 && !this.swap) this.pushUI();
 this.r.render(this.scene, this.cam); this.perfTick(this.r);
 }
 
+/** Le labo se regarde de près : si l'image rame, on retire d'abord les ombres ; la définition ne descend jamais
+sous 2 (ou celle de l'écran), sans quoi la scène devient floue sur téléphone. */
+perfTick(r) {
+const p = this.perf_; const t = performance.now();
+if (!p.t0) p.t0 = t;
+p.n += 1;
+if (t - p.t0 < 2000) return;
+const fps = (p.n * 1000) / (t - p.t0); p.n = 0; p.t0 = t;
+if (fps >= 30) return;
+if (r.shadowMap.enabled) {
+r.shadowMap.enabled = false;
+this.scene.traverse((o) => { if (o.material) [].concat(o.material).forEach((m) => { m.needsUpdate = true; }); });
+return;
+}
+const plancher = Math.min(window.devicePixelRatio || 1, 2); const dpr = r.getPixelRatio();
+if (dpr > plancher) r.setPixelRatio(Math.max(plancher, dpr - 0.25));
+}
+
 renderVals() {
 const k = this.themeKey(); const th = this.th(); const done = this.state.done || {};
 const eta = this.etaVal(); const playing = !!this.state.playing; const ctl = th.ctl; const C = this.C;
@@ -736,7 +774,23 @@ else if (ctl.neg) tg = { label: this.L('Afficher −∇J'), on: !!this.state.sho
 else if (ctl.bascule) tg = th.bascule();
 else if (ctl.push) tg = { label: this.L('Pousser'), on: false, fn: this.push };
 const stats = this.state.stats || [];
+let pc = null;
+if (th.parcours) {
+const et = th.parcours, n = et.length, i = this.pc.i, L = (x) => this.L(x);
+const points = et.map((_, j) => (j < i ? 'fait' : j === i ? 'actuel' : 'avenir')).concat([i >= n ? 'actuel' : 'avenir']);
+if (i < n) {
+const e = et[i];
+pc = { points, etape: true, num: i + 1, n, titre: L(e.titre), regarde: L(e.regarde), faire: L(e.faire), fait: this.pc.fait, compris: this.pc.fait ? L(e.compris) : '',
+suivant: this.pcSuivant, suivantLabel: i === n - 1 ? L('Question finale') : L('Étape suivante') };
+} else {
+const q = th.quiz, choix = this.pc.choix, juste = choix === q.bonne;
+pc = { points, quiz: true, n, question: L(q.question), repondu: choix != null, juste, explication: juste ? L(q.explication) : L('Pas tout à fait. Repensez aux étapes, puis choisissez une autre réponse.'),
+choix: q.choix.map((c, j) => ({ t: L(c), fn: () => this.pcChoisir(j), etat: choix == null ? '' : j === choix ? (juste ? 'bon' : 'faux') : '' })),
+rejouer: this.pcRejouer };
+}
+}
 return {
+pc: pc,
 themes: themes, score: score, arbre: this.props.arbre, actuel: k, pick: (id) => this.pickTheme(id), indice: this.state.touche || !this.state.ready || this.state.noGL ? '' : this.L(ctl.play ? 'Appuyez sur Lecture' : ctl.ab ? 'Réglez a et b' : 'Glissez le robot'),
 num: th.num, title: th.title, sub: th.sub, idea: th.idea, goal: th.goal,
 statLine: [th.formula].concat(stats.map((r) => r.k + ' ' + r.v)).join('   ·   '),

@@ -1,6 +1,7 @@
 // Généré depuis reference/Labo.dc.html. Les textes passent par t(), les valeurs par le moteur.
 import { Fragment } from 'react';
 import LaboMenu from '@/components/LaboMenu';
+import LaboParcours from '@/components/LaboParcours';
 import LangSwitch from '@/components/LangSwitch';
 export default function LaboView({ v, t }: { v: any; t: (k: string) => string }) {
   return (<>
@@ -9,6 +10,7 @@ export default function LaboView({ v, t }: { v: any; t: (k: string) => string })
 <div className="lb-nogl" style={{ position: 'absolute', inset: '0', zIndex: '2', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', textAlign: 'center', fontSize: '15px', lineHeight: '1.55', color: '#CFE0FF' }}>{t('auto.labo.t1')}</div>
 </>)}
 {!!v.indice && <div className="lb-indice" aria-hidden="true">{v.indice}</div>}
+{v.pc?.etape && <div className={`lb-consigne${v.pc.fait ? ' lb-consigne-ok' : ''}`} aria-hidden="true">{v.pc.fait ? t('labo.parcours.voir') : v.pc.faire}</div>}
 {v.notReady && (<>
 <div style={{ position: 'absolute', inset: '0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-mono)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A97A8' }}>{t('auto.labo.t2')}</div>
 </>)}
@@ -41,9 +43,11 @@ export default function LaboView({ v, t }: { v: any; t: (k: string) => string })
 <section className="lb-card lb-glass lb-scroll" style={{ borderRadius: '24px', padding: '24px', display: 'flex', flexDirection: 'column', gap: '14px' }}><div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A97A8' }}><span style={{ color: '#4C8DFF' }}>Nº{' '}{v.num}</span>
 {' '}·{' '}{v.sub}</div>
 <h1 style={{ margin: '0', fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontWeight: '400', fontSize: '40px', lineHeight: '1', letterSpacing: '-0.01em' }}>{v.title}</h1>
+{v.pc ? <LaboParcours v={v} t={t as any} /> : (<>
 <p style={{ margin: '0', fontSize: '15px', lineHeight: '1.55', color: '#A7B3C2' }}>{v.idea}</p>
 <div style={{ height: '1px', background: 'rgba(207,224,255,0.08)' }}></div>
 <p aria-live="polite" style={{ margin: '0', fontSize: '15px', lineHeight: '1.55', color: '#DCE3EC' }}>{v.msg}</p>
+</>)}
 <details style={{ borderTop: '1px solid rgba(207,224,255,0.08)', paddingTop: '12px' }}><summary style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', minHeight: '32px', fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#CFE0FF' }}>{t('auto.labo.t8')}<svg className="lb-chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path>
 </svg>
 </summary>
@@ -71,11 +75,11 @@ export default function LaboView({ v, t }: { v: any; t: (k: string) => string })
 </div>
 </div>
 </details>
-<div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', paddingTop: '12px', borderTop: '1px solid rgba(207,224,255,0.08)' }}><span style={{ flexShrink: '0', marginTop: '6px', width: '7px', height: '7px', borderRadius: '999px', background: v.statusDot, boxShadow: v.statusGlow }}></span>
+{!v.pc && (<div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', paddingTop: '12px', borderTop: '1px solid rgba(207,224,255,0.08)' }}><span style={{ flexShrink: '0', marginTop: '6px', width: '7px', height: '7px', borderRadius: '999px', background: v.statusDot, boxShadow: v.statusGlow }}></span>
 <span style={{ fontSize: '13px', lineHeight: '1.5', color: '#A7B3C2' }}><span style={{ color: '#F5F8FC' }}>{t('auto.labo.t9')}</span>
 {' '}{v.goal}{' '}<span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: v.statusColor }}>{v.statusTxt}</span>
 </span>
-</div>
+</div>)}
 </section>
 <div className="lb-dock lb-glass" style={{ borderRadius: '999px', padding: '8px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '8px' }}>{v.hasPlay && (<>
 <button type="button" className="lb-ic" onClick={v.togglePlay} aria-label={v.playLabel} style={{ width: '48px', height: '48px', border: '0', borderRadius: '999px', background: '#F5F8FC', color: '#0A0F17', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>{v.playing && (<>

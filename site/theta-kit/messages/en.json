@@ -172,7 +172,19 @@
     "aucun_titre": "Labs open with the episodes.",
     "aucun_texte": "Each lab opens the day its episode comes out on LinkedIn: read the idea, then work through it step by step.",
     "aucun_date": "The first one opens with Nº {n}, on {date}.",
-    "aucun_retour": "Back to home"
+    "aucun_retour": "Back to home",
+    "parcours": {
+      "progression": "Path progress",
+      "etape_n": "Step {n}",
+      "etape_sur": "Step {n} of {total}",
+      "question": "Final question",
+      "a_vous": "Your turn",
+      "fait": "Done",
+      "compris": "What just happened",
+      "rejouer": "Start the path again",
+      "libre": "The lab is now yours: explore at your own pace.",
+      "voir": "Done: the explanation is just below."
+    }
   },
   "profil": {
     "episode": "Episode 00 · The author",

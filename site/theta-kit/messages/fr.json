@@ -172,7 +172,19 @@
     "aucun_titre": "Les labos ouvrent avec les épisodes.",
     "aucun_texte": "Chaque labo ouvre le jour où son épisode paraît sur LinkedIn : on lit la notion, puis on la manipule pas à pas.",
     "aucun_date": "Le premier ouvre avec le Nº {n}, le {date}.",
-    "aucun_retour": "Retour à l’accueil"
+    "aucun_retour": "Retour à l’accueil",
+    "parcours": {
+      "progression": "Progression du parcours",
+      "etape_n": "Étape {n}",
+      "etape_sur": "Étape {n} sur {total}",
+      "question": "Question finale",
+      "a_vous": "À vous",
+      "fait": "Fait",
+      "compris": "Ce qui vient de se passer",
+      "rejouer": "Refaire le parcours",
+      "libre": "Le labo est maintenant libre : explorez à votre rythme.",
+      "voir": "Fait : l’explication est juste en dessous."
+    }
   },
   "profil": {
     "episode": "Épisode 00 · L’auteur",

@@ -76,6 +76,9 @@ function vueGroupes(e, listes, moi, titre) {
   return { title: titre, lines: [], dots, texts: [] };
 }
 
+/** Le robot a bougé depuis le début de l'étape. */
+const bouge = (e, seuil = 0.3) => !!(e.snap.p && e.params && dist(e.params, e.snap.p) > seuil);
+
 export function themesSerie(e) {
   const C = e.C;
   const L = (s) => e.L(s);
@@ -103,6 +106,7 @@ export function themesSerie(e) {
         const rep = dS < dN ? 'spam' : 'non';
         const loin = d > 0.62;
         if (!loin) e.ex[rep] = true;
+        e.vu01 = { rep, loin };
         const nom = rep === 'spam' ? L('spam') : L('non-spam');
         return {
           S: [[L('réponse'), nom], [L('distance'), f(d)]],
@@ -112,6 +116,35 @@ export function themesSerie(e) {
         };
       },
       chart: () => vueGroupes(e, [[SPAM, C.bronze], [NON, C.light]], e.params, L('Vue de dessus : les exemples')),
+      parcours: [
+        {
+          titre: 'Des exemples déjà triés',
+          regarde: 'Chaque boule est un mail déjà trié : bronze pour spam, bleu clair pour non-spam. Ce sont les exemples, chacun avec sa réponse. Le robot, lui, est un mail nouveau.',
+          faire: 'Faites glisser le robot au milieu des boules bronze.',
+          fait: () => bouge(e) && e.vu01 && e.vu01.rep === 'spam' && !e.vu01.loin,
+          compris: 'Le modèle donne au mail nouveau la réponse de l’exemple le plus proche : spam. Personne n’a écrit de règle comme « contient le mot gratuit » : la réponse vient des exemples.',
+        },
+        {
+          titre: 'L’autre réponse',
+          regarde: 'Même modèle, mêmes exemples. Seule la position du mail nouveau change.',
+          faire: 'Amenez le robot parmi les boules bleu clair.',
+          fait: () => bouge(e) && e.vu01 && e.vu01.rep === 'non' && !e.vu01.loin,
+          compris: 'Réponse : non-spam. C’est la différence de l’épisode : un programme classique suit des règles écrites à la main, le Machine Learning tire son modèle d’exemples.',
+        },
+        {
+          titre: 'Loin des exemples',
+          regarde: 'Le modèle n’a vu qu’un nombre limité d’exemples. Que fait-il face à un cas qui ne ressemble à aucun ?',
+          faire: 'Placez le robot loin de toutes les boules, vers un bord.',
+          fait: () => e.vu01 && e.vu01.loin,
+          compris: 'Le modèle répond quand même, mais rien ne garantit sa réponse : aucun exemple ne lui ressemble. Loin de ses exemples, ses erreurs peuvent augmenter.',
+        },
+      ],
+      quiz: {
+        question: 'D’où le Machine Learning tire-t-il un modèle ?',
+        choix: ['De règles écrites à la main', 'D’exemples dont on connaît la réponse', 'Du hasard'],
+        bonne: 1,
+        explication: 'Juste : le modèle est tiré d’exemples. Ici, chaque mail avait déjà sa réponse, spam ou non-spam : c’est l’apprentissage supervisé.',
+      },
     },
 
     donnees: {
@@ -120,7 +153,8 @@ export function themesSerie(e) {
       idea: L('Chaque rangée est un exemple, chaque colonne une caractéristique, la dernière l’étiquette. Passez le robot sur le tableau, puis changez la façon de coder le quartier.'),
       goal: L('passez à une colonne par quartier, puis amenez le robot sur l’étiquette.'),
       legend: [[C.light, L('caractéristique')], [C.blue, L('quartier')], [C.bronze, L('étiquette')]],
-      reset: () => { e.un = false; },
+      reset: () => { e.un = false; e.vu02 = { r: new Set(), c: new Set() }; },
+      rejouer: () => { e.un = false; e.vu02 = { r: new Set(), c: new Set() }; },
       colonnes: () => {
         const q = VENTES.map((v) => v.quartier);
         const base = [[L('surface'), VENTES.map((v) => v.surface), 'c', ' m²'], [L('chambres'), VENTES.map((v) => v.chambres), 'c', '']];
@@ -153,6 +187,10 @@ export function themesSerie(e) {
         const { cols, c, r } = e.th().cellule();
         const col = cols[c];
         const v = VENTES[r];
+        e.vu02 = e.vu02 || { r: new Set(), c: new Set() };
+        e.vu02.r.add(r);
+        e.vu02.c.add(col[2] + ':' + col[0]);
+        e.vu02.ici = col[2];
         const msg = col[2] === 'e' ? L('Le prix est l’étiquette : la réponse à apprendre.')
           : col[2] === 'q' ? (e.un ? L('Une colonne par quartier : la maison y vaut 1 ou 0, sans ordre inventé.') : L('Piège : avec des numéros, Old Town peut être lu comme trois fois North Ames.'))
             : L('Une caractéristique : la même information pour toutes les maisons.');
@@ -163,6 +201,44 @@ export function themesSerie(e) {
         };
       },
       chart: () => ({ title: L('Le tableau'), lines: [], dots: [], texts: e.th().colonnes().map((col, i) => ({ x: 8, y: 26 + i * 24, t: `${col[0]} : ${col[1].join(' · ')}`, f: col[2] === 'e' ? C.bronze : C.pale, a: 'start' })) }),
+      parcours: [
+        {
+          titre: 'Un exemple, c’est une ligne',
+          regarde: 'Trois ventes réelles d’Ames, aux États-Unis, en 2010. Chaque rangée de barres est une maison ; la hauteur d’une barre, sa valeur.',
+          faire: 'Faites passer le robot d’une rangée à une autre.',
+          debut: () => { e.vu02 = { r: new Set(), c: new Set() }; },
+          fait: () => e.vu02 && e.vu02.r.size >= 2,
+          compris: 'Chaque rangée est un exemple. Pour le modèle, une maison n’est qu’une ligne de nombres : surface, chambres, quartier, puis prix.',
+        },
+        {
+          titre: 'Les caractéristiques',
+          regarde: 'Les colonnes en bleu clair décrivent les maisons : la même information pour toutes.',
+          faire: 'Passez le robot sur la colonne surface, puis sur la colonne chambres.',
+          debut: () => { e.vu02.c = new Set(); },
+          fait: () => e.vu02 && [...e.vu02.c].filter((k) => k.startsWith('c:')).length >= 2,
+          compris: 'Ce sont des caractéristiques : les variables d’entrée, ce que le modèle reçoit pour décider.',
+        },
+        {
+          titre: 'L’étiquette',
+          regarde: 'La dernière colonne, en bronze, n’est pas une entrée comme les autres.',
+          faire: 'Amenez le robot sur la colonne prix.',
+          fait: () => e.vu02 && e.vu02.ici === 'e',
+          compris: 'Le prix est l’étiquette : la réponse à apprendre. En apprentissage supervisé, chaque exemple a la sienne.',
+        },
+        {
+          titre: 'Un quartier n’est pas une quantité',
+          regarde: 'Le quartier est codé par un numéro : 1, 2, 3. Beaucoup de modèles ne lisent que des nombres, et risquent de lire ces numéros comme des quantités.',
+          faire: 'Appuyez sur « Une colonne par quartier ».',
+          fait: () => !!e.un,
+          compris: 'Avec des numéros, Old Town pouvait compter trois fois plus que North Ames. Avec une colonne par quartier, la maison vaut 1 dans la sienne et 0 ailleurs : plus d’ordre inventé.',
+        },
+      ],
+      quiz: {
+        question: 'Pour les maisons, quelle colonne est l’étiquette ?',
+        choix: ['La surface', 'Le quartier', 'Le prix'],
+        bonne: 2,
+        explication: 'Juste : le prix est la réponse à apprendre. Surface, chambres et quartier sont les caractéristiques qui servent à le prédire.',
+      },
     },
 
     familles: {
@@ -208,6 +284,36 @@ export function themesSerie(e) {
         };
       },
       chart: () => vueGroupes(e, [[SPAM, e.fam === 'non' && !e.trouve ? C.muted : C.bronze], [NON, e.fam === 'non' && !e.trouve ? C.muted : C.light]], e.params, L('Vue de dessus : les points')),
+      rejouer: () => { e.fam = 'sup'; e.vus = {}; },
+      parcours: [
+        {
+          titre: 'Supervisé : avec la réponse',
+          regarde: 'Chaque point a sa couleur : son étiquette, comme le prix de chaque maison de l’épisode 02.',
+          faire: 'Avec la famille « supervisé », appuyez sur Lecture.',
+          fait: () => !!(e.vus && e.vus.sup),
+          compris: 'Le modèle apprend à retrouver l’étiquette de chaque exemple. C’est l’apprentissage supervisé, celui des épisodes 01 et 02.',
+        },
+        {
+          titre: 'Non supervisé : sans la réponse',
+          regarde: 'Mêmes points, mais sans étiquette : ils deviennent gris. Le modèle ne sait pas ce qu’il faut prédire.',
+          faire: 'Appuyez sur le bouton de famille jusqu’à « non supervisé », puis sur Lecture.',
+          fait: () => !!(e.vus && e.vus.non),
+          compris: 'Sans aucune réponse, le modèle a trouvé une structure : deux groupes de points semblables. Il ne prédit pas une étiquette, il organise les données.',
+        },
+        {
+          titre: 'Par renforcement : en agissant',
+          regarde: 'Cette fois, pas de jeu de données fixe. Le robot agit, et chaque pas lui vaut un retour : +1 s’il se rapproche de la cible bleue, −1 sinon.',
+          faire: 'Passez à « renforcement », puis appuyez sur Lecture et regardez le compteur « retour ».',
+          fait: () => !!(e.vus && e.vus.ren),
+          compris: 'Le robot a retenu les gestes qui rapportaient +1 et a atteint la cible. Ses actions changeaient ce qu’il voyait ensuite : il apprend en agissant.',
+        },
+      ],
+      quiz: {
+        question: 'Quelle famille ne se contente pas d’un jeu de données fixe ?',
+        choix: ['Supervisé', 'Non supervisé', 'Par renforcement'],
+        bonne: 2,
+        explication: 'Juste : par renforcement, le système agit dans un environnement, reçoit un retour, puis recommence. Ses actions changent les données qu’il reçoit.',
+      },
     },
 
     modele: {
@@ -240,6 +346,43 @@ export function themesSerie(e) {
         };
       },
       chart: () => vueNuage(e, e.state.pa ?? 30, e.state.pb ?? 120, L('Vue 2D : la droite et les ventes')),
+      rejouer: () => { e.setState({ pa: 30, pb: 120 }); },
+      parcours: [
+        {
+          titre: 'Le bouton a',
+          regarde: 'Chaque boule est une vente réelle d’Ames : la surface en largeur, le prix en profondeur. La droite blanche est le modèle : ŷ = a·x + b.',
+          faire: 'Bougez seulement le curseur a, sans toucher à b.',
+          fait: () => Math.abs((e.state.pa ?? 30) - (e.snap.pa ?? 30)) >= 10 && (e.state.pb ?? 120) === (e.snap.pb ?? 120),
+          compris: 'La droite a pivoté autour de son point sur l’axe vertical. a est la pente : ce que gagne le prix prédit pour chaque centaine de m² en plus.',
+        },
+        {
+          titre: 'Le bouton b',
+          regarde: 'Deuxième réglage, même droite.',
+          faire: 'Bougez maintenant seulement le curseur b.',
+          fait: () => Math.abs((e.state.pb ?? 120) - (e.snap.pb ?? 120)) >= 20 && (e.state.pa ?? 30) === (e.snap.pa ?? 30),
+          compris: 'La droite est montée ou descendue sans tourner : b la décale. Deux nombres, deux effets différents.',
+        },
+        {
+          titre: 'Suivre les ventes',
+          regarde: 'L’écart moyen mesure, en millions de FCFA, la distance entre les prix prédits et les vrais prix.',
+          faire: 'Réglez a et b pour que la droite passe au milieu des ventes : écart moyen à moins de 10 % du meilleur.',
+          fait: () => { const a = e.state.pa ?? 30; const b = e.state.pb ?? 120; return mae(a, b) <= mae(A.a, A.b) * 1.1; },
+          compris: 'Vous venez de faire à la main ce que fait l’entraînement : chercher les réglages qui collent aux exemples. a et b sont les paramètres du modèle, notés ensemble θ.',
+        },
+        {
+          titre: 'Prédire',
+          regarde: 'Les paramètres sont fixés. Le robot lit le prix prédit sur la droite.',
+          faire: 'Déplacez le robot de gauche à droite.',
+          fait: () => bouge(e, 0.5),
+          compris: 'Le modèle prédit le prix d’une maison qu’il n’a jamais vue, d’après sa seule surface. La forme, une droite, était choisie d’avance ; seuls a et b ont été appris.',
+        },
+      ],
+      quiz: {
+        question: 'Si seul b change, que fait la droite ?',
+        choix: ['Elle pivote', 'Elle monte ou descend sans tourner', 'Elle ne bouge pas'],
+        bonne: 1,
+        explication: 'Juste : b décale la droite vers le haut ou vers le bas. C’est a qui la fait pivoter.',
+      },
     },
 
     cout: {
