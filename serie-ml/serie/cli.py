@@ -63,6 +63,9 @@ def main(argv: list[str] | None = None) -> int:
     statut.add_argument("cle", help="numéro d'épisode, ou bilan-N")
     statut.add_argument("statut", choices=["genere", "relu", "publie", "mesure"])
     statut.add_argument("--le", help="date de publication, AAAA-MM-JJ (obligatoire pour publie)")
+    reporter = sous.add_parser("reporter", help="déplacer la date d'un seul post (épisode ou bilan-N), entre le précédent et le suivant")
+    reporter.add_argument("cle", help="numéro d'épisode, ou bilan-N")
+    reporter.add_argument("quand", help="nouvelle date, heure d'Abidjan : « AAAA-MM-JJ HH:MM »")
     bilan = sous.add_parser("bilan", help="rendre le post bilan d'une saison : sortie/bilan-N/")
     bilan.add_argument("saison", type=int)
     bilan.add_argument("--contenu", help="fichier de contenu (par défaut contenu/bilan-N.yaml)")
@@ -106,6 +109,9 @@ def main(argv: list[str] | None = None) -> int:
     essai.add_argument("numero", type=int, nargs="?", default=1)
     essai.add_argument("--poster", action="store_true")
     actions.add_parser("tourner", help="publier le post dû (lancé toutes les 5 minutes par le Planificateur de tâches)")
+    supprimer = actions.add_parser("supprimer", help="supprimer un post publié (l'épisode revient à « relu »)")
+    supprimer.add_argument("numero", help="numéro d'épisode, ou bilan-N")
+    supprimer.add_argument("--oui", action="store_true", help="supprimer pour de bon")
     planifier = actions.add_parser("planifier", help="créer (ou --retirer) la tâche planifiée Windows")
     planifier.add_argument("--retirer", action="store_true")
     args = parser.parse_args(argv)
@@ -152,6 +158,19 @@ def main(argv: list[str] | None = None) -> int:
             print(f"Erreur bloquante : {exc}", file=sys.stderr)
             return 1
         print(f"{args.cle} : statut {entree['statut']}" + (f", publié le {entree['publie_le']}" if entree.get("publie_le") else ""))
+        return 0
+    if args.commande == "reporter":
+        import datetime as dt
+
+        from serie.calendrier import date_en_clair
+        from serie.report import lire_quand, reporter as deplacer
+
+        try:
+            avant, apres = deplacer(depot, args.cle, lire_quand(args.quand), dt.datetime.now(dt.timezone.utc))
+        except ValueError as exc:
+            print(f"Erreur bloquante : {exc}", file=sys.stderr)
+            return 1
+        print(f"{args.cle} : {date_en_clair(avant, 'Africa/Abidjan')} → {date_en_clair(apres, 'Africa/Abidjan')}")
         return 0
     if args.commande == "bilan":
         from serie.rendu import ErreurRendu, rendre_bilan

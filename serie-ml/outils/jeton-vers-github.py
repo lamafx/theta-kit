@@ -4,7 +4,8 @@
 
     .venv\\Scripts\\python.exe outils\\jeton-vers-github.py
 
-Rien n'est affiché ni écrit sur le disque. L'accès à GitHub est celui que Git utilise déjà pour `git push`
+Le jeton n'est ni affiché ni écrit sur le disque ; seule sa date d'expiration est notée dans
+publier/linkedin/jeton.txt (lue par l'admin), à commiter. L'accès à GitHub est celui que Git utilise déjà pour `git push`
 (Gestionnaire d'identifiants Git) ; le secret est chiffré avec la clé publique du dépôt, comme l'exige GitHub.
 Dépendance : pynacl (pip install pynacl).
 """
@@ -55,6 +56,14 @@ def main() -> int:
     chiffre = base64.b64encode(boite.encrypt(valeur.encode())).decode()
     appeler("PUT", f"/actions/secrets/{SECRET}", jeton, {"encrypted_value": chiffre, "key_id": cle["key_id"]})
     print(f"Secret {SECRET} mis à jour sur {DEPOT} (jeton valable jusqu'au {expire[:10]}).")
+    if expire[:4].isdigit():
+        from pathlib import Path
+
+        fichier = Path(__file__).resolve().parent.parent / "publier" / "linkedin" / "jeton.txt"
+        fichier.write_text(expire[:10] + "
+", encoding="utf-8", newline="
+")
+        print(f"Date d'expiration notée dans {fichier.relative_to(fichier.parents[2]).as_posix()} : à commiter.")
     return 0
 
 

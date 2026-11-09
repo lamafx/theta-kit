@@ -56,6 +56,11 @@ def dates_prevues(calendrier: Calendrier) -> dict[Post, dt.datetime]:
             lundi += dt.timedelta(weeks=1)
             semaine += 1
         lundi += dt.timedelta(weeks=calendrier.pause_entre_saisons_semaines)
+    # Reports décidés par l'auteur (`serie reporter`) : ils remplacent la date calculée de ce seul post.
+    for cle, quand in calendrier.reports.items():
+        post: Post = ("bilan", int(cle.removeprefix("bilan-"))) if cle.startswith("bilan-") else ("episode", int(cle))
+        if post in dates:
+            dates[post] = quand.replace(tzinfo=None, second=0, microsecond=0)
     return dates
 
 

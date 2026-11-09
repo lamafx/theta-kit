@@ -1,0 +1,588 @@
+CONCEPTION DE L'ESPACE D'ADMINISTRATION DE THÉTA
+===============================================
+
+Version du 2026-11-09, avec les décisions de l'auteur du même jour
+(connexion, visiteurs, publication, contenu à venir, profil et CV).
+Proposition de conception : rien n'est codé.
+
+Base : etat.yaml, calendrier.yaml, publier/, sortie/, AMBIGUITES.md,
+sortie/decisions.md, conception/labos-saison-1.txt (section 8, recette),
+theta-post/editorial/ligne_editoriale.md (section 6), le site
+(site/theta-kit : data/*.json, lib/profil.ts, lib/content.ts,
+scripts/sync-serie.mjs, app/api/inscription) et le workflow
+.github/workflows/linkedin.yml.
+
+serie-ml fait foi. L'espace d'administration est une fenêtre sur la série
+et une télécommande de la CLI `serie` : il ne devient jamais une seconde
+source de vérité. Les points marqués « À TRANCHER » attendent une décision
+de l'auteur avant d'être codés.
+
+
+SOMMAIRE
+--------
+  0. But et principes
+  1. Les questions auxquelles l'admin répond
+  2. Les écrans
+  3. Architecture : lire, agir, compter
+  4. D'où vient chaque chiffre
+  5. Sécurité
+  6. Chantier lié : cacher les épisodes à venir
+  7. Découpage en lots
+  8. Décisions (tranchées et à trancher)
+
+
+=====================================================================
+0. BUT ET PRINCIPES
+=====================================================================
+
+0.1 But
+  En une page, depuis le téléphone, l'auteur sait où en est Théta (posts,
+  labos, publication, audience, profil) et fait les gestes qui lui
+  reviennent : relire et valider un épisode, valider la recette d'un labo,
+  trancher une décision, piloter la publication LinkedIn, saisir les
+  chiffres LinkedIn, mettre à jour son CV et son profil. Il n'a plus
+  besoin du PC pour cela, comme la publication depuis le 2026-11-08.
+
+0.2 Principes
+  - Un seul utilisateur : l'auteur. Aucun compte, aucun rôle.
+  - serie-ml reste la source de vérité. L'admin lit les fichiers de la
+    série ; il n'écrit jamais directement dedans. Chaque geste sur la
+    série lance la CLI `serie` sur GitHub Actions, qui garde ses contrôles
+    (empreintes, avance minimale, statuts) et commite. Vercel reconstruit
+    ensuite.
+  - Le profil du site (site/theta-kit/data/) n'a pas de CLI : l'admin
+    l'écrit par un commit direct (voir 3.3), avec un schéma qui refuse
+    tout fichier cassé.
+  - Valider reste un geste humain. L'admin prépare la décision (tout ce
+    qu'il faut lire au même endroit), il ne la prend jamais.
+  - Plus un geste est risqué, plus il demande de confirmations (2.7).
+  - Téléphone d'abord : une colonne, boutons au pouce, lisible en plein
+    soleil. L'ordinateur n'est qu'une largeur de plus.
+  - Français seulement, hors du sélecteur de langue du site.
+  - Rien de l'admin n'apparaît sur le site public : ni lien, ni sitemap,
+    ni indexation.
+  - L'admin est une application installable (PWA, section 3.5) : une
+    icône θ sur l'écran d'accueil du téléphone, plein écran, notifications.
+
+
+=====================================================================
+1. LES QUESTIONS AUXQUELLES L'ADMIN RÉPOND
+=====================================================================
+
+  Question                                   Réponse attendue
+  -----------------------------------------  --------------------------------
+  Quel est le prochain post, et quand ?      Nº, titre, date, compte à rebours
+  Ai-je assez d'avance ?                     Épisodes relus d'avance / 4 min.
+  Que me reste-t-il à relire ?               Liste des épisodes « généré »
+  Combien de posts publiés, combien restent? publiés / 62, restants
+  La tournée GitHub va-t-elle bien ?         Dernière tournée, issues ouvertes
+  Le jeton LinkedIn tient-il ?               Expire le 2027-01-05, J-57
+  Quels labos sont ouverts, prêts, à faire ? 01 à 04 prêts ; 05 à 11 ...
+  Quelles décisions m'attendent ?            Décisions D et labos D1 à D10
+  Qui vient sur le site ?                    Visiteurs, pages, sources, pays
+  Les labos servent-ils ?                    Ouvertures, étapes, quiz réussis
+  La série fait-elle grandir l'audience ?    Impressions, abonnés, inscrits
+  Mon CV et mon profil sont-ils à jour ?     Date du CV, sections, alertes §6
+
+
+=====================================================================
+2. LES ÉCRANS
+=====================================================================
+
+Sur téléphone, une barre en bas : Accueil · Épisodes · Labos ·
+Statistiques · Plus. « Plus » ouvre : Décisions, Salle de publication,
+Profil et CV.
+
+2.1 Accueil (tableau de bord)
+  Une réponse par ligne, du plus urgent au moins urgent. Une carte devient
+  orange (#C2410C, la couleur d'alerte de la charte) quand elle demande un
+  geste.
+
+    ┌──────────────────────────────────┐
+    │ θ Admin               lun. 9 nov.│
+    ├──────────────────────────────────┤
+    │ PROCHAIN POST                    │
+    │ Nº 01 · Qu'est-ce que le ML ?    │
+    │ mar. 10 nov., 8 h 30 · dans 19 h │
+    │ [Voir le post]   labo : fermé    │
+    ├──────────────────────────────────┤
+    │ AVANCE  10 relus d'avance (min 4)│
+    │ À RELIRE  Nº 11 avant le 1ᵉʳ déc.│  ← orange si l'avance passe sous 4
+    ├──────────────────────────────────┤
+    │ Posts      0 publiés · 62 prévus │
+    │ Labos      0 ouverts · 4 prêts   │
+    │            7 à finir · 8 à faire │
+    │ Décisions  44 en attente         │
+    ├──────────────────────────────────┤
+    │ TOURNÉE  ✓ ce matin 10 h 55      │
+    │ JETON    expire dans 57 jours    │
+    │ ISSUES   0 ouverte               │
+    ├──────────────────────────────────┤
+    │ AUDIENCE (7 jours)               │
+    │ 312 visiteurs · 41 labos ouverts │
+    │ 6 inscrits · 1 840 impressions   │
+    ├──────────────────────────────────┤
+    │ CV  mis à jour le 7 nov.         │  ← orange si une alerte §6 est ouverte
+    └──────────────────────────────────┘
+     Accueil Épisodes Labos Stats Plus
+
+  (Chiffres de la maquette inventés, sauf l'avance et les dates.)
+
+2.2 Épisodes
+  La liste des 62 épisodes, regroupés par saison et chapitre, avec pour
+  chacun : statut (pas commencé, généré, relu, publié, mesuré), date
+  prévue par le calendrier, date réelle de publication, état du labo.
+  Filtres : « à relire », « relus non publiés », « publiés », « tous ».
+  Compteurs en tête : publiés, relus d'avance, à relire, à produire.
+
+2.3 Fiche d'un épisode (c'est l'écran de relecture)
+  Tout ce qu'il faut pour valider, au même endroit et dans l'ordre où le
+  lecteur LinkedIn le verra :
+    1. le carrousel page par page (publier/NN/apercus/), en plein écran au
+       glissé, comme sur LinkedIn ;
+    2. le titre, le texte du post et le premier commentaire (publier/NN/) ;
+    3. la date de sortie (publier/NN/date.txt) ;
+    4. le rapport de vérification (sortie/NN/verification.md) : seulement
+       les alertes, le reste replié ;
+    5. les décisions D de cet épisode encore sans arbitrage ;
+    6. le labo de l'épisode, ouvrable même fermé (aperçu réservé à l'admin).
+  Gestes :
+    - « Valider » : lance `serie statut NN relu`. Refusé par la CLI si une
+      étape est à refaire ; l'admin affiche alors le message de la CLI.
+    - « À corriger » : une note libre ; l'épisode reste « généré ».
+      À TRANCHER A6 : la note devient une issue GitHub étiquetée
+      `relecture` (recommandé) ou s'écrit dans sortie/NN/corrections.md.
+  Les gestes qui touchent à la publication (reporter, supprimer) ne sont
+  pas ici : ils vivent dans la salle de publication (2.7).
+
+2.4 Labos
+  Un tableau des labos 01 à 19 (puis au-delà) :
+    id, épisode, scène (faite / à faire), parcours, quiz, recette,
+    ouvert ou fermé, date d'ouverture.
+  Chaque labo s'ouvre en aperçu même fermé (mode THETA_APERCU, déjà prévu
+  dans lib/content.ts, mais limité à la session de l'admin).
+  Fiche de recette : la liste de la section 8 de labos-saison-1.txt
+  (contenu, parcours, interface, publication), case par case. Quand toutes
+  les cases sont cochées, « Recette validée » enregistre la date.
+  Où vivent les cases : un fichier serie-ml/labos/recette.yaml, écrit par
+  le workflow d'admin (voir 3.3). À TRANCHER A7.
+  Alerte orange : labo non validé à moins de 7 jours de son épisode.
+  Un labo s'ouvre toujours avec la publication de son épisode (publie_le) :
+  pas de bouton pour ouvrir un labo à part.
+
+2.5 Décisions
+  Toutes les questions qui attendent l'auteur, en un seul endroit :
+    - les décisions D des relectures (sortie/decisions.md, 34 au
+      2026-11-06) ;
+    - les décisions de conception des labos (D1 à D10) ;
+    - les points « À TRANCHER » de ce document.
+  Chaque décision montre la question, le contexte en deux lignes, les
+  options et la recommandation. Gestes : choisir une option (ou « autre »
+  avec une note), ou « plus tard ». Le choix est écrit dans AMBIGUITES.md
+  par le workflow, au même format que les décisions déjà prises.
+  À TRANCHER A8 : faut-il d'abord un format machine pour ces décisions
+  (decisions.yaml), au lieu de les lire dans du Markdown ?
+
+2.6 Statistiques
+  Quatre blocs, chacun sur 7 jours, 30 jours ou depuis le lancement :
+    - Site : visiteurs, pages vues, pages les plus vues, sources (LinkedIn,
+      recherche, direct), pays, téléphone ou ordinateur, langue.
+    - Labos : par labo, ouvertures, étape atteinte (entonnoir), quiz
+      réussi au premier essai, temps passé médian.
+    - Inscriptions : inscrits, demandes de PDF, abonnés à la newsletter.
+    - LinkedIn : par post, impressions, réactions, commentaires, partages,
+      et abonnés au total. Saisie à la main (voir 4.2), avec un formulaire
+      par post, proposé deux jours et sept jours après sa sortie.
+  Lien de chaque post vers ses chiffres : on voit si un post a amené des
+  visiteurs au labo le jour même.
+
+2.7 Salle de publication (espace réservé)
+  Un espace à part dans l'admin. On le consulte avec la session normale ;
+  aucun geste sensible ne part sans les confirmations de 2.7.3.
+
+  2.7.1 Tout ce qu'il faut voir, au même endroit
+    - Le post dû et les suivants : le PDF exact qui partira, le titre, le
+      texte, le premier commentaire, la date et l'heure, le lien du labo
+      (tout lu dans publier/NN/).
+    - Le pilote (publier/linkedin/pilote.txt : github ou windows), l'état
+      de la connexion LinkedIn (`serie linkedin etat`), l'expiration du
+      jeton (2027-01-05) et la procédure de renouvellement, qui reste sur
+      le PC (`serie linkedin connecter`, puis outils/jeton-vers-github.py).
+    - Les tournées GitHub Actions (journal de chacune, résultat), les
+      issues ouvertes, l'avance en épisodes relus.
+    - Le journal de tous les gestes faits depuis la salle.
+
+  2.7.2 Les gestes
+    Sans risque (un seul clic) :
+      - « État » : `serie linkedin etat`.
+      - « Aperçu » : ce que la prochaine tournée publierait.
+    Sensibles (confirmations de 2.7.3) :
+      - « Essai » : envoi d'essai, avec ou sans post de test supprimé
+        aussitôt.
+      - « Tourner maintenant » : lance la tournée tout de suite ; elle
+        publie le post dû s'il l'est.
+      - « Reporter ou avancer un post » : nouvelle date pour un épisode.
+        Demande une nouvelle commande `serie`, puisque la date vient du
+        calendrier (À TRANCHER A10).
+      - « Changer le pilote » : github ou windows.
+      - « Supprimer un post publié » : la suppression a déjà été testée en
+        réel par la CLI.
+
+  2.7.3 Les confirmations, dans l'ordre
+    1. Entrée dans la salle : l'auteur ressaisit son mot de passe. Cela
+       ouvre une session de salle de 10 minutes, distincte de la session
+       de 30 jours. Passé ce délai, il faut le ressaisir.
+    2. Récapitulatif : un écran montre ce qui va se passer. Il donne le
+       geste, l'épisode, l'aperçu exact du post, la date, et ce qui change
+       ensuite (avance restante, labo qui s'ouvre, statut de l'épisode).
+    3. Phrase à taper : l'auteur recopie une phrase propre au geste, par
+       exemple « PUBLIER 05 », « SUPPRIMER 03 », « PILOTE WINDOWS ». Le
+       bouton reste grisé tant que la phrase n'est pas exacte.
+    4. Délai d'annulation : compte à rebours de 10 secondes avec un grand
+       bouton « Annuler ». Le workflow ne part qu'à la fin du compte.
+    5. Suivi et trace : l'admin suit la tournée jusqu'au résultat. Chaque
+       geste est écrit dans serie-ml/publier/linkedin/journal-admin.yaml
+       (date, geste, épisode, résultat, lien de la tournée).
+    Délai et phrases : À TRANCHER A11.
+
+  2.7.4 Garde-fous
+    - Le workflow d'admin et linkedin.yml partagent le même groupe de
+      concurrence : jamais deux tournées en même temps.
+    - Un post déjà publié n'est jamais republié (la CLI le vérifie déjà).
+    - Un geste sensible qui échoue ouvre une issue, comme la tournée.
+
+2.8 Profil et CV
+  Ce qui existe : site/theta-kit/data/profil.json, parcours.json,
+  certificats.json et projets.json (textes FR et EN), lus par
+  lib/profil.ts ; images et PDF dans public/certificats/ ; CV public
+  public/cv/CV-Ladji-Lama-Kamagate-ML.pdf, export Canva (245 Ko), périmé.
+  Le CV avec téléphone reste hors de Git (.gitignore).
+
+  2.8.1 Le CV
+    L'auteur dépose un PDF (fait dans Canva). Il remplace le CV public
+    sous le même nom : le lien du site ne change pas. L'admin montre
+    l'aperçu du PDF et la date de la dernière mise à jour.
+    Garde-fou téléphone, avant tout enregistrement : recherche d'un numéro
+    dans le texte du PDF et dans ses balises d'accessibilité (/E, déjà
+    constatée sur les originaux de docs/).
+      - numéro trouvé : dépôt refusé, avec la page et l'endroit ;
+      - texte illisible (texte vectorisé par Canva) : l'auteur doit cocher
+        « j'ai vérifié qu'il n'y a pas de téléphone » pour continuer.
+
+  2.8.2 Les sections
+    La liste des sections du profil (en-tête, parcours, certificats,
+    projets, contact) : on les glisse pour les réordonner, un interrupteur
+    les rend visibles ou non. Ordre et visibilité vont dans un nouveau
+    fichier data/sections.json, que la page profil devra lire.
+
+  2.8.3 Le contenu
+    - Un formulaire par entrée, textes FR et EN côte à côte. L'admin
+      signale un champ EN vide, un tiret long, une apostrophe droite
+      (règles de lib/typo.ts).
+    - Ajouter, supprimer ou réordonner des entrées. Un certificat s'ajoute
+      avec son image ou son PDF : c'est ainsi que la double distinction
+      d'excellence, encore attendue, pourra être mise en ligne. Le choix
+      « À la une » (vedette) se fait ici.
+    - Un schéma (zod) vérifie chaque fichier avant l'écriture ; rien n'est
+      enregistré s'il casse.
+
+  2.8.4 Cohérence avec serie-ml
+    Les faits sur l'auteur (titre, diplômes, distinctions) sont aussi dans
+    theta-post/editorial/ligne_editoriale.md, section 6, qu'utilisent les
+    posts. Modifier un de ces faits dans l'admin affiche un bandeau « à
+    reporter dans ligne_editoriale.md §6 » et ouvre une issue GitHub
+    étiquetée `profil`. Le §6 n'est jamais réécrit automatiquement : la
+    série fait foi.
+
+
+=====================================================================
+3. ARCHITECTURE : LIRE, AGIR, COMPTER
+=====================================================================
+
+3.1 Où vit l'admin
+  Dans le site existant (site/theta-kit), à l'adresse /admin, en dehors
+  de app/[locale] : pas de traduction, exclu du middleware next-intl
+  (matcher), du sitemap, et marqué noindex. Pas de nouveau projet Vercel.
+  À TRANCHER A2 : /admin sur theta-ml.vercel.app (recommandé) ou un
+  sous-domaine séparé.
+
+3.2 Lire
+  Deux sources, selon la fraîcheur voulue :
+    - Les fichiers de la série tels qu'au dernier déploiement : déjà lus
+      au build par scripts/sync-serie.mjs. Il suffit d'étendre la synchro
+      aux épisodes de tous les statuts et aux fichiers de relecture, dans
+      un fichier réservé au serveur (jamais dans public/).
+    - L'état en direct, par l'API GitHub, côté serveur : tournées
+      (Actions), issues, dernier commit d'etat.yaml. Mis en cache une
+      minute. Cela évite d'attendre un redéploiement pour voir qu'un geste
+      a abouti.
+
+3.3 Agir
+  a. Sur la série : un nouveau workflow .github/workflows/admin.yml, lancé
+     par l'admin (workflow_dispatch) avec trois entrées : geste, épisode
+     ou labo, valeur.
+       geste            commande lancée dans serie-ml/
+       ---------------  -------------------------------------------------
+       valider          serie statut NN relu
+       corriger         ouvre une issue (ou écrit corrections.md, A6)
+       recette          écrit labos/recette.yaml (nouvelle commande serie)
+       trancher         écrit la décision dans AMBIGUITES.md (nouvelle cmd)
+       mesurer          enregistre les chiffres LinkedIn, statut mesure
+       etat, apercu     serie linkedin etat / aperçu
+       essai            serie linkedin essai [--poster]
+       tourner          serie linkedin tourner
+       reporter         nouvelle commande serie (A10)
+       pilote           écrit publier/linkedin/pilote.txt
+       supprimer        suppression du post par la CLI
+     Les gestes de publication écrivent aussi journal-admin.yaml. Seuls
+     etat et apercu partent sans les confirmations de 2.7.3.
+     Le workflow a besoin du secret THETA_LINKEDIN_JETON pour ces gestes,
+     comme linkedin.yml.
+  b. Sur le profil : pas de CLI, et un PDF ou une image ne passe pas par
+     les entrées d'un workflow. Le serveur de l'admin fait donc un seul
+     commit par l'API Git de GitHub (fichiers JSON et fichiers déposés
+     ensemble). Taille maximale d'un dépôt : 4 Mo (limite des fonctions
+     Vercel) ; les images sont réduites dans le navigateur avant l'envoi.
+  Dans les deux cas, le commit redéploie Vercel. L'admin suit la tournée
+  ou le commit et affiche « en cours », puis le résultat ou le message
+  d'erreur. Délai attendu : une à deux minutes avant que le site reflète
+  le geste.
+  Rappel : après un geste fait depuis l'admin, `git pull` à la racine
+  theta-kit avant de travailler sur le PC, puis commiter aussi dans le
+  dépôt interne serie-ml (comme après un post).
+
+3.4 Compter (décision A3 : compteur maison)
+  Une petite base clé-valeur gratuite (Upstash Redis, via la place de
+  marché Vercel) et une route /api/compter appelée par le site :
+    - page vue (page, langue, source, téléphone ou ordinateur, pays) ;
+    - labo ouvert, étape atteinte, quiz réussi (et au combientième essai),
+      temps passé.
+  Aucun cookie, aucune adresse IP conservée. Un visiteur est compté une
+  fois par jour grâce à une empreinte jetable (adresse + navigateur + sel
+  du jour, sel détruit le lendemain). Le pays vient de l'en-tête fourni
+  par Vercel. La page de confidentialité est mise à jour en même temps.
+  @vercel/analytics peut rester installé, mais l'admin n'en dépend pas.
+
+3.5 Une PWA (décision de l'auteur, 2026-11-09)
+  L'admin s'installe comme une application, sans passer par un magasin
+  d'applications : sur Android (Chrome, « Installer l'application ») et sur
+  iPhone (Safari, « Sur l'écran d'accueil »).
+  - Manifeste propre à l'admin : nom « θ Admin », icône θ, affichage plein
+    écran (standalone), couleurs de la charte, start_url et scope /admin.
+    Le site public garde son propre fonctionnement : la PWA ne s'installe
+    que depuis /admin.
+  - Service worker limité au scope /admin : il ne touche jamais aux pages
+    publiques ni aux labos.
+  - Hors ligne : l'application s'ouvre quand même et montre le dernier
+    état chargé, marqué « hors ligne, état du 9 nov. 10 h 12 ». Aucun geste
+    ne part hors ligne : les boutons sont grisés, rien n'est mis en file
+    d'attente (un post ou une validation ne doit jamais partir en différé
+    sans que l'auteur le voie).
+  - Ce qui est gardé sur le téléphone : la coquille de l'application et le
+    dernier état lu, jamais le mot de passe. « Se déconnecter » vide ce
+    cache.
+  - Notifications push (Web Push, clés VAPID ; sur iPhone, seulement une
+    fois l'application installée, iOS 16.4 ou plus) : post publié ou
+    échoué, issue ouverte par une tournée, avance sous 4, labo non validé
+    à J-7, jeton à moins de 30 jours de l'expiration, résultat d'un geste
+    lancé depuis la salle. L'abonnement est gardé dans la base du
+    compteur (3.4). Le lot 4 ne dépend donc plus du service d'e-mail.
+  - Sur iPhone, la session de l'application installée est distincte de
+    celle de Safari : il faut se connecter une fois dans l'application.
+
+
+=====================================================================
+4. D'OÙ VIENT CHAQUE CHIFFRE
+=====================================================================
+
+4.1 Tableau
+  Chiffre                         Source                     Fraîcheur
+  ------------------------------  -------------------------  ------------
+  Statut des épisodes             etat.yaml                  déploiement
+  Dates prévues                   calendrier.yaml, date.txt  déploiement
+  Relus d'avance, minimum         etat.yaml, calendrier      déploiement
+  Posts publiés / restants        etat.yaml (publie_le)      déploiement
+  Labos ouverts                   publie_le (lib/content.ts) déploiement
+  État des labos, recette         labos/recette.yaml (A7)    déploiement
+  Décisions en attente            decisions.md, AMBIGUITES   déploiement
+  Tournées, issues                API GitHub                 1 minute
+  Journal de la salle             journal-admin.yaml         déploiement
+  Expiration du jeton             fichier écrit par la CLI   à la tournée
+  Visiteurs, pages, sources       compteur maison            quelques min
+  Usage des labos                 compteur maison            quelques min
+  Inscrits, newsletter            API Brevo (BREVO_API_KEY)  1 heure
+  Chiffres LinkedIn               saisie à la main           à la saisie
+  CV, sections du profil          data/, public/cv/          déploiement
+
+4.2 Pourquoi LinkedIn reste à la main
+  Lire les statistiques d'un post demande la permission r_member_social,
+  restreinte par LinkedIn (constat du 2026-11-06). L'admin ne peut donc
+  que faciliter la saisie : un formulaire de cinq nombres par post, deux
+  fois (J+2 et J+7), qui fait passer l'épisode au statut « mesuré ».
+
+4.3 Le jeton
+  Le jeton lui-même est un secret GitHub et ne s'affiche jamais. Seule sa
+  date d'expiration est connue de l'admin : `serie linkedin etat` l'écrit
+  dans un petit fichier à chaque tournée. À préciser au codage.
+
+
+=====================================================================
+5. SÉCURITÉ
+=====================================================================
+
+5.1 Ce que l'admin protège
+  Les gestes (valider, trancher, publier, modifier le profil) et les
+  chiffres d'audience. Il ne protège pas les fichiers sur GitHub : au
+  2026-11-09, publier/, sortie/ et les autres documents de la série sont
+  dans le dépôt public lamafx/theta-kit (322 fichiers de sortie/, aperçus
+  du Nº 05 compris). Décision A9 : aucun tiers ne doit pouvoir lire ces
+  documents sur GitHub ; c'est le chantier de la section 6.
+
+5.2 Connexion (décision A1 : mot de passe)
+  - Mot de passe unique : variable ADMIN_MOT_DE_PASSE sur Vercel (stockée
+    sous forme d'empreinte), cookie de session signé, HttpOnly, Secure,
+    SameSite=Strict, 30 jours.
+  - Cinq essais par quart d'heure, puis blocage temporaire.
+  - Salle de publication : ressaisie du mot de passe, session de salle de
+    10 minutes (2.7.3).
+  - Toutes les routes /admin et /api/admin vérifient la session côté
+    serveur ; aucune donnée d'admin n'est envoyée sans elle. Les gestes
+    sensibles vérifient aussi la session de salle et la phrase tapée côté
+    serveur, pas seulement dans le navigateur.
+
+5.3 Le jeton GitHub de l'admin
+  Le serveur de l'admin a besoin d'un jeton GitHub à portée fine, limité
+  au dépôt theta-kit : Actions (lecture, écriture), Issues (lecture,
+  écriture), Contents (lecture, écriture : commits du profil et du CV).
+  Il vit dans les variables d'environnement Vercel, jamais côté
+  navigateur. Il ne contient pas le jeton LinkedIn : seuls les workflows
+  ont ce secret.
+
+
+=====================================================================
+6. CHANTIER LIÉ : CACHER LES ÉPISODES À VENIR
+=====================================================================
+
+Décisions de l'auteur (2026-11-09) : aucun tiers ne doit pouvoir voir ses
+documents sur GitHub, et tout doit rester déployé (site, labos, tournée
+LinkedIn, admin).
+
+Le problème : la série et le site vivent dans le dépôt public theta-kit.
+Vercel en a besoin au build (sync-serie.mjs) et GitHub Actions en a besoin
+pour publier. Ce qui est public sur le site (posts sortis, PDF des
+épisodes publiés, certificats, CV sans téléphone) le reste : seule la
+vue des fichiers sur GitHub doit disparaître.
+
+Recommandation : rendre le dépôt lamafx/theta-kit privé (piste c).
+  - C'est la seule piste qui cache aussi l'historique : avec les pistes a
+    et b, les fichiers déjà poussés resteraient lisibles dans les anciens
+    commits, sauf réécriture de l'historique.
+  - Vercel déploie un dépôt privé du compte personnel sans changer d'offre.
+    Rien ne change pour le site.
+  - GitHub Actions marche pareil, mais n'est plus illimité : un dépôt
+    privé a 2 000 minutes gratuites par mois. La tournée actuelle (toutes
+    les 5 minutes, de 8 h à 10 h 55, chaque jour) fait 36 tournées par
+    jour. GitHub arrondit chaque tournée à la minute supérieure, donc
+    environ 1 100 minutes par mois, plus les gestes de l'admin. Ça tient,
+    mais de justesse. Pour garder de la marge, la tournée peut ne tourner
+    que les jours de post (mardi et jeudi) et le lendemain, pour rattraper
+    un post manqué (A65) : environ 450 minutes par mois. À vérifier au
+    codage, sur le relevé de facturation GitHub.
+  - Les secrets (THETA_LINKEDIN_JETON) restent en place.
+  - Le jeton GitHub de l'admin (5.3) doit alors aussi lire le dépôt privé.
+Ce que la piste c coûte : la vitrine GitHub publique de la feuille de
+route (« notebooks et GitHub public »). Elle se refait à part, dans un
+dépôt public qui ne contient que ce que l'auteur choisit de montrer
+(notebooks, code des labos), sans les documents.
+Limite : ce qui a déjà été public a pu être copié (clone, fork). Rendre
+le dépôt privé ne rappelle pas ces copies. Vérifier les forks sur GitHub
+avant le passage en privé.
+
+Autres pistes, écartées sauf avis contraire :
+  a. Un dépôt de contenu privé à part, lu au build et par les workflows
+     avec un jeton : laisse l'historique public, plus de plomberie.
+  b. Ne pousser que les épisodes publiés : laisse l'historique public et
+     ne cache pas les autres documents.
+
+
+=====================================================================
+7. DÉCOUPAGE EN LOTS
+=====================================================================
+
+  Lot 1 · Voir (lecture seule)
+    Connexion, Accueil, Épisodes, Fiche d'épisode avec carrousel et texte,
+    Labos avec aperçu des labos fermés, Salle de publication en lecture.
+    Utile tout de suite : relire le Nº 11 sur téléphone.
+
+  Lot 2 · Agir
+    admin.yml ; « Valider », « À corriger », recette des labos, décisions ;
+    Profil et CV (le remplacement du CV d'abord, puisque le CV en ligne
+    est périmé) ; gestes de la salle de publication avec leurs
+    confirmations. Demande des nouvelles commandes `serie` (recette,
+    trancher, reporter).
+
+  Lot 3 · Compter
+    Compteur maison, entonnoir des labos, inscrits Brevo, saisie des
+    chiffres LinkedIn et statut « mesuré ».
+
+  Lot 4 · Prévenir
+    Notifications push de la PWA (3.5) : alertes de publication, avance
+    sous 4, labo non validé à J-7, jeton. Un résumé hebdomadaire par
+    e-mail pourra s'ajouter quand le service d'e-mail sera choisi.
+
+  La PWA (manifeste, service worker, installation) fait partie du lot 1 :
+  l'admin est installable dès le départ.
+
+  Ordre conseillé : lot 1 avant le Nº 05 (24/11), car il sert aussitôt à
+  la relecture et à la recette des labos 05 à 11 ; lot 2 ensuite ; lot 3
+  quand il y aura du trafic à mesurer. Le passage en privé (section 6) se
+  fait avant le lot 1, puisque le jeton de l'admin en dépend et que les
+  documents sont visibles tant qu'il n'est pas fait.
+
+
+=====================================================================
+8. DÉCISIONS (TRANCHÉES ET À TRANCHER)
+=====================================================================
+
+Tranchées par l'auteur le 2026-11-09
+  A1. Connexion : mot de passe unique, session de 30 jours.
+  A3. Visiteurs : compteur maison, sans cookie.
+  A5. Publication : tout est accessible, dans une salle réservée, derrière
+      plusieurs confirmations (2.7).
+  A9. Documents sur GitHub : aucun tiers ne doit les voir, tout reste
+      déployé (section 6).
+  A13. L'admin est une PWA installable, avec notifications push (3.5).
+  P1. CV : dépôt d'un PDF fait dans Canva, avec garde-fou téléphone.
+  P2. Profil : contenu modifiable, sections réordonnables et masquables.
+  P3. Faits sur l'auteur : alerte à reporter dans ligne_editoriale.md §6,
+      jamais de réécriture automatique.
+
+Tranchées par l'auteur le 2026-11-09 au soir, avant le développement
+  A2. Adresse : /admin, rattaché au lien du site déjà posté
+      (theta-ml.vercel.app/admin). L'admin est un projet à part, dans le
+      dossier admin/ à la racine de theta-kit, relié par réécriture.
+  A4. Tous les lots sont développés.
+  A6. « À corriger » : la note va dans sortie/NN/corrections.md (section
+      « Notes de relecture (admin) »), à appliquer avec /corriger ; elle
+      peut retenir la publication (l'épisode repasse à « généré »).
+  A7. Recette des labos dans serie-ml/labos/recette.yaml (choix fait au
+      développement, l'auteur ayant délégué ce point).
+  A8. Oui : serie-ml/decisions.yaml, AMBIGUITES.md restant le journal.
+  A10. Oui : `serie reporter NN "AAAA-MM-JJ HH:MM"`. Un seul post bouge,
+      entre le précédent et le suivant, dans le futur ; report noté dans
+      calendrier.yaml (reports), date.txt réécrit, étape publication
+      réenregistrée si elle était à jour, site resynchronisé.
+  A11. 10 secondes ; phrases TOURNER, ESSAI, PUBLIER NN, SUPPRIMER NN,
+      PILOTE GITHUB/WINDOWS, REPORTER NN (lib/gestes.ts de l'admin).
+  A12. Dépôt theta-kit rendu privé après le post du Nº 01 (10/11) ;
+      tournée réduite aux mardis, mercredis, jeudis et vendredis ;
+      commits des workflows au nom de l'auteur (Vercel refuse sinon les
+      commits d'un robot sur un dépôt privé avec l'offre gratuite).
+  Accès : personne d'autre que l'auteur (mot de passe, sessions signées,
+      deux barrières de contrôle par page et par route).
+
+Ajout du développement
+  `serie linkedin supprimer NN --oui` : supprime le post, garde sa trace
+  dans publier/linkedin/supprimes/, repasse l'épisode à « relu ».
+  publier/linkedin/jeton.txt : date d'expiration du jeton (écrite par
+  outils/jeton-vers-github.py), lue par l'admin.

@@ -1,0 +1,1361 @@
+CONCEPTION DES LABOS 3D, SAISON 1 (ÉPISODES 01 À 19)
+=====================================================
+
+Version fusionnée du 2026-11-08 : conception initiale, enrichie des apports
+retenus du dossier pédagogique détaillé (rôle du robot annoncé, pièges
+d'interprétation, validation par la compréhension, étapes de prédiction,
+cas limites). Les doublons de ce dossier ont été retirés.
+
+Base : conception/document-de-conception.md (fiches 01 à 19), le code des
+labos existants (site/theta-kit/lib/engines/labo.js et labo-series.js) et
+les données de calculs/ames.py.
+
+serie-ml fait foi. Ce fichier propose une conception ; les points marqués
+« À TRANCHER » attendent une décision de l'auteur avant d'être codés.
+
+
+SOMMAIRE
+--------
+  0. Principes communs à tous les labos
+  1. État des lieux et calendrier
+  2. Chapitre 1 · Les bases ................... labos 01, 02, 03, 04
+  3. Chapitre 2 · Apprendre de ses erreurs .... labos 05, 06, 07, 08, 09, 10, 10b
+  4. Chapitre 3 · La régression ............... labos 11, 12, 13, 14
+  5. Chapitre 4 · La classification ........... labos 15, 16, 17, 18, 19
+  6. Travaux transversaux sur le moteur
+  7. Décisions à trancher (récapitulatif)
+  8. Recette : comment valider un labo
+
+
+=====================================================================
+0. PRINCIPES COMMUNS À TOUS LES LABOS
+=====================================================================
+
+0.1 Rôle du labo
+  Le carrousel explique une notion, le labo la fait manipuler. La
+  manipulation doit rendre visible une relation de cause à effet : « je
+  change ceci, je vois cela, cela veut dire ceci ». Un labo ne dit rien que
+  le carrousel ne dise pas : même notion, mêmes symboles et, quand c'est
+  possible, mêmes nombres. On y passe quelques minutes, sur téléphone comme
+  sur ordinateur. Ce n'est ni un décor animé, ni un bac à sable sans but.
+
+0.2 Anatomie d'un labo (ce que le moteur affiche déjà)
+  - Scène 3D : une surface, une courbe, un plan ou des objets, et le robot θ.
+    C'est la représentation principale, pas un décor : on doit y voir ce qui
+    change quand on agit.
+  - Vue 2D (« chart ») : la même chose vue de dessus ou de profil, jamais un
+    autre phénomène. Elle doit suffire à comprendre si la 3D est illisible
+    ou indisponible.
+  - Panneau : chiffres en direct (S), lignes de calcul (calc), message qui
+    change selon ce que l'on fait (msg). Il affiche exactement l'état
+    visible, avec unités, et met en avant les valeurs utiles à l'étape en
+    cours plutôt que tout à la fois.
+  - Contrôles : curseurs (η, h, a, b, lot B), bouton bascule, Lecture/Pause,
+    Pousser. Chaque labo n'en montre que ce dont il a besoin ; chaque
+    curseur a un libellé, une unité si besoin et une conséquence visible.
+    Les valeurs de départ sont celles du carrousel quand il en donne. Un
+    bouton « Meilleur », « Ajuster » ou « Pousser » donne toujours le même
+    résultat, explicable.
+  - Couleurs, même sens d'un labo à l'autre : bleu clair pour les données,
+    blanc pour le modèle ou le prochain pas, bronze pour l'étiquette ou ce
+    qui est mis en évidence, bleu pour le chemin parcouru. Si une couleur
+    change de sens, la légende du labo le dit.
+
+0.3 Le robot θ : un rôle annoncé à chaque labo
+  Le robot ne représente pas toujours la même chose : un exemple nouveau,
+  une maison, un réglage du modèle, une prédiction, une probabilité. Chaque
+  fiche indique son rôle (« Rôle du robot »). Dans le labo :
+    - la première phrase de « idea » annonce ce rôle ;
+    - un libellé près du robot le rappelle (« nouveau mail », « réglage a »,
+      « p = … ») ;
+    - quand le rôle change d'un labo au suivant (04 → 05 : d'une maison à
+      un réglage), la première étape le dit explicitement.
+
+0.4 Parcours guidé
+  Chaque labo est découpé en 3 à 5 étapes. Chaque étape a :
+    - titre    : quelques mots ;
+    - regarde  : ce qu'il faut observer, en une ou deux phrases ;
+    - faire    : une seule action, concrète et vérifiable ;
+    - fait     : la condition, testée par le code, qui valide l'étape ;
+    - compris  : ce qu'il fallait retenir, affiché une fois l'étape validée.
+  Deux enrichissements, à doser :
+    - Prédiction : sur une ou deux étapes clés par labo, pas plus, le
+      « regarde » pose une question avant l'action (« que va faire le robot
+      avec η = 1,1 ? »). Les fiches les marquent [PRÉDICTION].
+    - Transfert : la dernière étape ou le quiz fait réutiliser l'idée dans
+      une autre position ou une autre valeur.
+  Une étape se valide par l'action utile (atteindre une zone, une valeur,
+  comparer deux cas), jamais par le simple fait d'avoir touché un contrôle.
+  Une action d'exploration (tourner la caméra) est toujours suivie d'une
+  observation qui, elle, valide l'étape.
+  Le parcours se termine par une question à trois choix, de préférence une
+  prédiction sur une situation nouvelle plutôt qu'une phrase à réciter,
+  avec une explication en cas de bonne réponse. Le labo est « réussi »
+  quand toutes les étapes sont faites et la bonne réponse choisie.
+
+0.5 Règles de contenu (tirées de CLAUDE.md et de la charte)
+  - Chaque nombre affiché vient d'une fonction de calculs/, exporté dans
+    site/theta-kit/contenu/labos.json. Jamais un nombre tapé à la main dans
+    le code du site.
+  - Données réelles de préférence (ventes d'Ames, 2006 à 2010, prix en
+    millions de FCFA comme dans la série), avec source, licence, date et
+    transformations archivées. Quand les points sont inventés pour
+    illustrer, le labo le dit (« points d'illustration »), comme les labos
+    01 et 03.
+  - Les mêmes symboles que le carrousel : θ, η, J, ŷ, ∇J, σ, z, p.
+  - Les mots « erreur », « coût », « pente », « gradient », « score »,
+    « probabilité », « classe », « prédiction » sont employés au sens exact.
+    Une erreur d'un exemple, un écart moyen, une MSE et une entropie
+    croisée ne sont pas interchangeables : le labo nomme la mesure qu'il
+    affiche.
+  - Aucun tiret long dans les textes ; français d'abord, anglais américain
+    ensuite (le contenu du labo est traduit, contrairement aux PDF).
+  - Un labo ne fait jamais appel à une notion d'un épisode pas encore sorti.
+    Il peut l'annoncer en une phrase (« on y revient au Nº 18 »).
+  - Chaque démonstration dit ses limites (rubrique « À ne pas laisser
+    comprendre » de chaque fiche).
+
+0.6 Risques à surveiller dans tous les labos
+  - Manipuler sans savoir ce qu'on cherche : le « regarde » pose la
+    question avant le « faire ».
+  - Conséquence invisible : scène, vue 2D, panneau et message bougent
+    ensemble.
+  - Formule sans ancrage : la variable manipulée est mise en évidence dans
+    la formule et dans la scène.
+  - Scène surchargée : révéler les éléments au fil des étapes (fils
+    d'écart, flèches, seconde courbe) plutôt que tous au départ.
+  - Décalage avec le carrousel : mêmes nombres, mêmes unités, ou un
+    changement expliqué.
+  - Réussir sans comprendre : si l'on peut valider toutes les étapes en
+    cliquant au hasard, la condition « fait » est trop lâche.
+
+0.7 Ouverture
+  Un labo reste fermé jusqu'à la sortie de son épisode (redéploiement Vercel
+  après le post de GitHub Actions). Il doit donc être prêt, parcours et quiz
+  compris, avant la date de son épisode.
+
+
+=====================================================================
+1. ÉTAT DES LIEUX ET CALENDRIER
+=====================================================================
+
+Dates indicatives : mardi et jeudi à 8 h 30 (Abidjan) à partir du
+10 novembre, sans décalage. La date réelle vient du calendrier de la série.
+
+  Nº  Notion                            Labo (id)      État au 2026-11-08            Sortie
+  --  --------------------------------  -------------  ----------------------------  ----------
+  01  Qu'est-ce que le ML ?             exemples       fait, parcours + quiz         10/11/2026
+  02  Données, caractéristiques...      donnees        fait, parcours + quiz         12/11/2026
+  03  Les trois familles                familles       fait, parcours + quiz         17/11/2026
+  04  Modèle et paramètres              modele         fait, parcours + quiz         19/11/2026
+  05  La fonction de coût               cout           scène faite, parcours à faire 24/11/2026
+  06  La dérivée                        derivee        scène faite, parcours à faire 26/11/2026
+  07  Le gradient                       gradient       scène faite, parcours à faire 01/12/2026
+  08  La descente de gradient           descente       scène faite, parcours à faire 03/12/2026
+  09  Descente stochastique, mini-lots  minilots       scène faite, parcours à faire 08/12/2026
+  10  Minimums locaux, points selle     minlocaux      scène faite, parcours à faire 10/12/2026
+                                        selle (10b)    scène faite, parcours à faire
+  11  La régression linéaire            regression     scène faite, parcours à faire 15/12/2026
+  12  La régression linéaire multiple   plan           à concevoir et coder          17/12/2026
+  13  Normaliser les données            echelle        à concevoir et coder          22/12/2026
+  14  La régression polynomiale         degre          à concevoir et coder          24/12/2026
+  15  La frontière de décision          frontiere      à concevoir et coder          29/12/2026
+  16  La fonction sigmoïde              sigmoide       à concevoir et coder          31/12/2026
+  17  La régression logistique          logistique     à concevoir et coder          05/01/2027
+  18  L'entropie croisée                entropie       à concevoir et coder          07/01/2027
+  19  La fonction Softmax               softmax        à concevoir et coder          12/01/2027
+
+Ordre de travail conseillé : parcours 05 à 11 d'abord (scènes prêtes,
+échéance la plus proche), puis 12 à 19 dans l'ordre des épisodes. Rappel :
+l'épisode 12 est lui-même bloqué par une forme absente (A67).
+
+Les identifiants 12 à 19 sont des propositions ; ils deviennent l'adresse
+du labo (theta-ml.vercel.app/fr/labo/<id>) et la ligne « À manipuler dans le
+labo 3D » des posts.
+
+Retouches proposées aux labos déjà faits (01 à 04), sans urgence : ajouter
+la phrase qui annonce le rôle du robot (0.3) et, au 01, préciser que la
+distance 0,62 est propre à la démonstration.
+
+
+=====================================================================
+2. CHAPITRE 1 · LES BASES
+=====================================================================
+Fil du chapitre : poser le vocabulaire en manipulant, sans formule.
+01 : on apprend d'exemples. 02 : un exemple a des caractéristiques et une
+étiquette. 03 : il existe plusieurs cadres d'apprentissage. 04 : un modèle
+transforme des caractéristiques en prédiction grâce à des paramètres.
+
+---------------------------------------------------------------------
+LABO 01 · « Apprendre d'exemples »                 id : exemples · FAIT
+---------------------------------------------------------------------
+Notion        : au lieu d'écrire des règles, on montre des exemples.
+Rôle du robot : un mail nouveau, dont on ne connaît pas la réponse.
+Données       : 28 points d'illustration (14 spam, 14 non-spam), annoncés
+                comme tels.
+Scène         : plan vu en perspective, boules bronze (spam) et bleu clair
+                (non-spam).
+Mécanique     : le modèle donne au robot la réponse de l'exemple le plus
+                proche. Au-delà d'une distance de 0,62, le labo signale que
+                la réponse n'est plus garantie.
+Panneau       : réponse, distance à l'exemple le plus proche.
+Vue 2D        : vue de dessus des exemples et du robot.
+Parcours      : 1. Des exemples déjà triés : robot parmi les bronze → spam.
+                2. L'autre réponse : robot parmi les bleu clair → non-spam.
+                3. Loin des exemples : robot vers un bord.
+Quiz          : D'où le ML tire-t-il un modèle ? → d'exemples dont on
+                connaît la réponse.
+À ne pas laisser comprendre :
+  - que le ML fonctionne toujours par « exemple le plus proche » (c'est un
+    modèle parmi d'autres) ;
+  - que 0,62 est un seuil général : il est propre à cette démonstration ;
+  - que le modèle comprend le contenu du mail ;
+  - que les 28 points sont des données réelles.
+Lien carrousel: page 2 (règles + données → réponses, ou l'inverse), page 4
+                (anti-spam), page 5 (il n'apprend que ce que contiennent
+                ses exemples).
+Reste à faire : phrase d'annonce du robot ; préciser « seuil propre à la
+                démonstration » dans le message de l'étape 3.
+
+---------------------------------------------------------------------
+LABO 02 · « Une ligne de tableau »                   id : donnees · FAIT
+---------------------------------------------------------------------
+Notion        : un exemple est une ligne de nombres ; colonnes =
+                caractéristiques ; dernière colonne = étiquette.
+Rôle du robot : un pointeur qui désigne une case du tableau (une maison,
+                une colonne).
+Données       : 3 ventes réelles d'Ames (2010) : surface, chambres,
+                quartier, prix.
+Scène         : tableau en barres 3D. Barres bleu clair (caractéristiques),
+                bleu (quartier), bronze (prix).
+Contrôle      : bascule « Une colonne par quartier » / « Numéroter les
+                quartiers ».
+Parcours      : 1. Un exemple, c'est une ligne (passer d'une rangée à
+                   l'autre).
+                2. Les caractéristiques (surface puis chambres).
+                3. L'étiquette (colonne prix).
+                4. Un quartier n'est pas une quantité (basculer en une
+                   colonne par quartier).
+Quiz          : Quelle colonne est l'étiquette ? → le prix.
+À ne pas laisser comprendre :
+  - que toutes les colonnes sont des caractéristiques ;
+  - que le prix est une entrée du modèle ;
+  - que des catégories sont naturellement des nombres ordonnés ;
+  - que trois ventes représentent tout le jeu d'Ames.
+Lien carrousel: pages 2, 3 et 4 (le texte et les catégories doivent devenir
+                des nombres).
+Reste à faire : phrase d'annonce du robot.
+
+---------------------------------------------------------------------
+LABO 03 · « Trois familles »                        id : familles · FAIT
+---------------------------------------------------------------------
+Notion        : supervisé, non supervisé, par renforcement.
+Rôle du robot : un point du jeu ; en renforcement, un agent qui agit.
+Données       : les points d'illustration du labo 01.
+Scène         : mêmes points ; en non supervisé ils deviennent gris tant que
+                le modèle n'a pas trouvé les groupes ; en renforcement, une
+                cible bleue apparaît.
+Contrôles     : bascule de famille, Lecture.
+Mécanique     : supervisé : l'étiquette est retrouvée ; non supervisé :
+                les groupes se colorent ; renforcement : le robot essaie des
+                directions, reçoit +1 ou −1, retient ce qui rapporte.
+Parcours      : 1. Supervisé (Lecture). 2. Non supervisé (Lecture).
+                3. Renforcement (Lecture, lire le compteur « retour »).
+Quiz          : Quelle famille ne se contente pas d'un jeu de données fixe ?
+                → par renforcement.
+À ne pas laisser comprendre :
+  - que le non supervisé retrouve des étiquettes cachées ;
+  - que le renforcement reçoit toujours un retour immédiat ;
+  - que chaque famille est un algorithme unique ;
+  - que régression et classification sont des familles au même niveau
+    (ce sont des tâches, page 4 du carrousel).
+Lien carrousel: pages 2 et 3. La page 4 (régression / classification) est
+                manipulée aux labos 04 et 15.
+Reste à faire : phrase d'annonce du robot.
+
+---------------------------------------------------------------------
+LABO 04 · « Deux réglages »                           id : modele · FAIT
+---------------------------------------------------------------------
+Notion        : un modèle est une fonction avec des boutons : ŷ = a·x + b.
+Rôle du robot : une maison dont on lit le prix prédit sur la droite
+                (étapes 4) ; a et b se règlent aux curseurs.
+Données       : 60 ventes réelles d'Ames (échantillon), surface en
+                centaines de m², prix en millions de FCFA.
+Scène         : nuage de points sur le plan, droite blanche. Étiquette du
+                robot : « 150 m² → 115 M ».
+Contrôles     : curseurs a (0 à 150) et b (−100 à 200).
+Panneau       : a, b, écart moyen ; meilleur réglage de la série a = 74,
+                b = 4.
+Parcours      : 1. Le bouton a (pivoter). 2. Le bouton b (décaler).
+                3. Suivre les ventes (écart moyen à moins de 10 % du
+                   meilleur). 4. Prédire (déplacer le robot).
+Quiz          : Si seul b change ? → la droite monte ou descend sans tourner.
+À ne pas laisser comprendre :
+  - que a et b sont des données ;
+  - que l'écart moyen affiché est la MSE (c'est une erreur absolue
+    moyenne ; la MSE arrive au Nº 05) ;
+  - que la meilleure droite passe par tous les points ;
+  - que les paramètres du modèle final sont pris au hasard.
+Lien carrousel: pages 2, 3 et 4 (« Meilleurs selon quoi ? » prépare le 05).
+Reste à faire : phrase d'annonce du robot ; libellé « écart moyen (en
+                valeur absolue) » pour préparer la différence avec le 05.
+
+
+=====================================================================
+3. CHAPITRE 2 · APPRENDRE DE SES ERREURS
+=====================================================================
+Fil du chapitre : une seule courbe en U (J(a) = a² ou le coût réel
+d'Ames) qui sert de terrain du 05 au 10. Le robot change de rôle : il
+n'est plus une maison mais un réglage ; sa position est θ, sa hauteur est
+J(θ). Le labo 05 le dit à sa première étape. Le labo 11 refait le pont
+entre ce terrain abstrait et les paramètres d'une vraie droite.
+
+Pour les labos 05 à 11, la scène existe ; il reste à écrire parcours et
+quiz, et parfois à aligner la scène sur l'exemple chiffré du carrousel.
+
+---------------------------------------------------------------------
+LABO 05 · « La fonction de coût »                        id : cout
+---------------------------------------------------------------------
+Notion        : mesurer à quel point le modèle se trompe : J = moyenne des
+                (ŷ − y)².
+Rôle du robot : un réglage, la pente a d'une droite (b = 4) ; sa hauteur
+                est le coût J de cette droite.
+Existant      : courbe 1D J(a) avec b = 4 sur les ventes d'Ames 2006 à 2010.
+                Le robot glisse le long du U ; étiquette « J = … ». Creux :
+                a ≈ 74, J ≈ 1 030. Objectif : placer le robot dans le creux.
+À ajouter     :
+  - Vue 2D « la droite et les écarts » : le nuage, la droite de pente a et
+    les segments verticaux entre chaque point et la droite (page 2 du
+    carrousel). Les segments grandissent quand le robot s'éloigne du creux.
+  - (Optionnel, D2) bascule « Ajouter une vente aberrante » : une maison au
+    prix très éloigné ; le creux se déplace (page 3). Point et nouveau
+    creux calculés dans calculs/, jamais dans le code d'affichage.
+Parcours proposé :
+  1. Le robot devient un réglage
+     regarde : au 04, le robot était une maison. Ici, chaque position est
+               une droite de pente a ; sa hauteur est son coût J.
+     faire   : faire glisser le robot et regarder la droite changer dans la
+               vue 2D.
+     fait    : a a changé d'au moins 10.
+     compris : chaque réglage a son coût. Prédire, comparer, faire la
+               moyenne des écarts au carré : c'est J.
+  2. Le carré punit les grosses erreurs
+     faire   : éloigner le robot du creux, d'un côté puis de l'autre.
+     fait    : le robot est passé de chaque côté du creux, loin de lui.
+     compris : les écarts sont mis au carré : toujours positifs, et les
+               gros écarts pèsent beaucoup plus. J monte vite.
+  3. Le creux
+     faire   : placer le robot dans le creux du U.
+     fait    : |a − 74| < 5.
+     compris : c'est la meilleure droite pour ce coût, et J n'y vaut pas
+               0 : aucune droite ne passe par toutes les ventes.
+  4. (si D2 est retenu) Un seul point aberrant  [PRÉDICTION]
+     regarde : une vente très chère va s'ajouter. Où ira le creux ?
+     faire   : activer la vente aberrante, puis retrouver le creux.
+     compris : un seul point a déplacé la meilleure droite.
+Quiz          : Deux droites ont des écarts (1 ; 1 ; 1 ; 1) et
+                (0 ; 0 ; 0 ; 4). Même total d'écarts. Laquelle a le plus
+                grand J ?
+                (a) la première
+                (b) la seconde  ← bonne
+                (c) elles ont le même J
+                Explication : 1 contre 4 en moyenne des carrés ; le carré
+                punit la grosse erreur.
+À ne pas laisser comprendre :
+  - que le coût est l'erreur d'un seul exemple (c'est une moyenne) ;
+  - que J vaut 0 au minimum ;
+  - que le carré rend toutes les erreurs égales ;
+  - que la MSE est le coût de tous les problèmes (c'est celui de la
+    régression ; la classification en aura un autre au Nº 18).
+Lien carrousel: pages 2 à 6. Teaser vers 06 : « pour descendre vers ce
+                creux, il faut savoir lire une pente ».
+
+---------------------------------------------------------------------
+LABO 06 · « La dérivée »                               id : derivee
+---------------------------------------------------------------------
+Notion        : la dérivée est la pente de la tangente ; son signe dit si
+                ça monte, sa taille dit à quelle vitesse.
+Rôle du robot : un réglage a ; sa hauteur est J(a), la tangente sous ses
+                pieds est J′(a).
+Existant      : J(a) = a² sur [−2, 2], départ a = 1,5. Tangente (blanc) et
+                sécante entre a et a + h (bronze), curseur h.
+                Objectif : placer le robot là où la pente vaut 0.
+À TRANCHER (D1): le carrousel prend a = 3 (pente 6). Le labo s'arrête à 2.
+                Option 1 (recommandée) : élargir à [−3, 3] et partir de
+                a = 3, pour retrouver le chiffre de la page 4.
+                Option 2 : garder [−2, 2] et utiliser a = 1,5 (pente 3).
+                Dans les deux cas, ne jamais afficher un chiffre du
+                carrousel que le labo ne reproduit pas.
+Parcours proposé :
+  1. Ça monte
+     faire   : laisser le robot à droite et lire J′(a).
+     fait    : a > 0,5.
+     compris : pente positive : J monte quand a augmente.
+  2. Ça descend
+     faire   : amener le robot du côté gauche.
+     fait    : a < −0,5.
+     compris : pente négative : J descend quand a augmente.
+  3. C'est plat
+     faire   : amener le robot au fond du creux.
+     fait    : |J′(a)| < 0,1.
+     compris : pente nulle au fond du creux. C'est ce qu'on cherchera.
+  4. De la sécante à la tangente
+     faire   : réduire h jusqu'au minimum.
+     fait    : h ≤ 0,05.
+     compris : quand h devient minuscule, la sécante se confond avec la
+               tangente : la dérivée est cette pente limite.
+  5. L'exemple du carrousel  [PRÉDICTION]
+     regarde : J′(a) = 2a. Quelle pente attendez-vous en a = 3 (ou 1,5) ?
+     faire   : placer le robot en a = 3 (ou 1,5 selon D1).
+     compris : la pente vaut 6 (ou 3), comme prévu par 2a.
+Quiz          : En a = −1, J′(a) = −2. Si l'on augmente un peu a, J…
+                (a) monte
+                (b) descend  ← bonne
+                (c) ne change pas
+                Explication : pente négative, la courbe descend vers la
+                droite.
+À ne pas laisser comprendre :
+  - que la dérivée est la hauteur de la courbe ;
+  - qu'une pente nulle signale toujours le minimum le plus bas (Nº 10) ;
+  - que sécante et tangente coïncident pour n'importe quel h ;
+  - que la dérivée donne la valeur du coût.
+Lien carrousel: pages 2, 3, 4. Teaser vers 07 : « des milliers de boutons ».
+
+---------------------------------------------------------------------
+LABO 07 · « Le gradient »                             id : gradient
+---------------------------------------------------------------------
+Notion        : une dérivée par paramètre, rangées dans un vecteur ∇J, qui
+                pointe vers la montée la plus raide.
+Rôle du robot : un réglage à deux boutons (a, b) ; sa hauteur est J(a, b).
+Existant      : surface J(a, b) = a² + 3b², flèches ∂J/∂a (bleu clair),
+                ∂J/∂b (bronze), ∇J (blanc), bascule « Afficher −∇J » (bleu).
+                Objectif : amener le robot là où ∇J est presque nul.
+Parcours proposé :
+  1. Deux pentes
+     regarde : deux boutons, a et b ; une flèche par bouton.
+     faire   : placer le robot en (1, 1) (repère au sol).
+     fait    : robot à moins de 0,15 de (1, 1).
+     compris : ∂J/∂a = 2a = 2 et ∂J/∂b = 6b = 6 : ∇J = (2, 6), comme à la
+               page 4.
+  2. Une direction plus raide que l'autre
+     faire   : déplacer le robot seulement selon b, puis seulement selon a.
+     fait    : les deux déplacements ont été faits.
+     compris : la pente selon b grandit trois fois plus vite : la vallée
+               est plus raide dans ce sens.
+  3. La flèche monte  [PRÉDICTION]
+     regarde : si le robot suit la flèche blanche ∇J, J va-t-il monter ou
+               descendre ?
+     faire   : suivre la flèche de quelques pas.
+     fait    : J a augmenté.
+     compris : ∇J pointe vers la montée la plus raide, perpendiculaire aux
+               lignes de niveau.
+  4. L'autre sens
+     faire   : activer « Afficher −∇J ».
+     compris : −∇J pointe vers la descente la plus raide, sur place. Ce
+               n'est pas forcément la ligne droite vers le minimum.
+  5. Le fond
+     faire   : amener le robot là où ∇J est presque nul.
+     compris : au fond, toutes les dérivées partielles valent 0 en même
+               temps.
+Quiz          : Vers où pointe ∇J ?
+                (a) droit vers le minimum
+                (b) vers la montée la plus raide, là où l'on est  ← bonne
+                (c) toujours vers la droite
+À ne pas laisser comprendre :
+  - que le gradient pointe droit vers le minimum (sur cette vallée
+    allongée, ce n'est pas le cas) ;
+  - que chaque composante du gradient est un paramètre ;
+  - que la flèche est le chemin complet de l'optimisation.
+Lien carrousel: pages 2, 3, 4. Teaser vers 08.
+
+---------------------------------------------------------------------
+LABO 08 · « Descente de gradient »                   id : descente
+---------------------------------------------------------------------
+Notion        : θ ← θ − η∇J(θ) ; rôle du taux d'apprentissage η.
+Rôle du robot : un réglage θ qui se déplace tout seul, pas après pas.
+Existant      : J(a) = a², départ a = 1,8, curseur η, Lecture. Prochain
+                pas (blanc), chemin (bleu). Objectif : minimum en 6 pas au
+                plus.
+À TRANCHER (D1): le carrousel prend θ = 3, η = 0,1 : 3 → 2,4 → 1,92 →
+                1,536, l'erreur passe de 9 à 2,36. Recommandé : départ à 3
+                (domaine élargi comme au 06) pour que le panneau affiche
+                ces nombres à l'identique.
+Parcours proposé :
+  1. Un pas à la fois
+     faire   : avec η = 0,1, faire trois pas (Lecture puis Pause, ou pas à
+               pas).
+     fait    : 3 pas faits avec η = 0,1.
+     compris : 3 → 2,4 → 1,92 → 1,536. Le pas vaut η × la pente : il
+               raccourcit près du fond.
+  2. Trop petit
+     faire   : η = 0,02, Lecture.
+     compris : on avance à peine : il faudrait des centaines de pas.
+  3. Trop grand
+     faire   : η = 0,9.
+     compris : le robot saute d'un bord à l'autre : oscillation.
+  4. Beaucoup trop grand  [PRÉDICTION]
+     regarde : avec η = 1,1, le robot va-t-il se poser, osciller ou
+               s'éloigner ?
+     faire   : η = 1,1, Lecture.
+     fait    : divergence détectée.
+     compris : chaque saut l'éloigne : la descente diverge.
+  5. Bien choisi
+     faire   : atteindre le minimum en 6 pas au plus.
+     compris : un η bien choisi converge vite. Sur cette courbe, η = 0,5
+               arrive en un pas : c'est propre à J = a², pas une règle.
+Quiz          : Le robot oscille de part et d'autre du creux sans se poser.
+                Que faire ?
+                (a) augmenter η
+                (b) diminuer η  ← bonne
+                (c) changer de point de départ
+Piège (page 7): message final : « pente nulle ne veut pas dire erreur
+                nulle » (rappel du creux du 05, J ≈ 1 030).
+À ne pas laisser comprendre :
+  - qu'un η élevé fait toujours diverger (cela dépend de la courbe) ;
+  - que η = 0,5 est une règle générale ;
+  - que l'algorithme connaît le minimum d'avance : il ne voit que la pente
+    sous ses pieds ;
+  - qu'il faut un coût nul pour s'arrêter.
+Lien carrousel: pages 2 à 7. Teaser vers 09.
+
+---------------------------------------------------------------------
+LABO 09 · « Mini-lots »                               id : minilots
+---------------------------------------------------------------------
+Notion        : estimer la pente sur un mini-lot ; SGD ; époque.
+Rôle du robot : un réglage (a, b) qui descend avec une pente estimée.
+Existant      : surface a² + 3b², curseur lot B (1, 8, 32, 256), η, Lecture.
+                Vraie pente (blanc), pente estimée (bronze), chemin (bleu).
+                Compteur d'exemples lus. Objectif : J < 0,03 en lisant au
+                plus 300 exemples.
+À ajouter     : un compteur « époques » (exemples lus / taille du jeu),
+                avec une taille de jeu fixée dans calculs/ (D3, par exemple
+                1 000).
+Parcours proposé :
+  1. Tout le lot
+     faire   : B = 256, Lecture.
+     compris : chemin régulier, mais chaque pas lit 256 exemples.
+  2. Un seul exemple  [PRÉDICTION]
+     regarde : avec un seul exemple par pas, le chemin sera-t-il plus
+               régulier ou plus agité ?
+     faire   : B = 1, Lecture.
+     compris : chaque pas coûte presque rien, mais la flèche bronze
+               s'écarte de la blanche : le chemin zigzague.
+  3. Il arrive quand même
+     regarde : malgré le bruit, le chemin approche du fond.
+     fait    : J < 0,1 avec B = 1.
+     compris : en moyenne, la pente estimée pointe dans la bonne direction.
+  4. Le compromis
+     faire   : atteindre J < 0,03 en lisant au plus 300 exemples.
+     compris : un mini-lot (ici 8 ou 32) combine pas bon marché et
+               direction fiable.
+  5. Le piège
+     faire   : B = 1 et η grand.
+     compris : le robot ne se pose jamais : d'où un η qui décroît au fil
+               des époques.
+Quiz          : Le jeu compte 1 000 exemples et B = 100. Combien de pas
+                pour une époque ?
+                (a) 1   (b) 10  ← bonne   (c) 100
+                (À adapter à la taille retenue en D3.)
+À ne pas laisser comprendre :
+  - qu'une époque est un pas ;
+  - qu'un mini-lot fait toujours 32 exemples ;
+  - que la pente estimée est juste à chaque pas, ou fausse à chaque pas ;
+  - que le mini-lot est gratuit : on gagne en vitesse, on paie en bruit.
+Lien carrousel: pages 2 à 6. Teaser vers 10.
+
+---------------------------------------------------------------------
+LABO 10 · « Minimums locaux »                        id : minlocaux
+---------------------------------------------------------------------
+Notion        : minimum local / global ; le départ compte ; fonction
+                convexe.
+Rôle du robot : un réglage a qui descend une courbe à deux creux.
+Existant      : courbe à deux creux, départ a = 1,38, η, Lecture, bascule
+                bruit. Minimum local en 0,89, global en −0,998. Objectif :
+                atteindre le global sans le bruit.
+Parcours proposé :
+  1. Coincé dans le premier creux
+     faire   : Lecture depuis le départ proposé.
+     fait    : le robot s'arrête près de 0,89.
+     compris : la pente est nulle, la descente s'arrête, mais ce n'est pas
+               le fond de la vallée.
+  2. Le départ compte  [PRÉDICTION]
+     regarde : en partant de la gauche, où le robot va-t-il s'arrêter ?
+     faire   : placer le robot à gauche, puis Lecture.
+     fait    : arrivé près de −0,998 sans bruit.
+     compris : selon le point de départ, on finit dans un creux ou dans
+               l'autre.
+  3. Un peu de bruit
+     faire   : repartir de droite avec le bruit activé.
+     compris : le bruit (comme les mini-lots du 09) peut faire sortir d'un
+               creux peu profond. Ce n'est pas une garantie.
+Quiz          : Avec un coût convexe, comme la MSE d'une droite, un minimum
+                local est…
+                (a) toujours global  ← bonne
+                (b) toujours un piège
+                (c) introuvable
+                Explication : pas de faux creux ; c'est le cas du coût du
+                Nº 05.
+À ne pas laisser comprendre :
+  - que tout minimum local est mauvais (il peut être presque aussi bon) ;
+  - que le bruit garantit d'en sortir ;
+  - que toute fonction de coût a plusieurs creux ;
+  - qu'une pente nulle suffit à reconnaître un minimum (voir 10b).
+Lien carrousel: pages 2 et 4. Teaser vers 10b.
+
+---------------------------------------------------------------------
+LABO 10b · « Point selle »                              id : selle
+---------------------------------------------------------------------
+Notion        : point selle : pente nulle, mais pas un creux.
+Rôle du robot : un réglage (a, b) sur une surface en forme de col.
+Existant      : surface a² − b² + 0,3 b⁴, départ (1,3 ; 0), Lecture, bouton
+                Pousser. Objectif : bloquer au point selle puis descendre.
+Parcours proposé :
+  1. Plat sans être un creux
+     faire   : Lecture depuis (1,3 ; 0).
+     fait    : le robot s'arrête au point selle.
+     compris : pente nulle, mais J monte selon a et descend selon b : un
+               col.
+  2. Une poussée suffit  [PRÉDICTION]
+     regarde : si on le pousse un peu selon b, que va faire le robot ?
+     faire   : appuyer sur Pousser.
+     fait    : le robot atteint un creux.
+     compris : un léger écart selon b fait glisser le robot vers un creux.
+               « Pousser » est un geste du labo, pas une étape de la
+               descente de gradient.
+Quiz          : Au point selle, le gradient est nul. Le robot est-il au
+                fond d'un creux ?
+                (a) oui, la pente est nulle
+                (b) non, J descend encore dans une direction  ← bonne
+                (c) seulement si η est petit
+À ne pas laisser comprendre :
+  - que tout point de gradient nul est un minimum ;
+  - qu'une petite poussée mène toujours au minimum le plus bas ;
+  - que « Pousser » fait partie de l'algorithme.
+Lien carrousel: page 3. Teaser vers 11 : « mettons tout ensemble ».
+
+
+=====================================================================
+4. CHAPITRE 3 · LA RÉGRESSION
+=====================================================================
+Fil du chapitre : on reprend les ventes d'Ames du chapitre 1 et on leur
+applique tout le chapitre 2 : une droite (11), un plan (12), une vallée
+qu'on arrondit (13), une courbe (14). Deux idées à ne pas confondre :
+standardiser change l'échelle des caractéristiques (13) ; le polynôme
+ajoute de nouvelles caractéristiques (14).
+
+---------------------------------------------------------------------
+LABO 11 · « La régression linéaire »                id : regression
+---------------------------------------------------------------------
+Notion        : coût + gradient + pas, en boucle, sur un vrai modèle.
+Rôle du robot : un lecteur de prédiction posé sur la droite, à 150 m² ;
+                il monte avec la droite à chaque itération.
+Existant      : 2 925 ventes d'Ames, droite partant de w = 0, b = 0, η,
+                Lecture, arrêt à 400 itérations, détection de divergence.
+                Objectif : J < 1 040.
+À ajouter     : trois repères « itération 0, 10, 100 » dans la vue 2D
+                (droites fantômes), pour la page 4 du carrousel ; valeurs
+                tirées de calculs/ames.py (descente_droite existe déjà).
+Parcours proposé :
+  1. Au départ, rien
+     regarde : w = 0, b = 0 : la droite est à plat, J est énorme. Le robot
+               du chapitre 2 descendait une courbe ; ici, ce sont w et b
+               qui descendent, et la droite qui bouge.
+     faire   : appuyer sur Lecture puis Pause après quelques itérations.
+     compris : chaque itération mesure J, lit les deux dérivées, fait un
+               pas sur w et sur b.
+  2. 0, 10, 100
+     faire   : laisser tourner jusqu'à 100 itérations.
+     compris : la droite se redresse vite, puis s'ajuste lentement.
+  3. Trop grand pas  [PRÉDICTION]
+     regarde : avec un η bien plus grand, que va faire J ?
+     faire   : remettre à zéro, monter η, Lecture.
+     fait    : divergence détectée.
+     compris : même règle qu'au 08 : un η trop grand fait exploser le coût.
+  4. Ajusté
+     faire   : obtenir J < 1 040.
+     compris : la droite est ajustée : J ne baisse presque plus. w et b sont
+               le poids et le biais appris.
+Quiz          : Après 100 itérations, J ne baisse presque plus. Que s'est-il
+                passé ?
+                (a) le jeu de ventes est épuisé
+                (b) w et b sont près du creux : la pente y est presque nulle,
+                    les pas deviennent minuscules  ← bonne
+                (c) η a diminué tout seul
+Piège (page 6): message final : « une droite ne suit pas une relation
+                courbe : on y revient au Nº 14 ».
+À ne pas laisser comprendre :
+  - qu'une itération ajoute une vente ;
+  - que la droite finale est tirée au hasard ;
+  - que J < 1 040 est un seuil général (il est propre à ces données) ;
+  - qu'une droite peut suivre n'importe quelle relation.
+Lien carrousel: pages 2 à 6. Teaser vers 12.
+
+---------------------------------------------------------------------
+LABO 12 · « Un plan au-dessus des ventes »             id : plan · NOUVEAU
+---------------------------------------------------------------------
+Notion        : plusieurs caractéristiques, un seul résultat :
+                ŷ = w₁x₁ + w₂x₂ + b. Avec deux caractéristiques, la droite
+                devient un plan.
+Rôle du robot : une maison nouvelle, placée au sol (surface, chambres) ; il
+                monte jusqu'au plan pour lire son prix prédit.
+Données       : ventes d'Ames, x₁ = surface (centaines de m²), x₂ = nombre
+                de chambres, y = prix (millions de FCFA). Les deux colonnes
+                sont déjà lues par calculs/ames.py (Gr Liv Area, Bedroom
+                AbvGr). Échantillon de 60 maisons pour l'affichage ; coût
+                calculé sur tout le jeu.
+                Nouvelle fonction : calculs/ames.py → plan_prix (moindres
+                carrés à deux caractéristiques) et statistiques suffisantes
+                pour J(w₁, w₂, b), exportées dans labos.json.
+Scène         : pour la première fois, les points ont une hauteur : surface
+                en largeur, chambres en profondeur, prix en hauteur. Les
+                deux axes au sol sont étiquetés « entrée », l'axe vertical
+                « prix (étiquette) ». Un plan semi-transparent blanc. Les
+                fils verticaux point-plan (les écarts du 05) apparaissent à
+                l'étape 4. La caméra peut tourner autour.
+                Étiquette du robot : « 150 m², 3 ch. → … M ».
+Contrôles     : curseurs w₁, w₂ et b (trois curseurs, voir M1), bouton
+                « Meilleur plan ».
+Panneau       : w₁, w₂, b avec leurs unités (M par centaine de m², M par
+                chambre, M), J ; ligne de calcul ŷ = w₁·x₁ + w₂·x₂ + b avec
+                les valeurs de la maison du robot (produit scalaire écrit en
+                clair : w·x = w₁x₁ + w₂x₂).
+Vue 2D        : deux coupes côte à côte : prix selon surface, prix selon
+                chambres.
+Parcours :
+  1. Des points dans l'espace
+     regarde : chaque boule est une vente : surface, chambres, prix.
+     faire   : faire tourner la vue, puis amener le robot sous une vente et
+               lire ses trois valeurs.
+     fait    : rotation d'au moins 45° ET robot à l'aplomb d'une vente.
+     compris : avec deux caractéristiques, un exemple est un point dans
+               l'espace : deux entrées au sol, le prix en hauteur.
+  2. Le poids de la surface
+     faire   : bouger seulement w₁.
+     compris : le plan s'incline dans le sens de la surface, comme a
+               faisait pivoter la droite au 04.
+  3. Le poids des chambres
+     faire   : bouger seulement w₂.
+     compris : le plan s'incline dans l'autre sens. Un poids par
+               caractéristique.
+  4. Ajuster le plan
+     faire   : amener J à moins de 10 % au-dessus du meilleur plan.
+     compris : même travail qu'au 11, avec un bouton de plus. La descente
+               de gradient ferait la même chose, poids par poids.
+  5. Lire les poids  [PRÉDICTION]
+     regarde : w₁ et w₂ n'ont pas la même unité. Qu'est-ce qui changera le
+               plus le prix : une chambre de plus, ou 100 m² de plus ?
+     faire   : déplacer le robot d'une chambre, puis de 100 m².
+     compris : chaque poids dit l'influence de sa caractéristique… mais on
+               ne peut pas comparer w₁ et w₂ tant qu'elles ne sont pas à la
+               même échelle. C'est le Nº 13.
+Quiz          : Une maison a 200 m² et 3 chambres. Pour lire son prix
+                prédit, il faut…
+                (a) le point de la droite du 04
+                (b) la hauteur du plan au-dessus de (200 m², 3 ch.)  ← bonne
+                (c) la moyenne des prix
+À TRANCHER (D4): à surface égale, le poids des chambres sort souvent négatif
+                sur Ames (plus de chambres dans la même surface = pièces
+                plus petites). À vérifier avec calculs/. Si c'est le cas :
+                option 1 (recommandée) le montrer et l'expliquer en une
+                phrase, c'est un vrai résultat ; option 2 choisir une autre
+                caractéristique réelle (à ajouter à ames.py). Ne jamais
+                changer de variable sans le dire.
+À ne pas laisser comprendre :
+  - que le prix est une entrée ;
+  - que les caractéristiques sont des étiquettes ;
+  - qu'un poids négatif est une erreur ;
+  - qu'on peut comparer w₁ et w₂ sans tenir compte de leurs unités.
+Lien carrousel: pages 2, 3, 4. Teaser vers 13.
+
+---------------------------------------------------------------------
+LABO 13 · « La vallée devient ronde »                id : echelle · NOUVEAU
+---------------------------------------------------------------------
+Notion        : normaliser (standardiser) les caractéristiques :
+                x′ = (x − μ) / σ ; la vallée du coût passe d'allongée à
+                ronde, la descente va droit au but.
+Rôle du robot : un réglage (w₁, w₂), comme au 07 et au 09 (et non plus une
+                maison, comme au 12 : la première étape le dit).
+Données       : les mêmes que le 12 (surface, chambres), Ames. μ et σ
+                calculés dans calculs/ (nouvelle fonction standardiser).
+                À TRANCHER (D5) : surface en m² bruts (et non en centaines
+                de m² comme au 04 et au 11) pour que l'écart d'échelle soit
+                visible (120 m² contre 3 chambres, page 2).
+Scène         : la surface du coût J(w₁, w₂), b fixé à son optimum (le
+                panneau le dit), vue en lignes de niveau et en relief.
+Contrôles     : bascule « Standardiser » / « Données brutes », η, Lecture,
+                compteur d'itérations.
+Mécanique     : données brutes : ellipses très allongées ; avec un η
+                stable, la descente zigzague et met beaucoup d'itérations.
+                Standardisées : lignes de niveau bien plus rondes ; la
+                descente file au centre en quelques itérations. Nombres
+                d'itérations calculés et vérifiés dans calculs/.
+Panneau       : μ et σ de chaque colonne ; pour une maison, x brut → x′ ;
+                itérations ; J ; mention « b fixé à son meilleur réglage ».
+Vue 2D        : lignes de niveau et chemin, avant/après côte à côte une
+                fois les deux essais faits.
+Parcours :
+  1. Deux échelles
+     regarde : le robot redevient un réglage. Une surface se compte en
+               centaines, des chambres en unités.
+     faire   : lire μ et σ dans le panneau.
+     fait    : le panneau μ, σ a été déplié (ou survolé).
+     compris : les deux caractéristiques ne vivent pas à la même échelle.
+  2. Une vallée allongée
+     faire   : données brutes, Lecture.
+     fait    : descente terminée ou 200 itérations.
+     compris : la vallée est étroite et longue : la descente zigzague
+               d'un bord à l'autre et avance lentement vers le fond.
+  3. Le pas ne peut pas grandir
+     faire   : monter η en données brutes.
+     fait    : divergence.
+     compris : dans la direction raide, un grand pas fait exploser J
+               (Nº 08). On est coincé avec un petit pas.
+  4. Standardiser  [PRÉDICTION]
+     regarde : une fois les deux colonnes à la même échelle, la descente
+               mettra-t-elle plus ou moins d'itérations ?
+     faire   : activer « Standardiser », puis Lecture.
+     compris : chaque colonne a maintenant une moyenne 0 et un écart-type
+               1. La vallée est ronde, la descente va droit au fond, en
+               bien moins d'itérations.
+  5. Une maison standardisée
+     faire   : choisir une maison du tableau.
+     compris : x′ dit de combien d'écarts-types la maison s'éloigne de la
+               moyenne. Les poids deviennent comparables (retour au Nº 12).
+Quiz          : Une maison a 1 chambre de plus que la moyenne, et σ vaut
+                0,8 chambre. Son x′ pour les chambres vaut…
+                (a) 1   (b) 1,25  ← bonne   (c) 0,8
+                (Valeurs à remplacer par celles de calculs/.)
+À ne pas laisser comprendre :
+  - que standardiser retire des exemples ou change les prix ;
+  - que standardiser rend le modèle plus juste (il va plus vite au même
+    creux) ;
+  - que toute vallée devient un cercle parfait ;
+  - que b est optimisé sur la surface affichée (il est fixé).
+Lien carrousel: pages 2, 3, 4. Teaser vers 14.
+
+---------------------------------------------------------------------
+LABO 14 · « Degré 1, 3, 15 »                          id : degre · NOUVEAU
+---------------------------------------------------------------------
+Notion        : régression polynomiale : x², x³… deviennent de nouvelles
+                caractéristiques ; le degré règle la souplesse ; un degré
+                trop grand passe par tous les points et rate les nouveaux.
+Rôle du robot : un lecteur de prédiction qui glisse le long de x sur la
+                courbe.
+Données       : À TRANCHER (D6).
+                Option 1 (recommandée) : points d'illustration générés par
+                calculs/ (une relation courbe + du bruit, graine fixe),
+                annoncés comme tels, avec un second tirage de « nouveaux
+                points » de la même relation. C'est la seule façon de
+                garantir l'effet « degré 15 » de la page 3.
+                Option 2 : une relation courbe réelle (à trouver, sourcer et
+                dater) ; plus long, résultat non garanti.
+Scène         : plan 2D en perspective comme au 04 ; courbe blanche ;
+                points d'entraînement bleu clair, nouveaux points bronze
+                (masqués au départ).
+Contrôles     : curseur entier « degré » (1 à 15), bascule « Montrer de
+                nouveaux points ».
+Calcul        : coefficients des 15 modèles précalculés dans calculs/
+                (x ramené dans [−1, 1] pour éviter l'instabilité du degré
+                15), exportés dans labos.json. Le site ne fait aucun
+                ajustement lui-même.
+Panneau       : degré ; caractéristiques utilisées (x, x², x³, …) ;
+                J sur les points d'entraînement ; J sur les nouveaux points
+                (affiché une fois la bascule activée).
+Vue 2D        : courbe d'erreur selon le degré (entraînement en blanc,
+                nouveaux points en bronze) qui se remplit au fil des
+                degrés essayés.
+Parcours :
+  1. Une droite ne suffit pas
+     faire   : degré 1.
+     compris : la droite passe à côté de la courbure (piège du Nº 11).
+  2. De nouvelles colonnes
+     faire   : degré 3.
+     compris : on a ajouté x² et x³ comme caractéristiques. Le modèle reste
+               une somme de poids × caractéristiques : la régression
+               multiple du 12, appliquée à x, x², x³. Ce n'est pas une
+               mise à l'échelle comme au 13 : on ajoute des colonnes.
+  3. Toujours plus souple
+     faire   : degré 15.
+     compris : la courbe passe presque par tous les points ; l'erreur
+               d'entraînement est au plus bas.
+  4. Les nouveaux points  [PRÉDICTION]
+     regarde : sur des points qu'il n'a jamais vus, quel degré se trompera
+               le moins : 3 ou 15 ?
+     faire   : activer « Montrer de nouveaux points », comparer 3 et 15.
+     fait    : les deux degrés ont été vus avec les nouveaux points.
+     compris : au degré 15, l'erreur sur les nouveaux points explose ; au
+               degré 3, elle reste proche de l'erreur d'entraînement.
+  5. Entre deux points
+     faire   : au degré 15, glisser le robot entre deux points, près d'un
+               bord.
+     compris : la prédiction part très haut ou très bas : le modèle a
+               appris le bruit. On l'appellera sur-apprentissage au
+               chapitre 6.
+Quiz          : Le degré 15 a la plus petite erreur sur ses points. Est-ce
+                le meilleur modèle ?
+                (a) oui, son erreur est la plus faible
+                (b) non, il se trompe sur des points nouveaux  ← bonne
+                (c) on ne peut pas savoir
+À ne pas laisser comprendre :
+  - que le degré 15 est toujours mauvais, ou le degré 3 toujours le
+    meilleur (c'est vrai pour ces points) ;
+  - que l'erreur d'entraînement suffit à choisir un modèle ;
+  - que x² et x³ sont des paramètres (ce sont des caractéristiques) ;
+  - que le sur-apprentissage est traité ici : il est annoncé, le chapitre
+    6 le développe.
+Lien carrousel: pages 2, 3, 4. Teaser vers 15.
+
+
+=====================================================================
+5. CHAPITRE 4 · LA CLASSIFICATION
+=====================================================================
+Fil du chapitre : passer d'un nombre à une catégorie, dans cet ordre
+strict : frontière (15), sigmoïde seule (16), score + sigmoïde + seuil
+(17), coût adapté (18), plusieurs classes (19). Le 15 ne montre pas la
+formule de la régression logistique ; le 17 ne nomme pas l'entropie
+croisée, même si son bouton « Ajuster » l'utilise en interne.
+
+DONNÉES DU CHAPITRE · À TRANCHER (D7, une décision pour les labos 15 à 18)
+  Option 1 (recommandée) : un vrai jeu anti-spam, pour rester dans
+    l'exemple du carrousel (pages 2 des Nº 01 et 15) : Spambase, UCI
+    Machine Learning Repository, 1999 (Hopkins, Reeber, Forman, Suermondt,
+    Hewlett-Packard). Deux colonnes réelles pour le 15 (par exemple la
+    fréquence du caractère « $ » et la longueur des suites de majuscules),
+    une seule pour le 17 et le 18. Source, licence et date à vérifier et
+    à garder dans sources/, fonction calculs/spam.py.
+  Option 2 : rester sur Ames et définir une classe « maison chère » (prix
+    au-dessus de la médiane) prédite par surface et chambres. Données déjà
+    en place, mais l'étiquette est fabriquée à partir d'un seuil.
+  Option 3 : points d'illustration générés, annoncés comme tels (comme le
+    labo 01). Le plus simple, le moins concret.
+
+---------------------------------------------------------------------
+LABO 15 · « Deux camps »                          id : frontiere · NOUVEAU
+---------------------------------------------------------------------
+Notion        : classe, classification binaire, frontière de décision ;
+                une sortie 0 ou 1 brute ne dit pas à quel point le modèle
+                est sûr.
+Rôle du robot : un mail nouveau, comme au 01.
+Données       : deux caractéristiques, deux classes (D7). Échantillon
+                d'environ 60 exemples.
+Scène         : plan vu en perspective ; boules bronze (classe 1, spam) et
+                bleu clair (classe 0) ; une droite blanche, chaque côté
+                teinté légèrement de la couleur de sa classe. Les exemples
+                mal classés portent un anneau.
+Contrôles     : curseur « orientation » (fait tourner la frontière),
+                curseur « position » (la décale), bouton « Meilleure
+                frontière » (calculée dans calculs/).
+                On ne montre pas encore w₁, w₂, b ; la frontière
+                w₁x₁ + w₂x₂ + b = 0 arrive au 17.
+Panneau       : erreurs (nombre et pourcentage), réponse du robot (0 ou 1),
+                distance du robot à la frontière, libellée « distance »,
+                jamais « confiance » ni « probabilité ».
+Vue 2D        : vue de dessus, frontière et zones colorées.
+Parcours :
+  1. Deux classes
+     regarde : chaque boule est un mail déjà trié.
+     faire   : amener le robot sur une boule de chaque couleur.
+     fait    : les deux couleurs ont été visitées.
+     compris : deux classes, 0 et 1 : c'est une classification binaire.
+               On prédit une catégorie, plus un nombre.
+  2. Tracer une frontière
+     faire   : tourner, puis décaler la droite.
+     compris : d'un côté le modèle répond 1, de l'autre 0.
+  3. Le moins d'erreurs possible
+     faire   : descendre sous un nombre d'erreurs fixé par calculs/
+               (meilleure frontière + marge).
+     compris : la frontière de décision sépare les deux camps. Quelques
+               exemples restent du mauvais côté : les données réelles se
+               chevauchent.
+  4. Sûr ou pas sûr ?
+     faire   : placer le robot tout près de la frontière, puis très loin
+               d'elle, du même côté.
+     fait    : les deux positions ont été visitées.
+     compris : le modèle répond « 1 » dans les deux cas, mais le premier
+               mail est presque sur la ligne. Un 0 ou un 1 brut ne dit pas
+               à quel point le modèle est sûr.
+Quiz          : Deux mails sont classés « spam », l'un collé à la
+                frontière, l'autre très loin. Que dit la sortie brute ?
+                (a) la même chose pour les deux : « 1 »  ← bonne
+                (b) que le second est plus sûrement un spam
+                (c) la probabilité de chacun
+À ne pas laisser comprendre :
+  - que la distance à la frontière est une probabilité ;
+  - que des données réelles se séparent toujours parfaitement ;
+  - que le modèle a déjà une sortie sigmoïde, ou des poids présentés.
+Lien carrousel: pages 2, 3, 4. Rappel du Nº 03 (classification). Teaser
+                vers 16 : « une sortie entre 0 et 1 ».
+
+---------------------------------------------------------------------
+LABO 16 · « La courbe en S »                       id : sigmoide · NOUVEAU
+---------------------------------------------------------------------
+Notion        : σ(z) = 1 / (1 + e⁻ᶻ) écrase n'importe quel nombre entre 0
+                et 1 ; la sortie se lit comme une probabilité.
+Rôle du robot : une valeur de z ; sa hauteur est σ(z). On étudie la
+                fonction seule, sans modèle ni données.
+Scène         : courbe 1D comme au 06 et au 08 : le relief suit σ(z) pour
+                z de −8 à 8 ; deux lignes guides à 0 et à 1, une à 0,5.
+                Étiquette du robot : « z = … → σ(z) = … ».
+Contrôle      : bascule « Comparer à la marche 0/1 » : superpose la sortie
+                brute du 15 (0 si z < 0, 1 sinon), en bronze.
+Panneau       : z, e⁻ᶻ, σ(z), lecture en pourcentage.
+Vue 2D        : la courbe en S et le point du robot.
+Parcours :
+  1. Très négatif
+     faire   : amener le robot à z < −5.
+     compris : σ(z) est presque 0, sans jamais l'atteindre.
+  2. Zéro  [PRÉDICTION]
+     regarde : à mi-chemin entre les deux extrêmes, que vaut σ(0) ?
+     faire   : placer le robot en z = 0.
+     compris : σ(0) = 0,5 : le modèle hésite autant d'un côté que de
+               l'autre.
+  3. Très positif
+     faire   : amener le robot à z > 5.
+     compris : σ(z) est presque 1, sans jamais l'atteindre.
+  4. Une probabilité
+     faire   : placer le robot en z = 2.
+     compris : σ(2) ≈ 0,88 : se lit « 88 % de chances d'être de la classe
+               1 », si le modèle est bien réglé. (Valeur calculée dans
+               calculs/.)
+  5. Plus doux qu'une marche
+     faire   : activer « Comparer à la marche 0/1 ».
+     compris : la marche saute d'un coup de 0 à 1 ; la sigmoïde passe en
+               douceur et garde la nuance du Nº 15.
+Quiz          : z passe de 4 à 8. σ(z)…
+                (a) double
+                (b) se rapproche encore de 1, sans l'atteindre  ← bonne
+                (c) dépasse 1
+À ne pas laisser comprendre :
+  - que la sigmoïde ne sort que 0 ou 1 ;
+  - qu'elle atteint 0 ou 1 pour un z fini ;
+  - qu'un 0,88 est toujours une probabilité fiable : cela dépend du modèle
+    et des données (on n'entre pas dans le calibrage) ;
+  - que des poids ont été appris ici.
+Lien carrousel: pages 2, 3, 4. Teaser vers 17.
+
+---------------------------------------------------------------------
+LABO 17 · « Un score devient une probabilité »   id : logistique · NOUVEAU
+---------------------------------------------------------------------
+Notion        : z = w·x + b, puis p = σ(z) ; seuil de décision ; seuil
+                0,5 = frontière ; un seuil plus haut rend le modèle plus
+                prudent ; la MSE avec la sigmoïde n'est plus convexe.
+Rôle du robot : un cas nouveau, placé le long de x ; il affiche son score,
+                sa probabilité et la classe décidée.
+Données       : une caractéristique, deux classes (même source que le 15).
+Scène         : plan de profil : x en largeur ; exemples de classe 0 posés
+                à la hauteur 0, classe 1 à la hauteur 1 (deux rangées) ;
+                la courbe en S blanche par-dessus ; une ligne horizontale
+                bronze au niveau du seuil ; une ligne verticale à l'endroit
+                où la courbe croise le seuil (la frontière).
+                Étiquette du robot : « z = … → p = … → classe … ».
+                Labo le plus chargé de la saison : les éléments apparaissent
+                étape par étape (seuil à l'étape 3, courbe MSE à l'étape 6).
+Contrôles     : curseurs w et b (comme a et b au 04), curseur « seuil »
+                (0,1 à 0,9), bouton « Ajuster » (meilleurs w, b calculés
+                dans calculs/ avec le coût du Nº 18, non nommé ici).
+                Bascule « Coût MSE selon w » pour l'étape 6.
+Cas limite    : x* = −b / w n'existe pas si w = 0 : la courbe est plate,
+                le panneau affiche « pas de frontière » et la verticale
+                disparaît. Le curseur w peut aussi exclure un petit
+                intervalle autour de 0.
+Panneau       : w, b, seuil, frontière x* (pour le seuil choisi), nombre
+                de cas prédits 1, erreurs.
+Vue 2D        : la courbe en S et les deux rangées ; à l'étape 6, la
+                courbe J(w) de la MSE.
+Parcours :
+  1. D'abord un score
+     regarde : z = w·x + b, c'est la régression du chapitre 3.
+     faire   : bouger w, puis b.
+     compris : w rend le S plus ou moins raide, b le décale : mêmes
+               boutons qu'au 04, passés dans la sigmoïde.
+  2. Ajuster
+     faire   : appuyer sur « Ajuster ».
+     compris : la courbe monte là où les exemples passent de 0 à 1.
+  3. Le seuil 0,5
+     faire   : glisser le robot jusqu'au point où p = 0,5.
+     compris : c'est la frontière de décision du Nº 15 : à gauche on
+               répond 0, à droite 1.
+  4. Plus ou moins prudent  [PRÉDICTION]
+     regarde : en montant le seuil à 0,8, y aura-t-il plus ou moins de
+               mails classés spam ?
+     faire   : essayer les seuils 0,3 ; 0,5 ; 0,8.
+     fait    : les trois seuils ont été essayés.
+     compris : à 0,8, le modèle ne répond 1 que s'il est très sûr :
+               moins de mails classés spam, donc moins de vrais mails
+               perdus, mais plus de spams qui passent. La courbe, elle, n'a
+               pas bougé : le seuil ne touche ni w ni b.
+  5. Un cas nouveau
+     faire   : placer le robot n'importe où.
+     compris : le modèle donne une probabilité, et le seuil la transforme
+               en décision.
+  6. Le piège
+     faire   : activer « Coût MSE selon w ».
+     compris : avec la sigmoïde, la MSE a des plateaux et n'est plus
+               convexe : retour aux faux creux du Nº 10. Il faut un autre
+               coût : le Nº 18.
+     À TRANCHER (D8) : vérifier dans calculs/ que la courbe obtenue sur
+               ces données montre bien la non-convexité ; sinon prendre un
+               exemple d'illustration annoncé comme tel.
+Quiz          : En passant le seuil de 0,5 à 0,8, le modèle…
+                (a) répond 1 plus souvent
+                (b) répond 1 plus rarement  ← bonne
+                (c) change ses poids w et b
+À ne pas laisser comprendre :
+  - que changer le seuil réentraîne le modèle ou modifie w et b ;
+  - qu'un seuil plus haut donne plus de « 1 » ;
+  - qu'il existe une frontière quand w = 0 ;
+  - que la MSE avec la sigmoïde est non convexe sur tous les jeux de
+    données (c'est un risque, montré ici sur un cas).
+Lien carrousel: pages 2 à 6. Teaser vers 18.
+
+---------------------------------------------------------------------
+LABO 18 · « Punir l'assurance quand elle a tort »  id : entropie · NOUVEAU
+---------------------------------------------------------------------
+Notion        : entropie croisée : coût −log(p) si la vraie classe est 1,
+                −log(1 − p) si c'est 0 ; énorme quand le modèle est sûr et
+                a tort ; convexe pour un modèle linéaire + sigmoïde.
+                Logarithme naturel (les chiffres de la fiche le supposent :
+                −ln 0,9 ≈ 0,11 ; −ln 0,1 ≈ 2,3) ; le panneau écrit « ln ».
+Rôle du robot : la probabilité p que le modèle donne à la classe 1.
+Données       : courbe seule pour les étapes 1 à 5 ; données du 17 pour
+                l'étape 6.
+Scène         : courbe 1D : p de 0,01 à 0,99 en largeur, coût en hauteur.
+                Courbe blanche = entropie croisée ; courbe bronze = MSE
+                (1 − p)², masquée au départ.
+Contrôles     : bascule « Vraie classe : 1 / 0 » (la courbe se retourne),
+                bascule « Comparer à la MSE », bascule « Coût selon w »
+                (étape 6).
+Panneau       : vraie classe y, p, coût entropie croisée, coût MSE ; ligne
+                de calcul J = −[y·ln(p) + (1 − y)·ln(1 − p)].
+Vue 2D        : les deux coûts selon p ; à l'étape 6, J(w) entropie
+                croisée et J(w) MSE côte à côte.
+Parcours :
+  1. Juste et sûr
+     faire   : vraie classe 1, robot à p = 0,9.
+     compris : coût 0,11 : bonne réponse, presque pas de punition.
+  2. Faux et sûr
+     faire   : robot à p = 0,1.
+     compris : coût 2,3 : vingt fois plus. Le modèle était sûr à 90 % de
+               la mauvaise classe.
+  3. Jusqu'au bout  [PRÉDICTION]
+     regarde : et si le modèle était sûr à 99 % de la mauvaise classe ?
+     faire   : robot à p = 0,01.
+     compris : coût 4,6 ; il tend vers l'infini quand p tend vers 0. Être
+               sûr et avoir tort coûte très cher.
+  4. Face à la MSE
+     faire   : activer « Comparer à la MSE ».
+     compris : la MSE ne dépasse jamais 1 : elle punit à peine l'erreur
+               commise avec assurance.
+  5. L'autre classe
+     faire   : passer la vraie classe à 0.
+     compris : la courbe se retourne : cette fois c'est un p proche de 1
+               qui coûte cher. Une seule formule couvre les deux cas.
+  6. Un seul creux
+     faire   : activer « Coût selon w ».
+     compris : sur les données du Nº 17, l'entropie croisée donne un U
+               sans faux creux : tout minimum local est global (Nº 10).
+               C'est vrai pour un modèle linéaire suivi de la sigmoïde.
+Quiz          : Le modèle donne p = 0,01 à un mail qui est un spam (y = 1).
+                Quel coût le punit le plus ?
+                (a) la MSE
+                (b) l'entropie croisée  ← bonne
+                (c) les deux pareil
+À ne pas laisser comprendre :
+  - que le coût est une probabilité ;
+  - que MSE et entropie croisée se valent ;
+  - que le coût reste borné : il tend vers l'infini quand la probabilité
+    de la vraie classe tend vers 0 ;
+  - que l'entropie croisée est convexe dans tous les modèles (ici :
+    linéaire + sigmoïde) ;
+  - que le logarithme est en base 10.
+Lien carrousel: pages 2 à 6. Teaser vers 19.
+
+---------------------------------------------------------------------
+LABO 19 · « Trois scores, trois probabilités »      id : softmax · NOUVEAU
+---------------------------------------------------------------------
+Notion        : logits, softmax(zᵢ) = e^zᵢ / Σⱼ e^zⱼ, classification
+                multi-classes, encodage one-hot ; avec l'entropie croisée,
+                le coût vaut −ln de la probabilité de la bonne classe.
+Rôle du robot : la prédiction : il se pose sur la barre la plus haute. On
+                ne le déplace pas, on règle les scores.
+Données       : exemple du carrousel : chat, chien, oiseau ; scores
+                (2 ; 1 ; 0,1) → probabilités (0,66 ; 0,24 ; 0,10).
+Scène         : trois barres 3D (comme les barres du 02), une par classe,
+                hauteur = probabilité ; une étiquette par barre ; un socle
+                rappelle que la somme fait 1. Si une vraie classe est
+                choisie, sa barre est cerclée de bronze.
+Contrôles     : trois curseurs z_chat, z_chien, z_oiseau ; bouton
+                « Ajouter 1 à tous les scores » ; sélecteur de la vraie
+                classe ; bouton « Revenir à (2 ; 1 ; 0,1) ».
+Panneau       : quatre lignes distinctes et nommées : scores (logits),
+                exponentielles e^z, probabilités, vraie classe en one-hot ;
+                la somme des e^z ; coût −ln(p de la vraie classe).
+Vue 2D        : histogramme des probabilités et rangée one-hot dessous.
+Parcours :
+  1. Des scores aux probabilités
+     regarde : scores (2 ; 1 ; 0,1).
+     faire   : lire les trois lignes du panneau.
+     fait    : le détail du calcul a été déplié.
+     compris : exponentielle de chaque score, puis division par la somme :
+               (0,66 ; 0,24 ; 0,10). Total : 1.
+  2. Tout se tient
+     faire   : monter le score de l'oiseau.
+     compris : sa barre grandit et les deux autres baissent : la somme
+               reste 1.
+  3. Seuls les écarts comptent  [PRÉDICTION]
+     regarde : si l'on ajoute 1 à chaque score, que deviennent les
+               probabilités ?
+     faire   : appuyer sur « Ajouter 1 à tous les scores ».
+     compris : les probabilités ne bougent pas : softmax ne regarde que les
+               écarts entre scores.
+  4. La bonne réponse en one-hot
+     faire   : choisir « oiseau » comme vraie classe.
+     compris : la vraie réponse s'écrit (0 ; 0 ; 1) : un 1 pour la bonne
+               classe, des 0 ailleurs. Ce n'est pas la prédiction. Le coût
+               vaut −ln(0,10) ≈ 2,3.
+  5. Apprendre la bonne réponse
+     faire   : régler les scores pour faire passer le coût sous 0,5.
+     fait    : coût < 0,5 (p de l'oiseau > 0,61).
+     compris : c'est ce que fera l'entraînement : monter le score de la
+               bonne classe, baisser les autres. Même coût qu'au Nº 18,
+               étendu à plusieurs classes.
+Quiz          : Scores (3 ; 2 ; 1,1). Par rapport à (2 ; 1 ; 0,1), les
+                probabilités…
+                (a) augmentent toutes
+                (b) ne changent pas  ← bonne
+                (c) dépassent 1 au total
+                Explication : on a ajouté 1 à chaque score ; seuls les
+                écarts comptent.
+À ne pas laisser comprendre :
+  - que les scores sont déjà des probabilités, ou que leur somme vaut 1 ;
+  - que les probabilités sont les exponentielles brutes (on divise par la
+    somme) ;
+  - qu'ajouter la même valeur à tous les scores change la répartition ;
+  - que le one-hot est la prédiction : c'est la vraie classe.
+Lien carrousel: pages 2 à 6. Teaser vers 20 (saison 2) : « Notre modèle
+                prédit. Mais est-il bon ? ». Dernier labo de la saison.
+
+BILAN DE SAISON 1 (proposition, D10, pas un labo)
+  Le post bilan renvoie à l'accueil. Proposition : une page « Saison 1 »
+  qui liste les 20 labos (01 à 19 et 10b) avec l'état « réussi » de chaque
+  visiteur (déjà gardé par le site), dans l'ordre du voyage.
+
+
+=====================================================================
+6. TRAVAUX TRANSVERSAUX SUR LE MOTEUR
+=====================================================================
+Ce sont des dépendances : sans eux, les labos qui en ont besoin
+perdraient leur sens. À faire avant ou pendant ces labos.
+
+  M1. Curseurs génériques (12, 13, 14, 15, 17, 19)
+      Aujourd'hui : un curseur principal (η, h ou a) et un second (lot B ou
+      b). Il faut une liste de curseurs déclarée par le labo : libellé,
+      unité, min, max, pas, valeur, entier ou non, intervalle exclu (w ≠ 0
+      au 17). Sur téléphone, trois curseurs au plus visibles à la fois.
+  M2. Points avec hauteur et caméra libre (12)
+      Nuage 3D (x, z, hauteur), plan semi-transparent, fils d'écart,
+      rotation de caméra mesurable (pour la condition « fait »).
+  M3. Courbe quelconque sur le plan (14, 16, 17)
+      Généraliser « droite » : tracer une courbe échantillonnée
+      (polynôme, sigmoïde), coupée aux bords du graphique.
+  M4. Zones teintées et exemples mal classés (15)
+      Demi-plans colorés, anneau sur les exemples du mauvais côté.
+  M5. Seuil et frontière verticale (17)
+      Ligne horizontale du seuil, verticale au point de croisement,
+      masquée quand elle n'existe pas.
+  M6. Deux vues 2D côte à côte (12, 13, 18)
+      Même échelle, ou différence d'échelle annoncée.
+  M7. Barres pilotées par l'état (19)
+      Les barres du 02 sont construites une fois (redeco) ; ici elles
+      changent à chaque mouvement de curseur.
+  M8. Données : calculs/ → contenu/labos.json
+      Nouvelles entrées : plan (12), standardisation et chemins (13),
+      polynômes (14), jeu de classification (15 à 18), sigmoïde de
+      référence (16), softmax (19). Une seule chaîne d'export, testée
+      dans tests/.
+  M9. Parcours 05 à 11
+      Écrire « parcours » et « quiz » dans labo.js pour derivee, gradient,
+      descente, minilots, minlocaux, selle, et dans labo-series.js pour
+      cout et regression. 10 et 10b ont chacun leur parcours et leur quiz.
+  M10. Anglais
+      Chaque titre, regarde, faire, compris, quiz passe par L() et a sa
+      traduction en anglais américain.
+  M11. Rattachement épisode → labo
+      Ajouter 12 à 19 dans site/theta-kit/data/episodes-affichage.json,
+      pour que le site ouvre le bon labo et que les posts portent la ligne
+      « À manipuler dans le labo 3D » (A68).
+  M12. Rôle du robot et révélation progressive (tous)
+      Un libellé près du robot, fourni par le labo ; et la possibilité de
+      faire apparaître un élément de scène à partir d'une étape donnée
+      (fils d'écart, seuil, seconde courbe).
+
+
+=====================================================================
+7. DÉCISIONS À TRANCHER (RÉCAPITULATIF)
+=====================================================================
+Aucune n'est validée tant que l'auteur ne l'a pas tranchée.
+
+  D1. Labos 06 et 08 : élargir le domaine à [−3, 3] pour reprendre a = 3
+      (pente 6) et θ = 3, η = 0,1 du carrousel ? Recommandé : oui.
+  D2. Labo 05 : ajouter la bascule « vente aberrante » ? Recommandé : oui,
+      si calculs/ fournit le point et le nouveau creux.
+  D3. Labo 09 : taille du jeu fictif pour compter les époques (ex. 1 000).
+  D4. Labo 12 : si le poids des chambres sort négatif, le montrer et
+      l'expliquer, ou changer de caractéristique ? Recommandé : le montrer.
+  D5. Labo 13 : surface en m² bruts (et non en centaines de m²) ?
+      Recommandé : oui, sinon l'écart d'échelle disparaît.
+  D6. Labo 14 : points d'illustration générés (recommandé) ou relation
+      courbe réelle ?
+  D7. Labos 15 à 18 : Spambase (recommandé, sous réserve de la source et
+      de la licence), Ames « maison chère », ou points d'illustration ?
+  D8. Labo 17 : si la MSE ne montre pas de non-convexité sur les données
+      choisies, accepter un exemple d'illustration ?
+  D9. Identifiants des nouveaux labos : plan, echelle, degre, frontiere,
+      sigmoide, logistique, entropie, softmax.
+  D10. Page « Saison 1 » qui regroupe les labos : oui ou non ?
+
+
+=====================================================================
+8. RECETTE : COMMENT VALIDER UN LABO
+=====================================================================
+Pour chaque labo, avant la date de son épisode.
+
+Contenu
+  [ ] Les nombres affichés sont ceux de calculs/ (comparaison automatique
+      avec labos.json) et ceux du carrousel quand il en donne.
+  [ ] Mêmes symboles et mêmes unités que le carrousel ; unités visibles.
+  [ ] Données réelles sourcées ; points d'illustration annoncés.
+  [ ] Aucune notion d'un épisode pas encore sorti, sauf une annonce en une
+      phrase.
+  [ ] Chaque point « À ne pas laisser comprendre » est écarté par un texte
+      du labo.
+
+Parcours
+  [ ] Le rôle du robot est annoncé et rappelé près de lui.
+  [ ] Chaque étape se valide par l'action demandée, et seulement par elle ;
+      on ne peut pas tout valider en cliquant au hasard.
+  [ ] Chaque action a une conséquence visible dans la scène, la vue 2D et
+      le panneau à la fois.
+  [ ] Le quiz porte sur la relation vue dans le labo ; une mauvaise
+      réponse affiche « Pas tout à fait… » et permet de réessayer.
+  [ ] Rejouer remet le labo dans son état de départ.
+
+Interface
+  [ ] Scène lisible, éléments révélés au fil des étapes si besoin.
+  [ ] Couleurs conformes à la convention, ou légende locale.
+  [ ] Sur téléphone : scène nette, curseurs utilisables au doigt, texte
+      lisible, pas de défilement horizontal.
+  [ ] Sans WebGL : le message de secours s'affiche, la vue 2D reste
+      utilisable.
+
+Publication
+  [ ] Anglais : aucun texte resté en français.
+  [ ] Aucun tiret long.
+  [ ] Le labo est fermé avant la sortie de l'épisode et s'ouvre après le
+      post (vérifier l'adresse /fr/labo/<id>).
+  [ ] Le post de l'épisode porte la ligne « À manipuler dans le labo 3D »
+      avec la bonne adresse.
+
+Le but, en une ligne : à la fin, l'apprenant relie ce qu'il voit, ce qu'il
+manipule, ce qui change et ce que cela veut dire, et sait citer un piège de
+la méthode.

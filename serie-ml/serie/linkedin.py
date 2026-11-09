@@ -34,7 +34,7 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from serie.depot import Depot, cle_episode
-from serie.reprise import changer_statut, ecrire_atomique, etapes_a_refaire, lire_etat
+from serie.reprise import changer_statut, ecrire_atomique, ecrire_etat, etapes_a_refaire, lire_etat
 from serie.schemas import Statut
 
 AUTORISATION = "https://www.linkedin.com/oauth/v2/authorization"
@@ -383,6 +383,31 @@ def publier_episode(depot: Depot, numero: int, client: Client, maintenant: dt.da
     return envoyer(depot, preparer(depot, numero, maintenant, hors_calendrier), client, maintenant)
 
 
+def supprimer(depot: Depot, cle: str, client: Client, maintenant: dt.datetime) -> dict:
+    """Supprime un post publié (le premier commentaire part avec lui), garde sa trace dans publier/linkedin/supprimes/,
+    puis repasse l'épisode à « relu » : il pourra être republié à la main (`publier --hors-calendrier`)."""
+    cle = cle if cle.startswith("bilan-") else cle_episode(cle)
+    trace_f = journal_post(depot, cle)
+    if not trace_f.is_file():
+        raise ErreurLinkedIn(f"{cle} : aucun post publié à supprimer (pas de {trace_f.relative_to(depot.racine).as_posix()})")
+    trace = yaml.safe_load(trace_f.read_text(encoding="utf-8")) or {}
+    if not trace.get("post"):
+        raise ErreurLinkedIn(f"{cle} : trace sans identifiant de post")
+    client.supprimer_post(trace["post"])
+    trace["supprime_le"] = maintenant.isoformat(timespec="seconds")
+    archive = depot.racine / "publier" / "linkedin" / "supprimes" / f"{cle}-{maintenant:%Y%m%d-%H%M%S}.yaml"
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    ecrire_atomique(archive, yaml.safe_dump(trace, allow_unicode=True, sort_keys=False))
+    trace_f.unlink()
+    brut = lire_etat(depot)
+    entree = brut["bilans"][int(cle.removeprefix("bilan-"))] if cle.startswith("bilan-") else brut["episodes"][cle]
+    if entree["statut"] in (Statut.PUBLIE.value, Statut.MESURE.value):
+        entree["statut"] = Statut.RELU.value  # seul chemin de « publié » vers « relu » : le post n'existe plus
+        entree["publie_le"] = None
+        ecrire_etat(depot, brut)
+    return trace
+
+
 def _ecrire_trace(depot: Depot, cle: str, trace: dict) -> None:
     journal_post(depot, cle).parent.mkdir(parents=True, exist_ok=True)
     ecrire_atomique(journal_post(depot, cle), yaml.safe_dump(trace, allow_unicode=True, sort_keys=False))
@@ -618,6 +643,14 @@ def executer(args, depot: Depot) -> int:
                     print(f"Commentaire refusé : {exc}")
                 client.supprimer_post(post)
                 print("Post de test supprimé.")
+            return 0
+        if action == "supprimer":
+            if not args.oui:
+                print("Rien n'est supprimé sans --oui.")
+                return 1
+            trace = supprimer(depot, args.numero, _client(coffre), _maintenant())
+            noter(depot, f"{args.numero} supprimé de LinkedIn ({trace.get('lien', '?')})", _maintenant())
+            print(f"Supprimé : {trace.get('lien', trace['post'])} ; l'épisode revient à « relu ».")
             return 0
         if action == "tourner":
             if not tournee_ici(depot):

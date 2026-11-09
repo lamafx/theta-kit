@@ -646,6 +646,17 @@ class Calendrier(Strict):
     date_lancement: dt.date | None = None
     saisons: dict[int, Saison]
     pause_entre_saisons_semaines: Annotated[int, Field(ge=0)]
+    # Reports décidés par l'auteur (`serie reporter`, admin) : « 05 » ou « bilan-1 » → date et heure
+    # d'Abidjan qui remplacent la date calculée. Les autres posts ne bougent pas.
+    reports: dict[str, dt.datetime] = Field(default_factory=dict)
+
+    @field_validator("reports")
+    @classmethod
+    def _cles_reports(cls, v: dict[str, dt.datetime]) -> dict[str, dt.datetime]:
+        for cle in v:
+            if not re.fullmatch(r"\d{2}|bilan-\d+", cle):
+                raise ValueError(f"reports : clé « {cle} » ; « 05 » ou « bilan-1 » attendu")
+        return v
 
     @field_validator("creneaux")
     @classmethod
