@@ -1,6 +1,8 @@
 // Lit serie-ml (source de vérité) et produit ce dont le site a besoin :
-//   contenu/episodes.json, public/pdf/theta-NN.pdf, public/covers/theta-NN.webp.
+//   contenu/episodes.json, public/pdf/<empreinte>/theta-NN.pdf (adresse impossible à deviner, révélée par app/pdf/
+//   une fois l'épisode paru), contenu/pdf-cles.json, public/covers/theta-NN.webp.
 // Lecture seule côté serie-ml. À relancer après chaque épisode relu : npm run sync
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -71,6 +73,7 @@ const etat = yamlDe('etat.yaml').episodes;
 const calendrier = yamlDe('calendrier.yaml');
 const LISIBLES = new Set(['relu', 'publie', 'mesure']);
 fs.mkdirSync(path.join(SITE, 'public', 'pdf'), { recursive: true });
+const clesPdf = {};
 fs.mkdirSync(path.join(SITE, 'public', 'covers'), { recursive: true });
 
 const episodes = [];
@@ -92,7 +95,15 @@ for (const f of fiches) {
     const pdf = fs.readdirSync(dossier).find((x) => x.endsWith('.pdf'));
     const apercus = fs.readdirSync(path.join(dossier, 'apercus')).filter((x) => x.endsWith('.png')).sort();
     if (!pdf || !apercus.length) throw new Error(`épisode ${n} relu mais sans PDF ou aperçu`);
-    fs.copyFileSync(path.join(dossier, pdf), path.join(SITE, 'public', 'pdf', `theta-${n}.pdf`));
+    // Dossier nommé d'après l'empreinte du PDF : impossible à deviner ; app/pdf/[fichier] y renvoie une fois paru.
+    const octetsPdf = fs.readFileSync(path.join(dossier, pdf));
+    const cle = crypto.createHash('sha256').update(octetsPdf).digest('hex').slice(0, 24);
+    for (const ancien of fs.readdirSync(path.join(SITE, 'public', 'pdf'))) {
+      if (ancien !== cle && fs.existsSync(path.join(SITE, 'public', 'pdf', ancien, `theta-${n}.pdf`))) fs.rmSync(path.join(SITE, 'public', 'pdf', ancien), { recursive: true });
+    }
+    fs.mkdirSync(path.join(SITE, 'public', 'pdf', cle), { recursive: true });
+    fs.writeFileSync(path.join(SITE, 'public', 'pdf', cle, `theta-${n}.pdf`), octetsPdf);
+    clesPdf[n] = cle;
     await sharp(path.join(dossier, 'apercus', apercus[0]))
       .resize({ width: 1080 }).webp({ quality: 82 })
       .toFile(path.join(SITE, 'public', 'covers', `theta-${n}.webp`));
@@ -129,5 +140,10 @@ const sortie = {
   episodes,
 };
 fs.writeFileSync(path.join(SITE, 'contenu', 'labos.json'), JSON.stringify(BRUT.__labos) + '\n', 'utf8');
+fs.writeFileSync(
+  path.join(SITE, 'contenu', 'pdf-cles.json'),
+  JSON.stringify({ _note: "Fichier généré par scripts/sync-serie.mjs. Dossier de chaque PDF (empreinte du fichier) : lu seulement par app/pdf/[fichier], jamais envoyé au navigateur avant la sortie de l'épisode.", ...clesPdf }, null, 1) + '\n',
+  'utf8',
+);
 fs.writeFileSync(path.join(SITE, 'contenu', 'episodes.json'), JSON.stringify(sortie, null, 2) + '\n', 'utf8');
 console.log(`${episodes.length} épisodes lus, ${episodes.filter((e) => e.pret).length} prêts, ${postsParSemaine} posts par semaine.`);
