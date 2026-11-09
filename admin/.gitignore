@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.vercel/
+.env
+.env.*
+next-env.d.ts
+tsconfig.tsbuildinfo
+# Instantané de la série, refait à chaque build (scripts/instantane.mjs) : jamais dans Git.
+.instantane/

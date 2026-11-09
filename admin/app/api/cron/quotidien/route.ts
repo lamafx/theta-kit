@@ -1,0 +1,40 @@
+import { NextResponse, type NextRequest } from 'next/server';
+import { donnees } from '@/lib/donnees';
+import { joursAvant } from '@/lib/format';
+import { notifierUneFois, pushActif } from '@/lib/push';
+import { synthese } from '@/lib/synthese';
+
+export const runtime = 'nodejs';
+
+/**
+ * Tâche quotidienne (Vercel Cron, vercel.json, 7 h à Abidjan) : avance sous le minimum, épisodes à relire,
+ * labo sans recette à J-7, jeton bientôt expiré. Chaque alerte part une fois par jour au plus.
+ */
+export async function GET(req: NextRequest) {
+  if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}` || !process.env.CRON_SECRET) {
+    return NextResponse.json({ erreur: 'non autorisé' }, { status: 401 });
+  }
+  if (!pushActif()) return NextResponse.json({ ok: true, envoyees: 0, raison: 'notifications non configurées' });
+  const d = await donnees();
+  if (d.indisponible) return NextResponse.json({ ok: false, raison: 'instantané indisponible' });
+  const s = synthese(d);
+  const jour = new Date().toISOString().slice(0, 10);
+  const envois: Promise<number>[] = [];
+  if (s.relusAvance < s.avanceMin) {
+    envois.push(notifierUneFois(`avance-${jour}`, { titre: 'Avance sous le minimum', texte: `${s.relusAvance} épisode(s) relu(s) d’avance, minimum ${s.avanceMin}.`, lien: '/admin/episodes?filtre=a-relire' }));
+  }
+  if (s.aRelire.length) {
+    envois.push(notifierUneFois(`relire-${jour}`, { titre: 'À relire', texte: s.aRelire.map((e) => `Nº ${e.n} · ${e.titre}`).join(' ; '), lien: `/admin/episodes/${s.aRelire[0].n}` }));
+  }
+  for (const l of s.labos.recetteAFaire) {
+    envois.push(notifierUneFois(`recette-${l.id}-${jour}`, { titre: `Labo ${l.id} : recette à faire`, texte: `Il ouvre dans ${joursAvant(l.date_ouverture)} jour(s) et sa recette n’est pas validée.`, lien: `/admin/labos/${l.id}` }));
+  }
+  if (s.jetonJours !== null && [30, 14, 7, 3, 1].includes(s.jetonJours)) {
+    envois.push(notifierUneFois(`jeton-${s.jetonJours}`, { titre: 'Jeton LinkedIn', texte: `Il expire dans ${s.jetonJours} jour(s) : renouvelez-le sur le PC.`, lien: '/admin/publication' }, 3 * 86400));
+  }
+  if (s.prochain?.date_prevue && joursAvant(s.prochain.date_prevue) === 1 && s.prochain.statut !== 'relu') {
+    envois.push(notifierUneFois(`demain-${s.prochain.n}`, { titre: `Nº ${s.prochain.n} demain, pas relu`, texte: 'La tournée refusera de le publier tant qu’il n’est pas relu.', lien: `/admin/episodes/${s.prochain.n}` }));
+  }
+  const n = (await Promise.all(envois)).reduce((a, b) => a + b, 0);
+  return NextResponse.json({ ok: true, envoyees: n });
+}

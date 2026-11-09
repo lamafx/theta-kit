@@ -1,0 +1,112 @@
+# Gestes lancés depuis l'admin (theta-ml.vercel.app/admin) : valider un épisode, noter une correction, recette
+# d'un labo, trancher une décision, chiffres LinkedIn, pilote de la tournée, report d'un post.
+#
+# serie-ml fait foi : admin/outils/geste.py écrit dans serie-ml en passant par la CLI `serie`, puis l'état est
+# commité ; Vercel reconstruit le site et l'admin. Les gestes qui parlent à LinkedIn passent par linkedin.yml.
+# Les entrées ne sont jamais recopiées dans un script : elles passent par des variables d'environnement.
+name: Admin
+run-name: "Admin · ${{ inputs.geste }} ${{ inputs.cible }} · ${{ inputs.jeton }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      geste:
+        description: "valider, corriger, recette, trancher, mesurer, pilote, reporter"
+        type: choice
+        options: [valider, corriger, recette, trancher, mesurer, pilote, reporter]
+      cible:
+        description: "épisode (05), bilan-1, labo (cout) ou décision (05-D1)"
+        type: string
+        default: ""
+      valeur:
+        description: "valeur du geste (texte ou JSON)"
+        type: string
+        default: ""
+      jeton:
+        description: "identifiant du geste, pour que l'admin retrouve cette tournée"
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: admin
+  cancel-in-progress: false
+
+jobs:
+  geste:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUTF8: "1"
+      GESTE: ${{ inputs.geste }}
+      CIBLE: ${{ inputs.cible }}
+      VALEUR: ${{ inputs.valeur }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: serie-ml/pyproject.toml
+
+      - name: Installer la série
+        working-directory: serie-ml
+        run: pip install --quiet -e .
+
+      - name: Geste
+        id: geste
+        continue-on-error: true
+        run: python admin/outils/geste.py --geste "$GESTE" --cible "$CIBLE" --valeur "$VALEUR" --tournee "$RUN_URL"
+
+      # Un report change la date d'un épisode : le site la relit dans contenu/episodes.json (npm run sync).
+      - uses: actions/setup-node@v4
+        if: inputs.geste == 'reporter' && steps.geste.outcome == 'success'
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: site/theta-kit/package-lock.json
+
+      - name: Resynchroniser le site
+        if: inputs.geste == 'reporter' && steps.geste.outcome == 'success'
+        working-directory: site/theta-kit
+        env:
+          PYTHON: python
+        run: |
+          npm ci --no-audit --no-fund --loglevel=error
+          node scripts/sync-serie.mjs
+
+      - name: Enregistrer
+        if: always()
+        run: |
+          git add -A -- serie-ml site/theta-kit/contenu site/theta-kit/public/pdf site/theta-kit/public/covers
+          if git diff --cached --quiet; then echo "Rien à enregistrer."; exit 0; fi
+          # Commits au nom de l'auteur : Vercel déploie aussi un dépôt privé sans les refuser.
+          git config user.name "lamafx"
+          git config user.email "l.kamfox7@gmail.com"
+          git commit -m "Admin : $GESTE $CIBLE" -m "Geste lancé depuis l'admin. Tournée : $RUN_URL"
+          for essai in 1 2 3 4 5; do
+            git pull --rebase --quiet origin "${GITHUB_REF_NAME}" && git push --quiet origin "HEAD:${GITHUB_REF_NAME}" && exit 0
+            sleep $((essai * 5))
+          done
+          echo "::error title=Push impossible::le geste est fait mais pas enregistré ; à refaire."
+          exit 1
+
+      - name: Prévenir l'admin
+        if: always()
+        env:
+          ADMIN_URL: ${{ vars.ADMIN_URL }}
+          SECRET: ${{ secrets.ADMIN_NOTIF_SECRET }}
+          ISSUE: ${{ steps.geste.outcome }}
+        run: |
+          [ -n "$ADMIN_URL" ] && [ -n "$SECRET" ] || exit 0
+          if [ "$ISSUE" = "success" ]; then titre="Fait : $GESTE $CIBLE"; else titre="Refusé : $GESTE $CIBLE"; fi
+          corps=$(T="$titre" python -c 'import json,os; print(json.dumps({"titre": os.environ["T"], "texte": "Détail dans l’admin.", "lien": "/admin/publication", "tag": "geste"}))')
+          curl -fsS -m 15 -X POST "$ADMIN_URL/api/notifier" -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" -d "$corps" || true
+
+      - name: Résultat
+        if: steps.geste.outcome != 'success'
+        run: exit 1
