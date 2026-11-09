@@ -1,0 +1,6 @@
+# Journal des gestes lancés depuis l'admin (salle de publication comprise).
+gestes:
+- le: '2026-11-09T23:45:45+00:00'
+  geste: etat
+  resultat: ok
+  tournee: https://github.com/lamafx/theta-kit/actions/runs/42723008588
