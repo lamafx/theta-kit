@@ -24,7 +24,17 @@ export type Episode = {
   mesures: Record<string, any> | null;
 };
 
-export type Bilan = { cle: string; saison: number; statut: Statut; publie_le: string | null; date_prevue: string | null; pdf: string | null };
+export type Bilan = {
+  cle: string;
+  saison: number;
+  statut: Statut;
+  publie_le: string | null;
+  date_prevue: string | null;
+  pdf: string | null;
+  pages?: string[];
+  post?: { titre: string | null; texte: string | null };
+  trace?: { lien: string | null; publie_a: string | null } | null;
+};
 
 export type Recette = { cases?: Record<string, boolean>; validee_le?: string | null; note?: string | null };
 

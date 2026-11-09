@@ -79,16 +79,16 @@ export default async function Episodes({ searchParams }: { searchParams: Promise
                   </div>
                 </div>
               ))}
-              {bilan && f.cle === 'tous' ? (
+              {bilan && (f.cle === 'tous' || (f.cle === 'a-relire' && bilan.statut === 'genere')) ? (
                 <div className="lignes" style={{ borderTop: '1px solid var(--ligne)', marginTop: 6 }}>
-                  <li style={{ listStyle: 'none' }}>
+                  <Link href={`/episodes/${bilan.cle}`}>
                     <span className="num">B{s}</span>
                     <span className="titre">Bilan de la saison {s}</span>
                     <span className="fin">
                       <span className="mono petit discret">{dateCourte(bilan.publie_le ?? bilan.date_prevue)}</span>
                       <Pastille statut={bilan.statut} />
                     </span>
-                  </li>
+                  </Link>
                 </div>
               ) : null}
             </div>

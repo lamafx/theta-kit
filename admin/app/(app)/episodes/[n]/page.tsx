@@ -7,6 +7,7 @@ import { donnees, estPublie, laboOuvert } from '@/lib/donnees';
 import { B, dateLongue, relatif } from '@/lib/format';
 import Relecture from './Relecture';
 import Mesures from './Mesures';
+import FicheBilan from './FicheBilan';
 
 export const metadata = { title: 'Épisode' };
 
@@ -14,6 +15,11 @@ export default async function Fiche({ params }: { params: Promise<{ n: string }>
   const { n } = await params;
   const d = await donnees();
   if (d.indisponible) return null;
+  if (n.startsWith('bilan-')) {
+    const b = d.bilans.find((x) => x.cle === n);
+    if (!b) notFound();
+    return <FicheBilan b={b} />;
+  }
   const e = d.episodes.find((x) => x.n === n);
   if (!e) notFound();
   const decisions = d.decisions.filter((x) => e.decisions.includes(x.id) && x.choix?.statut !== 'tranchee');

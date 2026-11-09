@@ -7,6 +7,7 @@ export function synthese(d: Donnees, maintenant = new Date()) {
   const eps = d.episodes ?? [];
   const publies = eps.filter(estPublie);
   const aRelire = eps.filter((e) => e.statut === 'genere');
+  const bilansARelire = (d.bilans ?? []).filter((b) => b.statut === 'genere');
   // Produits mais pas encore générés : l'épisode attend la relecture du relecteur (Claude) avant la vôtre.
   const enProduction = eps.filter((e) => e.statut === 'a_faire' && e.a_refaire.length && e.a_refaire.length < 9);
   const relusAvance = avance(eps);
@@ -27,6 +28,7 @@ export function synthese(d: Donnees, maintenant = new Date()) {
     total: eps.length,
     publies,
     aRelire,
+    bilansARelire,
     enProduction,
     relusAvance,
     avanceMin: d.calendrier?.avance_min ?? 4,

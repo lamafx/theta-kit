@@ -12,7 +12,7 @@ export default async function Coquille({ children }: { children: React.ReactNode
   const s = d.indisponible ? null : synthese(d);
   const pastilles = s
     ? {
-        episodes: s.aRelire.length || undefined,
+        episodes: s.aRelire.length + s.bilansARelire.length || undefined,
         labos: s.labos.recetteAFaire.length || undefined,
         decisions: s.decisionsOuvertes.length || undefined,
         publication: s.jetonJours !== null && s.jetonJours <= 14 ? 1 : undefined,

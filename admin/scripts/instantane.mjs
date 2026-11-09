@@ -278,6 +278,11 @@ const episodes = siteEpisodes.map((se) => {
 // Bilans de saison
 const bilans = Object.entries(etatBrut.bilans ?? {}).map(([s, b]) => {
   const pub = path.join(SERIE, 'publier', `bilan-${s}`);
+  const sor = path.join(SERIE, 'sortie', `bilan-${s}`);
+  const pngs = (d) => (existe(d) ? fs.readdirSync(d).filter((f) => /^page-\d+\.png$/.test(f)).sort().map((f) => path.join(d, f)) : []);
+  // Les pages rendues (sortie/) d'abord : les aperçus de publier/ peuvent n'en garder qu'une partie.
+  const pages = pngs(sor).length ? pngs(sor) : pngs(path.join(pub, 'apercus'));
+  const trace = lireYaml(path.join(SERIE, 'publier', 'linkedin', `bilan-${s}.yaml`));
   return {
     cle: `bilan-${s}`,
     saison: Number(s),
@@ -285,6 +290,9 @@ const bilans = Object.entries(etatBrut.bilans ?? {}).map(([s, b]) => {
     publie_le: b?.publie_le ? String(b.publie_le).slice(0, 10) : null,
     date_prevue: lireDateTexte(lire(path.join(pub, 'date.txt'))) ?? prevues[`bilan-${s}`] ?? null,
     pdf: copier(existe(pub) ? path.join(pub, fs.readdirSync(pub).find((f) => f.endsWith('.pdf')) ?? '_') : null),
+    pages: pages.map(copier),
+    post: { titre: lire(path.join(pub, 'titre.txt'))?.trim() ?? null, texte: lire(path.join(pub, 'texte.txt'))?.trim() ?? null },
+    trace: trace ? { lien: trace.lien ?? null, publie_a: trace.publie_a ?? null } : null,
   };
 });
 

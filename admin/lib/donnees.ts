@@ -29,13 +29,18 @@ export async function donnees(): Promise<Donnees & { direct: boolean }> {
   try {
     const brut = await fichierGithub('serie-ml/etat.yaml', 30);
     if (!brut) return { ...d, direct: false };
-    const etat = YAML.parse(brut, { schema: 'core' }) as { episodes: Record<string, { statut: Statut; publie_le?: string | null }> };
+    type Entree = { statut: Statut; publie_le?: string | null };
+    const etat = YAML.parse(brut, { schema: 'core' }) as { episodes: Record<string, Entree>; bilans?: Record<string, Entree> };
     const episodes: Episode[] = d.episodes.map((e) => {
       const v = etat.episodes?.[e.n];
       if (!v) return e;
       return { ...e, statut: v.statut, publie_le: v.publie_le ? String(v.publie_le).slice(0, 10) : null };
     });
-    return { ...d, episodes, direct: true };
+    const bilans = (d.bilans ?? []).map((b) => {
+      const v = etat.bilans?.[String(b.saison)];
+      return v ? { ...b, statut: v.statut, publie_le: v.publie_le ? String(v.publie_le).slice(0, 10) : null } : b;
+    });
+    return { ...d, episodes, bilans, direct: true };
   } catch {
     return { ...d, direct: false };
   }

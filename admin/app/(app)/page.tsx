@@ -93,14 +93,25 @@ export default async function Accueil() {
           </p>
         </Carte>
 
-        <Carte className={`c6${s.aRelire.length ? ' alerte' : ''}`} titre="À relire" droite={<Link href="/episodes?filtre=a-relire">tout voir</Link>}>
-          {s.aRelire.length === 0 && s.enProduction.length === 0 ? <p className="vide">Rien à relire.</p> : null}
+        <Carte className={`c6${s.aRelire.length + s.bilansARelire.length ? ' alerte' : ''}`} titre="À relire" droite={<Link href="/episodes?filtre=a-relire">tout voir</Link>}>
+          {s.aRelire.length + s.bilansARelire.length === 0 && s.enProduction.length === 0 ? <p className="vide">Rien à relire.</p> : null}
           <ul className="lignes">
             {s.aRelire.map((e) => (
               <li key={e.n}>
                 <span className="num">Nº {e.n}</span>
                 <Link className="titre" href={`/episodes/${e.n}`}>
                   {e.titre}
+                </Link>
+                <span className="fin">
+                  <Pastille statut="genere" />
+                </span>
+              </li>
+            ))}
+            {s.bilansARelire.map((b) => (
+              <li key={b.cle}>
+                <span className="num">B{b.saison}</span>
+                <Link className="titre" href={`/episodes/${b.cle}`}>
+                  Bilan de la saison {b.saison}
                 </Link>
                 <span className="fin">
                   <Pastille statut="genere" />
