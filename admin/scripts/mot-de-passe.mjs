@@ -11,7 +11,8 @@ function aleatoire(n) {
   return Array.from(o, (b) => ALPHABET[b % ALPHABET.length]).join('');
 }
 
-const choisi = process.argv[2];
+// Les options (« --json ») ne sont jamais prises pour un mot de passe choisi.
+const choisi = process.argv.slice(2).find((a) => !a.startsWith('--'));
 // Quatre groupes de 5 caractères : facile à recopier sur un téléphone, ~115 bits d'entropie.
 const motDePasse = choisi ?? [0, 1, 2, 3].map(() => aleatoire(5)).join('-');
 const N = 1 << 15, r = 8, p = 1;
