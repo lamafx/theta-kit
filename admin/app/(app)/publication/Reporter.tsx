@@ -9,7 +9,10 @@ export default function Reporter({ n, titre, actuelle, avant, apres }: { n: stri
   const [ouvert, setOuvert] = useState(false);
   const [quand, setQuand] = useState(actuelle.slice(0, 16));
   const iso = quand ? `${quand}:00.000Z` : '';
-  const dansLOrdre = !!quand && (!avant || iso > avant) && (!apres || iso < apres) && new Date(iso).getTime() > Date.now() + 10 * 60000;
+  const d = quand ? new Date(iso) : null;
+  // La tournée GitHub passe du mardi au vendredi, de 8 h à 10 h 55 (heure d'Abidjan = UTC).
+  const creneau = !!d && d.getUTCDay() >= 2 && d.getUTCDay() <= 5 && d.getUTCHours() * 60 + d.getUTCMinutes() >= 480 && d.getUTCHours() * 60 + d.getUTCMinutes() <= 655;
+  const dansLOrdre = !!quand && (!avant || iso > avant) && (!apres || iso < apres) && new Date(iso).getTime() > Date.now() + 10 * 60000 && creneau;
   if (!ouvert) {
     return (
       <button type="button" className="btn btn-petit" data-geste onClick={() => setOuvert(true)}>
@@ -46,7 +49,7 @@ export default function Reporter({ n, titre, actuelle, avant, apres }: { n: stri
         }
       />
       <button type="button" className="btn btn-petit" onClick={() => setOuvert(false)}>Fermer</button>
-      {!dansLOrdre ? <span className="signal err">Entre le post précédent et le suivant, dans le futur.</span> : null}
+      {!dansLOrdre ? <span className="signal err">Entre le post précédent et le suivant, dans le futur, du mardi au vendredi entre 8 h et 10 h 55.</span> : null}
     </span>
   );
 }

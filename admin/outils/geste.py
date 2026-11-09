@@ -176,6 +176,15 @@ def pilote(_cible: str, valeur: str) -> str:
 
 def reporter(cible: str, valeur: str) -> str:
     cle = cible if cible.startswith("bilan-") else cle_episode(cible)
+    m = re.fullmatch(r"\s*(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2})\s*", valeur)
+    if not m:
+        raise Refus(f"date « {valeur} » : AAAA-MM-JJ HH:MM attendu")
+    quand = dt.datetime(*map(int, m.groups()))
+    pilote_actuel = (SERIE / "publier" / "linkedin" / "pilote.txt").read_text(encoding="utf-8").strip()
+    # La tournée GitHub ne passe que du mardi au vendredi, de 8 h à 10 h 55 (linkedin.yml) : un post placé ailleurs
+    # ne partirait jamais seul.
+    if pilote_actuel == "github" and not (1 <= quand.weekday() <= 4 and (8, 0) <= (quand.hour, quand.minute) <= (10, 55)):
+        raise Refus("la tournée GitHub passe du mardi au vendredi, de 8 h à 10 h 55 : choisissez un créneau dans ces jours et ces heures")
     return serie("reporter", cle, valeur)
 
 
