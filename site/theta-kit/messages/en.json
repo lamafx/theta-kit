@@ -377,7 +377,7 @@
     "conf_h4": "Your rights",
     "conf_p4": "You can ask to view, correct or delete your data, and unsubscribe at any time, by writing to lamkam760@gmail.com.",
     "conf_h5": "Audience measurement",
-    "conf_p5": "The site uses Vercel Analytics, which measures visits without cookies. No advertising cookie is set. A technical cookie remembers your language.",
+    "conf_p5": "The site counts its visits without cookies: pages viewed, where visitors come from (LinkedIn, search…), country, device type, language, and how the labs are used (steps reached, quiz answered). To count the same visitor only once a day, a fingerprint is computed from the IP address, the browser and a daily salt; the IP address is never stored and the salt is destroyed the next day, which makes the fingerprint useless. Counters are kept for at most 400 days. The site also uses Vercel Analytics, without cookies. No advertising cookie is set. A technical cookie remembers your language. If your browser asks not to be tracked (Do Not Track), nothing is counted.",
     "ment_titre": "Legal notice",
     "ment_h1": "Publisher",
     "ment_p1": "Ladji Lama Kamagate, Abidjan, Côte d’Ivoire. Contact: lamkam760@gmail.com.",

@@ -5,6 +5,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import BarreMobile from '@/components/BarreMobile';
+import Compteur from '@/components/Compteur';
 import { routing } from '@/i18n/routing';
 import '@/styles/commun.css';
 
@@ -38,7 +39,7 @@ export default async function Layout({ children, params }: { children: React.Rea
   return (
     <html lang={locale} className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
       <body>
-        <NextIntlClientProvider messages={messages}>{children}<BarreMobile /></NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}<BarreMobile /><Compteur /></NextIntlClientProvider>
         <Analytics />
       </body>
     </html>

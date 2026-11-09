@@ -1,0 +1,5 @@
+{
+  "_note": "Ordre et visibilité des sections de la page profil, modifiables depuis l’admin (Profil et CV). La couverture reste toujours en tête.",
+  "ordre": ["episode", "projets", "preuves", "parcours", "outils", "contact"],
+  "masquees": []
+}

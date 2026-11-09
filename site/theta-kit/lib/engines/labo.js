@@ -42,9 +42,13 @@ this.ORDER.forEach((k) => { this.picks[k] = () => this.pickTheme(k); });
 this.pc = { i: 0, fait: false, choix: null }; this.snap = {};
 this.pcSuivant = () => { const et = this.th().parcours; if (et) this.pcDebut(Math.min(et.length, this.pc.i + 1)); };
 this.pcRejouer = () => { const th = this.th(); if (th.rejouer) th.rejouer(); if (this.three) { this.resetPos(); this.redeco(); } this.pcDebut(0); };
-this.pcChoisir = (j) => { this.pc = { ...this.pc, choix: j }; this.lastKey = null; this.setState({ pcv: Date.now() }); };
+this.pcChoisir = (j) => { const q = this.th().quiz; this.pcEssais = (this.pcEssais || 0) + 1; if (q && j === q.bonne) this.signaler('quiz', null, this.pcEssais); this.pc = { ...this.pc, choix: j }; this.lastKey = null; this.setState({ pcv: Date.now() }); };
+// Compteur maison (sans cookie) : étapes atteintes et quiz réussi, envoyés par lib/compteur.ts.
+this.signaler = (e, k, essai) => { try { window.dispatchEvent(new CustomEvent('theta:labo', { detail: { id: this.themeKey(), e, k, essai } })); } catch (_) {} };
 }
 pcDebut(i) {
+if (i === 0) this.pcEssais = 0;
+if (i > 0) this.signaler('etape', i);
 this.pc = { i: i, fait: false, choix: null };
 this.snap = { pa: this.state.pa, pb: this.state.pb, p: this.params ? this.params.slice() : null };
 const et = this.th().parcours; if (et && et[i] && et[i].debut) et[i].debut();
