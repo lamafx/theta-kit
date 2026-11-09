@@ -7,20 +7,36 @@
 # Secret requis : THETA_LINKEDIN_JETON (le JSON du jeton, copié depuis le gestionnaire d'identifiants Windows).
 # Le jeton dure 60 jours. Pour le renouveler : `serie linkedin connecter` sur le PC,
 # puis `python outils/jeton-vers-github.py` depuis serie-ml/.
+#
+# Depuis le 2026-11-10, l'admin (theta-ml.vercel.app/admin, salle de publication) lance aussi ce workflow :
+# état, aperçu, essai, tourner, publier un post hors calendrier, supprimer un post. Son jeton (`jeton`) entre
+# dans le titre de la tournée pour que l'admin la retrouve ; chaque geste est noté dans journal-admin.yaml.
 name: LinkedIn
+run-name: "LinkedIn · ${{ inputs.action || 'tournée' }} ${{ inputs.cle }} · ${{ inputs.jeton }}"
 
 on:
   schedule:
-    # Heure d'Abidjan = UTC. Toutes les 5 minutes de 8 h à 10 h 55, chaque jour (épisodes et bilans).
+    # Heure d'Abidjan = UTC. Toutes les 5 minutes de 8 h à 10 h 55, du mardi au vendredi : les posts partent le
+    # mardi et le jeudi, le lendemain prévient d'un post manqué (A65). Dépôt privé : 2 000 minutes gratuites par
+    # mois, d'où des jours limités (décision de l'auteur du 2026-11-09). Un report (`serie reporter`) doit rester
+    # dans ces jours et ces heures ; l'admin le vérifie.
     # GitHub peut retarder un déclenchement de quelques minutes : la tournée tolère 2 heures de retard.
-    - cron: "*/5 8-10 * * *"
+    - cron: "*/5 8-10 * * 2-5"
   workflow_dispatch:
     inputs:
       action:
-        description: "tourner (par défaut), etat (jeton et post dû), apercu (le prochain post et ses refus), essai (vrai post de test, relations seulement, supprimé aussitôt)"
+        description: "tourner (par défaut), etat (jeton et post dû), apercu (le prochain post et ses refus), essai (vrai post de test, relations seulement, supprimé aussitôt), publier (un post hors calendrier, cle requise), supprimer (un post publié, cle requise)"
         type: choice
         default: tourner
-        options: [tourner, etat, apercu, essai]
+        options: [tourner, etat, apercu, essai, publier, supprimer]
+      cle:
+        description: "épisode (05) ou bilan-N, pour publier et supprimer"
+        type: string
+        default: ""
+      jeton:
+        description: "identifiant du geste de l'admin"
+        type: string
+        default: ""
 
 permissions:
   contents: write
@@ -59,25 +75,46 @@ jobs:
         continue-on-error: true
         env:
           ACTION: ${{ inputs.action || 'tourner' }}
+          CLE: ${{ inputs.cle }}
           THETA_ALERTES: ${{ runner.temp }}/alertes.txt
+          SORTIE: ${{ runner.temp }}/sortie.txt
         run: |
+          set -o pipefail
+          case "$ACTION" in
+            publier|supprimer)
+              [[ "$CLE" =~ ^([0-9]{1,2}|bilan-[0-9]+)$ ]] || { echo "::error title=Refus::clé « $CLE » invalide"; exit 1; } ;;
+          esac
           case "$ACTION" in
             essai) python -m serie --racine . linkedin essai 1 --poster ;;
+            publier) python -m serie --racine . linkedin publier "$CLE" --hors-calendrier --oui | tee "$SORTIE" ;;
+            supprimer) python -m serie --racine . linkedin supprimer "$CLE" --oui | tee "$SORTIE" ;;
             etat)  python -m serie --racine . linkedin etat ;;
             apercu)
               # Le premier épisode encore « relu » : celui qui partira au prochain créneau.
               n=$(python -c 'import yaml; e = yaml.safe_load(open("etat.yaml", encoding="utf-8"))["episodes"]; print(next(int(k) for k, v in sorted(e.items()) if v["statut"] == "relu"))')
               python -m serie --racine . linkedin apercu "$n" || true ;;
-            *)     python -m serie --racine . linkedin tourner ;;
+            *)     python -m serie --racine . linkedin tourner | tee "$SORTIE" ;;
           esac
+
+      - name: Journal de l'admin
+        if: always() && github.event_name == 'workflow_dispatch'
+        env:
+          ACTION: ${{ inputs.action }}
+          CLE: ${{ inputs.cle }}
+          ISSUE: ${{ steps.tournee.outcome }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$ISSUE" = "success" ]; then r="ok"; else r="échec (voir la tournée)"; fi
+          python ../admin/outils/geste.py --geste journal --cible "$ACTION:$CLE" --resultat "$r" --tournee "$RUN_URL" || true
 
       - name: Enregistrer l'état (trace du post, statut publié)
         if: always()
         run: |
           git add -A -- etat.yaml publier
           if git diff --cached --quiet; then echo "Rien à enregistrer."; exit 0; fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Au nom de l'auteur : avec l'offre gratuite, Vercel refuse de déployer le commit d'un robot sur un dépôt privé.
+          git config user.name "lamafx"
+          git config user.email "l.kamfox7@gmail.com"
           git commit -m "LinkedIn : post publié par la tournée GitHub Actions"
           for essai in 1 2 3 4 5; do
             git pull --rebase --quiet origin "${GITHUB_REF_NAME}" && git push --quiet origin "HEAD:${GITHUB_REF_NAME}" && exit 0
@@ -85,6 +122,23 @@ jobs:
           done
           echo "::error::Push impossible : la trace du post n'est pas enregistrée, à faire à la main."
           exit 1
+
+      - name: Prévenir l'admin
+        if: always()
+        env:
+          ADMIN_URL: ${{ vars.ADMIN_URL }}
+          SECRET: ${{ secrets.ADMIN_NOTIF_SECRET }}
+          SORTIE: ${{ runner.temp }}/sortie.txt
+          THETA_ALERTES: ${{ runner.temp }}/alertes.txt
+        run: |
+          [ -n "$ADMIN_URL" ] && [ -n "$SECRET" ] || exit 0
+          envoyer() {
+            corps=$(T="$1" X="$2" python -c 'import json,os; print(json.dumps({"titre": os.environ["T"][:80], "texte": os.environ["X"][:300], "lien": "/admin/publication", "tag": "linkedin"}))')
+            curl -fsS -m 15 -X POST "$ADMIN_URL/api/notifier" -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" -d "$corps" || true
+          }
+          if [ -s "$SORTIE" ] && grep -Eq "^(Nº [0-9]+|Bilan [0-9]+) publié :|^Publié :" "$SORTIE"; then envoyer "Post publié sur LinkedIn" "$(grep -Em1 "^(Nº [0-9]+|Bilan [0-9]+) publié :|^Publié :" "$SORTIE")"; fi
+          if [ -s "$SORTIE" ] && grep -q "^Supprimé" "$SORTIE"; then envoyer "Post supprimé" "$(head -1 "$SORTIE")"; fi
+          if [ -s "$THETA_ALERTES" ]; then envoyer "Alerte de la tournée LinkedIn" "$(head -1 "$THETA_ALERTES")"; fi
 
       - name: Alertes en issues
         if: always()
