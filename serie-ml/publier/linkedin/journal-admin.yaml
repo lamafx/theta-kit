@@ -12,3 +12,8 @@ gestes:
   geste: apercu
   resultat: ok
   tournee: https://github.com/lamafx/theta-kit/actions/runs/42748312858
+- le: '2026-11-10T08:48:43+00:00'
+  geste: publier
+  cible: '01'
+  resultat: ok
+  tournee: https://github.com/lamafx/theta-kit/actions/runs/42785493282
