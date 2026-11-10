@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import Anneaux from '@/components/Anneaux';
 
 export const metadata = { title: 'Hors ligne' };
 
 export default function HorsLigne() {
   return (
     <main className="connexion">
+      <Anneaux />
       <div className="boite">
         <p className="sur">θ Admin</p>
         <h1>

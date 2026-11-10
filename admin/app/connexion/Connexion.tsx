@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Anneaux from '@/components/Anneaux';
 import Robot3D from '@/components/Robot3D';
 import { api } from '@/lib/client';
 
@@ -26,6 +27,7 @@ export default function Connexion({ suite, configure }: { suite: string; configu
 
   return (
     <main className="connexion">
+      <Anneaux />
       <div className="boite">
         <Robot3D expression={ok ? 'happy' : 'neutral'} />
         <p className="sur">Série θ Théta</p>

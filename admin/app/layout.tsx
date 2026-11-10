@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
-import Fond3D from '@/components/Fond3D';
 import EnregistrerSW from '@/components/EnregistrerSW';
 import '@/styles/admin.css';
 
@@ -17,13 +16,12 @@ export const metadata: Metadata = {
   formatDetection: { telephone: false },
 };
 
-export const viewport: Viewport = { themeColor: '#0A0F17', width: 'device-width', initialScale: 1, viewportFit: 'cover' };
+export const viewport: Viewport = { themeColor: '#F5F8FC', width: 'device-width', initialScale: 1, viewportFit: 'cover' };
 
 export default function Racine({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${sans.variable} ${mono.variable} ${serif.variable}`}>
       <body>
-        <Fond3D />
         {children}
         <EnregistrerSW />
       </body>

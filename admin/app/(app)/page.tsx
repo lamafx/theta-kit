@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Anneaux from '@/components/Anneaux';
 import Robot3D from '@/components/Robot3D';
 import { Carte, Jauge, Pastille } from '@/components/Bloc';
 import { IcExterne, IcPdf } from '@/components/Icones';
@@ -34,7 +35,8 @@ export default async function Accueil() {
   return (
     <>
       <section className="heros">
-        <div>
+        <Anneaux />
+        <div style={{ position: 'relative' }}>
           <p className="sur">{dateLongue(new Date().toISOString(), false)}</p>
           <h1>
             {salut()}, <em>Ladji Lama</em>
@@ -49,11 +51,13 @@ export default async function Accueil() {
 
       <div className="grille" style={{ marginTop: 8 }}>
         {p ? (
-          <Carte className="c8 mise" titre="Prochain post" droite={<span className="mono">{relatif(p.date_prevue)}</span>}>
-            <p className="sur" style={{ color: 'var(--pale)' }}>
+          <Carte className="c8" titre="Prochain post" droite={<span className="mono">{relatif(p.date_prevue)}</span>}>
+            <div style={{ display: 'grid', gridTemplateColumns: p.pages[0] ? 'minmax(0,1fr) minmax(110px, 190px)' : '1fr', gap: 24, alignItems: 'start' }}>
+            <div>
+            <p className="sur">
               Nº {p.n} · {p.chapitre.titre}
             </p>
-            <h2 style={{ fontSize: 'clamp(22px,3vw,30px)', fontWeight: 500, letterSpacing: '-.03em', margin: '0 0 6px' }}>{p.titre}</h2>
+            <h2 style={{ fontSize: 'clamp(28px,3.4vw,44px)', fontWeight: 500, letterSpacing: '-.04em', margin: '0 0 10px', lineHeight: 1.05 }}>{p.titre}</h2>
             <p className="discret" style={{ margin: '0 0 16px' }}>
               {dateLongue(p.date_prevue)} · <Pastille statut={p.statut} /> · labo {labosDuProchain.map((l) => l.id).join(', ') || '—'} :{' '}
               {labosDuProchain.length ? 'fermé jusqu’à la sortie' : 'aucun'}
@@ -73,9 +77,16 @@ export default async function Accueil() {
                 </Link>
               ) : null}
             </div>
+            </div>
+            {p.pages[0] ? (
+              <Link href={`/episodes/${p.n}`} aria-label={`Carrousel du Nº ${p.n}`}>
+                <img src={`${B}/api/fichier?chemin=${encodeURIComponent(p.pages[0])}`} alt="" style={{ width: '100%', aspectRatio: '1080/1350', objectFit: 'cover', borderRadius: 14, boxShadow: '0 30px 50px -30px rgba(10,15,23,.6)', background: 'var(--night)' }} />
+              </Link>
+            ) : null}
+            </div>
           </Carte>
         ) : (
-          <Carte className="c8 mise" titre="Prochain post">
+          <Carte className="c8" titre="Prochain post">
             <p>Aucun post prévu.</p>
           </Carte>
         )}

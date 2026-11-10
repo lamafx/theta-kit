@@ -24,7 +24,7 @@ export default function EntreeSalle() {
     }
   }
   return (
-    <div className="carte" style={{ maxWidth: 460, textAlign: 'center' }}>
+    <div className="carte mise" style={{ maxWidth: 460, textAlign: 'center' }}>
       <div style={{ width: 150, margin: '0 auto' }}>
         <Robot3D />
       </div>

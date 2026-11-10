@@ -25,7 +25,7 @@ export default function Nav({ pastilles, version }: Props) {
   return (
     <nav className="nav" aria-label="Navigation de l’admin">
       <Link href="/" className="nav-marque">
-        <b>θ</b>
+        <b>θ Théta</b>
         <span>Admin</span>
       </Link>
       {LIENS.map(({ href, label, Ic, cle, large }) => (
