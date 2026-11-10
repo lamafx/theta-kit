@@ -4,3 +4,7 @@ gestes:
   geste: etat
   resultat: ok
   tournee: https://github.com/lamafx/theta-kit/actions/runs/42723008588
+- le: '2026-11-10T03:15:35+00:00'
+  geste: apercu
+  resultat: ok
+  tournee: https://github.com/lamafx/theta-kit/actions/runs/42748206195
