@@ -1,5 +1,7 @@
 import Nav from '@/components/Nav';
 import HorsLigne from '@/components/HorsLigne';
+import Progression from '@/components/Progression';
+import { Suspense } from 'react';
 import { donnees } from '@/lib/donnees';
 import { exigerSession } from '@/lib/garde';
 import { synthese } from '@/lib/synthese';
@@ -21,6 +23,9 @@ export default async function Coquille({ children }: { children: React.ReactNode
   const version = d.commit ? `${d.commit.slice(0, 7)} · ${d.direct ? 'direct' : 'instantané'}` : 'instantané';
   return (
     <div className="coquille">
+      <Suspense fallback={null}>
+        <Progression />
+      </Suspense>
       <Nav pastilles={pastilles} version={version} />
       <main className="principal">
         <HorsLigne genereLe={d.genere_le} />
