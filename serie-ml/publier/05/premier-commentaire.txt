@@ -1,3 +1,6 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/05
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/cout
+
 Références de l’épisode Nº 05 :
 - MLCC · Loss : https://developers.google.com/machine-learning/crash-course/linear-regression/loss
 - D2L 3.1 : https://d2l.ai/chapter_linear-regression/linear-regression.html

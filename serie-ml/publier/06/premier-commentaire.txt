@@ -1,3 +1,6 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/06
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/derivee
+
 Références de l’épisode Nº 06 :
 - D2L 2.4 · Calculus : https://d2l.ai/chapter_preliminaries/calculus.html
 - DLB ch. 4 : https://www.deeplearningbook.org/contents/numerical.html

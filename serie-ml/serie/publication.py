@@ -99,6 +99,15 @@ def liens_site(numero: int | None, labos: list[str]) -> str:
     return "\n".join(lignes)
 
 
+def annonce_liens(labos: list[str]) -> str:
+    """La ligne du post qui renvoie au premier commentaire, où sont les liens (décision du 2026-11-10, A68)."""
+    if not labos:
+        return "Le lien vers le site est en commentaire."
+    if len(labos) == 1:
+        return "Les liens vers le site et le labo 3D sont en commentaire."
+    return "Les liens vers le site et les labos 3D sont en commentaire."
+
+
 def signature(ep: Episode, charte: Charte) -> str:
     serie = charte.donnees["serie"]
     return f"Nº {ep.fiche.numero:02d} · {serie['affichage']}, {serie['sous_titre']}. {prochain(ep)}"
@@ -176,11 +185,12 @@ def controler_hashtags(texte: str, lieu: str) -> list[Diagnostic]:
     return diags
 
 
-def premier_commentaire(fiche: Fiche, images: list[ImageRetenue]) -> str:
-    """Références de la fiche et crédits des images. Les titres et citations sont recopiés tels quels :
-    « D2L 12.3 » est un numéro de section, pas un nombre décimal."""
+def premier_commentaire(fiche: Fiche, images: list[ImageRetenue], liens: str | None = None) -> str:
+    """Liens du site et du labo (A68, en tête), puis références de la fiche et crédits des images. Les titres et
+    citations sont recopiés tels quels : « D2L 12.3 » est un numéro de section, pas un nombre décimal."""
     deux_points = typographie.INSECABLE + ": "
-    lignes = [composer(f"Références de l'épisode Nº {fiche.numero:02d} :")]
+    lignes = [composer(liens), ""] if liens else []
+    lignes += [composer(f"Références de l'épisode Nº {fiche.numero:02d} :")]
     for c in fiche.references.cours:
         lignes.append(f"- {c.titre}{deux_points}{c.url}")
     for s in fiche.references.sources_originales:
@@ -198,8 +208,9 @@ def texte_du_post(moteur: Moteur, ep: Episode) -> tuple[str | None, list[ImageRe
     images = [im for p in ep.contenu.pages if p.type in ("contexte", "capture")
               if (im := image_retenue(moteur, p.image)) is not None]
     licences = sorted({l for im in images if (l := licence_avec_lien(im.fiche))})
-    site = liens_site(ep.fiche.numero, labos_du_site(moteur.depot, ep.fiche.numero))
-    return (composer_texte(ep, moteur.charte, licences, site) if ep.contenu.linkedin else None), images
+    # Les liens vont en premier commentaire (moins de diffusion pour un post à lien externe) ; le post l'annonce.
+    annonce = annonce_liens(labos_du_site(moteur.depot, ep.fiche.numero))
+    return (composer_texte(ep, moteur.charte, licences, annonce) if ep.contenu.linkedin else None), images
 
 
 @dataclass
@@ -240,7 +251,8 @@ def publier_episode(depot: Depot, numero: int, contenu: Path | None = None, sort
             shutil.copy(png, dossier / "couvertures" / f"{style}.png")
     ecrire_atomique(dossier / "titre.txt", titre_document(ep.fiche) + "\n")
     ecrire_atomique(dossier / "texte.txt", texte)
-    ecrire_atomique(dossier / "premier-commentaire.txt", premier_commentaire(ep.fiche, images))
+    liens = liens_site(numero, labos_du_site(depot, numero))
+    ecrire_atomique(dossier / "premier-commentaire.txt", premier_commentaire(ep.fiche, images, liens))
     date = date_en_clair(quand, ep.calendrier.fuseau) if quand else "à fixer : date_lancement absente de calendrier.yaml"
     ecrire_atomique(dossier / "date.txt", date + "\n")
     return Publication(dossier, diags)

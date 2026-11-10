@@ -1,3 +1,6 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/04
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/modele
+
 Références de l’épisode Nº 04 :
 - MLCC · Linear regression : https://developers.google.com/machine-learning/crash-course/linear-regression
 - MLCC · Machine Learning Glossary : https://developers.google.com/machine-learning/glossary

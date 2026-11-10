@@ -1,3 +1,6 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/02
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/donnees
+
 Références de l’épisode Nº 02 :
 - MLCC · Feature vectors : https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
 - MLCC · Machine Learning Glossary : https://developers.google.com/machine-learning/glossary

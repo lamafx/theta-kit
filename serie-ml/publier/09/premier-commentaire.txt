@@ -1,3 +1,6 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/09
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/minilots
+
 Références de l’épisode Nº 09 :
 - D2L 12.4 : https://d2l.ai/chapter_optimization/sgd.html
 - D2L 12.5 : https://d2l.ai/chapter_optimization/minibatch-sgd.html

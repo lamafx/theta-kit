@@ -14,7 +14,6 @@ Si la flèche ne vise pas le but, comment arrive-t-on quand même ? En la reca
 
 Nº 07 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 08 : La descente de gradient.
 
-À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/07
-À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/gradient
+Les liens vers le site et le labo 3D sont en commentaire.
 
 #MachineLearning #IntelligenceArtificielle #Mathematiques #Gradient #ThetaML

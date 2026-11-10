@@ -297,15 +297,23 @@ def test_liens_site_episode_et_labos():
     assert liens_site(None, []) == "La saison sur le site : https://theta-ml.vercel.app/fr"
 
 
-def test_texte_avec_liens_du_site(ep08, charte):
-    from serie.publication import liens_site
-    texte = composer_texte(ep08, charte, [], liens_site(8, ["descente"]))
-    # Les liens suivent la signature et précèdent les hashtags ; les adresses gardent leur forme exacte.
-    assert "\n\nÀ retrouver sur le site" in texte
-    assert "https://theta-ml.vercel.app/fr/episodes/08\n" in texte
-    assert "https://theta-ml.vercel.app/fr/labo/descente\n\n#MachineLearning" in texte
+def test_texte_annonce_les_liens_en_commentaire(ep08, charte):
+    """Décision du 2026-11-10 (A68) : les liens vont en premier commentaire, le post l'annonce en une ligne."""
+    from serie.publication import annonce_liens
+    texte = composer_texte(ep08, charte, [], annonce_liens(["descente"]))
+    assert "\n\nLes liens vers le site et le labo 3D sont en commentaire.\n\n#MachineLearning" in texte
+    assert "https://" not in texte
     assert texte.endswith("#ThetaML\n") and controler_hashtags(texte, "test") == []
     assert 60 <= mots_du_texte(texte) <= 220
+    assert annonce_liens([]) == "Le lien vers le site est en commentaire."
+    assert annonce_liens(["minlocaux", "selle"]).startswith("Les liens vers le site et les labos 3D")
+
+
+def test_premier_commentaire_commence_par_les_liens(ep08):
+    from serie.publication import liens_site, premier_commentaire
+    texte = premier_commentaire(ep08.fiche, [], liens_site(8, ["descente"]))
+    assert texte.startswith("À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/08\n"
+                            "À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/descente\n\nRéférences")
 
 
 def test_labos_du_site_absent(tmp_path):

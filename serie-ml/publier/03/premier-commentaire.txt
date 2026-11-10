@@ -1,3 +1,6 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/03
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/familles
+
 Références de l’épisode Nº 03 :
 - DLB ch. 5 : https://www.deeplearningbook.org/contents/ml.html
 - Sutton et Barto, Reinforcement Learning, An Introduction, § 1.1 : http://incompleteideas.net/book/first/ebook/node7.html

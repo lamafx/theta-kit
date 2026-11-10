@@ -13,7 +13,6 @@ Mini-exercice : un fichier clients contient « couleur préférée » et « 
 
 Nº 02 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 03 : Les trois familles d’apprentissage.
 
-À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/02
-À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/donnees
+Les liens vers le site et le labo 3D sont en commentaire.
 
 #MachineLearning #IntelligenceArtificielle #DataScience #PreparationDesDonnees #ThetaML
