@@ -70,15 +70,15 @@
           "url": "https://developers.google.com/machine-learning/glossary"
         },
         {
-          "libelle": "Samuel (1959), Some Studies in Machine Learning Using the Game of Checkers, IBM Journal of R&D",
+          "libelle": "Samuel (1959)",
           "url": "https://doi.org/10.1147/rd.33.0210"
         },
         {
-          "libelle": "Google Workspace Blog (2019), Spam does not bring us joy, ridding Gmail of 100 million more spam messages with TensorFlow",
+          "libelle": "Google Workspace Blog (2019)",
           "url": "https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow"
         },
         {
-          "libelle": "Koh et al. (2020), WILDS, A Benchmark of in-the-Wild Distribution Shifts, arXiv:2012.07421",
+          "libelle": "Koh et al. (2020)",
           "url": "https://arxiv.org/abs/2012.07421"
         },
         {
@@ -152,19 +152,19 @@
           "url": "https://developers.google.com/machine-learning/glossary"
         },
         {
-          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "libelle": "BCEAO · Cours de référence des principales devises contre…",
           "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
         },
         {
-          "libelle": "MLCC · Categorical data, vocabulary and one-hot encoding",
+          "libelle": "MLCC · Categorical data",
           "url": "https://developers.google.com/machine-learning/crash-course/categorical-data/one-hot-encoding"
         },
         {
-          "libelle": "scikit-learn · Preprocessing data, Encoding categorical features",
+          "libelle": "scikit-learn · Preprocessing data",
           "url": "https://scikit-learn.org/stable/modules/preprocessing.html"
         },
         {
-          "libelle": "scikit-learn · Ensembles, Categorical Features Support",
+          "libelle": "scikit-learn · Ensembles",
           "url": "https://scikit-learn.org/stable/modules/ensemble.html"
         }
       ]
@@ -230,15 +230,15 @@
           "url": "https://www.deeplearningbook.org/contents/ml.html"
         },
         {
-          "libelle": "Sutton et Barto, Reinforcement Learning, An Introduction, § 1.1",
+          "libelle": "Sutton et Barto",
           "url": "http://incompleteideas.net/book/first/ebook/node7.html"
         },
         {
-          "libelle": "Sutton et Barto, Reinforcement Learning, An Introduction, § 3.1",
+          "libelle": "Sutton et Barto",
           "url": "http://incompleteideas.net/book/first/ebook/node28.html"
         },
         {
-          "libelle": "Levine, Kumar, Tucker et Fu (2020), Offline Reinforcement Learning, Tutorial, Review, and Perspectives on Open Problems, arXiv:2005.01643",
+          "libelle": "Levine, Kumar, Tucker et Fu (2020)",
           "url": "https://arxiv.org/abs/2005.01643"
         }
       ]
@@ -307,7 +307,7 @@
           "url": "https://ds100.org/fa23-course-notes/ols/ols.html"
         },
         {
-          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "libelle": "BCEAO · Cours de référence des principales devises contre…",
           "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
         }
       ]
@@ -382,11 +382,11 @@
           "url": "https://d2l.ai/chapter_linear-regression/linear-regression.html"
         },
         {
-          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "libelle": "BCEAO · Cours de référence des principales devises contre…",
           "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
         },
         {
-          "libelle": "NIST/SEMATECH e-Handbook of Statistical Methods, 4.4.4 How can I tell if a model fits my data?",
+          "libelle": "NIST/SEMATECH e-Handbook of Statistical Methods",
           "url": "https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm"
         }
       ]
@@ -512,7 +512,7 @@
           "url": "https://www.deeplearningbook.org/contents/numerical.html"
         },
         {
-          "libelle": "MIT OCW 18.02SC · Gradient, definition and properties (D. Auroux, 2010)",
+          "libelle": "MIT OCW 18.02SC · Gradient",
           "url": "https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/pages/2.-partial-derivatives/part-b-chain-rule-gradient-and-directional-derivatives/session-35-gradient-definition-perpendicular-to-level-curves/"
         }
       ]
@@ -596,23 +596,23 @@
           "url": "https://d2l.ai/chapter_optimization/gd.html"
         },
         {
-          "libelle": "BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)",
+          "libelle": "BCEAO · Cours de référence des principales devises contre…",
           "url": "https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa"
         },
         {
-          "libelle": "Ruder (2016), An overview of gradient descent optimization algorithms",
+          "libelle": "Ruder (2016)",
           "url": "https://arxiv.org/abs/1609.04747"
         },
         {
-          "libelle": "Cauchy (1847), Méthode générale pour la résolution des systèmes d’équations simultanées, Comptes rendus de l’Académie des sciences 25, 536-538 ; traduction anglaise en ligne",
+          "libelle": "Cauchy (1847)",
           "url": "https://gtfp.cs.rhul.ac.uk/pulskamp/Cauchy/Orbits/1847%20CR%20536%28383%29.pdf"
         },
         {
-          "libelle": "Lemaréchal (2012), Cauchy and the Gradient Method, Documenta Mathematica, Extra Volume ISMP, 251-254",
+          "libelle": "Lemaréchal (2012)",
           "url": "https://ems.press/books/dms/251/4938"
         },
         {
-          "libelle": "Brown et al. (2020), Language Models are Few-Shot Learners, arXiv:2005.14165",
+          "libelle": "Brown et al. (2020)",
           "url": "https://arxiv.org/abs/2005.14165"
         }
       ]
@@ -695,7 +695,7 @@
           "url": "https://www.deeplearningbook.org/contents/optimization.html"
         },
         {
-          "libelle": "Robbins et Monro (1951), A Stochastic Approximation Method, Annals of Mathematical Statistics",
+          "libelle": "Robbins et Monro (1951)",
           "url": "https://doi.org/10.1214/aoms/1177729586"
         }
       ]
@@ -764,7 +764,7 @@
           "url": "https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent"
         },
         {
-          "libelle": "Dauphin et al. (2014), Identifying and attacking the saddle point problem",
+          "libelle": "Dauphin et al. (2014)",
           "url": "https://arxiv.org/abs/1406.2572"
         }
       ]

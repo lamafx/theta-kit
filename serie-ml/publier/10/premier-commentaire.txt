@@ -6,4 +6,4 @@ Références de l’épisode Nº 10 :
 - D2L 12.1 : https://d2l.ai/chapter_optimization/optimization-intro.html
 - D2L 12.2 · Convexity : https://d2l.ai/chapter_optimization/convexity.html
 - MLCC · Gradient descent : https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
-- Dauphin et al. (2014), Identifying and attacking the saddle point problem : https://arxiv.org/abs/1406.2572
+- Dauphin et al. (2014) : https://arxiv.org/abs/1406.2572

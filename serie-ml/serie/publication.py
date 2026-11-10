@@ -185,6 +185,18 @@ def controler_hashtags(texte: str, lieu: str) -> list[Diagnostic]:
     return diags
 
 
+def citation_courte(citation: str) -> str:
+    """Le commentaire reste court (décision du 2026-11-10) : « Samuel (1959), Some Studies… » devient « Samuel (1959) ».
+    Le titre complet reste dans la fiche et sur le site ; le lien suffit pour le retrouver."""
+    m = re.match(r"^(.{2,60}?\(\d{4}[a-z]?\))", citation)
+    if m:
+        return m.group(1)
+    if len(citation) <= 50:
+        return citation
+    coupe = re.split(r", | \(", citation, maxsplit=1)[0]
+    return coupe if len(coupe) <= 60 else coupe[:57].rstrip(" ,;:") + "…"
+
+
 def premier_commentaire(fiche: Fiche, images: list[ImageRetenue], liens: str | None = None) -> str:
     """Liens du site et du labo (A68, en tête), puis références de la fiche et crédits des images. Les titres et
     citations sont recopiés tels quels : « D2L 12.3 » est un numéro de section, pas un nombre décimal."""
@@ -192,10 +204,10 @@ def premier_commentaire(fiche: Fiche, images: list[ImageRetenue], liens: str | N
     lignes = [composer(liens), ""] if liens else []
     lignes += [composer(f"Références de l'épisode Nº {fiche.numero:02d} :")]
     for c in fiche.references.cours:
-        lignes.append(f"- {c.titre}{deux_points}{c.url}")
+        lignes.append(f"- {citation_courte(c.titre)}{deux_points}{c.url}")
     for s in fiche.references.sources_originales:
         liens = " ; ".join(l.url for l in s.liens)
-        lignes.append(f"- {s.citation}" + (f"{deux_points}{liens}" if liens else ""))
+        lignes.append(f"- {citation_courte(s.citation)}" + (f"{deux_points}{liens}" if liens else ""))
     if images:
         lignes += ["", composer("Images :")]
         for im in images:

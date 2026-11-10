@@ -4,9 +4,9 @@
 Références de l’épisode Nº 01 :
 - DLB ch. 5 : https://www.deeplearningbook.org/contents/ml.html
 - MLCC · Machine Learning Glossary : https://developers.google.com/machine-learning/glossary
-- Samuel (1959), Some Studies in Machine Learning Using the Game of Checkers, IBM Journal of R&D : https://doi.org/10.1147/rd.33.0210
-- Google Workspace Blog (2019), Spam does not bring us joy, ridding Gmail of 100 million more spam messages with TensorFlow : https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
-- Koh et al. (2020), WILDS, A Benchmark of in-the-Wild Distribution Shifts, arXiv:2012.07421 : https://arxiv.org/abs/2012.07421
+- Samuel (1959) : https://doi.org/10.1147/rd.33.0210
+- Google Workspace Blog (2019) : https://workspace.google.com/blog/product-announcements/ridding-gmail-of-100-million-more-spam-messages-with-tensorflow
+- Koh et al. (2020) : https://arxiv.org/abs/2012.07421
 
 Images :
 - Photo : NASA · Public domain · Wikimedia Commons : https://commons.wikimedia.org/wiki/File:IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg

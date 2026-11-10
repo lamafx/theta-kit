@@ -3,6 +3,6 @@
 
 Références de l’épisode Nº 03 :
 - DLB ch. 5 : https://www.deeplearningbook.org/contents/ml.html
-- Sutton et Barto, Reinforcement Learning, An Introduction, § 1.1 : http://incompleteideas.net/book/first/ebook/node7.html
-- Sutton et Barto, Reinforcement Learning, An Introduction, § 3.1 : http://incompleteideas.net/book/first/ebook/node28.html
-- Levine, Kumar, Tucker et Fu (2020), Offline Reinforcement Learning, Tutorial, Review, and Perspectives on Open Problems, arXiv:2005.01643 : https://arxiv.org/abs/2005.01643
+- Sutton et Barto : http://incompleteideas.net/book/first/ebook/node7.html
+- Sutton et Barto : http://incompleteideas.net/book/first/ebook/node28.html
+- Levine, Kumar, Tucker et Fu (2020) : https://arxiv.org/abs/2005.01643

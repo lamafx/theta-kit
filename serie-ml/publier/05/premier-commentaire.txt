@@ -4,6 +4,6 @@
 Références de l’épisode Nº 05 :
 - MLCC · Loss : https://developers.google.com/machine-learning/crash-course/linear-regression/loss
 - D2L 3.1 : https://d2l.ai/chapter_linear-regression/linear-regression.html
-- BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA) : https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
-- NIST/SEMATECH e-Handbook of Statistical Methods, 4.4.4 How can I tell if a model fits my data? : https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm
-- De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 31 octobre 2026 : https://doi.org/10.1080/10691898.2011.11889627 ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+- BCEAO · Cours de référence des principales devises contre… : https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+- NIST/SEMATECH e-Handbook of Statistical Methods : https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd44.htm
+- De Cock (2011) : https://doi.org/10.1080/10691898.2011.11889627 ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt
