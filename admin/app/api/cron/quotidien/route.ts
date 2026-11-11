@@ -1,8 +1,10 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { donnees } from '@/lib/donnees';
+import { donnees, estPublie } from '@/lib/donnees';
+import { githubActif, lancerWorkflow } from '@/lib/github';
 import { joursAvant } from '@/lib/format';
 import { notifierUneFois, pushActif } from '@/lib/push';
 import { synthese } from '@/lib/synthese';
+import type { Episode } from '@/lib/types';
 
 export const runtime = 'nodejs';
 
@@ -14,9 +16,10 @@ export async function GET(req: NextRequest) {
   if (req.headers.get('authorization') !== `Bearer ${process.env.CRON_SECRET}` || !process.env.CRON_SECRET) {
     return NextResponse.json({ erreur: 'non autorisé' }, { status: 401 });
   }
-  if (!pushActif()) return NextResponse.json({ ok: true, envoyees: 0, raison: 'notifications non configurées' });
   const d = await donnees();
   if (d.indisponible) return NextResponse.json({ ok: false, raison: 'instantané indisponible' });
+  const reveils = await reveiller([...d.episodes, ...d.bilans]);
+  if (!pushActif()) return NextResponse.json({ ok: true, reveils, envoyees: 0, raison: 'notifications non configurées' });
   const s = synthese(d);
   const jour = new Date().toISOString().slice(0, 10);
   const envois: Promise<number>[] = [];
@@ -36,5 +39,29 @@ export async function GET(req: NextRequest) {
     envois.push(notifierUneFois(`demain-${s.prochain.n}`, { titre: `Nº ${s.prochain.n} demain, pas relu`, texte: 'La tournée refusera de le publier tant qu’il n’est pas relu.', lien: `/admin/episodes/${s.prochain.n}` }));
   }
   const n = (await Promise.all(envois)).reduce((a, b) => a + b, 0);
-  return NextResponse.json({ ok: true, envoyees: n });
+  return NextResponse.json({ ok: true, reveils, envoyees: n });
+}
+
+/**
+ * Le cron de GitHub saute des tournées (Nº 01, 2026-11-10) : pour chaque post prévu aujourd'hui et pas encore
+ * publié, lance linkedin-reveil.yml, qui attend l'heure exacte puis lance la tournée.
+ */
+async function reveiller(posts: { statut: Episode['statut']; date_prevue: string | null }[]) {
+  if (!githubActif()) return 'accès GitHub non configuré';
+  const maintenant = Date.now();
+  const heures = [...new Set(posts
+    .filter((p) => p.date_prevue && !estPublie(p))
+    .map((p) => new Date(p.date_prevue!))
+    .filter((q) => q.getTime() > maintenant - 30 * 60_000 && q.getTime() < maintenant + 4 * 3600_000)
+    .map((q) => q.toISOString()))];
+  const lances: string[] = [];
+  for (const a of heures) {
+    try {
+      await lancerWorkflow('linkedin-reveil.yml', { a });
+      lances.push(a);
+    } catch (e) {
+      lances.push(`${a} : échec (${(e as Error).message})`);
+    }
+  }
+  return lances;
 }

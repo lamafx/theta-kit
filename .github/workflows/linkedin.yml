@@ -97,7 +97,8 @@ jobs:
           esac
 
       - name: Journal de l'admin
-        if: always() && github.event_name == 'workflow_dispatch'
+        # Seulement pour un geste de l'admin (il porte un jeton) : le réveil ne remplit pas le journal.
+        if: always() && github.event_name == 'workflow_dispatch' && inputs.jeton != ''
         env:
           ACTION: ${{ inputs.action }}
           CLE: ${{ inputs.cle }}

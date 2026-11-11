@@ -1,0 +1,38 @@
+# Réveil de la tournée LinkedIn à l'heure exacte d'un post.
+#
+# Le cron de GitHub n'est pas fiable : le 2026-11-10, aucune tournée planifiée n'a tourné entre 8 h et 11 h
+# (3 passages en 3 jours, à des heures au hasard), et le Nº 01 a dû partir à la main depuis l'admin.
+# La tâche quotidienne de l'admin (Vercel Cron, entre 7 h et 8 h) lance ce workflow les jours de post avec l'heure
+# prévue. Il attend cette heure, puis lance la tournée (linkedin.yml), et la relance 5 et 15 minutes plus tard :
+# une tournée ne publie jamais deux fois le même post. Ce workflow n'a pas le jeton LinkedIn.
+name: LinkedIn · réveil
+run-name: "LinkedIn · réveil pour ${{ inputs.a }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      a:
+        description: "heure prévue du post, ISO 8601 (2026-11-12T08:30:00Z)"
+        type: string
+        required: true
+
+permissions:
+  actions: write
+
+jobs:
+  reveil:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Attendre l'heure du post, puis lancer la tournée
+        env:
+          A: ${{ inputs.a }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cible=$(date -d "$A" +%s) || { echo "::error::heure « $A » illisible"; exit 1; }
+          for decalage in 20 320 920; do
+            reste=$(( cible + decalage - $(date +%s) ))
+            if [ "$reste" -gt 14400 ]; then echo "::error::heure trop lointaine ($reste s)"; exit 1; fi
+            if [ "$reste" -gt 0 ]; then echo "Attente de $reste s"; sleep "$reste"; fi
+            gh workflow run linkedin.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f action=tourner
+          done
