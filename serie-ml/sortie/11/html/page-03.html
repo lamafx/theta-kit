@@ -124,7 +124,7 @@ strong{font-weight:600}
 .rappel{margin-top:52px;font-family:'Geist Mono',monospace;font-size:22px;font-weight:500;letter-spacing:0.08em;color:#5F6673}
 .grand-titre{margin:22px 0 0;font-size:108px;line-height:0.95;font-weight:600;letter-spacing:-0.035em;color:#0E1116}
 .intuition{margin:28px 0 0;max-width:820px;font-size:30px;line-height:1.42;font-weight:400;color:#3E4450}
-.visuel-ouverture{margin-top:40px;display:flex;flex-direction:column;gap:6px}
+.visuel-ouverture{--marge-flux:0px;margin-top:40px;display:flex;flex-direction:column;gap:6px}
 .legende{font-family:'Geist Mono',monospace;font-size:22px;letter-spacing:0.04em;color:#5F6673;padding-left:40px}
 
 /* Mécanisme */
@@ -275,7 +275,7 @@ strong{font-weight:600}
 <h2 class="titre-page">Une droite au hasard,<br>puis une boucle.</h2>
 <p class="texte">L’entraînement part de <span class="m it">w</span> et <span class="m it">b</span> tirés au hasard, près de zéro. Puis il répète trois gestes : mesurer le coût, lire le gradient, faire un pas. Il s’arrête quand le coût ne baisse plus.</p>
 
-<svg viewBox="0 0 920 468" width="920" height="468" role="img" aria-label="Deux schémas. Au départ, en gris : w et b tirés au hasard donnent une droite et un premier coût. À chaque itération : mesurer le coût, lire le gradient, faire un pas, en bleu. À la fin, en gris : le coût ne baisse plus, l&#x27;entraînement s&#x27;arrête sur la droite ajustée." style="display: block; overflow: visible">
+<svg viewBox="0 0 920 468" width="920" height="468" role="img" aria-label="Deux schémas. Au départ, en gris : w et b tirés au hasard donnent une droite et un premier coût. À chaque itération : mesurer le coût, lire le gradient, faire un pas, en bleu. À la fin, en gris : le coût ne baisse plus, l&#x27;entraînement s&#x27;arrête sur la droite ajustée." style="display: block; overflow: visible; margin-top: var(--marge-flux, 36px)">
 <defs><marker id="fx-objet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E1116"></path></marker><marker id="fx-contexte" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C3C7CE"></path></marker><marker id="fx-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker></defs>
 <text x="0" y="22.0" font-family="Geist Mono, monospace" font-size="22" font-weight="500" letter-spacing="2.1" fill="#5F6673">AU DÉPART</text>
 <rect x="0" y="44" width="264" height="76" rx="14" fill="#FFFFFF" stroke="#C3C7CE" stroke-width="2"></rect>

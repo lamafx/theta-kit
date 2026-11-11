@@ -47,7 +47,7 @@ Session de design n° 1 (2026-10-25) : A12, A11, A24, A25, A22, A35 et A39 sont 
 | Choix provisoire | Option 2 pour l'instant : le contenu ne peut pas régler cet espace. La page reste lisible, avec un encadré dessous. |
 | Impact si c'est faux | Une ligne de style, puis la planche de référence Flux à refaire. |
 | Gravité | Mineure |
-| Statut | Ouverte, à traiter en session de design |
+| Statut | Résolu le 2026-11-11 (session de design n° 3) : option 1. Marge haute de 36 px sur la forme Flux `page`, comme les formes de page de la Courbe ; remise à zéro dans l'ouverture, qui a déjà la sienne (`--marge-flux`). Corrige aussi la page 5 du Nº 03. Planche Formes-Flux refaite. |
 
 #### A67 · Nº 12 : pas de forme pour un plan en perspective
 
@@ -61,7 +61,7 @@ Session de design n° 1 (2026-10-25) : A12, A11, A24, A25, A22, A35 et A39 sont 
 | Choix provisoire | Aucun : épisode 12 arrêté avant l'étape sources (SKILL episode, étape 3 : « une page qui demande une forme absente : n'invente rien, arrête »). |
 | Impact si c'est faux | Épisodes 12 et suivants en attente ; ils doivent être relus avant le 2026-12-08 environ pour garder quatre épisodes d'avance. |
 | Gravité | Importante |
-| Statut | Ouverte, session de design à lancer par l'utilisateur |
+| Statut | Résolu le 2026-11-11 (session de design n° 3) : option 1. Calculs `points_surface_chambres_prix`, `moindres_carres_multiples` (équations normales), `plan_prix_surface_chambres` (2 925 ventes : ŷ = 92,3·surface − 19,1·chambres + 32,6, surface en centaines de m², prix en millions de FCFA ; à surface égale, le poids des chambres est négatif) et `echantillon_surface_chambres` ; forme Nuage `plan` (vraies ventes en perspective cavalière, surface en largeur, chambres en profondeur, prix en hauteur, plan des moindres carrés en accent, écarts ; points sous le plan voilés) ; couverture Nuage `plan` (plan incliné maillé au-dessus d'un nuage, `calculs.couvertures.plan_incline`). Planches Formes-Nuage et Couvertures refaites. L'épisode 12 peut reprendre à l'étape sources. |
 
 #### A44 · Montants en FCFA dans toute la série
 

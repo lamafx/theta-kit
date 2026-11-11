@@ -14,7 +14,7 @@ Résultat : aucune erreur bloquante, 1 avertissement(s).
 | 2 | 31 | 155 |
 | 3 | 46 | 28 |
 | 4 | 44 | 84 |
-| 5 | 48 | 180 |
+| 5 | 48 | 144 |
 | 6 | 0 | 6 |
 
 Seuil de remplissage : 233 px.

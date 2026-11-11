@@ -85,6 +85,40 @@ def nuage_droite(debut: list[float], fin: list[float], pas: float, bruit: float,
     return points
 
 
+def plan_incline(coin: list[float], largeur: list[float], fuite: list[float], hauteur: float, mailles: list[int],
+                 n: int, bruit: float, graine: int) -> dict:
+    """Plan incliné vu en perspective cavalière, au-dessus d'un nuage de points (épisode 12, A67).
+
+    Le plan est le parallélogramme de sommet `coin` et de côtés `largeur` (bord avant) et `fuite` (bord qui
+    s'enfonce), montés de `hauteur` pixels du bord gauche au bord droit, comme un prix qui monte avec la surface.
+    `mailles` [colonnes, rangées] : lignes de maillage ; `n` points tirés sur le plan puis écartés verticalement
+    d'un bruit normal d'écart type `bruit`, chacun relié au plan par son écart. Renvoie le contour, les lignes du
+    maillage [x0, y0, x1, y1, opacité] et les points [x, y, x du pied, y du pied, opacité, dessus]."""
+
+    def sur_plan(u: float, v: float) -> tuple[float, float]:
+        return (coin[0] + u * largeur[0] + v * fuite[0], coin[1] + u * largeur[1] + v * fuite[1] - u * hauteur)
+
+    contour = [list(sur_plan(u, v)) for u, v in ((0, 0), (1, 0), (1, 1), (0, 1))]
+    lignes = []
+    colonnes, rangees = mailles
+    for k in range(colonnes + 1):
+        (x0, y0), (x1, y1) = sur_plan(k / colonnes, 0), sur_plan(k / colonnes, 1)
+        lignes.append([x0, y0, x1, y1, opacite((x0 + x1) / 2, (y0 + y1) / 2)])
+    for k in range(rangees + 1):
+        (x0, y0), (x1, y1) = sur_plan(0, k / rangees), sur_plan(1, k / rangees)
+        lignes.append([x0, y0, x1, y1, opacite((x0 + x1) / 2, (y0 + y1) / 2)])
+    tirage = random.Random(graine)
+    points = []
+    for _ in range(n):
+        xp, yp = sur_plan(tirage.random(), tirage.random())
+        ecart = tirage.gauss(0, bruit)
+        x, y = xp, yp - ecart
+        if 0 <= y <= HAUTEUR:
+            points.append([round(x, 1), round(y, 1), round(xp, 1), round(yp, 1), opacite(x, y), ecart > 0])
+    return {"contour": [[round(x, 1), round(y, 1)] for x, y in contour],
+            "lignes": [[round(v, 1) for v in li[:4]] + [li[4]] for li in lignes], "points": points}
+
+
 # --- Grille ---------------------------------------------------------------------------------
 
 def grille(cote: float, ecart: float, graine: int) -> list[list[float]]:

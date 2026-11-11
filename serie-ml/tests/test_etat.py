@@ -1,5 +1,7 @@
 """serie etat : lecture de etat.yaml et affichage."""
 
+import re
+
 import pytest
 from pydantic import ValidationError
 
@@ -19,7 +21,8 @@ def test_62_episodes_a_faire(depot):
     lignes_episodes = [l for l in sortie.splitlines() if l.startswith("  Nº ")]
     assert len(lignes_episodes) == 62
     libelles = {"a_faire": "à faire", "genere": "généré", "relu": "relu", "publie": "publié", "mesure": "mesuré"}
-    assert all(l.endswith(tuple(libelles.values())) for l in lignes_episodes)
+    # Un épisode publié affiche sa date : « publié  le 2026-11-10 ».
+    assert all(re.sub(r"\s+le \d{4}-\d{2}-\d{2}$", "", l).endswith(tuple(libelles.values())) for l in lignes_episodes)
     compte = Counter(e["statut"] for e in lire_yaml(depot.etat)["episodes"].values())
     attendu = " · ".join(f"{compte[k]} {v}" for k, v in libelles.items())
     assert sum(compte.values()) == 62 and f"Total : {attendu}" in sortie

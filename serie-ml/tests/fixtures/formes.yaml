@@ -125,9 +125,9 @@
       textes: {x: $x$, y: $ŷ$, b: $b$ change}
       description: "La droite descend sans tourner : seule la hauteur b change, la pente reste la même."
 - nom: Formes-Nuage
-  titre: Nuage · 5 formes
+  titre: Nuage · 6 formes
   famille: nuage
-  hauteur: 4050
+  hauteur: 4600
   formes:
   - legende: points · zone couverte et point hors zone (piège)
     params:
@@ -252,6 +252,21 @@
       textes: {x: entrée $x$, y: résultat $y$, droite: la meilleure droite, ecart: écart}
       decalage: [-20, 44]
       description: "Des points qui dessinent un U et la droite des moindres carrés : les points sont au-dessus aux deux bouts, en dessous au milieu."
+  - legende: plan · surface et chambres, ventes d'Ames, le plan des moindres carrés (épisode 12, A67)
+    params:
+      forme: plan
+      source: ames
+      n: 70
+      graine: 12
+      domaine: [0.8, 3.2]
+      chambres: [1, 4]
+      plage: [0, 320]
+      origine: [40, 410]
+      echelle: [210, 0.6]
+      fuite: [62, -68]
+      cadre: [920, 460]
+      textes: {x: surface, profondeur: chambres, y: prix, plan: le plan ŷ}
+      description: "Des ventes d'Ames vues en perspective : la surface en largeur, le nombre de chambres en profondeur, le prix en hauteur. Un plan incliné passe au milieu des points ; un trait relie chaque point au plan."
 
 - nom: Formes-Flux
   titre: Flux · forme page

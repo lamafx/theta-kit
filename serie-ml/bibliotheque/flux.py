@@ -15,6 +15,10 @@ Paramètres de la forme `page` :
 - `retour` : texte d'une boucle de retour de la dernière boîte vers la première (une seule ligne) ;
 - `largeur` : largeur du dessin en pixels ;
 - `description` : texte lu par les lecteurs d'écran.
+
+Marge haute de 36 px, comme les formes de page de la Courbe : sans elle, l'étiquette de la première ligne
+touche le texte de la page (A66, épisodes 03 et 11). L'ouverture, qui a déjà la sienne, la remet à zéro
+(`--marge-flux`, gabarits/style.css.j2).
 """
 
 from __future__ import annotations
@@ -152,7 +156,7 @@ def _page(p, th) -> str:
         y += ENTRE_LIGNES
     hauteur_totale = y - ENTRE_LIGNES + 4
     return svg(largeur, hauteur_totale, [f"<defs>{''.join(defs)}</defs>"] + c, p.get("description"),
-               style="display: block; overflow: visible")
+               style="display: block; overflow: visible; margin-top: var(--marge-flux, 36px)")
 
 
 PARAMETRES = {"vignette": {"etapes", "retour"}, "page": {"lignes", "etapes", "retour", "largeur"}}

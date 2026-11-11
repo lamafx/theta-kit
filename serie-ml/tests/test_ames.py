@@ -44,3 +44,16 @@ def test_cout_de_l_episode_05():
     parabole = cout.cout_selon_a(4, 20)
     assert pages[5]["visuel"]["params"]["fonction"] == {"a": parabole["a"], "c": parabole["c"]}
     assert parabole["creux"] == 74
+
+
+def test_plan_de_l_episode_12():
+    """A67 : le plan des moindres carrés du prix selon la surface et les chambres, sur toutes les ventes gardées.
+    À surface égale, une chambre de plus fait baisser le prix prédit (poids négatif) : c'est ce que disent les
+    données. Équations normales : la somme des écarts, et celle des écarts pondérés par chaque entrée, sont nulles."""
+    assert ames.plan_prix_surface_chambres() == {"w1": 92.3, "w2": -19.1, "b": 32.6, "n": 2925}
+    pts = ames.points_surface_chambres_prix()
+    m = ames.moindres_carres_multiples(pts)
+    ecarts = [y - (m["w1"] * x1 + m["w2"] * x2 + m["b"]) for x1, x2, y in pts]
+    for poids in ([1] * len(pts), [x1 for x1, _, _ in pts], [x2 for _, x2, _ in pts]):
+        assert abs(sum(e * w for e, w in zip(ecarts, poids))) < 1e-6
+    assert ames.echantillon_surface_chambres(5, 12) == ames.echantillon_surface_chambres(5, 12)

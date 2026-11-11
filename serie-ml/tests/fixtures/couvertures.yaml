@@ -1,5 +1,5 @@
 # Planche des fonds de couverture (A11, session de design n° 1) : une couverture par famille, rendue avec
-# le gabarit de couverture, le titre et l'accroche des fiches. 08 (Lignes de niveau) sert de modèle ; 07 (même famille, flèches ∇J, A56) 09 (chemin bruité, A59) et 10 (courbe ondulée, A60) s'y ajoutent ; 06 (courbe en U et tangentes, A62) aussi.
+# le gabarit de couverture, le titre et l'accroche des fiches. 08 (Lignes de niveau) sert de modèle ; 07 (même famille, flèches ∇J, A56) 09 (chemin bruité, A59) et 10 (courbe ondulée, A60) s'y ajoutent ; 06 (courbe en U et tangentes, A62) aussi ; 12 (plan incliné au-dessus du nuage, A67).
 # Session de design n° 2 (2026-11-01) : couverture A, chaque motif dans la zone du geste de l'épisode ; 03 et 04
 # comme leur contenu.
 - episode: 1
@@ -22,6 +22,8 @@
   params: {centre: [540, 400], ellipses: [196, 168, 144, 122, 102, 83, 64], opacites: [0.12, 0.17, 0.23, 0.3, 0.38, 0.48, 0.6], depart: [-150, -46], eta: 0.1, courbures: [1.3, 7.79], pas: 14, bruit: 180, graine: 9}
 - episode: 10
   params: {vague: {origine: [450, 405], echelle: [240, 150], domaine: [-1, 1.75], depart: -0.9, eta: 0.05, pas: 12}}
+- episode: 12
+  params: {plan: {coin: [10, 610], largeur: [740, 0], fuite: [320, -330], hauteur: 190, mailles: [10, 6], n: 60, bruit: 55, graine: 12}}
 - episode: 19
   params: {}
 - episode: 20

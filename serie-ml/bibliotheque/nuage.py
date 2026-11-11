@@ -12,6 +12,8 @@ de calculs/droite.py :
   être de vraies ventes d'Ames (`source: ames`) ou suivre une relation courbe (`polynome`), la droite venir d'une
   descente (`descente`) ou être donnée (`w`, `b`), la droite des moindres carrés restant en `fantome` ;
 - `frontiere` : deux classes de part et d'autre d'une droite (la médiatrice de leurs centres) ;
+- `plan` : deux caractéristiques, un résultat (épisode 12, A67) : de vraies ventes d'Ames (surface, chambres,
+  prix) en perspective cavalière, le plan des moindres carrés en accent et l'écart vertical de chaque point ;
 - `panneaux` : les trois familles d'apprentissage côte à côte (ouverture de l'épisode 03) : le même nuage,
   coloré par étiquette puis tout gris, et une boucle Flux (agir, récompense, recommencer) ;
 - `vignette`, `couverture` : planches de la bibliothèque, fond de couverture.
@@ -29,7 +31,8 @@ from bibliotheque._planche import fond, vignette_ou_couverture
 from bibliotheque._svg import GEIST, MONO, balise, cercle, ligne, points as liste_points, svg, texte_svg
 from calculs import couvertures
 from calculs.droite import ecarts, moindres_carres, predire, segment
-from calculs.ames import descente_droite, echantillon
+from calculs.ames import (descente_droite, echantillon, echantillon_surface_chambres, moindres_carres_multiples,
+                          points_surface_chambres_prix)
 from calculs.nuage import autour_d_un_polynome, autour_d_une_droite, centres, distance_a_l_enveloppe, enveloppe, frontiere, groupes
 
 POINTS = [(27.9, 125.3), (53.8, 114.1), (74.4, 119.5), (90.7, 120.2), (112.4, 110.6), (134.8, 89.9),
@@ -64,6 +67,8 @@ def _couverture(p, th) -> str:
     carrés qui les résume et leurs écarts en pointillés (2026-10-26, design/propositions/couverture-n01.html).
     Avec `centres` : des groupes de points, le centre de chacun marqué."""
     ac = th["accent"]
+    if "plan" in p:
+        return fond(_couverture_plan(p["plan"], ac))
     if "centres" not in p:
         pts = couvertures.nuage_droite(p.get("debut", [20, 640]), p.get("fin", [1060, 182]), p.get("pas", 25),
                                        p.get("bruit", 30), p.get("garde", 0.85), p.get("graine", 1))
@@ -80,6 +85,30 @@ def _couverture(p, th) -> str:
         c.append(cercle(x, y, 8, fill=th["carte"], stroke=th["clair"], stroke_width=2,
                         stroke_opacity=str(couvertures.MARQUE)))
     return fond(c)
+
+
+def _couverture_plan(q: dict, ac: str) -> list[str]:
+    """Fond de couverture du plan (épisode 12, A67) : un plan incliné maillé, son contour plus marqué, et un nuage
+    de points de part et d'autre, chacun relié au plan par son écart (calculs.couvertures.plan_incline)."""
+    m = couvertures.plan_incline(q["coin"], q["largeur"], q["fuite"], q["hauteur"], q.get("mailles", [8, 5]),
+                                 q.get("n", 40), q.get("bruit", 60), q.get("graine", 12))
+
+    def points(liste) -> list[str]:
+        c = []
+        for x, y, xp, yp, op, _ in liste:
+            if abs(y - yp) > 9:
+                c.append(ligne(x, y, xp, yp, stroke=ac, stroke_width=1.5, stroke_opacity=f"{op * 0.8:.2f}",
+                               stroke_dasharray="4 4"))
+            c.append(cercle(x, y, 7, fill=ac, fill_opacity=f"{min(0.85, op + 0.2):.2f}"))
+        return c
+
+    c = points([pt for pt in m["points"] if not pt[5]])
+    c.append(balise("polygon", points=liste_points(m["contour"]), fill=ac, fill_opacity="0.07"))
+    c += [ligne(x0, y0, x1, y1, stroke=ac, stroke_width=1.5, stroke_opacity=f"{op:g}")
+          for x0, y0, x1, y1, op in m["lignes"]]
+    c.append(balise("polygon", points=liste_points(m["contour"]), fill="none", stroke=ac, stroke_width=2.5,
+                    stroke_opacity=str(couvertures.MARQUE), stroke_linejoin="round"))
+    return c + points([pt for pt in m["points"] if pt[5]])
 
 
 # --- Outils des formes de page ------------------------------------------------------------
@@ -275,6 +304,85 @@ def _frontiere(p, th) -> str:
     return svg(larg, haut, c, p.get("description"), "display: block")
 
 
+def _plan(p, th) -> str:
+    """Régression à deux caractéristiques (épisode 12, A67) : de vraies ventes d'Ames (`source: ames`, `n`,
+    `graine`) en perspective cavalière, surface en largeur, chambres en profondeur (axe à droite, où le plan est haut), prix en hauteur ; le plan
+    ŷ = w₁·x₁ + w₂·x₂ + b des moindres carrés sur toutes les ventes (calculs.ames), ou `w1`, `w2`, `b` donnés ;
+    l'écart vertical de chaque point au plan. Repère : `origine` (pixel du coin avant gauche du sol), `echelle`
+    [pixels par unité de surface, par unité de prix], `fuite` (pixels par chambre, vers le fond). Les points sous
+    le plan sont dessinés avant lui, voilés par sa teinte ; ceux au-dessus, après."""
+    t = _textes(p)
+    larg, haut = p.get("cadre", [920, 460])
+    (x1a, x1b), (x2a, x2b), (ya, yb) = p["domaine"], p["chambres"], p["plage"]
+    ox, oy = p["origine"]
+    sx, sy = p["echelle"]
+    fx, fy = p["fuite"]
+
+    def pt(x1: float, x2: float, y: float) -> tuple[float, float]:
+        return ox + sx * (x1 - x1a) + fx * (x2 - x2a), oy - sy * (y - ya) + fy * (x2 - x2a)
+
+    if "w1" in p:
+        w1, w2, b = p["w1"], p["w2"], p["b"]
+    else:
+        m = moindres_carres_multiples(points_surface_chambres_prix())
+        w1, w2, b = m["w1"], m["w2"], m["b"]
+
+    def predire2(x1: float, x2: float) -> float:
+        return w1 * x1 + w2 * x2 + b
+
+    pts = [q for q in echantillon_surface_chambres(p["n"], p["graine"])
+           if x1a <= q[0] <= x1b and x2a <= q[1] <= x2b and ya <= q[2] <= yb]
+    rayon = 6
+    ac = th["accent"]
+    sol = [pt(x1a, x2a, ya), pt(x1b, x2a, ya), pt(x1b, x2b, ya), pt(x1a, x2b, ya)]
+    c = [balise("polygon", points=liste_points(sol), fill=th["filet"], fill_opacity="0.35", stroke=th["filet"],
+                stroke_width=1.5)]
+    # Au sol, une ligne par nombre de chambres : les rangées où se posent les maisons.
+    for k in range(int(x2a) + 1, int(x2b)):
+        c.append(ligne(*pt(x1a, k, ya), *pt(x1b, k, ya), stroke=th["filet"], stroke_width=1.5))
+    c += [ligne(*pt(x1a, x2a, ya), *pt(x1b, x2a, ya), stroke=th["contexte"], stroke_width=2),
+          ligne(*pt(x1b, x2a, ya), *pt(x1b, x2b, ya), stroke=th["contexte"], stroke_width=2),
+          ligne(*pt(x1a, x2a, ya), *pt(x1a, x2a, yb), stroke=th["contexte"], stroke_width=2)]
+
+    def points(liste) -> list[str]:
+        d = []
+        for x1, x2, y in liste:
+            px, py = pt(x1, x2, y)
+            yd = pt(x1, x2, predire2(x1, x2))[1]
+            if p.get("ecarts", True) and abs(py - yd) > rayon + 2:
+                d.append(ligne(px, py + (rayon if yd > py else -rayon), px, yd, stroke=ac, stroke_width=2,
+                               stroke_opacity="0.6", stroke_dasharray="4 4"))
+            d.append(cercle(px, py, rayon, fill=th["objet"]))
+        return d
+
+    c += points([q for q in pts if q[2] < predire2(q[0], q[1])])
+    coins = [pt(x1, x2, predire2(x1, x2)) for x1, x2 in ((x1a, x2a), (x1b, x2a), (x1b, x2b), (x1a, x2b))]
+    c.append(balise("polygon", points=liste_points(coins), fill=ac, fill_opacity="0.12", stroke=ac, stroke_width=3,
+                    stroke_linejoin="round"))
+    for k in range(int(x2a) + 1, int(x2b)):
+        c.append(ligne(*pt(x1a, k, predire2(x1a, k)), *pt(x1b, k, predire2(x1b, k)), stroke=ac, stroke_width=1.5,
+                       stroke_opacity="0.5"))
+    c += points([q for q in pts if q[2] >= predire2(q[0], q[1])])
+    if t.get("x"):
+        x, y = pt(x1b, x2a, ya)
+        c.append(texte_svg(t["x"], x=float(x - 4), y=float(y + 32), text_anchor="end", font_family=GEIST,
+                           font_size=22, fill=th["secondaire"]))
+    if t.get("profondeur"):
+        x, y = pt(x1b, x2b, ya)
+        c.append(texte_svg(t["profondeur"], x=float(x + 14), y=float(y + 6), font_family=GEIST, font_size=22,
+                           fill=th["secondaire"]))
+    if t.get("y"):
+        x, y = pt(x1a, x2a, yb)
+        c.append(texte_svg(t["y"], x=float(x + 14), y=float(y + 14), font_family=GEIST, font_size=22,
+                           fill=th["secondaire"]))
+    if t.get("plan"):
+        dx, dy = p.get("decalage", [0, -16])
+        x, y = coins[2]
+        c.append(texte_svg(t["plan"], 26, x=float(x + dx), y=float(y + dy), text_anchor="end", font_family=GEIST,
+                           font_size=22, fill=ac))
+    return svg(larg, haut, c, p.get("description"), "display: block")
+
+
 def _panneaux(p, th) -> str:
     """Les trois familles d'apprentissage côte à côte (ouverture de l'épisode 03, A39) : le même nuage coloré par
     étiquette, puis tout gris, puis une boucle de la famille Flux (agir, récompense, recommencer)."""
@@ -316,19 +424,22 @@ def _panneaux(p, th) -> str:
     return svg(larg, haut, c, p.get("description"), "display: block")
 
 
-FORMES = {"points": _points, "groupes": _groupes, "droite": _droite, "frontiere": _frontiere, "panneaux": _panneaux}
+FORMES = {"points": _points, "groupes": _groupes, "droite": _droite, "frontiere": _frontiere, "panneaux": _panneaux,
+          "plan": _plan}
 
 _PLAN = {"origine", "echelle", "domaine", "plage", "cadre", "textes"}
 _TIRAGE = {"centres", "effectifs", "dispersion", "graine"}
 PARAMETRES = {
     "vignette": set(),
-    "couverture": {"centres", "effectifs", "dispersion", "graine", "debut", "fin", "pas", "bruit", "garde"},
+    "couverture": {"centres", "effectifs", "dispersion", "graine", "debut", "fin", "pas", "bruit", "garde", "plan"},
     "points": _PLAN | _TIRAGE | {"etiquettes", "zone", "hors_zone", "decalage"},
     "groupes": _PLAN | _TIRAGE,
     "droite": _PLAN | {"n", "tendance", "bruit", "abscisses", "graine", "ecarts", "decalage", "source", "polynome",
                        "descente", "w", "b", "fantome", "alerte"},
     "frontiere": _PLAN | _TIRAGE | {"decalage"},
     "panneaux": _PLAN | _TIRAGE,
+    "plan": {"domaine", "chambres", "plage", "origine", "echelle", "fuite", "cadre", "textes", "source", "n", "graine",
+             "w1", "w2", "b", "ecarts", "decalage"},
 }
 
 
