@@ -427,6 +427,32 @@ class Resultat:
     couvertures: dict[str, Path] = field(default_factory=dict)  # variante → PNG (sortie/NN/couvertures/)
 
 
+def page_image(navigateur, source: Path, largeur: int, hauteur: int, echelle: int = 2) -> bytes:
+    """La couverture en PDF d'une seule image (photo de la page en 2x), sans calque ni transparence.
+
+    Le 2026-11-12, LinkedIn n'a pas affiché la grille de carrés de la couverture du Nº 02 : Chromium l'écrit
+    dans le PDF avec des masques de transparence et du flou, que le moteur de LinkedIn ignore. La couverture est
+    la vignette du post dans le fil : elle doit s'afficher partout comme le PNG.
+    """
+    import base64
+
+    onglet = navigateur.new_page(viewport={"width": largeur, "height": hauteur}, device_scale_factor=echelle)
+    try:
+        onglet.goto(source.as_uri())
+        onglet.evaluate("document.fonts.ready.then(() => true)")
+        onglet.evaluate("Promise.all([...document.images].map(i => i.decode().catch(() => null)))")
+        photo = onglet.screenshot(clip={"x": 0, "y": 0, "width": largeur, "height": hauteur})
+        onglet.set_content(
+            "<!doctype html><html><head><style>@page{margin:0}html,body{margin:0;padding:0}"
+            f"img{{display:block;width:{largeur}px;height:{hauteur}px}}</style></head><body>"
+            f'<img src="data:image/png;base64,{base64.b64encode(photo).decode()}"></body></html>')
+        onglet.evaluate("Promise.all([...document.images].map(i => i.decode()))")
+        return onglet.pdf(width=f"{largeur}px", height=f"{hauteur}px", print_background=True,
+                          margin={"top": "0", "right": "0", "bottom": "0", "left": "0"})
+    finally:
+        onglet.close()
+
+
 def photographier(htmls: list[str], dossier: Path, prefixe: str = "page", pdf: Path | None = None,
                   largeur: int = 1080, hauteur: int = 1350, seulement: set[int] | None = None) -> Resultat:
     """Écrit chaque page en HTML puis en PNG ; assemble le PDF si demandé.
@@ -465,8 +491,11 @@ def photographier(htmls: list[str], dossier: Path, prefixe: str = "page", pdf: P
                         raise ErreurRendu(f"{source.name} : images non chargées {absentes}")
                     onglet.screenshot(path=str(pngs[k - 1]), clip={"x": 0, "y": 0, "width": largeur, "height": hauteur})
                     if pdf is not None:
-                        octets = onglet.pdf(width=f"{largeur}px", height=f"{hauteur}px", print_background=True,
-                                            margin={"top": "0", "right": "0", "bottom": "0", "left": "0"})
+                        if k == 1:
+                            octets = page_image(navigateur, source, largeur, hauteur)
+                        else:
+                            octets = onglet.pdf(width=f"{largeur}px", height=f"{hauteur}px", print_background=True,
+                                                margin={"top": "0", "right": "0", "bottom": "0", "left": "0"})
                         (pages_pdf / f"{prefixe}-{k:02d}.pdf").write_bytes(octets)
             finally:
                 navigateur.close()
