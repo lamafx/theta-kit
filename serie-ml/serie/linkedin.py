@@ -330,6 +330,10 @@ def preparer(depot: Depot, numero: int, maintenant: dt.datetime, hors_calendrier
     a_refaire = etapes_a_refaire(depot, numero)
     if a_refaire:
         envoi.refus.append("étapes à refaire : " + ", ".join(e for e, _ in a_refaire))
+    from serie.comprehension import evaluer
+
+    comprehension = evaluer(depot, numero)  # au moins 8,5 pour le carrousel et le post (2026-11-12)
+    envoi.refus.extend(comprehension.problemes)
     return envoi
 
 

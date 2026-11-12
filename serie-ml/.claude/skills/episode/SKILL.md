@@ -97,16 +97,32 @@ jour ne se refait pas. Après chaque étape réussie : `serie etape NN <étape>`
 - N'applique pas les décisions D : elles attendent l'utilisateur. Tu ne t'arrêtes pas pour autant.
 - `serie etape NN relecture`
 
+## 7 bis. comprehension
+
+Décision de l'utilisateur (2026-11-12) : la série est faite pour être comprise. Sous 8,5/10, pour le carrousel
+ou pour le texte du post, l'épisode n'est ni généré ni publié (`serie/comprehension.py`).
+
+- Lance le sous-agent `lecteur-debutant` avec le numéro de l'épisode. Il écrit `sortie/NN/comprehension.yaml` :
+  une note par critère et les blocages, chacun avec une proposition réécrite.
+- `serie etape NN comprehension` calcule les deux notes. Si elle refuse (note sous 8,5) : applique les
+  propositions des blocages dans `contenu/NN.yaml` (sans retirer de nuance scientifique ; une nuance qui gêne se
+  dit plus simplement), note chacune dans `sortie/NN/corrections.md` (avant / après, « compréhension »), puis
+  refais contenu, linkedin, 5, 6 et relance le sous-agent. Trois passages au plus : si la note reste sous 8,5,
+  arrête l'épisode, écris-le dans `sortie/NN/relecture.md` (« À trancher par l'utilisateur ») et ne fais pas
+  l'étape 8. Un épisode sous le seuil n'est jamais généré.
+- Une proposition qui change le fond (et pas seulement la façon de le dire) passe par le `relecteur` : refais
+  l'étape 7 avant de relancer le lecteur débutant.
+
 ## 8. publication
 
-- `serie publier NN` → `publier/NN/` (PDF, titre, texte, premier commentaire, aperçus, date).
+- `serie publier NN` (refusé sous 8,5 de compréhension) → `publier/NN/` (PDF, titre, texte, premier commentaire, aperçus, date).
 - `serie etape NN publication` : l'épisode passe à « généré ».
 - Commit Git : `Épisode NN : généré` avec la liste des fichiers produits (contenu, sources, images retenues).
   Pas de push.
 
 ## Rapport final (dans ta réponse)
 
-Statut, mises en conformité appliquées (liste courte), puis les décisions D telles que le relecteur les a
+Statut, les deux notes de compréhension (carrousel, post) et les simplifications faites, mises en conformité appliquées (liste courte), puis les décisions D telles que le relecteur les a
 rédigées (constat, source, correction proposée, option recommandée, oui / non / autre), avertissements, images
 à confirmer, et le chemin de `publier/NN/`. Le seul arrêt obligatoire de l'épisode est celui de
 l'utilisateur : il relit la version corrigée, répond aux décisions, puis lance lui-même `serie statut NN relu`.

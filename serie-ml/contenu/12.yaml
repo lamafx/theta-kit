@@ -1,0 +1,99 @@
+episode: 12
+pages:
+
+- type: couverture
+  titre: "La régression\nlinéaire multiple."
+  visuel:
+    famille: nuage
+    params:
+      plan: {coin: [10, 610], largeur: [740, 0], fuite: [320, -330], hauteur: 190, mailles: [10, 6], n: 60, bruit: 55, graine: 12}
+
+- type: ouverture
+  rappel: "Nº 11 : la régression linéaire, $ŷ$ = $w$·$x$ + $b$."
+  titre: "Un poids par\ncaractéristique."
+  texte: "Avec plusieurs caractéristiques $x_1$, $x_2$…, chacune reçoit son poids : $ŷ$ = $w_1$·$x_1$ + $w_2$·$x_2$ + … + $b$. Les poids forment le **vecteur de poids** ; cette somme de produits est un **produit scalaire**."
+  sources: [skl-combinaison, skl-formule, skl-coef, mlcc-vecteur, mlcc-nombres, d2l-somme, d2l-produit-scalaire, d2l-influence, d2l-biais]
+  visuel:
+    famille: flux
+    params:
+      forme: page
+      lignes:
+      - {etiquette: Une caractéristique, ton: contexte, etapes: [Surface, "Un poids, un biais", Prix prédit]}
+      - {etiquette: Deux caractéristiques, ton: contexte, etapes: [Surface et chambres, "Deux poids, un biais", Prix prédit]}
+      - {etiquette: Plusieurs caractéristiques, etapes: ["Surface, chambres…", "Un poids chacune", "!Prix prédit"]}
+      description: "Trois schémas. En gris, avec une seule caractéristique : la surface, un poids et un biais, le prix prédit ; avec deux : la surface et les chambres, deux poids et un biais, le prix prédit. En noir, avec plusieurs : la surface, les chambres et d'autres, un poids pour chacune, le prix prédit, en bleu."
+
+- type: mecanisme
+  role: Mécanisme
+  titre: "Deux caractéristiques :\nla droite devient un plan."
+  texte: "Chaque vente d'Ames, de 2006 à 2010, devient un point : surface en largeur, chambres en profondeur, prix en hauteur. Le plan retenu rend la somme des carrés des erreurs la plus petite : $ŷ$ = 92,3·$x_1$ − 19,1·$x_2$ + 32,6."
+  sources: [skl-plan, skl-deux-entrees, skl-moindres-carres, d2l-exemple-maisons, ames-ventes, ames-4000, ames-surface, ames-chambres, ames-prix, ames-fichier, bceao-dollar]
+  visuel:
+    famille: nuage
+    params:
+      forme: plan
+      source: ames
+      n: 70
+      graine: 12
+      # w1, w2 et b : calculs.ames.plan_prix_surface_chambres() (moindres carrés sur les 2 925 ventes gardées).
+      w1: 92.3
+      w2: -19.1
+      b: 32.6
+      domaine: [0.8, 3.2]
+      chambres: [1, 4]
+      plage: [0, 320]
+      origine: [40, 410]
+      echelle: [210, 0.6]
+      fuite: [62, -68]
+      cadre: [920, 460]
+      textes: {x: surface, profondeur: chambres, y: prix, plan: le plan ŷ}
+      description: "70 ventes réelles d'Ames vues en perspective : la surface en largeur, le nombre de chambres en profondeur, le prix en hauteur. Le plan des moindres carrés, en bleu, passe au milieu des points ; un trait relie chaque point au plan."
+  encadres:
+  - titre: Les unités
+    texte: "La surface en centaines de m², les chambres à l'unité, le prix prédit $ŷ$ en millions de FCFA."
+  - titre: Au-delà de deux
+    texte: "Avec $p$ caractéristiques, $p$ poids : le calcul ne change pas, seul le dessin s'arrête."
+
+- type: mecanisme
+  role: Lecture
+  titre: "Un poids se lit,\nles autres fixés."
+  texte: "À chambres égales, chaque centaine de m² ajoute 92,3 millions de FCFA au prix prédit. À surface égale, une chambre de plus en retire 19,1. Chaque poids dit l'influence d'une caractéristique quand les autres ne bougent pas."
+  sources: [d2l-influence, pieges-autres-fixees, pieges-seule, pieges-baisse, pieges-ensemble, pieges-unites, skl-independance, ames-chambres, bceao-dollar]
+  visuel:
+    famille: flux
+    params:
+      forme: page
+      lignes:
+      - {etiquette: À chambres égales, etapes: [Surface en hausse, Poids positif, "!Prix prédit en hausse"]}
+      - {etiquette: À surface égale, etapes: [Une chambre de plus, Poids négatif, Prix prédit en baisse]}
+      description: "Deux schémas. À chambres égales : la surface augmente, son poids est positif, le prix prédit monte, en bleu. À surface égale : une chambre de plus, son poids est négatif, le prix prédit baisse."
+  encadres:
+  - titre: Un poids négatif
+    texte: "Il compare des maisons de même surface. Surface et chambres varient ensemble : leurs effets se séparent mal."
+  - titre: Même échelle ?
+    texte: "Comparer 92,3 et 19,1 n'a pas de sens : des centaines de m² et des chambres n'ont pas la même unité."
+
+- type: fin
+  points:
+  - "Avec plusieurs caractéristiques, chacune reçoit son poids : les poids forment le **vecteur de poids**."
+  - "Avec deux caractéristiques, la droite devient un plan."
+  - "Un poids se lit, les autres fixés ; comparer 92,3 et 19,1 n'a pas de sens."
+  verification:
+    question: "À surface égale, que fait une chambre de plus au prix prédit des maisons d'Ames ?"
+    page: 4
+
+linkedin:
+  texte: |-
+    Une chambre de plus, et le prix prédit baisse.
+    C'est ce que dit une régression sur les maisons d'Ames.
+
+    Le modèle prend deux caractéristiques : la surface et le nombre de chambres. Chacune reçoit un poids, et la prédiction est leur somme pondérée, plus un biais. Avec deux caractéristiques, la droite de l'épisode précédent devient un plan.
+
+    Sur les 2 925 ventes de 2006 à 2010, le poids de la surface vaut 92,3 millions de FCFA par centaine de mètres carrés (prix convertis au cours BCEAO du 27 octobre 2026). Celui des chambres vaut −19,1 millions.
+
+    Ce signe négatif se lit à surface égale. Il compare deux maisons de même taille, dont l'une a une chambre de plus. Un poids se lit toujours les autres caractéristiques fixées, et surface et chambres varient ensemble.
+
+    Reste que comparer 92,3 et 19,1 n'a pas de sens : des mètres carrés et des chambres n'ont pas la même unité. Ce sera le sujet du prochain épisode.
+
+    Auriez-vous parié sur un poids négatif pour les chambres ?
+  hashtag: "#RegressionLineaire"

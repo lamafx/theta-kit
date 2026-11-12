@@ -1,0 +1,18 @@
+Une chambre de plus, et le prix prédit baisse.
+C’est ce que dit une régression sur les maisons d’Ames.
+
+Le modèle prend deux caractéristiques : la surface et le nombre de chambres. Chacune reçoit un poids, et la prédiction est leur somme pondérée, plus un biais. Avec deux caractéristiques, la droite de l’épisode précédent devient un plan.
+
+Sur les 2 925 ventes de 2006 à 2010, le poids de la surface vaut 92,3 millions de FCFA par centaine de mètres carrés (prix convertis au cours BCEAO du 27 octobre 2026). Celui des chambres vaut −19,1 millions.
+
+Ce signe négatif se lit à surface égale. Il compare deux maisons de même taille, dont l’une a une chambre de plus. Un poids se lit toujours les autres caractéristiques fixées, et surface et chambres varient ensemble.
+
+Reste que comparer 92,3 et 19,1 n’a pas de sens : des mètres carrés et des chambres n’ont pas la même unité. Ce sera le sujet du prochain épisode.
+
+Auriez-vous parié sur un poids négatif pour les chambres ?
+
+Nº 12 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 13 : Normaliser les données.
+
+Le lien vers le site est en commentaire.
+
+#MachineLearning #IntelligenceArtificielle #DataScience #RegressionLineaire #ThetaML

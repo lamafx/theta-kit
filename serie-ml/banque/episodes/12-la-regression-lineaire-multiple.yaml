@@ -42,4 +42,23 @@ references:
     url: https://scikit-learn.org/stable/modules/linear_model.html
   - titre: MLCC · Feature vectors
     url: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
-  sources_originales: []
+  # Ajoutée le 2026-11-11 (production de l'épisode) : le produit scalaire et le vecteur de poids (terme introduit),
+  # ŷ = wᵀx + b, ne sont écrits que là ; le poids règle l'influence de chaque caractéristique.
+  - titre: D2L 3.1
+    url: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  # Ajoutée le 2026-11-11 (production de l'épisode) : la lecture d'un poids « les autres caractéristiques fixées » et
+  # les unités différentes qui empêchent de comparer deux poids (page 4) ne sont écrites que là.
+  - titre: SKL · Common pitfalls in the interpretation of coefficients of linear models
+    url: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  # Ajoutée le 2026-11-11 (production de l'épisode) : prix en FCFA (cours de conversion), comme aux fiches 02 à 11.
+  - titre: BCEAO · Cours de référence des principales devises contre Franc CFA (cours du mardi 27 octobre 2026, 1 dollar US = 588,30 FCFA)
+    url: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  sources_originales:
+  # Ajoutée le 2026-11-11 (production de l'épisode) : les maisons d'Ames, fil rouge de la saison 1, donnent la
+  # surface, le nombre de chambres et le prix du plan des pages 3 et 4.
+  - citation: De Cock (2011), Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project, Journal of Statistics Education 19(3) ; données Ames Housing Data, consultées le 11 novembre 2026
+    liens:
+    - titre: Ames, Iowa, Alternative to the Boston Housing Data as an End of Semester Regression Project
+      url: https://doi.org/10.1080/10691898.2011.11889627
+    - titre: Ames Housing Data, Dean De Cock, Journal of Statistics Education 19(3), consulté le 11 novembre 2026
+      url: http://jse.amstat.org/v19n3/decock/AmesHousing.txt

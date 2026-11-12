@@ -16,7 +16,8 @@ Arguments : `$ARGUMENTS` (numéro, page facultative, puis la correction demandé
    si la demande l'exige, dis-le et attends la réponse.
 3. Le hook vérifie le contenu. Puis, comme dans `.claude/skills/episode/SKILL.md` :
    `serie etat --maj` (relu → généré), `serie etape NN contenu` et `linkedin` (et `images` si une image a
-   changé), étapes 5 à 8 (rendu, vérification, relecteur, publication), chacune enregistrée.
+   changé), étapes 5 à 8 (rendu, vérification, relecteur, lecteur débutant, publication), chacune enregistrée. La
+   compréhension doit rester à 8,5 au moins (étape 7 bis) : sinon, rien n'est publié.
 4. Une correction qui demande un changement dans `gabarits/`, `bibliotheque/`, `charte/`, `design/` ou
    `tests/reference/` ne se fait pas ici : écris-la dans AMBIGUITES.md et dis-le.
 5. Commit Git `Épisode NN : correction (<résumé>)`.

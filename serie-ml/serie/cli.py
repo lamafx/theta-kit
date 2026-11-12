@@ -56,7 +56,7 @@ def main(argv: list[str] | None = None) -> int:
     sous.add_parser("decisions", help="rassembler les décisions D des relectures dans sortie/decisions.md")
     etape = sous.add_parser("etape", help="enregistrer une étape faite (date et empreinte de ses entrées)")
     etape.add_argument("numero", type=int)
-    etape.add_argument("nom", help="lecture, sources, contenu, images, rendu, verification, relecture, linkedin, publication")
+    etape.add_argument("nom", help="lecture, sources, contenu, images, rendu, verification, relecture, linkedin, comprehension, publication")
     reprendre = sous.add_parser("reprendre", help="première étape à faire ou à refaire d'un épisode")
     reprendre.add_argument("numero", type=int)
     statut = sous.add_parser("statut", help="passer un épisode (8) ou un bilan (bilan-1) à relu, publie, mesure ou genere")
@@ -134,7 +134,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.commande == "etape":
         from serie.reprise import enregistrer_etape
 
-        ep = enregistrer_etape(depot, args.numero, args.nom)
+        try:
+            ep = enregistrer_etape(depot, args.numero, args.nom)
+        except ValueError as exc:
+            print(f"Erreur bloquante : {exc}", file=sys.stderr)
+            return 1
         print(f"Nº {args.numero:02d} : étape « {args.nom} » enregistrée ; statut {ep['statut']}")
         return 0
     if args.commande == "reprendre":
@@ -221,6 +225,14 @@ def main(argv: list[str] | None = None) -> int:
 
         chemins = {k: Path(v) if v else None for k, v in
                    (("contenu", args.contenu), ("sortie", args.sortie), ("rendu", args.rendu))}
+        if not args.contenu:
+            # Note de compréhension sous 8,5 (2026-11-12) : le post n'est pas généré.
+            from serie.comprehension import evaluer
+
+            comprehension = evaluer(depot, args.numero)
+            if not comprehension.suffisante:
+                print("Erreur bloquante : " + " ; ".join(comprehension.problemes), file=sys.stderr)
+                return 1
         try:
             pub = publier_episode(depot, args.numero, **chemins)
         except (ErreurPublication, ErreurRendu) as exc:

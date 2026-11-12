@@ -1,15 +1,15 @@
-Numéroter ses quartiers 1, 2 et 3 paraît anodin.
-Pour certains modèles, le troisième vaut maintenant trois fois le premier.
+Donnez un numéro à chaque quartier : 1, 2, 3.
+Pour certains modèles, le quartier nº 3 vaut maintenant trois fois le nº 1.
 
-Un tableau de données n’est pas un simple rangement : chaque colonne décrit le monde au modèle, et il la prend au mot.
+Pourquoi ? Un modèle apprend à partir d’un tableau. Chaque ligne est un exemple, ici une maison déjà vendue. Chaque colonne donne une information : surface, chambres, quartier. La dernière, le prix, est la réponse qu’il doit apprendre à trouver ; on l’appelle l’étiquette.
 
-Le risque dépend pourtant du modèle : certains lisent ces numéros comme des quantités, d’autres savent traiter directement des catégories, sans leur prêter d’ordre.
+Beaucoup de modèles ne lisent que des nombres : il faut traduire le quartier. Mais pour certains, un numéro devient une quantité : le quartier 3 pèserait plus que le quartier 1, alors qu’un quartier n’est pas une quantité.
 
-La parade classique, une colonne par quartier, a aussi ses limites : avec un très grand nombre de catégories, elle peut devenir un mauvais choix.
+La parade courante : une colonne par quartier, 1 si la maison s’y trouve, 0 sinon. Elle a ses limites quand les catégories sont très nombreuses, et certains modèles savent traiter directement des catégories.
 
-Ce vocabulaire dépasse les maisons. Dans mon mémoire sur un agent conversationnel, un exemple était une requête client (1 919 au total), et son étiquette l’une de 19 intentions.
+Même tableau dans mon mémoire sur un agent conversationnel : chaque exemple était un message client (1 919 au total), et son étiquette l’une de 19 intentions.
 
-Mini-exercice : un fichier clients contient « couleur préférée » et « taille de T-shirt (S, M, L) ». Une seule de ces colonnes peut recevoir des numéros sans inventer un ordre. Laquelle ?
+Mini-exercice : un fichier clients contient « couleur préférée » et « taille de T-shirt (S, M, L) ». Une seule a un ordre naturel, que des numéros peuvent garder. Laquelle ?
 
 Nº 02 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 03 : Les trois familles d’apprentissage.
 

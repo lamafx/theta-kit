@@ -15,6 +15,8 @@ from serie.etat import charger_calendrier
 from serie.report import lire_quand, reporter
 from serie.reprise import enregistrer_etape, etapes_a_refaire
 
+from aide_comprehension import noter
+
 RACINE = Path(__file__).resolve().parents[1]
 UTC = dt.timezone.utc
 AVANT_LANCEMENT = dt.datetime(2026, 11, 1, tzinfo=UTC)
@@ -26,7 +28,10 @@ def depot(tmp_path) -> Depot:
         shutil.copy(RACINE / nom, tmp_path / nom)
     for n in ("05", "06"):
         shutil.copytree(RACINE / "publier" / n, tmp_path / "publier" / n)
-    return Depot(tmp_path)
+    copie = Depot(tmp_path)
+    for n in (5, 6):
+        noter(copie, n)  # l'étape publication exige la note de compréhension
+    return copie
 
 
 def statut(depot: Depot, cle: str, valeur: str) -> None:

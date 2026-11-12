@@ -2,6 +2,9 @@ episode: 2
 pages:
 
 - type: couverture
+  titre: "Comment une machine
+voit-elle
+une maison ?"
   visuel:
     famille: grille
     params:
@@ -9,9 +12,9 @@ pages:
       rangees: [2, 8]
 
 - type: ouverture
-  rappel: "Nº 01 : un modèle, tiré d'exemples, prédit la réponse de cas nouveaux."
+  rappel: "Nº 01 : un modèle apprend à partir d'exemples, puis prédit la réponse pour des cas nouveaux."
   titre: "Un exemple,\nc'est une ligne."
-  texte: "Ici, le modèle apprend d'exemples à la réponse connue. Pour lui, une maison n'est qu'une ligne de tableau : surface, chambres, quartier, puis prix, la réponse à apprendre."
+  texte: "Le modèle apprend à estimer un prix à partir de maisons déjà vendues. Pour lui, chaque maison est une ligne : surface, chambres, quartier, puis le prix."
   sources: [glossaire-modele, glossaire-exemple, glossaire-etiquette, ames-ventes, ames-surface, ames-chambres, ames-quartier, ames-prix, bceao-dollar]
   visuel:
     famille: grille
@@ -27,7 +30,7 @@ pages:
 - type: mecanisme
   role: Mécanisme
   titre: "Lignes, colonnes,\nétiquette."
-  texte: "Trois ventes d'Ames, aux États-Unis, en 2010 ; colonnes sous leurs noms d'origine. Chaque ligne est un exemple ; ici, chaque colonne sauf la dernière, une caractéristique : une variable d'entrée. La dernière, l'étiquette, est la réponse à apprendre en apprentissage supervisé : le prix. Converties en m² et FCFA, cours BCEAO du 27 octobre 2026."
+  texte: "Voici trois maisons vendues à Ames, aux États-Unis, en 2010, avec les noms anglais des colonnes. Chaque ligne est un exemple. Chaque colonne, sauf la dernière, est une caractéristique : une information donnée au modèle. La dernière, l'étiquette, est la réponse à apprendre, en apprentissage supervisé : le prix."
   sources: [glossaire-exemple, glossaire-caracteristique, glossaire-etiquette, mlcc-lignes, ames-fichier, ames-ventes, ames-surface, ames-chambres, ames-quartier, ames-prix, bceao-dollar]
   visuel:
     famille: grille
@@ -42,15 +45,15 @@ pages:
       textes: {exemples: exemple, caracteristiques: caractéristiques, etiquette: étiquette}
       description: "Tableau de trois maisons vendues à Ames. Chaque ligne est un exemple ; les trois premières colonnes sont les caractéristiques ; la dernière, le prix, est l'étiquette. La colonne des surfaces est encadrée."
   encadres:
-  - titre: Une ligne
-    texte: "Un **exemple** : une maison et tout ce qu'on en sait."
+  - titre: Les unités
+    texte: "En **m²** et en **FCFA**, cours BCEAO du 27 octobre 2026."
   - titre: Une colonne
     texte: "Une **caractéristique** : la même information pour toutes les maisons."
 
 - type: piege
   role: Piège
   titre: "Un quartier n'est pas\nune quantité."
-  texte: "Beaucoup de modèles ne reçoivent que des nombres : le nom du quartier doit alors être converti. Le piège : donner un numéro par quartier, comme dans ce tableau. Selon le modèle, ces numéros risquent d'être lus comme des quantités, comme si Old Town comptait trois fois plus que North Ames."
+  texte: "Beaucoup de modèles ne lisent que des nombres : il faut donc traduire le nom du quartier. Le piège : donner à chaque quartier un numéro, comme ici. Selon le modèle, ces numéros risquent d'être lus comme des quantités, comme si Old Town comptait trois fois plus que North Ames."
   sources: [mlcc-nombres, mlcc-vecteur, mlcc-index, mlcc-continus, mlcc-une-colonne, mlcc-un-zero, ames-quartier, sklearn-categories-natives, sklearn-ordre]
   visuel:
     famille: grille
@@ -97,7 +100,7 @@ par quartier."
 - type: fin
   points:
   - "Un exemple, c'est une ligne : ses caractéristiques, puis, en apprentissage supervisé, son étiquette."
-  - "Une caractéristique est une variable d'entrée ; l'étiquette est la réponse."
+  - "Une caractéristique est une information donnée au modèle ; l'étiquette est la réponse."
   - "Un quartier n'est pas une quantité ; une solution : une colonne par quartier, 1 ou 0."
   verification:
     question: "Pour les maisons, quelle colonne est l'étiquette ?"
@@ -105,16 +108,16 @@ par quartier."
 
 linkedin:
   texte: |-
-    Numéroter ses quartiers 1, 2 et 3 paraît anodin.
-    Pour certains modèles, le troisième vaut maintenant trois fois le premier.
+    Donnez un numéro à chaque quartier : 1, 2, 3.
+    Pour certains modèles, le quartier nº 3 vaut maintenant trois fois le nº 1.
 
-    Un tableau de données n'est pas un simple rangement : chaque colonne décrit le monde au modèle, et il la prend au mot.
+    Pourquoi ? Un modèle apprend à partir d'un tableau. Chaque ligne est un exemple, ici une maison déjà vendue. Chaque colonne donne une information : surface, chambres, quartier. La dernière, le prix, est la réponse qu'il doit apprendre à trouver ; on l'appelle l'étiquette.
 
-    Le risque dépend pourtant du modèle : certains lisent ces numéros comme des quantités, d'autres savent traiter directement des catégories, sans leur prêter d'ordre.
+    Beaucoup de modèles ne lisent que des nombres : il faut traduire le quartier. Mais pour certains, un numéro devient une quantité : le quartier 3 pèserait plus que le quartier 1, alors qu'un quartier n'est pas une quantité.
 
-    La parade classique, une colonne par quartier, a aussi ses limites : avec un très grand nombre de catégories, elle peut devenir un mauvais choix.
+    La parade courante : une colonne par quartier, 1 si la maison s'y trouve, 0 sinon. Elle a ses limites quand les catégories sont très nombreuses, et certains modèles savent traiter directement des catégories.
 
-    Ce vocabulaire dépasse les maisons. Dans mon mémoire sur un agent conversationnel, un exemple était une requête client (1 919 au total), et son étiquette l'une de 19 intentions.
+    Même tableau dans mon mémoire sur un agent conversationnel : chaque exemple était un message client (1 919 au total), et son étiquette l'une de 19 intentions.
 
-    Mini-exercice : un fichier clients contient « couleur préférée » et « taille de T-shirt (S, M, L) ». Une seule de ces colonnes peut recevoir des numéros sans inventer un ordre. Laquelle ?
+    Mini-exercice : un fichier clients contient « couleur préférée » et « taille de T-shirt (S, M, L) ». Une seule a un ordre naturel, que des numéros peuvent garder. Laquelle ?
   hashtag: "#PreparationDesDonnees"

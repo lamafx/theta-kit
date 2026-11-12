@@ -131,3 +131,22 @@ Demande de l'utilisateur : réécrire le post selon `theta-post/`, textes valid�
 ## Validation du 2026-11-06
 
 Épisode relu et validé par l'utilisateur, qui a demandé le passage à « relu » et l'enregistrement de la relecture. Le sous-agent `relecteur` n'a pas été repassé sur le texte du post réécrit ; `sortie/02/relecture.md` reste le rapport précédent et ses décisions D n'ont pas été arbitrées une à une.
+
+## Compréhension pour un débutant (2026-11-12, règle des 8,5)
+
+Décision de l'utilisateur : la note de compréhension s'applique au Nº 02. Avant réécriture : carrousel 8,17, post
+7,38. Réécriture de la forme seule : aucun fait, chiffre ni source ajouté ou retiré ; les nuances (« beaucoup de
+modèles », « selon le modèle », « une solution parmi d'autres », cas supervisé) et la décision du 2026-11-01
+(en-têtes sous les noms de la source) sont gardées. Le sous-agent `relecteur` n'a pas été relancé (session
+ouverte depuis theta-kit/, où il n'est pas disponible) : à refaire depuis serie-ml/ si un doute existe.
+
+- Fiche, accroche : « Pour une machine, un exemple n'est qu'une ligne de tableau. » → « Pour une machine, une maison n'est qu'une ligne de tableau. »
+- Couverture, titre (nouveau) : « Comment une machine voit-elle une maison ? » (avant : le titre de l'ouverture).
+- Page 2, rappel : « Nº 01 : un modèle, tiré d'exemples, prédit la réponse de cas nouveaux. » → « Nº 01 : un modèle apprend à partir d'exemples, puis prédit la réponse pour des cas nouveaux. »
+- Page 2, texte : « Ici, le modèle apprend d'exemples à la réponse connue. Pour lui, une maison n'est qu'une ligne de tableau : surface, chambres, quartier, puis prix, la réponse à apprendre. » → « Le modèle apprend à estimer un prix à partir de maisons déjà vendues. Pour lui, chaque maison est une ligne : surface, chambres, quartier, puis le prix. »
+- Page 3, texte : « Trois ventes d'Ames, aux États-Unis, en 2010 ; colonnes sous leurs noms d'origine. Chaque ligne est un exemple ; ici, chaque colonne sauf la dernière, une caractéristique : une variable d'entrée. La dernière, l'étiquette, est la réponse à apprendre en apprentissage supervisé : le prix. Converties en m² et FCFA, cours BCEAO du 27 octobre 2026. » → « Voici trois maisons vendues à Ames, aux États-Unis, en 2010, avec les noms anglais des colonnes. Chaque ligne est un exemple. Chaque colonne, sauf la dernière, est une caractéristique : une information donnée au modèle. La dernière, l'étiquette, est la réponse à apprendre, en apprentissage supervisé : le prix. »
+- Page 3, encadré « Une ligne » (redit le texte) → « Les unités : En m² et en FCFA, cours BCEAO du 27 octobre 2026. » (la conversion quitte le texte).
+- Page 4, texte : « Beaucoup de modèles ne reçoivent que des nombres : le nom du quartier doit alors être converti. Le piège : donner un numéro par quartier, comme dans ce tableau. » → « Beaucoup de modèles ne lisent que des nombres : il faut donc traduire le nom du quartier. Le piège : donner à chaque quartier un numéro, comme ici. »
+- Fin, point 2 : « Une caractéristique est une variable d'entrée ; l'étiquette est la réponse. » → « Une caractéristique est une information donnée au modèle ; l'étiquette est la réponse. » (« variable d'entrée » n'apparaît plus dans l'épisode ni ailleurs).
+- Texte du post : réécrit (accroche « Donnez un numéro à chaque quartier : 1, 2, 3. », tableau expliqué avant le piège, étiquette définie, exercice reformulé : « Une seule a un ordre naturel, que des numéros peuvent garder. »). Mêmes faits : risque selon le modèle, parade et ses limites, modèles qui traitent les catégories, mémoire (1 919 exemples, 19 intentions) ; « requête client » devient « message client ».
+- Après : carrousel 8,92, post 8,75 (sortie/02/comprehension.yaml).

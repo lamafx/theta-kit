@@ -10,6 +10,8 @@ from serie.cli import main
 from serie.depot import Depot, lire_yaml
 from serie.reprise import ETAPES, enregistrer_etape, etapes_a_refaire, lire_etat, mettre_a_jour, premiere_etape
 from serie.rendu import rendre_episode
+
+from aide_comprehension import noter
 from rendus import CALENDRIER_ESSAI, CONTENU_08
 
 
@@ -28,7 +30,9 @@ def copie(depot, tmp_path) -> Depot:
     shutil.copy(CALENDRIER_ESSAI, tmp_path / "calendrier.yaml")  # figé, sans date de lancement
     (tmp_path / "contenu").mkdir()
     shutil.copy(CONTENU_08, tmp_path / "contenu" / "08.yaml")
-    return Depot(tmp_path)
+    copie = Depot(tmp_path)
+    noter(copie, 8)  # au-dessus du seuil : les étapes comprehension et publication s'enregistrent
+    return copie
 
 
 # --- Étapes et empreintes -------------------------------------------------------------------

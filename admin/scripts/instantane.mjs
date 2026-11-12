@@ -131,6 +131,7 @@ const ETAPES = {
   rendu: ['contenu/{NN}.yaml', 'gabarits/*', 'bibliotheque/*.py', 'bibliotheque/*.svg', 'calculs/*.py', 'charte/charte.yaml', 'assets/images/candidats/{NN}/*'],
   verification: ['contenu/{NN}.yaml', 'sources/{NN}/*', 'gabarits/*', 'bibliotheque/*.py', 'charte/charte.yaml'],
   relecture: ['contenu/{NN}.yaml', 'sources/{NN}/*', 'sortie/{NN}/relecture.md'],
+  comprehension: ['contenu/{NN}.yaml', 'sortie/{NN}/comprehension.yaml'],
   publication: ['contenu/{NN}.yaml', 'sortie/{NN}/*.pdf', 'publier/{NN}/*'],
 };
 

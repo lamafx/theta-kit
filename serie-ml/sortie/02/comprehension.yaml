@@ -1,0 +1,32 @@
+episode: 2
+lecteur: "Professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée ; pour le post, il le découvre seul dans son fil."
+note_par: "Claude (session principale, qui a aussi réécrit l'épisode le 2026-11-12) : notation à refaire par le sous-agent lecteur-debutant, indépendant, depuis serie-ml/."
+avant_reecriture: {carrousel: 8.17, post: 7.38}
+carrousel:
+  criteres:
+    premier_abord: {note: 9, raison: "La couverture pose une question concrète (une maison vue par une machine) et l'ouverture dit la tâche : estimer un prix à partir de maisons déjà vendues."}
+    vocabulaire: {note: 8.5, raison: "Exemple, caractéristique et étiquette sont expliqués en mots simples ; les en-têtes anglais (Gr Liv Area, SalePrice) restent opaques, même annoncés comme noms anglais."}
+    une_notion_par_page: {note: 8.5, raison: "La page 3 nomme encore quatre termes (exemple, caractéristique, étiquette, apprentissage supervisé), mais autour d'une seule idée : la forme du tableau."}
+    concret: {note: 9.5, raison: "Chaque notion est montrée sur le même tableau de maisons, avec des valeurs réelles."}
+    enchainement: {note: 9, raison: "Tableau, puis le problème du quartier, puis sa solution : chaque page répond à la précédente."}
+    retenu: {note: 9, raison: "La question « quelle colonne est l'étiquette ? » se résout d'un coup d'œil à la page 3."}
+  blocages:
+  - endroit: "pages 2 et 3, en-têtes du tableau"
+    passage: "Gr Liv Area · Bedroom AbvGr · Neighborhood · SalePrice"
+    pourquoi: "Un débutant ne relie pas Gr Liv Area à la surface sans effort ; le texte dit seulement « noms anglais »."
+    proposition: "Décision de l'auteur du 2026-11-01 (noms de la source seuls) : la garder ; sinon, en-têtes doubles « surface · Gr Liv Area » si la largeur le permet."
+  - endroit: "page 3, texte"
+    passage: "en apprentissage supervisé"
+    pourquoi: "Rappel utile pour la rigueur, mais un terme de plus sur une page déjà chargée."
+    proposition: "Garder (règle « dire le cas particulier ») ; aucune réécriture proposée."
+post:
+  criteres:
+    accroche: {note: 8.5, raison: "Le numéro 3 qui vaudrait trois fois le 1 intrigue et se comprend ; « modèles » n'est expliqué qu'au paragraphe suivant."}
+    vocabulaire: {note: 8.5, raison: "Modèle et étiquette sont expliqués ; « agent conversationnel » et « intentions » restent sans explication."}
+    message: {note: 9, raison: "On retient : un numéro peut être lu comme une quantité, une colonne par quartier l'évite."}
+    fil: {note: 9, raison: "Question, contexte du tableau, piège, parade, exemple personnel, exercice : chaque paragraphe suit le précédent."}
+  blocages:
+  - endroit: "paragraphe 5"
+    passage: "agent conversationnel ... l'une de 19 intentions"
+    pourquoi: "Deux termes non expliqués ; le paragraphe reste compréhensible comme exemple, sans être nécessaire au message."
+    proposition: "Même tableau dans mon mémoire sur un chatbot de service client : chaque exemple était un message (1 919 au total), et son étiquette, ce que le client voulait, parmi 19 cas."

@@ -43,6 +43,10 @@ Lis seulement les fichiers dont la tâche en cours a besoin.
 - Un symbole est défini à sa première apparition.
 - 32 mots maximum sur l'ouverture, 55 sur une page de contenu.
 - Une idée par page ; chaque page répond à la question laissée par la précédente.
+- Compréhension d'abord (décision de l'utilisateur, 2026-11-12) : le sous-agent `lecteur-debutant` note le
+  carrousel et le texte du post pour un vrai débutant ; sous 8,5/10 pour l'un des deux, l'épisode n'est ni
+  généré ni publié (`serie/comprehension.py`, étape `comprehension`). Phrases complètes, pas de style
+  télégraphique, chaque terme et symbole expliqué en mots simples là où il apparaît.
 - La page de fin ne contient rien de nouveau.
 - Aucune spéculation : un fait non sourcé est retiré ou signalé dans le rapport.
 - Pas d'emoji, pas de superlatifs, pas de tutoiement dans les textes publiés.
@@ -67,7 +71,7 @@ Décision de l'utilisateur (2026-10-26). Elles s'ajoutent aux règles de contenu
 - La relecture (sous-agent `relecteur`) vérifie chaque point sur le web et le rédige comme une décision : source (titre + lien), correction prête à appliquer, option recommandée, oui / non / autre. Les mises en conformité aux règles éditoriales sont appliquées aussitôt et listées ; les décisions attendent l'utilisateur.
 - Les couvertures sont générées par le gabarit HTML `gabarits/couverture.html.j2` (tiré de la maquette `design/propositions/couverture-n01.html`, A41) : numéro, titre, accroche, motif de la bibliothèque ; exportées en PNG 1080 × 1350 par Playwright (`serie rendre NN`).
 - Le seul arrêt obligatoire par épisode : l'utilisateur relit la version corrigée, répond aux décisions, puis lance lui-même `serie statut NN relu`.
-- La publication est automatique (décision de l'utilisateur, 2026-10-30 ; AMBIGUITES A49) : `serie linkedin tourner`, lancé toutes les 5 minutes par la tâche Windows « Theta LinkedIn », publie le post dû par l'API officielle, seulement s'il est relu et à jour. Ne lance jamais `serie linkedin publier --oui` ni `essai --poster` sans accord explicite de l'utilisateur dans la conversation.
+- La publication est automatique (décision de l'utilisateur, 2026-10-30 ; AMBIGUITES A49) : `serie linkedin tourner`, lancé toutes les 5 minutes par la tâche Windows « Theta LinkedIn », publie le post dû par l'API officielle, seulement s'il est relu, à jour et noté au moins 8,5 en compréhension. Ne lance jamais `serie linkedin publier --oui` ni `essai --poster` sans accord explicite de l'utilisateur dans la conversation.
 
 ## Échecs et reprise
 

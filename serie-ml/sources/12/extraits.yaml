@@ -1,0 +1,173 @@
+# Extraits mot pour mot des références de la fiche 12, lus le 2026-11-11 : scikit-learn « Linear Models »
+# (page HTML, sections 1.1, 1.1.1 et 1.1.16), MLCC « Feature vectors » (page HTML), D2L 3.1 (page HTML, ajoutée à
+# la fiche 12 : le produit scalaire et le vecteur de poids ; formules en LaTeX comme dans la source, numéros
+# d'équation retirés), scikit-learn « Common pitfalls in the interpretation of coefficients of linear models »
+# (page HTML, ajoutée à la fiche 12 : lecture d'un poids, autres caractéristiques fixées ; unités différentes).
+# Les maisons d'Ames (fil rouge de la saison 1, ajoutées à la fiche 12) : DataDocumentation.txt et en-tête
+# d'AmesHousing.txt relus le 2026-11-11 ; les phrases de l'article (PDF) sont reprises de sources/11/ (lues le
+# 2026-11-02) ; le cours BCEAO du 27 octobre 2026 est repris de sources/05/ (lu le 2026-10-30), car la page de la
+# BCEAO affiche le cours du jour et calculs/devises.py garde celui du 27.
+episode: 12
+extraits:
+# --- scikit-learn 1.1 · Linear Models --------------------------------------------------------------
+- id: skl-combinaison
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: The following are a set of methods intended for regression in which the target value is expected to be a linear combination of the features.
+  appuie: "Ouverture : la prédiction est une combinaison des caractéristiques, un poids pour chacune."
+- id: skl-formule
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: "\\[\\hat{y}(w, x) = w_0 + w_1 x_1 + ... + w_p x_p\\]"
+  appuie: "Ouverture, mécanisme : ŷ = w₁x₁ + w₂x₂ + … + b, autant de poids que de caractéristiques (scikit-learn note le biais w₀)."
+- id: skl-coef
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: "Across the module, we designate the vector \\(w = (w_1, ..., w_p)\\) as coef_"
+  appuie: "Ouverture : les poids forment un vecteur, le vecteur de poids."
+- id: skl-moindres-carres
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: "LinearRegression fits a linear model with coefficients \\(w = (w_1, ..., w_p)\\) to minimize the residual sum of squares between the observed targets in the dataset, and the targets predicted by the linear approximation."
+  appuie: "Mécanisme : le plan est choisi pour rendre la somme des carrés des erreurs la plus petite (calculs/ames.py, équations normales)."
+- id: skl-plan
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: "If we want to fit a paraboloid to the data instead of a plane"
+  appuie: "Mécanisme : avec deux caractéristiques, le modèle linéaire est un plan."
+- id: skl-deux-entrees
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: "you might have a model that looks like this for two-dimensional data: \\[\\hat{y}(w, x) = w_0 + w_1 x_1 + w_2 x_2\\]"
+  appuie: "Mécanisme : deux caractéristiques, deux poids et un biais."
+- id: skl-independance
+  reference: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_sur: https://scikit-learn.org/stable/modules/linear_model.html
+  lu_le: 2026-11-11
+  extrait: The coefficient estimates for Ordinary Least Squares rely on the independence of the features.
+  appuie: "Lecture : des caractéristiques liées entre elles (surface et chambres) rendent les poids délicats à lire."
+# --- MLCC · Feature vectors ------------------------------------------------------------------------
+- id: mlcc-vecteur
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_le: 2026-11-11
+  extrait: You can think of a feature vector as the floating-point values comprising one example.
+  appuie: "Ouverture : une vente devient une liste de nombres, ses caractéristiques (surface, chambres)."
+- id: mlcc-nombres
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/feature-vectors
+  lu_le: 2026-11-11
+  extrait: Every value in a feature vector must be a floating-point value.
+  appuie: "Ouverture : chaque caractéristique est un nombre, qu'un poids peut multiplier."
+# --- D2L 3.1 · Linear Regression ---------------------------------------------------------------------
+- id: d2l-exemple-maisons
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-11
+  extrait: As a running example, suppose that we wish to estimate the prices of houses (in dollars) based on their area (in square feet) and age (in years).
+  appuie: "Ouverture, mécanisme : le prix d'une maison selon deux caractéristiques, exemple suivi de D2L (ici surface et chambres)."
+- id: d2l-somme
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-11
+  extrait: "\\[\\hat{y} = w_1 x_1 + \\cdots + w_d x_d + b.\\]"
+  appuie: "Ouverture : ŷ = w₁x₁ + w₂x₂ + … + b, notation de la fiche."
+- id: d2l-produit-scalaire
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-11
+  extrait: "Collecting all features into a vector \\(\\mathbf{x} \\in \\mathbb{R}^d\\) and all weights into a vector \\(\\mathbf{w} \\in \\mathbb{R}^d\\), we can express our model compactly via the dot product between \\(\\mathbf{w}\\) and \\(\\mathbf{x}\\)"
+  appuie: "Ouverture : les poids forment le vecteur de poids ; la somme des poids multipliés par les caractéristiques est leur produit scalaire."
+- id: d2l-influence
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-11
+  extrait: The weights determine the influence of each feature on our prediction.
+  appuie: "Ouverture, lecture : chaque poids règle l'influence d'une caractéristique."
+- id: d2l-biais
+  reference: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_sur: https://d2l.ai/chapter_linear-regression/linear-regression.html
+  lu_le: 2026-11-11
+  extrait: The bias determines the value of the estimate when all features are zero.
+  appuie: "Ouverture : le biais b, la prédiction quand toutes les caractéristiques valent zéro."
+# --- scikit-learn · Common pitfalls in the interpretation of coefficients of linear models -----------
+- id: pieges-autres-fixees
+  reference: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_sur: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_le: 2026-11-11
+  extrait: "Coefficients in multiple linear models represent the relationship between the given feature, \\(X_i\\) and the target, \\(y\\), assuming that all the other features remain constant (conditional dependence)."
+  appuie: "Lecture : un poids se lit les autres caractéristiques fixées (à surface égale, à chambres égales)."
+- id: pieges-seule
+  reference: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_sur: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_le: 2026-11-11
+  extrait: "This is different from plotting \\(X_i\\) versus \\(y\\) and fitting a linear relationship: in that case all possible values of the other features are taken into account in the estimation (marginal dependence)."
+  appuie: "Lecture : le poids de la surface seule (épisode 11) n'est pas celui de la surface à chambres égales."
+- id: pieges-baisse
+  reference: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_sur: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_le: 2026-11-11
+  extrait: An increase of the AGE will induce a decrease of the WAGE when all other features remain constant.
+  appuie: "Lecture : un poids négatif se lit, comme les autres, les autres caractéristiques fixées."
+- id: pieges-ensemble
+  reference: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_sur: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_le: 2026-11-11
+  extrait: as AGE and EXPERIENCE vary together in the data, their effect is difficult to tease apart.
+  appuie: "Lecture : surface et chambres varient ensemble ; leurs effets sont difficiles à séparer."
+- id: pieges-unites
+  reference: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_sur: https://scikit-learn.org/stable/auto_examples/inspection/plot_linear_model_coefficient_interpretation.html
+  lu_le: 2026-11-11
+  extrait: Then, we cannot compare the magnitude of different coefficients since the features have different natural scales, and hence value ranges, because of their different unit of measure.
+  appuie: "Lecture : comparer les deux poids n'a pas de sens, la surface et les chambres n'ont pas la même unité (épisode 13)."
+# --- Maisons d'Ames (De Cock, 2011), fil rouge de la saison 1 ---------------------------------------
+- id: ames-ventes
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-11-02
+  extrait: This paper presents a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010. The data set contains 2930 observations
+  appuie: "Mécanisme, lecture : les ventes de maisons d'Ames, 2006 à 2010 (calculs/ames.py ; repris de sources/11/)."
+- id: ames-4000
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock.pdf
+  lu_le: 2026-11-02
+  extrait: I would recommend removing any houses with more than 4000 square feet from the data set (which eliminates these five unusual observations)
+  appuie: "Mécanisme : les maisons de plus de 4 000 pieds carrés sont écartées, comme le recommande l'auteur (calculs/ames.py ; repris de sources/11/)."
+- id: ames-surface
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-11
+  extrait: "Gr Liv Area (Continuous): Above grade (ground) living area square feet"
+  appuie: "Mécanisme : la première caractéristique x₁, la surface habitable (en centaines de m², calculs/ames.py)."
+- id: ames-chambres
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-11
+  extrait: "Bedroom (Discrete): Bedrooms above grade (does NOT include basement bedrooms)"
+  appuie: "Mécanisme : la deuxième caractéristique x₂, le nombre de chambres hors sous-sol."
+- id: ames-prix
+  reference: https://doi.org/10.1080/10691898.2011.11889627
+  lu_sur: http://jse.amstat.org/v19n3/decock/DataDocumentation.txt
+  lu_le: 2026-11-11
+  extrait: "SalePrice (Continuous): Sale price $$"
+  appuie: "Mécanisme : le résultat y, le prix de vente, converti en millions de FCFA (calculs/devises.py)."
+- id: ames-fichier
+  reference: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_sur: http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  lu_le: 2026-11-11
+  extrait: Bedroom AbvGr
+  appuie: "Mécanisme : la colonne du nombre de chambres dans le fichier de données (avec Gr Liv Area et SalePrice), citée avec la date de consultation."
+- id: bceao-dollar
+  reference: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_sur: https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+  lu_le: 2026-10-30
+  extrait: "Cours des devises du mardi 27 Octobre 2026 Devise FCFA Euro 655,9570 Dollar us 588,3000"
+  appuie: "Mécanisme, lecture : prix en millions de FCFA au cours du 27 octobre 2026 (repris de sources/05/)."
+illisibles: []

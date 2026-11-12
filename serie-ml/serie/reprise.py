@@ -32,6 +32,9 @@ ETAPES: dict[str, list[str]] = {
               "charte/charte.yaml", "assets/images/candidats/{NN}/*"],
     "verification": ["contenu/{NN}.yaml", "sources/{NN}/*", "gabarits/*", "bibliotheque/*.py", "charte/charte.yaml"],
     "relecture": ["contenu/{NN}.yaml", "sources/{NN}/*", "sortie/{NN}/relecture.md"],
+    # Note de compréhension pour un débutant, au moins 8,5 pour le carrousel et le post (2026-11-12) :
+    # serie/comprehension.py. Toute modification du contenu oblige à refaire la notation.
+    "comprehension": ["contenu/{NN}.yaml", "sortie/{NN}/comprehension.yaml"],
     "publication": ["contenu/{NN}.yaml", "sortie/{NN}/*.pdf", "publier/{NN}/*"],
 }
 
@@ -106,6 +109,10 @@ def enregistrer_etape(depot: Depot, numero: int, etape: str, **details) -> dict:
     """Marque l'étape faite, avec l'empreinte de ses entrées ; la publication fait passer l'épisode à « généré »."""
     if etape not in ETAPES:
         raise ValueError(f"étape inconnue « {etape} » ({', '.join(ETAPES)})")
+    if etape in ("comprehension", "publication"):
+        from serie.comprehension import exiger
+
+        exiger(depot, numero)  # sous 8,5, l'épisode ne va pas plus loin
     brut = lire_etat(depot)
     ep = brut["episodes"][cle_episode(numero)]
     ep.setdefault("etapes", {})[etape] = {

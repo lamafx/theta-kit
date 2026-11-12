@@ -19,6 +19,8 @@ from serie import linkedin as li
 from serie.depot import Depot
 from serie.linkedin import Client, ErreurLinkedIn, Reponse
 
+from aide_comprehension import noter
+
 RACINE = Path(__file__).resolve().parents[1]
 UTC = dt.timezone.utc
 PREVU = dt.datetime(2026, 11, 10, 8, 30, tzinfo=UTC)  # Nº 01 : mardi 10 novembre 2026, 8 h 30 à Abidjan (GMT)
@@ -31,6 +33,7 @@ def depot(tmp_path, monkeypatch) -> Depot:
     shutil.copytree(RACINE / "publier" / "01", tmp_path / "publier" / "01")
     monkeypatch.setattr(li, "etapes_a_refaire", lambda depot, numero: [])
     copie = Depot(tmp_path)
+    noter(copie, 1)  # compréhension au-dessus du seuil ; test_comprehension.py couvre le refus
     statut(copie, "01", "genere")  # indépendant du vrai état : chaque test pose lui-même « relu »
     return copie
 
@@ -134,6 +137,7 @@ def test_tournee(depot):
 def test_post_manque_ne_bloque_pas_les_suivants(depot):
     """Nº 01 manqué : une alerte, jamais d'envoi seul ; le Nº 02 part quand même à son heure (A65)."""
     shutil.copytree(RACINE / "publier" / "02", depot.racine / "publier" / "02")
+    noter(depot, 2)
     statut(depot, "01", "relu")
     statut(depot, "02", "relu")
     alertes = []

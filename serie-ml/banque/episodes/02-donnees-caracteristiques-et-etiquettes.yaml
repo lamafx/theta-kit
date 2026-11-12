@@ -5,7 +5,7 @@ saison: 1
 chapitre:
   numero: 1
   titre: Les bases
-accroche: Pour une machine, un exemple n'est qu'une ligne de tableau.
+accroche: Pour une machine, une maison n'est qu'une ligne de tableau.
 couverture:
   famille: grille
   description: grille de données, une colonne mise en évidence
