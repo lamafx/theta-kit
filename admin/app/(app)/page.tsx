@@ -49,6 +49,24 @@ export default async function Accueil() {
         <Robot3D />
       </section>
 
+      {s.enRetard.length ? (
+        <div className="message erreur" role="alert" style={{ margin: '8px 0 16px' }}>
+          {s.enRetard.map((e) => {
+            const cle = 'cle' in e ? e.cle : e.n;
+            const nom = 'cle' in e ? `Bilan de la saison ${e.saison}` : `Nº ${e.n}`;
+            return (
+              <p key={cle} style={{ margin: '0 0 6px' }}>
+                <b>{nom} pas publié</b> : prévu {dateLongue(e.date_prevue)} ({relatif(e.date_prevue)}), statut « {e.statut} ».{' '}
+                <Link href={`/episodes/${cle}`}>Voir</Link>
+              </p>
+            );
+          })}
+          <p className="petit" style={{ margin: 0 }}>
+            Dans les 2 heures : <Link href="/publication">Tourner maintenant</Link>. Au-delà : « Publier ce post maintenant », ou statut « publié à la main » s’il est parti hors tournée.
+          </p>
+        </div>
+      ) : null}
+
       <div className="grille" style={{ marginTop: 8 }}>
         {p ? (
           <Carte className="c8" titre="Prochain post" droite={<span className="mono">{relatif(p.date_prevue)}</span>}>

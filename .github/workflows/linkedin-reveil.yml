@@ -5,6 +5,11 @@
 # La tâche quotidienne de l'admin (Vercel Cron, entre 7 h et 8 h) lance ce workflow les jours de post avec l'heure
 # prévue. Il attend cette heure, puis lance la tournée (linkedin.yml), et la relance 5 et 15 minutes plus tard :
 # une tournée ne publie jamais deux fois le même post. Ce workflow n'a pas le jeton LinkedIn.
+#
+# Contrôles (décision de l'auteur du 2026-11-12, après le Nº 02 resté « généré » sans alerte préalable) :
+# dès le réveil, le post est passé aux garde-fous de la tournée (statut relu, étapes, compréhension) ; 30 minutes
+# après l'heure, on vérifie qu'il est publié. Chaque problème devient une issue (e-mail) et une notification de
+# l'admin (si ADMIN_URL et ADMIN_NOTIF_SECRET sont posés). Rien n'est publié par ces contrôles.
 name: LinkedIn · réveil
 run-name: "LinkedIn · réveil pour ${{ inputs.a }}"
 
@@ -18,15 +23,46 @@ on:
 
 permissions:
   actions: write
+  contents: read
+  issues: write
 
 jobs:
   reveil:
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    env:
+      A: ${{ inputs.a }}
+      PYTHONUTF8: "1"
     steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: serie-ml/pyproject.toml
+
+      - name: Installer la série
+        working-directory: serie-ml
+        run: pip install --quiet -e .
+
+      - name: Avant l'heure, le post passera-t-il ?
+        working-directory: serie-ml
+        env:
+          THETA_ALERTES: ${{ runner.temp }}/avant.txt
+        run: python outils/controle-post.py avant "$A" || echo "::warning::contrôle avant impossible"
+
+      - name: Prévenir (avant)
+        if: always()
+        uses: ./.github/actions/prevenir
+        with:
+          fichier: ${{ runner.temp }}/avant.txt
+          titre: "Post du jour bloqué"
+          admin_url: ${{ vars.ADMIN_URL }}
+          secret: ${{ secrets.ADMIN_NOTIF_SECRET }}
+
       - name: Attendre l'heure du post, puis lancer la tournée
         env:
-          A: ${{ inputs.a }}
           GH_TOKEN: ${{ github.token }}
         run: |
           cible=$(date -d "$A" +%s) || { echo "::error::heure « $A » illisible"; exit 1; }
@@ -36,3 +72,26 @@ jobs:
             if [ "$reste" -gt 0 ]; then echo "Attente de $reste s"; sleep "$reste"; fi
             gh workflow run linkedin.yml --repo "$GITHUB_REPOSITORY" --ref "$GITHUB_REF_NAME" -f action=tourner
           done
+          # La dernière tournée et son commit ont le temps de finir avant le contrôle d'après.
+          reste=$(( cible + 1800 - $(date +%s) ))
+          if [ "$reste" -gt 0 ]; then echo "Attente de $reste s"; sleep "$reste"; fi
+
+      - name: Relire l'état publié
+        if: always()
+        run: git fetch --quiet origin "$GITHUB_REF_NAME" && git reset --quiet --hard "origin/$GITHUB_REF_NAME"
+
+      - name: Après l'heure, le post est-il publié ?
+        if: always()
+        working-directory: serie-ml
+        env:
+          THETA_ALERTES: ${{ runner.temp }}/apres.txt
+        run: python outils/controle-post.py apres "$A" || echo "::warning::contrôle après impossible"
+
+      - name: Prévenir (après)
+        if: always()
+        uses: ./.github/actions/prevenir
+        with:
+          fichier: ${{ runner.temp }}/apres.txt
+          titre: "Post non publié"
+          admin_url: ${{ vars.ADMIN_URL }}
+          secret: ${{ secrets.ADMIN_NOTIF_SECRET }}

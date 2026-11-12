@@ -12,6 +12,8 @@ export function synthese(d: Donnees, maintenant = new Date()) {
   const enProduction = eps.filter((e) => e.statut === 'a_faire' && e.a_refaire.length && e.a_refaire.length < 9);
   const relusAvance = avance(eps);
   const prochain = prochainPost(eps);
+  // Heure passée, pas publié : la tournée l'a refusé ou n'a pas tourné (Nº 02, 2026-11-12).
+  const enRetard = [...eps, ...(d.bilans ?? [])].filter((e) => !estPublie(e) && e.date_prevue && new Date(e.date_prevue) < maintenant);
   const labos = d.labos ?? [];
   const ouverts = labos.filter((l) => laboOuvert(l.date_ouverture, l.publie_le, maintenant));
   const prets = labos.filter((l) => l.scene && l.parcours && l.quiz);
@@ -33,6 +35,7 @@ export function synthese(d: Donnees, maintenant = new Date()) {
     relusAvance,
     avanceMin: d.calendrier?.avance_min ?? 4,
     prochain,
+    enRetard,
     labos: { tous: labos, ouverts, prets, aFinir, aConcevoir, recetteAFaire },
     decisionsOuvertes,
     jetonJours,

@@ -1,0 +1,47 @@
+# Prévenir l'auteur d'un problème de publication : une issue GitHub par message (GitHub envoie un e-mail), sans
+# doublon tant que l'issue est ouverte, et une notification sur les appareils abonnés à l'admin (si ADMIN_URL et
+# ADMIN_NOTIF_SECRET sont posés, et Upstash branché sur Vercel).
+name: Prévenir
+description: Issue et notification de l'admin pour chaque ligne d'un fichier d'alertes
+inputs:
+  fichier:
+    description: une alerte par ligne ; fichier absent ou vide = rien à faire
+    required: true
+  titre:
+    description: titre de la notification
+    required: true
+  token:
+    description: jeton GitHub (issues)
+    default: ${{ github.token }}
+  admin_url:
+    default: ""
+  secret:
+    default: ""
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        FICHIER: ${{ inputs.fichier }}
+        TITRE: ${{ inputs.titre }}
+        GH_TOKEN: ${{ inputs.token }}
+        ADMIN_URL: ${{ inputs.admin_url }}
+        SECRET: ${{ inputs.secret }}
+        RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      run: |
+        [ -s "$FICHIER" ] || { echo "Rien à signaler."; exit 0; }
+        ouvertes=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --limit 200 --json title --jq '.[].title' || true)
+        while IFS= read -r message; do
+          [ -n "$message" ] || continue
+          echo "::warning title=$TITRE::$message"
+          titre="LinkedIn · ${message:0:180}"
+          if ! printf '%s\n' "$ouvertes" | grep -Fxq -- "$titre"; then
+            corps=$(printf '%s\n\nContrôle : %s\n\nFermez l’issue une fois le problème réglé.' "$message" "$RUN_URL")
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$titre" --body "$corps" || echo "::warning::issue non créée"
+            ouvertes=$(printf '%s\n%s' "$ouvertes" "$titre")
+          fi
+          if [ -n "$ADMIN_URL" ] && [ -n "$SECRET" ]; then
+            corps=$(T="$TITRE" X="$message" python3 -c 'import json,os; print(json.dumps({"titre": os.environ["T"][:80], "texte": os.environ["X"][:300], "lien": "/admin/publication", "tag": "linkedin-controle"}))')
+            curl -fsS -m 15 -X POST "$ADMIN_URL/api/notifier" -H "Authorization: Bearer $SECRET" -H "Content-Type: application/json" -d "$corps" || true
+          fi
+        done < "$FICHIER"

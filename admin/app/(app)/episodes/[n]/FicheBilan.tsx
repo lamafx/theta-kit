@@ -5,6 +5,7 @@ import { BoutonGeste } from '@/components/Geste';
 import { IcPdf, IcRetour } from '@/components/Icones';
 import { B, dateLongue, relatif } from '@/lib/format';
 import type { Bilan } from '@/lib/types';
+import ChangerStatut from './ChangerStatut';
 
 /** Le post bilan d'une saison : carrousel, texte, date, et la validation de l'auteur. */
 export default function FicheBilan({ b }: { b: Bilan }) {
@@ -44,6 +45,12 @@ export default function FicheBilan({ b }: { b: Bilan }) {
               <a href={b.trace.lien} target="_blank" rel="noreferrer">Voir le post sur LinkedIn</a>
             </p>
           ) : null}
+          <details className="repli">
+            <summary>Changer le statut</summary>
+            <div style={{ marginTop: 10 }}>
+              <ChangerStatut cle={b.cle} nom={`Bilan de la saison ${b.saison}`} statut={b.statut} />
+            </div>
+          </details>
         </Carte>
         <Carte className="c12" titre="Texte du post">
           {b.post?.titre ? <p className="sur" style={{ color: 'var(--pale)' }}>{b.post.titre}</p> : null}

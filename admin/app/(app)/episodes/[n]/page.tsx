@@ -8,6 +8,7 @@ import { B, dateLongue, relatif } from '@/lib/format';
 import Relecture from './Relecture';
 import Mesures from './Mesures';
 import FicheBilan from './FicheBilan';
+import ChangerStatut from './ChangerStatut';
 
 export const metadata = { title: 'Épisode' };
 
@@ -104,6 +105,10 @@ export default async function Fiche({ params }: { params: Promise<{ n: string }>
               <Mesures n={e.n} mesures={e.mesures} publieLe={e.publie_le} />
             </Carte>
           )}
+
+          <Carte titre="Statut">
+            <ChangerStatut cle={e.n} nom={`Nº ${e.n}`} statut={e.statut} />
+          </Carte>
 
           {e.verification ? (
             <Carte titre="Vérification automatique" className={e.verification.erreurs.length ? 'alerte' : ''}>

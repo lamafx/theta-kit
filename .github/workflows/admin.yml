@@ -11,9 +11,9 @@ on:
   workflow_dispatch:
     inputs:
       geste:
-        description: "valider, corriger, recette, trancher, mesurer, pilote, reporter"
+        description: "valider, corriger, recette, trancher, mesurer, pilote, reporter, statut"
         type: choice
-        options: [valider, corriger, recette, trancher, mesurer, pilote, reporter]
+        options: [valider, corriger, recette, trancher, mesurer, pilote, reporter, statut]
       cible:
         description: "épisode (05), bilan-1, labo (cout) ou décision (05-D1)"
         type: string

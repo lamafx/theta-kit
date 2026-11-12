@@ -166,6 +166,54 @@ def mesurer(cible: str, valeur: str) -> str:
     return message
 
 
+URN_LINKEDIN = re.compile(r"(ugcPost|activity|share)[:-](\d{15,22})")
+
+
+def changer_statut(cible: str, valeur: str) -> str:
+    """Passages permis par la CLI (serie/reprise.py, PASSAGES) : généré ↔ relu, relu → publié, publié → mesuré.
+
+    « relu » passe par valider (étapes à jour, note de compréhension). « publié » sert au post envoyé à la main,
+    hors tournée : le lien LinkedIn est exigé, et la trace publier/linkedin/NN.yaml est écrite s'il n'y en a pas.
+    """
+    cle = cible if cible.startswith("bilan-") else cle_episode(cible)
+    v = json.loads(valeur or "{}")
+    nouveau = v.get("statut")
+    rubrique = "bilans" if cle.startswith("bilan-") else "episodes"
+    ici = int(cle.removeprefix("bilan-")) if cle.startswith("bilan-") else cle
+    actuel = etat().get(rubrique, {}).get(ici, {}).get("statut")
+    if nouveau == "relu":
+        return valider(cible, "")
+    if nouveau == "genere":
+        if actuel != "relu":
+            raise Refus(f"{cle} est « {actuel} » : seul un épisode relu repasse à « à relire »")
+        return serie("statut", cle, "genere") + " ; publication retenue"
+    if nouveau == "mesure":
+        if actuel != "publie":
+            raise Refus(f"{cle} est « {actuel} » : seul un post publié passe à « mesuré »")
+        return serie("statut", cle, "mesure")
+    if nouveau != "publie":
+        raise Refus(f"statut « {nouveau} » : relu, genere, publie ou mesure attendu")
+    if actuel != "relu":
+        raise Refus(f"{cle} est « {actuel} » : seul un épisode relu passe à « publié »")
+    le = str(v.get("le", ""))
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", le):
+        raise Refus("date de publication : AAAA-MM-JJ attendu")
+    if dt.date.fromisoformat(le) > maintenant().date():
+        raise Refus("la date de publication ne peut pas être dans le futur")
+    lien = str(v.get("lien", "")).strip()
+    if not re.fullmatch(r"https://(www\.)?linkedin\.com/\S+", lien):
+        raise Refus("lien du post LinkedIn obligatoire (https://www.linkedin.com/…) : il prouve que le post est en ligne")
+    trace = SERIE / "publier" / "linkedin" / f"{cle}.yaml"
+    sortie = serie("statut", cle, "publie", "--le", le)
+    if not trace.is_file():
+        m = URN_LINKEDIN.search(lien)
+        ecrire_yaml(trace, {k: x for k, x in {
+            "post": f"urn:li:{m.group(1)}:{m.group(2)}" if m else None, "lien": lien,
+            "publie_a": f"{le}T00:00:00+00:00", "manuel": True}.items() if x is not None})
+        sortie += f" ; trace publier/linkedin/{cle}.yaml écrite"
+    return sortie + " ; son labo s'ouvre au prochain déploiement"
+
+
 def pilote(_cible: str, valeur: str) -> str:
     if valeur not in ("github", "windows"):
         raise Refus("pilote : github ou windows")
@@ -189,7 +237,7 @@ def reporter(cible: str, valeur: str) -> str:
 
 
 GESTES = {"valider": valider, "corriger": corriger, "recette": recette, "trancher": trancher, "mesurer": mesurer,
-          "pilote": pilote, "reporter": reporter}
+          "pilote": pilote, "reporter": reporter, "statut": changer_statut}
 
 
 def journaliser(geste: str, cible: str, valeur: str, resultat: str, tournee: str) -> None:
