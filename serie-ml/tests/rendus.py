@@ -36,10 +36,11 @@ AUTRES = ["Image-Contexte", "Image-Capture", "Bilan-Couverture", "Bilan-Sommaire
           "Bib-Visuels", "Fin-Serie", "Couverture-Classique"]
 REFERENCES = PAGES_08 + AUTRES
 # Planches des formes de page (tests/fixtures/formes.yaml), une par famille.
-FORMES = ["Formes-Grille", "Formes-Courbe", "Formes-Nuage", "Formes-Flux", "Formes-Niveaux"]
+FORMES = ["Formes-Grille", "Formes-Courbe", "Formes-Nuage", "Formes-Flux", "Formes-Niveaux", "Formes-Barres", "Formes-Blocs",
+          "Formes-Courbe-2", "Formes-Nuage-2"]
 REFERENCES += FORMES + ["Couvertures"]
 assert sorted(FORMES + ["Couvertures"]) == sorted(PLANCHES)
-HAUTEUR_COUVERTURES = 4910  # 13 couvertures sur 7 rangées (A62)
+HAUTEUR_COUVERTURES = 6920  # 19 couvertures sur 10 rangées (session de design n° 4)
 CALENDRIER_ESSAI = FIXTURES / "calendrier-essai.yaml"  # figé : les références ne suivent pas le calendrier réel
 # Date de lancement d'essai : la fin du bilan affiche la date de reprise (A35) ; calendrier.yaml n'en a pas.
 LANCEMENT_ESSAI = "2026-11-03"

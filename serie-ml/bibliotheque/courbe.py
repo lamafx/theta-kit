@@ -26,6 +26,7 @@ from bibliotheque._svg import (
 from bibliotheque._plan import axes, plan
 from bibliotheque._planche import fond
 from calculs import couvertures
+from calculs.classification import echantillon_binaire, logistique, sigmoide
 from calculs.descente_gradient import creux_f, erreur, iterations, iterations_f, pente, valeur_f
 from calculs.droite import predire, segment
 
@@ -241,6 +242,7 @@ def _trace(p, th) -> str:
         c.append(texte_svg(t["x"], 26, x=float(p["position_x"][0]), y=float(p["position_x"][1]), text_anchor="end",
                            font_family=GEIST, font_size=22, fill=th["secondaire"]))
     k = 240
+    sous_courbe = len(c)  # les repères passent sous la courbe
     pts = [r.pt(x0 + (x1 - x0) * i / k, valeur_f(nom, x0 + (x1 - x0) * i / k)) for i in range(k + 1)]
     c.append(balise("polyline", points=points(pts), fill="none", stroke=ob, stroke_width=3, stroke_linejoin="round",
                     stroke_linecap="round"))
@@ -278,10 +280,71 @@ def _trace(p, th) -> str:
             dx, dy = d.get("decalage", [16, -16])
             etiquettes.append(texte_svg(d["texte"], 26, x=float(round(xe + dx)), y=float(round(ye + dy)),
                                         font_family=GEIST, font_size=22, font_weight=500, fill=couleur))
+    # Session de design n° 4 : `reperes` (droites horizontales en tirets, comme les asymptotes 0 et 1 de la
+    # sigmoïde) et `points` (valeurs marquées sur la courbe, avec leur étiquette).
+    for rp in p.get("reperes", []):
+        y = r.y(rp["y"])
+        c.insert(sous_courbe, ligne(r.x(x0), y, r.x(x1), y, stroke=th["contexte"], stroke_width=1.5,
+                                    stroke_dasharray="6 6"))
+        sous_courbe += 1
+        if rp.get("texte"):
+            gauche = rp.get("cote", "droite") == "gauche"
+            etiquettes.append(texte_svg(rp["texte"], 26, x=float(round(r.x(x0) + 8 if gauche else r.x(x1) - 8)),
+                                        y=float(round(y - 10)), text_anchor="start" if gauche else "end",
+                                        font_family=GEIST, font_size=22, fill=th["secondaire"]))
+    for pt in p.get("points", []):
+        x, y = r.pt(pt["x"], valeur_f(nom, pt["x"]))
+        couleur = ac if pt.get("style", "accent") == "accent" else ob
+        c.append(cercle(x, y, 8, fill=couleur, stroke="#FFFFFF", stroke_width=2.5))
+        if pt.get("texte"):
+            dx, dy = pt.get("decalage", [16, -16])
+            etiquettes.append(texte_svg(pt["texte"], 26, x=float(round(x + dx)), y=float(round(y + dy)),
+                                        text_anchor=pt.get("ancre", "start"), font_family=GEIST, font_size=22,
+                                        font_weight=500, fill=couleur))
     if t.get("courbe"):
         xc, yc = p.get("position_courbe", [larg - 40, 40])
         etiquettes.append(texte_svg(t["courbe"], 26, x=float(xc), y=float(yc), text_anchor="end", font_family=GEIST,
                                     font_size=22, fill=th["secondaire"]))
+    return svg(larg, haut, c + etiquettes, p.get("description"), "display: block")
+
+
+def _logistique(p, th) -> str:
+    """Page (épisode 17, session de design n° 4) : des exemples de classe 0 (en bas, gris de contexte) et de
+    classe 1 (en haut, objet), tirés par calculs.classification.echantillon_binaire (`source` : n, w, b, domaine,
+    graine) ; la sigmoïde ajustée par maximum de vraisemblance (calculs.classification.logistique) en accent ;
+    avec `seuil`, la probabilité 0,5 en tirets et l'abscisse où elle est atteinte. Textes : x, y, courbe, seuil,
+    zero, un (étiquettes des deux rangées)."""
+    r = plan(p)
+    t = _textes(p)
+    larg, haut = p.get("cadre", [920, 440])
+    (x0, x1), ac, ob = p["domaine"], th["accent"], th["objet"]
+    src = p["source"]
+    pts = echantillon_binaire(src["n"], src["w"], src["b"], src.get("domaine", p["domaine"]), src["graine"])
+    m = logistique(pts)
+    c = axes(r, p["domaine"], p["plage"], th, t)
+    etiquettes = []
+    if p.get("seuil"):
+        y = r.y(0.5)
+        c.append(ligne(r.x(x0), y, r.x(x1), y, stroke=th["contexte"], stroke_width=1.5, stroke_dasharray="6 6"))
+        xs = r.x(m["seuil"])
+        c.append(ligne(xs, r.y(0), xs, r.y(1), stroke=ac, stroke_width=2, stroke_dasharray="6 6"))
+        if t.get("seuil"):
+            etiquettes.append(texte_svg(t["seuil"], 26, x=float(round(xs - 14)), y=float(round(y - 14)),
+                                        text_anchor="end", font_family=GEIST, font_size=22, font_weight=500, fill=ac))
+    k = 200
+    courbe = [r.pt(x0 + (x1 - x0) * i / k, sigmoide(m["w"] * (x0 + (x1 - x0) * i / k) + m["b"])) for i in range(k + 1)]
+    c.append(balise("polyline", points=points(courbe), fill="none", stroke=ac, stroke_width=3.5,
+                    stroke_linejoin="round", stroke_linecap="round"))
+    c.append(f'<g fill="{th["contexte"]}">' + "".join(cercle(*r.pt(x, y), 8) for x, y in pts if y == 0) + "</g>")
+    c.append(f'<g fill="{ob}">' + "".join(cercle(*r.pt(x, y), 8) for x, y in pts if y == 1) + "</g>")
+    for cle, y in (("zero", 0), ("un", 1)):
+        if t.get(cle):
+            etiquettes.append(texte_svg(t[cle], 26, x=float(round(r.x(x0) - 14)), y=float(round(r.y(y) + 8)),
+                                        text_anchor="end", font_family=GEIST, font_size=22, fill=th["secondaire"]))
+    if t.get("courbe"):
+        xc, yc = p.get("position_courbe", [larg - 40, 40])
+        etiquettes.append(texte_svg(t["courbe"], 26, x=float(xc), y=float(yc), text_anchor="end", font_family=GEIST,
+                                    font_size=22, font_weight=500, fill=ac))
     return svg(larg, haut, c + etiquettes, p.get("description"), "display: block")
 
 
@@ -539,8 +602,10 @@ def _couverture(p, th) -> str:
 
 
 def _vague(v, th) -> str:
-    """Courbe ondulée de fond (repère `origine`, `echelle` en pixels du fond, `domaine`) ; la descente
-    (depart, eta, pas) en points, le départ cerclé ; opacité du fond (calculs.couvertures.opacite)."""
+    """Courbe de fond (`courbe` : une courbe nommée de calculs.descente_gradient, ondulée par défaut ; repère
+    `origine`, `echelle` en pixels du fond, `domaine`) ; la descente (depart, eta, pas) en points, le départ cerclé ;
+    `epaisseur` du trait (3,5 par défaut : plus pour un geste dont la zone est petite) ; opacité du fond
+    (calculs.couvertures.opacite)."""
     ac = th["accent"]
     nom = v.get("courbe", "ondulee")
     (ox, oy), (sx, sy), (x0, x1) = v["origine"], v["echelle"], v["domaine"]
@@ -548,15 +613,28 @@ def _vague(v, th) -> str:
         return ox + sx * x, oy - sy * valeur_f(nom, x)
     k = 160
     pts = [px(x0 + (x1 - x0) * i / k) for i in range(k + 1)]
-    c = [f'<g stroke="{ac}" stroke-width="3.5" stroke-linecap="round" fill="none">']
+    epaisseur = v.get("epaisseur", 3.5)
+    c = [f'<g stroke="{ac}" stroke-width="{epaisseur:g}" stroke-linecap="round" fill="none">']
     for (xa, ya), (xb, yb) in zip(pts, pts[1:]):
         opacite = max(couvertures.opacite((xa + xb) / 2, (ya + yb) / 2), 0.35)
         c.append(ligne(xa, ya, xb, yb, stroke_opacity=f"{opacite:g}"))
     c.append("</g>")
-    etapes = [px(x) for x in iterations_f(nom, v["depart"], v["eta"], v["pas"])]
-    for x, y in etapes[1:]:
-        c.append(cercle(x, y, 5, fill=ac, fill_opacity=f"{max(couvertures.opacite(x, y), 0.5):g}"))
-    c.append(cercle(*etapes[0], 9, fill=th["carte"], stroke=th["clair"], stroke_width=2.5))
+    # Session de design n° 4 : `binaires` (épisode 17) : des exemples posés sur les droites 0 et 1 de la courbe
+    # en S, tirés autour de son centre ; `marque` : un point cerclé sur la courbe, sans descente.
+    if "binaires" in v:
+        b = v["binaires"]
+        for x, y in echantillon_binaire(b.get("n", 26), b.get("w", 2.2), b.get("b", 0.0), [x0, x1], b.get("graine", 5)):
+            xp, yp = ox + sx * x, oy - sy * y
+            c.append(cercle(xp, yp, 6 * epaisseur / 3.5, fill=ac,
+                            fill_opacity=f"{max(couvertures.opacite(xp, yp), 0.3):g}"))
+    if "depart" in v:
+        etapes = [px(x) for x in iterations_f(nom, v["depart"], v["eta"], v["pas"])]
+        for x, y in etapes[1:]:
+            c.append(cercle(x, y, 5, fill=ac, fill_opacity=f"{max(couvertures.opacite(x, y), 0.5):g}"))
+        c.append(cercle(*etapes[0], 9, fill=th["carte"], stroke=th["clair"], stroke_width=2.5))
+    elif "marque" in v:
+        c.append(cercle(*px(v["marque"]), 9 * epaisseur / 3.5, fill=th["carte"], stroke=th["clair"],
+                        stroke_width=2.5 * epaisseur / 3.5))
     return fond(c)
 
 
@@ -603,6 +681,7 @@ FORMES = {
     "pentes": _pentes,
     "tangentes": _tangentes,
     "trace": _trace,
+    "logistique": _logistique,
     "comparaison": _comparaison,
     "plancher": _plancher,
     "iterations": _iterations,
@@ -622,7 +701,8 @@ PARAMETRES = {
     "pentes": _REPERE | {"axe", "eta", "points", "textes"},
     "tangentes": _REPERE | {"axe", "points", "textes", "x_courbe"},
     "trace": _PLAN | {"courbe", "creux", "descentes", "corde", "decalage_corde", "position_courbe", "position_x",
-                       "textes"},
+                       "reperes", "points", "textes"},
+    "logistique": _PLAN | {"source", "seuil", "position_courbe", "textes"},
     "comparaison": _REPERE | {"theta0", "eta", "pas", "alerte"},
     "plancher": _REPERE | {"textes"},
     "iterations": _REPERE | {"echantillons", "theta0", "eta", "pas", "decalages", "textes"},

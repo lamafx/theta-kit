@@ -348,6 +348,19 @@ Session de design n° 1 (2026-10-25) : A12, A11, A24, A25, A22, A35 et A39 sont 
 
 ## Résolues
 
+### A69 · Formes des épisodes 13 à 20 (session de design n° 4)
+
+| Champ | Contenu |
+| --- | --- |
+| Nº | A69 |
+| Jalon | 5 (production de la saison 1) |
+| Fichier | calculs/classification.py, polynome.py, decoupage.py, descente_gradient.py ; bibliotheque/courbe.py, nuage.py, barres.py, blocs.py, niveaux.py ; tests/fixtures/formes.yaml et couvertures.yaml ; design/canevas-gabarits/Formes-Barres, Formes-Blocs, Formes-Courbe-2, Formes-Nuage-2, Couvertures ; tests/reference/ |
+| Question | Les épisodes 13 à 20 demandaient des visuels absents de la bibliothèque : polynôme ajusté de degré 1, 3 et 15 (14), sigmoïde et valeurs marquées (16), exemples à 0 et à 1 et sigmoïde ajustée (17), −ln(p) (18), barres et softmax (19), découpage entraînement / validation / test et fuite de données (20), et leurs couvertures. |
+| Options | 1. Session de design avant leur production. 2. Les produire en texte seul. |
+| Gravité | Bloquante pour 14, 16 à 20 |
+| Statut | Résolue le 2026-11-12 (session de design n° 4) |
+| Décision | Demande de l'utilisateur (2026-11-12) : « une session de design jusqu'à l'épisode 20 ». Calculs : `sigmoide`, `log_perte`, `entropie_croisee`, `softmax`, `echantillon_binaire`, `logistique` (méthode de Newton), polynôme des moindres carrés (QR de Householder, x ramené dans [−1 ; 1], sans numpy), `decouper` (plus grands restes). Formes : Courbe `trace` avec `reperes` et `points` (et les courbes nommées `sigmoide`, `log_perte`), Courbe `logistique` ; Nuage `ajustement` (`degre`, `vraie`, `nouveaux`, `erreur`) ; Barres `barres` et `probabilites` ; Blocs `decoupage` (`fuite`). Couvertures : Niveaux `rapports` (13), Nuage `polynome` (14) et `frontiere` (15), Courbe `vague` étendue aux courbes nommées, sans descente, avec `binaires`, `marque` et `epaisseur` (16 à 18) ; 19 et 20 avaient déjà la leur. Les épisodes 13 et 15 n'avaient besoin de rien de nouveau pour leurs pages (Niveaux `carte`, Nuage `frontiere`). Épisodes 02 à 12 rendus de nouveau : pixels identiques, étapes rendu et vérification réenregistrées ; leur PDF a maintenant la couverture en image fixe (serie/rendu.py `page_image`, après le Nº 02 du 2026-11-12). Le Nº 01, publié, garde son rendu (sa page 3 précède la marge du Flux, A66). |
+
 ### A68 · Lien du site dans chaque post
 
 | Champ | Contenu |

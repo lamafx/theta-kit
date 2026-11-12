@@ -20,13 +20,16 @@ VIGNETTE_CHEMIN = [(40, 22), (120, 112), (165, 62), (200, 100), (228, 82), (242,
 def _couverture(p, th) -> str:
     """Fond de couverture : ellipses autour du minimum, puis le chemin calculé par calculs/ (08) ; avec `fleches`,
     des flèches perpendiculaires aux ellipses, vers l'extérieur, et pas de chemin (07) ; avec `bruit` (et `lot`,
-    `graine`), un chemin bruité qui zigzague (09)."""
+    `graine`), un chemin bruité qui zigzague (09) ; avec `rapports`, un allongement par ellipse (13)."""
     ac = th["accent"]
     cx, cy = p["centre"]
     rapport = p.get("rapport", 2.381)
     c = ["<defs>", marqueur("kc-step", ac), "</defs>", f'<g fill="none" stroke="{ac}" stroke-width="1.5">']
-    for rx, opacite in zip(p["ellipses"], p["opacites"]):
-        c.append(balise("ellipse", cx=float(cx), cy=float(cy), rx=float(rx), ry=float(round(rx / rapport)),
+    # `rapports` (épisode 13, session de design n° 4) : un allongement par ellipse, des plus allongées dehors aux
+    # plus rondes dedans (la normalisation arrondit la vallée).
+    rapports = p.get("rapports", [rapport] * len(p["ellipses"]))
+    for rx, opacite, rp in zip(p["ellipses"], p["opacites"], rapports):
+        c.append(balise("ellipse", cx=float(cx), cy=float(cy), rx=float(rx), ry=float(round(rx / rp)),
                         stroke_opacity=str(opacite)))
     c.append("</g>")
     if "fleches" in p:
@@ -51,6 +54,8 @@ def _couverture(p, th) -> str:
                         stroke_linejoin="round", stroke_opacity="0.85"))
         c.append(cercle(*pts[0], 8, fill=th["clair"], stroke=ac, stroke_width=3))
         c.append(f'<g fill="{ac}">' + "".join(cercle(*pt, 3.5) for pt in pts[1:]) + "</g>")
+        return svg(1080, 780, c, None, "position: absolute; left: -80px; top: -60px; display: block")
+    if "depart" not in p:  # épisode 13 : les seules lignes de niveau, sans chemin
         return svg(1080, 780, c, None, "position: absolute; left: -80px; top: -60px; display: block")
     chemin = iterations_2d(p["depart"], p["eta"], p["courbures"], p["pas"])
     pts = [(cx + x, cy + y) for x, y in chemin]
@@ -191,7 +196,7 @@ FORMES = {"carte": _carte, "chemin": _chemin, "couverture": _couverture, "vignet
 PARAMETRES = {
     "carte": {"origine", "echelle", "domaine", "plage", "cadre", "courbures", "niveaux", "points", "longueur", "textes"},
     "chemin": {"origine", "echelle", "domaine", "plage", "cadre", "courbures", "niveaux", "chemins", "textes", "alerte"},
-    "couverture": {"centre", "ellipses", "opacites", "depart", "eta", "courbures", "pas", "rapport", "fleches",
+    "couverture": {"centre", "ellipses", "opacites", "depart", "eta", "courbures", "pas", "rapport", "rapports", "fleches",
                    "longueur", "bruit", "lot", "graine"},
     "vignette": set(),
 }

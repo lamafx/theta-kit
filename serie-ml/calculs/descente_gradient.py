@@ -6,6 +6,8 @@ from __future__ import annotations
 import math
 import random
 
+from calculs.classification import log_perte, pente_sigmoide, sigmoide
+
 
 def erreur(theta: float, a: float = 1.0, c: float = 0.0) -> float:
     return a * theta * theta + c
@@ -112,6 +114,9 @@ FONCTIONS = {
     "ondulee": (_ondulee, _pente_ondulee),
     "parabole": (lambda x: x * x, lambda x: 2 * x),
     "fond_plat": (lambda x: max(abs(x) - 1, 0.0), lambda x: 0.0 if abs(x) <= 1 else math.copysign(1.0, x)),
+    # Session de design n° 4 (épisodes 16 à 18) : σ(z) et −ln(p) (calculs/classification.py).
+    "sigmoide": (sigmoide, pente_sigmoide),
+    "log_perte": (log_perte, lambda p: -1 / max(p, 1e-12)),
 }
 
 

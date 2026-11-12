@@ -24,6 +24,19 @@
   params: {vague: {origine: [450, 405], echelle: [240, 150], domaine: [-1, 1.75], depart: -0.9, eta: 0.05, pas: 12}}
 - episode: 12
   params: {plan: {coin: [10, 610], largeur: [740, 0], fuite: [320, -330], hauteur: 190, mailles: [10, 6], n: 60, bruit: 55, graine: 12}}
+# Session de design n° 4 (2026-11-12) : 13 (ellipses qui s'arrondissent), 14 (polynôme), 15 (frontière), 16 à 18 (sigmoïde, exemples 0 et 1, −ln p).
+- episode: 13
+  params: {centre: [540, 390], ellipses: [500, 430, 365, 305, 250, 198, 150], opacites: [0.2, 0.26, 0.33, 0.4, 0.48, 0.57, 0.7], rapports: [3.2, 2.8, 2.4, 2.0, 1.6, 1.3, 1.0]}
+- episode: 14
+  params: {polynome: {coefficients: [1, 0.5, -0.8, 0.12], abscisses: [0.2, 5.8], origine: [251, 400], echelle: [96, 115], n: 26, bruit: 0.35, graine: 14, degre: 3}}
+- episode: 15
+  params: {centres: [[380, 250], [720, 530]], effectifs: [44, 44], dispersion: 80, graine: 15, frontiere: true}
+- episode: 16
+  params: {vague: {courbe: sigmoide, origine: [540, 640], echelle: [78, 500], domaine: [-6.6, 6.6], marque: 0, epaisseur: 5}}
+- episode: 17
+  params: {vague: {courbe: sigmoide, origine: [540, 500], echelle: [62, 390], domaine: [-7.5, 7.5], epaisseur: 5, binaires: {n: 26, w: 1.1, b: 0, graine: 17}}}
+- episode: 18
+  params: {vague: {courbe: log_perte, origine: [258, 540], echelle: [532, 107], domaine: [0.06, 1.0], marque: 0.1, epaisseur: 6}}
 - episode: 19
   params: {}
 - episode: 20

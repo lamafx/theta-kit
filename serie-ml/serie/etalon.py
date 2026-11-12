@@ -37,12 +37,17 @@ CANEVAS = {
     "Formes-Nuage": "Formes-Nuage.dc.html",
     "Formes-Flux": "Formes-Flux.dc.html",
     "Formes-Niveaux": "Formes-Niveaux.dc.html",
+    "Formes-Barres": "Formes-Barres.dc.html",
+    "Formes-Blocs": "Formes-Blocs.dc.html",
+    "Formes-Courbe-2": "Formes-Courbe-2.dc.html",
+    "Formes-Nuage-2": "Formes-Nuage-2.dc.html",
     "Couvertures": "Couvertures.dc.html",
     "Couverture-Classique": "Couverture-Classique.dc.html",
 }
 
 # Planches de la bibliothèque faites en session de design : ce ne sont pas des pages ni des gabarits.
-PLANCHES = ("Formes-Grille", "Formes-Courbe", "Formes-Nuage", "Formes-Flux", "Formes-Niveaux", "Couvertures")
+PLANCHES = ("Formes-Grille", "Formes-Courbe", "Formes-Nuage", "Formes-Flux", "Formes-Niveaux", "Formes-Barres", "Formes-Blocs",
+            "Formes-Courbe-2", "Formes-Nuage-2", "Couvertures")
 # Références ajoutées en session de design : absentes du document de conception (provenance.yaml, 14 gabarits).
 AJOUTEES = PLANCHES + ("Bilan-Fin", "Fin-Serie", "Couverture-Classique")
 HAUTEUR = 1350

@@ -86,6 +86,10 @@ PLANCHER = {
     "Formes-Nuage": 0,
     "Formes-Flux": 0,
     "Formes-Niveaux": 0,  # session de design n° 2 (A56, épisode 07)
+    "Formes-Barres": 0,  # session de design n° 4 (épisodes 14 et 16 à 20)
+    "Formes-Blocs": 0,
+    "Formes-Courbe-2": 0,
+    "Formes-Nuage-2": 0,
     "Couvertures": 0,
     "Couverture-Classique": 0,  # 2026-11-02 : couverture d'avant la couverture A, gardée au choix
 }

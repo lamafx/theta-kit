@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Bibliothèque — Barres · 2 formes</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=Geist+Mono:wght@400;500&amp;family=STIX+Two+Text:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+</style>
+</helmet>
+<style>
+
+
+body{margin:0}
+
+</style>
+<div style="width: 1080px; height: 1250px; box-sizing: border-box; padding: 64px 80px 56px; background: #FFFFFF; color: #0E1116; font-family: 'Geist', sans-serif; display: flex; flex-direction: column; gap: 40px; overflow: hidden">
+
+<div style="display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #2D5BFF">Bibliothèque · formes de page</span>
+<h1 style="margin: 0; font-size: 46px; line-height: 1.05; font-weight: 600; letter-spacing: -0.03em">Barres · 2 formes</h1>
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">barres · des valeurs, la dominante en accent (épisode 19)</span>
+
+<svg viewBox="0 0 920 400" width="920" height="400" role="img" aria-label="Quatre barres : chat 12 %, chien 71 %, oiseau 11 %, poisson 6 %. La barre chien, la plus haute, est en bleu." style="display: block">
+<text x="0" y="26" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">probabilité de chaque classe</text>
+<line x1="0" y1="340" x2="920" y2="340" stroke="#E4E6EA" stroke-width="2"></line>
+<rect x="67" y="298.1" width="96" height="41.9" rx="6" fill="#C3C7CE"></rect>
+<text x="115" y="286.1" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">12 %</text>
+<text x="115" y="374" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">chat</text>
+<rect x="297" y="92" width="96" height="248" rx="6" fill="#2D5BFF"></rect>
+<text x="345" y="80" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="#2D5BFF">71 %</text>
+<text x="345" y="374" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">chien</text>
+<rect x="527" y="301.6" width="96" height="38.4" rx="6" fill="#C3C7CE"></rect>
+<text x="575" y="289.6" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">11 %</text>
+<text x="575" y="374" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">oiseau</text>
+<rect x="757" y="319" width="96" height="21" rx="6" fill="#C3C7CE"></rect>
+<text x="805" y="307" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">6 %</text>
+<text x="805" y="374" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">poisson</text>
+</svg>
+
+</div>
+
+
+<div style="display: flex; flex-direction: column; gap: 20px; border-top: 1px solid #E4E6EA; padding-top: 20px">
+<span style="font-family: 'Geist Mono', monospace; font-size: 15px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5F6673">probabilites · logits, softmax, probabilités (mécanisme, épisode 19)</span>
+
+<svg viewBox="0 0 920 420" width="920" height="420" role="img" aria-label="À gauche, trois logits : chat 2,0, chien 1,0, oiseau 0,1. Une flèche softmax. À droite, leurs probabilités : chat 66 %, chien 24 %, oiseau 10 %." style="display: block">
+<defs>
+<marker id="pb-fleche" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker>
+</defs>
+<text x="0" y="26" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">logits</text>
+<text x="535" y="26" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">probabilités</text>
+<line x1="0" y1="356" x2="385" y2="356" stroke="#E4E6EA" stroke-width="2"></line>
+<rect x="24.4" y="96" width="79.6" height="260" rx="6" fill="#2D5BFF"></rect>
+<text x="64.2" y="84" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="#2D5BFF">2,0</text>
+<text x="64.2" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">chat</text>
+<rect x="152.7" y="226" width="79.6" height="130" rx="6" fill="#C3C7CE"></rect>
+<text x="192.5" y="214" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">1,0</text>
+<text x="192.5" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">chien</text>
+<rect x="281.1" y="343" width="79.6" height="13" rx="6" fill="#C3C7CE"></rect>
+<text x="320.8" y="331" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">0,1</text>
+<text x="320.8" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">oiseau</text>
+<line x1="535" y1="356" x2="920" y2="356" stroke="#E4E6EA" stroke-width="2"></line>
+<rect x="559.4" y="184.7" width="79.6" height="171.3" rx="6" fill="#2D5BFF"></rect>
+<text x="599.2" y="172.7" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="600" fill="#2D5BFF">66 %</text>
+<text x="599.2" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">chat</text>
+<rect x="687.7" y="293" width="79.6" height="63" rx="6" fill="#C3C7CE"></rect>
+<text x="727.5" y="281" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">24 %</text>
+<text x="727.5" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">chien</text>
+<rect x="816.1" y="330.4" width="79.6" height="25.6" rx="6" fill="#C3C7CE"></rect>
+<text x="855.8" y="318.4" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#0E1116">10 %</text>
+<text x="855.8" y="390" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">oiseau</text>
+<line x1="407" y1="226" x2="513" y2="226" stroke="#2D5BFF" stroke-width="3" marker-end="url(#pb-fleche)"></line>
+<text x="460" y="210" text-anchor="middle" font-family="Geist, sans-serif" font-size="22" font-weight="500" fill="#2D5BFF">softmax</text>
+<text x="920" y="26" text-anchor="end" font-family="Geist, sans-serif" font-size="22" fill="#5F6673">somme : 100 %</text>
+</svg>
+
+</div>
+
+
+</div>
+
+</x-dc>
+</body>
+</html>

@@ -12,6 +12,9 @@ de calculs/droite.py :
   être de vraies ventes d'Ames (`source: ames`) ou suivre une relation courbe (`polynome`), la droite venir d'une
   descente (`descente`) ou être donnée (`w`, `b`), la droite des moindres carrés restant en `fantome` ;
 - `frontiere` : deux classes de part et d'autre d'une droite (la médiatrice de leurs centres) ;
+- `ajustement` : le polynôme de degré `degre` des moindres carrés (calculs/polynome.py) sur des points tirés
+  autour d'une relation courbe ; `nouveaux` : d'autres points de la même relation, cerclés (le piège du
+  surapprentissage, épisode 14, session de design n° 4) ;
 - `plan` : deux caractéristiques, un résultat (épisode 12, A67) : de vraies ventes d'Ames (surface, chambres,
   prix) en perspective cavalière, le plan des moindres carrés en accent et l'écart vertical de chaque point ;
 - `panneaux` : les trois familles d'apprentissage côte à côte (ouverture de l'épisode 03) : le même nuage,
@@ -28,11 +31,12 @@ from __future__ import annotations
 
 from bibliotheque._plan import axes, plan
 from bibliotheque._planche import fond, vignette_ou_couverture
-from bibliotheque._svg import GEIST, MONO, balise, cercle, ligne, points as liste_points, svg, texte_svg
+from bibliotheque._svg import GEIST, MONO, balise, cercle, ligne, nombre_fr, points as liste_points, svg, texte_svg
 from calculs import couvertures
 from calculs.droite import ecarts, moindres_carres, predire, segment
 from calculs.ames import (descente_droite, echantillon, echantillon_surface_chambres, moindres_carres_multiples,
                           points_surface_chambres_prix)
+from calculs.polynome import ajuster, erreur_quadratique, evaluer
 from calculs.nuage import autour_d_un_polynome, autour_d_une_droite, centres, distance_a_l_enveloppe, enveloppe, frontiere, groupes
 
 POINTS = [(27.9, 125.3), (53.8, 114.1), (74.4, 119.5), (90.7, 120.2), (112.4, 110.6), (134.8, 89.9),
@@ -69,6 +73,8 @@ def _couverture(p, th) -> str:
     ac = th["accent"]
     if "plan" in p:
         return fond(_couverture_plan(p["plan"], ac))
+    if "polynome" in p:
+        return fond(_couverture_polynome(p["polynome"], ac))
     if "centres" not in p:
         pts = couvertures.nuage_droite(p.get("debut", [20, 640]), p.get("fin", [1060, 182]), p.get("pas", 25),
                                        p.get("bruit", 30), p.get("garde", 0.85), p.get("graine", 1))
@@ -81,10 +87,33 @@ def _couverture(p, th) -> str:
         return fond(c)
     pts = couvertures.nuage(p["centres"], p.get("effectifs", [130]), p.get("dispersion", 200), p.get("graine", 1))
     c = [cercle(x, y, 6, fill=ac, fill_opacity=f"{op:g}") for x, y, _, op in pts if op > 0]
+    if p.get("frontiere"):  # épisode 15 : la médiatrice des deux centres, plus marquée, sans les centres
+        f = frontiere([[x, y, g] for x, y, g, _ in pts])
+        c.append(ligne(0, f["b"], 1080, f["a"] * 1080 + f["b"], stroke=ac, stroke_width=2.5, stroke_dasharray="12 10",
+                       stroke_opacity=str(couvertures.MARQUE), stroke_linecap="round"))
+        return fond(c)
     for x, y in centres(pts):
         c.append(cercle(x, y, 8, fill=th["carte"], stroke=th["clair"], stroke_width=2,
                         stroke_opacity=str(couvertures.MARQUE)))
     return fond(c)
+
+
+def _couverture_polynome(q: dict, ac: str) -> list[str]:
+    """Fond de couverture de la régression polynomiale (épisode 14) : des points tirés autour d'une relation courbe
+    (`coefficients`, `abscisses`, `bruit`, `n`, `graine`, repère `origine` et `echelle` en pixels du fond) et le
+    polynôme de degré `degre` des moindres carrés qui les épouse, plus marqué."""
+    (ox, oy), (sx, sy) = q["origine"], q["echelle"]
+    pts = autour_d_un_polynome(q.get("n", 34), q["coefficients"], q.get("bruit", 0.5), q["abscisses"], q.get("graine", 14))
+    modele = ajuster(pts, q.get("degre", 3))
+    x0, x1 = q["abscisses"]
+    k = 160
+    courbe = [(ox + sx * (x0 + (x1 - x0) * i / k), oy - sy * evaluer(modele, x0 + (x1 - x0) * i / k)) for i in range(k + 1)]
+    c = [balise("polyline", points=liste_points(courbe), fill="none", stroke=ac, stroke_width=3,
+                stroke_opacity=str(couvertures.MARQUE), stroke_linecap="round", stroke_linejoin="round")]
+    for x, y in pts:
+        xp, yp = ox + sx * x, oy - sy * y
+        c.append(cercle(xp, yp, 7, fill=ac, fill_opacity=f"{max(couvertures.opacite(xp, yp), 0.25):g}"))
+    return c
 
 
 def _couverture_plan(q: dict, ac: str) -> list[str]:
@@ -280,6 +309,64 @@ def _droite(p, th) -> str:
     return svg(larg, haut, c, p.get("description"), "display: block")
 
 
+def _segments_dans(pts: list[tuple[float, float]], haut: float, bas: float) -> list[list[tuple[float, float]]]:
+    """Les morceaux d'une courbe échantillonnée qui restent entre deux ordonnées en pixels (haut < bas)."""
+    morceaux, courant = [], []
+    for x, y in pts:
+        if haut <= y <= bas:
+            courant.append((x, y))
+        elif courant:
+            morceaux.append(courant)
+            courant = []
+    if courant:
+        morceaux.append(courant)
+    return [m for m in morceaux if len(m) > 1]
+
+
+def _ajustement(p, th) -> str:
+    """Régression polynomiale : points tirés autour de `polynome` (n, bruit, abscisses, graine), le polynôme de
+    degré `degre` des moindres carrés en accent (alerte avec `alerte`), coupé au cadre du graphique ; `vraie` : la
+    relation d'origine en gris de contexte ; `nouveaux` {n, graine} : d'autres points de la même relation, cerclés ;
+    `erreur` : l'erreur quadratique moyenne sur les points tracés, après `textes.erreur`."""
+    r = plan(p)
+    t = _textes(p)
+    larg, haut = p.get("cadre", [920, 420])
+    rayon = _rayon(larg)
+    pts = autour_d_un_polynome(p["n"], p["polynome"], p["bruit"], p["abscisses"], p["graine"])
+    modele = ajuster(pts, p["degre"])
+    ac = th["alerte"] if p.get("alerte") else th["accent"]
+    (x0, x1), (y0, y1) = p["domaine"], p["plage"]
+    c = axes(r, p["domaine"], p["plage"], th, {k: v for k, v in t.items() if k in ("x", "y")})
+    k = 400
+    a0, a1 = p["abscisses"]  # la courbe entre le premier et le dernier exemple : au-delà, elle n'a rien appris
+    abscisses = [a0 + (a1 - a0) * i / k for i in range(k + 1)]
+    if p.get("vraie"):
+        vraie = [r.pt(x, sum(co * x ** i for i, co in enumerate(p["polynome"]))) for x in abscisses]
+        for m in _segments_dans(vraie, r.y(y1), r.y(y0)):
+            c.append(balise("polyline", points=liste_points(m), fill="none", stroke=th["contexte"], stroke_width=3,
+                            stroke_dasharray="8 7", stroke_linecap="round"))
+    courbe = [r.pt(x, evaluer(modele, x)) for x in abscisses]
+    for m in _segments_dans(courbe, r.y(y1), r.y(y0)):
+        c.append(balise("polyline", points=liste_points(m), fill="none", stroke=ac, stroke_width=3.5,
+                        stroke_linejoin="round", stroke_linecap="round"))
+    for x, y in pts:
+        c.append(cercle(*r.pt(x, y), rayon, fill=th["objet"]))
+    if p.get("nouveaux"):
+        nv = p["nouveaux"]
+        autres = autour_d_un_polynome(nv["n"], p["polynome"], p["bruit"], p["abscisses"], nv["graine"])
+        c.append(f'<g fill="#FFFFFF" stroke="{th["objet"]}" stroke-width="2.5">'
+                 + "".join(cercle(*r.pt(x + (p["abscisses"][1] - p["abscisses"][0]) / (2 * (nv["n"] - 1)), y), rayon + 1)
+                           for x, y in autres[:-1]) + "</g>")
+    lignes = [t[k] for k in ("courbe",) if t.get(k)]
+    if p.get("erreur") and t.get("erreur"):
+        lignes.append(f"{t['erreur']} {nombre_fr(erreur_quadratique(pts, modele), 2)}")
+    for i, texte in enumerate(lignes):
+        c.append(texte_svg(texte, 26, x=float(larg - 24), y=float(34 + 30 * i), text_anchor="end", font_family=GEIST,
+                           font_size=22, font_weight=500 if i == 0 else None, fill=ac if i == 0 else th["secondaire"],
+                           stroke="#FFFFFF", stroke_width=8, stroke_linejoin="round", paint_order="stroke"))
+    return svg(larg, haut, c, p.get("description"), "display: block")
+
+
 def _frontiere(p, th) -> str:
     """Classification : deux classes de part et d'autre d'une frontière droite."""
     r = plan(p)
@@ -425,18 +512,21 @@ def _panneaux(p, th) -> str:
 
 
 FORMES = {"points": _points, "groupes": _groupes, "droite": _droite, "frontiere": _frontiere, "panneaux": _panneaux,
-          "plan": _plan}
+          "plan": _plan, "ajustement": _ajustement}
 
 _PLAN = {"origine", "echelle", "domaine", "plage", "cadre", "textes"}
 _TIRAGE = {"centres", "effectifs", "dispersion", "graine"}
 PARAMETRES = {
     "vignette": set(),
-    "couverture": {"centres", "effectifs", "dispersion", "graine", "debut", "fin", "pas", "bruit", "garde", "plan"},
+    "couverture": {"centres", "effectifs", "dispersion", "graine", "debut", "fin", "pas", "bruit", "garde", "plan",
+                   "polynome", "frontiere"},
     "points": _PLAN | _TIRAGE | {"etiquettes", "zone", "hors_zone", "decalage"},
     "groupes": _PLAN | _TIRAGE,
     "droite": _PLAN | {"n", "tendance", "bruit", "abscisses", "graine", "ecarts", "decalage", "source", "polynome",
                        "descente", "w", "b", "fantome", "alerte"},
     "frontiere": _PLAN | _TIRAGE | {"decalage"},
+    "ajustement": _PLAN | {"n", "polynome", "bruit", "abscisses", "graine", "degre", "vraie", "nouveaux", "erreur",
+                           "alerte"},
     "panneaux": _PLAN | _TIRAGE,
     "plan": {"domaine", "chambres", "plage", "origine", "echelle", "fuite", "cadre", "textes", "source", "n", "graine",
              "w1", "w2", "b", "ecarts", "decalage"},

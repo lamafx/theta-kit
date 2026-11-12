@@ -362,3 +362,134 @@
       - {depart: [-2.2, 0.08], eta: 0.1, pas: 20, texte: s'en écarte, ancre: 16, decalage: [18, 6]}
       textes: {minimum: point selle}
       description: "Lignes de niveau en hyperboles autour d'un point selle : un creux selon le réglage horizontal, une bosse selon le vertical. Un chemin parti sur l'axe cale au point selle ; un autre, parti à peine au-dessus, finit par s'en écarter."
+# Session de design n° 4 (2026-11-12) : formes des épisodes 14 et 16 à 20.
+- nom: Formes-Barres
+  titre: Barres · 2 formes
+  famille: barres
+  hauteur: 1250
+  formes:
+  - legende: barres · des valeurs, la dominante en accent (épisode 19)
+    params:
+      forme: barres
+      etiquettes: [chat, chien, oiseau, poisson]
+      valeurs: [0.12, 0.71, 0.11, 0.06]
+      format: pourcent
+      textes: {titre: probabilité de chaque classe}
+      description: "Quatre barres : chat 12 %, chien 71 %, oiseau 11 %, poisson 6 %. La barre chien, la plus haute, est en bleu."
+  - legende: probabilites · logits, softmax, probabilités (mécanisme, épisode 19)
+    params:
+      forme: probabilites
+      etiquettes: [chat, chien, oiseau]
+      logits: [2.0, 1.0, 0.1]
+      textes: {logits: logits, probabilites: probabilités, fleche: softmax, somme: "somme : 100 %"}
+      description: "À gauche, trois logits : chat 2,0, chien 1,0, oiseau 0,1. Une flèche softmax. À droite, leurs probabilités : chat 66 %, chien 24 %, oiseau 10 %."
+- nom: Formes-Blocs
+  titre: Blocs · découpage
+  famille: blocs
+  hauteur: 1000
+  formes:
+  - legende: decoupage · entraînement, validation, test (ouverture, épisode 20)
+    params:
+      forme: decoupage
+      total: 2925
+      parts: [{texte: entraînement, part: 70}, {texte: validation, part: 15}, {texte: test, part: 15}]
+      textes: {exemples: "{total} maisons au total"}
+      description: "Une barre de 2 925 maisons coupée en trois : entraînement 70 % (2 047), validation 15 % (439), test 15 % (439)."
+  - legende: decoupage · fuite de données (piège, épisode 20)
+    params:
+      forme: decoupage
+      total: 2925
+      parts: [{texte: entraînement, part: 70}, {texte: validation, part: 15}, {texte: test, part: 15}]
+      mise_en_avant: 2
+      fuite: {de: 2, vers: 0, part: 0.03, texte: des exemples du test copiés dans l'entraînement}
+      textes: {exemples: "{total} maisons au total"}
+      description: "La même barre ; une petite part orange dans l'entraînement vient du test : une flèche en tirets la relie au bloc test, encadré."
+- nom: Formes-Courbe-2
+  titre: Courbe · classification
+  famille: courbe
+  hauteur: 1900
+  formes:
+  - legende: trace · la sigmoïde, trois valeurs (mécanisme, épisode 16)
+    params:
+      forme: trace
+      courbe: sigmoide
+      origine: [460, 380]
+      echelle: [62, 300]
+      domaine: [-7, 7]
+      plage: [0, 1.08]
+      cadre: [920, 440]
+      reperes: [{y: 1, texte: "1"}, {y: 0.5, texte: "0,5"}]
+      points:
+      - {x: -4, texte: "z = −4 : 0,02", decalage: [-20, -22], ancre: end}
+      - {x: 0, texte: "z = 0 : 0,5", decalage: [20, 30]}
+      - {x: 4, texte: "z = 4 : 0,98", decalage: [20, 36]}
+      textes: {x: score $z$, y: $σ(z)$}
+      description: "La courbe en S de la sigmoïde, entre 0 et 1. Trois points : z = −4 donne 0,02, z = 0 donne 0,5, z = 4 donne 0,98."
+  - legende: trace · le coût −ln(p) (ouverture, épisode 18)
+    params:
+      forme: trace
+      courbe: log_perte
+      origine: [60, 390]
+      echelle: [820, 110]
+      domaine: [0.04, 1]
+      plage: [0, 3.3]
+      cadre: [920, 440]
+      points:
+      - {x: 0.1, texte: "p = 0,1 : coût 2,3", decalage: [20, 6]}
+      - {x: 0.9, texte: "p = 0,9 : coût 0,11", decalage: [0, -70], ancre: end}
+      textes: {x: probabilité donnée à la vraie classe $p$, y: coût $−ln(p)$}
+      description: "La courbe −ln(p) : très haute quand p est proche de 0, nulle en p = 1. p = 0,1 coûte 2,3 ; p = 0,9 coûte 0,11."
+  - legende: logistique · exemples à 0 et à 1, la sigmoïde ajustée, le seuil (mécanisme, épisode 17)
+    params:
+      forme: logistique
+      source: {n: 30, w: 1.6, b: -4, domaine: [0, 5], graine: 7}
+      origine: [110, 390]
+      echelle: [150, 280]
+      domaine: [0, 5.2]
+      plage: [0, 1.25]
+      cadre: [920, 440]
+      seuil: true
+      textes: {x: heures de révision, y: probabilité de réussite, zero: "0", un: "1", seuil: "p = 0,5", courbe: $p = σ(w·x + b)$}
+      description: "Trente élèves : en bas, ceux qui ont échoué (0), en haut, ceux qui ont réussi (1). La sigmoïde ajustée monte de 0 à 1 ; elle passe 0,5 vers 2,1 heures."
+- nom: Formes-Nuage-2
+  titre: Nuage · ajustement
+  famille: nuage
+  hauteur: 1400
+  formes:
+  - legende: ajustement · degré 1, 3 et 15 sur les mêmes points (comparaison, épisode 14)
+    params:
+      forme: ajustement
+      n: 18
+      polynome: [1, 0.5, -0.8, 0.12]
+      bruit: 0.55
+      abscisses: [0.2, 5.8]
+      graine: 3
+      origine: [10, 190]
+      echelle: [44, 40]
+      domaine: [0, 6.2]
+      plage: [-4.2, 4.2]
+      cadre: [280, 360]
+    cas:
+    - {degre: 1, textes: {courbe: degré 1}}
+    - {degre: 3, textes: {courbe: degré 3}}
+    - {degre: 15, alerte: true, textes: {courbe: degré 15}}
+  - legende: ajustement · il passe par tous les points, pas par les nouveaux (piège, épisode 14)
+    params:
+      forme: ajustement
+      n: 18
+      polynome: [1, 0.5, -0.8, 0.12]
+      bruit: 0.55
+      abscisses: [0.2, 5.8]
+      graine: 3
+      degre: 15
+      alerte: true
+      vraie: true
+      nouveaux: {n: 18, graine: 41}
+      origine: [60, 220]
+      echelle: [140, 44]
+      domaine: [0, 6.3]
+      plage: [-4.5, 4.5]
+      cadre: [920, 440]
+      erreur: true
+      textes: {x: $x$, y: $y$, courbe: degré 15, erreur: "erreur sur les points :"}
+      description: "Dix-huit points et un polynôme de degré 15 qui passe par chacun en oscillant. Les nouveaux points, cerclés, tombent loin de la courbe ; la relation d'origine, en tirets gris, les suit."
