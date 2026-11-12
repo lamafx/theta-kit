@@ -31,7 +31,7 @@ episodes:
         empreinte: c9197e206fff1f866bef20f761d089673ed7dff0948cde0d0ddb7b777957228b
     publie_le: 2026-11-10
   '02':
-    statut: genere
+    statut: relu
     etapes:
       lecture:
         fait_le: '2026-11-12T00:52:00'
