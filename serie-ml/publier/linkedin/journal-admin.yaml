@@ -22,3 +22,8 @@ gestes:
   cible: '02'
   resultat: ok
   tournee: https://github.com/lamafx/theta-kit/actions/runs/43187050990
+- le: '2026-11-12T09:18:55+00:00'
+  geste: importer
+  valeur: '{"exports":[{"id":"7486121919914782722","urn":"urn:li:ugcPost:748612191991478…'
+  resultat: 'ok : post 7486121919914782722 (hors série) | post 7523182859927429120 (hors série) | post 7525216466745450496
+    (hors série) | post 7525841858154053633 (Nº 01) ; chiffres du Nº 01 enregistrés dans mesur'

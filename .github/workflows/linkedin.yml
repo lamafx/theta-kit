@@ -25,10 +25,10 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: "tourner (par défaut), etat (jeton et post dû), apercu (le prochain post et ses refus), essai (vrai post de test, relations seulement, supprimé aussitôt), publier (un post hors calendrier, cle requise), supprimer (un post publié, cle requise)"
+        description: "tourner (par défaut), stats (relevé des statistiques des posts), etat (jeton et post dû), apercu (le prochain post et ses refus), essai (vrai post de test, relations seulement, supprimé aussitôt), publier (un post hors calendrier, cle requise), supprimer (un post publié, cle requise)"
         type: choice
         default: tourner
-        options: [tourner, etat, apercu, essai, publier, supprimer]
+        options: [tourner, stats, etat, apercu, essai, publier, supprimer]
       cle:
         description: "épisode (05) ou bilan-N, pour publier et supprimer"
         type: string
@@ -89,6 +89,7 @@ jobs:
             publier) python -m serie --racine . linkedin publier "$CLE" --hors-calendrier --oui | tee "$SORTIE" ;;
             supprimer) python -m serie --racine . linkedin supprimer "$CLE" --oui | tee "$SORTIE" ;;
             etat)  python -m serie --racine . linkedin etat ;;
+            stats) python -m serie --racine . linkedin stats ;;
             apercu)
               # Le premier épisode encore « relu » : celui qui partira au prochain créneau.
               n=$(python -c 'import yaml; e = yaml.safe_load(open("etat.yaml", encoding="utf-8"))["episodes"]; print(next(int(k) for k, v in sorted(e.items()) if v["statut"] == "relu"))')
@@ -108,15 +109,17 @@ jobs:
           if [ "$ISSUE" = "success" ]; then r="ok"; else r="échec (voir la tournée)"; fi
           python ../admin/outils/geste.py --geste journal --cible "$ACTION:$CLE" --resultat "$r" --tournee "$RUN_URL" || true
 
-      - name: Enregistrer l'état (trace du post, statut publié)
+      - name: Enregistrer l'état (trace du post, statut publié, statistiques)
         if: always()
+        env:
+          ACTION_NOM: ${{ inputs.action || 'tournée' }}
         run: |
-          git add -A -- etat.yaml publier
+          git add -A -- etat.yaml publier mesures
           if git diff --cached --quiet; then echo "Rien à enregistrer."; exit 0; fi
           # Au nom de l'auteur : avec l'offre gratuite, Vercel refuse de déployer le commit d'un robot sur un dépôt privé.
           git config user.name "lamafx"
           git config user.email "l.kamfox7@gmail.com"
-          git commit -m "LinkedIn : post publié par la tournée GitHub Actions"
+          git commit -m "LinkedIn : ${ACTION_NOM:-tournée} par GitHub Actions"
           for essai in 1 2 3 4 5; do
             git pull --rebase --quiet origin "${GITHUB_REF_NAME}" && git push --quiet origin "HEAD:${GITHUB_REF_NAME}" && exit 0
             sleep $((essai * 5))

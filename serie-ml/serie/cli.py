@@ -97,7 +97,9 @@ def main(argv: list[str] | None = None) -> int:
         images.add_argument(f"--{option}", default="")
     linkedin = sous.add_parser("linkedin", help="publication automatique sur LinkedIn (API officielle)")
     actions = linkedin.add_subparsers(dest="action", required=True)
-    actions.add_parser("connecter", help="autoriser l'application dans le navigateur ; jeton dans le gestionnaire d'identifiants")
+    connecter = actions.add_parser("connecter", help="autoriser l'application dans le navigateur ; jeton dans le gestionnaire d'identifiants")
+    connecter.add_argument("--stats", action="store_true", help="demander aussi la lecture des statistiques (r_member_postAnalytics)")
+    actions.add_parser("stats", help="relever les statistiques des posts publiés (mesures/linkedin/)")
     actions.add_parser("etat", help="connexion, validité du jeton, post dû")
     for nom, aide in (("apercu", "ce qui partirait pour un épisode ou un bilan, et les refus"),
                       ("publier", "publier un épisode ou un bilan maintenant")):

@@ -5,7 +5,7 @@
 export type CleGeste =
   | 'valider' | 'corriger' | 'recette' | 'trancher' | 'mesurer'
   | 'etat' | 'apercu'
-  | 'essai' | 'tourner' | 'publier' | 'supprimer' | 'pilote' | 'reporter' | 'statut';
+  | 'essai' | 'tourner' | 'publier' | 'supprimer' | 'pilote' | 'reporter' | 'statut' | 'importer';
 
 export type DefGeste = {
   libelle: string;
@@ -23,6 +23,7 @@ export const GESTES: Record<CleGeste, DefGeste> = {
   trancher: { libelle: 'Trancher une décision', workflow: 'admin.yml', sensible: false },
   mesurer: { libelle: 'Chiffres LinkedIn', workflow: 'admin.yml', sensible: false },
   statut: { libelle: 'Changer le statut', workflow: 'admin.yml', sensible: false },
+  importer: { libelle: 'Importer des exports LinkedIn', workflow: 'admin.yml', sensible: false },
   etat: { libelle: 'État de la connexion LinkedIn', workflow: 'linkedin.yml', sensible: false },
   apercu: { libelle: 'Aperçu du prochain post', workflow: 'linkedin.yml', sensible: false },
   essai: {

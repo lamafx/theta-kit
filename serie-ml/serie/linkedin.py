@@ -42,6 +42,13 @@ JETON = "https://www.linkedin.com/oauth/v2/accessToken"
 API = "https://api.linkedin.com"
 VERSION = "202610"  # en-tête Linkedin-Version (AAAAMM)
 PORTEES = "openid profile w_member_social"
+# Statistiques des posts (Member Post Analytics API, juillet 2025) : produit « Community Management API » à activer
+# sur l'application LinkedIn, puis « serie linkedin connecter --stats ». Sans ce produit, LinkedIn refuse toute
+# autorisation qui demande cette portée : elle n'est donc demandée qu'avec --stats.
+PORTEE_STATS = "r_member_postAnalytics"
+STATS = {"impressions": "IMPRESSION", "membres_atteints": "MEMBERS_REACHED", "reactions": "REACTION",
+         "commentaires": "COMMENT", "partages": "RESHARE"}
+STATS_JOURS = 30  # au-delà, les chiffres d'un post ne bougent presque plus : plus de relevé
 PORT = 8765
 REDIRECTION = f"http://localhost:{PORT}/rappel"
 SERVICE = "theta-linkedin"  # nom des entrées du gestionnaire d'identifiants
@@ -182,6 +189,25 @@ class Client:
                          {"actor": self.personne, "object": post, "message": {"text": texte}})
         return r.entetes.get("x-restli-id", "")
 
+    def stats_post(self, post: str) -> dict[str, int]:
+        """Chiffres cumulés d'un post (memberCreatorPostAnalytics, q=entity, aggregation=TOTAL)."""
+        genre = post.split(":")[2] if post.count(":") >= 3 else "ugcPost"
+        entite = f"({genre}:{urllib.parse.quote(post, safe='')})"
+        chiffres = {}
+        for cle, type_ in STATS.items():
+            r = self.appeler("GET", f"/rest/memberCreatorPostAnalytics?q=entity&entity={entite}&queryType={type_}"
+                                    "&aggregation=TOTAL", attendu=(200, 400, 403, 404))
+            if r.statut == 403:
+                raise ErreurLinkedIn(f"statistiques refusées (HTTP 403) : la portée {PORTEE_STATS} manque. Activez le "
+                                     "produit « Community Management API » sur l'application LinkedIn, puis "
+                                     "« serie linkedin connecter --stats » et outils/jeton-vers-github.py")
+            if r.statut != 200:
+                continue  # type de chiffre indisponible pour ce post : les autres restent utiles
+            elements = r.json().get("elements") or []
+            if elements and isinstance(elements[0].get("count"), int):
+                chiffres[cle] = elements[0]["count"]
+        return chiffres
+
     def supprimer_post(self, post: str) -> None:
         self.appeler("DELETE", "/rest/posts/" + urllib.parse.quote(post, safe=""),
                      entetes={"X-RestLi-Method": "DELETE"})
@@ -202,7 +228,7 @@ def en_little(texte: str) -> str:
 
 def connecter(coffre: Coffre, demander: Callable[[str, bool], str], ouvrir: Callable[[str], object],
               recevoir: Callable[[str], dict[str, str]], transport: Transport = transport_urllib,
-              maintenant: dt.datetime | None = None) -> dict:
+              maintenant: dt.datetime | None = None, stats: bool = False) -> dict:
     """OAuth 2.0 (code d'autorisation) : identifiants demandés une fois, puis jeton et URN du membre rangés."""
     client_id = coffre.lire("client_id") or demander("Client ID de l'application LinkedIn : ", False)
     secret = coffre.lire("client_secret") or demander("Client Secret (non affiché) : ", True)
@@ -210,7 +236,8 @@ def connecter(coffre: Coffre, demander: Callable[[str, bool], str], ouvrir: Call
     coffre.ecrire("client_secret", secret)
     etat = secrets.token_urlsafe(24)
     ouvrir(AUTORISATION + "?" + urllib.parse.urlencode({
-        "response_type": "code", "client_id": client_id, "redirect_uri": REDIRECTION, "state": etat, "scope": PORTEES}))
+        "response_type": "code", "client_id": client_id, "redirect_uri": REDIRECTION, "state": etat,
+        "scope": PORTEES + (f" {PORTEE_STATS}" if stats else "")}))
     retour = recevoir(etat)
     if retour.get("state") != etat:
         raise ErreurLinkedIn("réponse d'autorisation refusée : paramètre state différent")
@@ -228,7 +255,7 @@ def connecter(coffre: Coffre, demander: Callable[[str, bool], str], ouvrir: Call
     profil = u.json()
     maintenant = maintenant or dt.datetime.now(dt.timezone.utc)
     jeton = {"access_token": donnees["access_token"], "personne": f"urn:li:person:{profil['sub']}",
-             "nom": profil.get("name", ""),
+             "nom": profil.get("name", ""), "stats": stats,
              "expire_le": (maintenant + dt.timedelta(seconds=int(donnees.get("expires_in", 0)))).isoformat()}
     coffre.ecrire("jeton", json.dumps(jeton))
     return jeton
@@ -415,6 +442,63 @@ def supprimer(depot: Depot, cle: str, client: Client, maintenant: dt.datetime) -
 def _ecrire_trace(depot: Depot, cle: str, trace: dict) -> None:
     journal_post(depot, cle).parent.mkdir(parents=True, exist_ok=True)
     ecrire_atomique(journal_post(depot, cle), yaml.safe_dump(trace, allow_unicode=True, sort_keys=False))
+
+
+# --- Statistiques ------------------------------------------------------------------------------------------
+
+def relever_stats(depot: Depot, client: Client, maintenant: dt.datetime) -> list[str]:
+    """Un relevé par jour et par post publié depuis moins de STATS_JOURS jours (lancé chaque matin par l'admin).
+
+    Même format que les exports importés depuis l'admin : mesures/linkedin/<id>.yaml (un relevé par jour).
+    mesures/NN.yaml reçoit « h48 » au premier relevé fait entre 1 et 3 jours après le post, « j7 » au premier fait
+    à 7 jours ou plus ; l'épisode passe alors à « mesuré ».
+    """
+    jour = maintenant.astimezone(ZoneInfo("Africa/Abidjan")).date()
+    messages = []
+    for trace_f in sorted((depot.racine / "publier" / "linkedin").glob("*.yaml")):
+        trace = yaml.safe_load(trace_f.read_text(encoding="utf-8")) or {}
+        if not isinstance(trace, dict):
+            continue
+        post, publie_a = str(trace.get("post") or ""), trace.get("publie_a")
+        m = re.fullmatch(r"urn:li:(ugcPost|share|activity):(\d+)", post)
+        if not m or not publie_a:
+            continue
+        publie = dt.datetime.fromisoformat(str(publie_a)).astimezone(ZoneInfo("Africa/Abidjan")).date()
+        age = (jour - publie).days
+        if age > STATS_JOURS:
+            continue
+        chiffres = client.stats_post(post)
+        if not chiffres:
+            continue
+        fichier = depot.racine / "mesures" / "linkedin" / f"{m.group(2)}.yaml"
+        donnees = (yaml.safe_load(fichier.read_text(encoding="utf-8")) if fichier.is_file() else None) or {}
+        releves = [r for r in donnees.get("releves") or [] if str(r.get("releve_le")) != jour.isoformat()]
+        releves.append({"releve_le": jour.isoformat(), "chiffres": chiffres, "source": "api"})
+        donnees.update({"id": m.group(2), "urn": post, "url": donnees.get("url") or trace.get("lien"),
+                        "publie_le": publie.isoformat(), "episode": trace_f.stem,
+                        "releves": sorted(releves, key=lambda r: str(r["releve_le"]))})
+        ecrire_atomique(fichier, yaml.safe_dump(donnees, allow_unicode=True, sort_keys=False, width=120))
+        message = f"{trace_f.stem} : {chiffres.get('impressions', '?')} impressions à {age} jour(s)"
+        if not trace_f.stem.startswith("bilan-"):
+            message += _mesures_episode(depot, trace_f.stem, publie, age, chiffres, jour)
+        messages.append(message)
+    return messages
+
+
+def _mesures_episode(depot: Depot, cle: str, publie: dt.date, age: int, chiffres: dict, jour: dt.date) -> str:
+    periode = "h48" if 1 <= age <= 3 else "j7" if age >= 7 else None
+    fichier = depot.racine / "mesures" / f"{cle}.yaml"
+    donnees = (yaml.safe_load(fichier.read_text(encoding="utf-8")) if fichier.is_file() else None) or {}
+    if not periode or donnees.get(periode):
+        return ""
+    garder = ("impressions", "reactions") if periode == "h48" else ("impressions", "reactions", "commentaires", "partages")
+    donnees.update({"episode": cle, "publie_le": publie.isoformat(),
+                    periode: {k: chiffres[k] for k in garder if k in chiffres}, "saisi_le": jour.isoformat()})
+    ecrire_atomique(fichier, yaml.safe_dump(donnees, allow_unicode=True, sort_keys=False, width=120))
+    if periode == "j7" and lire_etat(depot)["episodes"].get(cle, {}).get("statut") == Statut.PUBLIE.value:
+        changer_statut(depot, cle, Statut.MESURE.value)
+        return f" ; {periode} enregistré, passé à « mesuré »"
+    return f" ; {periode} enregistré"
 
 
 # --- Tournée planifiée -------------------------------------------------------------------------------------
@@ -606,7 +690,7 @@ def executer(args, depot: Depot) -> int:
     try:
         if action == "connecter":
             jeton = connecter(coffre, lambda q, cache: getpass.getpass(q) if cache else input(q), webbrowser.open,
-                              recevoir_redirection)
+                              recevoir_redirection, stats=args.stats)
             print(f"Connecté : {jeton['nom']} ({jeton['personne']}), jeton valable jusqu'au {jeton['expire_le'][:10]}")
             return 0
         if action == "etat":
@@ -667,6 +751,10 @@ def executer(args, depot: Depot) -> int:
                 noter(depot, message, maintenant)
             print(message)
             return 0
+        if action == "stats":
+            messages = relever_stats(depot, _client(coffre), _maintenant())
+            print("\n".join(messages) or "aucun post à relever")
+            return 0
         if action == "planifier":
             if args.retirer:
                 script = f"Unregister-ScheduledTask -TaskName '{NOM_TACHE}' -Confirm:$false"
@@ -676,7 +764,7 @@ def executer(args, depot: Depot) -> int:
             print(r.stdout.strip() or r.stderr.strip())
             return r.returncode
     except ErreurLinkedIn as exc:
-        if action == "tourner":
+        if action in ("tourner", "stats"):
             noter(depot, f"erreur : {exc}", _maintenant())
             prevenir(str(exc))
         print(f"Erreur : {exc}")

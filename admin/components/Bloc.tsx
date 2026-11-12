@@ -40,7 +40,7 @@ export function Jauge({ valeur, max, alerte = false }: { valeur: number; max: nu
   );
 }
 
-export function Barres({ lignes, total }: { lignes: [string, number][]; total?: number }) {
+export function Barres({ lignes, total, suffixe = '' }: { lignes: [string, number][]; total?: number; suffixe?: string }) {
   const max = total ?? Math.max(1, ...lignes.map((l) => l[1]));
   if (!lignes.length) return <p className="vide">Pas encore de données.</p>;
   return (
@@ -49,7 +49,7 @@ export function Barres({ lignes, total }: { lignes: [string, number][]; total?: 
         <div className="barre-l" key={lab}>
           <span className="lab" title={lab}>{lab}</span>
           <Jauge valeur={v} max={max} />
-          <span className="val">{new Intl.NumberFormat('fr-FR').format(v)}</span>
+          <span className="val">{new Intl.NumberFormat('fr-FR', { maximumFractionDigits: suffixe ? 1 : 0 }).format(v)}{suffixe}</span>
         </div>
       ))}
     </div>

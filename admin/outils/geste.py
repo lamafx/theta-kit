@@ -166,6 +166,77 @@ def mesurer(cible: str, valeur: str) -> str:
     return message
 
 
+CHIFFRES_EXPORT = ("impressions", "membres_atteints", "vues_profil", "abonnes", "interactions", "reactions", "commentaires",
+                   "partages", "enregistrements", "envois", "clics_lien")
+DEMOS_EXPORT = ("poste", "lieu", "secteur", "entreprise", "anciennete", "taille")
+
+
+def episode_du_post(id_post: str) -> str | None:
+    """L'épisode (ou le bilan) dont la trace publier/linkedin/*.yaml porte ce post."""
+    for trace in sorted((SERIE / "publier" / "linkedin").glob("*.yaml")):
+        t = lire_yaml(trace, {})
+        if isinstance(t, dict) and id_post in str(t.get("post", "")) + str(t.get("lien", "")):
+            return trace.stem
+    return None
+
+
+def importer(_cible: str, valeur: str) -> str:
+    """Exports « Post analytics » de LinkedIn (.xlsx), lus dans l'admin (admin/lib/export-linkedin.ts).
+
+    Chaque post, de la série ou non, a son fichier mesures/linkedin/<id>.yaml : un relevé par date d'export et
+    la dernière démographie. Un post de la série remplit aussi mesures/NN.yaml : 48 h si l'export a au plus 3 jours,
+    7 jours s'il en a au moins 7 (les chiffres d'un export sont cumulés jusqu'au jour où il est téléchargé).
+    """
+    v = json.loads(valeur or "{}")
+    exports = v.get("exports") or []
+    if not isinstance(exports, list) or not 1 <= len(exports) <= 10:
+        raise Refus("de 1 à 10 exports attendus")
+    messages = []
+    for x in exports:
+        id_post = str(x.get("id", ""))
+        if not re.fullmatch(r"\d{15,22}", id_post):
+            raise Refus(f"identifiant de post « {id_post} » invalide")
+        releve = str(x.get("releve_le", ""))
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", releve):
+            raise Refus("date de relevé invalide")
+        publie = x.get("publie_le")
+        if publie is not None and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(publie)):
+            raise Refus("date de publication invalide")
+        url = str(x.get("url", ""))
+        if not re.fullmatch(r"https://(www\.)?linkedin\.com/\S{1,600}", url):
+            raise Refus("lien du post invalide")
+        chiffres = {k: int(n) for k, n in (x.get("chiffres") or {}).items()
+                    if k in CHIFFRES_EXPORT and isinstance(n, (int, float)) and 0 <= n < 10**9}
+        demographie = {}
+        for k, lignes in (x.get("demographie") or {}).items():
+            if k in DEMOS_EXPORT and isinstance(lignes, list):
+                demographie[k] = [[str(l[0])[:120], float(l[1])] for l in lignes[:15]
+                                  if isinstance(l, list) and len(l) == 2 and isinstance(l[1], (int, float))]
+        fichier = SERIE / "mesures" / "linkedin" / f"{id_post}.yaml"
+        donnees = lire_yaml(fichier, {})
+        cle = episode_du_post(id_post)
+        donnees.update({"id": id_post, "urn": str(x.get("urn", ""))[:60], "url": url, "publie_le": publie,
+                        "heure": str(x.get("heure") or "")[:12] or None, "episode": cle})
+        releves = [r for r in donnees.get("releves") or [] if r.get("releve_le") != releve]
+        releves.append({"releve_le": releve, "chiffres": chiffres})
+        donnees["releves"] = sorted(releves, key=lambda r: r["releve_le"])
+        if demographie and releve >= max(r["releve_le"] for r in donnees["releves"]):
+            donnees["demographie"] = demographie
+            donnees["demographie_du"] = releve
+        ecrire_yaml(fichier, donnees)
+        message = f"post {id_post}" + (f" (Nº {cle})" if cle and not cle.startswith("bilan-") else f" ({cle})" if cle else " (hors série)")
+        if cle and not cle.startswith("bilan-") and publie:
+            age = (dt.date.fromisoformat(releve) - dt.date.fromisoformat(str(publie))).days
+            periode = "h48" if age <= 3 else "j7" if age >= 7 else None
+            if periode:
+                garder = ("impressions", "reactions") if periode == "h48" else ("impressions", "reactions", "enregistrements", "partages", "commentaires")
+                message += " ; " + mesurer(cle, json.dumps({periode: {k: chiffres[k] for k in garder if k in chiffres}}))
+            else:
+                message += f" ; export à {age} jours : ni 48 h ni 7 jours, gardé dans mesures/linkedin seulement"
+        messages.append(message)
+    return " | ".join(messages)
+
+
 URN_LINKEDIN = re.compile(r"(ugcPost|activity|share)[:-](\d{15,22})")
 
 
@@ -237,7 +308,7 @@ def reporter(cible: str, valeur: str) -> str:
 
 
 GESTES = {"valider": valider, "corriger": corriger, "recette": recette, "trancher": trancher, "mesurer": mesurer,
-          "pilote": pilote, "reporter": reporter, "statut": changer_statut}
+          "pilote": pilote, "reporter": reporter, "statut": changer_statut, "importer": importer}
 
 
 def journaliser(geste: str, cible: str, valeur: str, resultat: str, tournee: str) -> None:

@@ -84,6 +84,21 @@ export type Donnees = {
   profil: Record<'profil' | 'parcours' | 'certificats' | 'projets' | 'sections', FichierProfil>;
   cv: { chemin: string; taille: number; sha: string | null; modifie_le: string | null } | null;
   certificats_fichiers: string[];
+  /** Exports LinkedIn importés (serie-ml/mesures/linkedin/<id>.yaml), du plus récent au plus ancien. */
+  linkedin?: PostLinkedin[];
+};
+
+export type PostLinkedin = {
+  id: string;
+  urn: string;
+  url: string;
+  publie_le: string | null;
+  heure: string | null;
+  /** « 01 », « bilan-1 », ou null pour un post hors série. */
+  episode: string | null;
+  releves: { releve_le: string; chiffres: Partial<Record<import('./export-linkedin').CleChiffre, number>> }[];
+  demographie?: Partial<Record<import('./export-linkedin').CleDemo, [string, number][]>>;
+  demographie_du?: string;
 };
 
 export type GesteJournal = { le: string; geste: string; cible?: string; valeur?: string; resultat?: string; tournee?: string };

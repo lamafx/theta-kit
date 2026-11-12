@@ -9,7 +9,7 @@ import type { Episode } from '@/lib/types';
 export const runtime = 'nodejs';
 
 /**
- * Tâche quotidienne (Vercel Cron, vercel.json, 7 h à Abidjan) : avance sous le minimum, épisodes à relire,
+ * Tâche quotidienne (Vercel Cron, vercel.json, 7 h à Abidjan) : réveil du post du jour, relevé des statistiques LinkedIn, avance sous le minimum, épisodes à relire,
  * labo sans recette à J-7, jeton bientôt expiré. Chaque alerte part une fois par jour au plus.
  */
 export async function GET(req: NextRequest) {
@@ -19,7 +19,8 @@ export async function GET(req: NextRequest) {
   const d = await donnees();
   if (d.indisponible) return NextResponse.json({ ok: false, raison: 'instantané indisponible' });
   const reveils = await reveiller([...d.episodes, ...d.bilans]);
-  if (!pushActif()) return NextResponse.json({ ok: true, reveils, envoyees: 0, raison: 'notifications non configurées' });
+  const stats = await releverStats(d.episodes.some((e) => estPublie(e)) || d.bilans.some((b) => estPublie(b)));
+  if (!pushActif()) return NextResponse.json({ ok: true, reveils, stats, envoyees: 0, raison: 'notifications non configurées' });
   const s = synthese(d);
   const jour = new Date().toISOString().slice(0, 10);
   const envois: Promise<number>[] = [];
@@ -39,7 +40,7 @@ export async function GET(req: NextRequest) {
     envois.push(notifierUneFois(`demain-${s.prochain.n}`, { titre: `Nº ${s.prochain.n} demain, pas relu`, texte: 'La tournée refusera de le publier tant qu’il n’est pas relu.', lien: `/admin/episodes/${s.prochain.n}` }));
   }
   const n = (await Promise.all(envois)).reduce((a, b) => a + b, 0);
-  return NextResponse.json({ ok: true, reveils, envoyees: n });
+  return NextResponse.json({ ok: true, reveils, stats, envoyees: n });
 }
 
 /**
@@ -64,4 +65,20 @@ async function reveiller(posts: { statut: Episode['statut']; date_prevue: string
     }
   }
   return lances;
+}
+
+/**
+ * Relevé quotidien des statistiques LinkedIn (serie linkedin stats, sur GitHub) : mesures/linkedin/<id>.yaml et
+ * mesures/NN.yaml (48 h, 7 jours), sans rien saisir. Exige la portée r_member_postAnalytics ; sans elle, la tournée
+ * ouvre une issue une fois, avec la marche à suivre.
+ */
+async function releverStats(unPostPublie: boolean) {
+  if (!unPostPublie) return 'aucun post publié';
+  if (!githubActif()) return 'accès GitHub non configuré';
+  try {
+    await lancerWorkflow('linkedin.yml', { action: 'stats', cle: '', jeton: '' });
+    return 'lancé';
+  } catch (e) {
+    return `échec (${(e as Error).message})`;
+  }
 }

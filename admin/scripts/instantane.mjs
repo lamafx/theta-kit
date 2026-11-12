@@ -441,6 +441,14 @@ const commit = process.env.VERCEL_GIT_COMMIT_SHA ?? git('rev-parse', 'HEAD');
 const commitDate = git('log', '-1', '--format=%cI') ?? null;
 const cvDate = git('log', '-1', '--format=%cI', '--', 'site/theta-kit/public/cv/CV-Ladji-Lama-Kamagate-ML.pdf');
 
+// Exports « Post analytics » de LinkedIn importés depuis /stats (geste « importer ») : un fichier par post.
+const dossierExports = path.join(SERIE, 'mesures', 'linkedin');
+const exportsLinkedin = existe(dossierExports)
+  ? fs.readdirSync(dossierExports).filter((f) => f.endsWith('.yaml')).map((f) => lireYaml(path.join(dossierExports, f))).filter(Boolean)
+      .map((x) => ({ ...x, id: String(x.id), episode: x.episode ?? null, publie_le: x.publie_le ? String(x.publie_le).slice(0, 10) : null, releves: (x.releves ?? []).map((r) => ({ ...r, releve_le: String(r.releve_le).slice(0, 10) })) }))
+      .sort((a, b) => String(b.publie_le ?? '').localeCompare(String(a.publie_le ?? '')))
+  : [];
+
 const donnees = {
   genere_le: new Date().toISOString(),
   commit,
@@ -460,6 +468,7 @@ const donnees = {
   profil,
   cv: cv ? { ...cv, modifie_le: cvDate } : null,
   certificats_fichiers: certificatsFichiers,
+  linkedin: exportsLinkedin,
 };
 
 fs.writeFileSync(path.join(SORTIE, 'donnees.json'), JSON.stringify(donnees));

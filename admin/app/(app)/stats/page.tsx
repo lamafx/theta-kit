@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Barres, Carte, Entete } from '@/components/Bloc';
 import { audience, inscrits } from '@/lib/audience';
-import { donnees, estPublie } from '@/lib/donnees';
+import { donnees } from '@/lib/donnees';
 import { dateCourte, nombre } from '@/lib/format';
+import LinkedinStats from './LinkedinStats';
 
 export const metadata = { title: 'Statistiques' };
 
@@ -23,13 +24,12 @@ export default async function Stats({ searchParams }: { searchParams: Promise<{ 
   const lancement = d.calendrier.lancement ? new Date(`${d.calendrier.lancement}T00:00:00Z`) : new Date();
   const n = p.n || Math.max(1, Math.min(400, Math.ceil((Date.now() - lancement.getTime()) / 86400000) + 1));
   const [aud, nbInscrits] = await Promise.all([audience(n).catch(() => null), inscrits()]);
-  const publies = d.episodes.filter(estPublie);
   const maxJour = aud ? Math.max(1, ...aud.parJour.map((j) => j.visiteurs)) : 1;
   const nomLabo = (id: string) => d.labos.find((l) => l.id === id)?.titre ?? id;
 
   return (
     <>
-      <Entete sur="Audience" titre={<>Les <em>statistiques</em></>} chapeau="Visites du site et des labos (compteur maison, sans cookie), inscriptions, et chiffres LinkedIn saisis à la main." />
+      <Entete sur="Audience" titre={<>Les <em>statistiques</em></>} chapeau="Visites du site et des labos (compteur maison, sans cookie), inscriptions, et chiffres de chaque post LinkedIn." />
       <nav className="filtres">
         {PERIODES.map((x) => (
           <Link key={x.cle} href={`/stats?periode=${x.cle}`} aria-current={x.cle === p.cle ? 'true' : undefined}>{x.libelle}</Link>
@@ -93,30 +93,7 @@ export default async function Stats({ searchParams }: { searchParams: Promise<{ 
           </>
         ) : null}
 
-        <Carte className="c12" titre="LinkedIn · chiffres saisis">
-          {publies.length === 0 ? <p className="vide">Aucun post publié pour l’instant.</p> : (
-            <div className="defile">
-              <table className="tableau">
-                <thead><tr><th>Nº</th><th>Post</th><th>Publié</th><th>Impressions 48 h</th><th>Impressions 7 j</th><th>Réactions 7 j</th><th>Enreg.</th><th></th></tr></thead>
-                <tbody>
-                  {publies.map((e) => (
-                    <tr key={e.n}>
-                      <td className="mono">{e.n}</td>
-                      <td>{e.titre}</td>
-                      <td className="mono petit">{dateCourte(e.publie_le)}</td>
-                      <td className="mono">{nombre(e.mesures?.h48?.impressions)}</td>
-                      <td className="mono">{nombre(e.mesures?.j7?.impressions)}</td>
-                      <td className="mono">{nombre(e.mesures?.j7?.reactions)}</td>
-                      <td className="mono">{nombre(e.mesures?.j7?.enregistrements)}</td>
-                      <td><Link className="btn btn-petit" href={`/episodes/${e.n}`}>{e.mesures?.j7 ? 'Modifier' : 'Saisir'}</Link></td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
-          <p className="petit discret" style={{ margin: '10px 0 0' }}>La lecture automatique des statistiques LinkedIn demande une permission restreinte (r_member_social) : les chiffres se relèvent dans LinkedIn et se saisissent ici.</p>
-        </Carte>
+        <LinkedinStats posts={d.linkedin ?? []} episodes={d.episodes} />
       </div>
     </>
   );

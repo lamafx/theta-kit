@@ -299,3 +299,52 @@ def test_pilote_une_seule_tournee(monkeypatch, tmp_path):
     assert not li.tournee_ici(depot)  # la tâche Windows ne publie plus
     monkeypatch.setenv("GITHUB_ACTIONS", "true")
     assert li.tournee_ici(depot)
+
+
+class FausseAPIStats:
+    """memberCreatorPostAnalytics : un nombre par type de chiffre ; 403 si la portée manque."""
+
+    def __init__(self, refuse=False):
+        self.refuse = refuse
+        self.urls: list[str] = []
+
+    def __call__(self, methode, url, entetes, corps):
+        self.urls.append(url)
+        if self.refuse:
+            return Reponse(403, {}, b'{"message":"Not enough permissions"}')
+        valeurs = {"IMPRESSION": 900, "MEMBERS_REACHED": 500, "REACTION": 40, "COMMENT": 6, "RESHARE": 2}
+        type_ = url.split("queryType=")[1].split("&")[0]
+        return Reponse(200, {}, json.dumps({"elements": [{"count": valeurs[type_], "metricType": {}}]}).encode())
+
+
+def poser_trace(depot: Depot, publie_a: str) -> None:
+    (depot.racine / "publier" / "linkedin").mkdir(parents=True, exist_ok=True)
+    (depot.racine / "publier" / "linkedin" / "01.yaml").write_text(
+        f"post: urn:li:ugcPost:7525841858154053633\nlien: https://www.linkedin.com/feed/update/x/\npublie_a: '{publie_a}'\n",
+        encoding="utf-8")
+
+
+def test_releve_des_statistiques(depot):
+    statut(depot, "01", "relu")
+    statut(depot, "01", "publie")
+    poser_trace(depot, "2026-11-10T08:30:00+00:00")
+    api = FausseAPIStats()
+    messages = li.relever_stats(depot, client(api), dt.datetime(2026, 11, 12, 7, 0, tzinfo=UTC))
+    assert messages == ["01 : 900 impressions à 2 jour(s) ; h48 enregistré"]
+    assert "entity=(ugcPost:urn%3Ali%3AugcPost%3A7525841858154053633)" in api.urls[0] and "aggregation=TOTAL" in api.urls[0]
+    releve = yaml.safe_load((depot.racine / "mesures" / "linkedin" / "7525841858154053633.yaml").read_text(encoding="utf-8"))
+    assert releve["episode"] == "01" and releve["releves"][0]["chiffres"]["membres_atteints"] == 500
+    mesures = yaml.safe_load((depot.racine / "mesures" / "01.yaml").read_text(encoding="utf-8"))
+    assert mesures["h48"] == {"impressions": 900, "reactions": 40}
+    # Sept jours après : j7, et l'épisode passe à « mesuré » ; le relevé du jour remplace celui du même jour.
+    li.relever_stats(depot, client(FausseAPIStats()), dt.datetime(2026, 11, 17, 7, 0, tzinfo=UTC))
+    li.relever_stats(depot, client(FausseAPIStats()), dt.datetime(2026, 11, 17, 9, 0, tzinfo=UTC))
+    releve = yaml.safe_load((depot.racine / "mesures" / "linkedin" / "7525841858154053633.yaml").read_text(encoding="utf-8"))
+    assert [r["releve_le"] for r in releve["releves"]] == ["2026-11-12", "2026-11-17"]
+    assert yaml.safe_load(depot.etat.read_text(encoding="utf-8"))["episodes"]["01"]["statut"] == "mesure"
+
+
+def test_statistiques_sans_permission(depot):
+    poser_trace(depot, "2026-11-10T08:30:00+00:00")
+    with pytest.raises(ErreurLinkedIn, match="r_member_postAnalytics"):
+        li.relever_stats(depot, client(FausseAPIStats(refuse=True)), dt.datetime(2026, 11, 12, 7, 0, tzinfo=UTC))
