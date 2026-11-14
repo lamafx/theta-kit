@@ -9,6 +9,7 @@ import Relecture from './Relecture';
 import Mesures from './Mesures';
 import FicheBilan from './FicheBilan';
 import ChangerStatut from './ChangerStatut';
+import PasserRelu from './PasserRelu';
 
 export const metadata = { title: 'Épisode' };
 
@@ -45,7 +46,16 @@ export default async function Fiche({ params }: { params: Promise<{ n: string }>
       />
 
       <div className="grille">
-        <Carte className="c8" titre="Carrousel" droite={e.pdf ? <a href={`${B}/api/fichier?chemin=${encodeURIComponent(e.pdf)}`} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}><IcPdf /> PDF</a> : null}>
+        <Carte
+          className="c8"
+          titre="Carrousel"
+          droite={
+            <span style={{ display: 'inline-flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
+              {e.pdf ? <a href={`${B}/api/fichier?chemin=${encodeURIComponent(e.pdf)}`} target="_blank" rel="noreferrer" style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}><IcPdf /> PDF</a> : null}
+              {peutValider ? <PasserRelu n={e.n} aRefaire={e.a_refaire.map((x) => x.etape)} /> : null}
+            </span>
+          }
+        >
           <Carrousel pages={e.pages} titre={`Nº ${e.n} · ${e.titre}`} />
         </Carte>
 
