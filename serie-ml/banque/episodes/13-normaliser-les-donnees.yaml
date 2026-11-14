@@ -48,4 +48,14 @@ references:
     url: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
   - titre: SKL · Standardization
     url: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
-  sources_originales: []
+  # Ajoutée le 2026-11-14 (production de l'épisode) : la vallée étroite (« narrow canyon ») où la descente oscille
+  # dans la direction raide et avance lentement dans l'autre (page 3) n'est écrite que là.
+  - titre: D2L 12.6
+    url: https://d2l.ai/chapter_optimization/momentum.html
+  sources_originales:
+  # Ajoutée le 2026-11-14 (production de l'épisode) : le lien entre l'écart des caractéristiques et la forme
+  # allongée des lignes de niveau du coût (pages 2 et 3), et la nuance des caractéristiques liées entre elles.
+  - citation: LeCun, Bottou, Orr et Müller (1998), Efficient BackProp, dans Neural Networks, Tricks of the Trade, Springer
+    liens:
+    - titre: Efficient BackProp
+      url: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf

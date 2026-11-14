@@ -108,26 +108,29 @@ episodes:
         fait_le: '2026-11-02T01:24:29'
         empreinte: 6c5dd56914bcf22094bca33be88735301b17d3d961bf072118ee364ea7b10905
       contenu:
-        fait_le: '2026-11-14T04:17:15'
-        empreinte: 5c2d7192ee78589a040f06a5d5941607fb07fea76b99a0fa82291c5716307125
+        fait_le: '2026-11-14T04:29:42'
+        empreinte: 7fad16da1a0a26c70a6708e55a755e0529a218c547c4fdd90b08965618216f81
       linkedin:
-        fait_le: '2026-11-14T04:17:16'
-        empreinte: 09f47e560aefa486737b2c74545a35a99d352c8b38e0fc5a1a23b4ed62465af1
+        fait_le: '2026-11-14T04:29:43'
+        empreinte: 46eb4194c218367f0e22b22a263f4fcab052f2d6969dabb083a6081c572178d3
       images:
         fait_le: '2026-11-05T16:00:29'
         empreinte: 20a77180e8f83b62f5e2c46bb608c7c127c297b1de824f98a66316388efe80c9
       rendu:
-        fait_le: '2026-11-12T11:07:59'
-        empreinte: cfcc39cbaa2682af7b81208bb6734010973b7aa21fe7ab4a895ebe52a9a57548
+        fait_le: '2026-11-14T04:29:45'
+        empreinte: 841790e2eb7ca3192fb722c9caeff4d11ef3a7df6e0f6be3adb4dd43eed296b4
       verification:
-        fait_le: '2026-11-12T11:08:02'
-        empreinte: 0b5855bb04e465f99b77ff710e4243508f41dfbc0b32c0b09fae3893aff00802
+        fait_le: '2026-11-14T04:29:46'
+        empreinte: 67817b3efae228ff6b9e7eaa0c8e24a5236a8b935dc59bde400c1e06b58fc5fe
       relecture:
-        fait_le: '2026-11-06T02:22:33'
-        empreinte: dc67ebef2c22abf7b1dd069cd6e1bbf2af18ea0fbb74ba4a50d9515685ff9414
+        fait_le: '2026-11-14T04:29:47'
+        empreinte: cfb7f3ad832292391c43635ba4f954eb3290d20de2441c529ff0001b12f8aa3c
       publication:
-        fait_le: '2026-11-10T03:42:21'
-        empreinte: 89a3b38f011d40b91aa16cf13e480c5597d3025cfbae26014123578af5d663dc
+        fait_le: '2026-11-14T04:32:41'
+        empreinte: cc48ae9e49106465f24fe60ff7e8b7e4a79fab088e76e45c3386493b30cc9160
+      comprehension:
+        fait_le: '2026-11-14T04:32:29'
+        empreinte: 3e0671359dd8cda88d3cb2a219c1167f9653de4d6240f06d88ae6a9a89f0f2ce
     publie_le: null
   '05':
     statut: genere
@@ -136,26 +139,26 @@ episodes:
         fait_le: '2026-11-02T01:24:58'
         empreinte: 1fa2f3a57826fa8ff61450eca8b849cd276a956174eb611fa27585d24390cc6f
       sources:
-        fait_le: '2026-11-02T01:25:01'
-        empreinte: 8b5468b6ce00fa6d0d51c93f9996b262dfbe48b32ece11a8300b00e58c01e4b2
+        fait_le: '2026-11-14T04:27:30'
+        empreinte: cbdd390f8d6581b5a4324a80be32f7272ee6cd73f1aa7fa5a8b385fea39843d8
       contenu:
-        fait_le: '2026-11-05T16:01:15'
-        empreinte: e62fa541f93e7383dbd0c28757221fda7979c33ae28da6964baa5971b89d70a7
+        fait_le: '2026-11-14T04:42:33'
+        empreinte: c3c1186cffde998591c7a5d1bb456cd29620c9d2a3dc64cf3249a657cdb108a0
       linkedin:
-        fait_le: '2026-11-05T16:01:18'
-        empreinte: 0092227601e4d8f6c3ffd90c34fe276bed0d0b609c1e0ea3789541a67e7697fe
+        fait_le: '2026-11-14T04:42:34'
+        empreinte: 2984c4399655c0f35981e59a0d7051aecb09f654c4740cc4c2c9b91c185934cc
       images:
-        fait_le: '2026-11-05T16:01:20'
-        empreinte: 0092227601e4d8f6c3ffd90c34fe276bed0d0b609c1e0ea3789541a67e7697fe
+        fait_le: '2026-11-14T04:42:35'
+        empreinte: 2984c4399655c0f35981e59a0d7051aecb09f654c4740cc4c2c9b91c185934cc
       rendu:
-        fait_le: '2026-11-12T11:08:37'
-        empreinte: dbc5a888bb0190ba9446a4ec36c6b02fd532280a5c0ecbf0ff1a434db74f4801
+        fait_le: '2026-11-14T04:42:36'
+        empreinte: 1ce38b8fb37e2e180a85db1e10a87bb2b284c9d0cf2252733af42ead583971c3
       verification:
-        fait_le: '2026-11-12T11:08:39'
-        empreinte: 00df61a2b9e657b96fc4f669b8b3de9f746b94adb502adcd34c278c02fcb3f5b
+        fait_le: '2026-11-14T04:42:37'
+        empreinte: fe846d928c0456f6075f3eb4ada9b136d6c1c35b9f270e5da217c24ed8dbffbd
       relecture:
-        fait_le: '2026-11-06T02:22:40'
-        empreinte: 78d0da15c1d385902e1b4769ff15cbc831dddea09a657df54d5956cf7624fe94
+        fait_le: '2026-11-14T04:42:38'
+        empreinte: 5324b3270972931792d5a1d8a3ffdd037fbd62b15669e2d4ed1be1919723f4d8
       publication:
         fait_le: '2026-11-10T03:42:26'
         empreinte: a692d4f78d173002f8e2756f8c11214b03d41e2730bad3860a21f68f15d9e6d5
@@ -170,8 +173,8 @@ episodes:
         fait_le: '2026-11-01T12:06:09'
         empreinte: 9678dee4c9f3ab2f221543a32bb47a6dc9397c24d4d5566f0724e4d7d0c0470d
       contenu:
-        fait_le: '2026-11-06T00:06:54'
-        empreinte: 5571a6b25ddba571676f3a38ba4bf3c959d28abdfc644bc93b5bc219a390f908
+        fait_le: '2026-11-14T04:47:00'
+        empreinte: 1529f0300f26ed41d955982e6488b8539bd9b2b0fdd0c170f79838c957da8d8f
       linkedin:
         fait_le: '2026-11-06T00:06:56'
         empreinte: 58135222380c9e9f3ca7a56e48d6bd982a92f27f1c5ce16e2b841ede07d6ecef
@@ -377,15 +380,45 @@ episodes:
         fait_le: '2026-11-14T04:14:39'
         empreinte: 3fd398118dabbe47c8292ae88eee05cd8f9152151c41d8cc4dc7ec9f6912eea3
       publication:
-        fait_le: '2026-11-11T18:08:23'
-        empreinte: 973a3ffd896e206b4b2ae925df7a2345523d7a4514cbe6e6cffb676a9a357bca
+        fait_le: '2026-11-14T04:18:05'
+        empreinte: c88c2660884e1efdc7337f340c8c236129a4bbce10f3666ca210ea760ad2ea86
       comprehension:
         fait_le: '2026-11-14T04:17:31'
         empreinte: 9a7c880975ceb1ed4a32a5832d9642710ededa9e3897474ea5d562eecfbe339d
     publie_le: null
   '13':
-    statut: a_faire
-    etapes: {}
+    statut: genere
+    etapes:
+      lecture:
+        fait_le: '2026-11-14T04:20:31'
+        empreinte: f359e418c1e37caa73dce0ce2024265c91dac134bd65efdd32948d8ac2e679f4
+      sources:
+        fait_le: '2026-11-14T04:27:34'
+        empreinte: 6c1d4ca1f1670d3fbb66fe46e2aad02044476e012ee12305393f16f9637da859
+      contenu:
+        fait_le: '2026-11-14T04:44:59'
+        empreinte: 463f2da89243cac49f9043924076fad6b8901a0ded6db3d9dc00ec9ec3422584
+      linkedin:
+        fait_le: '2026-11-14T04:45:00'
+        empreinte: 0068d8f2ba8da72f5f4f92bd8628540c3ebe46aa484e901b00a0d85a95ef3b0b
+      images:
+        fait_le: '2026-11-14T04:45:01'
+        empreinte: 0068d8f2ba8da72f5f4f92bd8628540c3ebe46aa484e901b00a0d85a95ef3b0b
+      rendu:
+        fait_le: '2026-11-14T04:45:02'
+        empreinte: 7657b647ed0d99b5d2bae122a907ea2526843d7d335364bebc4c01bd780523fd
+      verification:
+        fait_le: '2026-11-14T04:45:03'
+        empreinte: f001424e780177ce3e448c52f6533561ba21c64fdf533e6d0fe009a86cfc284f
+      relecture:
+        fait_le: '2026-11-14T04:38:22'
+        empreinte: 42a0b3aed442f2579c33fe7962056053f5fbe08d77a65625aa511c574e01684a
+      comprehension:
+        fait_le: '2026-11-14T04:45:49'
+        empreinte: 925aa4401043d4ec47907aab47068a296c17e269931b4c8daae4d793b404634f
+      publication:
+        fait_le: '2026-11-14T04:45:53'
+        empreinte: 186d4882b2fcfee8531e3c4344a9e810994e1d615771f4192777cc17bc07160b
     publie_le: null
   '14':
     statut: a_faire

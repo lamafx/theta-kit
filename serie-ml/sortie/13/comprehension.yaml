@@ -1,0 +1,38 @@
+episode: 13
+lecteur: "Professionnel curieux de niveau bac, sans informatique ni mathématiques après le lycée, qui ne retient des épisodes précédents que leurs pages « À retenir »."
+carrousel:
+  criteres:
+    premier_abord: {note: 8.5, raison: "La couverture dit l'objet (mettre les caractéristiques sur la même échelle) et l'ouverture donne tout de suite 120 m² contre 3 chambres ; seul « la vallée s'étire » demande un petit effort, car le lien entre poids et forme de la vallée n'est pas dit."}
+    vocabulaire: {note: 8.5, raison: "Coût J, poids, taux d'apprentissage, moyenne et écart-type sont rappelés ou expliqués en mots simples ; « vallée » (image du coût) et « caractéristiques » reposent sur les épisodes précédents, et le symbole prime de x′ n'est pas expliqué à part."}
+    une_notion_par_page: {note: 8.5, raison: "Une idée par page en phrases complètes ; la page 3 empile pourtant normalisation, même taux d'apprentissage, deux descentes et un encadré « presque ronde », et la page 4 a une phrase à deux-points en cascade."}
+    concret: {note: 9, raison: "120 m² et 3 chambres, les deux chemins côte à côte et l'exemple 130 devient 1,5 montrent chaque notion ; le graphe de la page 2 est petit, mais l'exemple chiffré le soutient."}
+    enchainement: {note: 8.5, raison: "Problème (vallée allongée), effet (zigzag), remède (formule) : l'ordre se suit ; la page 4 ne dit pas explicitement qu'elle donne la recette pour arrondir la vallée de la page 3."}
+    retenu: {note: 8.5, raison: "Le lecteur sait répondre à « Vérifiez-vous » grâce à la page 3 (pas assez grand pour avancer en longueur, il dépasse en largeur) ; il lui faut revenir à la page 3 pour la formuler, et « pourquoi la vallée s'étire » reste à demi expliqué."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "Changer le poids de la surface (120 m²) le bouge bien plus que celui des chambres (3) : la vallée s'étire."
+    pourquoi: "Le lecteur ne voit pas pourquoi un poids qui fait plus bouger le coût rend la vallée longue d'un côté et étroite de l'autre ; « le bouge » est aussi vague."
+    proposition: "Un petit changement du poids de la surface (120 m²) fait beaucoup varier l'erreur ; le même changement pour les chambres (3), très peu. Vue de haut, la vallée devient donc étroite d'un côté, longue de l'autre."
+  - endroit: "page 3, texte et encadré"
+    passage: "Les deux descentes partent du même point, avec le même taux d'apprentissage $η$."
+    pourquoi: "Trois idées dans la page (normalisation, conditions identiques, comparaison) ; « taux d'apprentissage » est repris sans rappel de ce que c'est."
+    proposition: "La **normalisation** ramène les caractéristiques au même ordre de grandeur : la vallée s'arrondit. Les deux descentes partent du même point, avec la même taille de pas (le taux d'apprentissage $η$)."
+  - endroit: "page 4, texte"
+    passage: "La **standardisation** est une façon courante de normaliser : chaque valeur devient son écart à la moyenne, compté en écarts-types : la même règle pour toutes."
+    pourquoi: "Deux deux-points dans une phrase dense ; « écart à la moyenne, compté en écarts-types » ne se comprend qu'avec l'exemple du bas, et le lien avec la vallée qui s'arrondit n'est pas redit."
+    proposition: "La **standardisation** est une façon courante de normaliser, pour arrondir la vallée. Chaque valeur devient son écart à la moyenne, compté en écarts-types, avec la même règle pour toutes les caractéristiques."
+post:
+  criteres:
+    accroche: {note: 8.5, raison: "L'idée qu'un programme croie une donnée dix fois plus importante parce que ses valeurs s'étalent dix fois plus est claire et intrigante, mais la première phrase est longue."}
+    vocabulaire: {note: 8.5, raison: "Poids, écart-type et standardisation sont expliqués sur place ; « le programme » et « apprendre en corrigeant les poids par petits pas » restent un peu implicites, et « caractéristique » n'est pas défini dans le post."}
+    message: {note: 9, raison: "La dernière phrase se redit facilement : mesurer chaque caractéristique avec sa propre règle."}
+    fil: {note: 8.5, raison: "Exemple, problème, remède, usage sur une nouvelle maison : l'ordre est logique ; le troisième paragraphe (« un pas qui convient à la surface est minuscule pour les chambres ») demande de s'arrêter un instant."}
+  blocages:
+  - endroit: "post, paragraphe 3"
+    passage: "Un pas qui convient à la surface est minuscule pour les chambres : leur poids avance à peine."
+    pourquoi: "Le lecteur doit déduire seul pourquoi la même taille de pas est trop grande ici et trop petite là ; le raisonnement est dense."
+    proposition: "Le programme avance d'une même taille de pas pour tous les poids. Ce pas, bien réglé pour la surface, est trop petit pour les chambres : leur poids avance à peine, et l'apprentissage zigzague et ralentit."
+  - endroit: "post, dernière ligne"
+    passage: "Normaliser, c'est mesurer chaque caractéristique avec sa propre règle : son écart-type."
+    pourquoi: "« Caractéristique » n'est pas défini dans le post (la surface, le nombre de chambres) ; la phrase est abstraite pour qui n'a pas suivi la série."
+    proposition: "Normaliser, c'est mesurer chaque donnée (la surface, les chambres) avec sa propre règle : son écart-type."

@@ -1,0 +1,223 @@
+# Extraits mot pour mot des références de la fiche 13, lus le 2026-11-14 : MLCC « Numerical data: Normalization »
+# (page HTML ; formules en LaTeX comme dans la source, signes ASCII), scikit-learn « Preprocessing data », section
+# 8.3.1 (page HTML ; la section 8.3.3 de la même page est citée pour son autre sens du mot « normalization »),
+# D2L 12.6 « Momentum » (page HTML, ajoutée à la fiche 13 : vallée étroite et oscillations ; formules en LaTeX comme
+# dans la source) et LeCun, Bottou, Orr et Müller (1998), « Efficient BackProp » (PDF, ajouté à la fiche 13 :
+# lignes de niveau ovales, écart des entrées et lenteur, caractéristiques liées ; le symbole η, perdu à
+# l'extraction du texte du PDF, est rétabli d'après la page).
+episode: 13
+extraits:
+# --- MLCC · Numerical data: Normalization ------------------------------------------------------------
+- id: mlcc-but
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: The goal of normalization is to transform features to be on a similar scale.
+  appuie: "Comparaison, formule : la normalisation met les caractéristiques sur la même échelle."
+- id: mlcc-plages
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: "Feature X spans the range 154 to 24,917,482. Feature Y spans the range 5 to 22. These two features span very different ranges."
+  appuie: "Ouverture : deux caractéristiques peuvent s'étendre sur des plages de valeurs très différentes."
+- id: mlcc-rebond
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: Helps models converge more quickly during training. When different features have different ranges, gradient descent can "bounce" and slow convergence.
+  appuie: "Comparaison, post : sans normalisation, la descente rebondit et ralentit."
+- id: mlcc-optimiseurs
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: That said, more advanced optimizers like Adagrad and Adam protect against this problem by changing the effective learning rate over time.
+  appuie: "Comparaison : des variantes de la descente (Nº 44) atténuent ce problème."
+- id: mlcc-attention
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: Without feature scaling, the model pays too much attention to features with wide ranges and not enough attention to features with narrow ranges.
+  appuie: "Ouverture : la caractéristique aux grandes valeurs pèse bien plus que l'autre."
+- id: mlcc-dix-fois
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: "Feature B's span is 10 times wider than Feature A's span. Therefore: At the start of training, the model assumes that Feature B is ten times more \"important\" than Feature A. Training will take longer than it should."
+  appuie: "Post (accroche) : une plage dix fois plus large fait juger la caractéristique dix fois plus importante au début de l'entraînement."
+- id: mlcc-echec
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: If you don't normalize Feature C and Feature D, your model will likely be suboptimal. Furthermore, training will take much longer to converge or even fail to converge entirely!
+  appuie: "Post : avec des écarts énormes, l'entraînement peut ne jamais aboutir."
+- id: mlcc-recommande
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: We recommend normalizing numeric features covering distinctly different ranges (for example, age and income).
+  appuie: "Comparaison, post : normaliser reste conseillé."
+- id: mlcc-populaires
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: "This section covers three popular normalization methods: linear scaling Z-score scaling log scaling"
+  appuie: "Formule, post : la standardisation (Z-score) est une façon répandue de normaliser, parmi d'autres."
+- id: mlcc-prediction
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: "Warning: If you normalize a feature during training, you must also normalize that feature when making predictions."
+  appuie: "Formule, post : chaque nouvelle prédiction passe par la même transformation."
+- id: mlcc-zscore
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: A Z-score is the number of standard deviations a value is from the mean.
+  appuie: "Formule : x′ dit à combien d'écarts-types x se trouve de la moyenne."
+- id: mlcc-formule
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: "Use the following formula to normalize a value, $x$, to its Z-score: $$ x' = (x - μ) / σ $$ where: $x'$ is the Z-score. $x$ is the raw value; that is, $x$ is the value you are normalizing. $μ$ is the mean. $σ$ is the standard deviation."
+  appuie: "Formule : x′ = (x − μ) / σ, μ la moyenne, σ l'écart-type."
+- id: mlcc-exemple
+  reference: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_sur: https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+  lu_le: 2026-11-14
+  extrait: "For example, suppose: mean = 100 standard deviation = 20 original value = 130 Therefore: Z-score = (130 - 100) / 20 Z-score = 30 / 20 Z-score = +1.5"
+  appuie: "Formule, post : avec μ = 100 et σ = 20, la valeur 130 devient 1,5."
+# --- scikit-learn 8.3 · Preprocessing data ------------------------------------------------------------
+- id: skl-lineaires
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: In general, many learning algorithms such as linear models benefit from standardization of the data set
+  appuie: "Formule : la standardisation profite aux modèles linéaires."
+- id: skl-courante
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: Standardization of datasets is a common requirement for many machine learning estimators implemented in scikit-learn
+  appuie: "Formule : la standardisation, une façon courante de normaliser."
+- id: skl-centrer-diviser
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: In practice we often ignore the shape of the distribution and just transform the data to center it by removing the mean value of each feature, then scale it by dividing non-constant features by their standard deviation.
+  appuie: "Formule : retirer la moyenne de chaque caractéristique, puis diviser par son écart-type ; chaque caractéristique est transformée à part."
+- id: skl-zero-un
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: "Scaled data has zero mean and unit variance: >>> X_scaled.mean(axis=0) array([0., 0., 0.]) >>> X_scaled.std(axis=0) array([1., 1., 1.])"
+  appuie: "Formule : après la standardisation, chaque caractéristique a une moyenne de 0 et un écart-type de 1."
+- id: skl-dominer
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: If a feature has a variance that is orders of magnitude larger than others, it might dominate the objective function and make the estimator unable to learn from other features correctly as expected.
+  appuie: "Ouverture : la caractéristique aux grandes valeurs domine le coût."
+- id: skl-entrainement
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: This class implements the Transformer API to compute the mean and standard deviation on a training set so as to be able to later re-apply the same transformation on the testing set.
+  appuie: "Formule, post : moyenne et écart-type se calculent pendant l'entraînement, puis servent tels quels ensuite."
+- id: skl-autre-sens
+  reference: https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+  lu_sur: https://scikit-learn.org/stable/modules/preprocessing.html
+  lu_le: 2026-11-14
+  extrait: Normalization is the process of scaling individual samples to have unit norm.
+  appuie: "Vocabulaire (rapport) : scikit-learn réserve « normalization » à une autre opération ; l'épisode suit MLCC, où la standardisation est une façon de normaliser."
+# --- D2L 12.6 · Momentum -----------------------------------------------------------------------------
+- id: d2l-canyon
+  reference: https://d2l.ai/chapter_optimization/momentum.html
+  lu_sur: https://d2l.ai/chapter_optimization/momentum.html
+  lu_le: 2026-11-14
+  extrait: where the optimization problem is ill-conditioned (i.e., where there are some directions where progress is much slower than in others, resembling a narrow canyon)
+  appuie: "Ouverture, comparaison : une vallée étroite, où la descente avance bien plus lentement dans une direction que dans l'autre."
+- id: d2l-etiree
+  reference: https://d2l.ai/chapter_optimization/momentum.html
+  lu_sur: https://d2l.ai/chapter_optimization/momentum.html
+  lu_le: 2026-11-14
+  extrait: "We distort this function further by stretching it out in the \\(x_1\\) direction via \\[f(\\mathbf{x}) = 0.1 x_1^2 + 2 x_2^2.\\]"
+  appuie: "Comparaison : le coût d'illustration J = k₁·a² + k₂·b², étiré dans une direction (calculs.descente_gradient)."
+- id: d2l-raide
+  reference: https://d2l.ai/chapter_optimization/momentum.html
+  lu_sur: https://d2l.ai/chapter_optimization/momentum.html
+  lu_le: 2026-11-14
+  extrait: By construction, the gradient in the \(x_2\) direction is much higher and changes much more rapidly than in the horizontal \(x_1\) direction.
+  appuie: "Ouverture : le coût réagit bien plus à un réglage qu'à l'autre."
+- id: d2l-dilemme
+  reference: https://d2l.ai/chapter_optimization/momentum.html
+  lu_sur: https://d2l.ai/chapter_optimization/momentum.html
+  lu_le: 2026-11-14
+  extrait: "Thus we are stuck between two undesirable choices: if we pick a small learning rate we ensure that the solution does not diverge in the \\(x_2\\) direction but we are saddled with slow convergence in the \\(x_1\\) direction."
+  appuie: "Comparaison, post : un pas assez petit pour la direction raide est trop petit pour l'autre."
+- id: d2l-oscille
+  reference: https://d2l.ai/chapter_optimization/momentum.html
+  lu_sur: https://d2l.ai/chapter_optimization/momentum.html
+  lu_le: 2026-11-14
+  extrait: Conversely, in the \(x_2\) direction where gradients oscillate, an aggregate gradient will reduce step size due to oscillations that cancel each other out.
+  appuie: "Comparaison : dans la vallée allongée, la descente oscille d'un bord à l'autre (elle zigzague)."
+# --- LeCun, Bottou, Orr et Müller (1998), Efficient BackProp ------------------------------------------
+- id: lecun-1998
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: 'originally published in Orr, G. and Muller, K. "Neural Networks: tricks of the trade", Springer, 1998.'
+  appuie: "Date et lieu de publication de l'article."
+- id: lecun-ovales
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: H is a measure of the curvature of E. In two dimensions, the lines of constant E for a quadratic cost are oval in shape as shown in Figure 7.
+  appuie: "Ouverture, comparaison : les lignes de niveau d'un coût au carré sont des ovales (ellipses)."
+- id: lecun-lineaire
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: "Example. In the least mean square (LMS) algorithm, we have a single layer linear network with error function"
+  appuie: "Ouverture : le raisonnement vaut pour un modèle linéaire avec un coût au carré, comme la régression des Nº 11 et 12."
+- id: lecun-entrees
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: The Hessian in this case turns out the be the same as the covariance matrix of the inputs
+  appuie: "Ouverture : pour ce modèle, la forme de la vallée vient des valeurs des caractéristiques."
+- id: lecun-etalement
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: Inputs that have a large variation in spread along different directions of the input space will have a large condition number and slow learning.
+  appuie: "Ouverture, comparaison : des caractéristiques d'écarts très différents donnent une vallée allongée et un apprentissage lent."
+- id: lecun-moyenne
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: The reason for the above trick is that a nonzero mean in the input variables creates a very large eigenvalue. This means the condition number will be large, i.e. the cost surface will be steep in some directions and shallow in others so that convergence will be very slow.
+  appuie: "Formule : retirer la moyenne compte aussi ; des valeurs loin de 0 rendent le coût raide dans une direction, plat dans l'autre."
+- id: lecun-pas
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: Using a scalar learning rate is problematic in multiple dimensions. We want η to be large so that convergence is fast along the shallow directions of E (small eigenvalues of H), however, if η is too large the weights will diverge along the steep directions (large eigenvalues of H).
+  appuie: "Comparaison, post : un seul taux d'apprentissage ne convient pas aux deux directions de la vallée allongée."
+- id: lecun-gradient
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: In such a case the gradient is not the best descent direction as can be seen in Fig 7b. At the point P, an arrow shows that gradient does not point towards the minimum.
+  appuie: "Comparaison : dans la vallée allongée, le gradient ne vise pas le minimum ; dans la ronde, il le vise."
+- id: lecun-variances
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: Normalize the variances of the input variables.
+  appuie: "Formule : ramener l'écart de chaque caractéristique à la même valeur."
+- id: lecun-liees
+  reference: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_sur: http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+  lu_le: 2026-11-14
+  extrait: If the input variables are correlated, this will not make the error surface spherical, but it will possibly reduce its eccentricity.
+  appuie: "Comparaison (encadré) : surface et chambres varient ensemble ; la vallée s'arrondit sans devenir tout à fait ronde."

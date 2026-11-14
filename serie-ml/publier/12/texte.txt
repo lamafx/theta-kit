@@ -1,13 +1,13 @@
 Une chambre de plus, et le prix prédit baisse.
-C’est ce que dit une régression sur les maisons d’Ames.
+C’est ce que dit une régression, un modèle qui prédit le prix des maisons d’Ames, dans l’Iowa.
 
-Le modèle prend deux caractéristiques : la surface et le nombre de chambres. Chacune reçoit un poids, et la prédiction est leur somme pondérée, plus un biais. Avec deux caractéristiques, la droite de l’épisode précédent devient un plan.
+Il prend deux caractéristiques : la surface et les chambres. Chacune est multipliée par un nombre, son poids. On additionne ces produits, plus un nombre fixe, le biais : c’est le prix prédit. Avec une caractéristique, ce calcul trace une droite ; avec deux, un plan.
 
-Sur les 2 925 ventes de 2006 à 2010, le poids de la surface vaut 92,3 millions de FCFA par centaine de mètres carrés (prix convertis au cours BCEAO du 27 octobre 2026). Celui des chambres vaut −19,1 millions.
+Sur les 2 925 ventes de 2006 à 2010, le poids de la surface vaut 92,3 millions de FCFA par centaine de mètres carrés ; celui des chambres, −19,1 millions. (Les prix sont convertis au cours de la BCEAO, la banque centrale ouest-africaine, du 27 octobre 2026.)
 
-Ce signe négatif se lit à surface égale. Il compare deux maisons de même taille, dont l’une a une chambre de plus. Un poids se lit toujours les autres caractéristiques fixées, et surface et chambres varient ensemble.
+Ce poids négatif compare deux maisons de même surface, l’une avec une chambre de plus. Un poids se lit toujours ainsi, les autres caractéristiques fixées. Or surface et chambres varient ensemble, l’une change souvent avec l’autre : le modèle sépare mal leurs effets.
 
-Reste que comparer 92,3 et 19,1 n’a pas de sens : des mètres carrés et des chambres n’ont pas la même unité. Ce sera le sujet du prochain épisode.
+Reste que 92,3 et 19,1 ne se comparent pas : mètres carrés et chambres n’ont pas la même unité. Ce sera le sujet du prochain épisode.
 
 Auriez-vous parié sur un poids négatif pour les chambres ?
 

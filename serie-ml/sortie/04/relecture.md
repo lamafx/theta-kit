@@ -1,114 +1,197 @@
 # Relecture · Nº 04 · Modèle et paramètres
 
-Relecture du 2026-11-01, après la session de design n° 2 (texte en 30 px, limites à 32 mots pour l'ouverture et 55 par
-page). D'après `corrections.md` et le comptage de `serie verifier`, seul le texte de la page 2 a été resserré (pages 3 et 4 :
-47 et 50 mots, comme avant) ; la couverture est nouvelle. Les décisions déjà tranchées ne sont pas rouvertes.
+Relecture du 2026-11-14, sur `contenu/04.yaml` réécrit pour la compréhension (pages 2, 3, 4, 5 et texte du post).
+Le dossier `publier/04/` date d'avant cette réécriture : son `texte.txt` ne correspond plus au contenu relu.
 
-Sources relues aujourd'hui sur le web (WebFetch) : Google, Machine Learning Crash Course, « Linear regression »,
-https://developers.google.com/machine-learning/crash-course/linear-regression (« Last updated 2025-12-09 UTC ») ;
-les extraits `mlcc-relation`, `mlcc-ligne`, `mlcc-droite` (« m is the slope of the line. »), `mlcc-ordonnee`
-(« b is the y-intercept. »), `mlcc-minimiser`, `mlcc-entrainement`, `mlcc-parametre` et `mlcc-equation` y sont présents
-mot pour mot. Les sources d'Ames, de Data 100 et de la BCEAO ont été relues ce matin (relecture précédente) ; aucune
-affirmation qui en dépend n'a changé.
+Sources relues aujourd'hui sur le web :
 
-## Priorité : nuances de la page 2 après resserrement
+- Google, Machine Learning Crash Course, « Linear regression »,
+  https://developers.google.com/machine-learning/crash-course/linear-regression (« Last updated 2025-12-09 UTC »).
+  Les extraits `mlcc-relation`, `mlcc-ligne`, `mlcc-droite`, `mlcc-ordonnee`, `mlcc-parametre`, `mlcc-entrainement`,
+  `mlcc-equation` et `mlcc-minimiser` y sont présents mot pour mot (`mlcc-minimiser` est dans une partie dépliable :
+  absent du texte affiché par le lecteur web, présent dans le code HTML de la page).
+- Google, Machine Learning Crash Course, « Linear regression: Loss »,
+  https://developers.google.com/machine-learning/crash-course/linear-regression/loss.
+- Google, « Machine Learning Glossary », https://developers.google.com/machine-learning/glossary (entrées
+  « parameter », « hyperparameter », « neural network »).
+- Data 100, « Ordinary Least Squares », https://ds100.org/fa23-course-notes/ols/ols.html.
+- D. De Cock (2011), Journal of Statistics Education 19(3), http://jse.amstat.org/v19n3/decock.pdf ;
+  http://jse.amstat.org/v19n3/decock/DataDocumentation.txt ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt
+  (2 930 lignes de données, 5 maisons de plus de 4 000 pieds carrés, années de vente 2006 à 2010 : recompté).
+- BCEAO, « Cours de référence des principales devises contre Franc CFA »,
+  https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa : la page n'affiche que
+  le dernier cours (« Cours des devises du vendredi 13 Novembre 2026 », dollar US 593,5200) ; le cours du
+  27 octobre 2026 (588,3000) ne peut plus y être relu, l'extrait `bceao-dollar` recopié le 2026-10-30 fait foi.
 
-Comparaison faite sans `git show` (l'outil de relecture n'a pas de terminal) : le texte de e57677b est reconstitué à partir
-de `corrections.md` (2026-10-31, D10, audit 04.2) et de la relecture précédente, qui le comptait à 40 mots :
+Calculs recoupés : `calculs.ames.droite_prix_surface()` donne a = 73,6 et b = 3,98 avant arrondi, 2 925 ventes ;
+avec les réglages arrondis, 74 × 1,5 + 4 = 115 (114,4 sans arrondi, ce que dit la description du schéma).
 
-- Avant : « Une régression prédit un nombre. Linéaire, sa prédiction suit une droite : le prix $ŷ$ selon la seule surface $x$, $ŷ$ = $a$·$x$ + $b$. $a$ et $b$ sont deux réglages : à ajuster aux données, comme deux boutons. »
-- Après : « La régression linéaire prédit le prix $ŷ$ selon la seule surface $x$ : la droite $ŷ$ = $a$·$x$ + $b$. $a$ et $b$ s'ajustent aux données, comme des boutons. » (31 mots)
+## Avertissement scientifique (en tête)
 
-| Nuance | Avant | Après | Verdict |
-| --- | --- | --- | --- |
-| Une seule entrée (D10) | « selon la seule surface $x$ » | inchangé | Gardée |
-| Les réglages viennent des données (audit 04.2, `mlcc-minimiser`) | « à ajuster aux données » | « s'ajustent aux données » | Gardée ; le pronominal a ici un sens passif, et la page 4 dit qui les ajuste (« le modèle les ajuste aux exemples ») |
-| Linéaire = la prédiction est sur une droite (`mlcc-ligne`) | « Linéaire, sa prédiction suit une droite » | « : la droite $ŷ$ = $a$·$x$ + $b$ » | Gardée, moins explicite : le lien est fait par les deux-points et par le schéma (ŷ = 115 lu sur la droite) |
-| Une régression prédit un nombre (`mlcc-glossaire-regression`) | phrase d'ouverture | retirée de la page | Pas de perte : le rappel de la même page dit « prédire le prix d'une maison est une régression » (Nº 03) et le texte dit « prédit le prix » |
-| Deux réglages | « $a$ et $b$ sont deux réglages » | dans le titre « Deux réglages : a et b. » | Gardée |
-| Inclinaison, ordonnée à l'origine | sur le schéma | sur le schéma, inchangé | Gardée |
-
-Conclusion : aucune nuance scientifique perdue ; la seule régression, d'ordre visuel, vient de la taille des étiquettes
-(D3 ci-dessous).
+- Page 4, ligne 3, et page 5, point 3 : le critère est écrit maison par maison (« pour chaque maison vendue, l'écart
+  […] doit être le plus petit possible »). Contre-exemple tiré des données : trois maisons de 2 290 pieds carrés
+  (213 m²) vendues 122 500, 255 900 et 500 067 dollars ; une droite ne donne qu'un seul prix prédit pour 213 m², elle
+  ne peut pas rendre les trois écarts les plus petits possible à la fois. Le critère porte sur l'ensemble des ventes
+  (voir D1).
 
 ## Mises en conformité (appliquées automatiquement)
 
-Aucune. Pas de tiret long, pas de citation entre guillemets dans les pages ni dans le post, pas de formule absolue,
-cas particulier dit (« La régression linéaire », « ici en deux nombres »), chiffres datés (ventes de 2006 à 2010, cours
-BCEAO du 27 octobre 2026 dans le post), pas d'image réelle.
+Les trois corrections portent sur le texte du post ; appliquées ensemble, il compte 220 mots signature comprise
+(compteur de `serie/publication.py`), soit la limite ; le post actuel en compte 217. C1 seule le porterait à 221 et
+C1 + C2 à 223 : C1 n'est applicable qu'avec C3.
+
+**C1 · Post, `linkedin.texte` : montant en FCFA sans le cours BCEAO daté.**
+- Constat : « 74 millions de FCFA » est un montant converti ; ni le post ni les pages ne disent « au cours BCEAO du … ».
+- Source : `charte/regles-redaction.md`, « Les montants et les légendes » : « le texte ou le post dit « au cours BCEAO
+  du … » » ; extrait `bceao-dollar` : « Cours des devises du mardi 27 Octobre 2026 […] Dollar us 588,3000 ».
+- Avant : « Le premier, 74, dit que chaque 100 m² de plus ajoute 74 millions de FCFA au prix prédit. »
+- Après : « Le premier, 74 : chaque 100 m² de plus ajoute 74 millions de FCFA au prix prédit (cours BCEAO du 27 octobre 2026). »
+- Règle appliquée : tout chiffre est daté et sourcé ; montant converti au cours BCEAO daté. « dit que » retiré pour
+  tenir la longueur, sans changer le sens.
+
+**C2 · Post, `linkedin.texte` : nombre de ventes non daté.**
+- Constat : « 2 925 ventes de maisons » ne dit pas quand ; la source donne les années (les pages le disent, page 3).
+- Source : De Cock (2011), http://jse.amstat.org/v19n3/decock.pdf : « the sale of individual residential property in
+  Ames, Iowa from 2006 to 2010 ».
+- Avant : « 2 925 ventes de maisons en entrée. » et « de ces ventes d'Ames, une ville des États-Unis, »
+- Après : « 2 925 ventes de maisons (2006 à 2010) en entrée. » et « de ces ventes d'Ames, ville des États-Unis, »
+  (même tournure que la page 3 ; l'accroche passe à 82 caractères, sous 150).
+- Règle appliquée : tout chiffre est daté.
+
+**C3 · Post, `linkedin.texte`, dernière phrase : formule absolue non sourcée.**
+- Constat : « comme tout résumé » est une généralité que la source ne porte pas ; la phrase dit la même chose sans elle.
+- Source : aucune des références de la fiche ne parle des résumés en général.
+- Avant : « Ce modèle ne garde aucune vente, seulement un résumé, qui, comme tout résumé, laisse des détails de côté. »
+- Après : « Ce modèle ne garde aucune vente, seulement un résumé, qui laisse des détails de côté. »
+- Règle appliquée : pas de formule absolue (« tout ») sauf si elle est vraie et sourcée. La fin reste une synthèse en
+  une phrase.
 
 ## Décisions de l'utilisateur
 
-**D1 (reprise sans changement, toujours sans réponse) · Post, `linkedin.promesse` : la question annoncée n'est plus celle que le carrousel laisse ouverte.**
-- Constat : pages 4 et 5 répondent déjà à « selon quoi ? » (l'écart aux résultats réels) ; reste ouvert : comment le mesurer (fiche, transition vers le Nº 05).
-- Source vérifiée : Google MLCC, « Linear regression », https://developers.google.com/machine-learning/crash-course/linear-regression : « to minimize the difference between predicted and actual values » ; fiche 04, `episode_suivant.transition` : « Pour régler, il faut d'abord mesurer l'erreur. »
-- Correction proposée : avant « … et laisse une question pour la suite : meilleurs réglages, mais selon quoi ? » ; après « … et laisse une question pour la suite : comment mesurer l'écart aux prix réels ? »
-- Option recommandée : celle-ci (rejoint le Nº 05). Autre option : « … l'écart aux résultats réels ? », mots de la page 5.
+**D1 · Page 4, `lignes[2].sens`, et page 5, `points[2]` : le critère écrit maison par maison.**
+- Constat : « pour chaque maison vendue, l'écart […] doit être le plus petit possible » laisse croire que chaque écart
+  est rendu minimal ; c'est impossible dès que deux maisons de même surface ont des prix différents (contre-exemple en
+  tête). Les sources minimisent un écart d'ensemble, une moyenne sur tous les exemples, sujet du Nº 05.
+- Source vérifiée : Google MLCC, « Linear regression: Loss »,
+  https://developers.google.com/machine-learning/crash-course/linear-regression/loss : « we recommend averaging the
+  losses across all the examples » et « The goal of training a model is to minimize the loss, reducing it to its
+  lowest possible value. » ; Data 100, « Ordinary Least Squares », https://ds100.org/fa23-course-notes/ols/ols.html :
+  « it is the value of θ that minimizes the squared loss ».
+- Correction proposée :
+  - Page 4, avant : « « Meilleurs » dépend d'un critère : pour chaque maison vendue, l'écart entre le prix prédit par la
+    droite et le vrai prix de vente doit être le plus petit possible. Il faut donc d'abord mesurer cet écart. »
+  - Page 4, après : « « Meilleurs » dépend d'un critère : sur l'ensemble des maisons vendues, l'écart global entre prix
+    prédits et vrais prix de vente doit être le plus petit possible. Il faut donc d'abord mesurer cet écart. »
+    (page 4 : 54 → 51 mots ; aucun terme nouveau)
+  - Page 5, avant : « Entraîner, c'est chercher les réglages : l'écart entre prix prédit et vrai prix de vente doit être
+    le plus petit possible. »
+  - Page 5, après : « Entraîner, c'est chercher les réglages : l'écart global entre prix prédits et vrais prix de vente
+    doit être le plus petit possible. »
+- Option recommandée : celle-ci ; elle garde la phrase simple et prépare le Nº 05 (une seule mesure pour toutes les
+  ventes). Autre option : « en moyenne, sur toutes les maisons vendues, l'écart… » (plus explicite, 2 mots de plus,
+  page 4 à 53).
 - Décision : oui / non / autre
 
-**D2 (reprise sans changement, toujours sans réponse) · Page 4, `lignes[2].sens` : « à réduire » pour « minimize ».**
-- Constat : « meilleurs » veut dire l'écart le plus petit ; les sources disent « minimize ».
-- Source vérifiée : Google MLCC, même page : « to minimize the difference between predicted and actual values ».
-- Correction proposée : avant « …résultats réels, à réduire ; il faut d'abord le mesurer. » ; après « …résultats réels, à minimiser ; il faut d'abord le mesurer. » (même nombre de mots, page 4 à 50).
-- Option recommandée : celle-ci, fidèle à la source. Autre option : garder « à réduire ».
+**D2 · Post, `linkedin.texte`, paragraphe sur le réseau de neurones : affirmation sans extrait et généralisée.**
+- Constat : aucun extrait de `sources/04/extraits.yaml` n'appuie la phrase ; « seulement bien plus nombreux » dit que
+  la seule différence avec la droite est le nombre de paramètres, ce que la source ne dit pas (et un tout petit réseau
+  peut en avoir peu).
+- Source vérifiée : Google, « Machine Learning Glossary », https://developers.google.com/machine-learning/glossary :
+  « parameter : The weights and biases that a model learns during training. » ; « hyperparameter : […] In contrast,
+  parameters are the various weights and bias that the model learns during training. » ; « neural network : A model
+  containing at least one hidden layer. »
+- Correction proposée :
+  - Avant : « Un réseau de neurones, modèle bien plus complexe qu'une droite, se lit de la même façon : une forme
+    choisie d'avance, des paramètres appris, seulement bien plus nombreux. »
+  - Après : « Un réseau de neurones, modèle bien plus complexe qu'une droite, se lit de la même façon : une forme
+    choisie d'avance, des paramètres appris, souvent bien plus nombreux. » (même nombre de mots ; le post reste à 220)
+  - Et ajouter à `sources/04/extraits.yaml` l'extrait `mlcc-glossaire-parametre` (« The weights and biases that a model
+    learns during training. », lu sur https://developers.google.com/machine-learning/glossary#parameter), référence déjà
+    dans la fiche.
+- Option recommandée : celle-ci ; l'idée du post est gardée, sourcée, sans dire que tout le reste est identique. Autre
+  option : retirer le paragraphe (le réseau de neurones n'arrive qu'au Nº 37), ce qui libère environ 27 mots.
 - Décision : oui / non / autre
 
-**D3 (nouveau) · Page 2, `visuel` : l'étiquette « $b$ = 4 : l'ordonnée à l'origine » chevauche « $x$ = 1,5, soit 150 m² » sous l'axe.**
-- Constat : avec les étiquettes en 22 px, « l'origine » (fin vers 415 px dans le schéma) recouvre le « x » de l'entrée (début vers 392 px) ; `serie verifier` ne le détecte pas (pas de débordement du cadre).
-- Source vérifiée : rendu `sortie/04/page-02.png` ; positions dans `bibliotheque/courbe.py` (`_droite` : étiquette de b à xb + 18, entrée centrée sur x, même ligne sous l'axe) et `bibliotheque/_plan.py` (titre de l'axe x calé à droite de l'axe).
-- Correction proposée (paramètres seuls, aucune affirmation ajoutée) :
-  - Avant : `origine: [110, 380]`, `echelle: [252, 1.2]`, `textes.entree: $x$ = 1,5, soit 150 m²`
-  - Après : `origine: [100, 380]`, `echelle: [270, 1.2]`, `textes.entree: $x$ = 1,5 (150 m²)`
-  - Estimation : entrée centrée à 505 px, de 429 à 581 environ ; écart d'environ 24 px avec l'étiquette de b et 59 px avec « surface (centaines de m²) » (640 à 906) ; « ŷ = 115 » reste dans le cadre (16 à 86). À contrôler sur le rendu.
-- Option recommandée : celle-ci ; le contenu de D5 (« 150 m² ») est gardé, seule la tournure change. Autre option : sans toucher au texte, `origine` et `echelle` seuls (écart d'environ 5 px, trop juste) ; ou, en session de design, placer l'étiquette de b au-dessus du point (à noter dans AMBIGUITES.md).
+**D3 · Page 1 (couverture) : le coude du robot recouvre le titre.**
+- Constat : l'articulation orange du bras (vers 490 × 860 px) se pose sur le haut du « g » et du « l » de « réglages » ;
+  le mot reste lisible mais la lettre est cachée.
+- Source vérifiée : rendu `sortie/04/page-01.png`.
+- Correction proposée : aucune dans `contenu/04.yaml` (le robot et sa position viennent du gabarit de couverture). Avant :
+  bras au-dessus du titre ; après : bras qui s'arrête au-dessus de la ligne du titre, à faire en session de design
+  (noter dans `AMBIGUITES.md`).
+- Option recommandée : le noter pour la prochaine session de design et publier ainsi ; autre option : passer à la
+  couverture classique (`visuel_classique`), sans robot.
+- Décision : oui / non / autre
+
+**D4 · Page 2, `visuel` : l'étiquette « $a$ = 74 : l'inclinaison » est barrée par le pointillé vertical de x = 1,5.**
+- Constat : le segment bleu de la pente est à x = 1,4 et son étiquette commence vers 575 px, juste où passe le pointillé
+  qui descend du point (585 px) : la lettre « a » est coupée.
+- Source vérifiée : rendu `sortie/04/page-02.png`.
+- Correction proposée : avant `triangle: 0.4` ; après `triangle: 0.6` (le segment passe à x = 1,6, son étiquette à
+  droite du pointillé ; aucun texte changé). À contrôler sur le rendu : l'étiquette ne doit pas toucher
+  « $ŷ = a·x + b$ ».
+- Option recommandée : celle-ci, un paramètre seul. Autre option : `triangle: 0.1` (segment à x = 1,1, l'étiquette
+  finit avant le pointillé si elle tient en 160 px, à vérifier).
+- Décision : oui / non / autre
+
+**D5 · Page 3, schéma de droite : l'étiquette « $b$ change » est posée sur la droite bleue.**
+- Constat : la droite décalée passe sous les lettres de « change » et les touche ; même gêne, moindre, pour « $a$
+  change » contre la flèche du schéma de gauche.
+- Source vérifiée : rendu `sortie/04/page-03.png`.
+- Correction proposée : aucune dans `contenu/04.yaml` (la place des étiquettes est fixée par `bibliotheque/courbe.py`) ;
+  avant : étiquette sur la droite ; après : étiquette au-dessus de la droite, en session de design.
+- Option recommandée : publier ainsi (les deux mots restent lisibles) et le noter dans `AMBIGUITES.md` ; autre option :
+  retirer `b` de `textes` du cas « $b$ change » (la légende « $b$ change » est déjà au-dessus du schéma).
 - Décision : oui / non / autre
 
 ## Contrôles automatiques (serie verifier)
 
 Résultat : aucune erreur bloquante, 2 avertissement(s).
 
-Avertissements :
-
-- page 2 (ouverture) : 31 mots, proche de la limite de 32
-- page 4 (formule) : 50 mots, proche de la limite de 55
-
-| Page | Mots | Vide au-dessus du pied (px) |
-| --- | ---: | ---: |
-| 1 | 0 | 54 |
-| 2 | 31 | 192 |
-| 3 | 47 | 28 |
-| 4 | 50 | 67 |
-| 5 | 0 | 6 |
-
-Seuil de remplissage : 233 px.
+- page 2 (ouverture) : 32 mots, proche de la limite de 32
+- page 4 (formule) : 54 mots, proche de la limite de 55
 
 ## Affirmations et sources
 
 | Page | Affirmation | Extrait | Vérifiée sur |
 | --- | --- | --- | --- |
-| 2 | La régression linéaire prédit le prix selon la seule surface : la droite ŷ = a·x + b | mlcc-relation, mlcc-ligne, ames-surface, ames-prix | MLCC (« linear regression finds the relationship between features and a label », « drawing a best fit line through the points ») ; DataDocumentation.txt (relu ce matin) |
-| 2 | a et b s'ajustent aux données | mlcc-minimiser | MLCC (« the model adjusts its bias (b) and weights (w) ») |
-| 2 | a l'inclinaison, b l'ordonnée à l'origine (schéma) | mlcc-droite, mlcc-ordonnee | MLCC (« m is the slope of the line. », « b is the y-intercept. ») |
-| 2 | a = 74, b = 4, x = 1,5 soit 150 m², ŷ = 115 | calculs/ames.py, ames-4000, bceao-dollar | Inchangé depuis la relecture du matin (recoupement 73,6 / 3,99 ; 74 × 1,5 + 4 = 115) |
-| 3 | À b fixe, a fait pivoter autour du point sur l'axe vertical ; b décale sans tourner | mlcc-droite, mlcc-ordonnee | Conséquence de y = a·x + b ; schéma conforme |
-| 3 | Ventes d'Ames de 2006 à 2010 : a = 74, b = 4 ; 74 millions de FCFA par centaine de m² | ames-ventes, ames-fichier, bceao-dollar | Inchangé (relu ce matin) |
-| 4 | Deux nombres, forme choisie d'avance ; le modèle les ajuste ; paramètres notés θ | mlcc-equation, mlcc-minimiser, mlcc-parametre, ds100-theta | MLCC (« In ML, we write the equation… », « Bias is a parameter of the model and is calculated during training. ») ; Data 100 (relu ce matin) |
-| 4 | Panneau et lignes : meilleur modèle, écart à réduire | mlcc-entrainement, mlcc-minimiser | MLCC (« the weight and bias that produce the best model ») ; voir D2 |
-| 5 | Reprise des pages 2 à 4 ; Nº 05 « La fonction de coût » | fiche 04 | Conforme à la fiche |
-| post | Prix de base + montant par m², calculés à partir des ventes ; prix de base à 0 m² | mlcc-entrainement, mlcc-ordonnee | MLCC |
-| post | Question annoncée « selon quoi ? » | sans objet | Voir D1 |
-
-Fiche : pas de rubrique « à ne pas écrire » ; épisode suivant (Nº 05, « Pour régler, il faut d'abord mesurer l'erreur. »)
-conforme. Images : aucune image réelle.
-
-À l'œil (planche, pages 1 et 2) : page 2, chevauchement sous l'axe (D3). Couverture : le robot tient un bouton, l'éventail de
-droites pivote autour d'un point un peu au-dessus de ce bouton ; le lien se lit, rien n'est rogné. Pages 3 à 5 : rien à
-signaler.
+| 2 | Prédire un prix est une régression (rappel) | mlcc-glossaire-regression | MLCC Glossary (citée par l'extrait ; page relue le 2026-10-31, non relue en entier aujourd'hui, 550 000 caractères) |
+| 2 | La régression linéaire prédit le prix par une droite, selon la seule surface | mlcc-relation, mlcc-ligne | MLCC « Linear regression » |
+| 2 | a règle l'inclinaison, b la hauteur de départ (ordonnée à l'origine) | mlcc-droite, mlcc-ordonnee | MLCC « Linear regression » (« m is the slope of the line. », « b is the y-intercept. ») |
+| 2 | a = 74, b = 4 ; x = 1,5 (150 m²) donne ŷ = 115 | calculs/ames.py, ames-surface, ames-prix, bceao-dollar | Recalcul : 73,6 et 3,98 ; 74 × 1,5 + 4 = 115 ; DataDocumentation.txt (« Gr Liv Area », « SalePrice ») |
+| 3 | Changer a fait tourner la droite autour de son point sur l'axe vertical ; changer b la décale sans la tourner | mlcc-droite, mlcc-ordonnee | Propriété de ŷ = a·x + b (le point x = 0 vaut b) ; MLCC |
+| 3 | Ventes d'Ames, ville des États-Unis, de 2006 à 2010 | ames-ventes | De Cock (2011), decock.pdf |
+| 3 | a = 74, b = 4 : 100 m² de plus ajoutent 74 millions de FCFA | calculs/ames.py, ames-4000, ames-fichier, bceao-dollar | Recalcul sur AmesHousing.txt (2 930 − 5 = 2 925 ventes) ; cours BCEAO du 27 octobre 2026 non relisible aujourd'hui |
+| 4 | La forme, une droite, est choisie d'avance | mlcc-equation | MLCC « Linear regression » |
+| 4 | a et b sont les paramètres, calculés pendant l'entraînement | mlcc-parametre, mlcc-entrainement | MLCC « Linear regression » ; Glossary « parameter » |
+| 4 | Entraîner, c'est trouver les paramètres qui donnent le meilleur modèle | mlcc-entrainement | MLCC (« the model calculates the weight and bias that produce the best model ») |
+| 4 | Paramètres souvent notés θ | ds100-theta | Data 100 « Ordinary Least Squares » |
+| 4 | Critère : l'écart prédit / réel le plus petit possible | mlcc-minimiser | MLCC « Linear regression » et « Loss » ; voir D1 |
+| post | 2 925 ventes ; deux nombres, 74 et 4 | ames-ventes, ames-4000, calculs/ames.py | De Cock (2011) ; recalcul ; date ajoutée par C2 |
+| post | Forme choisie d'avance, paramètres appris pendant l'entraînement | mlcc-equation, mlcc-parametre | MLCC |
+| post | Réseau de neurones : même lecture, paramètres plus nombreux | aucun | Glossary « parameter », « hyperparameter », « neural network » ; voir D2 |
+| post | 100 m² de plus ajoutent 74 millions de FCFA | calculs/ames.py, bceao-dollar | Recalcul ; cours daté par C1 |
+| post | b est le prix prédit pour 0 m², surface d'aucune maison | mlcc-ordonnee | MLCC (« b is the y-intercept. ») ; plus petite surface du fichier : 334 pieds carrés |
+| post | Le modèle ne garde aucune vente, seulement un résumé | calculs/ames.py | Le modèle est fait des deux nombres a et b ; « comme tout résumé » retiré par C3 |
 
 ## Validation scientifique
 
-- **Page 2.** Hypothèse : le prix suit à peu près une droite de la surface. Domaine : une seule entrée (« la seule surface »), ventes d'Ames 2006 à 2010, maisons de 4 000 pieds carrés au plus. Contre-exemple : à 0 m², 4 millions de FCFA, prix d'aucune maison (dit dans le post). Raccourci : réglages arrondis (dit dans la description) ; « linéaire » expliqué par la droite plutôt que par une phrase.
-- **Page 3.** Hypothèse : axe vertical en x = 0 ; « à b fixe » pose la condition du pivot. Domaine : toute droite. Contre-exemple : aucun. Raccourci : schéma à échelle libre, valeurs réelles dans l'encadré.
-- **Page 4.** Hypothèse : forme choisie avant l'entraînement. Domaine : modèle à paramètres. Contre-exemple : meilleurs sur les exemples ne veut pas dire meilleurs sur de nouvelles maisons (épisode 01). Raccourci : « ajuste » sans dire comment ; « à réduire » (D2).
-- **Page 5.** Ceux des pages 2 à 4 ; « Changer a fait pivoter » sans « à b fixe », condition dite page 3.
-- **Post.** Ceux de la page 2 ; question annoncée à mettre à jour (D1).
+- **Page 2.** Hypothèse : le prix suit à peu près une droite de la surface, une seule entrée. Domaine : dit (« la seule
+  surface »), ventes d'Ames 2006 à 2010, maisons de 4 000 pieds carrés au plus. Contre-exemple : à 0 m², 4 millions de
+  FCFA, prix d'aucune maison (dit dans le post). Raccourci : réglages arrondis (dit dans la description du schéma).
+- **Page 3.** Hypothèse : modèle ŷ = a·x + b, axes à l'origine. Domaine : évident (mêmes schémas, droite de départ en
+  gris). Contre-exemple : aucun ; si l'axe vertical n'est pas en x = 0, la droite pivote autour du point en x = 0 et
+  non du point affiché, cas qui ne se présente pas ici. Raccourci : schémas sans valeurs, dit par les titres « $a$
+  change » / « $b$ change ».
+- **Page 4.** Hypothèse : la forme est fixée avant l'entraînement et le critère est un écart d'ensemble. Domaine : la
+  forme fixée est dite ; le critère d'ensemble ne l'est pas (D1). Contre-exemple : trois maisons de 213 m² vendues
+  72, 151 et 294 millions de FCFA, un seul prix prédit. Raccourci : « l'écart » sans dire comment on le mesure,
+  assumé et annoncé (« Il faut donc d'abord mesurer cet écart. », Nº 05).
+- **Page 5.** Hypothèse et domaine : ceux des pages 2 à 4, rien de nouveau. Contre-exemple : le même qu'en page 4
+  pour le point 3 (D1). Raccourci : « les réglages » pour les paramètres, termes introduits en pages 2 et 4.
+- **Post.** Hypothèse : les ventes de plus de 4 000 pieds carrés sont écartées (2 930 → 2 925), comme le recommande
+  l'auteur ; non dit dans le post, sans effet sur ce qu'il affirme. Domaine : Ames, 2006 à 2010 (C2), prix en FCFA au
+  cours du 27 octobre 2026 sans correction de l'inflation (décision A44). Contre-exemple : réseau de neurones à très
+  peu de paramètres (D2). Raccourci : « une droite tracée au plus près », sans nommer les moindres carrés, assumé.
+
+Relecture écrite : sortie/04/relecture.md (3 mises en conformité, 5 décisions).

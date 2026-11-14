@@ -1,0 +1,17 @@
+Un programme qui prédit le prix d’une maison peut d’abord croire qu’une donnée compte dix fois plus qu’une autre, juste parce que ses valeurs s’étalent dix fois plus.
+
+Prenons une maison décrite par sa surface, 120 m², et son nombre de chambres, 3. Le programme multiplie chaque valeur par un nombre, son poids, puis additionne pour calculer un prix. Retoucher le poids de la surface fait beaucoup bouger la prédiction, celui des chambres très peu.
+
+Pour apprendre, le programme corrige ces poids par petits pas. Un pas qui convient à la surface est minuscule pour les chambres : leur poids avance à peine. L’apprentissage zigzague et ralentit ; avec des écarts énormes, il peut ne jamais aboutir.
+
+Un remède répandu : retirer la moyenne de chaque caractéristique, puis diviser par son écart-type, l’écart habituel des valeurs autour de cette moyenne. Avec une moyenne de 100 et un écart-type de 20, la valeur 130 devient 1,5. On parle de standardisation.
+
+Enfin, une nouvelle maison à prédire est transformée comme les autres, avec la moyenne et l’écart-type calculés pendant l’entraînement. Sinon, ses nombres ne seraient plus comparables.
+
+Normaliser, c’est mesurer chaque caractéristique avec sa propre règle : son écart-type.
+
+Nº 13 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 14 : La régression polynomiale.
+
+Le lien vers le site est en commentaire.
+
+#MachineLearning #IntelligenceArtificielle #DataScience #Normalisation #ThetaML

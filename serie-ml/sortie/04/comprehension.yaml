@@ -2,73 +2,69 @@ episode: 4
 lecteur: "Professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des Nº 01 à 03 ; pour le post, la même personne qui le découvre seule dans son fil LinkedIn, sans avoir vu aucun épisode."
 carrousel:
   criteres:
-    premier_abord: {note: 7, raison: "La couverture et son robot au bouton parlent vite, mais l'ouverture serre en une phrase la régression linéaire, deux symboles ($ŷ$, $x$), une équation et l'ajustement aux données, sans dire pourquoi cela compte : il faut la relire."}
-    vocabulaire: {note: 7, raison: "Le chapeau de $ŷ$ n'est jamais expliqué (il faut deviner qu'il s'agit du prix prédit), et « fonction », « ordonnée à l'origine », « Ames » et « à $b$ fixe » restent sans explication en mots simples."}
-    une_notion_par_page: {note: 7, raison: "La page 4 pose quatre idées (entraînement, forme choisie d'avance, paramètres notés $θ$, critère d'écart) et plusieurs phrases sont télégraphiques (« Les paramètres $θ$ : ici $a$ et $b$. », « Mêmes axes, même droite de départ, en gris. »)."}
-    concret: {note: 8.5, raison: "La droite des prix (150 m² donnent 115 millions) et les deux dessins pivot et décalage montrent bien les boutons ; la page 4, sur l'entraînement et l'écart, reste sans exemple ni visuel."}
-    enchainement: {note: 8.5, raison: "La page 3 répond à la question laissée par la page 2 (« Que fait chaque bouton ? ») ; le passage à la page 4 se fait par un renvoi aux « règles » de l'épisode 01, que le lecteur associe aux règles écrites à la main du programme classique."}
-    retenu: {note: 9, raison: "« Si seul $b$ change, que fait la droite ? » se résout d'un coup d'œil à la page 3 ; la troisième idée à retenir, « selon l'écart aux résultats réels », demande un petit effort."}
+    premier_abord: {note: 9, raison: "La couverture dit en une phrase claire ce qu'est un modèle et pourquoi les boutons comptent ; à l'ouverture, le symbole $ŷ$ arrive avant son explication (« le chapeau marque une prédiction »), ce qui oblige à revenir en arrière."}
+    vocabulaire: {note: 8.5, raison: "Paramètres, $θ$, inclinaison et hauteur de départ sont expliqués ; mais l'équation $ŷ = a·x + b$ n'est jamais lue en mots (le point de multiplication ne dit rien au lecteur) et le « 1 » du triangle bleu de la page 2 reste à deviner."}
+    une_notion_par_page: {note: 8.5, raison: "Les pages 2 et 3 portent chacune une idée ; la page 4 empile l'entraînement, la forme choisie d'avance, les paramètres, la lettre $θ$ et le critère d'écart, ce qui demande un effort même si les phrases sont complètes."}
+    concret: {note: 8.5, raison: "La droite des prix (150 m² donnent 115 millions) et les deux petits dessins montrent bien les boutons ; mais les ventes, les « exemples » auxquels la droite est ajustée, ne sont jamais montrées ni décrites, si bien que « ajuster aux exemples » reste abstrait."}
+    enchainement: {note: 9, raison: "Chaque page répond à la question de la précédente (« Que fait chaque bouton ? », « Qui tourne les boutons ? ») ; seul l'encadré de la page 3 annonce un « calcul » qui donne 74 et 4 avant que le lecteur sache qui le fait."}
+    retenu: {note: 9, raison: "« Si seul $b$ change, que fait la droite ? » se résout d'un coup d'œil au titre de la page 3 ; le premier point à retenir n'est qu'une formule, que le lecteur ne sait pas redire en mots."}
   blocages:
-  - endroit: "page 1, couverture, sous-titre"
-    passage: "Un modèle, c'est une fonction avec des boutons de réglage."
-    pourquoi: "« Fonction » est un mot de mathématiques que le lecteur a oublié depuis le lycée, et la couverture ne dit pas pourquoi ces boutons comptent."
-    proposition: "Un modèle est une règle de calcul munie de boutons ; apprendre, c'est les régler sur des exemples."
   - endroit: "page 2, texte"
-    passage: "La régression linéaire prédit le prix $ŷ$ selon la seule surface $x$ : la droite $ŷ$ = $a$·$x$ + $b$. $a$ et $b$ s'ajustent aux données, comme des boutons."
-    pourquoi: "Trois notions et une équation dans une phrase ; le chapeau de $ŷ$ n'est pas expliqué, alors que la page 4 repose sur la différence entre prix prédit et prix réel. L'équation reste lisible sur le graphique, et l'ajustement aux exemples est dit à la page 4."
-    proposition: "La régression linéaire trace une droite qui prédit le prix, noté $ŷ$, selon la seule surface $x$. Le chapeau marque une prédiction. Deux boutons, $a$ et $b$, règlent la droite."
-  - endroit: "page 2, graphique, étiquette de b"
-    passage: "$b$ = 4 : l'ordonnée à l'origine"
-    pourquoi: "« Ordonnée à l'origine » est un terme de lycée que le lecteur ne sait plus relier au point bleu sur l'axe vertical."
-    proposition: "$b$ = 4 : la hauteur de départ (ordonnée à l'origine)"
-  - endroit: "page 3, texte"
-    passage: "Le premier, $a$, à $b$ fixe, fait tourner la droite autour de son point sur l'axe vertical. Le second, $b$, la fait monter ou descendre sans la tourner. Mêmes axes, même droite de départ, en gris."
-    pourquoi: "« À $b$ fixe » est une tournure de mathématicien, et la dernière phrase est télégraphique : on ne comprend qu'au second coup d'œil que la droite grise est celle d'avant le changement."
-    proposition: "Que fait chaque bouton ? Quand on change $a$ sans toucher à $b$, la droite tourne autour de son point sur l'axe vertical. Quand on change $b$, elle monte ou descend sans tourner. Sur les deux dessins, la droite de départ est en gris."
+    passage: "La régression linéaire prédit le prix $ŷ$ par une droite, selon la seule surface $x$ ; le chapeau marque une prédiction. Deux boutons, $a$ et $b$, la règlent."
+    pourquoi: "Le lecteur rencontre $ŷ$ avant de savoir que c'est le prix prédit, et « la règlent » se rapporte à une droite citée une ligne plus haut : il faut relire la phrase pour remettre chaque symbole à sa place."
+    proposition: "Une droite prédit le prix selon la seule surface $x$ : c'est la régression linéaire. Le prix prédit se note $ŷ$ : le chapeau marque une prédiction. Deux boutons, $a$ et $b$, règlent la droite."
+  - endroit: "page 2, graphique, étiquette de la droite"
+    passage: "$ŷ = a·x + b$"
+    pourquoi: "Le lecteur ne sait plus qu'un point entre deux lettres veut dire « fois » : l'équation reste une suite de signes, alors que tout l'épisode repose sur elle."
+    proposition: "$ŷ = a·x + b$, soit $a$ fois $x$, plus $b$"
+  - endroit: "page 2, graphique, étiquette de a"
+    passage: "$a$ = 74 : l'inclinaison"
+    pourquoi: "Le petit « 1 » sous le pointillé et le trait bleu vertical forment un triangle que le lecteur ne sait pas lire : rien ne dit qu'un pas de 1, soit 100 m², fait monter la droite de 74."
+    proposition: "$a$ = 74 : l'inclinaison, la montée pour un pas de 1 (100 m²)"
   - endroit: "page 3, encadré"
-    passage: "Sur les ventes d'Ames de 2006 à 2010"
-    pourquoi: "Le lecteur ne sait pas ce qu'est Ames : un nom propre sans explication."
-    proposition: "Sur les ventes de maisons d'Ames, une ville des États-Unis, de 2006 à 2010, le calcul donne $a$ = 74 et $b$ = 4 : chaque centaine de m² ajoute 74 millions de FCFA au prix prédit."
+    passage: "Sur les ventes d'Ames, ville des États-Unis, de 2006 à 2010, le calcul donne $a$ = 74 et $b$ = 4"
+    pourquoi: "« Le calcul » ne renvoie à rien : le lecteur ne sait pas encore que c'est l'entraînement, expliqué à la page suivante, qui trouve ces deux nombres."
+    proposition: "Sur les ventes d'Ames, ville des États-Unis, de 2006 à 2010, l'entraînement, expliqué à la page suivante, donne $a$ = 74 et $b$ = 4 : 100 m² de plus ajoutent 74 millions de FCFA au prix prédit."
   - endroit: "page 4, texte"
-    passage: "Les règles que le modèle tire des exemples (épisode 01) tiennent ici en deux nombres, $a$ et $b$ ; la forme, une droite, est choisie d'avance. Pendant l'entraînement, le modèle les ajuste aux exemples. Ces réglages sont ses paramètres ; on les note souvent ensemble $θ$."
-    pourquoi: "Quatre idées dans un paragraphe ; « règles » rappelle au lecteur les règles écrites à la main de l'épisode 01, et le lien avec les boutons de la page 3 n'est pas dit."
-    proposition: "Qui tourne les boutons ? C'est le rôle de l'entraînement. La forme, une droite, est choisie d'avance ; le modèle ajuste ensuite $a$ et $b$ aux exemples. Ces deux nombres sont ses paramètres, ce qu'il a appris des exemples. On les désigne souvent ensemble par la lettre grecque $θ$ (thêta)."
+    passage: "Ces deux nombres sont ses paramètres, ce qu'il a appris des exemples. On les désigne souvent ensemble par la lettre grecque $θ$ (thêta)."
+    pourquoi: "La lettre $θ$ ajoute une cinquième notion à un paragraphe déjà chargé, et la ligne 01 la répète aussitôt : il suffit de la présenter une fois, dans la ligne 01."
+    proposition: "Qui tourne les boutons ? C'est le rôle de l'entraînement. La forme, une droite, est choisie d'avance ; le modèle ajuste ensuite $a$ et $b$ aux exemples. Ces deux nombres sont ses paramètres, ce qu'il a appris des exemples."
   - endroit: "page 4, ligne 01"
-    passage: "Les paramètres $θ$ : ici $a$ et $b$."
-    pourquoi: "Phrase télégraphique."
-    proposition: "Ici, les paramètres $θ$ sont les deux nombres $a$ et $b$."
-  - endroit: "page 4, ligne 03"
-    passage: "Meilleurs selon un critère : l'écart entre prédictions et résultats réels, à réduire ; il faut d'abord le mesurer."
-    pourquoi: "Phrase télégraphique et abstraite : le lecteur ne voit pas de quel écart il s'agit, faute d'exemple tiré des maisons."
-    proposition: "« Meilleurs » dépend d'un critère : pour chaque maison vendue, l'écart entre le prix prédit par la droite et le vrai prix de vente doit être petit. Il faut donc d'abord mesurer cet écart."
-  - endroit: "page 5, point 03"
-    passage: "Entraîner, c'est chercher les meilleurs réglages, selon l'écart aux résultats réels."
-    pourquoi: "« Selon l'écart aux résultats réels » est elliptique : le lecteur doit reconstituer ce qui est comparé."
-    proposition: "Entraîner, c'est chercher les réglages qui rendent petit l'écart entre prix prédits et prix réels."
+    passage: "Ici, les paramètres $θ$ sont les deux nombres $a$ et $b$."
+    pourquoi: "Si la lettre $θ$ quitte le texte, c'est ici qu'elle doit être expliquée, en mots, à sa seule apparition sur la page."
+    proposition: "Ici, les paramètres sont les deux nombres $a$ et $b$ ; on les désigne souvent ensemble par la lettre grecque $θ$ (thêta)."
+  - endroit: "page 4, ligne 02"
+    passage: "Ils sont calculés pendant l'entraînement, à partir des exemples."
+    pourquoi: "Les exemples n'ont été montrés nulle part : le graphique de la page 2 ne contient aucune vente, et le lecteur ne voit pas à quoi la droite est ajustée."
+    proposition: "Ils sont calculés pendant l'entraînement, à partir des exemples : les 2 925 ventes d'Ames, chacune avec sa surface et son prix de vente."
+  - endroit: "page 5, point 01"
+    passage: "$ŷ$ = $a$·$x$ + $b$ : deux réglages, $a$ et $b$."
+    pourquoi: "Le premier point à retenir est une formule seule : après une lecture, le lecteur ne sait pas la redire en une phrase."
+    proposition: "Le prix prédit $ŷ$ vaut $a$ fois la surface $x$, plus $b$ : deux réglages, $a$ et $b$."
 post:
   criteres:
-    accroche: {note: 8.5, raison: "« 2 925 ventes en entrée, deux nombres en sortie » intrigue et se comprend ; la troisième ligne (« une droite ajustée sur les ventes d'Ames ») perd le lecteur, qui ne sait ni ce qu'est Ames ni ce que la droite relie."}
-    vocabulaire: {note: 7, raison: "« Droite ajustée », « entraînement », « réseau de neurones » et « survit au changement d'échelle » restent sans explication en mots simples."}
-    message: {note: 8.5, raison: "On retient qu'un modèle est une forme choisie plus des nombres appris ; mais le post ne dit jamais ce que signifie 74, ni que la droite relie la surface au prix."}
-    fil: {note: 7, raison: "Le paragraphe sur le réseau de neurones fait un détour, « survit au changement d'échelle » et la dernière phrase (« avec ce que tout résumé laisse de côté ») demandent une relecture."}
+    accroche: {note: 9, raison: "Le contraste 2 925 ventes contre deux nombres intrigue et se comprend ; « en entrée » et « en sortie » ne disent pas de quoi, et il faut la longue troisième ligne pour l'apprendre."}
+    vocabulaire: {note: 8.5, raison: "Entraînement et réseau de neurones sont expliqués ; le sigle BCEAO et le mot « cours » restent sans explication (le lecteur ignore que les prix ont été convertis de dollars), et « ce modèle » surgit sans que la droite ait été appelée un modèle."}
+    message: {note: 9, raison: "On retient qu'un modèle est une forme choisie d'avance plus des nombres appris ; la dernière phrase, sur le résumé, ajoute une seconde idée au lieu de conclure la première."}
+    fil: {note: 8.5, raison: "Le paragraphe sur le réseau de neurones coupe le fil entre les deux parties du modèle et le sens de 74 et 4 ; puis « Que fait chacun de ces nombres ? » arrive juste après qu'on a dit ce que chacun vaut, ce qui déroute."}
   blocages:
+  - endroit: "lignes 1 et 2"
+    passage: "2 925 ventes de maisons (2006 à 2010) en entrée.\nDeux nombres en sortie : 74 et 4."
+    pourquoi: "« En entrée » de quoi ? Le lecteur ne sait pas encore qu'il s'agit d'un calcul, et doit attendre la troisième ligne."
+    proposition: "2 925 ventes de maisons (2006 à 2010) en entrée d'un calcul.\nDeux nombres en sortie : 74 et 4."
   - endroit: "paragraphe 2"
-    passage: "C'est tout ce que garde une droite ajustée sur les ventes d'Ames."
-    pourquoi: "Le lecteur ne sait pas ce qu'est Ames, ni ce que veut dire « ajustée », ni que la droite sert à prédire un prix selon une surface."
-    proposition: "C'est tout ce que garde une droite tracée au plus près de ces ventes, pour prédire le prix d'une maison selon sa surface. Les ventes viennent d'Ames, une ville des États-Unis."
-  - endroit: "paragraphe 3"
-    passage: "Ce choix précède l'entraînement."
-    pourquoi: "« Entraînement » n'est pas expliqué pour un lecteur qui n'a vu aucun épisode."
-    proposition: "Ce choix est fait avant l'entraînement, la phase où le modèle apprend à partir des exemples."
-  - endroit: "paragraphe 4"
-    passage: "Cette séparation survit au changement d'échelle. Un réseau de neurones a lui aussi une forme choisie d'avance et des paramètres appris, seulement bien plus nombreux."
-    pourquoi: "« Changement d'échelle » fait penser aux axes d'un graphique ; « réseau de neurones » n'est pas expliqué ; il faut relire pour comprendre qu'on parle de modèles plus grands."
-    proposition: "Cette séparation vaut aussi pour des modèles bien plus grands. Un réseau de neurones, un modèle bien plus complexe qu'une droite, a lui aussi une forme choisie d'avance et des paramètres appris, seulement bien plus nombreux."
+    passage: "Ce modèle se lit en deux parties :"
+    pourquoi: "Le lecteur qui n'a vu aucun épisode ne sait pas que la droite est un « modèle » : le mot arrive sans lien avec ce qui précède."
+    proposition: "Cette droite est un modèle : un calcul tiré d'exemples, qui prédit. Il se lit en deux parties :"
   - endroit: "paragraphe 5"
-    passage: "Le second nombre réserve une surprise : c'est le prix prédit pour une maison de 0 m²."
-    pourquoi: "Le post explique le second nombre mais jamais le premier : le lecteur ne peut pas dire ce que vaut 74, donc ce qu'il a appris reste flou."
-    proposition: "Le premier nombre, 74, dit de combien de millions de FCFA monte le prix prédit quand la surface grandit de 100 m². Le second réserve une surprise : c'est le prix prédit pour une maison de 0 m²."
+    passage: "(cours BCEAO du 27 octobre 2026)"
+    pourquoi: "BCEAO est un sigle non expliqué, et « cours » suppose de savoir que les prix d'Ames, en dollars, ont été convertis en FCFA."
+    proposition: "(prix convertis des dollars en FCFA au cours du 27 octobre 2026 de la BCEAO, la Banque centrale des États de l'Afrique de l'Ouest)"
+  - endroit: "paragraphes 4 à 6"
+    passage: "Un réseau de neurones, modèle bien plus complexe qu'une droite, se lit de la même façon : une forme choisie d'avance, des paramètres appris, seulement bien plus nombreux."
+    pourquoi: "Placé entre les deux parties du modèle et le sens de 74 et 4, ce paragraphe fait un détour ; la question qui suit, posée juste après l'explication des deux nombres, semble déjà résolue."
+    proposition: "Le premier, 74 : chaque 100 m² de plus ajoute 74 millions de FCFA au prix prédit (cours BCEAO du 27 octobre 2026). Le second réserve une surprise : c'est le prix prédit pour une maison de 0 m², qui n'existe pas. C'est un point de départ du calcul, pas une vente.\n\nUn réseau de neurones, modèle bien plus complexe qu'une droite, se lit de la même façon : une forme choisie d'avance, des paramètres appris, seulement bien plus nombreux.\n\nEt si l'on change 74 ou 4, que devient la droite ? La réponse est dans les pages."
   - endroit: "dernier paragraphe"
-    passage: "Ce modèle ne garde aucune vente. Il en garde un résumé, avec ce que tout résumé laisse de côté."
-    pourquoi: "La tournure « avec ce que tout résumé laisse de côté » est à relire : on ne sait pas si le résumé garde ou perd quelque chose."
-    proposition: "Ce modèle ne garde aucune vente. Il en garde un résumé en deux nombres, et, comme tout résumé, il laisse des détails de côté."
+    passage: "Ce modèle ne garde aucune vente, seulement un résumé, qui laisse des détails de côté."
+    pourquoi: "La phrase finale lance l'idée de résumé sans la relier à la forme et aux deux nombres : le lecteur termine sur une seconde idée au lieu de celle qu'il vient d'apprendre."
+    proposition: "Ce modèle ne garde aucune vente, seulement une forme et deux nombres : un résumé, qui laisse des détails de côté."

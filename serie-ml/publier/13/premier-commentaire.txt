@@ -1,0 +1,7 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/13
+
+Références de l’épisode Nº 13 :
+- MLCC · Normalization : https://developers.google.com/machine-learning/crash-course/numerical-data/normalization
+- SKL · Standardization : https://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling
+- D2L 12.6 : https://d2l.ai/chapter_optimization/momentum.html
+- LeCun, Bottou, Orr et Müller (1998) : http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf

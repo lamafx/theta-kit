@@ -1,0 +1,112 @@
+episode: 13
+pages:
+
+- type: couverture
+  titre: "Normaliser\nles données."
+  visuel:
+    famille: niveaux
+    params:
+      # Session de design n° 4 (A69) : ellipses des plus allongées, dehors, aux plus rondes, dedans.
+      centre: [540, 390]
+      ellipses: [500, 430, 365, 305, 250, 198, 150]
+      opacites: [0.2, 0.26, 0.33, 0.4, 0.48, 0.57, 0.7]
+      rapports: [3.2, 2.8, 2.4, 2.0, 1.6, 1.3, 1.0]
+
+- type: ouverture
+  rappel: "Nº 11 : la descente règle les poids pas à pas ; Nº 12 : chaque caractéristique reçoit son poids."
+  titre: "Une vallée\nallongée."
+  texte: "Le coût $J$ mesure l'erreur selon les poids. Changer le poids de la surface (120 m²) le bouge bien plus que celui des chambres (3) : la vallée s'étire."
+  sources: [mlcc-plages, mlcc-attention, skl-dominer, lecun-lineaire, lecun-entrees, lecun-ovales, lecun-etalement, d2l-raide, d2l-canyon]
+  visuel:
+    famille: niveaux
+    params:
+      # Dessin d'illustration : J = 1·w₂² + 16·w₁² (calculs.descente_gradient.niveau_2d), sans le biais.
+      forme: chemin
+      origine: [460, 215]
+      echelle: 110
+      domaine: [-4, 4]
+      plage: [-1.75, 1.75]
+      cadre: [920, 430]
+      courbures: [1, 16]
+      niveaux: [1, 4, 9]
+      chemins: []
+      textes: {x: "poids des chambres w₂", y: "poids de la surface w₁", minimum: "le fond : l'erreur la plus basse"}
+      description: "Lignes de niveau du coût J vues de haut, en ellipses très allongées : le poids des chambres en largeur, le poids de la surface en hauteur. Un petit pas en hauteur traverse plusieurs lignes, un grand pas en largeur à peine une. Au centre, une croix marque le fond, l'erreur la plus basse."
+
+- type: comparaison
+  role: Comparaison
+  titre: "Une vallée ronde\nse descend tout droit."
+  texte: "La **normalisation** ramène les caractéristiques au même ordre de grandeur : la vallée s'arrondit. Les deux descentes partent du même point, avec le même taux d'apprentissage $!η$."
+  sources: [mlcc-but, mlcc-rebond, mlcc-recommande, d2l-etiree, d2l-oscille, d2l-dilemme, d2l-canyon, lecun-ovales, lecun-etalement, lecun-pas, lecun-gradient, lecun-liees]
+  visuel:
+    famille: niveaux
+    params:
+      # Mêmes départ, η et nombre de pas ; seules les courbures changent (même aire d'ellipse : 1 × 16 = 4 × 4).
+      forme: chemin
+      origine: [220, 115]
+      echelle: 55
+      domaine: [-3.9, 3.9]
+      plage: [-2, 2]
+      cadre: [440, 230]
+      niveaux: [1, 4, 9]
+  cas:
+  - etiquette: Échelles différentes
+    titre: Elle zigzague
+    texte: "Un pas assez grand pour avancer dans la longueur dépasse le fond dans la largeur : il rebondit d'un bord à l'autre et avance peu."
+    alerte: true
+    params:
+      courbures: [1, 16]
+      chemins: [{depart: [-3.4, 0.9], eta: 0.055, pas: 15, style: accent}]
+      description: "Vallée très allongée : parti du bord gauche, le chemin rebondit d'un bord à l'autre et n'a pas atteint le minimum après 15 pas."
+  - etiquette: Même échelle
+    titre: Droit au but
+    texte: "Chaque pas va droit vers le minimum, et l'atteint bien plus vite."
+    retenu: true
+    params:
+      courbures: [4, 4]
+      chemins: [{depart: [-3.4, 0.9], eta: 0.055, pas: 15, style: accent}]
+      description: "Vallée ronde : parti du même point, le chemin va en ligne droite jusqu'au minimum, marqué d'une croix."
+  encadre:
+    titre: Presque ronde
+    texte: "Les grandes maisons ont souvent plus de chambres (Nº 12) : la vallée s'arrondit alors sans devenir tout à fait ronde."
+
+- type: formule
+  role: Formule
+  titre: "Retirer la moyenne,\ndiviser par l'écart-type."
+  texte: "La **standardisation** est une façon courante de normaliser : chaque valeur devient son écart à la moyenne, compté en écarts-types : la même règle pour toutes."
+  sources: [mlcc-populaires, mlcc-zscore, mlcc-formule, mlcc-exemple, mlcc-prediction, skl-courante, skl-lineaires, skl-centrer-diviser, skl-zero-un, skl-entrainement, lecun-moyenne, lecun-variances]
+  panneau:
+    formule: "x′ = {x − [μ]}/{[σ]}"
+  lignes:
+  - symbole: x
+    sens: "une valeur brute, par exemple une surface de 120 m²"
+  - symbole: "[μ]"
+    sens: "la **moyenne** des valeurs vues pendant l'entraînement"
+  - symbole: "[σ]"
+    sens: "son **écart-type** : l'écart habituel entre les valeurs et leur moyenne"
+  - symbole: x′
+    sens: "le nombre d'écarts-types entre $x$ et la moyenne : avec $μ$ = 100 et $σ$ = 20, 130 devient 1,5"
+
+- type: fin
+  points:
+  - "Changer le poids de la surface (120 m²) bouge bien plus le coût $J$ que celui des chambres (3) : la vallée s'étire."
+  - "Dans une vallée allongée, la descente zigzague ; dans une vallée ronde, elle va droit au minimum."
+  - "La **standardisation** retire la **moyenne** $μ$, puis divise par l'**écart-type** $σ$."
+  verification:
+    question: "Pourquoi la descente zigzague-t-elle quand la vallée du coût est allongée ?"
+    page: 3
+
+linkedin:
+  texte: |-
+    Un programme qui prédit le prix d'une maison peut d'abord croire qu'une donnée compte dix fois plus qu'une autre, juste parce que ses valeurs s'étalent dix fois plus.
+
+    Prenons une maison décrite par sa surface, 120 m², et son nombre de chambres, 3. Le programme multiplie chaque valeur par un nombre, son poids, puis additionne pour calculer un prix. Retoucher le poids de la surface fait beaucoup bouger la prédiction, celui des chambres très peu.
+
+    Pour apprendre, le programme corrige ces poids par petits pas. Un pas qui convient à la surface est minuscule pour les chambres : leur poids avance à peine. L'apprentissage zigzague et ralentit ; avec des écarts énormes, il peut ne jamais aboutir.
+
+    Un remède répandu : retirer la moyenne de chaque caractéristique, puis diviser par son écart-type, l'écart habituel des valeurs autour de cette moyenne. Avec une moyenne de 100 et un écart-type de 20, la valeur 130 devient 1,5. On parle de standardisation.
+
+    Enfin, une nouvelle maison à prédire est transformée comme les autres, avec la moyenne et l'écart-type calculés pendant l'entraînement. Sinon, ses nombres ne seraient plus comparables.
+
+    Normaliser, c'est mesurer chaque caractéristique avec sa propre règle : son écart-type.
+  hashtag: "#Normalisation"
