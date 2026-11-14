@@ -1,0 +1,74 @@
+episode: 8
+lecteur: "Un professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne retient des épisodes précédents que leurs pages « À retenir » (pour le post : la même personne, qui n'a vu aucun épisode et découvre le texte dans son fil LinkedIn)."
+carrousel:
+  criteres:
+    premier_abord: {note: 8.5, raison: "La couverture et le titre « Descendre la pente » se comprennent vite, mais « un pas dans l'autre sens » demande de deviner l'autre sens de quoi, et les étiquettes θ0, θ1, θ2, θ* du dessin ne disent rien au lecteur."}
+    vocabulaire: {note: 7, raison: "Plusieurs mots ou symboles se devinent sans être expliqués là où ils apparaissent : θ comme paramètre (la page « À retenir » du Nº 04 ne parle que de a et b), les indices θ0 et θ*, « diverge », « Ames » et « millions de FCFA au carré »."}
+    une_notion_par_page: {note: 7, raison: "La page 3 enchaîne θ, η, son nom, sa valeur, la règle du pas et sa conséquence avec des fins de phrase télégraphiques ; la page 5 ajoute le critère d'arrêt et la page 4 une nuance ambiguë (« Il dépend du problème ») qui brouille l'idée principale."}
+    concret: {note: 9, raison: "Chaque notion a son dessin ou ses chiffres ; seul le dessin de la page 3 laisse au lecteur le calcul 0,15 × 6 = 0,9 et le passage d'une pente négative à un pas vers la droite."}
+    enchainement: {note: 8.5, raison: "Le fil est clair jusqu'à la page 4 ; la page 5 revient sur la règle déjà donnée page 3 sans dire qu'elle résume, et la page 7 passe sans transition de la courbe θ² aux ventes d'Ames."}
+    retenu: {note: 9, raison: "La réponse à « Vérifiez-vous » (la pente diminue, donc le pas aussi) est dite deux fois page 3 ; seul le troisième point « À retenir », télégraphique, se redit mal avec « oscille et diverge »."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "Il mesure la pente là où il est, fait un pas dans l'autre sens, et recommence."
+    pourquoi: "« L'autre sens » : le lecteur ne sait pas par rapport à quoi ; il doit regarder le dessin pour comprendre qu'il s'agit de descendre."
+    proposition: "Le modèle ne voit pas toute la courbe du coût $J$. Il mesure la pente là où il est, fait un pas du côté qui descend, et recommence."
+  - endroit: "page 2, visuel (étiquettes de l'axe)"
+    passage: "θ0, θ1, θ2, θ*"
+    pourquoi: "Les petits chiffres en indice et l'astérisque ne sont expliqués nulle part sur la page ; le lecteur ne sait pas que ce sont les positions successives et le minimum."
+    proposition: "Étiquettes de l'axe : « départ » sous θ0, « 1er pas » sous θ1, « 2e pas » sous θ2, « minimum » sous θ*."
+  - endroit: "page 3, texte"
+    passage: "Prenons un seul paramètre $θ$. $!η$, le taux d'apprentissage, est un nombre fixe choisi d'avance, ici 0,15 ; le pas vaut $!η$ × la pente. Loin du minimum, la pente est forte : grands pas. Près du minimum, elle s'aplatit : les pas raccourcissent d'eux-mêmes."
+    pourquoi: "θ n'est pas rappelé en mots simples, η n'est pas nommé (le lecteur ne sait pas le lire), une phrase commence par un symbole, et « la pente est forte : grands pas » est télégraphique ; trop de choses arrivent dans la même phrase."
+    proposition: "Prenons un seul réglage, noté $θ$ (épisode 04). Le pas vaut $!η$ × la pente, où $!η$ (« êta »), le taux d'apprentissage, est un nombre fixe choisi d'avance, ici 0,15. Loin du minimum, la pente est forte, donc les pas sont grands. Près du minimum, elle s'aplatit et les pas raccourcissent d'eux-mêmes."
+  - endroit: "page 3, visuel (étiquettes des pas)"
+    passage: "pente −6 … pas = 0,9 ; pente −1,6 … pas = 0,24"
+    pourquoi: "Le lecteur ne voit pas d'où vient 0,9 ni pourquoi une pente négative donne un pas vers la droite ; il doit refaire le calcul de tête."
+    proposition: "Étiquettes : « pas = 0,15 × 6 = 0,9 » et « pas = 0,15 × 1,6 = 0,24 »."
+  - endroit: "page 4, encadré « En pratique »"
+    passage: "Il dépend du problème : chaque modèle et chaque jeu de données a le sien. Un $η$ un peu trop grand fait déjà **osciller** autour du minimum."
+    pourquoi: "« Il » ne renvoie à rien de clair (le bon pas ? η ?), et « osciller » arrive sans explication, à côté de « diverge », ce qui brouille la différence entre les deux."
+    proposition: "Le bon $η$ dépend du problème : chaque modèle et chaque jeu de données a le sien. Un $η$ à peine trop grand fait déjà **osciller** le point, d'un côté à l'autre du minimum."
+  - endroit: "page 4, cas « Divergence »"
+    passage: "Chaque pas saute de l'autre côté, plus haut : le point oscille et diverge."
+    pourquoi: "« Diverge » est expliqué par lui-même ; le lecteur ne sait pas que cela veut dire s'éloigner du minimum."
+    proposition: "Chaque pas saute de l'autre côté du creux, un peu plus haut : le point oscille et s'éloigne du minimum, il diverge."
+  - endroit: "page 5, texte"
+    passage: "Chaque pas suit la même règle. Une itération, c'est un pas : on la répète jusqu'à ce que la pente soit presque nulle, ou pour un nombre d'itérations fixé d'avance."
+    pourquoi: "Le lecteur ne sait pas que cette ligne résume les pages 3 et 4, et les petits t et t+1 sous θ ne lui disent rien avant d'avoir lu le tableau ; le critère d'arrêt arrive en plus."
+    proposition: "Tout ce que vous venez de voir s'écrit en une règle, appliquée à chaque pas. Une itération, c'est un pas ; le petit $t$ écrit en bas compte les itérations. On répète jusqu'à ce que la pente soit presque nulle, ou pendant un nombre d'itérations fixé d'avance."
+  - endroit: "page 7, texte"
+    passage: "Reprenons le coût des ventes d'Ames selon $a$, $b$ fixé à 4 (épisode 05). Au creux, la droite de l'épisode 04, la pente est nulle : la descente s'arrête. Pourtant $J$ vaut encore 1 030 millions de FCFA au carré : aucune droite ne passe par toutes les ventes."
+    pourquoi: "Le lecteur ne se souvient pas de ce qu'est Ames, « selon a, b fixé à 4 » est télégraphique, et « millions de FCFA au carré » l'arrête : il ne sait pas pourquoi un coût serait au carré. Il faut relire la phrase."
+    proposition: "Reprenons les ventes de maisons d'Ames (épisode 05), avec $b$ fixé à 4 : seul $a$ change. Au creux, la pente est nulle et la descente s'arrête. Pourtant $J$, la moyenne des erreurs au carré, vaut encore 1 030 millions de FCFA au carré : aucune droite ne passe par toutes les ventes."
+  - endroit: "page 8, troisième point « À retenir »"
+    passage: "$η$ trop petit : trop lent. Trop grand : le point oscille et diverge."
+    pourquoi: "Style télégraphique et « diverge » non redit en mots simples : le lecteur retient mal cette idée."
+    proposition: "Avec un $η$ trop petit, la descente est trop lente ; avec un $η$ trop grand, le point saute d'un côté à l'autre et s'éloigne du minimum."
+post:
+  criteres:
+    accroche: {note: 7, raison: "La première ligne commence par « La descente de gradient », un terme que le lecteur ne connaît pas et qui n'est jamais expliqué ; l'anecdote de 1847 intrigue, mais il ne sait pas de quoi on parle."}
+    vocabulaire: {note: 5, raison: "Systèmes d'équations, élimination, inconnues, dérivées, paramètres, coût, itération et la formule θ ← θ − η∇J(θ) arrivent sans explication : ce qu'est la méthode reste flou."}
+    message: {note: 7, raison: "Le lecteur retient que la méthode date de 1847 et sert encore pour GPT-3, mais « traîne, converge ou diverge » et « regarder η » restent des mots qu'il doit deviner."}
+    fil: {note: 7, raison: "Le paragraphe sur la lettre θ et le nom η est un détour qu'il faut relire, et la dernière ligne s'adresse à quelqu'un qui entraîne déjà des modèles."}
+  blocages:
+  - endroit: "post, ligne 1"
+    passage: "La descente de gradient a été décrite en 1847, pour calculer l'orbite d'un astre."
+    pourquoi: "Le lecteur ne sait pas ce qu'est la descente de gradient ; il ne voit pas pourquoi continuer."
+    proposition: "Pour apprendre, une IA corrige ses réglages par petits pas, en descendant vers l'erreur la plus faible. Cette méthode, la descente de gradient, a été décrite en 1847, pour calculer l'orbite d'un astre."
+  - endroit: "post, paragraphe 2"
+    passage: "une méthode pour résoudre des systèmes d'équations : l'élimination habituelle échoue souvent, ou donne une équation très compliquée."
+    pourquoi: "« Systèmes d'équations » et « élimination » sont des mots de mathématicien ; le lecteur ne voit pas le problème que Cauchy veut résoudre."
+    proposition: "une méthode pour résoudre des systèmes d'équations, où plusieurs nombres inconnus doivent être trouvés ensemble : la méthode habituelle, qui les élimine un par un, échoue souvent ou donne une équation très compliquée."
+  - endroit: "post, paragraphe 3"
+    passage: "Son idée : partir de valeurs données, calculer les dérivées, retrancher à chaque inconnue sa dérivée multipliée par un petit nombre, puis recommencer."
+    pourquoi: "« Dérivée » et « retrancher » ne disent rien au lecteur : il ne comprend pas le geste au coeur de la méthode."
+    proposition: "Son idée : partir de valeurs données, calculer pour chaque inconnue sa dérivée, c'est-à-dire la pente qui dit dans quel sens le calcul s'éloigne de la solution, la déplacer dans l'autre sens d'un pas égal à cette pente multipliée par un petit nombre, puis recommencer."
+  - endroit: "post, paragraphe 4"
+    passage: "Ce petit nombre, il le note déjà θ. Nous gardons cette lettre pour les paramètres et nommons η la taille du pas : θ ← θ − η∇J(θ)."
+    pourquoi: "Le lecteur ne sait pas ce que sont les paramètres, ni J, ni ∇ ; le changement de lettre est un détour qu'il faut relire, et la formule reste opaque."
+    proposition: "Ce petit nombre, il le note déjà θ. Aujourd'hui, θ désigne plutôt les réglages d'un modèle, ses paramètres, et η (« êta ») la taille du pas. La règle tient en une ligne : θ ← θ − η∇J(θ), où ∇J(θ) rassemble les pentes de l'erreur J du modèle."
+  - endroit: "post, deux derniers paragraphes"
+    passage: "Le carrousel s'arrête sur ce que cette ligne cache : selon η, le même algorithme traîne, converge ou diverge. Si votre coût monte à chaque itération, commencez par regarder η."
+    pourquoi: "« Converge », « diverge », « coût » et « itération » ne sont pas expliqués : le lecteur ne peut pas redire en une phrase ce qu'il a appris."
+    proposition: "Le carrousel montre ce que cette ligne cache : selon la taille du pas η, le même calcul avance trop lentement, s'approche du minimum de l'erreur (il converge) ou s'en éloigne de plus en plus (il diverge). Si l'erreur de votre modèle grandit à chaque pas au lieu de baisser, commencez par regarder η."

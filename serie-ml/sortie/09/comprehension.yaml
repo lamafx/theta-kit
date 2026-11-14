@@ -1,0 +1,62 @@
+episode: 9
+lecteur: "Un professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des Nº 01 à 08 (pour le post : la même personne, sans avoir vu aucun épisode)."
+carrousel:
+  criteres:
+    premier_abord: {note: 8.5, raison: "L'ouverture est claire et concrète (un million de calculs pour un seul pas), mais le titre de couverture aligne deux mots inconnus, « stochastique » et « mini-lots », que rien n'explique avant la page 3."}
+    vocabulaire: {note: 7, raison: "Le titre de la page 6 parle d'un « taux » que le lecteur doit deviner : la page « À retenir » du Nº 08 ne lui a laissé que $η$, jamais le mot « taux d'apprentissage »."}
+    une_notion_par_page: {note: 7, raison: "La page 3 ajoute dans son encadré deux idées secondaires (le nom SGD et la vitesse réelle) qui semblent contredire « Rapide » ; la page 5 aligne des lignes télégraphiques."}
+    concret: {note: 8.5, raison: "Les chemins dessinés montrent bien chaque notion, mais l'encadré sur Robbins et Monro reste abstrait (« une suite d'essais bruités pour approcher une solution »)."}
+    enchainement: {note: 8.5, raison: "Le lecteur se souvient du Nº 08 : « près du minimum, les pas raccourcissent d'eux-mêmes » ; la page 6 affirme le contraire sans dire pourquoi cela ne vaut plus ici."}
+    retenu: {note: 8.5, raison: "Il sait redire l'idée (un pas sur peu d'exemples, faux à chaque pas, juste en moyenne) et répondre à la question, mais le premier point « À retenir » est télégraphique et sa date « en 2016 » flotte."}
+  blocages:
+  - endroit: "page 1, sous-titre de couverture"
+    passage: "Descente stochastique et mini-lots. / Apprendre vite, sans tout relire à chaque pas."
+    pourquoi: "« Stochastique » et « mini-lots » ne disent rien au débutant ; le sous-titre ne fait pas le lien avec ces deux mots, il doit attendre la page 3."
+    proposition: "Apprendre vite en lisant, à chaque pas, quelques exemples tirés au hasard."
+  - endroit: "page 6, titre"
+    passage: "Un taux fixe ne laisse pas\nle modèle se poser."
+    pourquoi: "Le lecteur ne se souvient que de $η$ (« le pas vaut $η$ × la pente ») ; « taux » arrive sans rappel et il doit deviner qu'il s'agit de $η$. Même mot dans l'encadré (« Un taux qui décroît »)."
+    proposition: "Un $η$ fixe ne laisse pas\nle modèle se poser."
+  - endroit: "page 3, encadré « En pratique »"
+    passage: "On dit souvent SGD même avec des mini-lots. Un exemple à la fois fait perdre du temps machine : en temps de calcul, le mini-lot va en général **plus vite** que les deux autres."
+    pourquoi: "Deux idées secondaires dans un encadré ; la colonne du milieu vient de dire « Rapide », l'encadré dit qu'un exemple à la fois « fait perdre du temps », sans dire pourquoi ; « temps machine » n'est pas expliqué."
+    proposition: "Un pas sur un seul exemple est rapide, mais un ordinateur traite un paquet d'exemples d'un coup plus vite qu'un par un. Au total, le mini-lot va en général **plus vite**. On l'appelle souvent SGD lui aussi."
+  - endroit: "page 5, lignes 02 et 03"
+    passage: "Tout le jeu à chaque pas : 1 pas par époque. / Un exemple à chaque pas : 1 500 pas pour 1 500 exemples."
+    pourquoi: "Style télégraphique : le lecteur doit reconstruire la phrase, et ne sait pas d'où sort le nombre 1 500."
+    proposition: "Si chaque pas lit tout le jeu, une époque ne prend qu'un pas. / Avec un jeu de 1 500 exemples et un exemple par pas, une époque prend 1 500 pas."
+  - endroit: "page 6, encadré"
+    passage: "Un taux qui décroît raccourcit les pas, et les écarts avec eux. En 1951 déjà, Robbins et Monro raccourcissaient les pas d'une suite d'essais bruités pour approcher une solution."
+    pourquoi: "« Une suite d'essais bruités pour approcher une solution » est abstrait : le lecteur ne voit pas ce que faisaient Robbins et Monro ni le lien avec le chemin dessiné."
+    proposition: "Un $η$ qui décroît raccourcit les pas, et les écarts avec eux. En 1951 déjà, Robbins et Monro approchaient une solution par des essais aux résultats bruités, en raccourcissant les pas d'un essai à l'autre."
+  - endroit: "page 6, texte"
+    passage: "Avec un $η$ fixe, les écarts ne disparaissent pas, même au minimum : le modèle rebondit autour sans s'y poser. D'où un $η$ qui décroît au fil des époques, ni trop vite, ni trop lentement."
+    pourquoi: "Le lecteur a retenu du Nº 08 que les pas raccourcissent d'eux-mêmes près du minimum ; la page ne dit pas pourquoi ce n'est plus vrai avec un seul exemple, il doit le deviner."
+    proposition: "Au minimum, la pente de tout le jeu est nulle, mais pas celle d'un seul exemple : les écarts demeurent. Avec un $η$ fixe, le modèle rebondit autour sans s'y poser. D'où un $η$ qui décroît au fil des époques, ni trop vite, ni trop lentement."
+  - endroit: "page 7, point 1"
+    passage: "Chaque pas lit un exemple tiré au hasard (SGD) ou un mini-lot, souvent de 32 à 256 en 2016."
+    pourquoi: "Phrase télégraphique : « 32 à 256 » quoi, et que veut dire « en 2016 » ? Le lecteur doit relire pour la redire."
+    proposition: "Chaque pas lit un exemple tiré au hasard (SGD) ou un mini-lot, souvent de 32 à 256 exemples selon un usage décrit en 2016."
+post:
+  criteres:
+    accroche: {note: 7, raison: "Le paradoxe chiffré intrigue, mais « calculer une pente sur des exemples » ne veut rien dire pour qui ignore le Machine Learning, et la deuxième ligne enchaîne « erreur type » et « 1/√n »."}
+    vocabulaire: {note: 5.5, raison: "Le sujet même du post, « descente stochastique » et « mini-lots », n'est jamais expliqué, pas plus que « erreur type », « 1/√n », « algorithmes d'optimisation », « convergent » et « taux d'apprentissage »."}
+    message: {note: 8, raison: "La dernière phrase se redit facilement, mais le lecteur ne sait pas bien de quels « pas » ni de quel « minimum » il s'agit."}
+    fil: {note: 7, raison: "Le passage des chiffres au « pari de la descente stochastique » saute une marche, et la phrase sur Goodfellow, Bengio et Courville (« en calcul total et non en nombre de pas ») doit être relue."}
+  blocages:
+  - endroit: "post, lignes 1 et 2"
+    passage: "Calculer une pente sur 10 000 exemples plutôt que 100 demande cent fois plus de calcul, pour une estimation seulement dix fois plus précise."
+    pourquoi: "Le lecteur qui découvre le post ne sait pas pourquoi on calcule une pente ni ce que viennent faire des exemples ; il ne voit pas l'enjeu."
+    proposition: "Pour apprendre, un modèle corrige ses réglages pas à pas, en mesurant à chaque pas ses erreurs sur des exemples. Mesurer sur 10 000 exemples plutôt que 100 coûte cent fois plus de calcul, pour une mesure seulement dix fois plus précise."
+  - endroit: "post, deuxième paragraphe"
+    passage: "La cause est une racine carrée : l’erreur type d’une moyenne estimée sur n exemples décroît en 1/√n."
+    pourquoi: "« Erreur type », la lettre n et la notation 1/√n arrêtent le débutant ; il doit sauter la phrase et se fier aux chiffres qui suivent."
+    proposition: "La cause est une racine carrée : l’erreur d’une moyenne calculée sur n exemples (son erreur type) baisse comme 1 divisé par la racine carrée de n. Cent fois plus d’exemples, dix fois moins d’erreur."
+  - endroit: "post, quatrième paragraphe"
+    passage: "D’où le pari de la descente stochastique et des mini-lots : renoncer à une pente exacte pour faire bien plus de pas. Goodfellow, Bengio et Courville notent en 2016 que la plupart des algorithmes d’optimisation convergent ainsi beaucoup plus vite, en calcul total et non en nombre de pas."
+    pourquoi: "« Descente stochastique » et « mini-lots » ne sont pas expliqués ; « algorithmes d’optimisation » et « convergent » non plus, et la fin de la phrase demande une relecture."
+    proposition: "D’où le pari de la descente stochastique : à chaque pas, ne lire qu’un exemple tiré au hasard, ou un petit paquet d’exemples (un mini-lot), et faire bien plus de pas avec une pente moins exacte. Goodfellow, Bengio et Courville notent en 2016 que la plupart des algorithmes d’optimisation, les méthodes qui cherchent les meilleurs réglages, y arrivent ainsi beaucoup plus vite, si l’on compte le calcul total et non le nombre de pas."
+  - endroit: "post, cinquième paragraphe"
+    passage: "Le prix à payer est un chemin qui zigzague et qui, à taux d’apprentissage fixe, ne se pose pas au minimum."
+    pourquoi: "« Taux d’apprentissage » et « minimum » (de quoi ?) ne sont pas expliqués ; le lecteur ne peut pas redire ce prix à payer."
+    proposition: "Le prix à payer est un chemin qui zigzague et qui, si la taille des pas (le taux d’apprentissage) reste fixe, ne se pose pas au point où l’erreur est la plus faible : il rebondit autour."

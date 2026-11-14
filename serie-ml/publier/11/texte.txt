@@ -1,0 +1,18 @@
+La régression linéaire, qui trace la droite la plus proche d’un nuage de points, a une formule exacte.
+Alors pourquoi la faire apprendre pas à pas ?
+
+Elle remonte au début du XIXe siècle, avec Legendre en 1805 et Gauss en 1809. Pour une droite, une formule donne directement les meilleurs réglages, sans répéter le moindre calcul.
+
+Le détour par la descente de gradient, qui corrige les réglages un peu à chaque tour, paraît donc inutile. Sur les 2 925 ventes de maisons d’Ames, dans l’Iowa, de 2006 à 2010, elle retrouve après 1 000 tours la droite que la formule donne d’un coup.
+
+Ce détour a pourtant un intérêt. La plupart des modèles qui suivront n’ont pas de formule de ce genre. Il ne leur reste que la boucle : mesurer l’erreur du modèle (le coût), lire dans quel sens la réduire (le gradient), puis corriger les réglages (faire un pas).
+
+La droite sert de banc d’essai : on connaît la réponse, on peut vérifier que la boucle la retrouve.
+
+Dans le carrousel, les prix sont convertis en FCFA au cours de la banque centrale (BCEAO) du 27 octobre 2026.
+
+Nº 11 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 12 : La régression linéaire multiple.
+
+Les liens vers le site et le labo 3D sont en commentaire.
+
+#MachineLearning #IntelligenceArtificielle #DataScience #RegressionLineaire #ThetaML

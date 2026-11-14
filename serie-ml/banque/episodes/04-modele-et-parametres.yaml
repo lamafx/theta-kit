@@ -5,7 +5,7 @@ saison: 1
 chapitre:
   numero: 1
   titre: Les bases
-accroche: Un modèle, c'est une fonction avec des boutons de réglage.
+accroche: Un modèle est une règle de calcul munie de boutons ; apprendre, c'est les régler sur des exemples.
 couverture:
   famille: courbe
   description: famille de droites qui pivotent autour d'un point

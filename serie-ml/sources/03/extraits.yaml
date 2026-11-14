@@ -111,4 +111,29 @@ extraits:
   lu_le: 2026-11-01
   extrait: One difficulty pertaining to clustering is that the clustering problem is inherently ill posed, in the sense that there is no single criterion that measures how well a clustering of the data corresponds to the real world.
   appuie: "Page 3 : les groupes trouvés ne sont pas forcément des catégories réelles."
+# Ajoutés le 2026-11-14 (réécriture pour la compréhension : exemple du renforcement, auteurs cités dans le post).
+- id: sb-echecs
+  reference: http://incompleteideas.net/book/first/ebook/node8.html
+  lu_sur: https://r.jina.ai/http://incompleteideas.net/book/first/ebook/node8.html
+  lu_le: 2026-11-14
+  extrait: A master chess player makes a move.
+  appuie: "Page 5 : exemple d'environnement, une partie d'échecs."
+- id: sb-environnement
+  reference: http://incompleteideas.net/book/first/ebook/node8.html
+  lu_sur: https://r.jina.ai/http://incompleteideas.net/book/first/ebook/node8.html
+  lu_le: 2026-11-14
+  extrait: All involve interaction between an active decision-making agent and its environment,
+  appuie: "Page 5 : dans ces exemples, le système agit dans un environnement qui lui répond."
+- id: dlb-auteurs
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/
+  lu_le: 2026-11-14
+  extrait: Ian Goodfellow and Yoshua Bengio and Aaron Courville
+  appuie: "Post : les auteurs du manuel Deep Learning."
+- id: dlb-annee
+  reference: https://www.deeplearningbook.org/contents/ml.html
+  lu_sur: https://www.deeplearningbook.org/
+  lu_le: 2026-11-14
+  extrait: "year={2016}"
+  appuie: "Post : le manuel Deep Learning date de 2016 (notice bibliographique de MIT Press donnée sur le site)."
 illisibles: []

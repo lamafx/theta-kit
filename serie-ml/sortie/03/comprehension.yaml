@@ -1,0 +1,54 @@
+episode: 3
+lecteur: "Un professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne retient des Nº 01 et 02 que leurs pages « À retenir » (pour le post : la même personne, qui découvre le texte seule dans son fil LinkedIn sans avoir vu aucun épisode)."
+carrousel:
+  criteres:
+    premier_abord: {note: 9, raison: "La couverture et l'ouverture disent clairement qu'il y a trois façons d'apprendre, et le visuel les nomme ; seul le « pourquoi cela compte » manque, et la première phrase ne concerne que deux des trois familles."}
+    vocabulaire: {note: 9, raison: "Étiquette, régression, classification et environnement sont expliqués là où ils apparaissent ; seul « jeu de données fixe » (page 5) arrive avant son explication, donnée plus bas dans l'encadré."}
+    une_notion_par_page: {note: 8.5, raison: "Chaque page porte une idée, mais la page 5 empile renforcement, environnement, exemple, retour et nuance dans un seul paragraphe, et les encadrés de la page 4 restent en style télégraphique."}
+    concret: {note: 9, raison: "Maisons, iris, spam et nuages de points rendent concrets supervisé, non supervisé, régression et classification ; la partie d'échecs est seulement nommée : on devine ce qu'y sont « agir » et « retour »."}
+    enchainement: {note: 9, raison: "Les questions d'attaque relient les pages ; le retour au supervisé en page 4, entre la deuxième et la troisième famille, se suit mais on ne sait pas tout de suite pourquoi ce détour."}
+    retenu: {note: 9, raison: "La page « À retenir » se redit en une phrase ; la question de vérification, avec « n'apprend pas seulement », demande encore un petit effort de lecture."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "Les données n'ont pas toujours leur réponse. On distingue trois grandes familles d'apprentissage, qui sont des repères plutôt qu'une liste complète. Les pages suivantes les présentent une par une."
+    pourquoi: "Le lecteur comprend qu'il y a trois familles, mais pas pourquoi cela compte : rien ne relie le fait que les données n'ont pas toujours leur réponse à la façon d'apprendre."
+    proposition: "Les données n'ont pas toujours leur réponse, et cela change la façon d'apprendre. On distingue trois grandes familles, des repères plutôt qu'une liste complète, présentées une par une."
+  - endroit: "page 5, texte"
+    passage: "La troisième famille, celle qui agit ? Certains systèmes n'apprennent pas seulement d'un jeu de données fixe. En apprentissage par renforcement, le système agit dans un environnement, le monde qui lui répond, comme une partie d'échecs. Il reçoit un retour, positif ou négatif, puis recommence : ses actions peuvent changer ce qu'il observe ensuite."
+    pourquoi: "« Jeu de données fixe » n'est expliqué que dans l'encadré du bas ; la partie d'échecs est nommée sans dire ce qu'y est « agir » ; cinq éléments s'enchaînent dans un paragraphe et il faut relire. La nuance finale reste dite dans l'encadré « Par renforcement » (« elles peuvent changer avec ses actions »), elle n'est donc pas perdue."
+    proposition: "La troisième famille, celle qui agit ? En apprentissage par renforcement, le système n'apprend pas seulement d'un jeu de données réuni à l'avance. Il agit dans un environnement, le monde qui lui répond : aux échecs, il joue un coup, l'adversaire réplique. Il reçoit un retour, positif ou négatif, puis recommence."
+  - endroit: "page 4, encadrés"
+    passage: "Prédire **un nombre** : un prix, un montant. / Prédire **une catégorie** : une espèce, spam ou non."
+    pourquoi: "Style télégraphique, sans sujet : le lecteur doit reconstruire la phrase."
+    proposition: "Régression : « La régression prédit **un nombre** : un prix, un montant. » Classification : « La classification prédit **une catégorie** : une espèce, spam ou non. »"
+  - endroit: "page 4, texte"
+    passage: "Revenons au supervisé : que prédit le modèle pour un cas nouveau ?"
+    pourquoi: "Le lecteur attend la troisième famille annoncée en page 2 ; le retour au supervisé se suit, mais il se demande un instant pourquoi elle n'arrive pas."
+    proposition: "Avant la troisième famille, revenons au supervisé : que prédit le modèle pour un cas nouveau ? Deux tâches reviennent souvent. La régression prédit un nombre, comme le prix d'une maison. La classification prédit une catégorie, comme l'espèce d'une fleur, ou spam et non-spam dans l'épisode 01."
+  - endroit: "page 3, cas « non supervisé », texte"
+    passage: "Le modèle trouve des groupes, pas forcément de vraies catégories."
+    pourquoi: "« Vraies catégories » reste abstrait : le lecteur ne voit pas à quoi ces groupes pourraient ne pas correspondre ; la phrase se termine en raccourci."
+    proposition: "Le modèle trouve des groupes, qui ne sont pas forcément de vraies catégories, comme des espèces."
+  - endroit: "page 6, Vérifiez-vous"
+    passage: "Quelle famille n'apprend pas seulement d'un jeu de données réuni à l'avance ?"
+    pourquoi: "La tournure « n'apprend pas seulement » oblige encore à relire la question avant de répondre."
+    proposition: "Dans quelle famille le système produit-il lui-même ses expériences ?"
+post:
+  criteres:
+    accroche: {note: 9, raison: "La première ligne intrigue et se comprend sans connaître le Machine Learning ; seul « la moindre réponse » laisse un instant le lecteur se demander : réponse à quoi ?"}
+    vocabulaire: {note: 8.5, raison: "Supervisé, semi-supervisé et hors ligne sont expliqués par le contexte, mais « on cherche une structure » reste vague et « modèle » arrive à la fin sans explication pour qui n'a vu aucun épisode."}
+    message: {note: 9, raison: "On peut redire en une phrase que les trois familles se distinguent par la situation de départ (avec réponses, sans réponses, en agissant) ; les deux nuances du paragraphe 5 demandent un petit effort pour ne pas brouiller ce message."}
+    fil: {note: 9, raison: "Les paragraphes s'enchaînent bien ; le dernier passe soudain des familles au « modèle fait de nombres » sans transition."}
+  blocages:
+  - endroit: "ligne 1"
+    passage: "Un programme peut apprendre sans qu'on lui donne la moindre réponse, et même à partir de données qu'il produit lui-même, en agissant."
+    pourquoi: "Sans avoir vu d'épisode, le lecteur ne sait pas de quelle « réponse » il s'agit ni à quoi elle répondrait."
+    proposition: "Un programme peut apprendre à partir d'exemples dont personne ne lui donne la réponse, et même de données qu'il produit lui-même, en agissant."
+  - endroit: "paragraphe 3, ligne 2"
+    passage: "Aucun n'en a ? Non supervisé : on cherche une structure."
+    pourquoi: "« Une structure » ne dit rien de concret au lecteur du fil : il ne voit pas ce qu'on cherche."
+    proposition: "Aucun n'en a ? Non supervisé : on cherche une structure, par exemple des groupes d'exemples semblables."
+  - endroit: "dernier paragraphe"
+    passage: "Dans les trois cas, l'apprentissage laisse un modèle derrière lui, souvent fait de nombres. Dans l'épisode suivant, un modèle qui n'en a que deux."
+    pourquoi: "« Modèle » n'a pas été expliqué dans le post, et le passage des familles aux nombres arrive sans transition."
+    proposition: "Dans les trois cas, l'apprentissage laisse un résultat qu'on réutilise ensuite, le modèle, souvent fait de nombres. Dans l'épisode suivant, un modèle qui n'en a que deux."

@@ -1,14 +1,16 @@
-Un modèle peut apprendre sans qu’on lui donne la moindre réponse, et même à partir de données qui n’existent pas encore.
+Un programme peut apprendre sans qu’on lui donne la moindre réponse, et même à partir de données qu’il produit lui-même, en agissant.
 
-Ce qui sépare les trois grandes familles d’apprentissage, c’est d’abord la situation de départ, pas la complexité de l’algorithme.
+Ce qui sépare les trois grandes familles d’apprentissage, c’est d’abord la situation de départ, pas la complexité de la méthode.
 
 Chaque exemple a sa réponse ? Supervisé.
 Aucun n’en a ? Non supervisé : on cherche une structure.
-Pas de jeu de données fixe ? Renforcement : le système agit, et ses actions peuvent changer ce qu’il observe ensuite.
+Pas d’exemples réunis à l’avance ? Renforcement : le système agit, et ses actions peuvent changer ce qu’il observe ensuite.
 
-Ces cases sont des repères, pas des cloisons. Goodfellow, Bengio et Courville le rappellent : supervisé et non supervisé ne sont pas des termes formellement définis. Un projet peut n’avoir des réponses que pour une partie de ses exemples : c’est le semi-supervisé. Et le renforcement peut lui-même apprendre de données déjà réunies, sans agir : c’est le renforcement hors ligne.
+Ces cases sont des repères, pas des cloisons. Les auteurs du manuel Deep Learning (2016), Goodfellow, Bengio et Courville, le rappellent : supervisé et non supervisé n’ont pas de définition stricte.
 
-Dans ces trois cas, il reste quelque chose à la fin de l’apprentissage. Souvent des nombres, parfois très peu : deux, dans l’épisode suivant.
+Deux exemples. Un projet peut n’avoir des réponses que pour une partie de ses exemples : c’est le semi-supervisé. Et le renforcement peut aussi apprendre de données déjà réunies, sans agir : c’est le renforcement hors ligne.
+
+Dans les trois cas, l’apprentissage laisse un modèle derrière lui, souvent fait de nombres. Dans l’épisode suivant, un modèle qui n’en a que deux.
 
 Nº 03 · θ Théta, le Machine Learning, une notion à la fois. Épisode suivant · Nº 04 : Modèle et paramètres.
 

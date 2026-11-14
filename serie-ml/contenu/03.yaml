@@ -20,7 +20,7 @@ pages:
 - type: ouverture
   rappel: "Nº 01 : le modèle apprend d'exemples ; Nº 02 : une maison est une ligne, et son prix est l'étiquette."
   titre: "Trois façons\nd'apprendre."
-  texte: "Les données n'ont pas toujours leur réponse. Trois grandes familles, des repères plutôt qu'une liste complète : supervisé, avec les réponses ; non supervisé, sans elles ; par renforcement, en agissant."
+  texte: "Les données n'ont pas toujours leur réponse. On distingue trois grandes familles d'apprentissage, qui sont des repères plutôt qu'une liste complète. Les pages suivantes les présentent une par une."
   sources: [dlb-supervise, dlb-non-supervise, dlb-renforcement, dlb-flou, dlb-variantes]
   visuel:
     famille: nuage
@@ -64,7 +64,7 @@ pages:
     params: {forme: points, etiquettes: true, description: "Le nuage, chaque point coloré selon son étiquette : noir ou bleu."}
   - etiquette: non supervisé
     titre: Trouver des groupes
-    texte: "Sans étiquette, des groupes trouvés : pas forcément des catégories réelles."
+    texte: "Le modèle trouve des groupes, pas forcément de vraies catégories."
     params:
       forme: groupes
       textes: {groupes: [groupe 1, groupe 2]}
@@ -76,7 +76,7 @@ pages:
 - type: mecanisme
   role: Repère
   titre: "Un nombre\nou une catégorie."
-  texte: "Que prédit un modèle supervisé pour un cas nouveau ? Deux tâches reviennent souvent. La régression prédit un nombre, comme le prix d'une maison. La classification prédit une catégorie, comme l'espèce d'une fleur, ou spam et non-spam dans l'épisode 01."
+  texte: "Revenons au supervisé : que prédit le modèle pour un cas nouveau ? Deux tâches reviennent souvent. La régression prédit un nombre, comme le prix d'une maison. La classification prédit une catégorie, comme l'espèce d'une fleur, ou spam et non-spam dans l'épisode 01."
   sources: [dlb-taches-courantes, dlb-regression, dlb-classification, dlb-iris-especes]
   visuel:
     famille: nuage
@@ -104,8 +104,8 @@ pages:
 - type: mecanisme
   role: Mécanisme
   titre: "Apprendre\nen agissant."
-  texte: "Et la troisième famille, celle qui agit ? Certains algorithmes ne se contentent pas d'un jeu de données fixe. En apprentissage par renforcement, le système agit dans un environnement, reçoit un retour, positif ou négatif, puis recommence : ses actions peuvent changer les données qu'il reçoit ensuite."
-  sources: [dlb-jeu-fixe, dlb-renforcement, sb-actions, levine-hors-ligne, dlb-jeu-entier, sb-positif-negatif]
+  texte: "La troisième famille, celle qui agit ? Certains systèmes n'apprennent pas seulement d'un jeu de données fixe. En apprentissage par renforcement, le système agit dans un environnement, le monde qui lui répond, comme une partie d'échecs. Il reçoit un retour, positif ou négatif, puis recommence : ses actions peuvent changer ce qu'il observe ensuite."
+  sources: [dlb-jeu-fixe, dlb-renforcement, sb-actions, levine-hors-ligne, dlb-jeu-entier, sb-positif-negatif, sb-echecs, sb-environnement]
   visuel:
     famille: flux
     params:
@@ -126,20 +126,22 @@ pages:
   - "Non supervisé : pas d'étiquette, le modèle cherche une structure, comme des groupes."
   - "Par renforcement : le système agit, reçoit un retour, recommence."
   verification:
-    question: Quelle famille ne se contente pas d'un jeu de données fixe ?
+    question: Quelle famille n'apprend pas seulement d'un jeu de données réuni à l'avance ?
     page: 5
 
 linkedin:
   texte: |-
-    Un modèle peut apprendre sans qu'on lui donne la moindre réponse, et même à partir de données qui n'existent pas encore.
+    Un programme peut apprendre sans qu'on lui donne la moindre réponse, et même à partir de données qu'il produit lui-même, en agissant.
 
-    Ce qui sépare les trois grandes familles d'apprentissage, c'est d'abord la situation de départ, pas la complexité de l'algorithme.
+    Ce qui sépare les trois grandes familles d'apprentissage, c'est d'abord la situation de départ, pas la complexité de la méthode.
 
     Chaque exemple a sa réponse ? Supervisé.
     Aucun n'en a ? Non supervisé : on cherche une structure.
-    Pas de jeu de données fixe ? Renforcement : le système agit, et ses actions peuvent changer ce qu'il observe ensuite.
+    Pas d'exemples réunis à l'avance ? Renforcement : le système agit, et ses actions peuvent changer ce qu'il observe ensuite.
 
-    Ces cases sont des repères, pas des cloisons. Goodfellow, Bengio et Courville le rappellent : supervisé et non supervisé ne sont pas des termes formellement définis. Un projet peut n'avoir des réponses que pour une partie de ses exemples : c'est le semi-supervisé. Et le renforcement peut lui-même apprendre de données déjà réunies, sans agir : c'est le renforcement hors ligne.
+    Ces cases sont des repères, pas des cloisons. Les auteurs du manuel Deep Learning (2016), Goodfellow, Bengio et Courville, le rappellent : supervisé et non supervisé n'ont pas de définition stricte.
 
-    Dans ces trois cas, il reste quelque chose à la fin de l'apprentissage. Souvent des nombres, parfois très peu : deux, dans l'épisode suivant.
+    Deux exemples. Un projet peut n'avoir des réponses que pour une partie de ses exemples : c'est le semi-supervisé. Et le renforcement peut aussi apprendre de données déjà réunies, sans agir : c'est le renforcement hors ligne.
+
+    Dans les trois cas, l'apprentissage laisse un modèle derrière lui, souvent fait de nombres. Dans l'épisode suivant, un modèle qui n'en a que deux.
   hashtag: "#ApprentissageSupervise"

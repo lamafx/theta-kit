@@ -1,0 +1,70 @@
+episode: 10
+lecteur: "Un professionnel curieux, niveau bac, sans études d'informatique ni de mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des épisodes précédents (et, pour le post, qui le découvre seul dans son fil LinkedIn sans avoir vu aucun épisode)."
+carrousel:
+  criteres:
+    premier_abord: {note: 8.5, raison: "La couverture et l'ouverture disent clairement de quoi il s'agit (deux creux, la descente s'arrête au premier), mais pourquoi cela compte, un coût resté plus haut qu'il ne pourrait, reste à deviner."}
+    vocabulaire: {note: 7, raison: "Point selle, minimum local et global sont expliqués, mais « corde », « MSE », « (0 ; 0) », « en bosse selon b » et « fonctions d'erreur tirées au hasard » restent à deviner."}
+    une_notion_par_page: {note: 7, raison: "La page 3 ajoute aux points selle le comportement de deux descentes et un encadré statistique ; la page 4 empile convexité, corde, MSE et fond plat en 55 mots."}
+    concret: {note: 7, raison: "Les courbes des pages 2 et 4 montrent bien l'idée, mais la carte en hyperboles de la page 3 ne laisse pas voir où J est en creux et où il est en bosse."}
+    enchainement: {note: 9, raison: "Le passage du premier creux au point selle, puis au cas sans piège, suit bien ; seule la page 4 commence par une définition avant de dire pourquoi elle vient."}
+    retenu: {note: 7, raison: "Pour répondre à « pourquoi n'est-ce pas un minimum ? », le lecteur doit deviner que « en bosse selon b » veut dire que le coût peut encore descendre."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "Cette courbe a deux creux. La descente partie à gauche s'arrête au premier, où la pente est nulle : un **minimum local**. Le plus bas est le **minimum global**."
+    pourquoi: "Le lecteur comprend qu'il y a deux creux, mais rien ne lui dit que s'arrêter au premier est un problème : le coût y reste plus élevé."
+    proposition: "Cette courbe a deux creux. Partie à gauche, la descente s'arrête au premier, où la pente est nulle : un **minimum local**. Son coût dépasse celui du creux le plus bas, le **minimum global**."
+  - endroit: "page 3, texte"
+    passage: "au **point selle**, $∇J$ = (0 ; 0), mais $J$ est en creux selon $a$, en bosse selon $b$. Partie sur l'axe, la descente y cale"
+    pourquoi: "« (0 ; 0) » n'est pas traduit en mots (les deux pentes sont nulles), « en creux selon a, en bosse selon b » est une image à décoder, et « l'axe » ne dit pas lequel."
+    proposition: "Avec deux réglages $a$ et $b$, une pente nulle peut tromper. Au **point selle**, les deux pentes sont nulles, $∇J$ = (0 ; 0) ; pourtant $J$ remonte si l'on bouge $a$, redescend si l'on bouge $b$. Partie sur l'axe $a$, la descente y cale ; partie à côté, elle finit par s'en écarter."
+  - endroit: "page 3, encadré « Avec beaucoup de réglages »"
+    passage: "Plus il y a de réglages, plus les points selle l'emportent en nombre sur les minimums locaux. C'est ce qu'avancent Dauphin et ses coauteurs en 2014, pour des fonctions d'erreur tirées au hasard."
+    pourquoi: "C'est une troisième idée sur la page, et « l'emportent en nombre » comme « fonctions d'erreur tirées au hasard » demandent une relecture : le lecteur ne connaît que le coût $J$."
+    proposition: "Plus il y a de réglages, plus les points selle sont nombreux par rapport aux minimums locaux. C'est ce qu'avancent Dauphin et ses coauteurs en 2014, pour des coûts $J$ tirés au hasard."
+  - endroit: "page 3, visuel"
+    passage: "Lignes de niveau en hyperboles autour d'un point selle : un creux selon le réglage horizontal a, une bosse selon le vertical b."
+    pourquoi: "Sans valeur sur les lignes de niveau, le débutant ne voit ni le creux ni la bosse ; la carte reste abstraite et le mot « selle » n'est relié à aucune image."
+    proposition: "Ajouter deux étiquettes sur la carte : « $J$ remonte » près de l'axe de $a$, de part et d'autre du point selle, et « $J$ redescend » près de l'axe de $b$, en haut et en bas."
+  - endroit: "page 4, texte"
+    passage: "toute corde reste au-dessus de la courbe, et tout minimum local est global : pas de creux plus haut où caler. C'est le cas de la MSE d'une droite (Nº 05)."
+    pourquoi: "« Corde » n'est pas expliquée (déjà repéré), et « MSE » n'apparaît pas dans les pages « À retenir » : le lecteur ne s'en souvient que comme « la moyenne des carrés »."
+    proposition: "Certains coûts n'ont pas ces pièges. Pour une **fonction convexe**, le segment qui relie deux points de la courbe, la **corde**, reste au-dessus d'elle, et tout minimum local est global. C'est le cas du coût $J$ d'une droite, la moyenne des carrés (MSE, Nº 05). Le fond peut toutefois être plat."
+  - endroit: "page 4, texte"
+    passage: "C'est le cas de la MSE d'une droite (Nº 05). Le fond peut toutefois être plat."
+    pourquoi: "Après la définition et sa conséquence, un exemple puis une nuance arrivent dans la même page ; « le fond peut être plat » brouille l'idée principale sans être relié à la figure."
+    proposition: "Certains coûts n'ont pas ces pièges. Pour une **fonction convexe**, le segment qui relie deux points de la courbe, la **corde**, reste au-dessus d'elle, et tout minimum local est global. C'est le cas du coût $J$ d'une droite, la moyenne des carrés (MSE, Nº 05). Le fond peut toutefois être plat."
+  - endroit: "page 4, début du texte"
+    passage: "Pour une **fonction convexe**, toute corde reste au-dessus de la courbe"
+    pourquoi: "Après les pièges de la page 3, la page commence par une définition ; il faut le titre pour comprendre qu'on parle des coûts sans piège."
+    proposition: "Certains coûts n'ont pas ces pièges. Pour une **fonction convexe**, le segment qui relie deux points de la courbe, la **corde**, reste au-dessus d'elle, et tout minimum local est global. C'est le cas du coût $J$ d'une droite, la moyenne des carrés (MSE, Nº 05). Le fond peut toutefois être plat."
+  - endroit: "page 5, point 2"
+    passage: "Au **point selle**, $∇J$ = (0 ; 0), mais $J$ est en creux selon $a$, en bosse selon $b$."
+    pourquoi: "La question « Vérifiez-vous » demande pourquoi ce n'est pas un minimum ; « en bosse selon b » ne dit pas au lecteur que le coût peut encore descendre."
+    proposition: "Au **point selle**, $∇J$ = (0 ; 0), mais $J$ remonte si l'on bouge $a$ et redescend si l'on bouge $b$ : ce n'est pas un minimum."
+post:
+  criteres:
+    accroche: {note: 7, raison: "« Le coût ne baisse plus » se lit d'abord comme un coût financier ; sans avoir vu la série, le lecteur ne sait pas ce qu'est ce coût ni pourquoi un modèle le fait baisser."}
+    vocabulaire: {note: 5, raison: "Coût, pente, paramètres, « directions » et « fonctions d'erreur aléatoires » ne sont jamais expliqués, et l'argument central repose sur eux."}
+    message: {note: 7, raison: "Le lecteur retient qu'un coût qui stagne n'est pas forcément un minimum local, mais il doit deviner ce qu'est un point selle et le texte finit sur une citation en anglais."}
+    fil: {note: 7, raison: "La structure idée reçue puis argument inverse est claire, mais « sauf à un niveau d'erreur proche du meilleur » et la dernière phrase demandent une relecture."}
+  blocages:
+  - endroit: "post, lignes 1 et 2"
+    passage: "Le coût ne baisse plus.\nLe modèle a-t-il terminé, ou reste-t-il coincé ?"
+    pourquoi: "Sans connaître le Machine Learning, le lecteur ne sait pas ce qu'est « le coût » ni « le modèle » ; l'accroche ne se comprend qu'après coup."
+    proposition: "Un modèle de Machine Learning apprend en réduisant pas à pas son erreur, appelée le coût.\nUn jour, le coût ne baisse plus.\nLe modèle a-t-il terminé, ou reste-t-il coincé ?"
+  - endroit: "post, paragraphe 2"
+    passage: "Une pente presque nulle dit seulement qu'à cet endroit, le coût ne varie plus guère."
+    pourquoi: "La « pente » arrive sans explication : le lecteur ne sait pas que le modèle suit la pente du coût pour descendre."
+    proposition: "Le modèle suit la pente du coût pour descendre. Une pente presque nulle dit seulement qu'à cet endroit, le coût ne varie plus guère. Trois situations au moins y ressemblent :"
+  - endroit: "post, liste, troisième point"
+    passage: "· un point selle : le coût descend encore dans au moins une direction."
+    pourquoi: "« Direction » ne veut rien dire pour ce lecteur : il ne sait pas que le modèle a plusieurs réglages que l'on peut bouger."
+    proposition: "· un point selle : c'est plat, mais le coût peut encore descendre si l'on bouge au moins un des réglages du modèle."
+  - endroit: "post, paragraphe « L'argument inverse »"
+    passage: "L'argument inverse : un minimum exige que toutes les directions remontent. Plus il y a de paramètres, moins c'est probable, sauf à un niveau d'erreur proche du meilleur."
+    pourquoi: "« Paramètres » et « directions » ne sont pas reliés, et « sauf à un niveau d'erreur proche du meilleur » se relit deux fois avant d'être compris."
+    proposition: "L'argument inverse : un modèle a de nombreux réglages, appelés paramètres. Pour un vrai creux, le coût doit remonter quel que soit le réglage que l'on bouge. Plus il y a de paramètres, moins c'est probable, sauf quand l'erreur est déjà proche de la meilleure possible."
+  - endroit: "post, dernier paragraphe"
+    passage: "Leur thèse repose en partie sur des fonctions d'erreur aléatoires : un éclairage, pas une loi. Elle invite pourtant à se méfier d'un coût qui stagne : ces plateaux, écrivent-ils, « give the illusory impression of the existence of a local minimum », l'illusion d'un minimum local."
+    pourquoi: "« Fonctions d'erreur aléatoires » est opaque, et le message final arrive après une citation en anglais : le lecteur doit relire pour en tirer une phrase."
+    proposition: "Leur thèse repose en partie sur des coûts tirés au hasard : un éclairage, pas une loi. Elle invite pourtant à se méfier d'un coût qui stagne : ce n'est pas forcément un minimum local. Ces plateaux, écrivent-ils, « give the illusory impression of the existence of a local minimum », l'illusion d'un minimum local."

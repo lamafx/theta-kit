@@ -1,0 +1,66 @@
+episode: 5
+lecteur: "Un professionnel curieux, niveau bac, sans études d'informatique ni de mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des Nº 01 à 04 (pour le carrousel) ou qui découvre le post seul dans son fil LinkedIn (pour le texte)."
+carrousel:
+  criteres:
+    premier_abord: {note: 7, raison: "La couverture est claire, mais l'ouverture met dans une seule phrase le résidu, la convention de signe des statisticiens et la distance sans signe : il faut la relire."}
+    vocabulaire: {note: 7, raison: "« Résidu » n'est qu'un synonyme entre parenthèses, « quadratique » et le sigle MSE ne sont pas expliqués, et l'indice $i$ sous $ŷ$ et $y$ n'est jamais dit en mots simples."}
+    une_notion_par_page: {note: 7, raison: "L'ouverture et la page 3 empilent plusieurs idées (signe, positivité, grossissement, rapports), et les pages 5 et 6 commencent en style télégraphique ou glissent une nuance (« pour une droite et la MSE ») qui brouille l'idée."}
+    concret: {note: 8.5, raison: "Le tableau des trois maisons, les deux droites et la courbe en U montrent bien les notions, mais la formule de la page 4 n'est appliquée à aucun exemple chiffré."}
+    enchainement: {note: 8.5, raison: "Le fil erreur, carré, moyenne, comparaison, U se suit, mais la page 3 ne dit pas pourquoi une erreur négative pose problème, et le passage de trois maisons à toutes les ventes en page 5 demande un effort."}
+    retenu: {note: 8.5, raison: "Le lecteur sait répondre à « Pourquoi élever chaque erreur au carré ? » (positive, grossit les grosses erreurs), mais sans savoir pourquoi le signe gênait ; le premier point « À retenir » reste dense."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "Pour chaque exemple, la droite prédit $ŷ$ ; le résultat réel est $y$. L'erreur (résidu) est $ŷ$ − $y$, souvent $y$ − $ŷ$ en statistique ; sans signe, c'est la distance verticale."
+    pourquoi: "Trois notions dans une phrase (l'erreur, l'ordre de soustraction choisi par les statisticiens, la valeur sans signe) : le débutant ne sait plus laquelle est l'erreur ; « résidu » entre parenthèses n'est pas expliqué ; « sans signe » est abstrait alors que le dessin montre un pointillé."
+    proposition: "Pour chaque exemple, la droite prédit $ŷ$ ; le résultat réel est $y$. L'erreur, ou résidu, est $ŷ$ − $y$. Sans son signe, c'est la longueur du pointillé entre le point et la droite."
+  - endroit: "page 4, ligne du carré de l'erreur (la nuance « souvent $y$ − $ŷ$ en statistique » retirée de l'ouverture y est déplacée)"
+    passage: "le carré de l'erreur sur l'exemple $i$"
+    pourquoi: "Le petit $i$ écrit en bas de $ŷ$ et de $y$ n'a jamais été expliqué : le débutant ne lit pas les indices. C'est aussi le meilleur endroit pour la convention de signe : au carré, l'ordre ne change rien."
+    proposition: "le carré de l'erreur de l'exemple numéro $i$ (le petit $i$ en bas dit de quel exemple il s'agit) ; écrite $y$ − $ŷ$, comme souvent en statistique, elle a le même carré"
+  - endroit: "page 4, ligne du symbole Σ"
+    passage: "la somme sur les exemples, de $i$ = 1 à $n$"
+    pourquoi: "« de $i$ = 1 à $n$ » suppose de savoir lire une notation de somme ; le débutant ne voit pas que $i$ compte les exemples un par un."
+    proposition: "la somme : on additionne pour chaque exemple, numérotés $i$ = 1, 2, 3… jusqu'au dernier, $n$"
+  - endroit: "page 4, texte"
+    passage: "c'est la fonction de coût $J$, ici l'erreur quadratique moyenne (MSE), la plus courante en régression, pas la seule."
+    pourquoi: "« Quadratique » et le sigle MSE arrivent sans explication, au milieu d'une phrase qui porte déjà la définition de $J$ et une nuance (« pas la seule »)."
+    proposition: "On additionne les carrés des erreurs, puis on divise par le nombre d'exemples. Ce calcul s'appelle la fonction de coût $J$ ; ici, l'erreur quadratique moyenne (MSE), « quadratique » voulant dire « au carré ». C'est la plus courante en régression, pas la seule. Plus $J$ est petit, mieux la droite suit les données."
+  - endroit: "page 4, lignes (exemple chiffré à ajouter après les trois symboles)"
+    passage: "J = {1}/{n} Σ [(ŷ_i − y_i)²]"
+    pourquoi: "La formule reste abstraite : rien ne montre le calcul sur les trois maisons du tableau que le lecteur vient de voir, alors que cela suffirait à la comprendre."
+    proposition: "Pour les trois maisons de la page 3 : $J$ = (9 + 49 + 625) / 3 ≈ 228 (valeur à tirer de calculs.cout, à partir des carrés déjà calculés)."
+  - endroit: "page 3, texte"
+    passage: "Ses prédictions sont trop hautes ; trop basse, l'erreur serait négative : le carré la rend positive. Il grossit les grosses erreurs : l'erreur d'Old Town vaut trois fois et demie celle de College Creek, son carré près de treize fois."
+    pourquoi: "« trop basse, l'erreur serait négative » est elliptique et ne dit pas pourquoi une erreur négative gêne : le lecteur ne voit pas l'utilité de la rendre positive, puis doit encore suivre deux rapports dans la même phrase."
+    proposition: "Droite de l'épisode 04, millions de FCFA (cours du 27 octobre 2026). Une erreur négative (prédiction trop basse) compenserait une positive dans une somme ; le carré rend chaque erreur positive. Il grossit aussi les grosses erreurs : celle d'Old Town vaut trois fois et demie celle de College Creek, son carré près de treize fois."
+  - endroit: "page 5, texte"
+    passage: "Même $b$ = 4, deux inclinaisons $a$, et $J$ calculé cette fois sur les ventes d'Ames de 2006 à 2010, pas sur les trois maisons. Les points ne sont pas dessinés : seul $J$ tranche."
+    pourquoi: "Début télégraphique sans verbe : le lecteur doit reconstruire la phrase pour comprendre ce qu'on compare et sur quelles données."
+    proposition: "Gardons $b$ = 4 et comparons deux inclinaisons $a$. Cette fois, $J$ est calculé sur les ventes d'Ames de 2006 à 2010, et non plus sur trois maisons. Les points ne sont pas dessinés : seul $J$ départage les droites. La droite de l'épisode 04 a le coût le plus faible des deux."
+  - endroit: "page 6, texte"
+    passage: "Gardons $b$ = 4 et faisons varier $a$ : pour une droite et la MSE, les coûts $J$ forment un U."
+    pourquoi: "La condition « pour une droite et la MSE » coupe l'idée principale (les coûts forment un U) et se lit comme une liste de mots."
+    proposition: "Gardons $b$ = 4 et faisons varier $a$ : les coûts $J$ forment un U. Ce U vient du choix d'une droite et de la MSE. Son creux donne le meilleur $a$ quand $b$ = 4, sur ces ventes d'Ames : $a$ ≈ 74, comme dans l'épisode 04. Entraîner, c'est chercher le creux pour $a$ et $b$ ensemble."
+post:
+  criteres:
+    accroche: {note: 8, raison: "La phrase sur 25 et 625 intrigue, mais un lecteur qui ne connaît rien au Machine Learning ne sait pas de quelles erreurs on parle ni pourquoi on les élève au carré."}
+    vocabulaire: {note: 7, raison: "« Fonction de coût », « erreur quadratique moyenne », « régression » et « erreur absolue moyenne » arrivent sans explication en mots simples ; il faut les deviner."}
+    message: {note: 8.5, raison: "On retient que le carré fait peser les grandes erreurs et que le choix de la mesure compte, mais la fin sur l'anomalie et l'erreur absolue moyenne demande un effort."}
+    fil: {note: 7, raison: "« Une fonction de coût ne se contente donc pas » arrive sans que le terme soit posé, et « ce point isolé » ne renvoie à rien de ce qui précède : il faut relire."}
+  blocages:
+  - endroit: "post, lignes 1 à 3"
+    passage: "Quand on élève les erreurs au carré, une seule erreur de 25 pèse autant que 625 erreurs de 1."
+    pourquoi: "Le lecteur du fil ne sait pas de quelles erreurs il s'agit ni qui les élève au carré ; l'accroche suppose le contexte du carrousel."
+    proposition: "Une IA qui estime le prix des maisons fait des erreurs. Pour les mesurer, on les élève souvent au carré. Conséquence : une seule erreur de 25 pèse autant que 625 erreurs de 1."
+  - endroit: "post, paragraphe 4"
+    passage: "Une fonction de coût ne se contente donc pas de mesurer. Elle dit au modèle ce qui est grave."
+    pourquoi: "« Fonction de coût » apparaît pour la première fois sans être définie, et le « donc » relie à un terme que le lecteur n'a jamais vu."
+    proposition: "La façon de compter les erreurs s'appelle la fonction de coût. Elle ne se contente donc pas de mesurer : elle dit au modèle ce qui est grave."
+  - endroit: "post, paragraphe 5, première phrase"
+    passage: "L'erreur quadratique moyenne, la plus courante en régression, lui dit d'éviter d'abord les grands écarts."
+    pourquoi: "« Quadratique » et « régression » sont des mots savants sans explication ; le lecteur ne relie pas cette erreur au carré du calcul d'en haut."
+    proposition: "En régression, c'est-à-dire pour prédire un nombre comme un prix, la plus courante est l'erreur quadratique moyenne : la moyenne des erreurs au carré. Elle dit au modèle d'éviter d'abord les grands écarts."
+  - endroit: "post, paragraphe 5, fin"
+    passage: "C'est gênant quand ce point isolé est une anomalie : il tire le modèle vers lui, ce que l'erreur absolue moyenne fait bien moins."
+    pourquoi: "« Ce point isolé » n'a pas d'antécédent, « anomalie » et « erreur absolue moyenne » ne sont pas expliqués, et la fin de phrase « ce que … fait bien moins » oblige à relire."
+    proposition: "C'est gênant quand ce grand écart vient d'une maison hors norme, une anomalie : elle tire le modèle vers elle. L'erreur absolue moyenne, la moyenne des erreurs sans le carré, se laisse bien moins tirer."

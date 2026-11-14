@@ -1,0 +1,54 @@
+episode: 11
+lecteur: "Un professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des épisodes précédents (pour le post : la même personne, qui découvre le texte seule dans son fil LinkedIn sans avoir vu aucun épisode)."
+carrousel:
+  criteres:
+    premier_abord: {note: 9, raison: "La couverture et l'ouverture disent clairement le sujet (prédire le prix depuis la surface avec une droite), le rappel traduit $w$ et la MSE ; seul petit effort : la formule ne dit pas que $x$ est la surface et $ŷ$ le prix, il faut le déduire de la phrase et des axes."}
+    vocabulaire: {note: 8.5, raison: "Les termes sont presque tous expliqués, mais la page 5 demande un effort : $x_i$ apparaît dans le texte avant sa légende, l'indice $i$ n'est jamais dit en mots (« la vente numéro $i$ ») et « 2/$n$ en fait deux fois la moyenne » se lit d'abord comme « en fait » au sens de « en réalité »."}
+    une_notion_par_page: {note: 8, raison: "Les pages 2, 3, 6 portent une idée chacune ; la page 5 mêle le calcul du gradient et une seconde idée sans lien affiché (la plupart des modèles suivants n'ont pas de formule directe), et sa phrase « se calcule de même » renvoie à une formule pas encore lue, ce qui oblige à revenir au texte."}
+    concret: {note: 9, raison: "Les trois instantanés de la page 4 et le U de la page 6 montrent très bien les idées ; seule la formule de la page 5 reste abstraite, la légende de l'erreur ne disant pas en mots que c'est le prix prédit moins le prix réel."}
+    enchainement: {note: 8.5, raison: "Les pages 2, 3 et 4 s'enchaînent bien (le départ à zéro est justifié) ; mais après le résultat de la page 4, la page 5 revient au calcul sans dire pourquoi, et sa dernière phrase n'est pas reliée à la boucle qu'elle justifie."}
+    retenu: {note: 9, raison: "Le lecteur sait redire l'idée et trouve la réponse à « Vérifiez-vous » page 4, mais l'encadré place d'abord « sans forcément l'atteindre » : il risque de répondre « pas assez d'itérations » au lieu de « aucune droite ne passe par toutes les ventes »."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "La **régression linéaire** prédit le prix depuis la surface : $ŷ$ = $w$·$x$ + $b$. Le poids $w$ règle la pente ; le biais $b$ donne le prix à surface nulle."
+    pourquoi: "La formule arrive sans dire quelle lettre est le prix et laquelle est la surface ; le lecteur doit le deviner avant de lire le reste."
+    proposition: "La **régression linéaire** prédit le prix $ŷ$ depuis la surface $x$ : $ŷ$ = $w$·$x$ + $b$. Le poids $w$ règle la pente ; le biais $b$ donne le prix à surface nulle."
+  - endroit: "page 5, texte"
+    passage: "La MSE dépend de $w$ et de $b$. Sa pente selon $b$ se calcule de même, sans multiplier par $x_i$. La plupart des modèles suivants n'ont pas de formule directe du creux."
+    pourquoi: "« De même » renvoie à la formule placée en dessous, que le lecteur n'a pas encore lue, et $x_i$ n'est défini que dans la légende : il faut lire la page puis revenir au texte. La dernière phrase arrive sans lien : le lecteur ne voit pas qu'elle explique pourquoi on garde la boucle."
+    proposition: "Chaque pas a besoin du gradient : la pente de la MSE selon $w$, puis selon $b$. Ci-dessous, celle selon $w$ ; celle selon $b$ est la même, sans multiplier par la surface $x_i$. Cette boucle servira aux modèles suivants : la plupart n'ont pas de formule directe du creux."
+  - endroit: "page 5, légendes de $x_i$ et de Σ"
+    passage: "x_i : la surface de la vente $i$ ; Σ : la somme sur les $n$ ventes ; 2/$n$ en fait deux fois la moyenne"
+    pourquoi: "L'indice $i$ n'est pas expliqué comme un numéro de vente, et « en fait » se lit d'abord comme « en réalité » : la phrase sur 2/$n$ demande une relecture."
+    proposition: "x_i : la surface de la vente numéro $i$ ; Σ : additionne les $n$ ventes ; avec 2/$n$, on obtient le double de la moyenne"
+  - endroit: "page 5, légende de l'erreur"
+    passage: "[(ŷ_i − y_i)] : l'erreur sur la vente $i$"
+    pourquoi: "La formule reste abstraite : la légende ne rattache pas l'erreur à des prix que le lecteur peut se représenter."
+    proposition: "[(ŷ_i − y_i)] : l'erreur sur la vente $i$, le prix prédit moins le prix réel"
+  - endroit: "page 4, encadré « Pas tout à fait exact »"
+    passage: "La descente approche du creux sans forcément l'atteindre. Et $J$ ne tombe pas à zéro : aucune droite ne passe par toutes les ventes."
+    pourquoi: "La réponse à « Vérifiez-vous » vient en second, après une autre raison ; le lecteur pressé retient la première et répond « parce que la descente n'atteint pas le creux »."
+    proposition: "Même au creux, $J$ ne tombe pas à zéro : aucune droite ne passe par toutes les ventes. Et la descente approche du creux sans forcément l'atteindre."
+post:
+  criteres:
+    accroche: {note: 8.5, raison: "La première ligne dit ce que fait la régression linéaire et la question intrigue, mais « la faire apprendre pas à pas » peut se lire comme « l'enseigner à des élèves » : on ne comprend pas tout de suite que c'est une machine qui cherche la droite, et la troisième ligne (Legendre, Gauss) n'éclaire pas ce point."}
+    vocabulaire: {note: 8.5, raison: "Descente de gradient, coût, gradient et BCEAO sont expliqués en mots simples ; restent « réglages » d'une droite, jamais dits (sa pente et sa hauteur), et « les modèles qui suivront », qui suppose de connaître la série et le sens de « modèle »."}
+    message: {note: 9, raison: "Le lecteur peut dire qu'on fait chercher la droite pas à pas parce que la plupart des autres modèles n'ont pas de formule, et que la droite sert à vérifier la boucle ; seule la dernière ligne, sur les FCFA, termine le post sur un détail et brouille un peu ce qu'il retient."}
+    fil: {note: 8.5, raison: "Les paragraphes s'enchaînent bien du constat à l'intérêt du détour ; mais au paragraphe 3, « paraît donc inutile » est suivi d'un résultat qui se lit d'abord comme une réussite, et la phrase finale sur les prix d'un carrousel non encore vu arrive sans lien."}
+  blocages:
+  - endroit: "post, lignes 1 et 2"
+    passage: "La régression linéaire, qui trace la droite la plus proche d'un nuage de points, a une formule exacte.\nAlors pourquoi la faire apprendre pas à pas ?"
+    pourquoi: "« La faire apprendre » ne dit pas qui apprend : le lecteur hors du Machine Learning peut penser à un cours, pas à une machine qui cherche la droite."
+    proposition: "La régression linéaire trace la droite la plus proche d'un nuage de points, et une formule exacte la donne d'un coup.\nAlors pourquoi laisser une machine la chercher pas à pas ?"
+  - endroit: "post, paragraphe 4"
+    passage: "Ce détour a pourtant un intérêt. La plupart des modèles qui suivront n'ont pas de formule de ce genre."
+    pourquoi: "Le lecteur du fil ne sait pas qu'une série suit, ni ce qu'est un « modèle » en Machine Learning."
+    proposition: "Ce détour a pourtant un intérêt. La plupart des modèles plus complexes, ces programmes qui prédisent à partir d'exemples, n'ont pas de formule de ce genre."
+  - endroit: "post, paragraphe 3"
+    passage: "Le détour par la descente de gradient, qui corrige les réglages un peu à chaque tour, paraît donc inutile. Sur les 2 925 ventes de maisons d'Ames, dans l'Iowa, de 2006 à 2010, elle retrouve après 1 000 tours la droite que la formule donne d'un coup."
+    pourquoi: "La seconde phrase se lit d'abord comme un succès de la descente, ce qui contredit « inutile » ; il faut relire pour voir le contraste entre 1 000 tours et « d'un coup ». « Réglages » n'est pas expliqué."
+    proposition: "Le détour par la descente de gradient, qui corrige les réglages de la droite (sa pente et sa hauteur) un peu à chaque tour, paraît donc inutile : sur les 2 925 ventes de maisons d'Ames, dans l'Iowa, de 2006 à 2010, elle retrouve seulement, après 1 000 tours, la droite que la formule donne d'un coup."
+  - endroit: "post, dernière ligne"
+    passage: "Dans le carrousel, les prix sont convertis en FCFA au cours de la banque centrale (BCEAO) du 27 octobre 2026."
+    pourquoi: "Le post finit sur un détail de conversion sans lien avec ce qui précède : le lecteur ne sait pas s'il fait partie du message."
+    proposition: "Note : dans le carrousel, les prix sont convertis en FCFA au cours de la banque centrale (BCEAO) du 27 octobre 2026."

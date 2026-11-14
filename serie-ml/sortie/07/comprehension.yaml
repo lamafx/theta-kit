@@ -1,0 +1,50 @@
+episode: 7
+lecteur: "Un professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des Nº 01 à 06 (pour le post : la même personne, qui découvre le texte seule dans son fil LinkedIn)."
+carrousel:
+  criteres:
+    premier_abord: {note: 7, raison: "La couverture est claire (« La pente, quand il y a plusieurs boutons à régler »), mais l'ouverture enchaîne trois notions nouvelles en trois phrases courtes, avec « Idem » télégraphique et « vecteur » laissé sans explication : il faut relire."}
+    vocabulaire: {note: 7, raison: "« Vecteur » n'est jamais expliqué et doit être deviné ; « on dérive en a » et la disparition de 3b² dans le calcul supposent une règle que le lecteur ne connaît pas ; la « carte des réglages » n'est pas présentée comme une vue d'en haut du creux du coût."}
+    une_notion_par_page: {note: 7, raison: "La page 2 pose dérivée partielle, vecteur et gradient d'un coup (densité comparable à l'ouverture du Nº 01) ; la page 3 ajoute carte, lignes de niveau, perpendiculaire et montée la plus raide dans un seul paragraphe."}
+    concret: {note: 8, raison: "La carte et le tableau montrent bien les notions, mais la page 2 n'a que des boîtes sans nombres, et rien ne dit que la carte est un relief vu d'en haut : il faut deviner où « ça monte »."}
+    enchainement: {note: 7, raison: "Page 2, le gradient est une liste de pentes ; page 3, il « pointe » comme une flèche : le passage d'une paire de nombres à une flèche n'est expliqué nulle part, et la page 3 affiche (2 ; 6) avant que la page 4 ne le calcule."}
+    retenu: {note: 8.5, raison: "Le titre de la page 3 se retient et l'idée se redit en une phrase, mais la question « que fait ∇J face à une ligne de niveau ? » reste vague et le lien entre les nombres et la flèche n'est pas acquis."}
+  blocages:
+  - endroit: "page 2, texte"
+    passage: "Bougeons $a$ seul, $b$ fixé : la pente de $J$ est la dérivée partielle selon $a$. Idem pour $b$. Rangées dans un vecteur, ces pentes forment le gradient $∇J$."
+    pourquoi: "Trois notions nouvelles en trois phrases courtes ; « Idem pour b » est télégraphique ; « vecteur » n'est pas expliqué, le lecteur doit deviner qu'il s'agit d'une liste de nombres."
+    proposition: "Avec deux réglages, $J$ a deux pentes : quand seul $a$ bouge, c'est la dérivée partielle selon $a$ ; de même pour $b$. Rangées dans une liste appelée vecteur, elles forment le gradient $∇J$."
+  - endroit: "page 3, texte"
+    passage: "Sur la carte des réglages, les lignes de niveau relient les points de même coût. Hors du centre, $∇J$ est perpendiculaire à la ligne de niveau et pointe vers la montée la plus raide."
+    pourquoi: "Le lecteur ne sait pas que la carte est le creux du coût vu d'en haut : sur un dessin plat, « la montée » doit être devinée ; et il ne sait pas comment la liste de pentes de la page 2 devient une flèche qui « pointe »."
+    proposition: "Prenons un coût choisi pour l'exemple : $J$ = $a$² + 3$b$². Vu d'en haut, son creux devient une carte : chaque ligne de niveau relie les points de même coût. Dessiné en flèche, $∇J$ est, hors du centre, perpendiculaire à la ligne de niveau et pointe vers la montée la plus raide."
+  - endroit: "page 4, texte"
+    passage: "Pour $J$ = $a$² + 3$b$², on dérive en $a$, $b$ fixé : 2$a$. Puis en $b$, $a$ fixé : 3 fois 2$b$, soit 6$b$."
+    pourquoi: "Le lecteur ne voit pas où passe 3$b$² quand on dérive en $a$ : qu'un terme qui ne bouge pas ait une pente nulle n'a jamais été dit ; « dériver en a » est un verbe nouveau pour lui."
+    proposition: "Pour $J$ = $a$² + 3$b$², bougeons $a$ seul : 3$b$² ne change pas, sa pente est nulle, et la pente de $a$² vaut 2$a$, comme au Nº 06. Bougeons $b$ seul : la pente de 3$b$² vaut 3 fois 2$b$, soit 6$b$. Donc $∇J$ = (2$a$ ; 6$b$), ici aux points de la carte."
+  - endroit: "page 4, conclusion"
+    passage: "En (1 ; 1), $∇J$ = (2 ; 6) : la flèche de la carte. Au fond, en (0 ; 0), $∇J$ = (0 ; 0)."
+    pourquoi: "C'est le seul endroit où nombres et flèche se rejoignent, mais rien ne dit comment (2 ; 6) se lit sur la carte ; le lecteur doit le deviner."
+    proposition: "En (1 ; 1), $∇J$ = (2 ; 6) : la flèche de la carte avance de 2 selon $a$ et de 6 selon $b$. Au fond, en (0 ; 0), $∇J$ = (0 ; 0)."
+  - endroit: "page 5, vérification"
+    passage: "Sur la carte, que fait $∇J$ face à une ligne de niveau ?"
+    pourquoi: "« Que fait… face à » est vague : le lecteur hésite entre l'angle et la direction, alors que la réponse attendue contient les deux."
+    proposition: "Sur la carte, quel angle fait $∇J$ avec une ligne de niveau, et vers où pointe-t-il ?"
+post:
+  criteres:
+    accroche: {note: 5, raison: "« Le gradient ne pointe pas vers le minimum. Même son opposé n'y mène pas forcément tout droit. » : sans rien connaître au Machine Learning, le lecteur ne sait ni ce qu'est le gradient, ni de quel minimum on parle ; il décide d'arrêter avant la troisième ligne."}
+    vocabulaire: {note: 5, raison: "Gradient, minimum, opposé, J = a² + 3b², point (1 ; 1), direction (−1 ; −1), coût et paramètres arrivent sans explication en mots simples."}
+    message: {note: 7, raison: "Le paragraphe « C'est tout l'intérêt du gradient » donne un message, mais il repose sur « coût » et « paramètres », jamais expliqués : le lecteur doit deviner pour le redire."}
+    fil: {note: 7, raison: "Le paragraphe des couples de nombres et des 27 degrés demande de relire ; « paramètres » remplace « réglages » sans prévenir ; la question finale « comment arrive-t-on » ne dit pas où l'on veut arriver."}
+  blocages:
+  - endroit: "post, lignes 1 et 2"
+    passage: "Le gradient ne pointe pas vers le minimum.\nMême son opposé n'y mène pas forcément tout droit."
+    pourquoi: "Un lecteur qui n'a vu aucun épisode ne sait ni ce qu'est le gradient, ni ce qu'est ce minimum, ni ce que veut dire « son opposé »."
+    proposition: "Pour apprendre, un modèle ajuste ses réglages afin de faire moins d'erreurs.\nUne flèche le guide : le gradient, qui indique où l'erreur monte le plus vite.\nPartir à l'opposé ne mène pourtant pas forcément tout droit au meilleur réglage."
+  - endroit: "post, paragraphes 2 et 3"
+    passage: "Prenons J = a² + 3b², au point (1 ; 1).\n\nLe minimum est en (0 ; 0) : il faudrait réduire a et b autant l'un que l'autre, direction (−1 ; −1).\nLe gradient vaut (2 ; 6) : son opposé indique (−2 ; −6), à environ 27 degrés de cette direction."
+    pourquoi: "J, a, b, les couples entre parenthèses et la « direction (−1 ; −1) » ne sont pas expliqués ; le lecteur doit relire pour comprendre ce que comparent les 27 degrés."
+    proposition: "Prenons un exemple : deux réglages, a et b, et un coût J = a² + 3b², qui mesure l'erreur. Le meilleur réglage est a = 0 et b = 0. Plaçons-nous en a = 1 et b = 1.\n\nPour y aller tout droit, il faudrait baisser a et b autant l'un que l'autre, direction (−1 ; −1).\nLe gradient vaut (2 ; 6) : la pente selon a est 2, celle selon b est 6. Son opposé, (−2 ; −6), baisse donc b trois fois plus que a et s'écarte d'environ 27 degrés de la ligne droite."
+  - endroit: "post, paragraphes 5 et 6"
+    passage: "Dès que plusieurs paramètres doivent être ajustés en même temps, une seule pente ne suffit plus : il faut savoir comment chacun d'eux pèse sur le coût.\n\nSi la flèche ne vise pas le but, comment arrive-t-on quand même ? En la recalculant à chaque pas."
+    pourquoi: "« Paramètres » arrive à la place de « réglages » et fait croire à une autre notion ; « le but » et « arrive-t-on » ne disent pas où l'on veut aller, le message final reste flou."
+    proposition: "Dès que plusieurs réglages doivent être ajustés en même temps, une seule pente ne suffit plus : il faut savoir comment chacun d'eux pèse sur le coût.\n\nSi la flèche ne vise pas le meilleur réglage, comment l'atteint-on quand même ? En la recalculant à chaque pas."

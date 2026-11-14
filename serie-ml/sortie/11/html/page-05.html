@@ -273,7 +273,7 @@ strong{font-weight:600}
 
 <span class="role">Formule</span>
 <h2 class="titre-page">Deux dérivées,<br>un pas pour chacune.</h2>
-<p class="texte">La MSE dépend de <span class="m it">w</span> et de <span class="m it">b</span> ; sa dérivée selon chacun donne sa part du gradient. Pour une droite, une formule directe donne aussi le creux. La plupart des modèles suivants n’en ont pas.</p>
+<p class="texte">La MSE dépend de <span class="m it">w</span> et de <span class="m it">b</span>. Sa pente selon <span class="m it">b</span> se calcule de même, sans multiplier par <span class="m"><i>x</i><sub><i>i</i></sub></span>. La plupart des modèles suivants n’ont pas de formule directe du creux.</p>
 
 <div class="panneau">
 <div class="formule" role="img" aria-label="∇_w J = {2}/{n} Σ [(ŷ_i − y_i)]·x_i">∇<sub><i>w</i></sub><i>J</i><span class="op">=</span><span class="frac"><span class="num">2</span><span class="den"><i>n</i></span></span><span class="grand">Σ</span><span class="accent">(</span><span class="accent">ŷ</span><sub><i class="accent">i</i></sub><span class="op accent">−</span><i class="accent">y</i><sub><i class="accent">i</i></sub><span class="accent">)</span>·<i>x</i><sub><i>i</i></sub></div>
@@ -293,8 +293,8 @@ strong{font-weight:600}
 <span class="sens">la surface de la vente <span class="m it">i</span></span>
 </div>
 <div class="ligne">
-<span class="symbole">∇<sub><i>b</i></sub><i>J</i></span>
-<span class="sens">le même calcul pour le biais <span class="m it">b</span>, sans multiplier par la surface</span>
+<span class="symbole">Σ</span>
+<span class="sens">la somme sur les <span class="m it">n</span> ventes ; 2/<span class="m it">n</span> en fait deux fois la moyenne</span>
 </div>
 </div>
 

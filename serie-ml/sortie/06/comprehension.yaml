@@ -1,0 +1,62 @@
+episode: 6
+lecteur: "Un professionnel curieux, niveau bac, sans informatique ni mathématiques après le lycée, qui ne se souvient que des pages « À retenir » des Nº 01 à 05 (carrousel), et la même personne découvrant le post seule dans son fil LinkedIn, sans avoir vu aucun épisode (post)."
+carrousel:
+  criteres:
+    premier_abord: {note: 7, raison: "La couverture est claire, mais l'ouverture enchaîne un rappel télégraphique (« ici, le plus simple, J = a² ») puis trois notions en deux phrases (tangente, pente, dérivée), et ne dit pas pourquoi la pente sert à trouver le creux du coût."}
+    vocabulaire: {note: 7, raison: "« La tangente suit la courbe en un point » ne dit pas ce qu'est une tangente, et la notation J′(a) = 2a arrive page 4 sans explication du signe ′ ni de l'origine de 2a : le lecteur doit deviner."}
+    une_notion_par_page: {note: 7, raison: "Page 2 pose trois notions à la fois ; page 3 mêle le signe, la taille de la pente et la nuance de la bosse, en phrases elliptiques (« Négative : J descend. Nulle : c'est plat. »)."}
+    concret: {note: 8.5, raison: "Chaque notion a son visuel (tangente, trois pentes, tableau), mais le triangle de la page 2 ne marque pas la hausse de 4 et la bosse de l'encadré n'est ni dessinée ni comparée à une image familière."}
+    enchainement: {note: 7, raison: "L'encadré de la page 3 dit que la pente nulle « n'indique plus de quel côté aller », alors qu'aucune page n'a dit que la pente indique de quel côté bouger a pour faire baisser J ; et la page 5 parle soudain de « boutons »."}
+    retenu: {note: 8.5, raison: "Le lecteur répond « c'est plat » à la question, mais la première phrase à retenir repose sur le mot « tangente », resté flou, et il risque de répondre « on est au creux » en oubliant la bosse."}
+  blocages:
+  - endroit: "page 2, texte (premier_abord, vocabulaire, une_notion_par_page)"
+    passage: "La tangente suit la courbe en un point. Sa pente est la dérivée : le rythme auquel $J$ change quand le réglage $a$ bouge un peu."
+    pourquoi: "« Suit la courbe en un point » ne dit pas que la tangente est une droite ; trois mots nouveaux tombent en deux phrases et le lecteur doit relire pour savoir lequel est la dérivée."
+    proposition: "La tangente est la droite qui suit la direction de la courbe en un point. Sa pente, la dérivée, dit à quel rythme $J$ change quand le réglage $a$ bouge un peu."
+  - endroit: "page 2, rappel (premier_abord, enchainement)"
+    passage: "Nº 05 : le coût $J$ selon un réglage $a$ dessine un U ; ici, le plus simple, $J$ = $a$²."
+    pourquoi: "Style télégraphique (« ici, le plus simple ») et aucun rappel de l'enjeu : le lecteur ne sait pas pourquoi on s'intéresse à la pente de ce U."
+    proposition: "Nº 05 : le coût $J$ dessine un U selon le réglage $a$, et le meilleur réglage est au creux. Prenons le U le plus simple : $J$ = $a$²."
+  - endroit: "page 4, texte (vocabulaire)"
+    passage: "Pour $J$($a$) = $a$², la dérivée est $J′$($a$) = 2$a$ : en $a$ = 3, la pente vaut 6."
+    pourquoi: "Le signe ′ n'est jamais expliqué et « 2a » sort de nulle part : le lecteur ne sait pas d'où vient cette formule ni comment se lit J′."
+    proposition: "Pour $J$($a$) = $a$², une règle de calcul donne la dérivée : 2 × $a$, notée $J′$($a$) (« J prime de a »). En $a$ = 3, la pente vaut donc 6. Vérifions sans la règle : on bouge $a$ d'un petit écart $h$, puis on divise la hausse de $J$ par $h$."
+  - endroit: "page 3, texte (une_notion_par_page)"
+    passage: "Pente positive : $J$ monte quand $a$ augmente. Négative : $J$ descend. Nulle : c'est plat, comme au fond du creux. La taille de la pente dit la vitesse : en $a$ = 3, $J$ monte plus vite qu'il ne descend en $a$ = −2."
+    pourquoi: "Phrases elliptiques, et la comparaison de vitesse demande de retrouver les pentes 6 et −4 sur le dessin et de comprendre qu'on compare leur taille sans le signe."
+    proposition: "Si la pente est positive, $J$ monte quand $a$ augmente. Si elle est négative, $J$ descend. Si elle est nulle, la courbe est plate, comme au fond du creux. Plus la pente est grande, signe mis à part, plus $J$ change vite : pente 6 en $a$ = 3, contre −4 en $a$ = −2."
+  - endroit: "page 3, encadré (enchainement, concret)"
+    passage: "Au sommet d'une bosse aussi, la pente est nulle : elle n'indique plus **de quel côté aller**."
+    pourquoi: "Le lecteur n'a jamais lu que la pente indique de quel côté aller : « plus » suppose une idée non dite ; la bosse n'est pas montrée."
+    proposition: "Ailleurs, le signe de la pente dit de quel côté bouger $a$ pour faire baisser $J$. Mais au sommet d'une bosse, comme en haut d'une colline, la pente est aussi nulle : elle n'indique plus **de quel côté aller**."
+  - endroit: "page 2, visuel (concret)"
+    passage: "Triangle sous la tangente : le côté horizontal est marqué « 1 », le côté vertical n'est pas marqué."
+    pourquoi: "Le lecteur voit « pente 4 » et « 1 » mais doit deviner que le trait bleu vertical mesure 4 : le lien entre pente et triangle n'est pas lisible d'un coup d'oeil."
+    proposition: "Marquer le côté vertical du triangle « 4 », comme le côté horizontal est marqué « 1 » (description inchangée : un pas de 1 fait monter la tangente de 4)."
+  - endroit: "page 5, épisode suivant (enchainement)"
+    passage: "Mais un modèle a souvent des milliers de boutons."
+    pourquoi: "« Boutons » est une image nouvelle pour ce que la série appelle « réglages » : le lecteur se demande s'il s'agit d'autre chose."
+    proposition: "Mais un modèle a souvent des milliers de réglages."
+  - endroit: "page 5, point 1 (retenu)"
+    passage: "La dérivée est la pente de la tangente : le rythme auquel $J$ change."
+    pourquoi: "La phrase à retenir repose sur « tangente », que le lecteur n'a pas su définir : il ne peut pas la redire avec ses mots."
+    proposition: "La dérivée est la pente de la tangente, la droite qui suit la courbe en un point : le rythme auquel $J$ change."
+post:
+  criteres:
+    accroche: {note: 10, raison: "Le compteur de vitesse est une image familière, les trois premières lignes se comprennent sans rien connaître au Machine Learning et intriguent."}
+    vocabulaire: {note: 7, raison: "« Modèle », « coût », « réglage » et « information locale » arrivent sans explication pour un lecteur qui n'a vu aucun épisode : il doit deviner ce qu'est le coût d'un modèle."}
+    message: {note: 8.5, raison: "Le lecteur retient que la dérivée dit le sens et le rythme du changement, mais la dernière phrase (« où aller ») suppose un but, le coût le plus bas, jamais dit."}
+    fil: {note: 7, raison: "Le passage du compteur au modèle est bon, mais « Cette information locale dispense d'essayer tous les réglages un par un » saute une étape : personne n'a dit qu'on cherchait le meilleur réglage en les essayant."}
+  blocages:
+  - endroit: "paragraphe 3 du post (vocabulaire, message)"
+    passage: "Pour un modèle, la dérivée du coût joue ce rôle. Elle n'indique pas où se trouve le meilleur réglage. Elle indique dans quel sens le coût évolue si le réglage bouge un peu, et à quel rythme, là où l'on se trouve."
+    pourquoi: "Le lecteur du fil ne sait pas ce que sont le coût et les réglages d'un modèle, ni que l'on cherche le coût le plus bas."
+    proposition: "Un modèle de Machine Learning a des réglages, et un coût qui mesure ses erreurs : plus le coût est bas, meilleur est le modèle. La dérivée du coût joue le rôle du compteur. Elle n'indique pas où se trouve le meilleur réglage. Elle indique dans quel sens le coût évolue si le réglage bouge un peu, et à quel rythme, là où l'on se trouve."
+  - endroit: "paragraphe 4 du post (fil, vocabulaire)"
+    passage: "Cette information locale dispense d'essayer tous les réglages un par un."
+    pourquoi: "« Locale » est un mot savant ici, et l'idée d'essayer tous les réglages arrive sans avoir été posée : il faut relire pour faire le lien."
+    proposition: "Cette information, valable là où l'on se trouve, montre dans quel sens bouger le réglage : pas besoin d'essayer tous les réglages un par un pour trouver celui où le coût est le plus bas."
+  - endroit: "paragraphe 5 du post (message)"
+    passage: "Une dérivée ne dit pas où aller : elle dit de quel côté commencer."
+    pourquoi: "« Où aller » reste vague : le lecteur ne relie pas la phrase au but, le coût le plus bas."
+    proposition: "Une dérivée ne dit pas où se trouve le coût le plus bas : elle dit de quel côté commencer à chercher."

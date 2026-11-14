@@ -273,7 +273,7 @@ strong{font-weight:600}
 
 <span class="role">Mécanisme</span>
 <h2 class="titre-page">Une droite au hasard,<br>puis une boucle.</h2>
-<p class="texte">L’entraînement part de <span class="m it">w</span> et <span class="m it">b</span> tirés au hasard, près de zéro. Puis il répète trois gestes : mesurer le coût, lire le gradient, faire un pas. Il s’arrête quand le coût ne baisse plus.</p>
+<p class="texte">L’<strong>ajustement</strong> choisit <span class="m it">w</span> et <span class="m it">b</span>. Il part de deux nombres tirés au hasard, près de zéro. Puis il répète trois gestes : mesurer le coût, lire le gradient, faire un pas. Il s’arrête quand le coût ne baisse plus.</p>
 
 <svg viewBox="0 0 920 468" width="920" height="468" role="img" aria-label="Deux schémas. Au départ, en gris : w et b tirés au hasard donnent une droite et un premier coût. À chaque itération : mesurer le coût, lire le gradient, faire un pas, en bleu. À la fin, en gris : le coût ne baisse plus, l&#x27;entraînement s&#x27;arrête sur la droite ajustée." style="display: block; overflow: visible; margin-top: var(--marge-flux, 36px)">
 <defs><marker id="fx-objet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E1116"></path></marker><marker id="fx-contexte" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C3C7CE"></path></marker><marker id="fx-accent" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2D5BFF"></path></marker></defs>
@@ -315,7 +315,7 @@ strong{font-weight:600}
 </div>
 <div class="encadre">
 <span class="titre-encadre">Deux réglages à la fois</span>
-<span class="texte-encadre">Chaque itération corrige <span class="m it">w</span> et <span class="m it">b</span> ensemble, avec le gradient du coût.</span>
+<span class="texte-encadre">Chaque tour de boucle, appelé <strong>itération</strong>, corrige <span class="m it">w</span> et <span class="m it">b</span> ensemble, avec le gradient du coût.</span>
 </div>
 </div>
 

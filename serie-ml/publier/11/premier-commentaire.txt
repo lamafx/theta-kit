@@ -1,0 +1,9 @@
+À retrouver sur le site : https://theta-ml.vercel.app/fr/episodes/11
+À manipuler dans le labo 3D : https://theta-ml.vercel.app/fr/labo/regression
+
+Références de l’épisode Nº 11 :
+- D2L 3.1 : https://d2l.ai/chapter_linear-regression/linear-regression.html
+- SKL · Ordinary least squares : https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
+- MLCC · Gradient descent : https://developers.google.com/machine-learning/crash-course/linear-regression/gradient-descent
+- BCEAO · Cours de référence des principales devises contre… : https://www.bceao.int/fr/cours/cours-de-reference-des-principales-devises-contre-franc-cfa
+- De Cock (2011) : https://doi.org/10.1080/10691898.2011.11889627 ; http://jse.amstat.org/v19n3/decock/AmesHousing.txt
