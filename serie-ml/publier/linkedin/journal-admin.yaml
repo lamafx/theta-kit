@@ -32,3 +32,8 @@ gestes:
   cible: '03'
   resultat: 'ok : 03 : statut relu'
   tournee: https://github.com/lamafx/theta-kit/actions/runs/43889915919
+- le: '2026-11-16T14:51:20+00:00'
+  geste: valider
+  cible: '03'
+  resultat: 'refus : Nº 03 est « relu » : seul un épisode généré (relu par le relecteur) se valide'
+  tournee: https://github.com/lamafx/theta-kit/actions/runs/43890093245
