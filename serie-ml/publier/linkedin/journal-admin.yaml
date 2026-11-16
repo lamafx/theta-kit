@@ -27,3 +27,8 @@ gestes:
   valeur: '{"exports":[{"id":"7486121919914782722","urn":"urn:li:ugcPost:748612191991478…'
   resultat: 'ok : post 7486121919914782722 (hors série) | post 7523182859927429120 (hors série) | post 7525216466745450496
     (hors série) | post 7525841858154053633 (Nº 01) ; chiffres du Nº 01 enregistrés dans mesur'
+- le: '2026-11-16T14:50:22+00:00'
+  geste: valider
+  cible: '03'
+  resultat: 'ok : 03 : statut relu'
+  tournee: https://github.com/lamafx/theta-kit/actions/runs/43889915919
