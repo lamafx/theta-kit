@@ -65,7 +65,7 @@ episodes:
         empreinte: 88cb1e980a8acf94c450f3e1a63ab5098ba371ee3331dcfc3c75b4c92271f31e
     publie_le: 2026-11-12
   '03':
-    statut: relu
+    statut: publie
     etapes:
       lecture:
         fait_le: '2026-11-14T04:06:53'
@@ -97,7 +97,7 @@ episodes:
       comprehension:
         fait_le: '2026-11-14T04:16:01'
         empreinte: 77ede30c346ceceac65398f23f15eba8dffe53ad44976c282845abd93126b0ff
-    publie_le: null
+    publie_le: 2026-11-17
   '04':
     statut: genere
     etapes:
