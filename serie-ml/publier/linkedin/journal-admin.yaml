@@ -37,3 +37,13 @@ gestes:
   cible: '03'
   resultat: 'refus : Nº 03 est « relu » : seul un épisode généré (relu par le relecteur) se valide'
   tournee: https://github.com/lamafx/theta-kit/actions/runs/43890093245
+- le: '2026-11-18T13:31:21+00:00'
+  geste: statut
+  cible: '04'
+  valeur: '{"statut":"relu"}'
+  resultat: 'refus : Nº 04 : étapes à refaire avant validation : lecture : une entrée a changé
+
+    sources : une entrée a changé
+
+    images : une entrée a changé'
+  tournee: https://github.com/lamafx/theta-kit/actions/runs/44314479838
